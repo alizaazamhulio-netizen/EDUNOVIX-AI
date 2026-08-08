@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVIX | Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body data-theme="dark">
+    <div class="page-backdrop" aria-hidden="true"></div>
+
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+        <a class="logo" href="index.html" aria-label="NOVIX home">
+            <span class="logo-mark">SM</span>
+            <span class="logo-text">
+                <strong>NOVIX</strong>
+                <small>Premium Learning Hub</small>
+            </span>
+        </a>
+
+        <nav class="sidebar-nav">
+            <a class="sidebar-link active" href="dashboard.html" data-scroll-link="dashboard"><i class="fa-solid fa-grid-2"></i><span>Dashboard</span></a>
+            <a class="sidebar-link" href="subject.html" data-scroll-link="subjects"><i class="fa-solid fa-book-open"></i><span>My Subjects</span></a>
+            <a class="sidebar-link" href="ai-assistant.html" data-scroll-link="assistant"><i class="fa-solid fa-robot"></i><span>AI Assistant</span></a>
+            <a class="sidebar-link" href="planner.html" data-scroll-link="planner"><i class="fa-solid fa-calendar-days"></i><span>Study Planner</span></a>
+            <a class="sidebar-link" href="progress.html" data-scroll-link="progress"><i class="fa-solid fa-chart-line"></i><span>Progress</span></a>
+            <a class="sidebar-link" href="subject.html"><i class="fa-solid fa-layer-group"></i><span>Subjects Hub</span></a>
+            <a class="sidebar-link" href="settings.html" data-scroll-link="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+            <a class="sidebar-link danger" href="login.html"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
+        </nav>
+
+        <div class="sidebar-card">
+            <div class="sidebar-card-top">
+                <span class="pill premium">Pro Focus</span>
+                <span class="sidebar-mini-stat">86% streak health</span>
+            </div>
+            <p>Everything you need for deep study sessions, fast revision, and smarter planning in one calm workspace.</p>
+            <div class="sidebar-meter">
+                <span class="sidebar-meter-fill" style="width: 86%"></span>
+            </div>
+            <a class="btn btn-secondary sidebar-cta" href="#assistant">Open AI Assistant</a>
+        </div>
+    </aside>
+
+    <!-- Dashboard content starts flush at the top of the main area; no spacer wrappers. -->
+    <div class="app-shell">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="icon-button sidebar-toggle" id="sidebarToggle" type="button" aria-label="Open navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="index.html" class="back-home-btn">
+    ← Back to Home
+</a>
+
+                <div class="search-shell">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="dashboardSearch" type="search" placeholder="Search subjects, tools, planner..." aria-label="Search dashboard" />
+                    <button class="search-submit" id="searchSubmit" type="button">Search</button>
+                </div>
+                <p class="search-feedback" id="searchFeedback">Search any section and press Enter.</p>
+            </div>
+
+            <div class="topbar-right">
+                <div class="greeting-block">
+                    <span class="greeting-label" id="userGreeting">Welcome</span>
+                    <strong id="currentDate">Loading date...</strong>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="icon-button notification-button" id="notificationButton" type="button" aria-label="Notifications">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge" id="notificationBadge">4</span>
+                    </button>
+                    <button class="icon-button" type="button" aria-label="Messages">
+                        <i class="fa-regular fa-message"></i>
+                    </button>
+                    <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle color theme">
+                        <i class="fa-regular fa-moon"></i>
+                    </button>
+                    <div class="profile-chip" aria-label="Student profile">
+                        <span class="profile-avatar">S</span>
+                        <span class="profile-copy">
+                            <strong id="userName">Student</strong>
+<small id="userEmail">Loading...</small>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard" id="dashboard">
+            <section class="hero-panel reveal" data-search="dashboard welcome">
+                <div class="hero-copy">
+                    <span class="pill hero-pill">AI Learning Command Center</span>
+                    <h1>Welcome back 👋</h1>
+                    <p>Ready to master today's learning? Track your subjects, power through your study plan, and generate sharper notes in seconds.</p>
+
+                    <div class="hero-actions">
+    <a class="btn btn-primary" href="planner.html">
+        <i class="fa-solid fa-play"></i>Start Studying
+    </a>
+
+    <a class="btn btn-secondary" href="ai-assistant.html">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>Generate AI Notes
+    </a>
+</div>
+
+                    <div class="hero-signals">
+                        <div class="signal-chip"><i class="fa-solid fa-bolt"></i><span>Focused mode</span></div>
+                        <div class="signal-chip"><i class="fa-solid fa-brain"></i><span>AI ready</span></div>
+                        <div class="signal-chip"><i class="fa-solid fa-shield-heart"></i><span>Smart progress</span></div>
+                    </div>
+                </div>
+
+                <div class="hero-side">
+                    <div class="hero-card live-card">
+                        <div class="live-card-top">
+                            <span class="pill premium">Today</span>
+                            <span class="live-dot">Live</span>
+                        </div>
+                        <div class="hero-ring-wrap">
+                            <div class="hero-ring" data-ring="86">
+                                <div class="hero-ring-inner">
+                                    <strong>86%</strong>
+                                    <span>Focus Score</span>
+                                </div>
+                            </div>
+                            <div class="hero-stat-stack">
+                                <div>
+                                    <strong>6</strong>
+                                    <span>Subjects</span>
+                                </div>
+                                <div>
+                                    <strong>4.5h</strong>
+                                    <span>Study Time</span>
+                                </div>
+                                <div>
+                                    <strong>21</strong>
+                                    <span>Day Streak</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-mini-graph">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stats-grid reveal-group" data-search="stats subjects assignments study hours completion">
+                <article class="stat-card reveal" data-search="subjects">
+                    <div class="stat-icon gradient-blue"><i class="fa-solid fa-layer-group"></i></div>
+                    <div class="stat-copy">
+                        <span>Subjects</span>
+                        <strong data-counter="6">0</strong>
+                    </div>
+                    <i class="fa-solid fa-arrow-trend-up stat-trend"></i>
+                </article>
+
+                <article class="stat-card reveal" data-search="assignments">
+                    <div class="stat-icon gradient-purple"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <div class="stat-copy">
+                        <span>Assignments</span>
+                        <strong data-counter="14">0</strong>
+                    </div>
+                    <i class="fa-solid fa-arrow-trend-up stat-trend"></i>
+                </article>
+
+                <article class="stat-card reveal" data-search="study hours">
+                    <div class="stat-icon gradient-blue"><i class="fa-solid fa-clock"></i></div>
+                    <div class="stat-copy">
+                        <span>Study Hours</span>
+                        <strong><span data-counter="126">0</span>h</strong>
+                    </div>
+                    <i class="fa-solid fa-arrow-trend-up stat-trend"></i>
+                </article>
+
+                <article class="stat-card reveal" data-search="completion">
+                    <div class="stat-icon gradient-purple"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="stat-copy">
+                        <span>Completion %</span>
+                        <strong><span data-counter="86">0</span>%</strong>
+                    </div>
+                    <i class="fa-solid fa-arrow-trend-up stat-trend"></i>
+                </article>
+            </section>
+
+            <section class="quick-actions-section reveal" data-search="quick actions">
+                <div class="section-head">
+                    <div>
+                        <span class="section-kicker">Quick Actions</span>
+                        <h2>Build your study flow faster</h2>
+                    </div>
+                    <p>Tap a card to jump into AI-powered helpers and study tools.</p>
+                </div>
+
+                <div class="quick-actions-grid">
+                    <button class="action-card reveal" data-action="Generate Notes" data-target="#assistant" type="button">
+                        <span class="action-icon gradient-blue"><i class="fa-solid fa-file-lines"></i></span>
+                        <strong>Generate Notes</strong>
+                        <span>Condense chapters into revision-ready summaries.</span>
+                    </button>
+                    <button class="action-card reveal" data-action="Create Quiz" data-target="#assistant" type="button">
+                        <span class="action-icon gradient-purple"><i class="fa-solid fa-circle-question"></i></span>
+                        <strong>Create Quiz</strong>
+                        <span>Turn any topic into a fast practice session.</span>
+                    </button>
+                    <button class="action-card reveal" data-action="Summarize Chapter" data-target="#assistant" type="button">
+                        <span class="action-icon gradient-blue"><i class="fa-solid fa-book-bookmark"></i></span>
+                        <strong>Summarize Chapter</strong>
+                        <span>Pull the important ideas out in one pass.</span>
+                    </button>
+                    <button class="action-card reveal" data-action="Flashcards" data-target="#subjects" type="button">
+                        <span class="action-icon gradient-purple"><i class="fa-solid fa-clone"></i></span>
+                        <strong>Flashcards</strong>
+                        <span>Convert core concepts into memory cues.</span>
+                    </button>
+                    <button class="action-card reveal" data-action="AI Homework" data-target="#assistant" type="button">
+                        <span class="action-icon gradient-blue"><i class="fa-solid fa-swatchbook"></i></span>
+                        <strong>AI Homework</strong>
+                        <span>Get help while staying in control of the answer.</span>
+                    </button>
+                    <button class="action-card reveal" data-action="Study Timer" data-target="#planner" type="button">
+                        <span class="action-icon gradient-purple"><i class="fa-solid fa-hourglass-half"></i></span>
+                        <strong>Study Timer</strong>
+                        <span>Start a focused session with a clear timeline.</span>
+                    </button>
+                </div>
+            </section>
+
+            <div class="main-layout">
+                <div class="left-column">
+                    <section class="panel reveal" id="planner" data-search="study planner today schedule timeline">
+                        <div class="section-head compact">
+                            <div>
+                                <span class="section-kicker">Today's Study Plan</span>
+                                <h2>Timeline for the day</h2>
+                            </div>
+                            <p>Structured in short blocks to reduce friction and keep momentum.</p>
+                        </div>
+
+                        <div class="timeline">
+                            <article class="timeline-item completed">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-copy">
+                                    <div class="timeline-top">
+                                        <h3>Mathematics</h3>
+                                        <span class="status-pill completed">Completed</span>
+                                    </div>
+                                    <p>Practice equations, formulas, and speed drills.</p>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item progress">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-copy">
+                                    <div class="timeline-top">
+                                        <h3>English</h3>
+                                        <span class="status-pill progress">In Progress</span>
+                                    </div>
+                                    <p>Essay planning, grammar refresh, and reading review.</p>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item pending">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-copy">
+                                    <div class="timeline-top">
+                                        <h3>Physics</h3>
+                                        <span class="status-pill pending">Pending</span>
+                                    </div>
+                                    <p>Revise motion, force, and the chapter summary sheet.</p>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item pending">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-copy">
+                                    <div class="timeline-top">
+                                        <h3>Computer Science</h3>
+                                        <span class="status-pill pending">Pending</span>
+                                    </div>
+                                    <p>Work through logic gates, algorithms, and MCQs.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="panel reveal" id="progress" data-search="progress weekly monthly circular bars">
+                        <div class="section-head compact">
+                            <div>
+                                <span class="section-kicker">Progress Section</span>
+                                <h2>Momentum at a glance</h2>
+                            </div>
+                            <p>Track circular progress and visual bars that grow as the week moves on.</p>
+                        </div>
+
+                        <div class="progress-layout">
+                            <article class="progress-card ring-card">
+                                <div class="ring" data-ring="78">
+                                    <div class="ring-inner">
+                                        <strong>78%</strong>
+                                        <span>Weekly Progress</span>
+                                    </div>
+                                </div>
+                                <p>Strong week. You are on pace to complete the revision goals.</p>
+                            </article>
+
+                            <div class="progress-bars-card">
+                                <article class="bar-block">
+                                    <div class="bar-head">
+                                        <h3>Weekly Progress</h3>
+                                        <strong data-counter="78">0</strong><span>%</span>
+                                    </div>
+                                    <div class="progress-track"><span class="progress-fill" data-fill="78"></span></div>
+                                </article>
+
+                                <article class="bar-block">
+                                    <div class="bar-head">
+                                        <h3>Monthly Progress</h3>
+                                        <strong data-counter="92">0</strong><span>%</span>
+                                    </div>
+                                    <div class="progress-track"><span class="progress-fill" data-fill="92"></span></div>
+                                </article>
+
+                                <article class="bar-block">
+                                    <div class="bar-head">
+                                        <h3>Quiz Accuracy</h3>
+                                        <strong data-counter="84">0</strong><span>%</span>
+                                    </div>
+                                    <div class="progress-track"><span class="progress-fill" data-fill="84"></span></div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel reveal" id="subjects" data-search="mathematics physics chemistry biology computer english">
+                        <div class="section-head compact">
+                            <div>
+                                <span class="section-kicker">Subjects Section</span>
+                                <h2>Subjects Hub</h2>
+                            </div>
+                            <p>Each card keeps your progress visible and takes you straight into the subject page.</p>
+                        </div>
+
+                        <div class="subjects-grid">
+                            <article class="subject-card reveal" data-search="mathematics">
+                                <div class="subject-top">
+                                    <span class="subject-icon gradient-blue"><i class="fa-solid fa-square-root-variable"></i></span>
+                                    <span class="subject-progress">92%</span>
+                                </div>
+                                <h3>Mathematics</h3>
+                                <div class="subject-meter"><span data-fill="92"></span></div>
+                                <p>Algebra, geometry, and problem solving.</p>
+                                <a class="btn btn-secondary subject-link" href="maths.html">Open Subject</a>
+                            </article>
+
+                            <article class="subject-card reveal" data-search="physics">
+                                <div class="subject-top">
+                                    <span class="subject-icon gradient-purple"><i class="fa-solid fa-atom"></i></span>
+                                    <span class="subject-progress">84%</span>
+                                </div>
+                                <h3>Physics</h3>
+                                <div class="subject-meter"><span data-fill="84"></span></div>
+                                <p>Mechanics, energy, and conceptual practice.</p>
+                                <a class="btn btn-secondary subject-link" href="physics.html">Open Subject</a>
+                            </article>
+
+                            <article class="subject-card reveal" data-search="chemistry">
+                                <div class="subject-top">
+                                    <span class="subject-icon gradient-blue"><i class="fa-solid fa-flask"></i></span>
+                                    <span class="subject-progress">76%</span>
+                                </div>
+                                <h3>Chemistry</h3>
+                                <div class="subject-meter"><span data-fill="76"></span></div>
+                                <p>Atoms, reactions, and formula revision.</p>
+                                <a class="btn btn-secondary subject-link" href="chemistry.html">Open Subject</a>
+                            </article>
+
+                            <article class="subject-card reveal" data-search="biology">
+                                <div class="subject-top">
+                                    <span class="subject-icon gradient-purple"><i class="fa-solid fa-dna"></i></span>
+                                    <span class="subject-progress">71%</span>
+                                </div>
+                                <h3>Biology</h3>
+                                <div class="subject-meter"><span data-fill="71"></span></div>
+                                <p>Cells, systems, and diagram practice.</p>
+                                <a class="btn btn-secondary subject-link" href="biology.html">Open Subject</a>
+                            </article>
+
+                            <article class="subject-card reveal" data-search="computer science computer">
+                                <div class="subject-top">
+                                    <span class="subject-icon gradient-blue"><i class="fa-solid fa-computer"></i></span>
+                                    <span class="subject-progress">88%</span>
+                                </div>
+                                <h3>Computer</h3>
+                                <div class="subject-meter"><span data-fill="88"></span></div>
+                                <p>Programming basics and logic-building.</p>
+                                <a class="btn btn-secondary subject-link" href="computer.html">Open Subject</a>
+                            </article>
+
+                            <article class="subject-card reveal" data-search="english">
+                                <div class="subject-top">
+                                    <span class="subject-icon gradient-purple"><i class="fa-solid fa-book"></i></span>
+                                    <span class="subject-progress">94%</span>
+                                </div>
+                                <h3>English</h3>
+                                <div class="subject-meter"><span data-fill="94"></span></div>
+                                <p>Reading, writing, and language mastery.</p>
+                                <a class="btn btn-secondary subject-link" href="english.html">Open Subject</a>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="panel reveal assistant-panel" id="assistant" data-search="ai assistant notes quiz homework summarize">
+                        <div class="assistant-copy">
+                            <span class="section-kicker">AI Assistant Card</span>
+                            <h2>Ask, generate, and revise faster</h2>
+                            <p>Use the built-in study assistant to turn any topic into notes, questions, summaries, and revision prompts.</p>
+
+                            <div class="assistant-form">
+                                <label class="sr-only" for="assistantInput">Ask anything</label>
+                                <input id="assistantInput" type="text" placeholder="Ask anything..." autocomplete="off" />
+                                <button class="btn btn-primary" id="generateButton" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i>Generate</button>
+                            </div>
+
+                            <div class="assistant-output" id="assistantOutput">
+                                <div class="assistant-message bot">
+                                    <strong>NOVIX</strong>
+                                    <p>Ask me to summarize a chapter, create a quiz, or turn messy notes into a cleaner revision plan.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="assistant-visual" aria-hidden="true">
+                            <div class="robot">
+                                <div class="robot-antenna"></div>
+                                <div class="robot-head">
+                                    <span class="robot-eye left"></span>
+                                    <span class="robot-eye right"></span>
+                                    <div class="robot-screen"></div>
+                                </div>
+                                <div class="robot-body"></div>
+                                <div class="robot-arm left"></div>
+                                <div class="robot-arm right"></div>
+                                <div class="robot-base"></div>
+                            </div>
+                            <div class="assistant-orbit orbit-one"></div>
+                            <div class="assistant-orbit orbit-two"></div>
+                        </div>
+                    </section>
+
+                    <section class="panel reveal" id="activity" data-search="recent activity quiz notes planner homework">
+                        <div class="section-head compact">
+                            <div>
+                                <span class="section-kicker">Recent Activity</span>
+                                <h2>Latest learning actions</h2>
+                            </div>
+                            <p>A live timeline of the latest things you completed on the platform.</p>
+                        </div>
+
+                        <div class="activity-list">
+                            <article class="activity-item">
+                                <span class="activity-icon gradient-blue"><i class="fa-solid fa-circle-check"></i></span>
+                                <div>
+                                    <h3>Quiz completed</h3>
+                                    <p>You finished a 20-question physics quiz with 84% accuracy.</p>
+                                </div>
+                                <time>10 min ago</time>
+                            </article>
+
+                            <article class="activity-item">
+                                <span class="activity-icon gradient-purple"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                                <div>
+                                    <h3>AI Notes Generated</h3>
+                                    <p>English essay notes were condensed into a quick revision sheet.</p>
+                                </div>
+                                <time>34 min ago</time>
+                            </article>
+
+                            <article class="activity-item">
+                                <span class="activity-icon gradient-blue"><i class="fa-solid fa-calendar-plus"></i></span>
+                                <div>
+                                    <h3>Planner Updated</h3>
+                                    <p>Today's plan was rearranged to prioritize mathematics first.</p>
+                                </div>
+                                <time>1 hr ago</time>
+                            </article>
+
+                            <article class="activity-item">
+                                <span class="activity-icon gradient-purple"><i class="fa-solid fa-check-double"></i></span>
+                                <div>
+                                    <h3>Homework Finished</h3>
+                                    <p>Computer science homework has been marked complete.</p>
+                                </div>
+                                <time>3 hrs ago</time>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="right-column">
+                    <section class="panel reveal calendar-panel" data-search="calendar">
+                        <div class="section-head compact">
+                            <div>
+                                <span class="section-kicker">Mini Calendar</span>
+                                <h2 id="calendarTitle">This Month</h2>
+                            </div>
+                            <p id="calendarSubtitle">Your live study calendar.</p>
+                        </div>
+                        <div class="calendar-grid" id="calendarGrid" aria-label="Calendar"></div>
+                    </section>
+
+                    <section class="panel reveal" data-search="upcoming exams">
+                        <div class="section-head compact">
+                            <div>
+                                <span class="section-kicker">Upcoming Exams</span>
+                                <h2>Exam countdown</h2>
+                            </div>
+                            <p>Stay ready for the next test window.</p>
+                        </div>
+                        <div class="exam-list">
+                            <article>
+                                <strong>Mathematics</strong>
+                                <span>3 days</span>
+                            </article>
+                            <article>
+                                <strong>Physics</strong>
+                                <span>6 days</span>
+                            </article>
+                            <article>
+                                <strong>English</strong>
+                                <span>9 days</span>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="panel reveal streak-panel" data-search="study streak">
+                        <div class="section-head compact">
+                            <div>
+                                <span class="section-kicker">Study Streak</span>
+                                <h2>21 days</h2>
+                            </div>
+                            <p>Consistency is the multiplier.</p>
+                        </div>
+                        <div class="streak-ring" data-ring="71">
+                            <div class="ring-inner small">
+                                <strong>21</strong>
+                                <span>Days</span>
+                            </div>
+                        </div>
+                        <div class="streak-meta">
+                            <span>Goal: 30 days</span>
+                            <span>Current pace: strong</span>
+                        </div>
+                    </section>
+
+                    <section class="panel reveal" data-search="achievements">
+                        <div class="section-head compact">
+                            <div>
+                                <span class="section-kicker">Achievements</span>
+                                <h2>Unlocked badges</h2>
+                            </div>
+                            <p>Milestones that show your momentum.</p>
+                        </div>
+                        <div class="achievement-list">
+                            <span><i class="fa-solid fa-medal"></i> Consistency Pro</span>
+                            <span><i class="fa-solid fa-star"></i> Quiz Master</span>
+                            <span><i class="fa-solid fa-trophy"></i> Planner Expert</span>
+                        </div>
+                    </section>
+
+                    <section class="panel reveal" data-search="leaderboard">
+                        <div class="section-head compact">
+                            <div>
+                                <span class="section-kicker">Leaderboard</span>
+                                <h2>Top students</h2>
+                            </div>
+                            <p>Friendly competition keeps the pace high.</p>
+                        </div>
+                        <div class="leaderboard-list">
+                            <article>
+                                <span class="rank">01</span>
+                                <div>
+                                    <strong>Student A</strong>
+                                    <small>4,220 pts</small>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="rank">02</span>
+                                <div>
+                                    <strong>Student B</strong>
+                                    <small>4,015 pts</small>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="rank">03</span>
+                                <div>
+                                    <strong>Student C</strong>
+                                    <small>3,870 pts</small>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="panel reveal settings-panel" id="settings" data-search="settings theme notifications focus mode">
+                        <div class="section-head compact">
+                            <div>
+                                <span class="section-kicker">Settings</span>
+                                <h2>Workspace preferences</h2>
+                            </div>
+                            <p>Quick toggles for a calmer setup.</p>
+                        </div>
+                        <div class="settings-list">
+                            <div>
+                                <strong>Focus Mode</strong>
+                                <span>On during study sessions</span>
+                            </div>
+                            <div>
+                                <strong>Notifications</strong>
+                                <span>Unread alerts are tracked at the top</span>
+                            </div>
+                            <div>
+                                <strong>Theme</strong>
+                                <span>Dark mode with a premium gradient look</span>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+
+            <footer class="footer reveal">
+                <strong>NOVIX</strong>
+                <p>Made for students.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script type="module" src="dashboard.js"></script>
+</body>
+</html>f

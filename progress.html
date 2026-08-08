@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress & Performance Analytics - NOVIX</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Pro / Free CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Application Stylesheet -->
+  <link rel="stylesheet" href="progress.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ==========================================
+         1. LEFT SIDEBAR NAVIGATION
+         ========================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <!-- Logo Branding -->
+        <div class="sidebar-header">
+          <div class="logo-icon">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <div class="logo-title-group">
+            <span class="logo-text">StudyMate</span>
+            <span class="logo-badge">AI</span>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="sidebar-nav">
+          <div class="nav-section-title">Core Workspace</div>
+          
+          <a href="dashboard.html" class="nav-item">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="subjects.html" class="nav-item">
+            <i class="fa-solid fa-book-bookmark"></i>
+            <span>Subjects</span>
+          </a>
+
+          <a href="planner.html" class="nav-item">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Planner</span>
+          </a>
+
+          <a href="ai-assistant.html" class="nav-item">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI Assistant</span>
+          </a>
+
+          <a href="progress.html" class="nav-item active">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Progress</span>
+            <div class="active-indicator"></div>
+          </a>
+
+          <div class="nav-section-title" style="margin-top: 16px;">Preferences</div>
+
+          <a href="settings.html" class="nav-item">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar User Profile Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar">
+            AV
+            <div class="online-dot"></div>
+          </div>
+          <div class="user-info">
+            <span class="user-name">Alex Vance</span>
+            <span class="user-role">Premium Scholar</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==========================================
+         MAIN CONTENT WRAPPER
+         ========================================== -->
+    <main class="main-wrapper">
+
+      <!-- ==========================================
+           2. TOP HEADER BAR
+           ========================================== -->
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">
+            <i class="fa-solid fa-chart-line"></i>
+            Progress Analytics
+          </h1>
+          <p class="page-subtitle">Track your learning velocity, study habits & AI mastery score</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="header-center">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="search-input" placeholder="Search analytics, subjects, goals..." id="searchInput">
+            <span class="search-shortcut">Ctrl + K</span>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-right">
+          <!-- Real-time Clock Badge -->
+          <div class="header-time-badge">
+            <i class="fa-regular fa-clock"></i>
+            <span id="liveTimeDisplay">06:52 AM</span>
+          </div>
+
+          <!-- Notification Dropdown Toggle -->
+          <button class="header-action-btn" title="Notifications" id="notificationBtn">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-badge-dot"></span>
+          </button>
+
+          <!-- Dark/Light Mode Switcher -->
+          <button class="theme-toggle-btn" title="Toggle Light/Dark Mode" id="themeToggleBtn">
+            <i class="fa-solid fa-moon" id="themeIcon"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- ==========================================
+           3. MAIN PAGE CONTENT
+           ========================================== -->
+      <div class="content-area">
+
+        <!-- HERO SECTION: OVERALL PROGRESS & MOTIVATION -->
+        <section class="glass-card hero-card">
+          <!-- SVG Progress Ring -->
+          <div class="hero-ring-container">
+            <div class="progress-ring-wrapper">
+              <svg class="progress-ring-svg">
+                <defs>
+                  <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#6366f1" />
+                    <stop offset="50%" stop-color="#06b6d4" />
+                    <stop offset="100%" stop-color="#10b981" />
+                  </linearGradient>
+                </defs>
+                <circle class="ring-bg" cx="100" cy="100" r="85"></circle>
+                <circle class="ring-fill" id="heroRingCircle" cx="100" cy="100" r="85"></circle>
+              </svg>
+              <div class="ring-center-text">
+                <span class="ring-percent" id="heroPercentText">84%</span>
+                <span class="ring-label">Overall Completion</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Details -->
+          <div class="hero-content">
+            <div class="hero-top-info">
+              <span class="hero-welcome-badge">
+                <i class="fa-solid fa-sparkles"></i> Welcome Back, Alex!
+              </span>
+              <span class="hero-level-badge">
+                <i class="fa-solid fa-crown"></i> Level 14 • Master Scholar
+              </span>
+            </div>
+
+            <h2 class="hero-headline">Outstanding Academic Momentum</h2>
+            <p class="hero-motivation-text">
+              🔥 You're currently in the top 5% of consistent learners this week! You have completed 84% of your monthly targets with a 92/100 AI performance rating. Keep up the brilliant pace.
+            </p>
+
+            <div class="hero-goals-grid">
+              <div class="hero-goal-item">
+                <span class="hero-goal-label">Study Streak</span>
+                <span class="hero-goal-value" style="color: var(--accent-amber);">18 Days 🔥</span>
+              </div>
+              <div class="hero-goal-item">
+                <span class="hero-goal-label">Today's Goal</span>
+                <span class="hero-goal-value">3.5 / 4.0 Hrs</span>
+              </div>
+              <div class="hero-goal-item">
+                <span class="hero-goal-label">Weekly Target</span>
+                <span class="hero-goal-value">24.5 / 28.0 Hrs</span>
+              </div>
+              <div class="hero-goal-item">
+                <span class="hero-goal-label">AI Score</span>
+                <span class="hero-goal-value" style="color: var(--accent-emerald);">92 / 100</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STATISTICS SECTION (14 ANIMATED METRIC CARDS) -->
+        <section class="stats-grid">
+          <!-- Card 1 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon indigo"><i class="fa-solid fa-book"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +1 New</span>
+            </div>
+            <span class="stat-value" data-target="6">0</span>
+            <span class="stat-label">Total Subjects</span>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon emerald"><i class="fa-solid fa-circle-check"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> 33% Total</span>
+            </div>
+            <span class="stat-value" data-target="2">0</span>
+            <span class="stat-label">Completed Subjects</span>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon cyan"><i class="fa-solid fa-list-check"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +6 this wk</span>
+            </div>
+            <span class="stat-value" data-target="48">0</span>
+            <span class="stat-label">Completed Chapters</span>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon amber"><i class="fa-solid fa-hourglass-half"></i></div>
+              <span class="stat-trend down"><i class="fa-solid fa-arrow-trend-down"></i> -2 Left</span>
+            </div>
+            <span class="stat-value" data-target="12">0</span>
+            <span class="stat-label">Remaining Chapters</span>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon purple"><i class="fa-solid fa-clock"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +12.5 hrs</span>
+            </div>
+            <span class="stat-value" data-target="142">0</span>
+            <span class="stat-label">Total Study Hours</span>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon rose"><i class="fa-solid fa-chart-line"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +0.5 hrs</span>
+            </div>
+            <span class="stat-value" data-target="4">0</span>
+            <span class="stat-label">Avg Daily Hours</span>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon indigo"><i class="fa-solid fa-note-sticky"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +14 Notes</span>
+            </div>
+            <span class="stat-value" data-target="128">0</span>
+            <span class="stat-label">Total Notes</span>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon cyan"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +9 AI</span>
+            </div>
+            <span class="stat-value" data-target="84">0</span>
+            <span class="stat-label">AI Notes Generated</span>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon amber"><i class="fa-solid fa-clone"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +45 Deck</span>
+            </div>
+            <span class="stat-value" data-target="620">0</span>
+            <span class="stat-label">Flashcards Reviewed</span>
+          </div>
+
+          <!-- Card 10 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon emerald"><i class="fa-solid fa-vial"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> 92% Pass</span>
+            </div>
+            <span class="stat-value" data-target="34">0</span>
+            <span class="stat-label">Quiz Attempts</span>
+          </div>
+
+          <!-- Card 11 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon purple"><i class="fa-solid fa-file-signature"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> 100% On Time</span>
+            </div>
+            <span class="stat-value" data-target="28">0</span>
+            <span class="stat-label">Assignments Done</span>
+          </div>
+
+          <!-- Card 12 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon indigo"><i class="fa-solid fa-graduation-cap"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +4 Pts</span>
+            </div>
+            <span class="stat-value" data-target="94">0</span>
+            <span class="stat-label">Learning Score</span>
+          </div>
+
+          <!-- Card 13 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon cyan"><i class="fa-solid fa-rotate"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +6 Pts</span>
+            </div>
+            <span class="stat-value" data-target="88">0</span>
+            <span class="stat-label">Revision Score</span>
+          </div>
+
+          <!-- Card 14 -->
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <div class="stat-icon emerald"><i class="fa-solid fa-bolt"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +5% Peak</span>
+            </div>
+            <span class="stat-value" data-target="91">0</span>
+            <span class="stat-label">Productivity Score</span>
+          </div>
+        </section>
+
+        <!-- ANALYTICS DUAL SECTION: WEEKLY BARS & MONTHLY LINE CHART -->
+        <section class="analytics-dual-grid">
+          <!-- Weekly Study Analytics -->
+          <div class="glass-card">
+            <div class="card-header-flex">
+              <div class="card-title-group">
+                <i class="fa-solid fa-chart-column"></i>
+                <div>
+                  <h3 class="card-title">Weekly Study Analytics</h3>
+                  <p class="card-subtitle">Hours spent learning across Monday - Sunday</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <div class="bar-group">
+                <div class="bar-wrapper">
+                  <div class="bar-fill" style="height: 65%;"></div>
+                </div>
+                <span class="bar-tooltip">Mon: 4.5 hrs</span>
+                <span class="bar-label">Mon</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-wrapper">
+                  <div class="bar-fill" style="height: 55%;"></div>
+                </div>
+                <span class="bar-tooltip">Tue: 3.8 hrs</span>
+                <span class="bar-label">Tue</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-wrapper">
+                  <div class="bar-fill" style="height: 80%;"></div>
+                </div>
+                <span class="bar-tooltip">Wed: 5.2 hrs</span>
+                <span class="bar-label">Wed</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-wrapper">
+                  <div class="bar-fill" style="height: 60%;"></div>
+                </div>
+                <span class="bar-tooltip">Thu: 4.0 hrs</span>
+                <span class="bar-label">Thu</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-wrapper">
+                  <div class="bar-fill" style="height: 95%;"></div>
+                </div>
+                <span class="bar-tooltip">Fri: 6.1 hrs 🔥</span>
+                <span class="bar-label">Fri</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-wrapper">
+                  <div class="bar-fill" style="height: 50%;"></div>
+                </div>
+                <span class="bar-tooltip">Sat: 3.2 hrs</span>
+                <span class="bar-label">Sat</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-wrapper">
+                  <div class="bar-fill" style="height: 70%;"></div>
+                </div>
+                <span class="bar-tooltip">Sun: 4.8 hrs</span>
+                <span class="bar-label">Sun</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Monthly Growth Line Chart -->
+          <div class="glass-card">
+            <div class="card-header-flex">
+              <div class="card-title-group">
+                <i class="fa-solid fa-chart-line"></i>
+                <div>
+                  <h3 class="card-title">Monthly Progress Curve</h3>
+                  <p class="card-subtitle">Cumulative hours & mastery trajectory (Jan - Jun)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="svg-chart-wrapper">
+              <svg class="line-chart-svg" viewBox="0 0 500 200" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="lineAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#6366f1" stop-opacity="0.4" />
+                    <stop offset="100%" stop-color="#6366f1" stop-opacity="0.0" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Grid lines -->
+                <line x1="0" y1="40" x2="500" y2="40" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4" />
+                <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4" />
+                <line x1="0" y1="140" x2="500" y2="140" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4" />
+
+                <!-- Smooth Curve Area & Line -->
+                <path d="M 10 160 Q 90 120, 170 130 T 330 60 T 490 30 L 490 190 L 10 190 Z" fill="url(#lineAreaGrad)" />
+                <path d="M 10 160 Q 90 120, 170 130 T 330 60 T 490 30" fill="none" stroke="#6366f1" stroke-width="4" stroke-linecap="round" />
+
+                <!-- Data Points -->
+                <circle cx="10" cy="160" r="5" fill="#38bdf8" />
+                <circle cx="100" cy="125" r="5" fill="#38bdf8" />
+                <circle cx="190" cy="120" r="5" fill="#38bdf8" />
+                <circle cx="280" cy="80" r="5" fill="#38bdf8" />
+                <circle cx="370" cy="50" r="5" fill="#38bdf8" />
+                <circle cx="490" cy="30" r="6" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <!-- SUBJECT PERFORMANCE SECTION -->
+        <section class="glass-card">
+          <div class="card-header-flex">
+            <div class="card-title-group">
+              <i class="fa-solid fa-shapes"></i>
+              <div>
+                <h3 class="card-title">Subject Performance Breakdown</h3>
+                <p class="card-subtitle">Detailed mastery & remaining chapter workload</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="subjects-grid">
+            <!-- Subject 1: Mathematics -->
+            <div class="glass-card subject-card">
+              <div class="subject-header">
+                <div class="subject-info">
+                  <div class="subject-icon" style="background: var(--primary-gradient);">
+                    <i class="fa-solid fa-calculator"></i>
+                  </div>
+                  <div>
+                    <h4 class="subject-title">Mathematics</h4>
+                    <span class="card-subtitle">Advanced Calculus & Algebra</span>
+                  </div>
+                </div>
+                <span class="subject-badge mastered">Mastered</span>
+              </div>
+
+              <div class="progress-bar-container">
+                <div class="progress-bar-meta">
+                  <span>Completion</span>
+                  <span>92%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 92%; background: var(--primary-gradient);"></div>
+                </div>
+              </div>
+
+              <div class="subject-stats-row">
+                <span><i class="fa-solid fa-clock"></i> 38.5 Hrs</span>
+                <span><i class="fa-solid fa-book-open"></i> 14/15 Ch.</span>
+                <span><i class="fa-solid fa-circle-notch"></i> 1 Left</span>
+              </div>
+
+              <button class="ai-suggestion-btn">
+                <i class="fa-solid fa-robot"></i> Practice Calculus Integrals
+              </button>
+            </div>
+
+            <!-- Subject 2: Physics -->
+            <div class="glass-card subject-card">
+              <div class="subject-header">
+                <div class="subject-info">
+                  <div class="subject-icon" style="background: var(--amber-gradient);">
+                    <i class="fa-solid fa-atom"></i>
+                  </div>
+                  <div>
+                    <h4 class="subject-title">Physics</h4>
+                    <span class="card-subtitle">Thermodynamics & Electromagnetism</span>
+                  </div>
+                </div>
+                <span class="subject-badge warning">Needs Practice</span>
+              </div>
+
+              <div class="progress-bar-container">
+                <div class="progress-bar-meta">
+                  <span>Completion</span>
+                  <span>78%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 78%; background: var(--amber-gradient);"></div>
+                </div>
+              </div>
+
+              <div class="subject-stats-row">
+                <span><i class="fa-solid fa-clock"></i> 32.0 Hrs</span>
+                <span><i class="fa-solid fa-book-open"></i> 10/14 Ch.</span>
+                <span><i class="fa-solid fa-circle-notch"></i> 4 Left</span>
+              </div>
+
+              <button class="ai-suggestion-btn">
+                <i class="fa-solid fa-robot"></i> Review Thermodynamics Notes
+              </button>
+            </div>
+
+            <!-- Subject 3: Chemistry -->
+            <div class="glass-card subject-card">
+              <div class="subject-header">
+                <div class="subject-info">
+                  <div class="subject-icon" style="background: var(--cyan-gradient);">
+                    <i class="fa-solid fa-flask-vial"></i>
+                  </div>
+                  <div>
+                    <h4 class="subject-title">Chemistry</h4>
+                    <span class="card-subtitle">Organic Reactions & Kinetics</span>
+                  </div>
+                </div>
+                <span class="subject-badge good">Good Progress</span>
+              </div>
+
+              <div class="progress-bar-container">
+                <div class="progress-bar-meta">
+                  <span>Completion</span>
+                  <span>85%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 85%; background: var(--cyan-gradient);"></div>
+                </div>
+              </div>
+
+              <div class="subject-stats-row">
+                <span><i class="fa-solid fa-clock"></i> 28.0 Hrs</span>
+                <span><i class="fa-solid fa-book-open"></i> 11/13 Ch.</span>
+                <span><i class="fa-solid fa-circle-notch"></i> 2 Left</span>
+              </div>
+
+              <button class="ai-suggestion-btn">
+                <i class="fa-solid fa-robot"></i> Organic Nomenclature Quiz
+              </button>
+            </div>
+
+            <!-- Subject 4: Biology -->
+            <div class="glass-card subject-card">
+              <div class="subject-header">
+                <div class="subject-info">
+                  <div class="subject-icon" style="background: var(--emerald-gradient);">
+                    <i class="fa-solid fa-dna"></i>
+                  </div>
+                  <div>
+                    <h4 class="subject-title">Biology</h4>
+                    <span class="card-subtitle">Genetics & Molecular Systems</span>
+                  </div>
+                </div>
+                <span class="subject-badge good">Steady</span>
+              </div>
+
+              <div class="progress-bar-container">
+                <div class="progress-bar-meta">
+                  <span>Completion</span>
+                  <span>80%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 80%; background: var(--emerald-gradient);"></div>
+                </div>
+              </div>
+
+              <div class="subject-stats-row">
+                <span><i class="fa-solid fa-clock"></i> 22.5 Hrs</span>
+                <span><i class="fa-solid fa-book-open"></i> 8/10 Ch.</span>
+                <span><i class="fa-solid fa-circle-notch"></i> 2 Left</span>
+              </div>
+
+              <button class="ai-suggestion-btn">
+                <i class="fa-solid fa-robot"></i> Review Genetics Flashcards
+              </button>
+            </div>
+
+            <!-- Subject 5: English -->
+            <div class="glass-card subject-card">
+              <div class="subject-header">
+                <div class="subject-info">
+                  <div class="subject-icon" style="background: var(--rose-gradient);">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                  </div>
+                  <div>
+                    <h4 class="subject-title">English Literature</h4>
+                    <span class="card-subtitle">Essays & Critical Analysis</span>
+                  </div>
+                </div>
+                <span class="subject-badge mastered">Mastered</span>
+              </div>
+
+              <div class="progress-bar-container">
+                <div class="progress-bar-meta">
+                  <span>Completion</span>
+                  <span>95%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 95%; background: var(--rose-gradient);"></div>
+                </div>
+              </div>
+
+              <div class="subject-stats-row">
+                <span><i class="fa-solid fa-clock"></i> 14.0 Hrs</span>
+                <span><i class="fa-solid fa-book-open"></i> 9/9 Ch.</span>
+                <span><i class="fa-solid fa-circle-notch"></i> Complete</span>
+              </div>
+
+              <button class="ai-suggestion-btn">
+                <i class="fa-solid fa-robot"></i> Essay Vocabulary Polish
+              </button>
+            </div>
+
+            <!-- Subject 6: Computer Science -->
+            <div class="glass-card subject-card">
+              <div class="subject-header">
+                <div class="subject-info">
+                  <div class="subject-icon" style="background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);">
+                    <i class="fa-solid fa-code"></i>
+                  </div>
+                  <div>
+                    <h4 class="subject-title">Computer Science</h4>
+                    <span class="card-subtitle">Data Structures & Algorithms</span>
+                  </div>
+                </div>
+                <span class="subject-badge mastered">Strong</span>
+              </div>
+
+              <div class="progress-bar-container">
+                <div class="progress-bar-meta">
+                  <span>Completion</span>
+                  <span>88%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 88%; background: linear-gradient(135deg, #a855f7, #6366f1);"></div>
+                </div>
+              </div>
+
+              <div class="subject-stats-row">
+                <span><i class="fa-solid fa-clock"></i> 30.0 Hrs</span>
+                <span><i class="fa-solid fa-book-open"></i> 12/14 Ch.</span>
+                <span><i class="fa-solid fa-circle-notch"></i> 2 Left</span>
+              </div>
+
+              <button class="ai-suggestion-btn">
+                <i class="fa-solid fa-robot"></i> Solve Graph Problems
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- LEARNING PERFORMANCE CIRCULAR INDICATORS -->
+        <section class="glass-card">
+          <div class="card-header-flex">
+            <div class="card-title-group">
+              <i class="fa-solid fa-brain-circuit"></i>
+              <div>
+                <h3 class="card-title">Cognitive Learning Performance</h3>
+                <p class="card-subtitle">AI-calculated cognitive skill metrics</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="circular-scores-grid">
+            <!-- Circle 1 -->
+            <div class="circle-score-card">
+              <div class="circle-ring-wrapper">
+                <svg class="circle-ring-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none" />
+                  <circle cx="50" cy="50" r="40" stroke="#6366f1" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="20" stroke-linecap="round" fill="none" />
+                </svg>
+                <span class="circle-ring-val">92%</span>
+              </div>
+              <span class="circle-score-label">Focus Score</span>
+            </div>
+
+            <!-- Circle 2 -->
+            <div class="circle-score-card">
+              <div class="circle-ring-wrapper">
+                <svg class="circle-ring-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none" />
+                  <circle cx="50" cy="50" r="40" stroke="#06b6d4" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="38" stroke-linecap="round" fill="none" />
+                </svg>
+                <span class="circle-ring-val">85%</span>
+              </div>
+              <span class="circle-score-label">Memory Score</span>
+            </div>
+
+            <!-- Circle 3 -->
+            <div class="circle-score-card">
+              <div class="circle-ring-wrapper">
+                <svg class="circle-ring-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none" />
+                  <circle cx="50" cy="50" r="40" stroke="#10b981" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="30" stroke-linecap="round" fill="none" />
+                </svg>
+                <span class="circle-ring-val">88%</span>
+              </div>
+              <span class="circle-score-label">Revision Score</span>
+            </div>
+
+            <!-- Circle 4 -->
+            <div class="circle-score-card">
+              <div class="circle-ring-wrapper">
+                <svg class="circle-ring-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none" />
+                  <circle cx="50" cy="50" r="40" stroke="#f59e0b" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="10" stroke-linecap="round" fill="none" />
+                </svg>
+                <span class="circle-ring-val">96%</span>
+              </div>
+              <span class="circle-score-label">Consistency</span>
+            </div>
+
+            <!-- Circle 5 -->
+            <div class="circle-score-card">
+              <div class="circle-ring-wrapper">
+                <svg class="circle-ring-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none" />
+                  <circle cx="50" cy="50" r="40" stroke="#a855f7" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="25" stroke-linecap="round" fill="none" />
+                </svg>
+                <span class="circle-ring-val">90%</span>
+              </div>
+              <span class="circle-score-label">Productivity</span>
+            </div>
+
+            <!-- Circle 6 -->
+            <div class="circle-score-card">
+              <div class="circle-ring-wrapper">
+                <svg class="circle-ring-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none" />
+                  <circle cx="50" cy="50" r="40" stroke="#f43f5e" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="32" stroke-linecap="round" fill="none" />
+                </svg>
+                <span class="circle-ring-val">87%</span>
+              </div>
+              <span class="circle-score-label">Problem Solving</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- STUDY STREAK CARD -->
+        <section class="glass-card">
+          <div class="streak-layout">
+            <div class="flame-container">
+              <i class="fa-solid fa-fire flame-icon-glow"></i>
+              <span class="streak-big-num">18</span>
+              <span class="streak-big-label">Days Study Streak</span>
+            </div>
+
+            <div class="streak-stats-grid">
+              <div class="streak-stat-box">
+                <span class="streak-stat-title">Current Streak</span>
+                <span class="streak-stat-val" style="color: var(--accent-amber);">18 Days 🔥</span>
+              </div>
+              <div class="streak-stat-box">
+                <span class="streak-stat-title">Longest Streak</span>
+                <span class="streak-stat-val">24 Days</span>
+              </div>
+              <div class="streak-stat-box">
+                <span class="streak-stat-title">Best Week Record</span>
+                <span class="streak-stat-val">32.5 Hours</span>
+              </div>
+              <div class="streak-stat-box">
+                <span class="streak-stat-title">Total Study Days</span>
+                <span class="streak-stat-val" style="color: var(--accent-emerald);">112 Days</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- GOALS & ACHIEVEMENTS DUAL SECTION -->
+        <section class="dual-section-grid">
+          <!-- Goals Card -->
+          <div class="glass-card">
+            <div class="card-header-flex">
+              <div class="card-title-group">
+                <i class="fa-solid fa-bullseye"></i>
+                <div>
+                  <h3 class="card-title">Learning Goals Progress</h3>
+                  <p class="card-subtitle">Milestones for daily, weekly, monthly targets</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="goals-list">
+              <div class="goal-item-card">
+                <div class="goal-item-header">
+                  <span class="goal-title">Daily Goal (4.0 Hours)</span>
+                  <span class="goal-percent">88%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 88%; background: var(--primary-gradient);"></div>
+                </div>
+              </div>
+
+              <div class="goal-item-card">
+                <div class="goal-item-header">
+                  <span class="goal-title">Weekly Goal (28.0 Hours)</span>
+                  <span class="goal-percent">88%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 88%; background: var(--cyan-gradient);"></div>
+                </div>
+              </div>
+
+              <div class="goal-item-card">
+                <div class="goal-item-header">
+                  <span class="goal-title">Monthly Target (110 Hours)</span>
+                  <span class="goal-percent">89%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 89%; background: var(--emerald-gradient);"></div>
+                </div>
+              </div>
+
+              <div class="goal-item-card">
+                <div class="goal-item-header">
+                  <span class="goal-title">Yearly Milestone (1000 Hours)</span>
+                  <span class="goal-percent">85%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 85%; background: var(--amber-gradient);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Achievements Badges Grid -->
+          <div class="glass-card">
+            <div class="card-header-flex">
+              <div class="card-title-group">
+                <i class="fa-solid fa-award"></i>
+                <div>
+                  <h3 class="card-title">Achievements & Badges</h3>
+                  <p class="card-subtitle">Earned through consistency & high scores</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="badges-grid">
+              <div class="badge-item unlocked" title="First Session Completed">
+                <div class="badge-icon-box"><i class="fa-solid fa-rocket"></i></div>
+                <span class="badge-name">First Session</span>
+              </div>
+
+              <div class="badge-item unlocked" title="7 Day Streak Reached">
+                <div class="badge-icon-box"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                <span class="badge-name">7 Day Streak</span>
+              </div>
+
+              <div class="badge-item unlocked" title="30 Day Streak Reached">
+                <div class="badge-icon-box"><i class="fa-solid fa-trophy"></i></div>
+                <span class="badge-name">30 Day Streak</span>
+              </div>
+
+              <div class="badge-item unlocked" title="Scored 90%+ in 10 Quizzes">
+                <div class="badge-icon-box"><i class="fa-solid fa-brain"></i></div>
+                <span class="badge-name">Quiz Master</span>
+              </div>
+
+              <div class="badge-item unlocked" title="Completed 25 Assignments">
+                <div class="badge-icon-box"><i class="fa-solid fa-check-double"></i></div>
+                <span class="badge-name">Homework Hero</span>
+              </div>
+
+              <div class="badge-item unlocked" title="Generated 50 AI Study Notes">
+                <div class="badge-icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <span class="badge-name">AI Learner</span>
+              </div>
+
+              <div class="badge-item unlocked" title="Created 100 Notes">
+                <div class="badge-icon-box"><i class="fa-solid fa-file-pen"></i></div>
+                <span class="badge-name">100 Notes</span>
+              </div>
+
+              <div class="badge-item unlocked" title="Read 50 Chapters">
+                <div class="badge-icon-box"><i class="fa-solid fa-book-open-reader"></i></div>
+                <span class="badge-name">Fast Reader</span>
+              </div>
+
+              <div class="badge-item unlocked" title="Studied 14 Days Straight">
+                <div class="badge-icon-box"><i class="fa-solid fa-calendar-check"></i></div>
+                <span class="badge-name">Perfect Attendance</span>
+              </div>
+
+              <div class="badge-item unlocked" title="Top 5% Learner Rank">
+                <div class="badge-icon-box"><i class="fa-solid fa-star"></i></div>
+                <span class="badge-name">Top Performer</span>
+              </div>
+
+              <div class="badge-item unlocked" title="Studied past 10 PM">
+                <div class="badge-icon-box"><i class="fa-solid fa-moon"></i></div>
+                <span class="badge-name">Night Owl</span>
+              </div>
+
+              <div class="badge-item unlocked" title="Studied before 7 AM">
+                <div class="badge-icon-box"><i class="fa-solid fa-sun"></i></div>
+                <span class="badge-name">Morning Learner</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- AI INSIGHTS RECOMMENDATIONS FEED -->
+        <section class="glass-card">
+          <div class="card-header-flex">
+            <div class="card-title-group">
+              <i class="fa-solid fa-robot"></i>
+              <div>
+                <h3 class="card-title">AI Smart Insights & Recommendations</h3>
+                <p class="card-subtitle">Real-time personalized learning advice generated by NOVIX</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-insights-list">
+            <div class="insight-card">
+              <div class="insight-icon warning"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div class="insight-text-content">
+                <span class="insight-title">Physics Thermodynamics Needs Attention</span>
+                <span class="insight-desc">Your quiz score dropped 8% in Thermodynamics. We recommend generating 15 AI practice flashcards and reviewing Chapter 4.</span>
+              </div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-icon success"><i class="fa-solid fa-circle-up"></i></div>
+              <div class="insight-text-content">
+                <span class="insight-title">Excellent Mathematics Progress (+12%)</span>
+                <span class="insight-desc">You've mastered Calculus Integration rules! Your solving speed improved by 22 seconds per problem.</span>
+              </div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-icon info"><i class="fa-solid fa-calendar-day"></i></div>
+              <div class="insight-text-content">
+                <span class="insight-title">Scheduled Review: English Literature Tomorrow</span>
+                <span class="insight-desc">Spaced repetition timer suggests reviewing essay analysis notes tomorrow at 10:00 AM for optimal retention.</span>
+              </div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-icon success"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="insight-text-content">
+                <span class="insight-title">Consistency Boosted by 12%</span>
+                <span class="insight-desc">Maintaining an 18-day study streak has increased your long-term memory retention rate to 88%.</span>
+              </div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-icon info"><i class="fa-solid fa-clock"></i></div>
+              <div class="insight-text-content">
+                <span class="insight-title">Peak Focus Window: 7 PM - 9 PM</span>
+                <span class="insight-desc">Analytics show your highest quiz accuracy occurs during evening study sessions. Schedule hard topics then!</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TIMELINE & MINI CALENDAR DUAL SECTION -->
+        <section class="timeline-calendar-grid">
+          <!-- Recent Activity Timeline -->
+          <div class="glass-card">
+            <div class="card-header-flex">
+              <div class="card-title-group">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <div>
+                  <h3 class="card-title">Recent Activity Timeline</h3>
+                  <p class="card-subtitle">Your latest study logs and AI interactions</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-list">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                  <span class="timeline-title">Generated AI Study Notes</span>
+                  <span class="timeline-time">15 mins ago</span>
+                </div>
+                <p class="timeline-detail">Created comprehensive summary notes for Physics Chapter 4 - Electromagnetism.</p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                  <span class="timeline-title">Study Planner Updated</span>
+                  <span class="timeline-time">1 hour ago</span>
+                </div>
+                <p class="timeline-detail">Scheduled Chemistry Midterm review sessions for next Monday & Wednesday.</p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                  <span class="timeline-title">Completed Mathematics Quiz</span>
+                  <span class="timeline-time">3 hours ago</span>
+                </div>
+                <p class="timeline-detail">Scored 96/100 on Calculus Derivatives Test (Completed in 18 minutes).</p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                  <span class="timeline-title">Finished Computer Science Homework</span>
+                  <span class="timeline-time">Yesterday</span>
+                </div>
+                <p class="timeline-detail">Submitted Graph Traversal algorithm assignment on time.</p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                  <span class="timeline-title">Completed Weekly Study Goal</span>
+                  <span class="timeline-time">3 days ago</span>
+                </div>
+                <p class="timeline-detail">Reached 28.0 hours of active focus study time for the week.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini Learning Calendar -->
+          <div class="glass-card">
+            <div class="card-header-flex">
+              <div class="card-title-group">
+                <i class="fa-solid fa-calendar-days"></i>
+                <div>
+                  <h3 class="card-title">Learning Calendar</h3>
+                  <p class="card-subtitle">August 2026 Activity Overview</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="calendar-grid-wrapper">
+              <div class="calendar-days-header">
+                <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+              </div>
+              <div class="calendar-days-grid" id="calendarDaysGrid">
+                <!-- Days populated dynamically by JS -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PRODUCTIVITY HEATMAP GRID -->
+        <section class="glass-card">
+          <div class="card-header-flex">
+            <div class="card-title-group">
+              <i class="fa-solid fa-border-all"></i>
+              <div>
+                <h3 class="card-title">Productivity Heatmap</h3>
+                <p class="card-subtitle">GitHub-style daily study intensity matrix over past 12 weeks</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="heatmap-wrapper">
+            <div class="heatmap-grid" id="heatmapGrid">
+              <!-- Heatmap cells populated via JS -->
+            </div>
+            <div class="heatmap-legend">
+              <span>Less</span>
+              <div class="heatmap-cell" data-level="0"></div>
+              <div class="heatmap-cell" data-level="1"></div>
+              <div class="heatmap-cell" data-level="2"></div>
+              <div class="heatmap-cell" data-level="3"></div>
+              <div class="heatmap-cell" data-level="4"></div>
+              <span>More</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- MOTIVATION & QUICK ACTIONS -->
+        <section class="bottom-grid">
+          <!-- Quote & Tips Card -->
+          <div class="glass-card">
+            <div class="card-header-flex">
+              <div class="card-title-group">
+                <i class="fa-solid fa-quote-left"></i>
+                <div>
+                  <h3 class="card-title">Daily Motivation & Learning Tip</h3>
+                  <p class="card-subtitle">Inspiration to fuel your learning session</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="quote-box">
+              <p>"Success is the sum of small efforts, repeated day in and day out."</p>
+              <span class="quote-author">— Robert Collier</span>
+            </div>
+          </div>
+
+          <!-- Quick Actions Grid -->
+          <div class="glass-card">
+            <div class="card-header-flex">
+              <div class="card-title-group">
+                <i class="fa-solid fa-bolt"></i>
+                <div>
+                  <h3 class="card-title">Quick Actions</h3>
+                  <p class="card-subtitle">Instant shortcuts to enhance productivity</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="quick-actions-grid">
+              <a href="subjects.html" class="action-card-btn">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Review Weak</span>
+              </a>
+
+              <a href="ai-assistant.html" class="action-card-btn">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>AI Notes</span>
+              </a>
+
+              <a href="subjects.html" class="action-card-btn">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Take Quiz</span>
+              </a>
+
+              <a href="planner.html" class="action-card-btn">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Open Planner</span>
+              </a>
+
+              <a href="ai-assistant.html" class="action-card-btn">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Assistant</span>
+              </a>
+
+              <a href="subjects.html" class="action-card-btn">
+                <i class="fa-solid fa-rotate-right"></i>
+                <span>Start Revision</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ==========================================
+           4. FOOTER
+           ========================================== -->
+      <footer class="app-footer">
+        <div class="footer-status">
+          <span class="status-indicator-dot"></span>
+          <span>NOVIX Engine v4.2 • Cloud Sync Active</span>
+        </div>
+        <div>
+          &copy; 2026 NOVIX. All rights reserved.
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- JavaScript Entry Point -->
+  <script src="progress.js"></script>
+</body>
+</html>

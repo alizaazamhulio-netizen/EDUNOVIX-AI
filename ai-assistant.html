@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Aetheria AI - Glassmorphism Assistant</title>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="ai-assistant.css" />
+</head>
+<body>
+  <!-- Animated Background Canvas & Orbs -->
+  <div class="bg-effects">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="bg-grid"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Sidebar Header -->
+      <div class="sidebar-header">
+        <div class="brand">
+          <div class="brand-icon">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <div class="brand-info">
+            <span class="brand-name">Aetheria AI</span>
+            <span class="brand-tag">v2.5 Pro</span>
+          </div>
+        </div>
+        <button class="icon-btn mobile-close-btn" id="closeSidebarBtn" aria-label="Close sidebar">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- New Chat Button -->
+      <button class="new-chat-btn" id="newChatBtn">
+        <i data-lucide="plus"></i>
+        <span>New Chat</span>
+        <kbd class="shortcut-badge">⌘N</kbd>
+      </button>
+
+      <!-- Chat History Search -->
+      <div class="sidebar-search">
+        <i data-lucide="search" class="search-icon"></i>
+        <input type="text" id="searchChatsInput" placeholder="Search conversations..." aria-label="Search chats">
+        <button class="clear-search-btn" id="clearSearchBtn" aria-label="Clear search">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- Chat History List -->
+      <div class="chat-history-container" id="chatHistoryContainer">
+        <div class="history-empty" id="historyEmptyState">
+          <i data-lucide="message-square"></i>
+          <p>No chats found</p>
+        </div>
+        <div class="chat-list" id="chatList">
+          <!-- Chat items rendered dynamically via ai-assistant.js -->
+        </div>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <button class="sidebar-footer-btn" id="settingsBtn">
+          <i data-lucide="sliders"></i>
+          <span>Settings</span>
+        </button>
+        <button class="sidebar-footer-btn" id="profileBtn">
+          <div class="user-avatar-sm">
+            <i data-lucide="user"></i>
+          </div>
+          <span class="user-name">Pro Account</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Chat Workspace -->
+    <main class="chat-workspace">
+      <!-- Sticky Workspace Header -->
+      <header class="chat-header">
+        <div class="header-left">
+          <button class="icon-btn toggle-sidebar-btn" id="toggleSidebarBtn" aria-label="Toggle sidebar">
+            <i data-lucide="panel-left"></i>
+          </button>
+          <div class="header-title-container">
+            <h1 class="chat-title" id="currentChatTitle">New Conversation</h1>
+            <div class="model-badge">
+              <span class="status-dot online"></span>
+              <span id="headerModelName">Gemini 3.6 Flash</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button class="header-action-btn" id="exportChatBtn" title="Export Chat (JSON/Markdown)" aria-label="Export chat">
+            <i data-lucide="download"></i>
+            <span class="btn-label">Export</span>
+          </button>
+          <button class="header-action-btn danger" id="clearChatBtn" title="Clear current messages" aria-label="Clear chat">
+            <i data-lucide="trash-2"></i>
+            <span class="btn-label">Clear</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Chat Scroll Container -->
+      <div class="chat-messages-container" id="chatMessagesContainer">
+        <!-- Welcome Hero Screen (shown when no messages) -->
+        <div class="welcome-hero" id="welcomeHero">
+          <div class="hero-orb">
+            <i data-lucide="bot"></i>
+          </div>
+          <h2>Where shall we begin today?</h2>
+          <p class="hero-subtitle">Powered by Gemini 3.6 Flash with real-time streaming, markdown, and glass code blocks.</p>
+
+          <div class="prompt-suggestions">
+            <button class="suggestion-card" data-prompt="Explain Quantum Computing in simple terms with an everyday analogy.">
+              <div class="card-icon"><i data-lucide="atom"></i></div>
+              <div class="card-text">
+                <span class="card-title">Explain Quantum Physics</span>
+                <span class="card-desc">Clear analogy for complex ideas</span>
+              </div>
+            </button>
+
+            <button class="suggestion-card" data-prompt="Write a clean TypeScript function to handle retry logic with exponential backoff.">
+              <div class="card-icon"><i data-lucide="code-2"></i></div>
+              <div class="card-text">
+                <span class="card-title">Write TypeScript Code</span>
+                <span class="card-desc">Exponential backoff retry function</span>
+              </div>
+            </button>
+
+            <button class="suggestion-card" data-prompt="Brainstorm 5 innovative feature ideas for a modern dark-mode AI assistant.">
+              <div class="card-icon"><i data-lucide="lightbulb"></i></div>
+              <div class="card-text">
+                <span class="card-title">Brainstorm Features</span>
+                <span class="card-desc">Creative ideas for web apps</span>
+              </div>
+            </button>
+
+            <button class="suggestion-card" data-prompt="Analyze this table format and create a clean markdown table summarizing web framework performance.">
+              <div class="card-icon"><i data-lucide="table"></i></div>
+              <div class="card-text">
+                <span class="card-title">Create Data Tables</span>
+                <span class="card-desc">Markdown comparison layout</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Messages List -->
+        <div class="messages-list" id="messagesList"></div>
+
+        <!-- Scroll to Bottom Floating Button -->
+        <button class="scroll-bottom-btn" id="scrollBottomBtn" aria-label="Scroll to bottom">
+          <i data-lucide="arrow-down"></i>
+        </button>
+      </div>
+
+      <!-- Sticky Input Bar -->
+      <div class="chat-input-wrapper">
+        <div class="input-glass-container">
+          <!-- Attachment Preview Box -->
+          <div class="attachment-preview" id="attachmentPreview" style="display: none;">
+            <div class="attachment-thumb-wrapper">
+              <img id="attachmentThumb" src="" alt="Attachment preview" />
+              <button class="remove-attachment-btn" id="removeAttachmentBtn" title="Remove attachment">
+                <i data-lucide="x"></i>
+              </button>
+            </div>
+            <span class="attachment-filename" id="attachmentFilename">image.png</span>
+          </div>
+
+          <!-- Input Controls Line -->
+          <div class="input-controls-row">
+            <!-- Left Action Buttons -->
+            <div class="input-actions-left">
+              <button class="input-icon-btn" id="attachFileBtn" title="Attach image" aria-label="Attach file">
+                <i data-lucide="paperclip"></i>
+              </button>
+              <input type="file" id="fileInput" accept="image/*" style="display: none;" />
+
+              <button class="input-icon-btn" id="micBtn" title="Voice Input (Speech-to-text)" aria-label="Microphone">
+                <i data-lucide="mic"></i>
+              </button>
+            </div>
+
+            <!-- Auto-Resizing Textarea -->
+            <textarea
+              id="chatTextarea"
+              placeholder="Ask Aetheria anything... (Shift + Enter for new line)"
+              rows="1"
+              maxlength="4000"
+              aria-label="Message input"
+            ></textarea>
+
+            <!-- Right Action Buttons -->
+            <div class="input-actions-right">
+              <span class="char-counter" id="charCounter">0/4000</span>
+
+              <button class="send-btn" id="sendBtn" title="Send message (Enter)" aria-label="Send message">
+                <i data-lucide="arrow-up" id="sendIcon"></i>
+                <i data-lucide="square" id="stopIcon" style="display: none;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <p class="input-disclaimer">
+          Aetheria AI can generate creative responses. Check key information.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal-glass">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i data-lucide="sliders"></i>
+          <span>Assistant Settings</span>
+        </div>
+        <button class="modal-close-btn" id="closeSettingsBtn"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="setting-group">
+          <label for="systemInstructionInput" class="setting-label">System Instructions</label>
+          <textarea id="systemInstructionInput" rows="3" placeholder="You are a helpful, precise AI Assistant..."></textarea>
+          <span class="setting-hint">Defines the core persona and behavior of the AI assistant.</span>
+        </div>
+
+        <div class="setting-group">
+          <label for="modelSelect" class="setting-label">AI Model</label>
+          <select id="modelSelect" class="setting-select">
+            <option value="gemini-3.6-flash">Gemini 3.6 Flash (Fast & Intelligent - Recommended)</option>
+            <option value="gemini-3.1-pro-preview">Gemini 3.1 Pro (Advanced Reasoning)</option>
+          </select>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">Options</label>
+          <div class="setting-toggle-row">
+            <span>Auto-Scroll on New Tokens</span>
+            <label class="switch">
+              <input type="checkbox" id="autoScrollToggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="setting-toggle-row">
+            <span>Sound Effects</span>
+            <label class="switch">
+              <input type="checkbox" id="soundToggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-group danger-zone">
+          <label class="setting-label danger-text">Danger Zone</label>
+          <button class="btn-danger" id="clearAllDataBtn">
+            <i data-lucide="trash-2"></i>
+            <span>Clear All Local History & Data</span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="cancelSettingsBtn">Cancel</button>
+        <button class="btn-primary" id="saveSettingsBtn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div class="modal-overlay" id="profileModal">
+    <div class="modal-glass">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i data-lucide="user"></i>
+          <span>Account & Profile</span>
+        </div>
+        <button class="modal-close-btn" id="closeProfileBtn"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="profile-card">
+          <div class="profile-avatar">
+            <i data-lucide="bot"></i>
+          </div>
+          <div class="profile-details">
+            <h3>Pro AI User</h3>
+            <span class="badge-pro">Active Subscription</span>
+            <p class="profile-email">alizahulio51@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-value" id="statChatsCount">0</span>
+            <span class="stat-label">Saved Chats</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="statMessagesCount">0</span>
+            <span class="stat-label">Total Messages</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="statStorageSize">0 KB</span>
+            <span class="stat-label">Storage Used</span>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">Data Management</label>
+          <div class="modal-btn-row">
+            <button class="btn-secondary" id="exportDataBtn">
+              <i data-lucide="download"></i>
+              <span>Export Backup</span>
+            </button>
+            <button class="btn-secondary" id="importDataBtn">
+              <i data-lucide="upload"></i>
+              <span>Import Backup</span>
+            </button>
+            <input type="file" id="importFileInput" accept=".json" style="display: none;" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="doneProfileBtn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="ai-assistant.js"></script>
+</body>
+</html>

@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - NOVIX</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Pro / Free CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Application Stylesheet -->
+  <link rel="stylesheet" href="progress.css">
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ==========================================
+         1. LEFT SIDEBAR NAVIGATION
+         ========================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <!-- Logo Branding -->
+        <div class="sidebar-header">
+          <div class="logo-icon">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <div class="logo-title-group">
+            <span class="logo-text">StudyMate</span>
+            <span class="logo-badge">AI</span>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="sidebar-nav">
+          <div class="nav-section-title">Core Workspace</div>
+          
+          <a href="dashboard.html" class="nav-item">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="subjects.html" class="nav-item">
+            <i class="fa-solid fa-book-bookmark"></i>
+            <span>Subjects</span>
+          </a>
+
+          <a href="planner.html" class="nav-item">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Planner</span>
+          </a>
+
+          <a href="ai-assistant.html" class="nav-item">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI Assistant</span>
+          </a>
+
+          <a href="progress.html" class="nav-item">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Progress</span>
+          </a>
+
+          <div class="nav-section-title" style="margin-top: 16px;">Preferences</div>
+
+          <a href="settings.html" class="nav-item active">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+            <div class="active-indicator"></div>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar User Profile Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar" id="sidebarAvatar">
+            AV
+            <div class="online-dot"></div>
+          </div>
+          <div class="user-info">
+            <span class="user-name" id="sidebarUserName">Alex Vance</span>
+            <span class="user-role">Premium Scholar</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==========================================
+         MAIN CONTENT WRAPPER
+         ========================================== -->
+    <main class="main-wrapper">
+
+      <!-- ==========================================
+           2. TOP HEADER BAR
+           ========================================== -->
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">
+            <i class="fa-solid fa-sliders"></i>
+            Settings
+          </h1>
+          <p class="page-subtitle">Manage your account, appearance, study parameters & AI preferences</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="header-center">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="search-input" placeholder="Search settings, controls, preferences..." id="settingsSearchInput">
+            <span class="search-shortcut">Ctrl + K</span>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-right">
+          <!-- Real-time Clock Badge -->
+          <div class="header-time-badge">
+            <i class="fa-regular fa-clock"></i>
+            <span id="liveTimeDisplay">07:10 AM</span>
+          </div>
+
+          <!-- Date Badge -->
+          <div class="header-date-badge" id="liveDateDisplay">
+            <i class="fa-regular fa-calendar"></i>
+            <span>Sat, Aug 1</span>
+          </div>
+
+          <!-- Notification Dropdown Toggle -->
+          <button class="header-action-btn" title="Notifications" id="notificationBtn">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-badge-dot"></span>
+          </button>
+
+          <!-- Dark/Light Mode Switcher -->
+          <button class="theme-toggle-btn" title="Toggle Light/Dark Mode" id="themeToggleBtn">
+            <i class="fa-solid fa-moon" id="themeIcon"></i>
+          </button>
+
+          <!-- Profile Header Quick Avatar -->
+          <div class="header-user-badge" id="headerProfileBadge">
+            <div class="mini-avatar">AV</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ==========================================
+           3. SETTINGS MAIN CONTENT AREA
+           ========================================== -->
+      <div class="content-area settings-layout">
+
+        <!-- SETTINGS CATEGORY NAVIGATION TABS -->
+        <nav class="settings-nav-bar">
+          <button class="settings-tab-btn active" data-tab="profile">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+          </button>
+          <button class="settings-tab-btn" data-tab="account">
+            <i class="fa-solid fa-id-card"></i>
+            <span>Account</span>
+          </button>
+          <button class="settings-tab-btn" data-tab="appearance">
+            <i class="fa-solid fa-palette"></i>
+            <span>Appearance</span>
+          </button>
+          <button class="settings-tab-btn" data-tab="notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span>Notifications</span>
+          </button>
+          <button class="settings-tab-btn" data-tab="ai">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>AI Settings</span>
+          </button>
+          <button class="settings-tab-btn" data-tab="study">
+            <i class="fa-solid fa-bullseye"></i>
+            <span>Study Goals</span>
+          </button>
+          <button class="settings-tab-btn" data-tab="security">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Security</span>
+          </button>
+          <button class="settings-tab-btn" data-tab="data">
+            <i class="fa-solid fa-database"></i>
+            <span>Data</span>
+          </button>
+          <button class="settings-tab-btn" data-tab="privacy">
+            <i class="fa-solid fa-lock"></i>
+            <span>Privacy</span>
+          </button>
+          <button class="settings-tab-btn" data-tab="help">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Help & Support</span>
+          </button>
+        </nav>
+
+        <!-- SETTINGS GRID CONTAINER (MAIN PANELS + RIGHT SIDEBAR) -->
+        <div class="settings-grid">
+
+          <!-- MAIN PANELS CONTAINER -->
+          <div class="settings-main-panels">
+
+            <!-- ==========================================
+                 SECTION 1: PROFILE SETTINGS
+                 ========================================== -->
+            <section class="glass-card settings-section active" id="profile">
+              <div class="section-header-row">
+                <div class="section-title-group">
+                  <div class="section-icon bg-indigo"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h2 class="section-title">Profile Settings</h2>
+                    <p class="section-subtitle">Manage your personal information, school profile and public bio</p>
+                  </div>
+                </div>
+                <div class="section-actions">
+                  <button class="btn btn-secondary" id="editProfileBtn"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
+                  <button class="btn btn-primary hidden" id="saveProfileBtn"><i class="fa-solid fa-check"></i> Save Changes</button>
+                  <button class="btn btn-ghost hidden" id="cancelProfileBtn">Cancel</button>
+                </div>
+              </div>
+
+              <!-- Profile Card Header with Avatar -->
+              <div class="profile-hero-card">
+                <div class="profile-avatar-container">
+                  <div class="profile-avatar-xl" id="profileAvatarXL">
+                    <span>AV</span>
+                    <button class="avatar-upload-badge" title="Change Avatar" id="uploadAvatarBtn">
+                      <i class="fa-solid fa-camera"></i>
+                    </button>
+                  </div>
+                  <input type="file" id="avatarFileInput" accept="image/*" class="hidden">
+                </div>
+                <div class="profile-hero-info">
+                  <h3 class="profile-name" id="displayProfileName">Alex Vance</h3>
+                  <p class="profile-tagline" id="displayProfileRole"><i class="fa-solid fa-graduation-cap"></i> Senior Year &bull; Stanford University</p>
+                  <div class="profile-badges-row">
+                    <span class="badge badge-indigo"><i class="fa-solid fa-star"></i> Pro Scholar</span>
+                    <span class="badge badge-emerald"><i class="fa-solid fa-fire"></i> 14 Day Streak</span>
+                    <span class="badge badge-cyan"><i class="fa-solid fa-award"></i> Level 12 Master</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Profile Form Inputs Grid -->
+              <div class="form-grid">
+                <div class="form-group col-6">
+                  <label class="form-label" for="profileFullName">Student Full Name</label>
+                  <div class="input-icon-wrapper">
+                    <i class="fa-solid fa-user input-icon"></i>
+                    <input type="text" class="form-input" id="profileFullName" value="Alex Vance" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group col-6">
+                  <label class="form-label" for="profileEmail">Email Address</label>
+                  <div class="input-icon-wrapper">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" class="form-input" id="profileEmail" value="alex.vance@stanford.edu" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group col-6">
+                  <label class="form-label" for="profileClass">Current Class / Grade Level</label>
+                  <div class="input-icon-wrapper">
+                    <i class="fa-solid fa-layer-group input-icon"></i>
+                    <input type="text" class="form-input" id="profileClass" value="Senior / Year 4" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group col-6">
+                  <label class="form-label" for="profileSchool">School / University / College</label>
+                  <div class="input-icon-wrapper">
+                    <i class="fa-solid fa-building-columns input-icon"></i>
+                    <input type="text" class="form-input" id="profileSchool" value="Stanford University" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group col-12">
+                  <label class="form-label" for="profileBio">Academic Bio & Learning Aspirations</label>
+                  <textarea class="form-textarea" id="profileBio" rows="3" disabled>Computer Science & Applied Mathematics double major passionate about machine learning algorithms, calculus optimization, and cognitive neuroscience.</textarea>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==========================================
+                 SECTION 2: ACCOUNT SETTINGS
+                 ========================================== -->
+            <section class="glass-card settings-section" id="account">
+              <div class="section-header-row">
+                <div class="section-title-group">
+                  <div class="section-icon bg-cyan"><i class="fa-solid fa-id-card"></i></div>
+                  <div>
+                    <h2 class="section-title">Account Settings</h2>
+                    <p class="section-subtitle">Manage account details, contact info, region & timezone preferences</p>
+                  </div>
+                </div>
+                <button class="btn btn-primary" id="saveAccountBtn"><i class="fa-solid fa-floppy-disk"></i> Save Account</button>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group col-6">
+                  <label class="form-label" for="accountUsername">Username</label>
+                  <div class="input-icon-wrapper">
+                    <i class="fa-solid fa-at input-icon"></i>
+                    <input type="text" class="form-input" id="accountUsername" value="alex_vance_scholar">
+                  </div>
+                </div>
+
+                <div class="form-group col-6">
+                  <label class="form-label" for="accountPhone">Phone Number</label>
+                  <div class="input-icon-wrapper">
+                    <i class="fa-solid fa-phone input-icon"></i>
+                    <input type="tel" class="form-input" id="accountPhone" value="+1 (555) 234-5678">
+                  </div>
+                </div>
+
+                <div class="form-group col-4">
+                  <label class="form-label" for="accountCountry">Country / Region</label>
+                  <select class="form-select" id="accountCountry">
+                    <option value="US" selected>United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="AU">Australia</option>
+                    <option value="DE">Germany</option>
+                    <option value="IN">India</option>
+                    <option value="JP">Japan</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-4">
+                  <label class="form-label" for="accountLanguage">System Language</label>
+                  <select class="form-select" id="accountLanguage">
+                    <option value="en-US" selected>English (US)</option>
+                    <option value="en-UK">English (UK)</option>
+                    <option value="es">Español (Spanish)</option>
+                    <option value="fr">Français (French)</option>
+                    <option value="de">Deutsch (German)</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-4">
+                  <label class="form-label" for="accountTimezone">Timezone</label>
+                  <select class="form-select" id="accountTimezone">
+                    <option value="PST" selected>(GMT-08:00) Pacific Time (US & Canada)</option>
+                    <option value="EST">(GMT-05:00) Eastern Time (US & Canada)</option>
+                    <option value="GMT">(GMT+00:00) Greenwich Mean Time / UTC</option>
+                    <option value="CET">(GMT+01:00) Central European Time</option>
+                    <option value="IST">(GMT+05:30) India Standard Time</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==========================================
+                 SECTION 3: APPEARANCE SETTINGS
+                 ========================================== -->
+            <section class="glass-card settings-section" id="appearance">
+              <div class="section-header-row">
+                <div class="section-title-group">
+                  <div class="section-icon bg-purple"><i class="fa-solid fa-palette"></i></div>
+                  <div>
+                    <h2 class="section-title">Appearance & UI Customization</h2>
+                    <p class="section-subtitle">Customize theme modes, primary accent colors, font scaling & layout density</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Theme Mode Selector Cards -->
+              <div class="setting-group-box">
+                <h4 class="box-title"><i class="fa-solid fa-moon"></i> Theme Mode</h4>
+                <div class="theme-options-grid">
+                  <div class="theme-card-option active" data-theme-mode="dark">
+                    <div class="theme-card-preview dark-preview">
+                      <div class="preview-header"></div>
+                      <div class="preview-body"><div class="preview-line"></div><div class="preview-box"></div></div>
+                    </div>
+                    <div class="theme-card-label">
+                      <i class="fa-solid fa-moon text-indigo"></i>
+                      <span>Dark Glass Mode</span>
+                    </div>
+                  </div>
+
+                  <div class="theme-card-option" data-theme-mode="light">
+                    <div class="theme-card-preview light-preview">
+                      <div class="preview-header"></div>
+                      <div class="preview-body"><div class="preview-line"></div><div class="preview-box"></div></div>
+                    </div>
+                    <div class="theme-card-label">
+                      <i class="fa-solid fa-sun text-amber"></i>
+                      <span>Clean Light Mode</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accent Color Selector -->
+              <div class="setting-group-box">
+                <h4 class="box-title"><i class="fa-solid fa-droplet"></i> Primary Accent Color</h4>
+                <div class="accent-swatches-row">
+                  <button class="accent-swatch active" data-color="indigo" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);" title="Indigo Violet">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="accent-swatch" data-color="cyan" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);" title="Electric Cyan">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="accent-swatch" data-color="emerald" style="background: linear-gradient(135deg, #10b981, #059669);" title="Emerald Teal">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="accent-swatch" data-color="amber" style="background: linear-gradient(135deg, #f59e0b, #d97706);" title="Warm Amber">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="accent-swatch" data-color="rose" style="background: linear-gradient(135deg, #f43f5e, #e11d48);" title="Crimson Rose">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="accent-swatch" data-color="purple" style="background: linear-gradient(135deg, #a855f7, #6b21a8);" title="Deep Violet">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Font Size & Scaling -->
+              <div class="setting-group-box">
+                <h4 class="box-title"><i class="fa-solid fa-text-height"></i> Interface Font Size</h4>
+                <div class="pill-selectors-row" id="fontSizeSelector">
+                  <button class="pill-btn" data-font-size="small">Small (14px)</button>
+                  <button class="pill-btn active" data-font-size="medium">Medium (16px)</button>
+                  <button class="pill-btn" data-font-size="large">Large (18px)</button>
+                </div>
+              </div>
+
+              <!-- Toggles Row: Compact Mode & UI Animations -->
+              <div class="setting-switches-list">
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-compress"></i> Compact Layout Mode</span>
+                    <span class="switch-description">Reduce card padding and margin spacing for high-density screens</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="compactModeToggle">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-wand-magic"></i> UI Smooth Animations & Micro-Interactions</span>
+                    <span class="switch-description">Enable fluid CSS transitions, hover ripples and visual effects</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="animationToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==========================================
+                 SECTION 4: NOTIFICATION SETTINGS
+                 ========================================== -->
+            <section class="glass-card settings-section" id="notifications">
+              <div class="section-header-row">
+                <div class="section-title-group">
+                  <div class="section-icon bg-amber"><i class="fa-solid fa-bell"></i></div>
+                  <div>
+                    <h2 class="section-title">Notification Preferences</h2>
+                    <p class="section-subtitle">Configure intelligent reminders, alerts, sounds and delivery channels</p>
+                  </div>
+                </div>
+                <button class="btn btn-secondary btn-sm" id="testNotificationBtn"><i class="fa-solid fa-paper-plane"></i> Send Test Alert</button>
+              </div>
+
+              <div class="setting-switches-list">
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-book-open text-indigo"></i> Study Session Reminders</span>
+                    <span class="switch-description">Get notified when it's time for scheduled focus blocks and revision</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="studyReminderToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-calendar-check text-cyan"></i> Planner & Deadline Alerts</span>
+                    <span class="switch-description">Receive advance warnings for upcoming exams, homework and assignment due dates</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="plannerReminderToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-file-pen text-emerald"></i> Assignment Due Reminders</span>
+                    <span class="switch-description">24-hour and 2-hour countdown alerts before task deadlines</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="assignmentReminderToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-circle-question text-purple"></i> Daily Quiz & Review Prompts</span>
+                    <span class="switch-description">Smart spaced repetition practice notifications based on active recall algorithms</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="quizReminderToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-envelope text-amber"></i> Email Digest & Weekly Reports</span>
+                    <span class="switch-description">Receive weekly study velocity analytics and streak progress to your email</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="emailNotificationsToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-desktop text-rose"></i> Desktop Native Notifications</span>
+                    <span class="switch-description">Show system popups even when browser window is minimized</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="desktopNotificationsToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-volume-high text-indigo"></i> Notification Chimes & Audio Effects</span>
+                    <span class="switch-description">Play subtle audio feedback when timers end or achievements unlock</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="soundToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==========================================
+                 SECTION 5: AI SETTINGS
+                 ========================================== -->
+            <section class="glass-card settings-section" id="ai">
+              <div class="section-header-row">
+                <div class="section-title-group">
+                  <div class="section-icon bg-indigo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                  <div>
+                    <h2 class="section-title">AI Assistant & Model Parameters</h2>
+                    <p class="section-subtitle">Customize Gemini AI response depth, quiz difficulty and automated study generation</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- AI Response Length -->
+              <div class="setting-group-box">
+                <h4 class="box-title"><i class="fa-solid fa-align-left"></i> AI Explanation Depth / Response Length</h4>
+                <div class="pill-selectors-row" id="aiResponseLengthSelector">
+                  <button class="pill-btn" data-length="short">Short & Concise</button>
+                  <button class="pill-btn active" data-length="medium">Balanced & Medium</button>
+                  <button class="pill-btn" data-length="detailed">Detailed & In-Depth</button>
+                </div>
+              </div>
+
+              <!-- AI Quiz Difficulty -->
+              <div class="setting-group-box">
+                <h4 class="box-title"><i class="fa-solid fa-gauge-high"></i> AI Generated Quiz Difficulty</h4>
+                <div class="pill-selectors-row" id="aiQuizDifficultySelector">
+                  <button class="pill-btn" data-diff="easy">Easy (Fundamentals)</button>
+                  <button class="pill-btn active" data-diff="medium">Medium (Standard Exam)</button>
+                  <button class="pill-btn" data-diff="hard">Hard (Olympiad / Challenge)</button>
+                </div>
+              </div>
+
+              <div class="form-grid" style="margin-bottom: 24px;">
+                <div class="form-group col-12">
+                  <label class="form-label" for="aiPreferredLanguage">Preferred Explanation Language</label>
+                  <select class="form-select" id="aiPreferredLanguage">
+                    <option value="en" selected>English (Default Academic Standard)</option>
+                    <option value="es">Spanish (Español)</option>
+                    <option value="fr">French (Français)</option>
+                    <option value="de">German (Deutsch)</option>
+                    <option value="zh">Mandarin Chinese (中文)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- AI Toggles -->
+              <div class="setting-switches-list">
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-file-powerpoint text-indigo"></i> Auto-Generate Smart Summaries & Study Notes</span>
+                    <span class="switch-description">Automatically distill lecture notes and uploaded PDFs into bulleted flashcards</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoGenerateNotesToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-brain text-cyan"></i> Auto-Generate Post-Study Quizzes</span>
+                    <span class="switch-description">Prompt a 5-question quick quiz after completing a 45-minute study session</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoGenerateQuizToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-lightbulb text-amber"></i> Smart Subject Recommendations Engine</span>
+                    <span class="switch-description">Provide real-time suggestions on weak topic areas needing additional review</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="smartRecommendationsToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==========================================
+                 SECTION 6: STUDY SETTINGS
+                 ========================================== -->
+            <section class="glass-card settings-section" id="study">
+              <div class="section-header-row">
+                <div class="section-title-group">
+                  <div class="section-icon bg-emerald"><i class="fa-solid fa-bullseye"></i></div>
+                  <div>
+                    <h2 class="section-title">Study Goals & Pomodoro Parameters</h2>
+                    <p class="section-subtitle">Set your targets for daily study hours, focus timers and auto-save behaviors</p>
+                  </div>
+                </div>
+                <button class="btn btn-primary" id="saveStudyGoalsBtn"><i class="fa-solid fa-floppy-disk"></i> Save Goals</button>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group col-6">
+                  <label class="form-label" for="dailyStudyGoal">Daily Study Goal (Hours)</label>
+                  <div class="range-slider-wrapper">
+                    <input type="range" class="form-range" id="dailyStudyGoal" min="1" max="12" step="0.5" value="4.5">
+                    <span class="range-value-badge" id="dailyStudyGoalVal">4.5 Hrs/day</span>
+                  </div>
+                </div>
+
+                <div class="form-group col-6">
+                  <label class="form-label" for="weeklyStudyGoal">Weekly Target Goal (Hours)</label>
+                  <div class="range-slider-wrapper">
+                    <input type="range" class="form-range" id="weeklyStudyGoal" min="10" max="70" step="1" value="30">
+                    <span class="range-value-badge" id="weeklyStudyGoalVal">30 Hrs/week</span>
+                  </div>
+                </div>
+
+                <div class="form-group col-6">
+                  <label class="form-label" for="sessionDuration">Focus Session Duration</label>
+                  <select class="form-select" id="sessionDuration">
+                    <option value="25">25 Minutes (Standard Pomodoro)</option>
+                    <option value="45" selected>45 Minutes (Deep Focus)</option>
+                    <option value="60">60 Minutes (Intensive Marathon)</option>
+                    <option value="90">90 Minutes (Ultradian Cycle)</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-6">
+                  <label class="form-label" for="breakDuration">Rest & Break Duration</label>
+                  <select class="form-select" id="breakDuration">
+                    <option value="5">5 Minutes (Short Break)</option>
+                    <option value="10" selected>10 Minutes (Standard Refresh)</option>
+                    <option value="15">15 Minutes (Extended Pause)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="setting-switches-list" style="margin-top: 24px;">
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-stopwatch text-emerald"></i> Auto-Start Pomodoro Break Timers</span>
+                    <span class="switch-description">Automatically start rest countdowns when a focus block completes</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="pomodoroTimerToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-floppy-disk text-indigo"></i> Auto-Save Session Progress & Notes</span>
+                    <span class="switch-description">Continuous background sync every 30 seconds to prevent study log loss</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoSaveProgressToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==========================================
+                 SECTION 7: SECURITY SETTINGS
+                 ========================================== -->
+            <section class="glass-card settings-section" id="security">
+              <div class="section-header-row">
+                <div class="section-title-group">
+                  <div class="section-icon bg-rose"><i class="fa-solid fa-shield-halved"></i></div>
+                  <div>
+                    <h2 class="section-title">Security & Credentials</h2>
+                    <p class="section-subtitle">Update password, enable two-factor authentication and inspect active sessions</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Password Update Box -->
+              <div class="setting-group-box">
+                <h4 class="box-title"><i class="fa-solid fa-key"></i> Change Password</h4>
+                <form id="changePasswordForm" class="form-grid">
+                  <div class="form-group col-4">
+                    <label class="form-label" for="currentPassword">Current Password</label>
+                    <div class="input-icon-wrapper">
+                      <i class="fa-solid fa-lock input-icon"></i>
+                      <input type="password" class="form-input password-field" id="currentPassword" placeholder="••••••••">
+                      <button type="button" class="password-toggle-btn"><i class="fa-solid fa-eye"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label class="form-label" for="newPassword">New Password</label>
+                    <div class="input-icon-wrapper">
+                      <i class="fa-solid fa-key input-icon"></i>
+                      <input type="password" class="form-input password-field" id="newPassword" placeholder="••••••••">
+                      <button type="button" class="password-toggle-btn"><i class="fa-solid fa-eye"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label class="form-label" for="confirmPassword">Confirm New Password</label>
+                    <div class="input-icon-wrapper">
+                      <i class="fa-solid fa-check-double input-icon"></i>
+                      <input type="password" class="form-input password-field" id="confirmPassword" placeholder="••••••••">
+                      <button type="button" class="password-toggle-btn"><i class="fa-solid fa-eye"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="form-group col-12" style="display: flex; justify-content: flex-end;">
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-shield"></i> Update Password</button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Two Factor Auth -->
+              <div class="setting-switches-list" style="margin-bottom: 24px;">
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-mobile-screen-button text-emerald"></i> Two-Factor Authentication (2FA)</span>
+                    <span class="switch-description">Protect your account with Google Authenticator or SMS verification codes</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="twoFactorToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Active Login Sessions Table -->
+              <div class="setting-group-box">
+                <h4 class="box-title"><i class="fa-solid fa-laptop-code"></i> Active Login Sessions</h4>
+                <div class="sessions-table-wrapper">
+                  <table class="sessions-table">
+                    <thead>
+                      <tr>
+                        <th>Device & Browser</th>
+                        <th>Location</th>
+                        <th>IP Address</th>
+                        <th>Last Active</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><i class="fa-brands fa-apple text-indigo"></i> MacBook Pro (Chrome 124)</td>
+                        <td>San Francisco, USA</td>
+                        <td>192.168.1.104</td>
+                        <td>Active Now</td>
+                        <td><span class="badge badge-emerald">Current Session</span></td>
+                      </tr>
+                      <tr>
+                        <td><i class="fa-solid fa-mobile-screen text-cyan"></i> iPhone 15 Pro (Safari)</td>
+                        <td>San Francisco, USA</td>
+                        <td>172.56.21.88</td>
+                        <td>2 hours ago</td>
+                        <td><span class="badge badge-indigo">Authorized</span></td>
+                      </tr>
+                      <tr>
+                        <td><i class="fa-brands fa-windows text-amber"></i> Dell XPS (Firefox)</td>
+                        <td>Palo Alto, USA</td>
+                        <td>10.0.0.42</td>
+                        <td>Yesterday 04:15 PM</td>
+                        <td><span class="badge badge-indigo">Authorized</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==========================================
+                 SECTION 8: DATA MANAGEMENT
+                 ========================================== -->
+            <section class="glass-card settings-section" id="data">
+              <div class="section-header-row">
+                <div class="section-title-group">
+                  <div class="section-icon bg-cyan"><i class="fa-solid fa-database"></i></div>
+                  <div>
+                    <h2 class="section-title">Data Management & Backup</h2>
+                    <p class="section-subtitle">Export study logs, import historical data, download PDF reports & reset history</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="action-cards-grid">
+                <div class="action-card">
+                  <div class="action-card-icon text-indigo"><i class="fa-solid fa-file-export"></i></div>
+                  <div class="action-card-content">
+                    <h4 class="action-card-title">Export Study Data</h4>
+                    <p class="action-card-text">Download complete JSON archive of subjects, schedules & progress logs</p>
+                  </div>
+                  <button class="btn btn-secondary btn-sm" id="exportDataBtn"><i class="fa-solid fa-download"></i> Export JSON</button>
+                </div>
+
+                <div class="action-card">
+                  <div class="action-card-icon text-cyan"><i class="fa-solid fa-file-import"></i></div>
+                  <div class="action-card-content">
+                    <h4 class="action-card-title">Import Study Data</h4>
+                    <p class="action-card-text">Restore previously saved StudyMate backup JSON files into your profile</p>
+                  </div>
+                  <button class="btn btn-secondary btn-sm" id="importDataBtn"><i class="fa-solid fa-upload"></i> Import File</button>
+                  <input type="file" id="importFileInput" accept=".json" class="hidden">
+                </div>
+
+                <div class="action-card">
+                  <div class="action-card-icon text-emerald"><i class="fa-solid fa-file-pdf"></i></div>
+                  <div class="action-card-content">
+                    <h4 class="action-card-title">Download Study Notes</h4>
+                    <p class="action-card-text">Generate compiled PDF document of all AI generated summaries and flashcards</p>
+                  </div>
+                  <button class="btn btn-secondary btn-sm" id="downloadNotesBtn"><i class="fa-solid fa-file-arrow-down"></i> Notes PDF</button>
+                </div>
+
+                <div class="action-card">
+                  <div class="action-card-icon text-purple"><i class="fa-solid fa-chart-pie"></i></div>
+                  <div class="action-card-content">
+                    <h4 class="action-card-title">Download Progress Report</h4>
+                    <p class="action-card-text">Export formal academic transcript report with streak stats and quiz mastery</p>
+                  </div>
+                  <button class="btn btn-secondary btn-sm" id="downloadReportBtn"><i class="fa-solid fa-chart-column"></i> Report PDF</button>
+                </div>
+              </div>
+
+              <!-- Danger Zone Data Actions -->
+              <div class="setting-group-box danger-box" style="margin-top: 24px;">
+                <h4 class="box-title text-rose"><i class="fa-solid fa-triangle-exclamation"></i> Danger Zone</h4>
+                <div class="danger-actions-row">
+                  <div class="danger-item">
+                    <div>
+                      <span class="danger-title">Clear AI Chat History</span>
+                      <p class="danger-text">Delete all saved prompts, assistant conversations and session queries</p>
+                    </div>
+                    <button class="btn btn-danger-outline" id="clearAiHistoryBtn"><i class="fa-solid fa-broom"></i> Clear AI Logs</button>
+                  </div>
+
+                  <div class="danger-item">
+                    <div>
+                      <span class="danger-title">Reset All Progress Analytics</span>
+                      <p class="danger-text">Permanently wipe streak days, subject mastery percentages and quiz scores</p>
+                    </div>
+                    <button class="btn btn-danger" id="resetProgressBtn"><i class="fa-solid fa-rotate-left"></i> Reset Progress</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==========================================
+                 SECTION 9: PRIVACY SETTINGS
+                 ========================================== -->
+            <section class="glass-card settings-section" id="privacy">
+              <div class="section-header-row">
+                <div class="section-title-group">
+                  <div class="section-icon bg-indigo"><i class="fa-solid fa-lock"></i></div>
+                  <div>
+                    <h2 class="section-title">Privacy Policy & Consent</h2>
+                    <p class="section-subtitle">Review privacy compliance, cookie preferences and data sharing controls</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="privacy-cards-grid">
+                <div class="setting-group-box">
+                  <h4 class="box-title"><i class="fa-solid fa-user-shield"></i> Privacy Policy Overview</h4>
+                  <p class="box-text">NOVIX adheres strictly to FERPA and GDPR standards. Your academic notes, personal study data, and user profile information are end-to-end encrypted and never sold to third parties.</p>
+                  <a href="#" class="btn-link" id="readPrivacyPolicyBtn"><i class="fa-solid fa-up-right-from-square"></i> Read Full Privacy Policy</a>
+                </div>
+
+                <div class="setting-group-box">
+                  <h4 class="box-title"><i class="fa-solid fa-file-contract"></i> Terms & Conditions</h4>
+                  <p class="box-text">By using NOVIX, you agree to our academic integrity guidelines and responsible AI usage policies. Models are designed strictly for learning assistance and tutoring.</p>
+                  <a href="#" class="btn-link" id="readTermsBtn"><i class="fa-solid fa-up-right-from-square"></i> Read Terms of Service</a>
+                </div>
+              </div>
+
+              <div class="setting-switches-list" style="margin-top: 20px;">
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-cookie-bite text-amber"></i> Cookie Preferences & Local Cache</span>
+                    <span class="switch-description">Allow local web storage cookies to store user theme preferences and session tokens</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cookiePreferencesToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="switch-item-row">
+                  <div class="switch-info">
+                    <span class="switch-title"><i class="fa-solid fa-chart-line text-cyan"></i> Anonymous Usage & Diagnostic Telemetry</span>
+                    <span class="switch-description">Share anonymous app performance metrics to help us optimize speed and AI accuracy</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="dataSharingToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==========================================
+                 SECTION 10: HELP & SUPPORT
+                 ========================================== -->
+            <section class="glass-card settings-section" id="help">
+              <div class="section-header-row">
+                <div class="section-title-group">
+                  <div class="section-icon bg-amber"><i class="fa-solid fa-circle-question"></i></div>
+                  <div>
+                    <h2 class="section-title">Help & Customer Support</h2>
+                    <p class="section-subtitle">Frequently asked questions, bug reports, user feedback & software version details</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Accordion -->
+              <div class="setting-group-box">
+                <h4 class="box-title"><i class="fa-solid fa-clipboard-question"></i> Frequently Asked Questions</h4>
+                <div class="faq-accordion-list">
+                  <div class="faq-item">
+                    <button class="faq-header">
+                      <span>How does the AI Note & Quiz Generator work?</span>
+                      <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-content">
+                      <p>NOVIX uses Google's advanced Gemini generative AI models to analyze text documents, subject topics, or user notes and synthesize key conceptual flashcards and multiple-choice quizzes automatically.</p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item">
+                    <button class="faq-header">
+                      <span>Can I sync my StudyMate Planner with Google Calendar?</span>
+                      <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-content">
+                      <p>Yes! In the Planner tab, click "Sync Calendar" to connect your Google Calendar account and seamlessly export study focus blocks and exam countdowns.</p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item">
+                    <button class="faq-header">
+                      <span>How is my Daily Study Streak calculated?</span>
+                      <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-content">
+                      <p>Your streak increments by +1 day whenever you log at least 30 minutes of active focus study time or complete a daily quiz review before midnight in your local timezone.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Support & Feedback Grid -->
+              <div class="support-actions-grid">
+                <div class="support-card">
+                  <i class="fa-solid fa-headset support-icon text-indigo"></i>
+                  <h4>24/7 Priority Support</h4>
+                  <p>Get in touch with our dedicated academic support team</p>
+                  <button class="btn btn-secondary btn-sm" id="contactSupportBtn"><i class="fa-solid fa-paper-plane"></i> Contact Support</button>
+                </div>
+
+                <div class="support-card">
+                  <i class="fa-solid fa-bug support-icon text-rose"></i>
+                  <h4>Report an Issue</h4>
+                  <p>Found a glitch or visual bug? Let our dev team fix it</p>
+                  <button class="btn btn-secondary btn-sm" id="reportBugBtn"><i class="fa-solid fa-bug-slash"></i> Report Bug</button>
+                </div>
+              </div>
+
+              <!-- Feedback Form -->
+              <div class="setting-group-box" style="margin-top: 20px;">
+                <h4 class="box-title"><i class="fa-solid fa-comment-dots"></i> Submit Feedback</h4>
+                <form id="feedbackForm">
+                  <div class="form-group" style="margin-bottom: 12px;">
+                    <label class="form-label">How satisfied are you with NOVIX?</label>
+                    <div class="star-rating-row" id="starRating">
+                      <i class="fa-solid fa-star star active" data-rating="1"></i>
+                      <i class="fa-solid fa-star star active" data-rating="2"></i>
+                      <i class="fa-solid fa-star star active" data-rating="3"></i>
+                      <i class="fa-solid fa-star star active" data-rating="4"></i>
+                      <i class="fa-solid fa-star star active" data-rating="5"></i>
+                    </div>
+                  </div>
+                  <div class="form-group" style="margin-bottom: 16px;">
+                    <textarea class="form-textarea" placeholder="Tell us what features you'd like to see next..." rows="3" id="feedbackText" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Submit Feedback</button>
+                </form>
+              </div>
+
+              <!-- About App & Version Box -->
+              <div class="about-app-box">
+                <div class="about-logo">
+                  <div class="logo-icon"><i class="fa-solid fa-brain"></i></div>
+                  <div>
+                    <h4 class="about-title">NOVIX Pro Platform</h4>
+                    <p class="about-version">Version 2.4.0 (Build 2026.08.01) &bull; Production Release</p>
+                  </div>
+                </div>
+                <p class="about-description">Built with modern web standards, responsive design and Google Gemini AI model integration for elite scholar productivity.</p>
+              </div>
+            </section>
+
+            <!-- ==========================================
+                 SECTION 11: LOGOUT SECTION
+                 ========================================== -->
+            <section class="glass-card settings-section" id="logoutSection">
+              <div class="logout-banner-card">
+                <div class="logout-icon-wrapper">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                </div>
+                <div class="logout-content">
+                  <h3 class="logout-title">Sign Out of NOVIX</h3>
+                  <p class="logout-subtitle">Securely end your active learning session. Your study logs and current streak will remain saved.</p>
+                </div>
+                <button class="btn btn-danger btn-lg" id="openLogoutModalBtn">
+                  <i class="fa-solid fa-power-off"></i> Sign Out Account
+                </button>
+              </div>
+            </section>
+
+          </div> <!-- END MAIN PANELS -->
+
+
+          <!-- ==========================================
+               RIGHT SIDEBAR PANEL
+               ========================================== -->
+          <aside class="settings-right-sidebar">
+
+            <!-- ACCOUNT STATUS WIDGET -->
+            <div class="glass-card widget-card">
+              <div class="widget-header">
+                <span class="widget-title"><i class="fa-solid fa-crown text-amber"></i> Account Status</span>
+                <span class="badge badge-emerald">Active</span>
+              </div>
+              <div class="plan-info-box">
+                <h4 class="plan-name">Pro Scholar Annual</h4>
+                <p class="plan-renews">Renews on September 15, 2026</p>
+              </div>
+              <div class="usage-progress-block">
+                <div class="usage-label-row">
+                  <span>AI Queries Used</span>
+                  <span class="text-indigo font-bold">1,840 / 5,000</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill bg-indigo" style="width: 36.8%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STORAGE USAGE WIDGET -->
+            <div class="glass-card widget-card">
+              <div class="widget-header">
+                <span class="widget-title"><i class="fa-solid fa-cloud text-cyan"></i> Storage Cloud</span>
+                <span class="widget-stat-text">2.4 GB / 10 GB</span>
+              </div>
+              <div class="progress-bar-bg" style="margin-top: 10px;">
+                <div class="progress-bar-fill bg-cyan" style="width: 24%;"></div>
+              </div>
+              <p class="widget-subtext">24% of cloud storage space used for study PDFs & AI flashcards.</p>
+            </div>
+
+            <!-- QUICK TIPS & LEARNING QUOTE -->
+            <div class="glass-card widget-card">
+              <div class="widget-header">
+                <span class="widget-title"><i class="fa-solid fa-lightbulb text-amber"></i> Learning Tips</span>
+              </div>
+              <div class="quick-tip-item">
+                <i class="fa-solid fa-quote-left quote-icon text-indigo"></i>
+                <blockquote class="study-quote">"Continuous learning is the minimum requirement for success in any field."</blockquote>
+                <span class="quote-author">&mdash; Brian Tracy</span>
+              </div>
+            </div>
+
+            <!-- LATEST UPDATES & CHANGELOG -->
+            <div class="glass-card widget-card">
+              <div class="widget-header">
+                <span class="widget-title"><i class="fa-solid fa-newspaper text-purple"></i> Latest Updates</span>
+              </div>
+              <div class="updates-list">
+                <div class="update-item">
+                  <span class="badge badge-indigo">v2.4.0</span>
+                  <p class="update-text">Enhanced Gemini AI model latency & spaced repetition flashcard algorithm.</p>
+                </div>
+                <div class="update-item">
+                  <span class="badge badge-cyan">v2.3.5</span>
+                  <p class="update-text">Added custom accent colors, dark/light theme persistence & export JSON.</p>
+                </div>
+              </div>
+            </div>
+
+          </aside> <!-- END RIGHT SIDEBAR -->
+
+        </div> <!-- END SETTINGS GRID -->
+
+      </div> <!-- END CONTENT AREA -->
+
+      <!-- ==========================================
+           FOOTER BAR
+           ========================================== -->
+      <footer class="app-footer">
+        <div class="footer-left">
+          <span class="status-indicator-dot"></span>
+          <span>PRO PLAN ACTIVE &bull; SYNCED 2 MINS AGO</span>
+        </div>
+        <div class="footer-right">
+          <a href="#" id="footerReportBugBtn" class="footer-link">Report Bug</a>
+          <span class="footer-divider">&bull;</span>
+          <a href="#" id="footerHelpBtn" class="footer-link">Help Center</a>
+          <span class="footer-divider">&bull;</span>
+          <span class="footer-version">v2.4.0</span>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- ==========================================
+       LOGOUT CONFIRMATION MODAL
+       ========================================== -->
+  <div class="modal-overlay hidden" id="logoutModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="closeLogoutModalBtn"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-icon-header bg-rose">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </div>
+      <h3 class="modal-title">Sign Out Confirmation</h3>
+      <p class="modal-message">Are you sure you want to log out of your NOVIX account? Unsaved changes in active forms will be saved automatically.</p>
+      <div class="modal-actions-row">
+        <button class="btn btn-ghost" id="cancelLogoutBtn">Cancel</button>
+        <button class="btn btn-danger" id="confirmLogoutBtn"><i class="fa-solid fa-power-off"></i> Yes, Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       TOAST NOTIFICATION CONTAINER
+       ========================================== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript Files -->
+  <script src="progress.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOVIXish Subject Module</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="english.css" />
+</head>
+<body class="dark-theme">
+
+  <!-- Background Animated Mesh Gradients -->
+  <div class="bg-gradient-glow orb-1"></div>
+  <div class="bg-gradient-glow orb-2"></div>
+  <div class="bg-gradient-glow orb-3"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-group">
+        <a href="dashboard.html" class="brand-logo" title="NOVIX
+          <div class="logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">StudyMate<span class="ai-badge">AI</span></span>
+            <span class="subject-subtitle">English Hub</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Main Navigation & Breadcrumbs -->
+      <div class="header-nav-buttons">
+        <a href="dashboard.html" class="nav-btn btn-glass" id="btn-back-dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Back to Dashboard</span>
+        </a>
+        <a href="subjects.html" class="nav-btn btn-glass" id="btn-back-subjects">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Back to Subjects Hub</span>
+        </a>
+      </div>
+
+      <!-- User Stats Pill -->
+      <div class="header-user-stats">
+        <div class="stat-pill streak-pill" title="Daily Learning Streak">
+          <span class="stat-icon">🔥</span>
+          <span id="header-streak-count">3</span> Day Streak
+        </div>
+        <div class="stat-pill score-pill" title="Mastery Score">
+          <span class="stat-icon">⚡</span>
+          <span id="header-mastery-score">850</span> XP
+        </div>
+        <button class="nav-btn btn-ai-sparkle" id="btn-toggle-ai-floating">
+          <span class="sparkle-icon">✨</span>
+          <span>AI Tutor</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero-section glass-panel">
+      <div class="hero-body">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>ENGLISH LANGUAGE & LITERATURE MODULE</span>
+        </div>
+        <h1 class="hero-title">
+          Master English Grammar, Literature & Expression with <span class="gradient-text">NOVIX
+        </h1>
+        <p class="hero-description">
+          An interactive, hackathon-ready English subject hub featuring comprehensive notes, literary analysis, practice exercises, flashcards, MCQs, and real-time AI context tutoring.
+        </p>
+        
+        <div class="hero-stats-row">
+          <div class="hero-stat-card">
+            <span class="stat-number" id="total-topics-count">10</span>
+            <span class="stat-label">Core Modules</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="stat-number" id="total-flashcards-count">50+</span>
+            <span class="stat-label">Flashcards</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="stat-number" id="total-mcqs-count">60+</span>
+            <span class="stat-label">Practice MCQs</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">AI Explainer</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#topics-grid" class="btn btn-primary btn-glow">
+            <span>Explore All Topics</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <button class="btn btn-secondary btn-glass" id="btn-hero-ai-explain">
+            <span>✨ Open AI Study Assistant</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress Dashboard Section -->
+    <section class="progress-dashboard-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2 class="section-title">Your Progress Dashboard</h2>
+          <p class="section-subtitle">Track completed topics, quiz performance, and active learning goals</p>
+        </div>
+        <button class="btn btn-sm btn-glass" id="btn-reset-progress">Reset Stats</button>
+      </div>
+
+      <div class="progress-cards-grid">
+        <!-- Mastery Card -->
+        <div class="progress-card glass-card">
+          <div class="progress-card-header">
+            <span class="card-icon-bubble blue">🎯</span>
+            <div>
+              <h3>Module Mastery</h3>
+              <p class="card-sub">Overall completion rate</p>
+            </div>
+          </div>
+          <div class="progress-circle-wrap">
+            <svg class="progress-ring" width="100" height="100">
+              <circle class="progress-ring-bg" cx="50" cy="50" r="40"></circle>
+              <circle class="progress-ring-fill" id="mastery-ring-fill" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
+            </svg>
+            <span class="progress-ring-text" id="mastery-percentage">0%</span>
+          </div>
+          <p class="progress-status-text" id="mastery-status-text">0 of 10 Topics Mastered</p>
+        </div>
+
+        <!-- Quiz Performance Card -->
+        <div class="progress-card glass-card">
+          <div class="progress-card-header">
+            <span class="card-icon-bubble purple">📊</span>
+            <div>
+              <h3>Quiz Performance</h3>
+              <p class="card-sub">Average score accuracy</p>
+            </div>
+          </div>
+          <div class="big-metric-value" id="quiz-avg-score">0%</div>
+          <div class="bar-progress-container">
+            <div class="bar-progress-fill purple" id="quiz-score-bar" style="width: 0%;"></div>
+          </div>
+          <p class="progress-status-text" id="quiz-attempts-count">0 Quiz attempts recorded</p>
+        </div>
+
+        <!-- Continue Learning Card -->
+        <div class="progress-card glass-card continue-card">
+          <div class="progress-card-header">
+            <span class="card-icon-bubble green">📖</span>
+            <div>
+              <h3>Continue Learning</h3>
+              <p class="card-sub">Pick up where you left off</p>
+            </div>
+          </div>
+          <div class="continue-topic-info">
+            <h4 class="continue-topic-title" id="continue-topic-title">Select a Topic to Start</h4>
+            <span class="category-badge" id="continue-topic-category">Grammar</span>
+          </div>
+          <button class="btn btn-primary btn-sm btn-full" id="btn-continue-topic">
+            <span>Resume Study</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <!-- Study Time & Streak Card -->
+        <div class="progress-card glass-card">
+          <div class="progress-card-header">
+            <span class="card-icon-bubble amber">⏱️</span>
+            <div>
+              <h3>Study Streak & Time</h3>
+              <p class="card-sub">Total active study sessions</p>
+            </div>
+          </div>
+          <div class="stat-double-row">
+            <div>
+              <span class="stat-small-label">Active Time</span>
+              <span class="stat-medium-val" id="total-study-time">45 mins</span>
+            </div>
+            <div>
+              <span class="stat-small-label">Bookmarks</span>
+              <span class="stat-medium-val" id="bookmarks-count">0 Saved</span>
+            </div>
+          </div>
+          <div class="streak-mini-dots" id="streak-days-container">
+            <span class="streak-dot active">M</span>
+            <span class="streak-dot active">T</span>
+            <span class="streak-dot active">W</span>
+            <span class="streak-dot">T</span>
+            <span class="streak-dot">F</span>
+            <span class="streak-dot">S</span>
+            <span class="streak-dot">S</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <section class="search-filter-section">
+      <div class="search-bar-wrap glass-panel">
+        <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="search-input" class="search-input" placeholder="Search topics, grammar rules, essays, stories, poems, or MCQs..." />
+        <button id="search-clear-btn" class="search-clear-btn" style="display: none;" title="Clear Search">&times;</button>
+        
+        <div class="filter-dropdown-wrap">
+          <select id="difficulty-filter" class="filter-select glass-input">
+            <option value="all">All Difficulties</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-pills-scroll" id="category-pills">
+        <button class="pill-btn active" data-category="all">All Modules</button>
+        <button class="pill-btn" data-category="Grammar">Grammar</button>
+        <button class="pill-btn" data-category="Vocabulary">Vocabulary</button>
+        <button class="pill-btn" data-category="Essays">Essays</button>
+        <button class="pill-btn" data-category="Stories">Stories</button>
+        <button class="pill-btn" data-category="Poems">Poems</button>
+        <button class="pill-btn" data-category="Notes">Notes</button>
+        <button class="pill-btn" data-category="MCQs">MCQs</button>
+        <button class="pill-btn" data-category="AI Quiz">AI Quiz</button>
+        <button class="pill-btn" data-category="AI Explain">AI Explain</button>
+        <button class="pill-btn" data-category="Practice Exercises">Practice Exercises</button>
+      </div>
+    </section>
+
+    <!-- Category Hub Quick Cards -->
+    <section class="category-hub-section">
+      <h3 class="subsection-title">Core Learning Categories</h3>
+      <div class="category-cards-grid">
+        <div class="cat-card glass-card" data-cat-link="Grammar">
+          <span class="cat-icon">✍️</span>
+          <h4>Grammar</h4>
+          <p>Tenses, voice, clauses, and syntax rules</p>
+          <span class="cat-arrow">→</span>
+        </div>
+        <div class="cat-card glass-card" data-cat-link="Vocabulary">
+          <span class="cat-icon">📚</span>
+          <h4>Vocabulary</h4>
+          <p>Advanced idioms, etymology, and usage</p>
+          <span class="cat-arrow">→</span>
+        </div>
+        <div class="cat-card glass-card" data-cat-link="Essays">
+          <span class="cat-icon">📝</span>
+          <h4>Essays</h4>
+          <p>Persuasive, analytical & thesis guides</p>
+          <span class="cat-arrow">→</span>
+        </div>
+        <div class="cat-card glass-card" data-cat-link="Stories">
+          <span class="cat-icon">📖</span>
+          <h4>Stories</h4>
+          <p>Short stories, symbolism & characters</p>
+          <span class="cat-arrow">→</span>
+        </div>
+        <div class="cat-card glass-card" data-cat-link="Poems">
+          <span class="cat-icon">🎭</span>
+          <h4>Poems</h4>
+          <p>Poetic devices, meter & analysis</p>
+          <span class="cat-arrow">→</span>
+        </div>
+        <div class="cat-card glass-card" data-cat-link="Notes">
+          <span class="cat-icon">📌</span>
+          <h4>Notes</h4>
+          <p>Quick revision guides & summaries</p>
+          <span class="cat-arrow">→</span>
+        </div>
+        <div class="cat-card glass-card" data-cat-link="MCQs">
+          <span class="cat-icon">❓</span>
+          <h4>MCQs</h4>
+          <p>Targeted multiple-choice drills</p>
+          <span class="cat-arrow">→</span>
+        </div>
+        <div class="cat-card glass-card" data-cat-link="AI Quiz">
+          <span class="cat-icon">🤖</span>
+          <h4>AI Quiz</h4>
+          <p>Smart adaptive topic assessments</p>
+          <span class="cat-arrow">→</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics Grid Section -->
+    <section id="topics-grid" class="topics-grid-section">
+      <div class="section-header">
+        <h2 class="section-title">English Study Topics</h2>
+        <span class="results-counter" id="results-count">Showing 10 topics</span>
+      </div>
+
+      <!-- Topics Loading Spinner -->
+      <div id="topics-loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading English content modules...</p>
+      </div>
+
+      <!-- Topics Container -->
+      <div id="topics-cards-container" class="topics-cards-grid" style="display: none;">
+        <!-- Dynamically injected via english.js -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="no-topics-found" class="empty-state glass-card" style="display: none;">
+        <span class="empty-icon">🔍</span>
+        <h3>No topics match your search criteria</h3>
+        <p>Try clearing filters or searching for different keywords like "Grammar", "Tenses", "Poem", or "Essay".</p>
+        <button class="btn btn-primary" id="btn-reset-search">Reset Search</button>
+      </div>
+    </section>
+
+    <!-- Recent Activity & Bookmarks Quick Section -->
+    <section class="activity-bookmarks-section">
+      <div class="dual-column-grid">
+        <!-- Recent Activity Card -->
+        <div class="glass-card activity-card">
+          <div class="card-header-flex">
+            <h3><span class="header-icon">🕒</span> Recent Learning Activity</h3>
+          </div>
+          <div id="recent-activity-list" class="activity-list">
+            <p class="empty-list-text">No recent topics viewed yet.</p>
+          </div>
+        </div>
+
+        <!-- Bookmarks Card -->
+        <div class="glass-card bookmarks-card">
+          <div class="card-header-flex">
+            <h3><span class="header-icon">⭐</span> Bookmarked Topics</h3>
+          </div>
+          <div id="bookmarks-list" class="bookmarks-list">
+            <p class="empty-list-text">No bookmarked topics saved. Click the star icon on any topic card to bookmark it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- TOPIC VIEWER MODAL / FULLSCREEN READER -->
+  <!-- ========================================================= -->
+  <div id="topic-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-container glass-modal">
+      
+      <!-- Sticky Topic Header -->
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <button class="btn btn-icon btn-glass" id="modal-close-btn" title="Close Viewer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+          <div class="modal-topic-meta">
+            <span class="category-badge" id="modal-topic-category">Grammar</span>
+            <span class="difficulty-tag" id="modal-topic-difficulty">Intermediate</span>
+            <span class="time-tag" id="modal-topic-time">25 mins</span>
+          </div>
+        </div>
+
+        <h2 class="modal-topic-title" id="modal-topic-title">Topic Title Here</h2>
+
+        <!-- AI Action Toolbar inside Topic Viewer -->
+        <div class="topic-ai-toolbar">
+          <button class="ai-tool-btn" id="ai-tool-ask" title="Ask AI about this topic">
+            <span>✨ Ask AI</span>
+          </button>
+          <button class="ai-tool-btn" id="ai-tool-summarize" title="Generate quick summary">
+            <span>📝 Summarize Notes</span>
+          </button>
+          <button class="ai-tool-btn" id="ai-tool-explain" title="Explain difficult concepts">
+            <span>💡 Explain Topic</span>
+          </button>
+          <button class="ai-tool-btn" id="ai-tool-quiz" title="Generate adaptive quiz">
+            <span>🎯 Generate Quiz</span>
+          </button>
+          <button class="btn btn-sm btn-glass" id="modal-download-notes-btn" title="Download formatted notes">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download Notes</span>
+          </button>
+          <button class="btn btn-sm btn-glass icon-only" id="modal-bookmark-toggle-btn" title="Bookmark topic">
+            <span id="modal-bookmark-star">☆</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs inside Topic Viewer -->
+      <div class="modal-tabs-bar">
+        <button class="tab-btn active" data-tab="tab-notes">📖 Notes & Content</button>
+        <button class="tab-btn" data-tab="tab-video">📺 Video Lecture</button>
+        <button class="tab-btn" data-tab="tab-flashcards">⚡ Flashcards (<span id="modal-flashcards-count">0</span>)</button>
+        <button class="tab-btn" data-tab="tab-exercises">✏️ Practice Exercises</button>
+        <button class="tab-btn" data-tab="tab-mcqs">🎯 MCQs & Quiz (<span id="modal-mcqs-count">0</span>)</button>
+        <button class="tab-btn" data-tab="tab-resources">📚 Resources</button>
+      </div>
+
+      <!-- Modal Body Tab Contents -->
+      <div class="modal-body-content">
+
+        <!-- TAB 1: Detailed Notes & Content -->
+        <div id="tab-notes" class="tab-pane active">
+          <!-- Learning Objectives -->
+          <div class="objectives-box glass-panel">
+            <h4>🎯 Learning Objectives</h4>
+            <ul id="modal-objectives-list"></ul>
+          </div>
+
+          <!-- Detailed Notes Content -->
+          <div class="notes-reader-container" id="modal-detailed-notes"></div>
+
+          <!-- Important Points Callout -->
+          <div class="important-points-box glass-panel">
+            <h4>💡 Important Takeaways</h4>
+            <ul id="modal-important-points-list"></ul>
+          </div>
+
+          <!-- Code / Example Cards -->
+          <div class="examples-section">
+            <h4>📝 Examples & Case Studies</h4>
+            <div id="modal-examples-container" class="examples-grid"></div>
+          </div>
+        </div>
+
+        <!-- TAB 2: Video Lecture Section -->
+        <div id="tab-video" class="tab-pane">
+          <div class="video-section-container">
+            <div class="video-meta-box">
+              <h3 id="video-lecture-title">Embedded Lecture</h3>
+              <p class="video-sub">Watch the detailed tutorial and walkthrough for this module</p>
+            </div>
+            <div class="video-responsive-wrap glass-panel">
+              <iframe id="youtube-iframe" src="" title="YouTube Video Lecture" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: Flashcards Section -->
+        <div id="tab-flashcards" class="tab-pane">
+          <div class="flashcard-deck-wrapper">
+            <div class="flashcard-controls-top">
+              <span>Card <span id="fc-current-index">1</span> of <span id="fc-total-count">5</span></span>
+              <button class="btn btn-xs btn-glass" id="fc-btn-shuffle">🔀 Shuffle Deck</button>
+            </div>
+
+            <!-- 3D Flip Card -->
+            <div class="flashcard-scene">
+              <div class="flashcard" id="active-flashcard">
+                <div class="flashcard-face flashcard-front">
+                  <span class="fc-badge">FRONT (TERM / QUESTION)</span>
+                  <div class="fc-content" id="fc-front-text">Term loading...</div>
+                  <span class="fc-hint-btn" id="fc-hint-text">💡 Click to flip card</span>
+                </div>
+                <div class="flashcard-face flashcard-back">
+                  <span class="fc-badge">BACK (DEFINITION / EXPLANATION)</span>
+                  <div class="fc-content" id="fc-back-text">Definition loading...</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flashcard Nav Buttons -->
+            <div class="flashcard-actions">
+              <button class="btn btn-secondary" id="fc-prev-btn">← Previous</button>
+              <button class="btn btn-primary btn-glow" id="fc-flip-btn">🔄 Flip Card</button>
+              <button class="btn btn-secondary" id="fc-next-btn">Next →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: Practice Exercises Section -->
+        <div id="tab-exercises" class="tab-pane">
+          <div class="exercises-container">
+            <h3>Practice Exercises & Sentence Correction</h3>
+            <p class="sub-text">Work through these interactive prompts to solidify your comprehension.</p>
+            <div id="modal-exercises-list" class="exercises-list"></div>
+          </div>
+        </div>
+
+        <!-- TAB 5: MCQs & Quiz System -->
+        <div id="tab-mcqs" class="tab-pane">
+          <div class="quiz-tab-container">
+            <div class="quiz-intro-box glass-panel">
+              <div>
+                <h3>Interactive Topic Assessment</h3>
+                <p>Test your knowledge with multiple-choice questions for this module.</p>
+              </div>
+              <button class="btn btn-primary btn-glow" id="btn-start-modal-quiz">
+                <span>Start Full Practice Test</span>
+              </button>
+            </div>
+
+            <div id="modal-mcqs-list" class="mcqs-inline-list"></div>
+          </div>
+        </div>
+
+        <!-- TAB 6: Recommended Resources -->
+        <div id="tab-resources" class="tab-pane">
+          <div class="resources-container">
+            <h3>Recommended Study Resources</h3>
+            <div id="modal-resources-list" class="resources-grid"></div>
+          </div>
+        </div>
+
+      </div> <!-- End Modal Body Content -->
+
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- QUIZ RUNNER FULLSCREEN MODAL -->
+  <!-- ========================================================= -->
+  <div id="quiz-runner-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-container glass-modal quiz-runner-container">
+      
+      <!-- Quiz Header -->
+      <div class="quiz-runner-header">
+        <div class="quiz-meta-left">
+          <span class="category-badge" id="qr-topic-name">Topic Name</span>
+          <span class="timer-pill" id="qr-timer">⏱️ 05:00</span>
+        </div>
+        <div class="quiz-progress-text">
+          Question <span id="qr-current-num">1</span> of <span id="qr-total-num">5</span>
+        </div>
+        <button class="btn btn-sm btn-glass" id="qr-exit-btn">Exit Test</button>
+      </div>
+
+      <!-- Quiz Bar -->
+      <div class="quiz-progress-bar-wrap">
+        <div class="quiz-progress-bar-fill" id="qr-progress-bar" style="width: 20%;"></div>
+      </div>
+
+      <!-- Question Area -->
+      <div class="quiz-question-box">
+        <h3 class="quiz-question-text" id="qr-question-text">Question text...</h3>
+        
+        <div class="quiz-options-list" id="qr-options-container">
+          <!-- Dynamic Options -->
+        </div>
+
+        <div id="qr-explanation-box" class="quiz-explanation-box glass-panel" style="display: none;">
+          <h4>💡 Explanation:</h4>
+          <p id="qr-explanation-text"></p>
+        </div>
+      </div>
+
+      <!-- Quiz Footer Actions -->
+      <div class="quiz-runner-footer">
+        <button class="btn btn-secondary" id="qr-prev-btn" disabled>Previous</button>
+        <button class="btn btn-primary btn-glow" id="qr-next-btn">Next Question →</button>
+        <button class="btn btn-primary btn-glow" id="qr-submit-btn" style="display: none;">Submit Test</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- QUIZ RESULTS MODAL -->
+  <!-- ========================================================= -->
+  <div id="quiz-results-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-container glass-modal results-modal-container">
+      <div class="results-header">
+        <div class="results-badge-icon" id="results-badge-icon">🏆</div>
+        <h2 id="results-title">Quiz Completed!</h2>
+        <p class="results-subtitle" id="results-subtitle">Here is your performance summary for this test.</p>
+      </div>
+
+      <div class="results-score-display">
+        <div class="score-circle">
+          <span class="score-number" id="results-score-percent">80%</span>
+          <span class="score-label">Final Score</span>
+        </div>
+      </div>
+
+      <div class="results-breakdown-grid">
+        <div class="res-stat-card glass-panel">
+          <span class="res-stat-val text-green" id="res-correct-count">4</span>
+          <span class="res-stat-lbl">Correct Answers</span>
+        </div>
+        <div class="res-stat-card glass-panel">
+          <span class="res-stat-val text-red" id="res-incorrect-count">1</span>
+          <span class="res-stat-lbl">Incorrect Answers</span>
+        </div>
+        <div class="res-stat-card glass-panel">
+          <span class="res-stat-val text-purple" id="res-xp-earned">+80</span>
+          <span class="res-stat-lbl">XP Points Earned</span>
+        </div>
+      </div>
+
+      <div class="results-actions">
+        <button class="btn btn-secondary btn-glass" id="btn-results-retry">Retry Quiz</button>
+        <button class="btn btn-primary btn-glow" id="btn-results-continue">Back to Topics</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- AI ASSISTANT FLOATING PANEL / DRAWER -->
+  <!-- ========================================================= -->
+  <aside id="ai-assistant-drawer" class="ai-drawer glass-panel" style="display: none;">
+    <div class="ai-drawer-header">
+      <div class="ai-header-title">
+        <span class="ai-sparkle-dot">✨</span>
+        <div>
+          <h3>NOVIX Tutor</h3>
+          <span class="ai-status-indicator"><span class="status-online"></span> English Assistant Active</span>
+        </div>
+      </div>
+      <button class="btn btn-icon btn-sm btn-glass" id="btn-close-ai-drawer" title="Close AI Assistant">&times;</button>
+    </div>
+
+    <!-- Connected Context Banner -->
+    <div class="ai-context-banner" id="ai-context-banner">
+      <span class="context-icon">📌</span>
+      <span class="context-label">Context: <strong id="ai-active-context-name">General English Hub</strong></span>
+    </div>
+
+    <!-- Quick Preset Prompt Chips -->
+    <div class="ai-preset-chips">
+      <button class="chip-btn" data-preset="summarize">📝 Summarize Notes</button>
+      <button class="chip-btn" data-preset="explain">💡 Explain Concepts</button>
+      <button class="chip-btn" data-preset="quiz">🎯 3 Practice Questions</button>
+      <button class="chip-btn" data-preset="examples">🔍 Real Examples</button>
+    </div>
+
+    <!-- Chat Messages Container -->
+    <div id="ai-chat-messages" class="ai-chat-messages">
+      <div class="ai-message bot-message">
+        <div class="msg-avatar">🤖</div>
+        <div class="msg-content">
+          <p>Hello! I am your <strong>StudyMate English AI Tutor</strong>.</p>
+          <p>You can ask me to explain grammar rules, analyze poetry, summarize essay frameworks, or test your knowledge on any topic!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typing Indicator -->
+    <div id="ai-typing-indicator" class="ai-typing-indicator" style="display: none;">
+      <span></span><span></span><span></span> AI is thinking...
+    </div>
+
+    <!-- Chat Input Form -->
+    <form id="ai-chat-form" class="ai-chat-input-row">
+      <input type="text" id="ai-chat-input" class="glass-input" placeholder="Ask AI a question about English..." autocomplete="off" />
+      <button type="submit" class="btn btn-primary btn-icon-only btn-glow" title="Send Message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </form>
+  </aside>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Footer Section -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="brand-name">StudyMate<span class="ai-badge">AI</span></span>
+        <p>Hackathon-Quality English Subject Learning Module</p>
+      </div>
+      <div class="footer-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="subjects.html">Subjects Hub</a>
+        <a href="#topics-grid">Topics</a>
+        <a href="#" id="footer-link-ai">AI Tutor</a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 NOVIX. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="english.js"></script>
+</body>
+</html>
