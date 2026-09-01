@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thermodynamics Lab — MDCAT Physics Prep & Interactive Simulator</title>
+  <meta name="description" content="Master MDCAT Physics Thermodynamics with interactive simulations, calculators, PV diagrams, heat engines, formulas, and 25+ practice MCQs.">
+  <link rel="stylesheet" href="thermodynamics.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       MAIN NAVIGATION BAR
+       ========================================================================== -->
+  <header class="main-header" id="mainHeader">
+    <div class="container navbar-container">
+      <a href="#hero" class="brand-logo" id="brandLogo" aria-label="Thermodynamics Lab Home">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-title">THERMO<span>LAB</span></div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#hero" class="nav-link active">Lab Home</a></li>
+          <li><a href="#section-basics" class="nav-link">Basics & Systems</a></li>
+          <li><a href="#section-temperature" class="nav-link">Temp & Heat</a></li>
+          <li><a href="#section-first-law" class="nav-link">1st Law</a></li>
+          <li><a href="#section-pv-diagrams" class="nav-link">P–V & Processes</a></li>
+          <li><a href="#section-heat-engines" class="nav-link">Heat Engines</a></li>
+          <li><a href="#section-second-law" class="nav-link">2nd Law & Entropy</a></li>
+          <li><a href="#section-virtual-lab" class="nav-link">Virtual Lab</a></li>
+          <li><a href="#section-formula-wall" class="nav-link">Formulas</a></li>
+          <li><a href="#section-quiz" class="nav-link">MDCAT Quiz</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="search-btn" id="searchTriggerBtn" title="Search topics (Press /)" aria-label="Search">
+          🔍
+        </button>
+        <button class="theme-toggle" id="themeToggleBtn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+          🌙
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Mobile Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Sub-Navigation Track for Instant Topic Jumping -->
+  <div class="sub-nav-bar" id="subNavTrackBar">
+    <div class="container">
+      <div class="sub-nav-track" id="subNavTrack">
+        <a href="#section-basics" class="sub-nav-pill">🌐 Systems</a>
+        <a href="#section-temperature" class="sub-nav-pill">🌡️ Temperature</a>
+        <a href="#section-heat" class="sub-nav-pill">🔥 Heat Flow</a>
+        <a href="#section-specific-heat" class="sub-nav-pill">🧮 Specific Heat</a>
+        <a href="#section-latent-heat" class="sub-nav-pill">💧 Latent Heat</a>
+        <a href="#section-zeroth-law" class="sub-nav-pill">⚖️ Zeroth Law</a>
+        <a href="#section-first-law" class="sub-nav-pill">⚡ 1st Law</a>
+        <a href="#section-internal-energy" class="sub-nav-pill">🧠 Internal Energy</a>
+        <a href="#section-work-done" class="sub-nav-pill">📐 Work ($P\Delta V$)</a>
+        <a href="#section-pv-diagrams" class="sub-nav-pill">📊 P–V Curves</a>
+        <a href="#section-processes" class="sub-nav-pill">🔄 4 Processes</a>
+        <a href="#section-cyclic" class="sub-nav-pill">🔁 Cyclic Work</a>
+        <a href="#section-heat-engines" class="sub-nav-pill">⚙️ Heat Engines</a>
+        <a href="#section-efficiency" class="sub-nav-pill">📈 Efficiency</a>
+        <a href="#section-refrigerator" class="sub-nav-pill">❄️ Refrigerator</a>
+        <a href="#section-second-law" class="sub-nav-pill">⚠️ 2nd Law</a>
+        <a href="#section-entropy" class="sub-nav-pill">🌀 Entropy</a>
+        <a href="#section-ideal-gas" class="sub-nav-pill">🧪 Ideal Gas $PV=nRT$</a>
+        <a href="#section-virtual-lab" class="sub-nav-pill">🔬 Virtual Lab</a>
+        <a href="#section-formula-wall" class="sub-nav-pill">📌 Formula Wall</a>
+        <a href="#section-mdcat-traps" class="sub-nav-pill">🚨 MDCAT Traps</a>
+        <a href="#section-rapid-revision" class="sub-nav-pill">⚡ 60s Revision</a>
+        <a href="#section-quiz" class="sub-nav-pill">📝 Practice Quiz</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Search Modal -->
+  <div class="modal-backdrop" id="searchModalBackdrop" role="dialog" aria-modal="true">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <span>🔍</span>
+        <input type="text" id="globalSearchInput" placeholder="Search any formula, concept, law, or trap..." autocomplete="off">
+        <button id="closeSearchBtn" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem;">✕</button>
+      </div>
+      <div class="search-tags">
+        <span class="search-tag-chip" data-search="isothermal">Isothermal</span>
+        <span class="search-tag-chip" data-search="adiabatic">Adiabatic</span>
+        <span class="search-tag-chip" data-search="carnot">Carnot Efficiency</span>
+        <span class="search-tag-chip" data-search="entropy">Entropy</span>
+        <span class="search-tag-chip" data-search="refrigerator">Refrigerator COP</span>
+        <span class="search-tag-chip" data-search="first law">First Law</span>
+        <span class="search-tag-chip" data-search="latent heat">Latent Heat</span>
+        <span class="search-tag-chip" data-search="traps">MDCAT Traps</span>
+      </div>
+      <div class="search-results-list" id="searchResultsList">
+        <!-- Dynamic search results populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="badge-row">
+              <span class="badge badge-primary">⚡ MDCAT Physics</span>
+              <span class="badge badge-hot">🔥 High-Yield</span>
+              <span class="badge badge-violet">📐 Formula Focused</span>
+              <span class="badge badge-emerald">🧪 Interactive Lab</span>
+            </div>
+            <h1 class="hero-title">
+              <span class="hero-title-gradient">THERMODYNAMICS</span>
+            </h1>
+            <div class="hero-subtitle">
+              Heat • Work • Energy • Laws • Heat Engines
+            </div>
+            <p class="hero-desc">
+              Master every MDCAT Physics thermodynamics concept, formula, graph, and exam trap through realistic simulations, step-by-step calculators, and 25+ verified practice questions.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#section-virtual-lab" class="btn btn-primary" id="heroCtaLab">🔬 Enter Virtual Lab</a>
+              <a href="#section-quiz" class="btn btn-outline" id="heroCtaQuiz">📝 Take 25-MCQ Quiz</a>
+              <a href="#section-formula-wall" class="btn btn-hot" id="heroCtaFormulas">📌 Formula Wall</a>
+            </div>
+          </div>
+
+          <div class="hero-visual-card glass-panel">
+            <div class="hero-visual-header">
+              <span class="live-indicator"><span class="pulse-dot"></span> REAL-TIME HEAT ENGINE CYCLE</span>
+              <span class="mono" id="heroCycleState">$T_H = 600\text{K} \to T_C = 300\text{K}$</span>
+            </div>
+            <canvas id="heroEngineCanvas" width="500" height="280"></canvas>
+            <div style="display:flex; justify-content:space-between; margin-top:0.75rem; font-size:0.8rem; color:var(--text-muted);">
+              <span>🔥 Heat Input: <strong class="mono" style="color:var(--accent-hot);" id="heroQhVal">1000 J</strong></span>
+              <span>⚙️ Work Output: <strong class="mono" style="color:var(--accent-cyan);" id="heroWVal">500 J</strong></span>
+              <span>❄️ Heat Rejected: <strong class="mono" style="color:var(--accent-cold);" id="heroQcVal">500 J</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MASTERY & STUDY STATS DASHBOARD
+         ========================================================================== -->
+    <section class="mastery-dashboard" id="masteryDashboard">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card glass-panel">
+            <div class="stat-icon-wrap" style="color:var(--accent-cyan);">📊</div>
+            <div class="stat-info">
+              <div class="stat-label">Thermodynamics Mastery</div>
+              <div class="stat-value" id="overallMasteryPercent">0%</div>
+              <div class="progress-bar-wrap">
+                <div class="progress-fill" id="overallMasteryBar" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card glass-panel">
+            <div class="stat-icon-wrap" style="color:var(--accent-emerald);">✓</div>
+            <div class="stat-info">
+              <div class="stat-label">Topics Completed</div>
+              <div class="stat-value" id="topicsCompletedCount">0 / 18</div>
+              <div style="font-size:0.75rem; color:var(--text-dim); margin-top:0.25rem;">Auto-saved in browser</div>
+            </div>
+          </div>
+
+          <div class="stat-card glass-panel">
+            <div class="stat-icon-wrap" style="color:var(--accent-violet);">🎯</div>
+            <div class="stat-info">
+              <div class="stat-label">Quiz High Score</div>
+              <div class="stat-value" id="quizHighScore">0 / 25</div>
+              <div style="font-size:0.75rem; color:var(--text-dim); margin-top:0.25rem;">25 High-Yield MCQs</div>
+            </div>
+          </div>
+
+          <div class="stat-card glass-panel">
+            <div class="stat-icon-wrap" style="color:var(--accent-amber);">📌</div>
+            <div class="stat-info">
+              <div class="stat-label">Formulas Mastered</div>
+              <div class="stat-value" id="formulasMasteredCount">0 / 11</div>
+              <div style="font-size:0.75rem; color:var(--text-dim); margin-top:0.25rem;">MDCAT Formula Bank</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 1: BASICS & THERMODYNAMIC SYSTEMS
+         ========================================================================== -->
+    <section class="section-block" id="section-basics" data-topic-id="basics">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">01 • FOUNDATIONAL CONCEPTS</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="basics">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="basics">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Thermodynamic Systems & Boundaries</h2>
+          <p class="section-desc">
+            Thermodynamics is the study of heat, mechanical work, temperature, and energy transformations governed by macroscopic variables ($P, V, T, U, S$).
+          </p>
+        </div>
+
+        <div class="lab-split-grid">
+          <div class="concept-box">
+            <h4>Essential Definitions</h4>
+            <ul class="concept-list">
+              <li><strong>System:</strong> Specified portion of the universe chosen for thermodynamic investigation.</li>
+              <li><strong>Surroundings:</strong> Everything in the universe outside the thermodynamic system.</li>
+              <li><strong>Boundary:</strong> Real or imaginary envelope separating system from surroundings (can be fixed/movable, diathermic/adiabatic).</li>
+            </ul>
+
+            <div class="highlight-callout">
+              ⭐ <strong>MDCAT Key Rule:</strong> The state of a thermodynamic system is uniquely determined by state variables like Pressure ($P$), Volume ($V$), Temperature ($T$), and Internal Energy ($U$), which do not depend on the path taken!
+            </div>
+          </div>
+
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">System Classification Visualizer</span>
+              <span class="badge badge-primary">Interactive Comparison</span>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.75rem; margin-bottom:1rem;">
+              <button class="btn btn-outline btn-sm system-tab-btn active" data-system="open">Open System</button>
+              <button class="btn btn-outline btn-sm system-tab-btn" data-system="closed">Closed System</button>
+              <button class="btn btn-outline btn-sm system-tab-btn" data-system="isolated">Isolated System</button>
+            </div>
+            <div class="simulator-canvas-wrap">
+              <canvas id="systemCanvas" class="simulator-canvas"></canvas>
+            </div>
+            <div id="systemExplanation" style="font-size:0.9rem; color:var(--text-muted); line-height:1.5;">
+              <strong style="color:var(--accent-cyan);" id="systemTypeTitle">Open System:</strong> Exchanges <strong>both matter and energy</strong> across its boundaries (e.g., Boiling water in an open beaker).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2 & 3: TEMPERATURE & HEAT FLOW
+         ========================================================================== -->
+    <section class="section-block" id="section-temperature" data-topic-id="temperature">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">02 • TEMPERATURE & HEAT</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="temperature">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="temperature">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Temperature Scales & Heat Transfer</h2>
+          <p class="section-desc">
+            Temperature measures average kinetic energy of molecular motion. Heat is energy in transit caused solely by a temperature gradient.
+          </p>
+        </div>
+
+        <div class="lab-split-grid">
+          <!-- Interactive Temperature Converter -->
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">🌡️ Precise Temperature Converter</span>
+              <span class="badge badge-emerald">$K = ^\circ\text{C} + 273.15$</span>
+            </div>
+
+            <div class="thermometer-wrap">
+              <div class="thermometer-body">
+                <div class="thermometer-bulb" id="thermoBulb"></div>
+                <div class="thermometer-fluid" id="thermoFluid" style="height: 50%;"></div>
+              </div>
+
+              <div class="temp-inputs-col">
+                <div class="input-field-wrap">
+                  <label for="tempCelsiusInput">Celsius ($^\circ\text{C}$):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="tempCelsiusInput" class="custom-input" value="25" step="0.5">
+                    <span class="input-unit">°C</span>
+                  </div>
+                </div>
+
+                <div class="input-field-wrap">
+                  <label for="tempKelvinInput">Kelvin ($\text{K}$):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="tempKelvinInput" class="custom-input" value="298.15" step="0.5">
+                    <span class="input-unit">K</span>
+                  </div>
+                </div>
+
+                <div class="input-field-wrap">
+                  <label for="tempFahrenheitInput">Fahrenheit ($^\circ\text{F}$):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="tempFahrenheitInput" class="custom-input" value="77" step="0.5">
+                    <span class="input-unit">°F</span>
+                  </div>
+                </div>
+
+                <div class="highlight-callout cyan" style="margin:0;">
+                  ⭐ <strong>MDCAT Critical Fact:</strong> For temperature differences, $\Delta \text{K} = \Delta ^\circ\text{C}$. A rise of $10^\circ\text{C}$ is strictly equal to a rise of $10\text{ K}$!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Heat Simulation Canvas -->
+          <div class="simulator-box" id="section-heat">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">🔥 Thermal Conduction & Equilibrium Lab</span>
+              <span class="live-indicator"><span class="pulse-dot"></span> LIVE MOLECULES</span>
+            </div>
+
+            <div class="simulator-canvas-wrap">
+              <canvas id="heatTransferCanvas" class="simulator-canvas"></canvas>
+            </div>
+
+            <div class="sim-controls-grid">
+              <div class="control-item">
+                <label class="control-label">
+                  Hot Body Temp ($T_1$): <span class="control-val-tag" id="hotBodyVal">100°C</span>
+                </label>
+                <input type="range" id="hotBodyRange" min="50" max="200" value="100">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">
+                  Cold Body Temp ($T_2$): <span class="control-val-tag" id="coldBodyVal">10°C</span>
+                </label>
+                <input type="range" id="coldBodyRange" min="0" max="49" value="10">
+              </div>
+            </div>
+
+            <div class="sim-btn-group">
+              <button class="btn btn-primary btn-sm" id="startHeatSimBtn">▶ Start Conduction</button>
+              <button class="btn btn-outline btn-sm" id="pauseHeatSimBtn">⏸ Pause</button>
+              <button class="btn btn-outline btn-sm" id="resetHeatSimBtn">↺ Reset</button>
+            </div>
+
+            <div class="calc-step-box" id="heatEquilibriumStatus">
+              <div class="calc-step-row">
+                <span>Conduction Status:</span>
+                <span id="heatStatusText" style="color:var(--accent-cyan);">Equilibrium Reached</span>
+              </div>
+              <div class="calc-step-row">
+                <span>Final Equilibrium Temp:</span>
+                <span id="finalEquilibriumTemp">55.0 °C (328.15 K)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: SPECIFIC HEAT CAPACITY CALCULATOR
+         ========================================================================== -->
+    <section class="section-block" id="section-specific-heat" data-topic-id="specific-heat">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">03 • SPECIFIC HEAT LAB</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="specific-heat">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="specific-heat">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Specific Heat Capacity: $Q = mc\Delta T$</h2>
+          <p class="section-desc">
+            The quantity of thermal energy required to raise the temperature of $1\text{ kg}$ of a substance by $1\text{ K}$ (or $1^\circ\text{C}$). SI Unit: $\text{J}\cdot\text{kg}^{-1}\cdot\text{K}^{-1}$.
+          </p>
+        </div>
+
+        <div class="lab-split-grid">
+          <div class="concept-box">
+            <h4>Common Specific Heats ($c$)</h4>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:1rem;">
+              <button class="btn btn-outline btn-sm c-preset-btn active" data-c="4200" data-name="Water">Water: 4200 J/kg·K</button>
+              <button class="btn btn-outline btn-sm c-preset-btn" data-c="2100" data-name="Ice">Ice: 2100 J/kg·K</button>
+              <button class="btn btn-outline btn-sm c-preset-btn" data-c="2010" data-name="Steam">Steam: 2010 J/kg·K</button>
+              <button class="btn btn-outline btn-sm c-preset-btn" data-c="900" data-name="Aluminum">Aluminum: 900 J/kg·K</button>
+              <button class="btn btn-outline btn-sm c-preset-btn" data-c="450" data-name="Iron">Iron: 450 J/kg·K</button>
+              <button class="btn btn-outline btn-sm c-preset-btn" data-c="386" data-name="Copper">Copper: 386 J/kg·K</button>
+            </div>
+            <div class="highlight-callout emerald">
+              💧 <strong>Water's High Specific Heat:</strong> Water has an exceptionally high $c \approx 4200\text{ J/kg}\cdot\text{K}$, making it an ideal coolant in automobile radiators and a natural climate stabilizer.
+            </div>
+          </div>
+
+          <!-- Functional Step-by-Step Calculator -->
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">🧮 Interactive Heat Calculator</span>
+              <span class="badge badge-primary">$Q = mc\Delta T$</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+              <div class="input-field-wrap">
+                <label for="shMass">Mass $m$ ($\text{kg}$):</label>
+                <input type="number" id="shMass" class="custom-input" value="2.0" step="0.1" min="0.01">
+              </div>
+              <div class="input-field-wrap">
+                <label for="shCapacity">Specific Heat $c$ ($\text{J/kg}\cdot\text{K}$):</label>
+                <input type="number" id="shCapacity" class="custom-input" value="4200" step="10">
+              </div>
+              <div class="input-field-wrap">
+                <label for="shT1">Initial Temp $T_1$ ($^\circ\text{C}$):</label>
+                <input type="number" id="shT1" class="custom-input" value="20" step="1">
+              </div>
+              <div class="input-field-wrap">
+                <label for="shT2">Final Temp $T_2$ ($^\circ\text{C}$):</label>
+                <input type="number" id="shT2" class="custom-input" value="70" step="1">
+              </div>
+            </div>
+
+            <div class="calc-step-box" id="shSolutionBox">
+              <div class="calc-step-row">
+                <span>Temperature Rise $\Delta T = T_2 - T_1$:</span>
+                <span id="shDeltaTVal">50 K (or 50 °C)</span>
+              </div>
+              <div class="calc-step-row">
+                <span>Formula Substitution:</span>
+                <span id="shSubVal">2.0 × 4200 × 50</span>
+              </div>
+              <div class="calc-step-row">
+                <span>Heat Required $Q$:</span>
+                <span id="shFinalQ">420,000 J (420.0 kJ)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5: LATENT HEAT & PHASE TRANSITIONS
+         ========================================================================== -->
+    <section class="section-block" id="section-latent-heat" data-topic-id="latent-heat">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">04 • PHASE CHANGES</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="latent-heat">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="latent-heat">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Latent Heat: $Q = mL$</h2>
+          <p class="section-desc">
+            Thermal energy absorbed or released during a change of phase at constant temperature. $\Delta T = 0$ during latent phase conversion.
+          </p>
+        </div>
+
+        <div class="lab-split-grid">
+          <div class="concept-box">
+            <h4>MDCAT High-Yield Phase Constants</h4>
+            <ul class="concept-list">
+              <li><strong>Latent Heat of Fusion ($L_f$):</strong> Energy needed to convert $1\text{ kg}$ of solid to liquid at melting point ($L_{f,\text{water}} = 3.36 \times 10^5\text{ J/kg}$).</li>
+              <li><strong>Latent Heat of Vaporization ($L_v$):</strong> Energy needed to convert $1\text{ kg}$ of liquid to steam at boiling point ($L_{v,\text{water}} = 2.26 \times 10^6\text{ J/kg}$).</li>
+            </ul>
+            <div class="highlight-callout">
+              ⭐ <strong>MDCAT Trap Alert:</strong> $L_v > L_f$ because vaporization involves completely overcoming intermolecular bonds and vastly expanding volume against atmospheric pressure!
+            </div>
+          </div>
+
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">📈 Heating Curve ($T$ vs Time)</span>
+              <span class="badge badge-hot">Plateau: $\Delta T = 0$</span>
+            </div>
+            <div class="simulator-canvas-wrap">
+              <canvas id="phaseChangeCanvas" class="simulator-canvas"></canvas>
+            </div>
+            <div class="sim-btn-group">
+              <button class="btn btn-primary btn-sm" id="runPhaseSimBtn">▶ Animate Heating Curve</button>
+              <button class="btn btn-outline btn-sm" id="resetPhaseSimBtn">↺ Reset</button>
+            </div>
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.75rem;" id="phaseDescriptionText">
+              Current state: Solid Ice heating towards melting plateau ($0^\circ\text{C}$).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: ZEROTH LAW OF THERMODYNAMICS
+         ========================================================================== -->
+    <section class="section-block" id="section-zeroth-law" data-topic-id="zeroth-law">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">05 • THERMAL EQUILIBRIUM</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="zeroth-law">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="zeroth-law">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Zeroth Law of Thermodynamics</h2>
+          <p class="section-desc">
+            "If system A is in thermal equilibrium with B, and B is in thermal equilibrium with C, then A is in thermal equilibrium with C."
+          </p>
+        </div>
+
+        <div class="lab-split-grid">
+          <div class="concept-box">
+            <h4>Theoretical Significance</h4>
+            <p style="margin-bottom:1rem;">
+              The Zeroth Law gives mathematical validity to the concept of <strong>Temperature</strong> as a universal state property that determines whether heat will flow between bodies in contact.
+            </p>
+            <div class="highlight-callout cyan">
+              🌡️ <strong>Thermometer Principle:</strong> Thermometers work based on the Zeroth Law! The mercury in the thermometer (System B) reaches thermal equilibrium with the body (System A), which directly reflects temperature scale calibration (System C).
+            </div>
+          </div>
+
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">⚖️ A-B-C Thermal Equilibrium Tester</span>
+              <span class="badge badge-emerald" id="zerothBadgeStatus">Equilibrium Active</span>
+            </div>
+
+            <div class="simulator-canvas-wrap">
+              <canvas id="zerothCanvas" class="simulator-canvas"></canvas>
+            </div>
+
+            <div class="sim-controls-grid">
+              <div class="control-item">
+                <label class="control-label">System A Temp: <span class="control-val-tag" id="tempAVal">50°C</span></label>
+                <input type="range" id="tempASlider" min="0" max="100" value="50">
+              </div>
+              <div class="control-item">
+                <label class="control-label">System B Temp: <span class="control-val-tag" id="tempBVal">50°C</span></label>
+                <input type="range" id="tempBSlider" min="0" max="100" value="50">
+              </div>
+              <div class="control-item">
+                <label class="control-label">System C Temp: <span class="control-val-tag" id="tempCVal">50°C</span></label>
+                <input type="range" id="tempCSlider" min="0" max="100" value="50">
+              </div>
+            </div>
+
+            <button class="btn btn-outline btn-sm" id="makeEqualZerothBtn">⚡ Set All in Thermal Equilibrium (50°C)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7: FIRST LAW OF THERMODYNAMICS
+         ========================================================================== -->
+    <section class="section-block" id="section-first-law" data-topic-id="first-law">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">06 • CONSERVATION OF ENERGY</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="first-law">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="first-law">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">First Law of Thermodynamics: $\Delta U = Q - W$</h2>
+          <p class="section-desc">
+            Energy can neither be created nor destroyed; heat added to a system ($Q$) equals the increase in internal energy ($\Delta U$) plus mechanical work done by the system ($W$).
+          </p>
+        </div>
+
+        <div class="first-law-container">
+          <!-- 3-Way Linked Sliders -->
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">⚡ 3-Way Linked First Law Lab</span>
+              <span class="badge badge-hot">$Q = \Delta U + W$</span>
+            </div>
+
+            <div class="sim-controls-grid" style="grid-template-columns:1fr;">
+              <div class="control-item">
+                <label class="control-label">
+                  Heat Supplied $Q$ ($\text{Joules}$):
+                  <span class="control-val-tag" id="firstLawQVal">+1000 J</span>
+                </label>
+                <input type="range" id="firstLawQSlider" min="-2000" max="3000" value="1000" step="50">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">
+                  Work Done by System $W$ ($\text{Joules}$):
+                  <span class="control-val-tag" id="firstLawWVal">+400 J</span>
+                </label>
+                <input type="range" id="firstLawWSlider" min="-1500" max="2500" value="400" step="50">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">
+                  Internal Energy Change $\Delta U = Q - W$:
+                  <span class="control-val-tag" id="firstLawUVal">+600 J</span>
+                </label>
+                <input type="range" id="firstLawUSlider" min="-2000" max="3000" value="600" step="50" disabled>
+              </div>
+            </div>
+
+            <div class="first-law-bars">
+              <div class="energy-bar-track">
+                <div class="energy-bar-fill heat" id="barQ" style="width: 50%;"></div>
+                <span class="energy-bar-label">Heat Added ($Q$)</span>
+                <span class="energy-bar-value" id="barQText">1000 J</span>
+              </div>
+              <div class="energy-bar-track">
+                <div class="energy-bar-fill internal" id="barU" style="width: 30%;"></div>
+                <span class="energy-bar-label">Internal Energy ($\Delta U$)</span>
+                <span class="energy-bar-value" id="barUText">600 J</span>
+              </div>
+              <div class="energy-bar-track">
+                <div class="energy-bar-fill work" id="barW" style="width: 20%;"></div>
+                <span class="energy-bar-label">Work Done ($W$)</span>
+                <span class="energy-bar-value" id="barWText">400 J</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sign Conventions Reference Cards -->
+          <div class="concept-box" style="margin-bottom:0;">
+            <h4>⭐ MDCAT Sign Conventions</h4>
+            <div class="sign-grid">
+              <div class="sign-card">
+                <div class="sign-tag sign-pos">$Q > 0$</div>
+                <strong style="color:var(--text-main);">Heat Absorbed</strong>
+                <p style="font-size:0.8rem; margin-top:4px;">Heat enters the system from surroundings</p>
+              </div>
+
+              <div class="sign-card">
+                <div class="sign-tag sign-neg">$Q < 0$</div>
+                <strong style="color:var(--text-main);">Heat Released</strong>
+                <p style="font-size:0.8rem; margin-top:4px;">Heat leaves system into surroundings</p>
+              </div>
+
+              <div class="sign-card">
+                <div class="sign-tag sign-pos">$W > 0$</div>
+                <strong style="color:var(--text-main);">Work BY System</strong>
+                <p style="font-size:0.8rem; margin-top:4px;">Gas expands ($\Delta V > 0$)</p>
+              </div>
+
+              <div class="sign-card">
+                <div class="sign-tag sign-neg">$W < 0$</div>
+                <strong style="color:var(--text-main);">Work ON System</strong>
+                <p style="font-size:0.8rem; margin-top:4px;">Gas compressed ($\Delta V < 0$)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 8 & 9: INTERNAL ENERGY & WORK DONE BY GAS
+         ========================================================================== -->
+    <section class="section-block" id="section-internal-energy" data-topic-id="internal-energy">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">07 • MOLECULAR VELOCITY & P-V WORK</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="internal-energy">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="internal-energy">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Internal Energy ($U$) & Gas Work ($W = P\Delta V$)</h2>
+          <p class="section-desc">
+            Internal energy of an ideal gas is solely a function of temperature ($U \propto T$). When gas expands against external pressure, it performs mechanical work ($W = \int P dV$).
+          </p>
+        </div>
+
+        <div class="lab-split-grid">
+          <!-- Internal Energy & Microscopic Motion -->
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">🧠 Kinetic Molecular Motion</span>
+              <span class="badge badge-violet">$U \propto T \implies \Delta U = 0$ if $\Delta T = 0$</span>
+            </div>
+            <div class="simulator-canvas-wrap">
+              <canvas id="internalEnergyCanvas" class="simulator-canvas"></canvas>
+            </div>
+            <div class="control-item">
+              <label class="control-label">
+                Absolute Temperature ($T$):
+                <span class="control-val-tag" id="gasTempSliderVal">300 K</span>
+              </label>
+              <input type="range" id="gasTempSlider" min="100" max="900" value="300">
+            </div>
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.75rem;">
+              Molecular RMS speed: $v_{\text{rms}} = \sqrt{\frac{3RT}{M}}$. Notice how particle collision frequency and kinetic velocity scale directly with $T$.
+            </div>
+          </div>
+
+          <!-- Dynamic Piston & Work Done Lab -->
+          <div class="simulator-box" id="section-work-done">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">📐 Piston Chamber: $W = P\Delta V$</span>
+              <span class="badge badge-primary">Area Under Curve</span>
+            </div>
+            <div class="simulator-canvas-wrap">
+              <canvas id="pistonWorkCanvas" class="simulator-canvas"></canvas>
+            </div>
+            <div class="sim-controls-grid">
+              <div class="control-item">
+                <label class="control-label">Pressure ($P$): <span class="control-val-tag" id="pistonPVal">2.0 atm</span></label>
+                <input type="range" id="pistonPSlider" min="0.5" max="5.0" step="0.1" value="2.0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Volume ($V_2$): <span class="control-val-tag" id="pistonVVal">4.0 L</span></label>
+                <input type="range" id="pistonVSlider" min="1.0" max="6.0" step="0.1" value="4.0">
+              </div>
+            </div>
+            <div class="calc-step-box">
+              <div class="calc-step-row">
+                <span>Calculated Work $W = P(V_2 - V_1)$:</span>
+                <span id="pistonWorkOutput" style="color:var(--accent-cyan);">+608 J (Expansion)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 10 & 11: P-V DIAGRAMS & 4 CORE PROCESSES
+         ========================================================================== -->
+    <section class="section-block" id="section-pv-diagrams" data-topic-id="pv-diagrams">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">08 • GRAPHICAL ANALYSIS & PROCESSES</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="pv-diagrams">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="pv-diagrams">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">P–V Diagram Lab & The 4 Master Processes</h2>
+          <p class="section-desc">
+            The area under any curve in a $P\text{–}V$ diagram directly represents the mechanical work performed by the gas. Select any thermodynamic process below to analyze its path.
+          </p>
+        </div>
+
+        <!-- Master P-V Graph Simulator -->
+        <div class="simulator-box" style="margin-bottom:2rem;">
+          <div class="simulator-titlebar">
+            <span class="mono" style="font-weight:700;">📊 Interactive Multi-Curve P–V Analyzer</span>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button class="btn btn-outline btn-sm pv-curve-btn active" data-curve="isothermal">Isothermal</button>
+              <button class="btn btn-outline btn-sm pv-curve-btn" data-curve="adiabatic">Adiabatic</button>
+              <button class="btn btn-outline btn-sm pv-curve-btn" data-curve="isobaric">Isobaric</button>
+              <button class="btn btn-outline btn-sm pv-curve-btn" data-curve="isochoric">Isochoric</button>
+            </div>
+          </div>
+
+          <div class="simulator-canvas-wrap" style="height:320px;">
+            <canvas id="masterPVCanvas" style="width:100%; height:100%; display:block;"></canvas>
+          </div>
+
+          <div class="calc-step-box" id="pvStatsBox">
+            <div class="calc-step-row">
+              <span>Active Process:</span>
+              <span id="pvActiveProcessTitle" style="color:var(--accent-cyan); font-weight:700;">Isothermal Process ($T = \text{const}$)</span>
+            </div>
+            <div class="calc-step-row">
+              <span>Governing Equation:</span>
+              <span id="pvGovEquation" class="mono">$PV = \text{constant} \implies P_1V_1 = P_2V_2$</span>
+            </div>
+            <div class="calc-step-row">
+              <span>Work Done & 1st Law:</span>
+              <span id="pvWorkLawSummary">$\Delta U = 0 \implies Q = W = nRT \ln(V_2/V_1)$</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Master Process Interactive Cards -->
+        <div class="processes-grid" id="section-processes">
+          <!-- Card 1: Isothermal -->
+          <div class="process-card">
+            <span class="process-badge">$\Delta T = 0$</span>
+            <h3>Isothermal Process</h3>
+            <div class="process-formula-tag">$T = \text{const} \implies \Delta U = 0$</div>
+            <canvas id="miniIsothermalCanvas" class="process-mini-canvas"></canvas>
+            <ul class="process-details-list">
+              <li><strong>Boyle's Law:</strong> $P_1V_1 = P_2V_2$</li>
+              <li><strong>First Law Form:</strong> $Q = W$ (all absorbed heat becomes work)</li>
+              <li><strong>Slope of Curve:</strong> $\frac{dP}{dV} = -\frac{P}{V}$</li>
+              <li><strong>Condition:</strong> Slow process in conducting container (diathermic walls)</li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Adiabatic -->
+          <div class="process-card">
+            <span class="process-badge" style="background:rgba(239,68,68,0.15); color:var(--accent-red);">$Q = 0$</span>
+            <h3>Adiabatic Process</h3>
+            <div class="process-formula-tag">$PV^\gamma = \text{const} \implies \Delta U = -W$</div>
+            <canvas id="miniAdiabaticCanvas" class="process-mini-canvas"></canvas>
+            <ul class="process-details-list">
+              <li><strong>Poisson's Law:</strong> $P_1 V_1^\gamma = P_2 V_2^\gamma$ ($\gamma = C_p/C_v$)</li>
+              <li><strong>Expansion:</strong> $W > 0 \implies \Delta U < 0 \implies$ Cooling occurs!</li>
+              <li><strong>Slope of Curve:</strong> $\frac{dP}{dV} = -\gamma \frac{P}{V}$ (Steeper than Isothermal)</li>
+              <li><strong>Condition:</strong> Very rapid process in insulated container</li>
+            </ul>
+          </div>
+
+          <!-- Card 3: Isobaric -->
+          <div class="process-card">
+            <span class="process-badge" style="background:rgba(16,185,129,0.15); color:var(--accent-emerald);">$P = \text{const}$</span>
+            <h3>Isobaric Process</h3>
+            <div class="process-formula-tag">$W = P\Delta V = P(V_2 - V_1)$</div>
+            <canvas id="miniIsobaricCanvas" class="process-mini-canvas"></canvas>
+            <ul class="process-details-list">
+              <li><strong>Charles's Law:</strong> $\frac{V_1}{T_1} = \frac{V_2}{T_2}$</li>
+              <li><strong>First Law Form:</strong> $Q = \Delta U + P\Delta V$</li>
+              <li><strong>Heat absorbed:</strong> $Q = n C_p \Delta T$</li>
+              <li><strong>Condition:</strong> Movable frictionless piston under constant pressure</li>
+            </ul>
+          </div>
+
+          <!-- Card 4: Isochoric -->
+          <div class="process-card">
+            <span class="process-badge" style="background:rgba(245,158,11,0.15); color:var(--accent-amber);">$V = \text{const}$</span>
+            <h3>Isochoric Process</h3>
+            <div class="process-formula-tag">$\Delta V = 0 \implies W = 0$</div>
+            <canvas id="miniIsochoricCanvas" class="process-mini-canvas"></canvas>
+            <ul class="process-details-list">
+              <li><strong>Gay-Lussac's Law:</strong> $\frac{P_1}{T_1} = \frac{P_2}{T_2}$</li>
+              <li><strong>First Law Form:</strong> $\Delta U = Q$ (no mechanical work performed)</li>
+              <li><strong>Heat absorbed:</strong> $Q = n C_v \Delta T$</li>
+              <li><strong>Condition:</strong> Rigid sealed container with fixed boundaries</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 12: CYCLIC PROCESSES
+         ========================================================================== -->
+    <section class="section-block" id="section-cyclic" data-topic-id="cyclic">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">09 • CLOSED CYCLES & NET WORK</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="cyclic">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="cyclic">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Cyclic Processes: $\Delta U = 0 \implies Q_{\text{net}} = W_{\text{net}}$</h2>
+          <p class="section-desc">
+            A cyclic thermodynamic process returns the working substance to its exact initial state. Because internal energy is a state function, net change in internal energy over a complete cycle is strictly zero ($\Delta U = 0$).
+          </p>
+        </div>
+
+        <div class="lab-split-grid">
+          <div class="concept-box">
+            <h4>MDCAT Cyclic Principles</h4>
+            <ul class="concept-list">
+              <li><strong>Net Work Done ($W_{\text{net}}$):</strong> Equal to the <em>enclosed area</em> inside the closed cycle loop on a $P\text{–}V$ diagram.</li>
+              <li><strong>Clockwise Cycle ($\circlearrowright$):</strong> Net Work is <strong>Positive</strong> ($W_{\text{net}} > 0$). Operates as a <strong>Heat Engine</strong>.</li>
+              <li><strong>Counter-Clockwise Cycle ($\circlearrowleft$):</strong> Net Work is <strong>Negative</strong> ($W_{\text{net}} < 0$). Operates as a <strong>Refrigerator / Heat Pump</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">🔁 Animated Closed Cycle ($1\to 2\to 3\to 4\to 1$)</span>
+              <span class="badge badge-primary" id="cycleDirBadge">Clockwise: Heat Engine</span>
+            </div>
+            <div class="simulator-canvas-wrap">
+              <canvas id="cyclicCanvas" class="simulator-canvas"></canvas>
+            </div>
+            <div class="sim-btn-group">
+              <button class="btn btn-primary btn-sm" id="toggleCycleDirBtn">⇄ Toggle Direction (Engine / Refrigerator)</button>
+              <button class="btn btn-outline btn-sm" id="resetCycleBtn">↺ Reset Animation</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 13 & 14: HEAT ENGINES & EFFICIENCY
+         ========================================================================== -->
+    <section class="section-block" id="section-heat-engines" data-topic-id="heat-engines">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">10 • HEAT ENGINES & CARNOT LIMIT</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="heat-engines">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="heat-engines">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Heat Engines & Thermal Efficiency</h2>
+          <p class="section-desc">
+            A heat engine absorbs heat $Q_H$ from a high-temperature source ($T_H$), converts a fraction into mechanical work ($W$), and rejects residual heat $Q_C$ to a cold sink ($T_C$).
+          </p>
+        </div>
+
+        <div class="lab-split-grid">
+          <!-- Interactive Sankey Flow & Sliders -->
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">⚙️ Heat Engine Flow Simulator</span>
+              <span class="badge badge-hot">$Q_H = W + Q_C$</span>
+            </div>
+
+            <div class="sankey-engine-wrap">
+              <div class="reservoir-box reservoir-hot">
+                <span>🔥 HOT RESERVOIR ($T_H$)</span>
+                <span class="mono" id="engineThDisplay">600 K</span>
+              </div>
+
+              <div class="engine-core-circle">
+                <span style="font-size:1.5rem;">⚙️</span>
+                <span style="font-size:0.8rem; font-weight:700;">ENGINE</span>
+                <div class="work-output-arrow" id="workOutputTag">W = 600 J</div>
+              </div>
+
+              <div class="reservoir-box reservoir-cold">
+                <span>❄️ COLD RESERVOIR ($T_C$)</span>
+                <span class="mono" id="engineTcDisplay">300 K</span>
+              </div>
+            </div>
+
+            <div class="sim-controls-grid" style="margin-top:1.5rem;">
+              <div class="control-item">
+                <label class="control-label">
+                  Heat Supplied $Q_H$ ($\text{J}$):
+                  <span class="control-val-tag" id="engineQhSliderVal">1000 J</span>
+                </label>
+                <input type="range" id="engineQhSlider" min="200" max="3000" step="50" value="1000">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">
+                  Heat Rejected $Q_C$ ($\text{J}$):
+                  <span class="control-val-tag" id="engineQcSliderVal">400 J</span>
+                </label>
+                <input type="range" id="engineQcSlider" min="50" max="950" step="25" value="400">
+              </div>
+            </div>
+          </div>
+
+          <!-- Efficiency Visualizer & Gauge -->
+          <div class="simulator-box" id="section-efficiency">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">📈 Thermal Efficiency ($\eta$)</span>
+              <span class="badge badge-emerald">$\eta = 1 - \frac{Q_C}{Q_H}$</span>
+            </div>
+
+            <div class="gauge-meter-wrap">
+              <div class="gauge-circle" id="engineEfficiencyGauge" style="--gauge-fill: 60%;">
+                <div class="gauge-inner">
+                  <div class="gauge-percent" id="efficiencyPercentText">60.0%</div>
+                  <div class="gauge-label">EFFICIENCY $\eta$</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-step-box">
+              <div class="calc-step-row">
+                <span>Work Delivered $W = Q_H - Q_C$:</span>
+                <span id="calcEngineWork" class="mono">600 J</span>
+              </div>
+              <div class="calc-step-row">
+                <span>Real Engine Efficiency $\eta = \frac{W}{Q_H}$:</span>
+                <span id="calcEngineEff" class="mono">0.60 (60.0%)</span>
+              </div>
+              <div class="calc-step-row">
+                <span>Carnot Max Limit $\eta_{\text{Carnot}} = 1 - \frac{T_C}{T_H}$:</span>
+                <span id="calcCarnotEff" class="mono" style="color:var(--accent-emerald);">50.0% (at 600K/300K)</span>
+              </div>
+            </div>
+
+            <div class="highlight-callout" style="margin-bottom:0;">
+              ⭐ <strong>Kelvin-Planck Law:</strong> It is impossible to construct a 100% efficient heat engine operating in a cycle ($\eta < 100\%$). Rejection of heat ($Q_C > 0$) is unavoidable!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 15: REFRIGERATOR & HEAT PUMP
+         ========================================================================== -->
+    <section class="section-block" id="section-refrigerator" data-topic-id="refrigerator">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">11 • REVERSE HEAT ENGINE</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="refrigerator">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="refrigerator">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Refrigerator & Coefficient of Performance (COP)</h2>
+          <p class="section-desc">
+            A refrigerator transfers heat from a cold region ($Q_C$) to a hotter region ($Q_H$) using external mechanical work ($W$). $\text{COP} = \frac{Q_C}{W} = \frac{Q_C}{Q_H - Q_C}$.
+          </p>
+        </div>
+
+        <div class="lab-split-grid">
+          <div class="concept-box">
+            <h4>Key Operating Principles</h4>
+            <ul class="concept-list">
+              <li><strong>Energy Balance:</strong> $Q_H = Q_C + W_{\text{in}}$</li>
+              <li><strong>Coefficient of Performance:</strong> $\text{COP} = \frac{\text{Desired Cooling Output}}{\text{Work Input}} = \frac{Q_C}{W}$</li>
+              <li><strong>Carnot Refrigerator:</strong> $\text{COP}_{\text{Carnot}} = \frac{T_C}{T_H - T_C}$</li>
+            </ul>
+            <div class="highlight-callout cyan">
+              ❄️ <strong>Open Refrigerator Door Question:</strong> If you leave a refrigerator door open in a closed room, the room temperature will <strong>INCREASE</strong> because total heat rejected ($Q_H = Q_C + W$) is greater than heat extracted ($Q_C$) by the amount of electrical work $W$ converted to heat!
+            </div>
+          </div>
+
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">🧊 COP Calculator & Visualizer</span>
+              <span class="badge badge-primary">$\text{COP} = Q_C / W$</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+              <div class="input-field-wrap">
+                <label for="refQc">Heat Extracted $Q_C$ ($\text{J}$):</label>
+                <input type="number" id="refQc" class="custom-input" value="1200" step="50">
+              </div>
+              <div class="input-field-wrap">
+                <label for="refWork">External Work $W$ ($\text{J}$):</label>
+                <input type="number" id="refWork" class="custom-input" value="300" step="25">
+              </div>
+            </div>
+
+            <div class="calc-step-box">
+              <div class="calc-step-row">
+                <span>Heat Expelled to Room $Q_H = Q_C + W$:</span>
+                <span id="refQhVal" class="mono">1500 J</span>
+              </div>
+              <div class="calc-step-row">
+                <span>Coefficient of Performance (COP):</span>
+                <span id="refCopVal" class="mono" style="color:var(--accent-cyan); font-weight:700;">4.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 16 & 17: SECOND LAW & ENTROPY
+         ========================================================================== -->
+    <section class="section-block" id="section-second-law" data-topic-id="second-law">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">12 • SECOND LAW & ENTROPY</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="second-law">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="second-law">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Second Law of Thermodynamics & Entropy ($\Delta S$)</h2>
+          <p class="section-desc">
+            The Second Law dictates the natural arrow of spontaneous heat flow (hot to cold) and establishes that entropy ($\Delta S = \frac{Q_{\text{rev}}}{T}$) of an isolated system always tends toward a maximum.
+          </p>
+        </div>
+
+        <div class="lab-split-grid">
+          <!-- Second Law Direction of Heat Flow Test -->
+          <div class="simulator-box">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">⚠️ Direction of Spontaneous Heat Flow</span>
+              <span class="badge badge-hot">Clausius Statement</span>
+            </div>
+
+            <div style="padding:1rem; background:#040711; border-radius:var(--radius-md); border:1px solid var(--border-subtle); text-align:center;">
+              <div id="spontaneousHeatDisplay" style="font-size:1.15rem; font-weight:700; color:var(--accent-hot); margin-bottom:1rem;">
+                🔥 Hot Body (80°C) ➔ ❄️ Cold Body (20°C) [Spontaneous Flow]
+              </div>
+              <div class="sim-btn-group" style="justify-content:center;">
+                <button class="btn btn-outline btn-sm" id="testSpontaneousBtn">▶ Flow Hot ➔ Cold</button>
+                <button class="btn btn-hot btn-sm" id="testReverseBtn">⚡ Try Reverse Flow (Cold ➔ Hot)</button>
+              </div>
+            </div>
+
+            <div class="highlight-callout" id="secondLawAlertBox" style="margin-top:1rem;">
+              ⭐ <strong>Clausius Statement:</strong> Heat cannot flow spontaneously from a cooler body to a hotter body without an input of external work!
+            </div>
+          </div>
+
+          <!-- Entropy & Molecular Dispersion Simulation -->
+          <div class="simulator-box" id="section-entropy">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">🌀 Entropy & Molecular Dispersion</span>
+              <span class="badge badge-violet">$\Delta S = \frac{Q_{\text{rev}}}{T}$</span>
+            </div>
+
+            <div class="simulator-canvas-wrap">
+              <canvas id="entropyCanvas" class="simulator-canvas"></canvas>
+            </div>
+
+            <div class="sim-btn-group">
+              <button class="btn btn-primary btn-sm" id="disperseEntropyBtn">▶ Remove Partition (Increase Disorder)</button>
+              <button class="btn btn-outline btn-sm" id="resetEntropyBtn">↺ Reset to Ordered State</button>
+            </div>
+
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.75rem;">
+              Natural processes are irreversible and progress from low entropy (ordered microstates) to high entropy (maximum energy dispersal).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 18: IDEAL GAS EQUATION LAB
+         ========================================================================== -->
+    <section class="section-block" id="section-ideal-gas" data-topic-id="ideal-gas">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">13 • GAS RELATIONS</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="ideal-gas">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="ideal-gas">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Ideal Gas Equation Lab: $PV = nRT$</h2>
+          <p class="section-desc">
+            Universal Gas Constant $R = 8.314\text{ J}\cdot\text{mol}^{-1}\cdot\text{K}^{-1} = 0.0821\text{ L}\cdot\text{atm}\cdot\text{mol}^{-1}\cdot\text{K}^{-1}$. Select any parameter to calculate with automated SI conversions.
+          </p>
+        </div>
+
+        <div class="simulator-box">
+          <div class="simulator-titlebar">
+            <span class="mono" style="font-weight:700;">🧪 4-Variable Ideal Gas Solver</span>
+            <div style="display:flex; gap:0.5rem;">
+              <button class="btn btn-outline btn-sm gas-solve-btn active" data-solve="P">Solve $P$</button>
+              <button class="btn btn-outline btn-sm gas-solve-btn" data-solve="V">Solve $V$</button>
+              <button class="btn btn-outline btn-sm gas-solve-btn" data-solve="n">Solve $n$</button>
+              <button class="btn btn-outline btn-sm gas-solve-btn" data-solve="T">Solve $T$</button>
+            </div>
+          </div>
+
+          <div class="sim-controls-grid" style="grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="input-field-wrap">
+              <label for="gasP">Pressure $P$ ($\text{kPa}$):</label>
+              <input type="number" id="gasP" class="custom-input" value="101.3" step="1">
+            </div>
+            <div class="input-field-wrap">
+              <label for="gasV">Volume $V$ ($\text{m}^3$):</label>
+              <input type="number" id="gasV" class="custom-input" value="0.024" step="0.001">
+            </div>
+            <div class="input-field-wrap">
+              <label for="gasN">Moles $n$ ($\text{mol}$):</label>
+              <input type="number" id="gasN" class="custom-input" value="1.0" step="0.1">
+            </div>
+            <div class="input-field-wrap">
+              <label for="gasT">Temperature $T$ ($\text{K}$):</label>
+              <input type="number" id="gasT" class="custom-input" value="298.15" step="1">
+            </div>
+          </div>
+
+          <div class="calc-step-box" id="gasSolutionResult">
+            <div class="calc-step-row">
+              <span>Selected Formula:</span>
+              <span id="gasFormulaUsed" class="mono">$P = \frac{nRT}{V}$</span>
+            </div>
+            <div class="calc-step-row">
+              <span>Step-by-step substitution:</span>
+              <span id="gasSubUsed" class="mono">(1.0 mol × 8.314 J/mol·K × 298.15 K) / 0.024 m³</span>
+            </div>
+            <div class="calc-step-row">
+              <span>Calculated Target:</span>
+              <span id="gasFinalResult" style="color:var(--accent-cyan); font-weight:700;">P = 103.29 kPa (1.02 atm)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 19: DEDICATED VIRTUAL THERMODYNAMICS LAB
+         ========================================================================== -->
+    <section class="section-block" id="section-virtual-lab" data-topic-id="virtual-lab">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">14 • VIRTUAL EXPERIMENTS</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="virtual-lab">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="virtual-lab">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Virtual Thermodynamics Laboratory</h2>
+          <p class="section-desc">
+            Interact directly with 5 virtual experimental benches. Switch between laboratory setups to observe real-time thermodynamic state transitions.
+          </p>
+        </div>
+
+        <div class="vlab-nav" id="vlabNav">
+          <button class="vlab-tab-btn active" data-vlab="heat-conduction">1. Heat Conduction</button>
+          <button class="vlab-tab-btn" data-vlab="gas-expansion">2. Gas Expansion</button>
+          <button class="vlab-tab-btn" data-vlab="adiabatic-comp">3. Adiabatic Compression</button>
+          <button class="vlab-tab-btn" data-vlab="phase-transition">4. Phase Transitions</button>
+          <button class="vlab-tab-btn" data-vlab="carnot-cycle">5. Carnot Engine Live</button>
+        </div>
+
+        <div class="simulator-box">
+          <!-- Panel 1: Heat Conduction -->
+          <div class="vlab-content-panel active" id="vlab-heat-conduction">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">Bench 1: Thermal Gradient Across Metallic Bar</span>
+              <span class="live-indicator"><span class="pulse-dot"></span> SIMULATION ACTIVE</span>
+            </div>
+            <div class="simulator-canvas-wrap">
+              <canvas id="vlabCanvas1" class="simulator-canvas"></canvas>
+            </div>
+            <div class="sim-btn-group">
+              <button class="btn btn-primary btn-sm" id="vlabStart1">▶ Heat Bar Left End</button>
+              <button class="btn btn-outline btn-sm" id="vlabReset1">↺ Reset Bar</button>
+            </div>
+          </div>
+
+          <!-- Panel 2: Gas Expansion -->
+          <div class="vlab-content-panel" id="vlab-gas-expansion">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">Bench 2: Free Gas Expansion in Cylinder</span>
+              <span class="badge badge-primary">$W = P\Delta V$</span>
+            </div>
+            <div class="simulator-canvas-wrap">
+              <canvas id="vlabCanvas2" class="simulator-canvas"></canvas>
+            </div>
+            <div class="sim-btn-group">
+              <button class="btn btn-primary btn-sm" id="vlabStart2">▶ Expand Piston</button>
+              <button class="btn btn-outline btn-sm" id="vlabCompress2">◀ Compress Piston</button>
+              <button class="btn btn-outline btn-sm" id="vlabReset2">↺ Reset</button>
+            </div>
+          </div>
+
+          <!-- Panel 3: Adiabatic Compression -->
+          <div class="vlab-content-panel" id="vlab-adiabatic-comp">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">Bench 3: Rapid Adiabatic Compression (Temperature Spike)</span>
+              <span class="badge badge-hot">$Q = 0 \implies \Delta U = -W$</span>
+            </div>
+            <div class="simulator-canvas-wrap">
+              <canvas id="vlabCanvas3" class="simulator-canvas"></canvas>
+            </div>
+            <div class="sim-btn-group">
+              <button class="btn btn-hot btn-sm" id="vlabStart3">⚡ Rapid Slam Compression</button>
+              <button class="btn btn-outline btn-sm" id="vlabReset3">↺ Release Piston</button>
+            </div>
+          </div>
+
+          <!-- Panel 4: Phase Transition -->
+          <div class="vlab-content-panel" id="vlab-phase-transition">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">Bench 4: Microscopic Molecular Phase Transition (Ice ➔ Liquid ➔ Steam)</span>
+              <span class="badge badge-violet">$Q = mL$</span>
+            </div>
+            <div class="simulator-canvas-wrap">
+              <canvas id="vlabCanvas4" class="simulator-canvas"></canvas>
+            </div>
+            <div class="sim-btn-group">
+              <button class="btn btn-primary btn-sm" id="vlabHeat4">🔥 Add Heat</button>
+              <button class="btn btn-outline btn-sm" id="vlabCool4">❄️ Remove Heat</button>
+              <button class="btn btn-outline btn-sm" id="vlabReset4">↺ Reset</button>
+            </div>
+          </div>
+
+          <!-- Panel 5: Carnot Engine Live -->
+          <div class="vlab-content-panel" id="vlab-carnot-cycle">
+            <div class="simulator-titlebar">
+              <span class="mono" style="font-weight:700;">Bench 5: Continuous 4-Stroke Carnot Cycle</span>
+              <span class="badge badge-emerald">4 Reversible Stages</span>
+            </div>
+            <div class="simulator-canvas-wrap">
+              <canvas id="vlabCanvas5" class="simulator-canvas"></canvas>
+            </div>
+            <div class="sim-btn-group">
+              <button class="btn btn-primary btn-sm" id="vlabRun5">▶ Run Carnot Cycle</button>
+              <button class="btn btn-outline btn-sm" id="vlabPause5">⏸ Pause</button>
+              <button class="btn btn-outline btn-sm" id="vlabReset5">↺ Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 20: MDCAT FORMULA WALL
+         ========================================================================== -->
+    <section class="section-block" id="section-formula-wall" data-topic-id="formula-wall">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">15 • MASTER FORMULA BANK</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="formula-wall">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="formula-wall">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">MDCAT Physics Formula Wall</h2>
+          <p class="section-desc">
+            All 11+ high-yield thermodynamics equations with precise definitions, SI units, operational conditions, and MDCAT tips. Click any formula to copy.
+          </p>
+        </div>
+
+        <div class="formula-filter-bar">
+          <button class="filter-chip active" data-filter="all">All Formulas (11)</button>
+          <button class="filter-chip" data-filter="basics">Heat & Temp</button>
+          <button class="filter-chip" data-filter="first-law">1st Law & Work</button>
+          <button class="filter-chip" data-filter="processes">Processes</button>
+          <button class="filter-chip" data-filter="engines">Engines & Entropy</button>
+        </div>
+
+        <div class="formula-grid" id="formulaGrid">
+          <!-- Populated by JavaScript with rich cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 21: MDCAT TRAPS & PITFALLS (FLIP CARDS)
+         ========================================================================== -->
+    <section class="section-block" id="section-mdcat-traps" data-topic-id="mdcat-traps">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">16 • EXAM TRAPS & PITFALLS</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="mdcat-traps">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="mdcat-traps">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">10 Common MDCAT Traps & Pitfalls</h2>
+          <p class="section-desc">
+            Examiners frequently craft questions around these exact misconceptions. Click on any card to reveal the exam rationale.
+          </p>
+        </div>
+
+        <div class="traps-grid" id="trapsGrid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 22: THERMODYNAMICS IN 60 SECONDS (RAPID REVISION)
+         ========================================================================== -->
+    <section class="section-block" id="section-rapid-revision" data-topic-id="rapid-revision">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">17 • RAPID CHEAT SHEET</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="rapid-revision">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="rapid-revision">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Thermodynamics in 60 Seconds</h2>
+          <p class="section-desc">
+            Ultra-condensed high-yield points for last-minute exam revision.
+          </p>
+        </div>
+
+        <div class="revision-grid">
+          <div class="revision-card">
+            <div class="revision-icon">🔥</div>
+            <div class="revision-content">
+              <h4>Heat vs Temperature</h4>
+              <p>Heat is energy in transit ($\text{J}$). Temperature measures average kinetic energy ($\text{K}$).</p>
+            </div>
+          </div>
+
+          <div class="revision-card">
+            <div class="revision-icon">⚡</div>
+            <div class="revision-content">
+              <h4>First Law Principle</h4>
+              <p>Direct statement of conservation of energy: $\Delta U = Q - W \implies Q = \Delta U + W$.</p>
+            </div>
+          </div>
+
+          <div class="revision-card">
+            <div class="revision-icon">🌡️</div>
+            <div class="revision-content">
+              <h4>Isothermal Process</h4>
+              <p>$T = \text{const} \implies \Delta U = 0 \implies Q = W$. Boyle's law applies.</p>
+            </div>
+          </div>
+
+          <div class="revision-card">
+            <div class="revision-icon">🚫</div>
+            <div class="revision-content">
+              <h4>Adiabatic Process</h4>
+              <p>$Q = 0 \implies \Delta U = -W$. Rapid process. Slope steeper by factor $\gamma$.</p>
+            </div>
+          </div>
+
+          <div class="revision-card">
+            <div class="revision-icon">📈</div>
+            <div class="revision-content">
+              <h4>Isobaric Process</h4>
+              <p>$P = \text{const} \implies W = P\Delta V$. Charles's law applies.</p>
+            </div>
+          </div>
+
+          <div class="revision-card">
+            <div class="revision-icon">📉</div>
+            <div class="revision-content">
+              <h4>Isochoric Process</h4>
+              <p>$V = \text{const} \implies \Delta V = 0 \implies W = 0 \implies \Delta U = Q$.</p>
+            </div>
+          </div>
+
+          <div class="revision-card">
+            <div class="revision-icon">🔁</div>
+            <div class="revision-content">
+              <h4>Cyclic Process</h4>
+              <p>Returns to start state $\implies \Delta U = 0 \implies Q_{\text{net}} = W_{\text{net}}$.</p>
+            </div>
+          </div>
+
+          <div class="revision-card">
+            <div class="revision-icon">⚙️</div>
+            <div class="revision-content">
+              <h4>Heat Engine Efficiency</h4>
+              <p>$\eta = 1 - \frac{Q_C}{Q_H}$. Maximum limit: Carnot $\eta_C = 1 - \frac{T_C}{T_H} < 100\%$.</p>
+            </div>
+          </div>
+
+          <div class="revision-card">
+            <div class="revision-icon">❄️</div>
+            <div class="revision-content">
+              <h4>Refrigerator COP</h4>
+              <p>Transfers heat from cold to hot using work: $\text{COP} = \frac{Q_C}{W}$.</p>
+            </div>
+          </div>
+
+          <div class="revision-card">
+            <div class="revision-icon">🌀</div>
+            <div class="revision-content">
+              <h4>Entropy Rule</h4>
+              <p>$\Delta S = \frac{Q_{\text{rev}}}{T}$. For isolated systems, entropy never decreases.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 23: MDCAT PRACTICE QUIZ (25 ORIGINAL MCQS)
+         ========================================================================== -->
+    <section class="section-block" id="section-quiz" data-topic-id="quiz">
+      <div class="container">
+        <div class="topic-meta-bar">
+          <div class="section-tag">18 • PRACTICE EXAM</div>
+          <div class="topic-actions">
+            <button class="action-btn" data-action="toggle-complete" data-target="quiz">✓ Mark Completed</button>
+            <button class="action-btn" data-action="toggle-bookmark" data-target="quiz">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">MDCAT Physics Thermodynamics Quiz</h2>
+          <p class="section-desc">
+            25 authentic, high-yield MDCAT-style MCQs covering every conceptual, mathematical, and graphical topic with detailed answer explanations.
+          </p>
+        </div>
+
+        <div class="quiz-wrapper" id="quizContainer">
+          <div id="quizActiveView">
+            <div class="quiz-header-bar">
+              <div style="font-weight:700;">
+                Question <span id="quizCurrentNum" class="mono" style="color:var(--accent-cyan);">1</span> of <span class="mono" id="quizTotalNum">25</span>
+              </div>
+              <div class="quiz-score-badge">
+                Current Score: <span id="quizLiveScore" class="mono">0</span> / 25
+              </div>
+            </div>
+
+            <div class="progress-bar-wrap" style="margin-bottom:1.5rem;">
+              <div class="progress-fill" id="quizProgressBar" style="width: 4%;"></div>
+            </div>
+
+            <div class="quiz-question-box">
+              <div class="question-num-tag" id="questionCategoryTag">🔥 Heat & Thermodynamics</div>
+              <div class="question-text" id="questionText">Loading question...</div>
+
+              <div class="options-grid" id="optionsContainer">
+                <!-- 4 Options populated by JS -->
+              </div>
+
+              <div class="quiz-explanation-box" id="quizExplanationBox">
+                <strong style="color:var(--accent-cyan);">Explanation:</strong>
+                <p id="quizExplanationText" style="margin-top:0.4rem; font-size:0.95rem;"></p>
+              </div>
+            </div>
+
+            <div class="quiz-nav-actions">
+              <button class="btn btn-outline btn-sm" id="prevQuestionBtn" disabled>◀ Previous</button>
+              <button class="btn btn-primary" id="nextQuestionBtn">Next Question ▶</button>
+            </div>
+          </div>
+
+          <!-- Quiz Completion View -->
+          <div class="quiz-results-card" id="quizResultsView">
+            <div class="results-trophy" id="resultsTrophy">🏆</div>
+            <h3 style="font-size:2rem; margin-bottom:0.5rem;" id="resultsHeading">Quiz Completed!</h3>
+            <div class="results-score-big" id="resultsScoreText">24 / 25</div>
+            <p id="resultsFeedbackText" style="font-size:1.1rem; color:var(--text-muted); max-width:600px; margin:0 auto 2rem;">
+              Outstanding performance! You have demonstrated exceptional mastery of MDCAT Thermodynamics.
+            </p>
+            <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+              <button class="btn btn-primary" id="retryQuizBtn">↺ Retake Quiz</button>
+              <a href="#section-formula-wall" class="btn btn-outline">📌 Review Formulas</a>
+              <a href="#section-mdcat-traps" class="btn btn-hot">🚨 Review Exam Traps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       MAIN FOOTER
+       ========================================================================== -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom:1rem;">
+            <div class="brand-icon">⚡</div>
+            <div class="brand-title">THERMO<span>LAB</span></div>
+          </div>
+          <p style="font-size:0.9rem; line-height:1.6; max-width:380px;">
+            A complete, interactive MDCAT Physics Thermodynamics Laboratory and self-paced exam mastery module.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Core Sections</h5>
+          <ul class="footer-links">
+            <li><a href="#section-basics">Thermodynamic Systems</a></li>
+            <li><a href="#section-first-law">1st Law & Energy</a></li>
+            <li><a href="#section-pv-diagrams">P–V Curve Analyzer</a></li>
+            <li><a href="#section-heat-engines">Heat Engine & Efficiency</a></li>
+            <li><a href="#section-second-law">2nd Law & Entropy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Exam Resources</h5>
+          <ul class="footer-links">
+            <li><a href="#section-virtual-lab">Virtual Lab Experiments</a></li>
+            <li><a href="#section-formula-wall">MDCAT Formula Bank</a></li>
+            <li><a href="#section-mdcat-traps">10 Exam Traps & Tricks</a></li>
+            <li><a href="#section-rapid-revision">60s Rapid Cheat Sheet</a></li>
+            <li><a href="#section-quiz">25-Question Practice Exam</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Thermodynamics Lab — Built for MDCAT Physics Excellence.</div>
+        <div style="display:flex; gap:1rem;">
+          <span>Press <kbd style="background:var(--border-subtle); padding:2px 6px; border-radius:4px;">/</kbd> to search</span>
+          <span>Theme: <strong id="currentThemeTag">Dark</strong></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Toast Notifications Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Load JavaScript -->
+  <script src="thermodynamics.js"></script>
+</body>
+</html>

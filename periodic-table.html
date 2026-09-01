@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDCAT Periodic Table Master — Chemistry Preparation</title>
+  <!-- Tailwind & Custom Stylesheet -->
+  <link rel="stylesheet" href="./periodic-table.css">
+  <!-- Canvas Confetti CDN for Celebration Effects -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <div class="app-container" id="appRoot">
+
+    <!-- Top Application Header -->
+    <header class="app-header" id="mainHeader">
+      <div class="brand-section" id="brandSection">
+        <div class="brand-badge" id="brandBadge">Pt</div>
+        <div>
+          <h1 class="brand-title" id="brandTitle">MDCAT Periodic Chemistry Master</h1>
+          <p class="brand-subtitle" id="brandSubtitle">Interactive 118 Elements • 40 Detailed Notes • 12 High-Yield Traps • Flashcards & Labs</p>
+        </div>
+      </div>
+
+      <div class="header-actions" id="headerActions">
+        <!-- Live Mastery Percentage Gauge -->
+        <div class="mastery-gauge-pill" id="masteryGaugePill" title="Overall MDCAT Chemistry Preparation Mastery">
+          <span id="masteryPillText">0% Mastery</span>
+          <div class="gauge-bar-outer" id="gaugeBarOuter">
+            <div class="gauge-bar-inner" id="masteryPillBar"></div>
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Toggle Light/Dark Theme">
+          <span id="themeIcon">🌙</span>
+          <span id="themeLabel">Dark Mode</span>
+        </button>
+
+        <!-- Reset Button -->
+        <button class="action-btn" id="resetMasteryBtn" type="button" title="Reset your saved study progress">
+          🔄 Reset
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="main-nav" id="mainNav" aria-label="Study Modules">
+      <button class="nav-tab-btn active" id="tabTableBtn" data-view="table" type="button">
+        ⚛️ Interactive Table <span class="tab-badge" id="badgeTableCount">118</span>
+      </button>
+      <button class="nav-tab-btn" id="tabCardsBtn" data-view="cards" type="button">
+        📌 Memory Flashcards <span class="tab-badge" id="badgeCardsCount">12</span>
+      </button>
+      <button class="nav-tab-btn" id="tabLabsBtn" data-view="labs" type="button">
+        🧪 Trend & Atomic Labs <span class="tab-badge" id="badgeLabsCount">Active</span>
+      </button>
+      <button class="nav-tab-btn" id="tabNotesBtn" data-view="notes" type="button">
+        📖 40 MDCAT Notes <span class="tab-badge" id="badgeNotesCount">40</span>
+      </button>
+      <button class="nav-tab-btn" id="tabTrapsBtn" data-view="traps" type="button">
+        🚨 12 High-Yield Traps <span class="tab-badge" id="badgeTrapsCount">Top 12</span>
+      </button>
+      <button class="nav-tab-btn" id="tabQuizBtn" data-view="quiz" type="button">
+        📝 Practice MCQ Test <span class="tab-badge" id="badgeQuizCount">12 MCQs</span>
+      </button>
+    </nav>
+
+    <!-- =========================================================================
+         VIEW 1: INTERACTIVE PERIODIC TABLE (TABLE + TREND CONTROLS)
+         ========================================================================= -->
+    <main class="view-container active" id="view-table">
+      <!-- Filter & Search Controls Bar -->
+      <section class="table-controls-bar" id="tableControlsBar">
+        <div class="filter-group" id="blockFilterGroup">
+          <span class="control-label">Filter:</span>
+          <button class="filter-btn active" id="filterAll" data-block="all" type="button">All Elements</button>
+          <button class="filter-btn" id="filterS" data-block="s" type="button">s-block</button>
+          <button class="filter-btn" id="filterP" data-block="p" type="button">p-block</button>
+          <button class="filter-btn" id="filterD" data-block="d" type="button">d-block</button>
+          <button class="filter-btn" id="filterF" data-block="f" type="button">f-block</button>
+          <button class="filter-btn" id="filterGrp1" data-block="grp1" type="button">Group 1 (Alkali)</button>
+          <button class="filter-btn" id="filterGrp2" data-block="grp2" type="button">Group 2 (Alkaline)</button>
+          <button class="filter-btn" id="filterGrp17" data-block="grp17" type="button">Group 17 (Halogens)</button>
+          <button class="filter-btn" id="filterGrp18" data-block="grp18" type="button">Group 18 (Noble)</button>
+          <button class="filter-btn" id="filterMetals" data-block="metals" type="button">Metals</button>
+          <button class="filter-btn" id="filterNonmetals" data-block="nonmetals" type="button">Non-metals</button>
+        </div>
+
+        <div class="search-input-wrap" id="searchWrap">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input type="text" class="search-input" id="elementSearchInput" placeholder="Search element (e.g. Sodium, Na, 11)..." aria-label="Search elements">
+        </div>
+      </section>
+
+      <!-- Trend Heatmap Mode Selector -->
+      <section class="trend-legend-bar" id="trendLegendBar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="control-label">Trend Heatmap:</span>
+          <div class="trend-buttons" id="trendButtonsGroup">
+            <button class="trend-btn active" id="trendNone" data-trend="none" type="button">Standard (Mass)</button>
+            <button class="trend-btn" id="trendRadius" data-trend="radius" type="button">Atomic Radius (pm)</button>
+            <button class="trend-btn" id="trendIE" data-trend="ie" type="button">1st Ionization Energy (kJ)</button>
+            <button class="trend-btn" id="trendEN" data-trend="en" type="button">Electronegativity (Pauling)</button>
+            <button class="trend-btn" id="trendMetallic" data-trend="metallic" type="button">Metallic Character</button>
+          </div>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">
+          💡 Click any element to view Bohr electron orbital animation & MDCAT exam tips
+        </div>
+      </section>
+
+      <!-- Periodic Table 18-Column Grid -->
+      <div class="table-wrapper" id="periodicTableWrapper">
+        <div class="trend-arrow-top" id="trendArrowTop">
+          <span>← Larger Atomic Radius & Metallic Character</span>
+          <span>Higher Ionization Energy, Electronegativity & Non-metallic Character →</span>
+        </div>
+
+        <div class="periodic-grid" id="periodicGrid">
+          <!-- Dynamically populated by periodic-table.js -->
+        </div>
+      </div>
+    </main>
+
+    <!-- =========================================================================
+         VIEW 2: MEMORY CARDS (3D FLIP FLASHCARDS)
+         ========================================================================= -->
+    <section class="view-container" id="view-cards">
+      <div class="flashcards-header" id="flashcardsHeader">
+        <div>
+          <h2 style="font-size: 1.25rem; font-weight: 700;">📌 12 MDCAT Memory Cards (3D Flip)</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Click any card to flip and reveal definitions, MDCAT tips, and key exam points.</p>
+        </div>
+        <div class="flashcard-categories" id="cardFilterButtons">
+          <button class="filter-btn card-filter-btn active" data-cat="all" type="button">All (12)</button>
+          <button class="filter-btn card-filter-btn" data-cat="group" type="button">Groups (4)</button>
+          <button class="filter-btn card-filter-btn" data-cat="block" type="button">Blocks (4)</button>
+          <button class="filter-btn card-filter-btn" data-cat="trend" type="button">Periodic Trends (4)</button>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="flashcardsGrid">
+        <!-- Dynamically populated by periodic-table.js -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         VIEW 3: TREND & ATOMIC SIMULATOR LABS
+         ========================================================================= -->
+    <section class="view-container" id="view-labs">
+      <!-- Lab 1: Period 2 & 3 Atomic Contraction Simulator -->
+      <div class="lab-card" id="labPeriodCard">
+        <div class="lab-header" id="labPeriodHeader">
+          <div>
+            <h3 class="lab-title">🧪 Lab 1: Period Radius Contraction vs. Nuclear Charge (Zeff)</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Visualize how increasing nuclear charge pulls the electron cloud tighter across a period.</p>
+          </div>
+          <div class="lab-controls">
+            <span class="control-label">Select Period:</span>
+            <input type="range" class="slider-range" id="periodSlider" min="2" max="3" value="3" step="1" style="width: 120px;">
+          </div>
+        </div>
+
+        <div class="lab-canvas-container" id="periodCanvasWrap">
+          <canvas class="lab-canvas" id="periodLabCanvas"></canvas>
+        </div>
+
+        <div class="lab-interactive-slider">
+          <div id="periodSliderLabel" style="font-size: 0.875rem; font-weight: 600; color: var(--text-primary);">
+            Period 3: Na (186pm) ➔ Ar (97pm) — Radius DECREASES across period.
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">
+            ⭐ Why? Electrons are added into the same valence shell (n=3) while protons increase by +1 at each step, causing Effective Nuclear Charge (Zeff) to rise and pull electron shells inward.
+          </p>
+        </div>
+      </div>
+
+      <!-- Lab 2: Group 1 & 17 Shell Expansion & Shielding Simulator -->
+      <div class="lab-card" id="labGroupCard">
+        <div class="lab-header" id="labGroupHeader">
+          <div>
+            <h3 class="lab-title">🧪 Lab 2: Group Shell Expansion & Shielding Effect</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Observe how adding new principal energy levels increases shielding and decreases ionization energy.</p>
+          </div>
+          <div class="lab-controls">
+            <span class="control-label">Select Group:</span>
+            <input type="range" class="slider-range" id="groupSlider" min="1" max="17" value="1" step="16" style="width: 120px;">
+          </div>
+        </div>
+
+        <div class="lab-canvas-container" id="groupCanvasWrap">
+          <canvas class="lab-canvas" id="groupLabCanvas"></canvas>
+        </div>
+
+        <div class="lab-interactive-slider">
+          <div id="groupSliderLabel" style="font-size: 0.875rem; font-weight: 600; color: var(--text-primary);">
+            Group 1: Top (Li, IE=520kJ) ➔ Bottom (Cs, IE=376kJ) — Ionization Energy DECREASES.
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">
+            ⭐ Why? Each step down a group adds a whole new electron shell (increasing n). The inner electrons shield the valence electrons from nuclear pull, making outermost electrons much easier to remove.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         VIEW 4: 40 MDCAT DETAILED NOTES
+         ========================================================================= -->
+    <section class="view-container" id="view-notes">
+      <div class="notes-layout" id="notesLayout">
+        <!-- Sidebar with 40 Topics -->
+        <aside class="notes-sidebar" id="notesSidebar">
+          <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);">
+            📚 40 Study Topics
+          </h3>
+          <ul class="notes-nav-list" id="notesNavList">
+            <!-- Dynamically populated by periodic-table.js -->
+          </ul>
+        </aside>
+
+        <!-- Main Content Area for Active Note -->
+        <article class="notes-content-card" id="activeNoteContent">
+          <!-- Dynamically populated by periodic-table.js -->
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         VIEW 5: 12 HIGH-YIELD MDCAT TRAPS
+         ========================================================================= -->
+    <section class="view-container" id="view-traps">
+      <div class="flashcards-header" id="trapsHeader">
+        <div>
+          <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--accent-danger);">🚨 12 High-Yield MDCAT Periodic Traps</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Frequently tested exceptions, examiner pitfalls, and memory tricks from past MDCAT papers.</p>
+        </div>
+      </div>
+
+      <div class="element-stats-grid" id="trapsListGrid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px;">
+        <!-- Dynamically populated by periodic-table.js -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         VIEW 6: PRACTICE MCQS & TEST ENGINE
+         ========================================================================= -->
+    <section class="view-container" id="view-quiz">
+      <div class="mcq-quiz-card" id="mcqQuizCard">
+        <div class="quiz-progress-bar-wrap" id="quizProgressWrap">
+          <div class="quiz-progress-bar-fill" id="quizProgressBar"></div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-primary);" id="quizQuestionNumber">Question 1 of 12</span>
+          <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);" id="quizLiveScore">Score: 0 / 0</span>
+        </div>
+
+        <div id="mcqQuizContainer">
+          <h3 class="mcq-question-text" id="quizQuestionText">Loading Question...</h3>
+          <div class="mcq-options-list" id="quizOptionsList">
+            <!-- Dynamically populated by periodic-table.js -->
+          </div>
+          <div class="mcq-explanation-box" id="quizExplanationBox"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         ELEMENT DETAIL MODAL (WITH ATOM BOHR MODEL CANVAS)
+         ========================================================================= -->
+    <div class="modal-overlay" id="elementModal" role="dialog" aria-modal="true" aria-labelledby="modalElName">
+      <div class="modal-card" id="elementModalCard">
+        <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="Close modal">✕</button>
+
+        <canvas class="atom-anim-canvas" id="atomModalCanvas" width="180" height="180"></canvas>
+
+        <div style="text-align: center; margin-bottom: 16px;">
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);" id="modalElName">Sodium (Z = 11)</h2>
+          <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-primary); font-weight: 700; margin-top: 4px;" id="modalElConfig">
+            [Ne] 3s¹
+          </div>
+        </div>
+
+        <div class="element-stats-grid" id="modalStatsGrid">
+          <div class="stat-box">
+            <div class="stat-label">Symbol</div>
+            <div class="stat-val" id="modalElSymbol">Na</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Period</div>
+            <div class="stat-val" id="modalElPeriod">3</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Group</div>
+            <div class="stat-val" id="modalElGroup">1</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Block</div>
+            <div class="stat-val" id="modalElBlock">s-Block</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Category</div>
+            <div class="stat-val" id="modalElCategory">Alkali Metal</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Valence e⁻</div>
+            <div class="stat-val" id="modalElValence">1</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Oxidation States</div>
+            <div class="stat-val" id="modalElOxidation">+1</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Atomic Radius</div>
+            <div class="stat-val" id="modalElRadius">186 pm</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">1st Ionization Energy</div>
+            <div class="stat-val" id="modalElIE">496 kJ/mol</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Electronegativity</div>
+            <div class="stat-val" id="modalElEN">0.93</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Electron Affinity</div>
+            <div class="stat-val" id="modalElEA">53 kJ/mol</div>
+          </div>
+        </div>
+
+        <div id="modalDiagonalWrap" style="display: none; margin-bottom: 12px;">
+          <div class="note-tip-highlight" style="margin: 0; padding: 10px 12px;">
+            <div id="modalDiagonalText" style="font-size: 0.85rem; font-weight: 600;"></div>
+          </div>
+        </div>
+
+        <div class="note-tip-highlight" style="margin: 0;">
+          <div style="font-weight: 700; color: #d97706; margin-bottom: 4px; font-size: 0.85rem;">💡 MDCAT Exam Tip:</div>
+          <div style="font-size: 0.875rem; color: var(--text-primary);" id="modalElTip">
+            Group 1 alkali metal, forms +1 cation (Na⁺).
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Primary Application Script -->
+  <script src="./periodic-table.js"></script>
+</body>
+</html>

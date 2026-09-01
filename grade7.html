@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduNexa AI — Grade 7 Digital Learning Platform</title>
+  <meta name="description" content="Complete Grade 7 Middle-School Curriculum with Lessons, Interactive Labs, Educational Games, Practice, Master Quiz, and Progress Tracking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="grade7.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Top Announcement / Streak Ribbon -->
+  <div id="top-ribbon" class="top-ribbon">
+    <div class="container ribbon-inner">
+      <div class="ribbon-left">
+        <span class="badge-ribbon">GRADE 7 ACADEMIC HUB</span>
+        <span class="ribbon-quote">🚀 Understand More. Practice Better. Learn Smarter.</span>
+      </div>
+      <div class="ribbon-right">
+        <div class="streak-pill" id="nav-streak-badge" title="Daily Learning Streak">
+          🔥 <span id="nav-streak-count">1</span> Day Streak
+        </div>
+        <div class="xp-pill" id="nav-xp-badge" title="Total Experience Points">
+          ⭐ <span id="nav-xp-count">0</span> XP (Level <span id="nav-level-count">1</span>)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <header id="main-header" class="main-header">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" id="brand-logo">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+            <path d="M6 6h10"></path>
+            <path d="M6 10h10"></path>
+            <path d="M6 14h6"></path>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">EduNexa AI</span>
+          <span class="logo-sub">GRADE 7 DIGITAL SCHOOL</span>
+        </div>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="nav-search-wrap">
+        <div class="search-input-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input type="text" id="global-search-input" placeholder="Search lessons, formulas, chapters, notes..." aria-label="Search curriculum">
+          <button id="clear-search-btn" class="clear-search hidden" aria-label="Clear Search">&times;</button>
+        </div>
+        <div id="search-results-dropdown" class="search-results-dropdown hidden"></div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav id="main-nav" class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link active" data-nav="hero">Home</a></li>
+          <li><a href="#subjects" class="nav-link" data-nav="subjects">Subjects</a></li>
+          <li><a href="#study-material" class="nav-link" data-nav="study-material">Study Notes</a></li>
+          <li><a href="#practice" class="nav-link" data-nav="practice">Practice</a></li>
+          <li><a href="#science-lab" class="nav-link" data-nav="science-lab">Science Lab</a></li>
+          <li><a href="#math-lab" class="nav-link" data-nav="math-lab">Math Lab</a></li>
+          <li><a href="#games" class="nav-link" data-nav="games">10 Games</a></li>
+          <li><a href="#master-quiz" class="nav-link" data-nav="master-quiz">70-Q Test</a></li>
+          <li><a href="#revision" class="nav-link" data-nav="revision">Revision</a></li>
+          <li><a href="#flashcards" class="nav-link" data-nav="flashcards">Flashcards</a></li>
+          <li><a href="#books" class="nav-link" data-nav="books">Books</a></li>
+          <li><a href="#daily-plan" class="nav-link" data-nav="daily-plan">Study Plan</a></li>
+          <li><a href="#parent-view" class="nav-link" data-nav="parent-view">Parent View</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">EduNexa Grade 7</span>
+      <button id="close-drawer-btn" class="close-drawer-btn">&times;</button>
+    </div>
+    <div class="drawer-search">
+      <input type="text" id="mobile-search-input" placeholder="Search Grade 7 topics...">
+    </div>
+    <ul class="drawer-nav-list">
+      <li><a href="#hero" class="drawer-link">🏠 Home</a></li>
+      <li><a href="#overview" class="drawer-link">📊 My Overview</a></li>
+      <li><a href="#subjects" class="drawer-link">📚 8 Subjects</a></li>
+      <li><a href="#lesson-viewer-section" class="drawer-link">📖 Smart Lesson Viewer</a></li>
+      <li><a href="#study-material" class="drawer-link">📝 Study Material Center</a></li>
+      <li><a href="#practice" class="drawer-link">✏️ Practice Center</a></li>
+      <li><a href="#science-lab" class="drawer-link">🧪 Interactive Science Lab</a></li>
+      <li><a href="#math-lab" class="drawer-link">🧮 Math Practice Lab</a></li>
+      <li><a href="#games" class="drawer-link">🎮 10 Educational Games</a></li>
+      <li><a href="#master-quiz" class="drawer-link">🏆 Master 70-Q Test</a></li>
+      <li><a href="#revision" class="drawer-link">🔁 Smart Revision</a></li>
+      <li><a href="#flashcards" class="drawer-link">🃏 Interactive Flashcards</a></li>
+      <li><a href="#achievements" class="drawer-link">🏅 Badges & XP</a></li>
+      <li><a href="#daily-plan" class="drawer-link">📅 Daily Timetable</a></li>
+      <li><a href="#books" class="drawer-link">📚 Books & Syllabus</a></li>
+      <li><a href="#parent-view" class="drawer-link">👨‍👩‍👧 Parent Progress Dashboard</a></li>
+    </ul>
+  </div>
+  <div id="drawer-backdrop" class="drawer-backdrop"></div>
+
+  <main id="main-content">
+    
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span> GRADE 7 ACADEMIC LEARNING PLATFORM
+          </div>
+          <h1 class="hero-title">Welcome to Grade 7</h1>
+          <p class="hero-subtitle">Understand More. Practice Better. Learn Smarter.</p>
+          <p class="hero-desc">
+            Build strong academic concepts through structured chapter lessons, step-by-step visual models, 
+            interactive science & math labs, instant practice with feedback, and smart revision.
+          </p>
+          <div class="hero-actions">
+            <a href="#subjects" class="btn btn-primary btn-lg" id="hero-start-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              START LEARNING
+            </a>
+            <a href="#subjects" class="btn btn-secondary btn-lg" id="hero-view-subjects-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path></svg>
+              VIEW SUBJECTS
+            </a>
+            <a href="#master-quiz" class="btn btn-accent btn-lg" id="hero-take-test-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              TAKE A TEST
+            </a>
+          </div>
+          <!-- Quick Subject Jump Pills -->
+          <div class="hero-quick-pills">
+            <span class="quick-label">Quick Jump:</span>
+            <button class="pill-btn" onclick="app.selectSubject('math')">📐 Mathematics</button>
+            <button class="pill-btn" onclick="app.selectSubject('science')">🔬 Science</button>
+            <button class="pill-btn" onclick="app.selectSubject('english')">📖 English</button>
+            <button class="pill-btn" onclick="app.selectSubject('computer')">💻 Computer</button>
+            <button class="pill-btn" onclick="app.selectSubject('urdu')">🪶 Urdu</button>
+            <button class="pill-btn" onclick="app.selectSubject('sindhi')">🪶 Sindhi</button>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-art-card">
+            <!-- Detailed Professional SVG Illustration for Grade 7 -->
+            <svg class="hero-svg-art" viewBox="0 0 540 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad-sky" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1e3a8a" />
+                  <stop offset="50%" stop-color="#0284c7" />
+                  <stop offset="100%" stop-color="#0d9488" />
+                </linearGradient>
+                <linearGradient id="grad-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+                  <stop offset="100%" stop-color="#818cf8" stop-opacity="0.2" />
+                </linearGradient>
+                <linearGradient id="grad-book" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f59e0b" />
+                  <stop offset="100%" stop-color="#d97706" />
+                </linearGradient>
+              </defs>
+              <!-- Background Glow Circle -->
+              <circle cx="270" cy="210" r="190" fill="url(#grad-glow)" />
+              <rect x="30" y="30" width="480" height="360" rx="24" fill="#0f172a" fill-opacity="0.85" stroke="#334155" stroke-width="2" />
+              
+              <!-- Floating Science Atom & Formulas -->
+              <ellipse cx="120" cy="110" rx="35" ry="12" stroke="#38bdf8" stroke-width="2" transform="rotate(-30 120 110)" stroke-dasharray="4 2" />
+              <ellipse cx="120" cy="110" rx="35" ry="12" stroke="#38bdf8" stroke-width="2" transform="rotate(30 120 110)" stroke-dasharray="4 2" />
+              <ellipse cx="120" cy="110" rx="35" ry="12" stroke="#38bdf8" stroke-width="2" transform="rotate(90 120 110)" stroke-dasharray="4 2" />
+              <circle cx="120" cy="110" r="6" fill="#f59e0b" />
+              <text x="75" y="70" fill="#93c5fd" font-size="12" font-family="monospace">H₂O + CO₂ ➔ C₆H₁₂O₆</text>
+
+              <!-- Math Coordinate System & Triangle -->
+              <line x1="400" y1="120" x2="480" y2="120" stroke="#64748b" stroke-width="1.5" />
+              <line x1="440" y1="80" x2="440" y2="160" stroke="#64748b" stroke-width="1.5" />
+              <polygon points="410,140 470,140 440,90" fill="none" stroke="#10b981" stroke-width="2.5" />
+              <text x="400" y="75" fill="#a7f3d0" font-size="12" font-family="monospace">a² + b² = c²</text>
+              <text x="445" y="155" fill="#cbd5e1" font-size="10">θ = 60°</text>
+
+              <!-- Student Desk & Laptop -->
+              <rect x="100" y="270" width="340" height="14" rx="4" fill="#475569" />
+              <line x1="130" y1="284" x2="130" y2="350" stroke="#334155" stroke-width="6" />
+              <line x1="410" y1="284" x2="410" y2="350" stroke="#334155" stroke-width="6" />
+
+              <!-- Laptop Base and Screen -->
+              <polygon points="210,268 330,268 345,274 195,274" fill="#94a3b8" />
+              <rect x="215" y="175" width="110" height="85" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="2" />
+              <rect x="222" y="182" width="96" height="71" rx="3" fill="#0284c7" />
+              <!-- Screen Code/Chart lines -->
+              <line x1="230" y1="195" x2="280" y2="195" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+              <line x1="230" y1="205" x2="305" y2="205" stroke="#bae6fd" stroke-width="2" stroke-linecap="round" />
+              <line x1="230" y1="215" x2="260" y2="215" stroke="#bae6fd" stroke-width="2" stroke-linecap="round" />
+              <circle cx="285" cy="232" r="12" fill="#0369a1" />
+              <polygon points="282,226 292,232 282,238" fill="#ffffff" />
+
+              <!-- Stack of Grade 7 Books -->
+              <rect x="350" y="230" width="70" height="14" rx="2" fill="#ef4444" />
+              <rect x="345" y="244" width="78" height="14" rx="2" fill="#3b82f6" />
+              <rect x="340" y="258" width="86" height="12" rx="2" fill="#10b981" />
+              <text x="355" y="240" fill="#fff" font-size="8" font-weight="bold">SCIENCE</text>
+              <text x="352" y="254" fill="#fff" font-size="8" font-weight="bold">MATH 7</text>
+              <text x="348" y="267" fill="#fff" font-size="8" font-weight="bold">ENGLISH</text>
+
+              <!-- Microscope & Light Bulb Floating Icons -->
+              <g transform="translate(130, 210)">
+                <circle cx="15" cy="15" r="22" fill="#1e293b" stroke="#f59e0b" stroke-width="2" />
+                <path d="M15 6 C10 6 7 9 7 14 C7 17 9 19 11 21 L19 21 C21 19 23 17 23 14 C23 9 20 6 15 6 Z" fill="#f59e0b" />
+                <line x1="12" y1="24" x2="18" y2="24" stroke="#f59e0b" stroke-width="2" />
+              </g>
+
+              <!-- Globe on the side -->
+              <circle cx="95" cy="235" r="24" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
+              <ellipse cx="95" cy="235" rx="24" ry="10" stroke="#bae6fd" stroke-width="1.5" fill="none" />
+              <ellipse cx="95" cy="235" rx="10" ry="24" stroke="#bae6fd" stroke-width="1.5" fill="none" />
+              <line x1="95" y1="211" x2="95" y2="259" stroke="#bae6fd" stroke-width="1.5" />
+              <path d="M85 260 L105 260 L95 255 Z" fill="#64748b" />
+
+              <!-- Student Icon Avatar -->
+              <circle cx="270" cy="140" r="20" fill="#fed7aa" />
+              <path d="M250 135 C250 120 290 120 290 135 Z" fill="#334155" />
+              <path d="M245 175 C245 160 295 160 295 175 Z" fill="#3b82f6" />
+            </svg>
+            <div class="hero-art-footer">
+              <span>📚 8 Full Subjects</span>
+              <span>•</span>
+              <span>🔬 Virtual Labs</span>
+              <span>•</span>
+              <span>🎮 10 Games</span>
+              <span>•</span>
+              <span>📝 70-Q Test</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Overview Dashboard -->
+    <section id="overview" class="overview-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">STUDENT PROGRESS METRICS</div>
+          <h2 class="section-title">My Learning Overview</h2>
+          <p class="section-subtitle">Real-time academic performance, streak tracking, and XP milestones saved automatically.</p>
+        </div>
+
+        <div class="overview-grid">
+          <!-- Overall Progress Card -->
+          <div class="stat-card" id="card-overall-progress">
+            <div class="stat-icon icon-blue">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-label">Overall Progress</div>
+              <div class="stat-value" id="stat-overall-progress">0%</div>
+              <div class="stat-progress-bar">
+                <div class="stat-progress-fill" id="stat-overall-fill" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lessons Completed -->
+          <div class="stat-card" id="card-lessons-completed">
+            <div class="stat-icon icon-emerald">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-label">Lessons Completed</div>
+              <div class="stat-value" id="stat-lessons-count">0</div>
+              <div class="stat-caption"><span id="stat-lessons-total">200+</span> total lessons</div>
+            </div>
+          </div>
+
+          <!-- Questions Solved -->
+          <div class="stat-card" id="card-questions-solved">
+            <div class="stat-icon icon-purple">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-label">Questions Solved</div>
+              <div class="stat-value" id="stat-questions-count">0</div>
+              <div class="stat-caption">Practice & quiz questions</div>
+            </div>
+          </div>
+
+          <!-- Quiz Average -->
+          <div class="stat-card" id="card-quiz-average">
+            <div class="stat-icon icon-amber">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-label">Quiz Average</div>
+              <div class="stat-value" id="stat-quiz-average">0%</div>
+              <div class="stat-caption">Based on completed tests</div>
+            </div>
+          </div>
+
+          <!-- Study Materials Read -->
+          <div class="stat-card" id="card-study-materials">
+            <div class="stat-icon icon-teal">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-label">Study Notes Viewed</div>
+              <div class="stat-value" id="stat-notes-viewed">0</div>
+              <div class="stat-caption">Chapters & summaries</div>
+            </div>
+          </div>
+
+          <!-- Current Streak -->
+          <div class="stat-card" id="card-current-streak">
+            <div class="stat-icon icon-orange">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-label">Current Streak</div>
+              <div class="stat-value" id="stat-current-streak">1 Day</div>
+              <div class="stat-caption">Best: <span id="stat-best-streak">1 Day</span></div>
+            </div>
+          </div>
+
+          <!-- XP & Stars -->
+          <div class="stat-card" id="card-xp-stars">
+            <div class="stat-icon icon-indigo">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-label">XP & Stars</div>
+              <div class="stat-value" id="stat-xp-count">0 XP</div>
+              <div class="stat-caption">Level <span id="stat-level-num">1</span> (<span id="stat-stars-count">0</span> ⭐)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subject Dashboard Section (8 Subjects) -->
+    <section id="subjects" class="subjects-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">CORE CURRICULUM</div>
+          <h2 class="section-title">Grade 7 Subject Dashboard</h2>
+          <p class="section-subtitle">Select any subject to explore complete units, structured chapters, and interactive lessons.</p>
+        </div>
+
+        <div class="subjects-grid" id="subjects-container">
+          <!-- Subject cards injected dynamically by grade7.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter Explorer Section (Appears when Subject is chosen) -->
+    <section id="chapter-explorer" class="chapter-explorer-section">
+      <div class="container">
+        <div class="chapter-header-box">
+          <div class="chapter-header-left">
+            <span class="subject-tag" id="current-subject-tag">Mathematics</span>
+            <h2 class="chapter-subject-title" id="current-subject-title">Mathematics — Grade 7</h2>
+            <p class="chapter-subject-desc" id="current-subject-desc">Master integers, algebra, fractions, geometry, and data handling with step-by-step guidance.</p>
+          </div>
+          <div class="chapter-header-right">
+            <button class="btn btn-outline" onclick="app.scrollSection('subjects')">← Back to All Subjects</button>
+          </div>
+        </div>
+
+        <!-- Unit & Chapter Filter Tabs -->
+        <div class="unit-filter-tabs" id="unit-filter-tabs">
+          <!-- Filter buttons rendered dynamically -->
+        </div>
+
+        <div class="chapters-grid" id="chapters-list-container">
+          <!-- Chapter cards rendered dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Smart Lesson System (The Heart of the Platform) -->
+    <section id="lesson-viewer-section" class="lesson-viewer-section hidden">
+      <div class="container">
+        <div class="lesson-breadcrumbs">
+          <button class="breadcrumb-btn" onclick="app.scrollSection('subjects')">Subjects</button>
+          <span class="bc-sep">/</span>
+          <button class="breadcrumb-btn" id="bc-subject-btn" onclick="app.openSubjectChapters()">Subject</button>
+          <span class="bc-sep">/</span>
+          <span class="bc-current" id="bc-lesson-title">Lesson Title</span>
+        </div>
+
+        <div class="lesson-container-card" id="active-lesson-card">
+          <!-- Top Header Info -->
+          <div class="lesson-top-bar">
+            <div class="lesson-meta-badges">
+              <span class="badge badge-sub" id="lesson-sub-badge">SCIENCE</span>
+              <span class="badge badge-unit" id="lesson-unit-badge">UNIT 1 — BIOLOGY</span>
+              <span class="badge badge-chap" id="lesson-chap-badge">Chapter 1: Cells</span>
+            </div>
+            <div class="lesson-actions-top">
+              <button class="btn btn-tts" id="btn-read-aloud" onclick="app.toggleReadAloud()" title="Read lesson content aloud">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                <span id="tts-btn-text">Read Aloud</span>
+              </button>
+              <button class="btn btn-sm btn-outline" id="btn-lesson-bookmark" onclick="app.toggleBookmarkLesson()">⭐ Bookmark</button>
+            </div>
+          </div>
+
+          <h1 class="lesson-main-title" id="lesson-title-display">Lesson Title</h1>
+          
+          <!-- 1. Learning Objectives -->
+          <div class="lesson-box objectives-box">
+            <div class="box-header">
+              <div class="box-icon">🎯</div>
+              <h3>Learning Objectives</h3>
+            </div>
+            <div class="box-body" id="lesson-objectives-body">
+              <!-- Objectives list -->
+            </div>
+          </div>
+
+          <!-- 2. Learn (Original Structured Text) -->
+          <div class="lesson-box learn-box">
+            <div class="box-header">
+              <div class="box-icon">📖</div>
+              <h3>Learn the Concept</h3>
+            </div>
+            <div class="box-body lesson-prose" id="lesson-learn-body">
+              <!-- Structured text -->
+            </div>
+          </div>
+
+          <!-- 3. Key Concept Callout -->
+          <div class="lesson-box keyconcept-box">
+            <div class="box-header">
+              <div class="box-icon">💡</div>
+              <h3>Key Concept</h3>
+            </div>
+            <div class="box-body" id="lesson-keyconcept-body">
+              <!-- Key concept text -->
+            </div>
+          </div>
+
+          <!-- 4. Visual Learning (Diagram/SVG) -->
+          <div class="lesson-box visual-box">
+            <div class="box-header">
+              <div class="box-icon">🖼️</div>
+              <h3>Visual Learning & Diagram</h3>
+            </div>
+            <div class="box-body visual-body" id="lesson-visual-body">
+              <!-- SVG Visual Representation -->
+            </div>
+          </div>
+
+          <!-- 5. Worked Example -->
+          <div class="lesson-box example-box">
+            <div class="box-header">
+              <div class="box-icon">📝</div>
+              <h3>Worked Example (Step-by-Step)</h3>
+            </div>
+            <div class="box-body" id="lesson-example-body">
+              <!-- Example with steps -->
+            </div>
+          </div>
+
+          <!-- 6. Think About It -->
+          <div class="lesson-box think-box">
+            <div class="box-header">
+              <div class="box-icon">🧠</div>
+              <h3>Think About It</h3>
+            </div>
+            <div class="box-body" id="lesson-think-body">
+              <!-- Reasoning challenge with reveal answer toggle -->
+            </div>
+          </div>
+
+          <!-- 7. Interactive Practice Section (5-10 Questions) -->
+          <div class="lesson-box practice-box">
+            <div class="box-header">
+              <div class="box-icon">✏️</div>
+              <h3>Interactive Practice Exercises</h3>
+            </div>
+            <div class="box-body" id="lesson-practice-body">
+              <!-- Interactive practice questions -->
+            </div>
+          </div>
+
+          <!-- 8. Common Mistake Alert -->
+          <div class="lesson-box mistake-box">
+            <div class="box-header">
+              <div class="box-icon">⚠️</div>
+              <h3>Common Mistake to Avoid</h3>
+            </div>
+            <div class="box-body" id="lesson-mistake-body">
+              <!-- Mistake explanation -->
+            </div>
+          </div>
+
+          <!-- 9. Quick Mini Quiz -->
+          <div class="lesson-box miniquiz-box">
+            <div class="box-header">
+              <div class="box-icon">⭐</div>
+              <h3>Quick Mini Quiz (3-5 MCQs)</h3>
+            </div>
+            <div class="box-body" id="lesson-miniquiz-body">
+              <!-- Mini quiz interactive MCQs -->
+            </div>
+          </div>
+
+          <!-- 10. Quick Revision Points -->
+          <div class="lesson-box revision-box">
+            <div class="box-header">
+              <div class="box-icon">📌</div>
+              <h3>Quick Revision Points</h3>
+            </div>
+            <div class="box-body" id="lesson-revision-body">
+              <!-- Bullet points -->
+            </div>
+          </div>
+
+          <!-- Lesson Completion Action -->
+          <div class="lesson-complete-banner">
+            <div class="completion-status" id="lesson-completion-status">
+              <span>Status: <strong id="lesson-status-text">Not Completed Yet</strong></span>
+            </div>
+            <button class="btn btn-success btn-lg" id="btn-mark-lesson-complete" onclick="app.markCurrentLessonComplete()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              ✓ MARK LESSON COMPLETE (+50 XP)
+            </button>
+          </div>
+
+          <!-- Previous / Next Lesson Navigation -->
+          <div class="lesson-nav-footer">
+            <button class="btn btn-outline" id="btn-prev-lesson" onclick="app.navigateLesson(-1)">
+              ← Previous Lesson
+            </button>
+            <button class="btn btn-secondary" onclick="app.openSubjectChapters()">
+              📑 All Chapters
+            </button>
+            <button class="btn btn-primary" id="btn-next-lesson" onclick="app.navigateLesson(1)">
+              Next Lesson →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Study Material Center -->
+    <section id="study-material" class="study-material-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">COMPREHENSIVE REPOSITORY</div>
+          <h2 class="section-title">Study Material Center</h2>
+          <p class="section-subtitle">Filter detailed notes, definitions, formula sheets, diagrams, and exam revision guides.</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="study-filters-panel">
+          <div class="filter-group">
+            <label for="material-filter-subject">Subject:</label>
+            <select id="material-filter-subject" class="select-input" onchange="app.renderEduNexarials()">
+              <option value="all">All Subjects (8)</option>
+              <option value="english">English</option>
+              <option value="math">Mathematics</option>
+              <option value="science">General Science</option>
+              <option value="urdu">Urdu</option>
+              <option value="sindhi">Sindhi</option>
+              <option value="computer">Computer Science</option>
+              <option value="social">Social Studies</option>
+              <option value="gk">General Knowledge</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="material-filter-type">Type:</label>
+            <select id="material-filter-type" class="select-input" onchange="app.renderEduNexarials()">
+              <option value="all">All Types</option>
+              <option value="Detailed Notes">Detailed Notes</option>
+              <option value="Quick Notes">Quick Notes</option>
+              <option value="Definitions">Definitions & Key Terms</option>
+              <option value="Formulas">Formulas & Rules</option>
+              <option value="Diagrams">Diagrams & Charts</option>
+              <option value="Exam Questions">Exam Questions & Answers</option>
+              <option value="Revision Notes">Revision Summaries</option>
+            </select>
+          </div>
+
+          <div class="filter-search-box">
+            <input type="text" id="material-search-input" placeholder="Filter notes by keyword..." oninput="app.renderEduNexarials()">
+          </div>
+        </div>
+
+        <!-- Study Materials Grid -->
+        <div class="materials-grid" id="materials-container">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Practice Center -->
+    <section id="practice" class="practice-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">INTERACTIVE PROBLEM SOLVING</div>
+          <h2 class="section-title">Grade 7 Practice Center</h2>
+          <p class="section-subtitle">Sharpen your concepts with instant feedback, difficulty levels, and worked explanations.</p>
+        </div>
+
+        <div class="practice-dashboard-card">
+          <div class="practice-controls-row">
+            <div class="practice-modes" id="practice-mode-selectors">
+              <button class="mode-btn active" data-mode="quick" onclick="app.setPracticeMode('quick')">⚡ Quick Practice</button>
+              <button class="mode-btn" data-mode="math" onclick="app.setPracticeMode('math')">📐 Math Focus</button>
+              <button class="mode-btn" data-mode="science" onclick="app.setPracticeMode('science')">🔬 Science Focus</button>
+              <button class="mode-btn" data-mode="english" onclick="app.setPracticeMode('english')">📖 English Focus</button>
+              <button class="mode-btn" data-mode="mixed" onclick="app.setPracticeMode('mixed')">🎲 Mixed All Subjects</button>
+              <button class="mode-btn" data-mode="challenge" onclick="app.setPracticeMode('challenge')">🔥 Challenge Mode</button>
+            </div>
+
+            <div class="practice-difficulty">
+              <span>Difficulty:</span>
+              <button class="diff-btn active" data-diff="easy" onclick="app.setPracticeDifficulty('easy')">Easy</button>
+              <button class="diff-btn" data-diff="medium" onclick="app.setPracticeDifficulty('medium')">Medium</button>
+              <button class="diff-btn" data-diff="hard" onclick="app.setPracticeDifficulty('hard')">Hard</button>
+            </div>
+          </div>
+
+          <!-- Active Practice Question Area -->
+          <div class="practice-question-card" id="practice-active-card">
+            <div class="practice-header">
+              <span class="practice-q-num" id="practice-q-counter">Question 1 of 10</span>
+              <span class="practice-badge-topic" id="practice-topic-badge">Mathematics • Integers</span>
+              <span class="practice-score-badge" id="practice-score-live">Score: 0 / 0</span>
+            </div>
+
+            <h3 class="practice-q-text" id="practice-q-text">Loading practice question...</h3>
+
+            <div class="practice-options-grid" id="practice-options-container">
+              <!-- Options rendered dynamically -->
+            </div>
+
+            <div class="practice-explanation-box hidden" id="practice-explanation-box">
+              <div class="expl-header" id="practice-result-title">Explanation</div>
+              <p id="practice-result-text"></p>
+            </div>
+
+            <div class="practice-footer-actions">
+              <button class="btn btn-outline" id="btn-practice-prev" onclick="app.prevPracticeQuestion()">← Previous</button>
+              <button class="btn btn-primary" id="btn-practice-next" onclick="app.nextPracticeQuestion()">Next Question →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Science Lab (Virtual Experiments & Simulations) -->
+    <section id="science-lab" class="science-lab-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">HANDS-ON SIMULATION</div>
+          <h2 class="section-title">Interactive Science Lab</h2>
+          <p class="section-subtitle">Explore interactive cells, organ systems, food webs, electric circuits, and the solar system.</p>
+        </div>
+
+        <!-- Science Lab Tabs -->
+        <div class="lab-nav-tabs" id="science-lab-tabs">
+          <button class="lab-tab-btn active" data-lab="cells" onclick="app.switchScienceLab('cells')">🔬 Plant vs Animal Cell</button>
+          <button class="lab-tab-btn" data-lab="digestive" onclick="app.switchScienceLab('digestive')">🫀 Human Digestive System</button>
+          <button class="lab-tab-btn" data-lab="respiratory" onclick="app.switchScienceLab('respiratory')">🫁 Respiratory & Breathing</button>
+          <button class="lab-tab-btn" data-lab="circulatory" onclick="app.switchScienceLab('circulatory')">❤️ Circulatory & Heart</button>
+          <button class="lab-tab-btn" data-lab="foodchain" onclick="app.switchScienceLab('foodchain')">🌿 Food Web & Ecosystem</button>
+          <button class="lab-tab-btn" data-lab="watercycle" onclick="app.switchScienceLab('watercycle')">💧 Water Cycle</button>
+          <button class="lab-tab-btn" data-lab="matter" onclick="app.switchScienceLab('matter')">⚛️ States of Matter Particles</button>
+          <button class="lab-tab-btn" data-lab="electricity" onclick="app.switchScienceLab('electricity')">⚡ Simple Electric Circuit</button>
+          <button class="lab-tab-btn" data-lab="solarsystem" onclick="app.switchScienceLab('solarsystem')">🪐 Solar System Explorer</button>
+        </div>
+
+        <!-- Lab Display Canvas Card -->
+        <div class="lab-display-card" id="science-lab-viewport">
+          <!-- Science Lab Content Injected Dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Mathematics Practice Lab (Interactive Tools) -->
+    <section id="math-lab" class="math-lab-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">INTERACTIVE VISUAL MATH</div>
+          <h2 class="section-title">Mathematics Practice Lab</h2>
+          <p class="section-subtitle">Experiment with integer number lines, fraction visualizers, algebra scales, and geometry angle tools.</p>
+        </div>
+
+        <!-- Math Lab Tabs -->
+        <div class="lab-nav-tabs" id="math-lab-tabs">
+          <button class="lab-tab-btn active" data-math="numberline" onclick="app.switchMathLab('numberline')">🔢 Integer Number Line</button>
+          <button class="lab-tab-btn" data-math="fractions" onclick="app.switchMathLab('fractions')">🍕 Fraction Visualizer</button>
+          <button class="lab-tab-btn" data-math="percentage" onclick="app.switchMathLab('percentage')">📊 Percentage & Ratio Tool</button>
+          <button class="lab-tab-btn" data-math="algebra" onclick="app.switchMathLab('algebra')">⚖️ Algebraic Equation Balance</button>
+          <button class="lab-tab-btn" data-math="geometry" onclick="app.switchMathLab('geometry')">📐 Geometry & Angle Explorer</button>
+          <button class="lab-tab-btn" data-math="data" onclick="app.switchMathLab('data')">📈 Live Bar Graph & Stats Builder</button>
+        </div>
+
+        <!-- Math Lab Content Viewport -->
+        <div class="lab-display-card" id="math-lab-viewport">
+          <!-- Math Lab Tool Injected Dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Educational Game Center (10 Working Games) -->
+    <section id="games" class="games-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">GAME-BASED LEARNING</div>
+          <h2 class="section-title">10 Educational Game Challenges</h2>
+          <p class="section-subtitle">Play, compete against the clock, earn high scores, and collect stars in 10 grade-7 learning games.</p>
+        </div>
+
+        <!-- Game Selector Grid -->
+        <div class="games-menu-grid" id="games-menu-container">
+          <!-- 10 Game cards populated dynamically -->
+        </div>
+
+        <!-- Active Game Arena Modal / View -->
+        <div class="game-arena-card hidden" id="active-game-arena">
+          <div class="game-arena-header">
+            <div class="game-info">
+              <span class="game-title-badge" id="arena-game-name">Integer Challenge</span>
+              <span class="game-timer-pill" id="arena-game-timer">⏱️ 00:45</span>
+            </div>
+            <div class="game-score-info">
+              <span class="game-stars" id="arena-game-stars">⭐⭐⭐</span>
+              <span class="game-score-badge" id="arena-game-score">Score: 0</span>
+              <button class="btn btn-sm btn-danger" onclick="app.exitActiveGame()">Exit Game</button>
+            </div>
+          </div>
+
+          <div class="game-arena-body" id="arena-game-playfield">
+            <!-- Dynamic game interface rendered by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Master Grade 7 Test (70 Comprehensive Questions) -->
+    <section id="master-quiz" class="master-quiz-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">BENCHMARK EXAMINATION</div>
+          <h2 class="section-title">Master Grade 7 Comprehensive Test</h2>
+          <p class="section-subtitle">A full 70-question syllabus exam covering English (15), Math (20), Science (15), Urdu (5), Sindhi (5), Computer (5), Social Studies/GK (5).</p>
+        </div>
+
+        <div class="master-test-card" id="master-test-container">
+          <!-- Initial Test Intro View -->
+          <div class="test-intro-view" id="test-intro-view">
+            <div class="test-meta-banner">
+              <div class="test-meta-item">
+                <span class="meta-icon">❓</span>
+                <div>
+                  <strong>70 Questions</strong>
+                  <p>All 8 Subjects Included</p>
+                </div>
+              </div>
+              <div class="test-meta-item">
+                <span class="meta-icon">⏱️</span>
+                <div>
+                  <strong>60 Minutes</strong>
+                  <p>Timed Examination</p>
+                </div>
+              </div>
+              <div class="test-meta-item">
+                <span class="meta-icon">🏆</span>
+                <div>
+                  <strong>Detailed Report</strong>
+                  <p>Subject Strengths & Explanations</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="test-breakdown-box">
+              <h4>Subject Question Distribution:</h4>
+              <div class="subject-chips-dist">
+                <span class="dist-chip chip-blue">English (15 Qs)</span>
+                <span class="dist-chip chip-cyan">Mathematics (20 Qs)</span>
+                <span class="dist-chip chip-emerald">General Science (15 Qs)</span>
+                <span class="dist-chip chip-amber">Urdu (5 Qs)</span>
+                <span class="dist-chip chip-orange">Sindhi (5 Qs)</span>
+                <span class="dist-chip chip-purple">Computer Science (5 Qs)</span>
+                <span class="dist-chip chip-teal">Social Studies & GK (5 Qs)</span>
+              </div>
+            </div>
+
+            <div class="test-start-cta">
+              <button class="btn btn-accent btn-lg" onclick="app.startMasterTest()">
+                🚀 START 70-QUESTION MASTER TEST
+              </button>
+              <button class="btn btn-outline btn-lg" onclick="app.startQuickTest(20)">
+                ⚡ Quick 20-Question Test
+              </button>
+            </div>
+          </div>
+
+          <!-- Active Examination View (Hidden initially) -->
+          <div class="test-active-view hidden" id="test-active-view">
+            <div class="test-top-status">
+              <div class="test-q-progress">
+                <span id="test-current-q-index">Question 1 of 70</span>
+                <span class="badge" id="test-subject-indicator">Mathematics</span>
+              </div>
+              <div class="test-timer" id="test-timer-clock">
+                ⏱️ Time Left: <strong id="test-timer-display">60:00</strong>
+              </div>
+              <div class="test-answered-stat">
+                Answered: <strong id="test-answered-count">0</strong> / <span id="test-total-q-count">70</span>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="test-progress-track">
+              <div class="test-progress-fill" id="test-progress-fill" style="width: 1.4%"></div>
+            </div>
+
+            <!-- Question & Options -->
+            <div class="test-q-card">
+              <div class="test-q-number-pill" id="test-q-number-pill">Q1</div>
+              <h3 class="test-q-title" id="test-question-title">Question text goes here...</h3>
+
+              <div class="test-options-list" id="test-options-list">
+                <!-- Options buttons rendered dynamically -->
+              </div>
+            </div>
+
+            <!-- Question Palette (Jump to any Question 1-70) -->
+            <div class="test-palette-wrapper">
+              <div class="palette-toggle-bar">
+                <span>Question Palette (Jump to question):</span>
+                <span class="palette-legend">
+                  <span class="leg-box answered"></span> Answered
+                  <span class="leg-box flag"></span> Flagged
+                  <span class="leg-box current"></span> Current
+                </span>
+              </div>
+              <div class="test-palette-grid" id="test-palette-grid">
+                <!-- 70 Jump Buttons rendered dynamically -->
+              </div>
+            </div>
+
+            <!-- Test Bottom Navigation Controls -->
+            <div class="test-bottom-nav">
+              <button class="btn btn-outline" id="btn-test-prev" onclick="app.navigateTestQuestion(-1)">← Previous</button>
+              <button class="btn btn-outline" id="btn-test-flag" onclick="app.flagCurrentTestQuestion()">🚩 Flag for Review</button>
+              <button class="btn btn-primary" id="btn-test-next" onclick="app.navigateTestQuestion(1)">Next →</button>
+              <button class="btn btn-danger" onclick="app.confirmSubmitTest()">Finish & Submit Test</button>
+            </div>
+          </div>
+
+          <!-- Examination Results Report View -->
+          <div class="test-results-view hidden" id="test-results-view">
+            <!-- Results breakdown rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Smart Revision Center -->
+    <section id="revision" class="revision-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">EXAM PREPARATION</div>
+          <h2 class="section-title">Smart Revision Center</h2>
+          <p class="section-subtitle">Rapid recall sheets, key definitions, math formulas, science diagrams, and high-yield exam points.</p>
+        </div>
+
+        <div class="revision-tabs" id="revision-subject-tabs">
+          <button class="rev-tab-btn active" data-rev="english" onclick="app.switchRevisionSubject('english')">📖 English Revision</button>
+          <button class="rev-tab-btn" data-rev="math" onclick="app.switchRevisionSubject('math')">📐 Mathematics Formulas</button>
+          <button class="rev-tab-btn" data-rev="science" onclick="app.switchRevisionSubject('science')">🔬 Science Quick Notes</button>
+          <button class="rev-tab-btn" data-rev="computer" onclick="app.switchRevisionSubject('computer')">💻 Computer Concepts</button>
+          <button class="rev-tab-btn" data-rev="social" onclick="app.switchRevisionSubject('social')">🌍 Social Studies Facts</button>
+          <button class="rev-tab-btn" data-rev="urdu" onclick="app.switchRevisionSubject('urdu')">🪶 Urdu Qawaid</button>
+          <button class="rev-tab-btn" data-rev="sindhi" onclick="app.switchRevisionSubject('sindhi')">🪶 Sindhi Grammar</button>
+        </div>
+
+        <div class="revision-content-card" id="revision-viewport">
+          <!-- Revision cards injected dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Flashcard System -->
+    <section id="flashcards" class="flashcards-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">SPACED REPETITION</div>
+          <h2 class="section-title">Interactive Flashcard System</h2>
+          <p class="section-subtitle">Click to flip the flashcard, test your memory on terms, formulas, idioms, and facts.</p>
+        </div>
+
+        <!-- Flashcard Category Selectors -->
+        <div class="flashcard-decks-row" id="flashcard-deck-tabs">
+          <button class="deck-btn active" data-deck="science" onclick="app.selectFlashcardDeck('science')">🔬 Science Terms</button>
+          <button class="deck-btn" data-deck="math" onclick="app.selectFlashcardDeck('math')">📐 Math Formulas</button>
+          <button class="deck-btn" data-deck="english" onclick="app.selectFlashcardDeck('english')">📖 English Vocab & Idioms</button>
+          <button class="deck-btn" data-deck="computer" onclick="app.selectFlashcardDeck('computer')">💻 Computer Terms</button>
+          <button class="deck-btn" data-deck="social" onclick="app.selectFlashcardDeck('social')">🌍 Geography & History</button>
+          <button class="deck-btn" data-deck="favorites" onclick="app.selectFlashcardDeck('favorites')">⭐ Starred / Favorites</button>
+        </div>
+
+        <!-- Active Flashcard Arena -->
+        <div class="flashcard-arena">
+          <div class="flashcard-counter-bar">
+            <span id="flashcard-progress-text">Card 1 of 20</span>
+            <button class="btn btn-sm btn-outline" id="btn-star-flashcard" onclick="app.toggleStarFlashcard()">⭐ Star Card</button>
+          </div>
+
+          <!-- 3D Flip Card -->
+          <div class="flashcard-wrapper" onclick="app.flipFlashcard()">
+            <div class="flashcard-3d" id="active-flashcard-3d">
+              <div class="flashcard-face flashcard-front">
+                <span class="card-side-tag">FRONT • CLICK TO FLIP</span>
+                <span class="card-subject-tag" id="fc-subject-tag">General Science</span>
+                <h3 class="fc-prompt" id="fc-front-text">Photosynthesis</h3>
+                <p class="fc-hint" id="fc-front-hint">Tap card or spacebar to reveal definition & formula</p>
+                <div class="fc-flip-indicator">🔄 Flip</div>
+              </div>
+              <div class="flashcard-face flashcard-back">
+                <span class="card-side-tag">BACK • EXPLANATION</span>
+                <h3 class="fc-answer-title" id="fc-back-title">Photosynthesis</h3>
+                <p class="fc-answer" id="fc-back-text">The process by which green plants use sunlight, carbon dioxide, and water to synthesize glucose and oxygen: 6CO₂ + 6H₂O + light ➔ C₆H₁₂O₆ + 6O₂.</p>
+                <div class="fc-flip-indicator">🔄 Flip Back</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flashcard Navigation Controls -->
+          <div class="flashcard-controls">
+            <button class="btn btn-outline" onclick="app.prevFlashcard()">← Previous</button>
+            <button class="btn btn-secondary" onclick="app.shuffleFlashcards()">🔀 Shuffle</button>
+            <button class="btn btn-outline" onclick="app.flipFlashcard()">🔄 Flip Card</button>
+            <button class="btn btn-primary" onclick="app.nextFlashcard()">Next Card →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievement & Gamification System -->
+    <section id="achievements" class="achievements-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">BADGES & REWARDS</div>
+          <h2 class="section-title">Academic Achievements</h2>
+          <p class="section-subtitle">Earn badges as you complete lessons, solve practice problems, maintain streaks, and ace quizzes.</p>
+        </div>
+
+        <!-- Level & XP Progress Banner -->
+        <div class="level-progress-banner">
+          <div class="level-badge-large">
+            <div class="level-num" id="achieve-level-num">1</div>
+            <div class="level-title" id="achieve-level-title">Novice Scholar</div>
+          </div>
+          <div class="level-bar-wrap">
+            <div class="level-text-row">
+              <span>Level <span id="achieve-curr-lvl">1</span> Progress</span>
+              <span><strong id="achieve-xp-total">0</strong> / <span id="achieve-xp-next">200</span> XP to Next Level</span>
+            </div>
+            <div class="level-track">
+              <div class="level-fill" id="achieve-level-fill" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 17 Badges Grid -->
+        <div class="badges-grid" id="badges-container">
+          <!-- 17 Badges populated dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Daily Study Plan & Streak Timetable -->
+    <section id="daily-plan" class="daily-plan-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">STRUCTURED SCHEDULE</div>
+          <h2 class="section-title">Today's Daily Study Plan</h2>
+          <p class="section-subtitle">Follow a balanced middle-school daily learning timetable with built-in focus timers.</p>
+        </div>
+
+        <div class="study-plan-layout">
+          <div class="plan-list-card">
+            <div class="plan-header">
+              <h3>📅 Recommended Grade 7 Timetable</h3>
+              <button class="btn btn-sm btn-outline" onclick="app.resetDailyPlan()">Reset Plan</button>
+            </div>
+            <div class="plan-items-list" id="plan-items-container">
+              <!-- Daily timetable slots rendered by JS -->
+            </div>
+          </div>
+
+          <div class="plan-timer-card">
+            <h3>⏱️ Active Focus Study Timer</h3>
+            <div class="focus-timer-clock" id="focus-timer-clock">25:00</div>
+            <div class="focus-timer-subject" id="focus-timer-subject">English (Reading & Comprehension)</div>
+            <div class="focus-timer-controls">
+              <button class="btn btn-success" id="btn-timer-toggle" onclick="app.toggleFocusTimer()">▶ Start Study Session</button>
+              <button class="btn btn-outline" onclick="app.resetFocusTimer()">Reset</button>
+            </div>
+
+            <!-- Streak Calendar Visual -->
+            <div class="streak-calendar-box">
+              <h4>Weekly Study Streak</h4>
+              <div class="streak-days-row" id="streak-week-days">
+                <!-- 7 days pills -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grade 7 Books & Authorized Curriculum Resources -->
+    <section id="books" class="books-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">AUTHORIZED TEXTBOOKS & SYLLABUS</div>
+          <h2 class="section-title">Grade 7 Curriculum & Textbooks</h2>
+          <p class="section-subtitle">Aligned with Sindh Textbook Board and Oxford University Press Pakistan educational curriculum frameworks.</p>
+        </div>
+
+        <div class="books-filter-pills">
+          <button class="book-pill-btn active" data-bfilter="all" onclick="app.filterBooks('all')">All Resources</button>
+          <button class="book-pill-btn" data-bfilter="English" onclick="app.filterBooks('English')">English</button>
+          <button class="book-pill-btn" data-bfilter="Mathematics" onclick="app.filterBooks('Mathematics')">Mathematics</button>
+          <button class="book-pill-btn" data-bfilter="Science" onclick="app.filterBooks('Science')">General Science</button>
+          <button class="book-pill-btn" data-bfilter="Computer" onclick="app.filterBooks('Computer')">Computer Science</button>
+          <button class="book-pill-btn" data-bfilter="Urdu" onclick="app.filterBooks('Urdu')">Urdu</button>
+          <button class="book-pill-btn" data-bfilter="Sindhi" onclick="app.filterBooks('Sindhi')">Sindhi</button>
+          <button class="book-pill-btn" data-bfilter="Social Studies" onclick="app.filterBooks('Social Studies')">Social Studies</button>
+        </div>
+
+        <div class="books-grid" id="books-container">
+          <!-- Book resources cards populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Parent & Teacher Progress Dashboard -->
+    <section id="parent-view" class="parent-view-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-badge">MONITORING & ANALYTICS</div>
+          <h2 class="section-title">Parent & Educator Progress Dashboard</h2>
+          <p class="section-subtitle">Comprehensive, transparent overview of your child's academic engagement, mastery by subject, and areas for improvement.</p>
+        </div>
+
+        <div class="parent-dashboard-card" id="parent-printable-card">
+          <div class="parent-report-header">
+            <div class="report-header-left">
+              <h3>Grade 7 Academic Performance Report</h3>
+              <p>Student: <strong>Grade 7 Scholar</strong> • Platform: <strong>EduNexa AI</strong></p>
+            </div>
+            <div class="report-header-right">
+              <button class="btn btn-outline btn-sm" onclick="window.print()">🖨️ Print / Save PDF Report</button>
+              <button class="btn btn-outline btn-sm" onclick="app.exportProgressData()">📥 Export Data</button>
+            </div>
+          </div>
+
+          <!-- High-Level Parent Metrics -->
+          <div class="parent-metrics-grid">
+            <div class="pmetric-box">
+              <span class="pmetric-label">Overall Completion</span>
+              <span class="pmetric-value" id="parent-stat-completion">0%</span>
+            </div>
+            <div class="pmetric-box">
+              <span class="pmetric-label">Lessons Mastered</span>
+              <span class="pmetric-value" id="parent-stat-lessons">0</span>
+            </div>
+            <div class="pmetric-box">
+              <span class="pmetric-label">Questions Attempted</span>
+              <span class="pmetric-value" id="parent-stat-questions">0</span>
+            </div>
+            <div class="pmetric-box">
+              <span class="pmetric-label">Examination Average</span>
+              <span class="pmetric-value" id="parent-stat-quiz-avg">0%</span>
+            </div>
+            <div class="pmetric-box">
+              <span class="pmetric-label">Active Learning Days</span>
+              <span class="pmetric-value" id="parent-stat-streak">1 Day</span>
+            </div>
+            <div class="pmetric-box">
+              <span class="pmetric-label">Total XP & Badges</span>
+              <span class="pmetric-value" id="parent-stat-xp">0 XP (0 Badges)</span>
+            </div>
+          </div>
+
+          <!-- Subject Breakdown Bars -->
+          <div class="parent-subjects-breakdown">
+            <h4>Subject Mastery Breakdown</h4>
+            <div class="subject-bars-list" id="parent-subject-bars">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+
+          <!-- Strengths & Recommendations Columns -->
+          <div class="parent-insights-grid">
+            <div class="insight-box strong-box">
+              <div class="insight-title">
+                <span>🌟 Strong Areas</span>
+              </div>
+              <ul class="insight-list" id="parent-strong-list">
+                <li>Complete first lessons and quizzes to generate strong topic analytics.</li>
+              </ul>
+            </div>
+
+            <div class="insight-box practice-needed-box">
+              <div class="insight-title">
+                <span>⚠️ Needs Practice</span>
+              </div>
+              <ul class="insight-list" id="parent-needs-practice-list">
+                <li>Topics with lower quiz scores or unattempted exercises will appear here.</li>
+              </ul>
+            </div>
+
+            <div class="insight-box revision-rec-box">
+              <div class="insight-title">
+                <span>📌 Recommended Revision</span>
+              </div>
+              <ul class="insight-list" id="parent-revision-list">
+                <li>Review Integer operations in Mathematics and Cell Biology in Science.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Modal for Book/Curriculum Guides & Notes Preview -->
+  <div id="app-modal" class="app-modal hidden">
+    <div class="modal-backdrop" onclick="app.closeModal()"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modal-title">Resource Details</h3>
+        <button class="modal-close-btn" onclick="app.closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content -->
+      </div>
+      <div class="modal-footer" id="modal-footer">
+        <button class="btn btn-outline" onclick="app.closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <div class="footer-brand">EduNexa AI — Grade 7 Digital Learning Platform</div>
+        <p class="footer-text">Structured middle-school educational ecosystem covering 8 subjects, laboratory simulations, gamified problem solving, and curriculum resources.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#subjects">Subjects</a>
+        <a href="#science-lab">Science Lab</a>
+        <a href="#math-lab">Math Lab</a>
+        <a href="#games">Games</a>
+        <a href="#master-quiz">70-Q Test</a>
+        <a href="#parent-view">Parent View</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 EduNexa AI. All educational contents aligned with middle-school curriculum standards.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="grade7.js"></script>
+</body>
+</html>

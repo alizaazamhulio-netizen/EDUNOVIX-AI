@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDCAT Biology | EduNexa AI - Medical Entry Test Preparation</title>
+  <meta name="description" content="Comprehensive MDCAT Biology preparation platform with structured chapters, PMDC exam-focused questions, smart revision, interactive quizzes, and progress tracking.">
+  
+  <!-- Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="biologymdcat.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. Top Header & Navigation
+       ========================================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-wrapper" id="brandLogoLink" aria-label="EduNexa AI Home">
+        <div class="brand-logo-icon">
+          <i class="fa-solid fa-dna"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">EduNexa <span>AI</span></span>
+          <span class="brand-badge">MDCAT Biology</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="main-nav" id="desktopNav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link" id="navHome">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+        <a href="#chapters-section" class="nav-link active" id="navChapters">
+          <i class="fa-solid fa-microscope"></i> Biology Chapters
+        </a>
+        <a href="#quiz-section" class="nav-link" id="navQuiz">
+          <i class="fa-solid fa-clipboard-question"></i> Biology Quiz
+        </a>
+        <a href="#stats-section" class="nav-link" id="navProgress">
+          <i class="fa-solid fa-chart-line"></i> Progress
+        </a>
+      </nav>
+
+      <!-- Header Action -->
+      <div class="header-cta-desktop">
+        <a href="mdcat.html" class="nav-cta" id="backToMdcatBtn">
+          <i class="fa-solid fa-arrow-left"></i> Back to MDCAT
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="mobile-toggle-btn" id="mobileToggleBtn" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="#chapters-section" class="nav-link"><i class="fa-solid fa-microscope"></i> Biology Chapters</a>
+      <a href="#quiz-section" class="nav-link"><i class="fa-solid fa-clipboard-question"></i> Biology Quiz</a>
+      <a href="#stats-section" class="nav-link"><i class="fa-solid fa-chart-line"></i> Progress Analytics</a>
+      <a href="mdcat.html" class="nav-link" style="color: var(--cyan-accent);"><i class="fa-solid fa-arrow-left"></i> Back to MDCAT Portal</a>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. Hero Section
+       ========================================================================= -->
+  <section class="hero-section" id="heroSection">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Hero Text Column -->
+        <div class="hero-content">
+          <div class="hero-tag">
+            <i class="fa-solid fa-shield-virus"></i>
+            <span>MDCAT • Biology Preparation</span>
+          </div>
+          <h1 class="hero-title">
+            Master <span class="highlight">MDCAT Biology</span> with Smart Precision
+          </h1>
+          <p class="hero-description">
+            Master Biology with structured chapters, smart revision, high-yield conceptual summaries, and exam-focused practice designed for PMDC syllabus excellence.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#chapters-section" class="btn btn-primary" id="exploreChaptersHeroBtn">
+              <i class="fa-solid fa-book-medical"></i> Explore Chapters
+            </a>
+            <a href="#quiz-section" class="btn btn-secondary" id="takeQuizHeroBtn">
+              <i class="fa-solid fa-circle-play"></i> Start Biology Quiz
+            </a>
+          </div>
+
+          <!-- Dynamic Hero Quick Stats -->
+          <div class="hero-stats-row">
+            <div class="stat-item">
+              <span class="stat-value accent-emerald" id="statTotalChapters">14</span>
+              <span class="stat-label">Chapters</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value accent-cyan" id="statPracticeQuestions">25+</span>
+              <span class="stat-label">MCQs Bank</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value accent-amber" id="statCompletedChapters">0</span>
+              <span class="stat-label">Completed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="statBestQuizScore">0%</span>
+              <span class="stat-label">Best Score</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Element -->
+        <div class="hero-visual-col">
+          <div class="hero-visual-card">
+            <div class="visual-top-badge">
+              <span class="status-indicator">
+                <span class="pulse-dot"></span> PMDC MDCAT Curriculum
+              </span>
+              <span class="chapter-num-badge">High Yield</span>
+            </div>
+
+            <!-- Biology Vector Illustration -->
+            <div class="visual-cell-art">
+              <svg class="dna-svg-container" viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="emeraldCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#10B981" />
+                    <stop offset="50%" stop-color="#06B6D4" />
+                    <stop offset="100%" stop-color="#38BDF8" />
+                  </linearGradient>
+                  <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="rgba(16,185,129,0.3)" />
+                    <stop offset="100%" stop-color="rgba(6,182,212,0.3)" />
+                  </linearGradient>
+                </defs>
+                <!-- Double Helix Curves -->
+                <path d="M 20 80 Q 70 20 120 80 T 220 80 T 320 80 T 400 80" stroke="url(#emeraldCyanGrad)" stroke-width="4" stroke-linecap="round" fill="none" />
+                <path d="M 20 80 Q 70 140 120 80 T 220 80 T 320 80 T 400 80" stroke="url(#emeraldCyanGrad)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6" />
+                
+                <!-- Base Pair Rungs -->
+                <line x1="70" y1="40" x2="70" y2="120" stroke="url(#glowGrad)" stroke-width="3" stroke-dasharray="4 4" />
+                <line x1="120" y1="80" x2="120" y2="80" stroke="#fff" stroke-width="6" stroke-linecap="round" />
+                <line x1="170" y1="40" x2="170" y2="120" stroke="url(#glowGrad)" stroke-width="3" stroke-dasharray="4 4" />
+                <line x1="220" y1="80" x2="220" y2="80" stroke="#fff" stroke-width="6" stroke-linecap="round" />
+                <line x1="270" y1="40" x2="270" y2="120" stroke="url(#glowGrad)" stroke-width="3" stroke-dasharray="4 4" />
+                <line x1="320" y1="80" x2="320" y2="80" stroke="#fff" stroke-width="6" stroke-linecap="round" />
+                <line x1="370" y1="40" x2="370" y2="120" stroke="url(#glowGrad)" stroke-width="3" stroke-dasharray="4 4" />
+                
+                <!-- Floating Node Circles -->
+                <circle cx="70" cy="40" r="6" fill="#10B981" />
+                <circle cx="70" cy="120" r="6" fill="#06B6D4" />
+                <circle cx="170" cy="120" r="6" fill="#10B981" />
+                <circle cx="170" cy="40" r="6" fill="#06B6D4" />
+                <circle cx="270" cy="40" r="6" fill="#10B981" />
+                <circle cx="270" cy="120" r="6" fill="#06B6D4" />
+                <circle cx="370" cy="120" r="6" fill="#10B981" />
+                <circle cx="370" cy="40" r="6" fill="#06B6D4" />
+              </svg>
+            </div>
+
+            <div class="syllabus-focus-box">
+              <div class="syllabus-focus-title">Core Biology Disciplines</div>
+              <div class="syllabus-pills">
+                <span class="syllabus-pill"><i class="fa-solid fa-atom"></i> Cell Bio</span>
+                <span class="syllabus-pill"><i class="fa-solid fa-heart-pulse"></i> Human Physiology</span>
+                <span class="syllabus-pill"><i class="fa-solid fa-code-branch"></i> Genetics</span>
+                <span class="syllabus-pill"><i class="fa-solid fa-bolt"></i> Bioenergetics</span>
+                <span class="syllabus-pill"><i class="fa-solid fa-shield-virus"></i> Immunology</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. Quick Action & Continuation Dashboard
+       ========================================================================= -->
+  <section class="quick-dashboard-section" id="quickDashboard">
+    <div class="container">
+      <div class="dashboard-cards-grid">
+        <!-- Continue Study Card -->
+        <div class="action-card" id="continueStudyCard">
+          <div>
+            <div class="action-card-header">
+              <div class="action-card-icon icon-continue">
+                <i class="fa-solid fa-book-open"></i>
+              </div>
+              <div class="action-card-title-wrap">
+                <h3 id="continueChapterTitle">Start your first Biology chapter</h3>
+                <p class="action-card-subtitle">Pick up right where you left off in your revision journey.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-card-footer">
+            <div class="progress-mini-wrap">
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="continueChapterProgressFill" style="width: 0%;"></div>
+              </div>
+              <span class="progress-percent-text" id="continueChapterPercentText">0%</span>
+            </div>
+            <a href="cell-biology.html" class="btn btn-primary btn-sm" id="continueChapterBtn">
+              Continue Studying <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Daily Practice Card -->
+        <div class="action-card" id="dailyPracticeCard">
+          <div>
+            <div class="action-card-header">
+              <div class="action-card-icon icon-daily">
+                <i class="fa-solid fa-fire-flame-curved"></i>
+              </div>
+              <div class="action-card-title-wrap">
+                <h3>Daily Biology Practice</h3>
+                <p class="action-card-subtitle">Test your conceptual retention with custom-timed MDCAT Biology MCQs.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-card-footer">
+            <span class="badge-tag" style="font-size: 0.8rem; color: var(--cyan-accent);">
+              <i class="fa-solid fa-bolt"></i> Instant Analysis
+            </span>
+            <button class="btn btn-secondary btn-sm" id="dailyPracticeBtn">
+              Start Practice <i class="fa-solid fa-arrow-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. Biology Chapters Library Section
+       ========================================================================= -->
+  <section class="chapters-section" id="chapters-section">
+    <div class="container">
+      <div class="section-header-wrap">
+        <span class="section-label"><i class="fa-solid fa-layer-group"></i> MDCAT Syllabus</span>
+        <h2 class="section-title">Biology Chapters</h2>
+        <p class="section-subtitle">
+          Study every available Biology chapter from your MDCAT preparation library with structured high-yield notes.
+        </p>
+      </div>
+
+      <!-- Search & Category Filter Toolbar -->
+      <div class="chapters-toolbar" id="chaptersToolbar">
+        <!-- Search Input -->
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input 
+            type="text" 
+            id="chapterSearchInput" 
+            class="search-input" 
+            placeholder="Search Biology chapters by title, organelle, topic, or keyword..."
+            aria-label="Search Biology chapters"
+          >
+          <button class="search-clear-btn" id="chapterSearchClear" aria-label="Clear search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="filter-tabs-row" id="filterTabsRow">
+          <button class="filter-tab active" data-category="All">All Chapters</button>
+          <button class="filter-tab" data-category="Cell Biology">Cell Biology</button>
+          <button class="filter-tab" data-category="Human Physiology">Human Physiology</button>
+          <button class="filter-tab" data-category="Genetics & Evolution">Genetics & Evolution</button>
+          <button class="filter-tab" data-category="Ecology & Biotech">Ecology & Biotech</button>
+        </div>
+      </div>
+
+      <!-- Chapter Cards Grid Container (Populated via JS) -->
+      <div class="chapters-grid" id="chaptersGrid">
+        <!-- Dynamic Cards Inserted Here by mdcatbiology.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. Biology Quiz Section
+       ========================================================================= -->
+  <section class="quiz-section" id="quiz-section">
+    <div class="container">
+      <div class="section-header-wrap">
+        <span class="section-label"><i class="fa-solid fa-brain"></i> Interactive MCQ Engine</span>
+        <h2 class="section-title">MDCAT Biology Practice Quiz</h2>
+        <p class="section-subtitle">
+          Test your conceptual understanding with real exam-standard Biology questions, instant step-by-step rationales, and comprehensive performance analytics.
+        </p>
+      </div>
+
+      <!-- Quiz Wrapper Card -->
+      <div class="quiz-container-box" id="quizContainerBox">
+        
+        <!-- View 1: Quiz Intro / Setup Screen -->
+        <div class="quiz-intro-view" id="quizIntroView">
+          <div class="quiz-intro-left">
+            <span class="status-badge completed" style="margin-bottom: 1rem; display: inline-block;">
+              <i class="fa-solid fa-award"></i> MDCAT Standard
+            </span>
+            <h3>Exam Simulation & Adaptive Testing</h3>
+            <p>
+              Challenge yourself with high-yield questions covering Cell Structure, Bioenergetics, Physiology, Reproduction, and Molecular Genetics.
+            </p>
+            
+            <div class="quiz-features-list">
+              <div class="quiz-feature-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Strictly MDCAT Biology syllabus (no unrelated subjects)</span>
+              </div>
+              <div class="quiz-feature-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Instant diagnostic feedback with detailed scientific explanations</span>
+              </div>
+              <div class="quiz-feature-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Detailed answer review & local accuracy analytics</span>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" id="startQuizBtn">
+              <i class="fa-solid fa-play"></i> Start Biology Quiz
+            </button>
+          </div>
+
+          <!-- Right: Quiz Settings Panel -->
+          <div class="quiz-intro-right">
+            <div class="quiz-settings-panel">
+              <div class="settings-panel-title">
+                <i class="fa-solid fa-sliders"></i> Quiz Configuration
+              </div>
+
+              <!-- Question Count Selection -->
+              <div class="settings-group">
+                <label class="settings-group-label">Number of Questions</label>
+                <div class="settings-options-row">
+                  <button class="quiz-opt-btn" data-quiz-count="10">10 Qs</button>
+                  <button class="quiz-opt-btn active" data-quiz-count="20">20 Qs</button>
+                  <button class="quiz-opt-btn" data-quiz-count="30">30 Qs</button>
+                  <button class="quiz-opt-btn" data-quiz-count="50">All</button>
+                </div>
+              </div>
+
+              <!-- Difficulty Filter -->
+              <div class="settings-group">
+                <label class="settings-group-label">Difficulty Level</label>
+                <div class="settings-options-row">
+                  <button class="quiz-opt-btn" data-quiz-diff="Easy">Easy</button>
+                  <button class="quiz-opt-btn" data-quiz-diff="Medium">Medium</button>
+                  <button class="quiz-opt-btn" data-quiz-diff="Hard">Hard</button>
+                  <button class="quiz-opt-btn active" data-quiz-diff="Mixed">Mixed</button>
+                </div>
+              </div>
+
+              <!-- Topic Selection -->
+              <div class="settings-group">
+                <label class="settings-group-label">Select Chapter / Topic</label>
+                <select id="quizTopicSelect" class="quiz-select" aria-label="Select Quiz Topic">
+                  <option value="All">All Chapters (Full Syllabus)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- View 2: Active Quiz Interface -->
+        <div class="quiz-active-view" id="quizActiveView">
+          <!-- Quiz Top Header -->
+          <div class="quiz-header-bar">
+            <div class="quiz-header-meta">
+              <span class="q-counter-badge">
+                Question <span id="quizCurrentNum">1</span> / <span id="quizTotalNum">20</span>
+              </span>
+              <span class="q-topic-badge" id="quizTopicBadge">Cell Biology</span>
+            </div>
+            <div class="quiz-header-stats">
+              <span class="live-score-badge" id="quizLiveScore">Score: 0</span>
+            </div>
+          </div>
+
+          <!-- Overall Quiz Progress Bar -->
+          <div class="quiz-overall-progress">
+            <div class="quiz-overall-fill" id="quizProgressBar"></div>
+          </div>
+
+          <!-- Question Content -->
+          <div class="question-box">
+            <h3 class="question-text" id="quizQuestionText">
+              Loading question...
+            </h3>
+
+            <!-- 4 Option Buttons Container -->
+            <div class="answers-grid" id="quizAnswersContainer">
+              <!-- Inserted via JS -->
+            </div>
+
+            <!-- Detailed Explanation Box (Reveals after answer selection) -->
+            <div class="explanation-panel" id="quizExplanationPanel">
+              <div class="explanation-header">
+                <i class="fa-solid fa-lightbulb"></i> Medical Scientific Explanation
+              </div>
+              <p class="explanation-text" id="quizExplanationText">
+                Explanation rationale appears here.
+              </p>
+            </div>
+          </div>
+
+          <!-- Quiz Navigation Actions -->
+          <div class="quiz-footer-actions">
+            <button class="btn btn-outline btn-sm" id="quizPrevBtn" disabled>
+              <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <button class="btn btn-primary btn-sm" id="quizNextBtn" disabled>
+              Next Question <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- View 3: Quiz Result Screen -->
+        <div class="quiz-result-view" id="quizResultView">
+          <div class="result-card-inner">
+            <div class="result-badge-top">
+              <i class="fa-solid fa-trophy"></i> MDCAT Assessment Complete
+            </div>
+            <h3 class="result-title">Quiz Completed!</h3>
+            <p class="result-subtitle">Here is a comprehensive summary of your performance.</p>
+
+            <!-- Circular Progress Indicator -->
+            <div class="score-circle-wrapper">
+              <svg class="score-circle-svg" viewBox="0 0 160 160">
+                <circle class="score-circle-bg" cx="80" cy="80" r="70" />
+                <circle class="score-circle-bar" id="resultScoreCircleBar" cx="80" cy="80" r="70" />
+              </svg>
+              <div class="score-circle-content">
+                <span class="score-circle-percent" id="resultScorePercent">0%</span>
+                <span class="score-circle-label">Score</span>
+              </div>
+            </div>
+
+            <!-- Result Breakdown Numbers -->
+            <div class="result-stats-grid">
+              <div class="result-stat-box">
+                <span class="res-stat-val" style="color: var(--emerald-primary);" id="resStatCorrect">0</span>
+                <span class="res-stat-lbl">Correct</span>
+              </div>
+              <div class="result-stat-box">
+                <span class="res-stat-val" style="color: var(--coral-danger);" id="resStatWrong">0</span>
+                <span class="res-stat-lbl">Wrong</span>
+              </div>
+              <div class="result-stat-box">
+                <span class="res-stat-val" style="color: var(--cyan-accent);" id="resStatAccuracy">0%</span>
+                <span class="res-stat-lbl">Accuracy</span>
+              </div>
+              <div class="result-stat-box">
+                <span class="res-stat-val" id="resStatAttempted">0/0</span>
+                <span class="res-stat-lbl">Attempted</span>
+              </div>
+            </div>
+
+            <!-- Result Actions -->
+            <div class="result-actions-row">
+              <button class="btn btn-primary" id="reviewAnswersBtn">
+                <i class="fa-solid fa-list-check"></i> Review Answers
+              </button>
+              <button class="btn btn-secondary" id="retakeQuizBtn">
+                <i class="fa-solid fa-rotate-right"></i> Retake Quiz
+              </button>
+              <button class="btn btn-outline" id="backToDashboardBtn">
+                <i class="fa-solid fa-arrow-up"></i> Back to Dashboard
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- View 4: Review Answers Screen -->
+        <div class="quiz-review-view" id="quizReviewView">
+          <div class="review-header-bar">
+            <div>
+              <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: #fff;">Answer Explanations & Review</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">Review each question, your chosen option, and the official PMDC-aligned medical rationale.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="backToResultsBtn">
+              <i class="fa-solid fa-arrow-left"></i> Back to Results
+            </button>
+          </div>
+
+          <div class="review-list" id="reviewAnswersList">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. Progress & Analytics Dashboard Section
+       ========================================================================= -->
+  <section class="stats-section" id="stats-section">
+    <div class="container">
+      <div class="stats-container-card">
+        <div class="section-header-wrap" style="margin-bottom: 1rem;">
+          <span class="section-label"><i class="fa-solid fa-chart-pie"></i> Local Retention Metrics</span>
+          <h2 class="section-title">Biology Dashboard Statistics</h2>
+          <p class="section-subtitle">
+            All your chapter completions and quiz attempts are saved locally on your browser.
+          </p>
+        </div>
+
+        <div class="analytics-grid">
+          <div class="analytics-card">
+            <div class="analytics-icon teal">
+              <i class="fa-solid fa-book-bookmark"></i>
+            </div>
+            <div class="analytics-info">
+              <span class="analytics-num" id="analyticsTotalChapters">14</span>
+              <span class="analytics-label">Total Chapters</span>
+            </div>
+          </div>
+
+          <div class="analytics-card">
+            <div class="analytics-icon emerald">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="analytics-info">
+              <span class="analytics-num" id="analyticsCompleted">0</span>
+              <span class="analytics-label">Completed</span>
+            </div>
+          </div>
+
+          <div class="analytics-card">
+            <div class="analytics-icon amber">
+              <i class="fa-solid fa-hourglass-half"></i>
+            </div>
+            <div class="analytics-info">
+              <span class="analytics-num" id="analyticsInProgress">0</span>
+              <span class="analytics-label">In Progress</span>
+            </div>
+          </div>
+
+          <div class="analytics-card">
+            <div class="analytics-icon cyan">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <div class="analytics-info">
+              <span class="analytics-num" id="analyticsBestScore">0%</span>
+              <span class="analytics-label">Best Quiz Score</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
+          <button class="btn btn-outline btn-sm" id="resetProgressBtn" style="color: var(--coral-danger); border-color: rgba(239,68,68,0.3);">
+            <i class="fa-solid fa-trash-can"></i> Reset Progress
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. Reset Confirmation Modal
+       ========================================================================= -->
+  <div class="modal-backdrop" id="resetModalBackdrop">
+    <div class="modal-box">
+      <div class="modal-icon-wrap">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <h3 class="modal-title">Reset Biology Progress?</h3>
+      <p class="modal-desc">
+        This will clear your saved chapter completion statuses and quiz scores. This action cannot be undone.
+      </p>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-sm" id="cancelResetBtn">Cancel</button>
+        <button class="btn btn-primary btn-sm" id="confirmResetBtn" style="background: var(--coral-danger);">
+          Yes, Reset All
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       8. Footer
+       ========================================================================= -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h4>EduNexa AI</h4>
+          <p>
+            Your comprehensive, high-yield medical entrance test preparation companion for MDCAT aspirants.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>MDCAT Subjects</h5>
+          <ul class="footer-links">
+            <li><a href="mdcatbiology.html">Biology (Active)</a></li>
+            <li><a href="mdcat.html">All MDCAT Subjects</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Quick Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">EduNexa Home</a></li>
+            <li><a href="#chapters-section">Biology Chapters</a></li>
+            <li><a href="#quiz-section">Practice Quiz</a></li>
+            <li><a href="#stats-section">Dashboard Stats</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; EduNexa AI • MDCAT Biology Preparation Platform. All rights reserved.</span>
+        <span>Built for PMDC Medical Entry Test Excellence</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Engine -->
+  <script src="biologymdcat.js"></script>
+</body>
+</html>

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Comprehension Practice — Advanced Academic & Competitive English</title>
+  <meta name="description" content="Master reading comprehension with analytical strategies, original academic passages, interactive skill drills, and real-time question analytics.">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Merriweather -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 CDN for Crisp Professional Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="reading-comprehension.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#hero" class="nav-brand">
+        <div class="brand-icon-box">
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Reading Comprehension</span>
+          <span class="brand-sub">Practice Platform</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#library" class="nav-link">Passage Library</a></li>
+          <li><a href="#strategies" class="nav-link">Strategies</a></li>
+          <li><a href="#transitions" class="nav-link">Transitions</a></li>
+          <li><a href="#traps" class="nav-link">Trap Lab</a></li>
+          <li><a href="#flashcards" class="nav-link">Flashcards</a></li>
+          <li><a href="#generator" class="nav-link">Custom Practice</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-btn nav-btn-outline" onclick="openSavedModal()" title="Saved Passages">
+          <i class="fa-regular fa-bookmark"></i>
+          <span>Saved</span>
+        </button>
+        <button class="nav-btn nav-btn-outline" onclick="openMistakesModal()" title="Review Mistakes">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>Mistakes</span>
+        </button>
+        <a href="#library" class="nav-btn nav-btn-primary">
+          <i class="fa-solid fa-play"></i>
+          <span>Start Practice</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-glow"></div>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-award"></i>
+          <span>ENGLISH READING • COMPREHENSION PRACTICE</span>
+        </div>
+        <h1 class="hero-title">
+          Reading <span class="text-gradient">Comprehension</span>
+        </h1>
+        <p class="hero-subtitle">
+          Read smarter. Understand deeper. Answer with confidence.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#library" class="btn-hero-primary">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Start Practice</span>
+          </a>
+          <a href="#strategies" class="btn-hero-secondary">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span>Learn Strategies</span>
+          </a>
+        </div>
+        <div class="hero-micro-quote">
+          <i class="fa-solid fa-compass"></i>
+          <span>"Evidence beats assumption. Understand the passage structure before selecting your answer."</span>
+        </div>
+      </div>
+
+      <div class="hero-graphic-wrap">
+        <div class="hero-graphic-card">
+          <div class="hero-graphic-header">
+            <span style="font-weight: 800; font-size: 0.95rem; color: #FFFFFF;">
+              <i class="fa-solid fa-graduation-cap" style="color: var(--cyan-400); margin-right: 0.5rem;"></i>
+              Critical Reading Framework
+            </span>
+            <span class="graphic-pill">Standard Method</span>
+          </div>
+
+          <div class="reading-steps-mini">
+            <div class="step-row">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Preview & Map Structure</h4>
+                <p>Read actively, pinpoint the central thesis, and locate key transition signposts.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Isolate Textual Evidence</h4>
+                <p>Verify every answer choice strictly against stated facts in the text.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Eliminate Traps & Extreme Leap Options</h4>
+                <p>Reject options with unwarranted qualifiers (always, never) or outside bias.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Dynamic Stats Bar -->
+  <div class="container stats-bar-wrapper">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon-box stat-icon-navy">
+          <i class="fa-solid fa-book-bookmark"></i>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value" id="statPassagesCompleted">0</span>
+          <span class="stat-label">Passages Completed</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon-box stat-icon-royal">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value" id="statQuestionsAnswered">0</span>
+          <span class="stat-label">Questions Solved</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon-box stat-icon-teal">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value" id="statAccuracy">0%</span>
+          <span class="stat-label">Overall Accuracy</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon-box stat-icon-amber">
+          <i class="fa-solid fa-fire"></i>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value" id="statStreak">1 Day</span>
+          <span class="stat-label">Daily Streak</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Area -->
+  <main class="container">
+
+    <!-- Daily Reading Spotlight Banner -->
+    <div id="dailySpotlightContainer" style="margin-top: 2rem;"></div>
+
+    <!-- Section 1: 10 Interactive Reading Skills -->
+    <section class="section" id="skills">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="fa-solid fa-cubes-stacked"></i>
+          Core Competencies
+        </div>
+        <h2 class="section-title">Essential Reading Skills</h2>
+        <p class="section-subtitle">
+          Master each fundamental dimension of academic comprehension with targeted conceptual frameworks and instant practice drills.
+        </p>
+      </div>
+
+      <div class="skills-grid" id="skillsGridContainer">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Section 2: Passage Library -->
+    <section class="section" id="library">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="fa-solid fa-book"></i>
+          Curated Repository
+        </div>
+        <h2 class="section-title">Original Passage Library</h2>
+        <p class="section-subtitle">
+          Explore multi-disciplinary academic passages spanning Science, Technology, Psychology, Ecology, History, Space, and Critical Thinking.
+        </p>
+      </div>
+
+      <!-- Library Toolbar: Search & Filters -->
+      <div class="library-toolbar">
+        <div class="search-row">
+          <div class="search-input-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="passageSearchInput" class="search-input" placeholder="Search by title, category, keywords, or difficulty...">
+            <button id="btnClearSearch" class="btn-clear-search" title="Clear Search">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <select id="sortPassagesSelect" class="sort-select">
+            <option value="A-Z">Sort: Title (A–Z)</option>
+            <option value="Shortest">Sort: Shortest Read</option>
+            <option value="Longest">Sort: Longest Read</option>
+            <option value="Easiest">Sort: Easiest First</option>
+            <option value="Hardest">Sort: Hardest First</option>
+            <option value="Random">Sort: Random Shuffle</option>
+          </select>
+        </div>
+
+        <div class="filter-pills-row">
+          <div class="difficulty-tabs">
+            <button class="filter-tab active" data-diff="All">All Levels</button>
+            <button class="filter-tab" data-diff="Beginner">Beginner</button>
+            <button class="filter-tab" data-diff="Intermediate">Intermediate</button>
+            <button class="filter-tab" data-diff="Advanced">Advanced</button>
+            <button class="filter-tab" data-diff="Expert">Expert</button>
+          </div>
+
+          <div>
+            <select id="categoryFilterSelect" class="category-dropdown">
+              <option value="All">All Categories (12+)</option>
+              <option value="Science">Science</option>
+              <option value="Technology">Technology</option>
+              <option value="Environment">Environment</option>
+              <option value="Education">Education</option>
+              <option value="Psychology">Psychology</option>
+              <option value="Society">Society</option>
+              <option value="History">History</option>
+              <option value="Health">Health</option>
+              <option value="Nature">Nature</option>
+              <option value="Space">Space</option>
+              <option value="Critical Thinking">Critical Thinking</option>
+              <option value="Innovation">Innovation</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-meta">
+        <span id="resultsCountDisplay" class="results-count">Loading passages...</span>
+        <span>Click <strong>Read</strong> for full text or <strong>Start Questions</strong> for split-view quiz</span>
+      </div>
+
+      <!-- Passage Grid -->
+      <div class="passages-grid" id="passagesGridContainer">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Section 3: Custom Practice Generator -->
+    <section class="section" id="generator">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="fa-solid fa-sliders"></i>
+          Adaptive Practice
+        </div>
+        <h2 class="section-title">Custom Practice Generator</h2>
+        <p class="section-subtitle">
+          Configure an individualized training session tailored to your desired difficulty level, subject domain, and question count.
+        </p>
+      </div>
+
+      <div class="config-panel-card">
+        <div class="config-grid">
+          <div class="config-group">
+            <label class="config-label"><i class="fa-solid fa-signal"></i> Target Difficulty</label>
+            <select id="cfgDifficulty" class="config-select-styled">
+              <option value="All">All Difficulty Levels (Adaptive)</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+              <option value="Expert">Expert</option>
+            </select>
+          </div>
+
+          <div class="config-group">
+            <label class="config-label"><i class="fa-solid fa-folder-open"></i> Domain Category</label>
+            <select id="cfgCategory" class="config-select-styled">
+              <option value="All">All Categories</option>
+              <option value="Science">Science & Biology</option>
+              <option value="Technology">Technology & AI</option>
+              <option value="Environment">Environment & Climate</option>
+              <option value="Psychology">Psychology & Behavior</option>
+              <option value="Education">Education & Memory</option>
+              <option value="Society">Society & Urbanism</option>
+              <option value="History">History & Archaeology</option>
+              <option value="Health">Health & Neuroscience</option>
+              <option value="Space">Space & Astronomy</option>
+              <option value="Critical Thinking">Critical Thinking</option>
+            </select>
+          </div>
+
+          <div class="config-group">
+            <label class="config-label"><i class="fa-solid fa-list-ol"></i> Question Volume</label>
+            <select id="cfgCount" class="config-select-styled">
+              <option value="5">5 Questions (Quick Drill)</option>
+              <option value="10" selected>10 Questions (Standard Test)</option>
+              <option value="15">15 Questions (Intensive Session)</option>
+              <option value="20">20 Questions (Endurance Challenge)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn-generate-practice" onclick="generateCustomPractice()">
+          <i class="fa-solid fa-bolt"></i>
+          <span>Launch Custom Practice Session</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Section 4: Smart Reading Strategies -->
+    <section class="section" id="strategies">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="fa-solid fa-chess"></i>
+          Strategic Methodology
+        </div>
+        <h2 class="section-title">Smart Reading Strategy</h2>
+        <p class="section-subtitle">
+          Follow the battle-tested 10-step analytical methodology used by top scorers in competitive and academic reading exams.
+        </p>
+      </div>
+
+      <div class="strategy-accordions">
+        <div class="accordion-item open">
+          <button class="accordion-header">
+            <span>1. Preview the Macro Structure & Topic Sentence</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-body">
+            Before diving into detailed line-by-line reading, quickly scan the first sentence of each paragraph. This primes your working memory with the author's intellectual roadmap, allowing you to anticipate arguments rather than reacting passively.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>2. Distinguish the Central Thesis from Supporting Evidence</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-body">
+            The main idea is the unifying message that justifies the entire text. Details (examples, statistics, anecdotes) merely support that claim. Beware of trap choices that accurately restate a paragraph detail but fail to summarize the holistic text.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>3. Monitor Structural Transition Words</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-body">
+            Transitions are the compass needles of academic prose. Words like <em>however, nevertheless, conversely</em> signal crucial pivots where the author's genuine viewpoint often diverges from conventional consensus.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>4. Analyze Paragraph Functional Roles</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-body">
+            Ask: Why did the writer include paragraph 2? Does it introduce a counterargument, provide empirical validation, offer a historical comparison, or propose a policy remedy? Understanding function prevents factual confusion.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>5. Pinpoint Authorial Tone and Qualifiers</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-body">
+            Note the valence of adjectives and adverbs. Is the author <em>alarmed</em>, <em>cautiously optimistic</em>, <em>skeptical</em>, or <em>strictly objective</em>? Notice modal words like <em>might, may, likely, conclusively</em>.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>6. Deconstruct Question Stems Before Options</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-body">
+            Identify the precise objective of the question stem (e.g. <em>Inference</em> vs <em>Explicit Detail</em> vs <em>NOT/EXCEPT</em>). Formulate a preliminary answer in your mind before reading the four choices to prevent being anchored by attractive distractors.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>7. Return to the Text for Concrete Verification</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-body">
+            Never answer from hazy memory. Locate the exact paragraph and lines referenced in the question stem. The correct answer will be an airtight paraphrase of the passage's explicit words or inescapable logical implications.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>8. Eliminate Extreme Qualifiers & Unwarranted Assumptions</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-body">
+            Watch for absolute words: <em>always, never, all, completely, solely, impossible</em>. In academic reading, nuanced and moderate claims (<em>often, tend to, can lead to</em>) are overwhelmingly more likely to be correct.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>9. Distinguish Valid Inference from Outside Knowledge</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-body">
+            A statement may be true in the real world, but if the passage does not support it, it is 100% incorrect on a reading comprehension test. Strict validity exists only within the universe of the author's words.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>10. Systematic Review of Borderline Questions</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-body">
+            When split between two plausible choices, contrast them word-for-word against the passage. One of the options will contain a subtle fatal flaw (e.g., swapping a cause for an effect, or misattributing a speaker's opinion).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Transition Words Matrix -->
+    <section class="section" id="transitions">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="fa-solid fa-signs-post"></i>
+          Logical Signposts
+        </div>
+        <h2 class="section-title">Visual Transition Words Matrix</h2>
+        <p class="section-subtitle">
+          Master the connective tissue of academic writing. Filter by logical category to understand how authors build and redirect arguments.
+        </p>
+      </div>
+
+      <div class="matrix-tabs">
+        <button class="matrix-tab-btn active" data-cat="all" onclick="filterTransitionMatrix('all')">All Transitions</button>
+        <button class="matrix-tab-btn" data-cat="addition" onclick="filterTransitionMatrix('addition')">Addition</button>
+        <button class="matrix-tab-btn" data-cat="contrast" onclick="filterTransitionMatrix('contrast')">Contrast & Pivot</button>
+        <button class="matrix-tab-btn" data-cat="cause" onclick="filterTransitionMatrix('cause')">Cause</button>
+        <button class="matrix-tab-btn" data-cat="result" onclick="filterTransitionMatrix('result')">Result & Consequence</button>
+        <button class="matrix-tab-btn" data-cat="example" onclick="filterTransitionMatrix('example')">Example & Illustration</button>
+        <button class="matrix-tab-btn" data-cat="conclusion" onclick="filterTransitionMatrix('conclusion')">Conclusion & Summary</button>
+      </div>
+
+      <div class="matrix-words-grid" id="matrixWordsContainer">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Section 6: Spot the Trap Lab -->
+    <section class="section" id="traps">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="fa-solid fa-shield-halved"></i>
+          Answer Elimination Lab
+        </div>
+        <h2 class="section-title">Spot the Trap Distractors</h2>
+        <p class="section-subtitle">
+          Test writers construct predictable incorrect answer patterns. Learn to identify and neutralize the 6 most common trap designs.
+        </p>
+      </div>
+
+      <div class="traps-grid">
+        <div class="trap-card">
+          <span class="trap-tag"><i class="fa-solid fa-ban"></i> Trap #1</span>
+          <h3 class="trap-name">The Extreme Statement</h3>
+          <p class="trap-desc">Takes a moderate authorial point and exaggerates it with unyielding absolutes (<em>always, completely, never, every, impossible</em>).</p>
+          <div class="trap-clue"><strong>Detection Clue:</strong> Look for unqualified categorical terms that go beyond the author's measured tone.</div>
+        </div>
+
+        <div class="trap-card">
+          <span class="trap-tag"><i class="fa-solid fa-puzzle-piece"></i> Trap #2</span>
+          <h3 class="trap-name">The Partially Correct Halftruth</h3>
+          <p class="trap-desc">Contains 80% accurate phrasing lifted from the text, but inserts one false, inverted, or unsupported word at the very end.</p>
+          <div class="trap-clue"><strong>Detection Clue:</strong> Read the entire option to the final word; traps often lurk in the trailing clause.</div>
+        </div>
+
+        <div class="trap-card">
+          <span class="trap-tag"><i class="fa-solid fa-arrows-left-right"></i> Trap #3</span>
+          <h3 class="trap-name">The Opposite Interpretation</h3>
+          <p class="trap-desc">Inverts cause and effect, confuses two contrasting subjects, or assigns the critic's view to the author.</p>
+          <div class="trap-clue"><strong>Detection Clue:</strong> Check subject-verb attribution: who argued what in the original text?</div>
+        </div>
+
+        <div class="trap-card">
+          <span class="trap-tag"><i class="fa-solid fa-earth-americas"></i> Trap #4</span>
+          <h3 class="trap-name">The Outside Knowledge Bait</h3>
+          <p class="trap-desc">A statement that is factually accurate in general science or everyday life, but has zero textual evidence in the passage.</p>
+          <div class="trap-clue"><strong>Detection Clue:</strong> Ask: "Did the author specifically write this here, or am I importing my own knowledge?"</div>
+        </div>
+
+        <div class="trap-card">
+          <span class="trap-tag"><i class="fa-solid fa-shuffle"></i> Trap #5</span>
+          <h3 class="trap-name">The Right Fact, Wrong Question</h3>
+          <p class="trap-desc">Accurately quotes an authentic fact from paragraph 4 when the question stem explicitly asked about the main cause in paragraph 1.</p>
+          <div class="trap-clue"><strong>Detection Clue:</strong> Re-read the question stem to verify relevance to the exact question asked.</div>
+        </div>
+
+        <div class="trap-card">
+          <span class="trap-tag"><i class="fa-solid fa-feather-pointed"></i> Trap #6</span>
+          <h3 class="trap-name">The Unsupported Leap</h3>
+          <p class="trap-desc">Makes a plausible speculation that sounds reasonable, but cannot be strictly verified through direct deduction.</p>
+          <div class="trap-clue"><strong>Detection Clue:</strong> Valid inferences require direct proof, not speculative likelihood.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Interactive Flashcards -->
+    <section class="section" id="flashcards">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="fa-solid fa-cards"></i>
+          Concept Recall
+        </div>
+        <h2 class="section-title">Reading Skills Flashcards</h2>
+        <p class="section-subtitle">
+          Reinforce key comprehension terminology and formulas with interactive 3D flipcards.
+        </p>
+      </div>
+
+      <div class="flashcard-wrapper">
+        <div class="flashcard-inner" id="flashcardInner" onclick="flipFlashcard()">
+          <!-- Front -->
+          <div class="flashcard-front">
+            <span class="fc-category" id="fcCategory">Category</span>
+            <h3 class="fc-term" id="fcTerm">MAIN IDEA</h3>
+            <div class="fc-hint" id="fcHint"><i class="fa-solid fa-rotate"></i> Click to flip and inspect definition</div>
+          </div>
+
+          <!-- Back -->
+          <div class="flashcard-back">
+            <span class="fc-category" id="fcBackCategory">Category</span>
+            <p class="fc-definition" id="fcDefinition">Definition text...</p>
+            <p class="fc-tip" id="fcTip">Tip text...</p>
+          </div>
+        </div>
+
+        <div class="flashcard-controls">
+          <button class="btn-fc-action btn-fc-nav" onclick="prevFlashcard()">
+            <i class="fa-solid fa-chevron-left"></i> Previous
+          </button>
+          <button class="btn-fc-action btn-fc-nav" onclick="flipFlashcard()">
+            <i class="fa-solid fa-rotate"></i> Flip
+          </button>
+          <button class="btn-fc-action btn-fc-action btn-fc-know" onclick="markCardKnown()">
+            <i class="fa-solid fa-check"></i> I Know This
+          </button>
+          <button class="btn-fc-action btn-fc-review" onclick="markCardReview()">
+            <i class="fa-solid fa-rotate-left"></i> Review Again
+          </button>
+          <button class="btn-fc-action btn-fc-nav" onclick="shuffleFlashcards()">
+            <i class="fa-solid fa-shuffle"></i> Shuffle
+          </button>
+          <button class="btn-fc-action btn-fc-nav" onclick="nextFlashcard()">
+            Next <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--slate-500);">
+          <span id="fcCardCounter">Card 1 of 9</span> • <span id="fcKnownCount">0 Mastered</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Focused Workspace Modal (Full-Screen Reading & Quiz Environment) -->
+  <div class="workspace-modal" id="workspaceModal">
+    <div class="workspace-container">
+      <div class="workspace-header">
+        <div class="ws-header-left">
+          <div class="brand-icon-box" style="width: 34px; height: 34px; font-size: 1rem;">
+            <i class="fa-solid fa-book-open-reader"></i>
+          </div>
+          <div class="ws-title-wrap">
+            <h3 id="wsTitle">Passage Title</h3>
+            <div class="ws-meta-line">
+              <span id="wsCategoryBadge" class="category-badge cat-science">Science</span>
+              <span id="wsDifficultyBadge" class="skill-difficulty diff-advanced">Advanced</span>
+              <span id="wsReadTimeBadge"><i class="fa-regular fa-clock"></i> 4 min read</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ws-timer-controls">
+          <i class="fa-solid fa-stopwatch" style="color: var(--cyan-400); font-size: 0.85rem;"></i>
+          <span class="timer-display" id="wsTimerDisplay">00:00</span>
+          <button class="timer-btn" id="btnTimerToggle" onclick="toggleReadingTimer()" title="Start / Pause Timer">
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <button class="timer-btn" onclick="resetReadingTimer()" title="Reset Timer">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+        </div>
+
+        <div class="ws-header-right">
+          <button class="btn-ws-mode active" id="btnModeSplit" onclick="setWorkspaceMode('split')" title="Side by Side">
+            <i class="fa-solid fa-table-columns"></i> Split View
+          </button>
+          <button class="btn-ws-mode" id="btnModeReading" onclick="setWorkspaceMode('reading')" title="Reading Column Only">
+            <i class="fa-solid fa-align-left"></i> Reading Only
+          </button>
+          <button class="btn-ws-mode" id="btnModeQuiz" onclick="setWorkspaceMode('quiz')" title="Questions Only">
+            <i class="fa-solid fa-list-check"></i> Quiz Only
+          </button>
+          <button class="btn-ws-close" onclick="closeWorkspace()" title="Close Workspace (Esc)">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Dual-Pane Body -->
+      <div class="workspace-body" id="wsBody">
+        <!-- Left Pane: Comfortable Reading Column -->
+        <div class="passage-pane">
+          <div class="passage-reading-content" id="wsPassageContent">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Right Pane: Question Engine -->
+        <div class="question-pane">
+          <div class="question-engine-wrap">
+            <div class="q-progress-bar-wrap">
+              <div class="q-progress-meta">
+                <span id="qProgressText">Question 1 of 5</span>
+                <span id="qProgressPercent">20%</span>
+              </div>
+              <div class="q-progress-track">
+                <div class="q-progress-fill" id="qProgressFill"></div>
+              </div>
+            </div>
+
+            <div class="q-card-main">
+              <span class="q-type-badge" id="qTypeBadge">Main Idea</span>
+              <h4 class="q-stem-text" id="qStemText">Stem question text goes here...</h4>
+              <div class="q-options-list" id="qOptionsContainer">
+                <!-- Options rendered via JS -->
+              </div>
+              <div class="q-feedback-box" id="qFeedbackBox"></div>
+            </div>
+
+            <div class="q-nav-actions">
+              <button class="btn-q-next" id="btnQNext" onclick="handleNextWorkspaceQuestion()" style="display: none;">
+                <span>Next Question</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Score Summary & Analytics Modal -->
+  <div class="drawer-modal" id="scoreModal">
+    <div class="drawer-card" style="max-width: 620px;">
+      <div class="drawer-header" style="background: linear-gradient(135deg, var(--indigo-700), var(--navy-950));">
+        <h3><i class="fa-solid fa-trophy" style="color: var(--amber-400);"></i> Performance Scorecard</h3>
+        <button class="btn-ws-close" onclick="closeScoreModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="drawer-body score-card-modal">
+        <div class="score-badge-circle">
+          <i class="fa-solid fa-chart-pie"></i>
+        </div>
+        <h3 class="score-heading">Session Complete!</h3>
+        <p class="score-sub">Detailed breakdown of your accuracy and skill mastery.</p>
+
+        <div class="score-metrics-grid">
+          <div class="score-metric-box">
+            <div class="score-metric-val" id="scoreModalAccuracy">0%</div>
+            <div class="score-metric-lbl">Accuracy</div>
+          </div>
+          <div class="score-metric-box">
+            <div class="score-metric-val" id="scoreModalCorrect">0 / 0</div>
+            <div class="score-metric-lbl">Correct Answers</div>
+          </div>
+          <div class="score-metric-box">
+            <div class="score-metric-val" id="scoreModalTime">00:00</div>
+            <div class="score-metric-lbl">Time Elapsed</div>
+          </div>
+        </div>
+
+        <div class="skills-breakdown-box">
+          <h4><i class="fa-solid fa-chart-simple" style="color: var(--indigo-600); margin-right: 0.4rem;"></i> Skill Diagnostics:</h4>
+          <div style="margin-bottom: 0.75rem;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--slate-600); display: block; margin-bottom: 0.35rem;">Strong Areas:</span>
+            <div id="scoreModalStrong"></div>
+          </div>
+          <div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--slate-600); display: block; margin-bottom: 0.35rem;">Areas to Review:</span>
+            <div id="scoreModalReview"></div>
+          </div>
+        </div>
+
+        <div class="score-actions">
+          <button class="btn-card-quiz" onclick="closeScoreModal(); openWorkspace(activePassage ? activePassage.id : PASSAGES[0].id, 'split');">
+            <i class="fa-solid fa-rotate-right"></i> Practice Again
+          </button>
+          <button class="btn-card-read" onclick="closeScoreModal(); openMistakesModal();">
+            <i class="fa-solid fa-triangle-exclamation"></i> Review Mistakes
+          </button>
+          <button class="btn-card-read" onclick="closeScoreModal();">
+            <i class="fa-solid fa-layer-group"></i> Back to Library
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Saved Passages Drawer Modal -->
+  <div class="drawer-modal" id="savedDrawerModal">
+    <div class="drawer-card">
+      <div class="drawer-header">
+        <h3><i class="fa-solid fa-bookmark" style="color: var(--amber-400);"></i> Saved Passages</h3>
+        <button class="btn-ws-close" onclick="closeSavedModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="drawer-body" id="savedListContainer">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Mistakes Notebook Drawer Modal -->
+  <div class="drawer-modal" id="mistakesDrawerModal">
+    <div class="drawer-card">
+      <div class="drawer-header">
+        <h3><i class="fa-solid fa-triangle-exclamation" style="color: var(--rose-400);"></i> Review Your Mistakes</h3>
+        <button class="btn-ws-close" onclick="closeMistakesModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="drawer-body" id="mistakesListContainer">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h4>Reading Comprehension Practice</h4>
+        <p>A comprehensive reading analysis and critical thinking platform crafted for advanced English learners, academic researchers, and competitive examination preparation.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Core Skills</h5>
+        <ul class="footer-links">
+          <li><a href="#skills">Main Idea</a></li>
+          <li><a href="#skills">Inference</a></li>
+          <li><a href="#skills">Contextual Vocabulary</a></li>
+          <li><a href="#skills">Author's Tone & Purpose</a></li>
+          <li><a href="#skills">Passage Structure</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Tools & Labs</h5>
+        <ul class="footer-links">
+          <li><a href="#library">Passage Library</a></li>
+          <li><a href="#generator">Custom Practice</a></li>
+          <li><a href="#transitions">Transition Matrix</a></li>
+          <li><a href="#traps">Spot the Trap Lab</a></li>
+          <li><a href="#flashcards">Recall Flashcards</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Strategy</h5>
+        <ul class="footer-links">
+          <li><a href="#strategies">10-Step Method</a></li>
+          <li><a href="javascript:void(0)" onclick="openMistakesModal()">Mistakes Notebook</a></li>
+          <li><a href="javascript:void(0)" onclick="openSavedModal()">Saved Bookmarks</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>&copy; Reading Comprehension Practice Platform. Built for serious academic preparation.</span>
+      <span>"Read for meaning, not just for words."</span>
+    </div>
+  </footer>
+
+  <!-- Toast Notification element -->
+  <div class="toast-msg" id="appToast">Notification message</div>
+
+  <!-- Application Engine Script -->
+  <script src="reading-comprehension.js"></script>
+</body>
+</html>
+s

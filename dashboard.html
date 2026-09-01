@@ -1,646 +1,1356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NOVIX | Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <link rel="stylesheet" href="dashboard.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduNexa AI — Student Learning Dashboard</title>
+  <meta name="description" content="EduNexa AI central learning dashboard for Grades 1 through 10 with AI study companion, calculator, study timer, and learning tools.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+  <a href="index.html">Home</a>
+  <link rel="stylesheet" href="edunexa-theme.css">
 </head>
-<body data-theme="dark">
-    <div class="page-backdrop" aria-hidden="true"></div>
+<body class="dashboard-body">
 
-    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
-        <a class="logo" href="index.html" aria-label="NOVIX home">
-            <span class="logo-mark">SM</span>
-            <span class="logo-text">
-                <strong>NOVIX</strong>
-                <small>Premium Learning Hub</small>
-            </span>
+  <!-- Mobile Navigation Overlay -->
+  <div id="mobile-overlay" class="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- Layout Container -->
+  <div class="app-container">
+
+    <!-- ========================================== -->
+    <!-- SIDEBAR NAVIGATION                         -->
+    <!-- ========================================== -->
+    <aside id="sidebar" class="sidebar" aria-label="Main Navigation">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo" id="sidebar-brand-link">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+              <path d="M6 6h10"></path>
+              <path d="M6 10h10"></path>
+              <path d="M6 14h6"></path>
+              <circle cx="18" cy="16" r="2"></circle>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">EduNexa <span class="brand-accent">AI</span></span>
+            <span class="brand-badge">Learning Hub</span>
+          </div>
         </a>
+        <a href="index.html" class="home-btn">
+  🏠 Home
+</a>
+        <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close sidebar">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
 
-        <nav class="sidebar-nav">
-            <a class="sidebar-link active" href="dashboard.html" data-scroll-link="dashboard"><i class="fa-solid fa-grid-2"></i><span>Dashboard</span></a>
-            <a class="sidebar-link" href="subject.html" data-scroll-link="subjects"><i class="fa-solid fa-book-open"></i><span>My Subjects</span></a>
-            <a class="sidebar-link" href="ai-assistant.html" data-scroll-link="assistant"><i class="fa-solid fa-robot"></i><span>AI Assistant</span></a>
-            <a class="sidebar-link" href="planner.html" data-scroll-link="planner"><i class="fa-solid fa-calendar-days"></i><span>Study Planner</span></a>
-            <a class="sidebar-link" href="progress.html" data-scroll-link="progress"><i class="fa-solid fa-chart-line"></i><span>Progress</span></a>
-            <a class="sidebar-link" href="subject.html"><i class="fa-solid fa-layer-group"></i><span>Subjects Hub</span></a>
-            <a class="sidebar-link" href="settings.html" data-scroll-link="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
-            <a class="sidebar-link danger" href="login.html"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
-        </nav>
+      <nav class="sidebar-nav">
+        <div class="nav-group-label">Main Navigation</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link active" id="nav-dashboard">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="9"></rect>
+                <rect x="14" y="3" width="7" height="5"></rect>
+                <rect x="14" y="12" width="7" height="9"></rect>
+                <rect x="3" y="16" width="7" height="5"></rect>
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#grades-section" class="nav-link" id="nav-grades">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+              <span>My Grades</span>
+              <span class="nav-pill">1–10</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="ai-assistant.html" class="nav-link nav-link-ai" id="nav-ai-assistant">
+              <svg class="nav-icon ai-glow-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+              </svg>
+              <span>AI Assistant</span>
+              <span class="nav-badge-live">Live</span>
+            </a>
+          </li>
+        </ul>
 
-        <div class="sidebar-card">
-            <div class="sidebar-card-top">
-                <span class="pill premium">Pro Focus</span>
-                <span class="sidebar-mini-stat">86% streak health</span>
-            </div>
-            <p>Everything you need for deep study sessions, fast revision, and smarter planning in one calm workspace.</p>
-            <div class="sidebar-meter">
-                <span class="sidebar-meter-fill" style="width: 86%"></span>
-            </div>
-            <a class="btn btn-secondary sidebar-cta" href="#assistant">Open AI Assistant</a>
+        <div class="nav-group-label">Quick Tools</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link" id="nav-calculator" type="button">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="16" y1="14" x2="16" y2="18"></line>
+                <path d="M16 10h.01"></path>
+                <path d="M12 10h.01"></path>
+                <path d="M8 10h.01"></path>
+                <path d="M12 14h.01"></path>
+                <path d="M8 14h.01"></path>
+                <path d="M12 18h.01"></path>
+                <path d="M8 18h.01"></path>
+              </svg>
+              <span>Calculator</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="nav-calendar" type="button">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Calendar</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a href="#tools-section" class="nav-link" id="nav-study-tools">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+              <span>Study Tools</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="nav-focus-mode" type="button">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+              <span>Focus Mode</span>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-group-label">System</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link" id="nav-settings-btn" type="button">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+              <span>Settings</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Mini Study Status -->
+      <div class="sidebar-footer">
+        <div class="sidebar-status-card">
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span>Study Status</span>
+          </div>
+          <p class="status-text" id="sidebar-status-text">Ready to learn</p>
+          <a href="ai-assistant.html" class="sidebar-ai-cta">
+            <span>Ask AI Tutor</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
+      </div>
     </aside>
 
-    <!-- Dashboard content starts flush at the top of the main area; no spacer wrappers. -->
-    <div class="app-shell">
-        <header class="topbar">
-            <div class="topbar-left">
-                <button class="icon-button sidebar-toggle" id="sidebarToggle" type="button" aria-label="Open navigation">
-                    <i class="fa-solid fa-bars"></i>
+    <!-- ========================================== -->
+    <!-- MAIN CONTENT WRAPPER                       -->
+    <!-- ========================================== -->
+    <div class="main-wrapper">
+
+      <!-- TOP HEADER -->
+      <header class="top-header" id="top-header">
+        <div class="header-left">
+          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu">
+            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          <div class="dashboard-breadcrumb">
+            <span class="breadcrumb-root">EduNexa AI</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current" id="header-breadcrumb-title">Dashboard</span>
+          </div>
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div class="header-search-wrapper" id="search-container">
+          <div class="search-input-box">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              id="dashboard-search-input" 
+              class="search-input" 
+              placeholder="Search grades (1-10), calculator, tools, AI..." 
+              autocomplete="off"
+              aria-label="Search dashboard"
+            >
+            <kbd class="search-shortcut" title="Press / to focus">/</kbd>
+            <button id="search-clear-btn" class="search-clear-btn" aria-label="Clear search" style="display: none;">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Quick Search Results Dropdown -->
+          <div id="search-results-dropdown" class="search-results-dropdown" style="display: none;">
+            <div class="search-results-header">Search Results</div>
+            <div id="search-results-list" class="search-results-list"></div>
+          </div>
+        </div>
+
+        <!-- HEADER RIGHT ACTIONS -->
+        <div class="header-right">
+          <!-- Focus Mode Quick Button -->
+          <button id="header-focus-btn" class="header-icon-btn" title="Toggle Focus Mode" aria-label="Focus Mode">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </button>
+
+          <!-- Notifications Dropdown Trigger -->
+          <div class="header-dropdown-container">
+            <button id="notifications-btn" class="header-icon-btn" title="Notifications" aria-label="View notifications">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notification-indicator" id="notif-badge"></span>
+            </button>
+
+            <div id="notifications-dropdown" class="header-menu-dropdown" style="display: none;">
+              <div class="menu-dropdown-header">
+                <h3>Notifications</h3>
+                <button id="clear-notifs-btn" class="text-btn">Clear</button>
+              </div>
+              <div class="menu-dropdown-body" id="notifications-list">
+                <div class="dropdown-empty-state">
+                  <p>Welcome to EduNexa AI! Explore Grade 1–10 curriculums or consult the AI assistant anytime.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student Profile Pill -->
+          <div class="header-dropdown-container">
+            <button id="profile-pill-btn" class="profile-pill" aria-label="User profile menu">
+              <div class="avatar-circle" id="profile-avatar">S</div>
+              <div class="profile-info-text">
+                <span class="profile-name" id="header-user-name" data-auth-name>Student</span>
+                <span class="profile-role">Learner</span>
+              </div>
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <div id="profile-dropdown" class="header-menu-dropdown profile-menu" style="display: none;">
+              <div class="profile-card-mini">
+                <div class="avatar-large" id="menu-avatar">S</div>
+                <div class="profile-card-details">
+                  <h4 id="menu-user-name" data-auth-name>Student</h4>
+                  <p id="menu-user-grade">Active Learner</p>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" id="menu-open-settings">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                <span>Preferences & Settings</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN CONTENT -->
+      <main class="dashboard-main" id="main-content">
+
+        <!-- ========================================== -->
+        <!-- 1. WELCOME HERO SECTION                    -->
+        <!-- ========================================== -->
+        <section class="welcome-section" id="welcome-section">
+          <div class="welcome-card">
+            <div class="welcome-content">
+              <div class="welcome-tag">
+                <span class="pulse-dot"></span>
+                <span id="live-time-greeting">Good day</span>
+              </div>
+              <h1 class="welcome-title">Welcome to <span class="gradient-text">EduNexa AI</span></h1>
+              <p class="welcome-subtitle">Your personalized space for learning, studying and exploring from Grade 1 to 10.</p>
+              
+              <div class="welcome-actions">
+                <a href="ai-assistant.html" class="btn btn-primary" id="hero-open-ai-btn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                  </svg>
+                  <span>Launch AI Assistant</span>
+                </a>
+                <a href="#grades-section" class="btn btn-secondary" id="hero-explore-grades-btn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                  </svg>
+                  <span>Explore Grades</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Mini Clock Display Card Inside Hero -->
+            <div class="hero-clock-card" id="hero-clock-widget">
+              <div class="hero-clock-header">
+                <span class="clock-label">Local Time</span>
+                <span class="clock-badge" id="hero-clock-format">24H</span>
+              </div>
+              <div class="hero-clock-time" id="hero-live-clock">--:--:--</div>
+              <div class="hero-clock-date" id="hero-live-date">Loading date...</div>
+              <div class="hero-clock-footer">
+                <span class="tz-badge" id="hero-tz-name">Local Timezone</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 2. PLATFORM STATISTICS (LOCAL ONLY)        -->
+        <!-- ========================================== -->
+        <section class="stats-section" id="stats-section" aria-label="Dashboard statistics">
+          <div class="stats-grid">
+            <div class="stat-card" id="stat-grades-card">
+              <div class="stat-icon-wrapper stat-icon-indigo">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                </svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value" id="stat-grades-val">10</span>
+                <span class="stat-label">Grades Available</span>
+              </div>
+            </div>
+
+            <div class="stat-card" id="stat-sessions-card">
+              <div class="stat-icon-wrapper stat-icon-violet">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value" id="stat-sessions-val">0</span>
+                <span class="stat-label">Study Sessions</span>
+              </div>
+            </div>
+
+            <div class="stat-card" id="stat-tasks-card">
+              <div class="stat-icon-wrapper stat-icon-emerald">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value" id="stat-tasks-val">0</span>
+                <span class="stat-label">Tasks Completed</span>
+              </div>
+            </div>
+
+            <div class="stat-card" id="stat-notes-card">
+              <div class="stat-icon-wrapper stat-icon-amber">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value" id="stat-notes-val">0</span>
+                <span class="stat-label">Notes Saved</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 3. AI ASSISTANT PROMINENT SECTION          -->
+        <!-- ========================================== -->
+        <section class="ai-spotlight-section" id="ai-section">
+          <div class="ai-spotlight-card">
+            <div class="ai-spotlight-bg-glow"></div>
+            <div class="ai-spotlight-content">
+              <div class="ai-badge-row">
+                <span class="ai-chip">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                  </svg>
+                  Powered Study Assistant
+                </span>
+                <span class="ai-status-pill">Ready to Help</span>
+              </div>
+
+              <h2 class="ai-spotlight-title">EduNexa AI Companion</h2>
+              <p class="ai-spotlight-desc">
+                Your AI Study Companion. Ask questions, understand difficult concepts, summarize topics, solve math steps, and get instant guidance tailored to your grade level.
+              </p>
+
+              <div class="ai-feature-chips">
+                <span class="feature-tag">24/7 Smart Explanations</span>
+                <span class="feature-tag">Step-by-Step Solutions</span>
+                <span class="feature-tag">Subject Summaries</span>
+                <span class="feature-tag">Quiz & Practice Support</span>
+              </div>
+
+              <div class="ai-spotlight-buttons">
+                <a href="ai-assistant.html" class="btn btn-ai-primary" id="ai-main-cta-btn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                  </svg>
+                  <span>Open AI Assistant</span>
+                </a>
+                <a href="#grades-section" class="btn btn-ai-outline" id="ai-start-learning-btn">
+                  <span>Start Learning</span>
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="ai-spotlight-visual">
+              <div class="ai-orb">
+                <div class="ai-orb-ring ring-1"></div>
+                <div class="ai-orb-ring ring-2"></div>
+                <div class="ai-orb-core">
+                  <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.75" fill="none">
+                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 4. MY LEARNING / GRADE SELECTION (1–10)   -->
+        <!-- ========================================== -->
+        <section class="grades-section" id="grades-section" aria-labelledby="grades-section-title">
+          <div class="section-header">
+            <div>
+              <span class="section-eyebrow">Curriculum Navigator</span>
+              <h2 class="section-title" id="grades-section-title">My Learning</h2>
+              <p class="section-subtitle">Select any grade from Grade 1 through Grade 10 to access interactive learning modules, exercises, and study material.</p>
+            </div>
+            
+            <!-- Grade Filters -->
+            <div class="grade-filter-group" role="tablist" aria-label="Grade level filters">
+              <button class="grade-filter-btn active" data-filter="all" role="tab" aria-selected="true">All Grades (10)</button>
+              <button class="grade-filter-btn" data-filter="primary" role="tab" aria-selected="false">Primary (1–5)</button>
+              <button class="grade-filter-btn" data-filter="middle" role="tab" aria-selected="false">Middle (6–8)</button>
+              <button class="grade-filter-btn" data-filter="high" role="tab" aria-selected="false">Secondary (9–10)</button>
+            </div>
+          </div>
+
+          <!-- 10 Grade Cards Grid -->
+          <div class="grades-grid" id="grades-container">
+
+            <!-- Grade 1 -->
+            <article class="grade-card" data-category="primary" data-grade="1" id="card-grade-1">
+              <div class="grade-card-top">
+                <div class="grade-badge-num">01</div>
+                <span class="grade-level-pill">Primary</span>
+              </div>
+              <h3 class="grade-card-title">Grade 1</h3>
+              <p class="grade-card-desc">Early math, letter sounds, phonics, reading basics, and introductory science concepts.</p>
+              <div class="grade-subjects-row">
+                <span class="subject-chip">Math</span>
+                <span class="subject-chip">Reading</span>
+                <span class="subject-chip">Science</span>
+              </div>
+              <div class="grade-progress-wrap">
+                <div class="progress-labels">
+                  <span class="progress-txt">Readiness</span>
+                  <span class="progress-pct" id="prog-pct-1">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="prog-fill-1" style="width: 0%;"></div>
+                </div>
+              </div>
+              <a href="grade1.html" class="btn-open-grade" id="btn-grade-1" data-grade-target="1">
+                <span>Open Grade 1</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </article>
+
+            <!-- Grade 2 -->
+            <article class="grade-card" data-category="primary" data-grade="2" id="card-grade-2">
+              <div class="grade-card-top">
+                <div class="grade-badge-num">02</div>
+                <span class="grade-level-pill">Primary</span>
+              </div>
+              <h3 class="grade-card-title">Grade 2</h3>
+              <p class="grade-card-desc">Addition & subtraction mastery, story comprehension, writing skills, and world discovery.</p>
+              <div class="grade-subjects-row">
+                <span class="subject-chip">Math</span>
+                <span class="subject-chip">Language</span>
+                <span class="subject-chip">Discovery</span>
+              </div>
+              <div class="grade-progress-wrap">
+                <div class="progress-labels">
+                  <span class="progress-txt">Readiness</span>
+                  <span class="progress-pct" id="prog-pct-2">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="prog-fill-2" style="width: 0%;"></div>
+                </div>
+              </div>
+              <a href="grade2.html" class="btn-open-grade" id="btn-grade-2" data-grade-target="2">
+                <span>Open Grade 2</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </article>
+
+            <!-- Grade 3 -->
+            <article class="grade-card" data-category="primary" data-grade="3" id="card-grade-3">
+              <div class="grade-card-top">
+                <div class="grade-badge-num">03</div>
+                <span class="grade-level-pill">Primary</span>
+              </div>
+              <h3 class="grade-card-title">Grade 3</h3>
+              <p class="grade-card-desc">Multiplication foundations, division, fractions, narrative writing, and Earth sciences.</p>
+              <div class="grade-subjects-row">
+                <span class="subject-chip">Math</span>
+                <span class="subject-chip">Grammar</span>
+                <span class="subject-chip">Social Studies</span>
+              </div>
+              <div class="grade-progress-wrap">
+                <div class="progress-labels">
+                  <span class="progress-txt">Readiness</span>
+                  <span class="progress-pct" id="prog-pct-3">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="prog-fill-3" style="width: 0%;"></div>
+                </div>
+              </div>
+              <a href="grade3.html" class="btn-open-grade" id="btn-grade-3" data-grade-target="3">
+                <span>Open Grade 3</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </article>
+
+            <!-- Grade 4 -->
+            <article class="grade-card" data-category="primary" data-grade="4" id="card-grade-4">
+              <div class="grade-card-top">
+                <div class="grade-badge-num">04</div>
+                <span class="grade-level-pill">Primary</span>
+              </div>
+              <h3 class="grade-card-title">Grade 4</h3>
+              <p class="grade-card-desc">Multi-digit math, decimals, ecosystems, state history, and structured analytical essays.</p>
+              <div class="grade-subjects-row">
+                <span class="subject-chip">Arithmetic</span>
+                <span class="subject-chip">Writing</span>
+                <span class="subject-chip">Ecosystems</span>
+              </div>
+              <div class="grade-progress-wrap">
+                <div class="progress-labels">
+                  <span class="progress-txt">Readiness</span>
+                  <span class="progress-pct" id="prog-pct-4">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="prog-fill-4" style="width: 0%;"></div>
+                </div>
+              </div>
+              <a href="grade4.html" class="btn-open-grade" id="btn-grade-4" data-grade-target="4">
+                <span>Open Grade 4</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </article>
+
+            <!-- Grade 5 -->
+            <article class="grade-card" data-category="primary" data-grade="5" id="card-grade-5">
+              <div class="grade-card-top">
+                <div class="grade-badge-num">05</div>
+                <span class="grade-level-pill">Primary</span>
+              </div>
+              <h3 class="grade-card-title">Grade 5</h3>
+              <p class="grade-card-desc">Fractions & geometry, physical systems, world geography, research papers, and pre-algebra.</p>
+              <div class="grade-subjects-row">
+                <span class="subject-chip">Pre-Algebra</span>
+                <span class="subject-chip">Geography</span>
+                <span class="subject-chip">Physical Sci</span>
+              </div>
+              <div class="grade-progress-wrap">
+                <div class="progress-labels">
+                  <span class="progress-txt">Readiness</span>
+                  <span class="progress-pct" id="prog-pct-5">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="prog-fill-5" style="width: 0%;"></div>
+                </div>
+              </div>
+              <a href="grade5.html" class="btn-open-grade" id="btn-grade-5" data-grade-target="5">
+                <span>Open Grade 5</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </article>
+
+            <!-- Grade 6 -->
+            <article class="grade-card" data-category="middle" data-grade="6" id="card-grade-6">
+              <div class="grade-card-top">
+                <div class="grade-badge-num">06</div>
+                <span class="grade-level-pill">Middle School</span>
+              </div>
+              <h3 class="grade-card-title">Grade 6</h3>
+              <p class="grade-card-desc">Ratios & proportions, earth systems, ancient civilizations, and literary analysis.</p>
+              <div class="grade-subjects-row">
+                <span class="subject-chip">Ratios</span>
+                <span class="subject-chip">Earth Sci</span>
+                <span class="subject-chip">History</span>
+              </div>
+              <div class="grade-progress-wrap">
+                <div class="progress-labels">
+                  <span class="progress-txt">Readiness</span>
+                  <span class="progress-pct" id="prog-pct-6">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="prog-fill-6" style="width: 0%;"></div>
+                </div>
+              </div>
+              <a href="grade6.html" class="btn-open-grade" id="btn-grade-6" data-grade-target="6">
+                <span>Open Grade 6</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </article>
+
+            <!-- Grade 7 -->
+            <article class="grade-card" data-category="middle" data-grade="7" id="card-grade-7">
+              <div class="grade-card-top">
+                <div class="grade-badge-num">07</div>
+                <span class="grade-level-pill">Middle School</span>
+              </div>
+              <h3 class="grade-card-title">Grade 7</h3>
+              <p class="grade-card-desc">Pre-algebra expressions, cell biology & genetics, world history, and persuasive writing.</p>
+              <div class="grade-subjects-row">
+                <span class="subject-chip">Algebra</span>
+                <span class="subject-chip">Biology</span>
+                <span class="subject-chip">Civics</span>
+              </div>
+              <div class="grade-progress-wrap">
+                <div class="progress-labels">
+                  <span class="progress-txt">Readiness</span>
+                  <span class="progress-pct" id="prog-pct-7">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="prog-fill-7" style="width: 0%;"></div>
+                </div>
+              </div>
+              <a href="grade7.html" class="btn-open-grade" id="btn-grade-7" data-grade-target="7">
+                <span>Open Grade 7</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </article>
+
+            <!-- Grade 8 -->
+            <article class="grade-card" data-category="middle" data-grade="8" id="card-grade-8">
+              <div class="grade-card-top">
+                <div class="grade-badge-num">08</div>
+                <span class="grade-level-pill">Middle School</span>
+              </div>
+              <h3 class="grade-card-title">Grade 8</h3>
+              <p class="grade-card-desc">Linear equations, physical sciences (forces & energy), constitution, and high school prep.</p>
+              <div class="grade-subjects-row">
+                <span class="subject-chip">Linear Eq</span>
+                <span class="subject-chip">Physics</span>
+                <span class="subject-chip">Social Sci</span>
+              </div>
+              <div class="grade-progress-wrap">
+                <div class="progress-labels">
+                  <span class="progress-txt">Readiness</span>
+                  <span class="progress-pct" id="prog-pct-8">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="prog-fill-8" style="width: 0%;"></div>
+                </div>
+              </div>
+              <a href="grade8.html" class="btn-open-grade" id="btn-grade-8" data-grade-target="8">
+                <span>Open Grade 8</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </article>
+
+            <!-- Grade 9 -->
+            <article class="grade-card" data-category="high" data-grade="9" id="card-grade-9">
+              <div class="grade-card-top">
+                <div class="grade-badge-num">09</div>
+                <span class="grade-level-pill">High School</span>
+              </div>
+              <h3 class="grade-card-title">Grade 9</h3>
+              <p class="grade-card-desc">Algebra 1, cellular biochemistry, world literature & composition, and introductory physics.</p>
+              <div class="grade-subjects-row">
+                <span class="subject-chip">Algebra I</span>
+                <span class="subject-chip">Biology</span>
+                <span class="subject-chip">Literature</span>
+              </div>
+              <div class="grade-progress-wrap">
+                <div class="progress-labels">
+                  <span class="progress-txt">Readiness</span>
+                  <span class="progress-pct" id="prog-pct-9">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="prog-fill-9" style="width: 0%;"></div>
+                </div>
+              </div>
+              <a href="grade9.html" class="btn-open-grade" id="btn-grade-9" data-grade-target="9">
+                <span>Open Grade 9</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </article>
+
+            <!-- Grade 10 -->
+            <article class="grade-card" data-category="high" data-grade="10" id="card-grade-10">
+              <div class="grade-card-top">
+                <div class="grade-badge-num">10</div>
+                <span class="grade-level-pill">High School</span>
+              </div>
+              <h3 class="grade-card-title">Grade 10</h3>
+              <p class="grade-card-desc">Geometry proofs, chemistry principles, atomic structure, and advanced world history.</p>
+              <div class="grade-subjects-row">
+                <span class="subject-chip">Geometry</span>
+                <span class="subject-chip">Chemistry</span>
+                <span class="subject-chip">World Hist</span>
+              </div>
+              <div class="grade-progress-wrap">
+                <div class="progress-labels">
+                  <span class="progress-txt">Readiness</span>
+                  <span class="progress-pct" id="prog-pct-10">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="prog-fill-10" style="width: 0%;"></div>
+                </div>
+              </div>
+              <a href="grade10.html" class="btn-open-grade" id="btn-grade-10" data-grade-target="10">
+                <span>Open Grade 10</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 5. QUICK STUDY TOOLS SECTION               -->
+        <!-- ========================================== -->
+        <section class="tools-section" id="tools-section" aria-labelledby="tools-section-title">
+          <div class="section-header">
+            <div>
+              <span class="section-eyebrow">Productivity & Utilities</span>
+              <h2 class="section-title" id="tools-section-title">Quick Study Tools</h2>
+              <p class="section-subtitle">Local browser-powered tools designed to help you stay focused, organized, and on track.</p>
+            </div>
+          </div>
+
+          <div class="tools-dashboard-grid">
+
+            <!-- Tool 1: Pomodoro Study Timer -->
+            <div class="tool-card study-timer-card" id="tool-study-timer">
+              <div class="tool-card-header">
+                <div class="tool-title-wrap">
+                  <div class="tool-icon timer-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="tool-title">Study Timer</h3>
+                    <span class="tool-subtitle" id="timer-mode-label">Pomodoro Session</span>
+                  </div>
+                </div>
+
+                <div class="timer-mode-selector">
+                  <button class="timer-mode-btn active" data-mode="study" id="timer-mode-study">25m Study</button>
+                  <button class="timer-mode-btn" data-mode="shortBreak" id="timer-mode-short">5m Break</button>
+                  <button class="timer-mode-btn" data-mode="longBreak" id="timer-mode-long">15m Break</button>
+                </div>
+              </div>
+
+              <div class="timer-display-area">
+                <div class="timer-circle-wrap">
+                  <svg class="timer-svg" viewBox="0 0 160 160">
+                    <circle class="timer-track" cx="80" cy="80" r="70"></circle>
+                    <circle class="timer-progress" id="timer-svg-progress" cx="80" cy="80" r="70"></circle>
+                  </svg>
+                  <div class="timer-time-text">
+                    <span class="timer-digits" id="timer-display-digits">25:00</span>
+                    <span class="timer-status-text" id="timer-status-indicator">Ready</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timer-controls">
+                <button class="btn btn-primary btn-timer" id="timer-toggle-btn">
+                  <svg id="timer-play-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span id="timer-toggle-text">Start Session</span>
                 </button>
-                <a href="index.html" class="back-home-btn">
-    ← Back to Home
-</a>
-
-                <div class="search-shell">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input id="dashboardSearch" type="search" placeholder="Search subjects, tools, planner..." aria-label="Search dashboard" />
-                    <button class="search-submit" id="searchSubmit" type="button">Search</button>
-                </div>
-                <p class="search-feedback" id="searchFeedback">Search any section and press Enter.</p>
+                <button class="btn btn-secondary btn-icon-only" id="timer-reset-btn" title="Reset Timer" aria-label="Reset Timer">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
 
-            <div class="topbar-right">
-                <div class="greeting-block">
-                    <span class="greeting-label" id="userGreeting">Welcome</span>
-                    <strong id="currentDate">Loading date...</strong>
+            <!-- Tool 2: Study Tasks / To-Do List -->
+            <div class="tool-card todo-card" id="tool-todo">
+              <div class="tool-card-header">
+                <div class="tool-title-wrap">
+                  <div class="tool-icon todo-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                      <path d="M9 11l3 3L22 4"></path>
+                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="tool-title">Study Tasks</h3>
+                    <span class="tool-subtitle" id="todo-count-label">0 pending tasks</span>
+                  </div>
                 </div>
+                <button class="text-btn text-danger" id="todo-clear-completed-btn" title="Clear completed tasks">Clear Done</button>
+              </div>
 
-                <div class="topbar-actions">
-                    <button class="icon-button notification-button" id="notificationButton" type="button" aria-label="Notifications">
-                        <i class="fa-regular fa-bell"></i>
-                        <span class="badge" id="notificationBadge">4</span>
-                    </button>
-                    <button class="icon-button" type="button" aria-label="Messages">
-                        <i class="fa-regular fa-message"></i>
-                    </button>
-                    <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle color theme">
-                        <i class="fa-regular fa-moon"></i>
-                    </button>
-                    <div class="profile-chip" aria-label="Student profile">
-                        <span class="profile-avatar">S</span>
-                        <span class="profile-copy">
-                            <strong id="userName">Student</strong>
-<small id="userEmail">Loading...</small>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </header>
+              <!-- To-do Input Box -->
+              <form id="todo-form" class="todo-input-row" onsubmit="return false;">
+                <input 
+                  type="text" 
+                  id="todo-input" 
+                  class="todo-input" 
+                  placeholder="Add a new study task (e.g. Read Grade 5 Chapter 2)..."
+                  autocomplete="off"
+                  maxlength="120"
+                >
+                <button type="submit" id="todo-add-btn" class="btn btn-primary btn-add-todo" aria-label="Add task">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  <span>Add</span>
+                </button>
+              </form>
 
-        <main class="dashboard" id="dashboard">
-            <section class="hero-panel reveal" data-search="dashboard welcome">
-                <div class="hero-copy">
-                    <span class="pill hero-pill">AI Learning Command Center</span>
-                    <h1>Welcome back 👋</h1>
-                    <p>Ready to master today's learning? Track your subjects, power through your study plan, and generate sharper notes in seconds.</p>
+              <!-- To-do Filter Tabs -->
+              <div class="todo-filter-bar">
+                <button class="todo-filter active" data-filter="all" id="filter-all-tasks">All</button>
+                <button class="todo-filter" data-filter="active" id="filter-active-tasks">Active</button>
+                <button class="todo-filter" data-filter="completed" id="filter-completed-tasks">Completed</button>
+              </div>
 
-                    <div class="hero-actions">
-    <a class="btn btn-primary" href="planner.html">
-        <i class="fa-solid fa-play"></i>Start Studying
-    </a>
-
-    <a class="btn btn-secondary" href="ai-assistant.html">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>Generate AI Notes
-    </a>
-</div>
-
-                    <div class="hero-signals">
-                        <div class="signal-chip"><i class="fa-solid fa-bolt"></i><span>Focused mode</span></div>
-                        <div class="signal-chip"><i class="fa-solid fa-brain"></i><span>AI ready</span></div>
-                        <div class="signal-chip"><i class="fa-solid fa-shield-heart"></i><span>Smart progress</span></div>
-                    </div>
-                </div>
-
-                <div class="hero-side">
-                    <div class="hero-card live-card">
-                        <div class="live-card-top">
-                            <span class="pill premium">Today</span>
-                            <span class="live-dot">Live</span>
-                        </div>
-                        <div class="hero-ring-wrap">
-                            <div class="hero-ring" data-ring="86">
-                                <div class="hero-ring-inner">
-                                    <strong>86%</strong>
-                                    <span>Focus Score</span>
-                                </div>
-                            </div>
-                            <div class="hero-stat-stack">
-                                <div>
-                                    <strong>6</strong>
-                                    <span>Subjects</span>
-                                </div>
-                                <div>
-                                    <strong>4.5h</strong>
-                                    <span>Study Time</span>
-                                </div>
-                                <div>
-                                    <strong>21</strong>
-                                    <span>Day Streak</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hero-mini-graph">
-                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="stats-grid reveal-group" data-search="stats subjects assignments study hours completion">
-                <article class="stat-card reveal" data-search="subjects">
-                    <div class="stat-icon gradient-blue"><i class="fa-solid fa-layer-group"></i></div>
-                    <div class="stat-copy">
-                        <span>Subjects</span>
-                        <strong data-counter="6">0</strong>
-                    </div>
-                    <i class="fa-solid fa-arrow-trend-up stat-trend"></i>
-                </article>
-
-                <article class="stat-card reveal" data-search="assignments">
-                    <div class="stat-icon gradient-purple"><i class="fa-solid fa-clipboard-check"></i></div>
-                    <div class="stat-copy">
-                        <span>Assignments</span>
-                        <strong data-counter="14">0</strong>
-                    </div>
-                    <i class="fa-solid fa-arrow-trend-up stat-trend"></i>
-                </article>
-
-                <article class="stat-card reveal" data-search="study hours">
-                    <div class="stat-icon gradient-blue"><i class="fa-solid fa-clock"></i></div>
-                    <div class="stat-copy">
-                        <span>Study Hours</span>
-                        <strong><span data-counter="126">0</span>h</strong>
-                    </div>
-                    <i class="fa-solid fa-arrow-trend-up stat-trend"></i>
-                </article>
-
-                <article class="stat-card reveal" data-search="completion">
-                    <div class="stat-icon gradient-purple"><i class="fa-solid fa-circle-check"></i></div>
-                    <div class="stat-copy">
-                        <span>Completion %</span>
-                        <strong><span data-counter="86">0</span>%</strong>
-                    </div>
-                    <i class="fa-solid fa-arrow-trend-up stat-trend"></i>
-                </article>
-            </section>
-
-            <section class="quick-actions-section reveal" data-search="quick actions">
-                <div class="section-head">
-                    <div>
-                        <span class="section-kicker">Quick Actions</span>
-                        <h2>Build your study flow faster</h2>
-                    </div>
-                    <p>Tap a card to jump into AI-powered helpers and study tools.</p>
-                </div>
-
-                <div class="quick-actions-grid">
-                    <button class="action-card reveal" data-action="Generate Notes" data-target="#assistant" type="button">
-                        <span class="action-icon gradient-blue"><i class="fa-solid fa-file-lines"></i></span>
-                        <strong>Generate Notes</strong>
-                        <span>Condense chapters into revision-ready summaries.</span>
-                    </button>
-                    <button class="action-card reveal" data-action="Create Quiz" data-target="#assistant" type="button">
-                        <span class="action-icon gradient-purple"><i class="fa-solid fa-circle-question"></i></span>
-                        <strong>Create Quiz</strong>
-                        <span>Turn any topic into a fast practice session.</span>
-                    </button>
-                    <button class="action-card reveal" data-action="Summarize Chapter" data-target="#assistant" type="button">
-                        <span class="action-icon gradient-blue"><i class="fa-solid fa-book-bookmark"></i></span>
-                        <strong>Summarize Chapter</strong>
-                        <span>Pull the important ideas out in one pass.</span>
-                    </button>
-                    <button class="action-card reveal" data-action="Flashcards" data-target="#subjects" type="button">
-                        <span class="action-icon gradient-purple"><i class="fa-solid fa-clone"></i></span>
-                        <strong>Flashcards</strong>
-                        <span>Convert core concepts into memory cues.</span>
-                    </button>
-                    <button class="action-card reveal" data-action="AI Homework" data-target="#assistant" type="button">
-                        <span class="action-icon gradient-blue"><i class="fa-solid fa-swatchbook"></i></span>
-                        <strong>AI Homework</strong>
-                        <span>Get help while staying in control of the answer.</span>
-                    </button>
-                    <button class="action-card reveal" data-action="Study Timer" data-target="#planner" type="button">
-                        <span class="action-icon gradient-purple"><i class="fa-solid fa-hourglass-half"></i></span>
-                        <strong>Study Timer</strong>
-                        <span>Start a focused session with a clear timeline.</span>
-                    </button>
-                </div>
-            </section>
-
-            <div class="main-layout">
-                <div class="left-column">
-                    <section class="panel reveal" id="planner" data-search="study planner today schedule timeline">
-                        <div class="section-head compact">
-                            <div>
-                                <span class="section-kicker">Today's Study Plan</span>
-                                <h2>Timeline for the day</h2>
-                            </div>
-                            <p>Structured in short blocks to reduce friction and keep momentum.</p>
-                        </div>
-
-                        <div class="timeline">
-                            <article class="timeline-item completed">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-copy">
-                                    <div class="timeline-top">
-                                        <h3>Mathematics</h3>
-                                        <span class="status-pill completed">Completed</span>
-                                    </div>
-                                    <p>Practice equations, formulas, and speed drills.</p>
-                                </div>
-                            </article>
-
-                            <article class="timeline-item progress">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-copy">
-                                    <div class="timeline-top">
-                                        <h3>English</h3>
-                                        <span class="status-pill progress">In Progress</span>
-                                    </div>
-                                    <p>Essay planning, grammar refresh, and reading review.</p>
-                                </div>
-                            </article>
-
-                            <article class="timeline-item pending">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-copy">
-                                    <div class="timeline-top">
-                                        <h3>Physics</h3>
-                                        <span class="status-pill pending">Pending</span>
-                                    </div>
-                                    <p>Revise motion, force, and the chapter summary sheet.</p>
-                                </div>
-                            </article>
-
-                            <article class="timeline-item pending">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-copy">
-                                    <div class="timeline-top">
-                                        <h3>Computer Science</h3>
-                                        <span class="status-pill pending">Pending</span>
-                                    </div>
-                                    <p>Work through logic gates, algorithms, and MCQs.</p>
-                                </div>
-                            </article>
-                        </div>
-                    </section>
-
-                    <section class="panel reveal" id="progress" data-search="progress weekly monthly circular bars">
-                        <div class="section-head compact">
-                            <div>
-                                <span class="section-kicker">Progress Section</span>
-                                <h2>Momentum at a glance</h2>
-                            </div>
-                            <p>Track circular progress and visual bars that grow as the week moves on.</p>
-                        </div>
-
-                        <div class="progress-layout">
-                            <article class="progress-card ring-card">
-                                <div class="ring" data-ring="78">
-                                    <div class="ring-inner">
-                                        <strong>78%</strong>
-                                        <span>Weekly Progress</span>
-                                    </div>
-                                </div>
-                                <p>Strong week. You are on pace to complete the revision goals.</p>
-                            </article>
-
-                            <div class="progress-bars-card">
-                                <article class="bar-block">
-                                    <div class="bar-head">
-                                        <h3>Weekly Progress</h3>
-                                        <strong data-counter="78">0</strong><span>%</span>
-                                    </div>
-                                    <div class="progress-track"><span class="progress-fill" data-fill="78"></span></div>
-                                </article>
-
-                                <article class="bar-block">
-                                    <div class="bar-head">
-                                        <h3>Monthly Progress</h3>
-                                        <strong data-counter="92">0</strong><span>%</span>
-                                    </div>
-                                    <div class="progress-track"><span class="progress-fill" data-fill="92"></span></div>
-                                </article>
-
-                                <article class="bar-block">
-                                    <div class="bar-head">
-                                        <h3>Quiz Accuracy</h3>
-                                        <strong data-counter="84">0</strong><span>%</span>
-                                    </div>
-                                    <div class="progress-track"><span class="progress-fill" data-fill="84"></span></div>
-                                </article>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="panel reveal" id="subjects" data-search="mathematics physics chemistry biology computer english">
-                        <div class="section-head compact">
-                            <div>
-                                <span class="section-kicker">Subjects Section</span>
-                                <h2>Subjects Hub</h2>
-                            </div>
-                            <p>Each card keeps your progress visible and takes you straight into the subject page.</p>
-                        </div>
-
-                        <div class="subjects-grid">
-                            <article class="subject-card reveal" data-search="mathematics">
-                                <div class="subject-top">
-                                    <span class="subject-icon gradient-blue"><i class="fa-solid fa-square-root-variable"></i></span>
-                                    <span class="subject-progress">92%</span>
-                                </div>
-                                <h3>Mathematics</h3>
-                                <div class="subject-meter"><span data-fill="92"></span></div>
-                                <p>Algebra, geometry, and problem solving.</p>
-                                <a class="btn btn-secondary subject-link" href="maths.html">Open Subject</a>
-                            </article>
-
-                            <article class="subject-card reveal" data-search="physics">
-                                <div class="subject-top">
-                                    <span class="subject-icon gradient-purple"><i class="fa-solid fa-atom"></i></span>
-                                    <span class="subject-progress">84%</span>
-                                </div>
-                                <h3>Physics</h3>
-                                <div class="subject-meter"><span data-fill="84"></span></div>
-                                <p>Mechanics, energy, and conceptual practice.</p>
-                                <a class="btn btn-secondary subject-link" href="physics.html">Open Subject</a>
-                            </article>
-
-                            <article class="subject-card reveal" data-search="chemistry">
-                                <div class="subject-top">
-                                    <span class="subject-icon gradient-blue"><i class="fa-solid fa-flask"></i></span>
-                                    <span class="subject-progress">76%</span>
-                                </div>
-                                <h3>Chemistry</h3>
-                                <div class="subject-meter"><span data-fill="76"></span></div>
-                                <p>Atoms, reactions, and formula revision.</p>
-                                <a class="btn btn-secondary subject-link" href="chemistry.html">Open Subject</a>
-                            </article>
-
-                            <article class="subject-card reveal" data-search="biology">
-                                <div class="subject-top">
-                                    <span class="subject-icon gradient-purple"><i class="fa-solid fa-dna"></i></span>
-                                    <span class="subject-progress">71%</span>
-                                </div>
-                                <h3>Biology</h3>
-                                <div class="subject-meter"><span data-fill="71"></span></div>
-                                <p>Cells, systems, and diagram practice.</p>
-                                <a class="btn btn-secondary subject-link" href="biology.html">Open Subject</a>
-                            </article>
-
-                            <article class="subject-card reveal" data-search="computer science computer">
-                                <div class="subject-top">
-                                    <span class="subject-icon gradient-blue"><i class="fa-solid fa-computer"></i></span>
-                                    <span class="subject-progress">88%</span>
-                                </div>
-                                <h3>Computer</h3>
-                                <div class="subject-meter"><span data-fill="88"></span></div>
-                                <p>Programming basics and logic-building.</p>
-                                <a class="btn btn-secondary subject-link" href="computer.html">Open Subject</a>
-                            </article>
-
-                            <article class="subject-card reveal" data-search="english">
-                                <div class="subject-top">
-                                    <span class="subject-icon gradient-purple"><i class="fa-solid fa-book"></i></span>
-                                    <span class="subject-progress">94%</span>
-                                </div>
-                                <h3>English</h3>
-                                <div class="subject-meter"><span data-fill="94"></span></div>
-                                <p>Reading, writing, and language mastery.</p>
-                                <a class="btn btn-secondary subject-link" href="english.html">Open Subject</a>
-                            </article>
-                        </div>
-                    </section>
-
-                    <section class="panel reveal assistant-panel" id="assistant" data-search="ai assistant notes quiz homework summarize">
-                        <div class="assistant-copy">
-                            <span class="section-kicker">AI Assistant Card</span>
-                            <h2>Ask, generate, and revise faster</h2>
-                            <p>Use the built-in study assistant to turn any topic into notes, questions, summaries, and revision prompts.</p>
-
-                            <div class="assistant-form">
-                                <label class="sr-only" for="assistantInput">Ask anything</label>
-                                <input id="assistantInput" type="text" placeholder="Ask anything..." autocomplete="off" />
-                                <button class="btn btn-primary" id="generateButton" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i>Generate</button>
-                            </div>
-
-                            <div class="assistant-output" id="assistantOutput">
-                                <div class="assistant-message bot">
-                                    <strong>NOVIX</strong>
-                                    <p>Ask me to summarize a chapter, create a quiz, or turn messy notes into a cleaner revision plan.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="assistant-visual" aria-hidden="true">
-                            <div class="robot">
-                                <div class="robot-antenna"></div>
-                                <div class="robot-head">
-                                    <span class="robot-eye left"></span>
-                                    <span class="robot-eye right"></span>
-                                    <div class="robot-screen"></div>
-                                </div>
-                                <div class="robot-body"></div>
-                                <div class="robot-arm left"></div>
-                                <div class="robot-arm right"></div>
-                                <div class="robot-base"></div>
-                            </div>
-                            <div class="assistant-orbit orbit-one"></div>
-                            <div class="assistant-orbit orbit-two"></div>
-                        </div>
-                    </section>
-
-                    <section class="panel reveal" id="activity" data-search="recent activity quiz notes planner homework">
-                        <div class="section-head compact">
-                            <div>
-                                <span class="section-kicker">Recent Activity</span>
-                                <h2>Latest learning actions</h2>
-                            </div>
-                            <p>A live timeline of the latest things you completed on the platform.</p>
-                        </div>
-
-                        <div class="activity-list">
-                            <article class="activity-item">
-                                <span class="activity-icon gradient-blue"><i class="fa-solid fa-circle-check"></i></span>
-                                <div>
-                                    <h3>Quiz completed</h3>
-                                    <p>You finished a 20-question physics quiz with 84% accuracy.</p>
-                                </div>
-                                <time>10 min ago</time>
-                            </article>
-
-                            <article class="activity-item">
-                                <span class="activity-icon gradient-purple"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-                                <div>
-                                    <h3>AI Notes Generated</h3>
-                                    <p>English essay notes were condensed into a quick revision sheet.</p>
-                                </div>
-                                <time>34 min ago</time>
-                            </article>
-
-                            <article class="activity-item">
-                                <span class="activity-icon gradient-blue"><i class="fa-solid fa-calendar-plus"></i></span>
-                                <div>
-                                    <h3>Planner Updated</h3>
-                                    <p>Today's plan was rearranged to prioritize mathematics first.</p>
-                                </div>
-                                <time>1 hr ago</time>
-                            </article>
-
-                            <article class="activity-item">
-                                <span class="activity-icon gradient-purple"><i class="fa-solid fa-check-double"></i></span>
-                                <div>
-                                    <h3>Homework Finished</h3>
-                                    <p>Computer science homework has been marked complete.</p>
-                                </div>
-                                <time>3 hrs ago</time>
-                            </article>
-                        </div>
-                    </section>
-                </div>
-
-                <aside class="right-column">
-                    <section class="panel reveal calendar-panel" data-search="calendar">
-                        <div class="section-head compact">
-                            <div>
-                                <span class="section-kicker">Mini Calendar</span>
-                                <h2 id="calendarTitle">This Month</h2>
-                            </div>
-                            <p id="calendarSubtitle">Your live study calendar.</p>
-                        </div>
-                        <div class="calendar-grid" id="calendarGrid" aria-label="Calendar"></div>
-                    </section>
-
-                    <section class="panel reveal" data-search="upcoming exams">
-                        <div class="section-head compact">
-                            <div>
-                                <span class="section-kicker">Upcoming Exams</span>
-                                <h2>Exam countdown</h2>
-                            </div>
-                            <p>Stay ready for the next test window.</p>
-                        </div>
-                        <div class="exam-list">
-                            <article>
-                                <strong>Mathematics</strong>
-                                <span>3 days</span>
-                            </article>
-                            <article>
-                                <strong>Physics</strong>
-                                <span>6 days</span>
-                            </article>
-                            <article>
-                                <strong>English</strong>
-                                <span>9 days</span>
-                            </article>
-                        </div>
-                    </section>
-
-                    <section class="panel reveal streak-panel" data-search="study streak">
-                        <div class="section-head compact">
-                            <div>
-                                <span class="section-kicker">Study Streak</span>
-                                <h2>21 days</h2>
-                            </div>
-                            <p>Consistency is the multiplier.</p>
-                        </div>
-                        <div class="streak-ring" data-ring="71">
-                            <div class="ring-inner small">
-                                <strong>21</strong>
-                                <span>Days</span>
-                            </div>
-                        </div>
-                        <div class="streak-meta">
-                            <span>Goal: 30 days</span>
-                            <span>Current pace: strong</span>
-                        </div>
-                    </section>
-
-                    <section class="panel reveal" data-search="achievements">
-                        <div class="section-head compact">
-                            <div>
-                                <span class="section-kicker">Achievements</span>
-                                <h2>Unlocked badges</h2>
-                            </div>
-                            <p>Milestones that show your momentum.</p>
-                        </div>
-                        <div class="achievement-list">
-                            <span><i class="fa-solid fa-medal"></i> Consistency Pro</span>
-                            <span><i class="fa-solid fa-star"></i> Quiz Master</span>
-                            <span><i class="fa-solid fa-trophy"></i> Planner Expert</span>
-                        </div>
-                    </section>
-
-                    <section class="panel reveal" data-search="leaderboard">
-                        <div class="section-head compact">
-                            <div>
-                                <span class="section-kicker">Leaderboard</span>
-                                <h2>Top students</h2>
-                            </div>
-                            <p>Friendly competition keeps the pace high.</p>
-                        </div>
-                        <div class="leaderboard-list">
-                            <article>
-                                <span class="rank">01</span>
-                                <div>
-                                    <strong>Student A</strong>
-                                    <small>4,220 pts</small>
-                                </div>
-                            </article>
-                            <article>
-                                <span class="rank">02</span>
-                                <div>
-                                    <strong>Student B</strong>
-                                    <small>4,015 pts</small>
-                                </div>
-                            </article>
-                            <article>
-                                <span class="rank">03</span>
-                                <div>
-                                    <strong>Student C</strong>
-                                    <small>3,870 pts</small>
-                                </div>
-                            </article>
-                        </div>
-                    </section>
-
-                    <section class="panel reveal settings-panel" id="settings" data-search="settings theme notifications focus mode">
-                        <div class="section-head compact">
-                            <div>
-                                <span class="section-kicker">Settings</span>
-                                <h2>Workspace preferences</h2>
-                            </div>
-                            <p>Quick toggles for a calmer setup.</p>
-                        </div>
-                        <div class="settings-list">
-                            <div>
-                                <strong>Focus Mode</strong>
-                                <span>On during study sessions</span>
-                            </div>
-                            <div>
-                                <strong>Notifications</strong>
-                                <span>Unread alerts are tracked at the top</span>
-                            </div>
-                            <div>
-                                <strong>Theme</strong>
-                                <span>Dark mode with a premium gradient look</span>
-                            </div>
-                        </div>
-                    </section>
-                </aside>
+              <!-- Task List Container -->
+              <div class="todo-list-container" id="todo-list">
+                <!-- Dynamically populated -->
+              </div>
             </div>
 
-            <footer class="footer reveal">
-                <strong>NOVIX</strong>
-                <p>Made for students.</p>
-            </footer>
-        </main>
+            <!-- Tool 3: Study Notes Scratchpad -->
+            <div class="tool-card notes-card" id="tool-notes">
+              <div class="tool-card-header">
+                <div class="tool-title-wrap">
+                  <div class="tool-icon notes-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="tool-title">Quick Notes</h3>
+                    <span class="tool-subtitle" id="notes-status-label">Saved in browser storage</span>
+                  </div>
+                </div>
+                <div class="notes-header-actions">
+                  <button class="text-btn" id="notes-clear-btn">Clear</button>
+                  <button class="btn btn-primary btn-sm" id="notes-save-btn">
+                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+                      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                      <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                      <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    <span>Save Note</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="notes-body">
+                <input 
+                  type="text" 
+                  id="note-title-input" 
+                  class="note-title-input" 
+                  placeholder="Note Title (e.g. Grade 8 Physics Formulas)"
+                  maxlength="80"
+                >
+                <textarea 
+                  id="notes-textarea" 
+                  class="notes-textarea" 
+                  placeholder="Type your study notes, formulas, reminders, or questions here..."
+                ></textarea>
+                <div class="notes-meta-bar">
+                  <span id="notes-char-count">0 characters</span>
+                  <span id="notes-last-saved">Not saved yet</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tool 4: Stopwatch & Precision Timer -->
+            <div class="tool-card stopwatch-card" id="tool-stopwatch">
+              <div class="tool-card-header">
+                <div class="tool-title-wrap">
+                  <div class="tool-icon stopwatch-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                      <circle cx="12" cy="14" r="8"></circle>
+                      <line x1="12" y1="2" x2="12" y2="6"></line>
+                      <line x1="12" y1="14" x2="12" y2="10"></line>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="tool-title">Stopwatch</h3>
+                    <span class="tool-subtitle">Precision Study Timing</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stopwatch-display-wrap">
+                <div class="stopwatch-time" id="stopwatch-display">00:00:00</div>
+                <div class="stopwatch-milliseconds" id="stopwatch-ms">.00</div>
+              </div>
+
+              <div class="stopwatch-actions">
+                <button class="btn btn-primary" id="stopwatch-toggle-btn">
+                  <svg id="stopwatch-play-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span id="stopwatch-toggle-text">Start</span>
+                </button>
+                <button class="btn btn-secondary" id="stopwatch-lap-btn" disabled>Lap</button>
+                <button class="btn btn-secondary btn-icon-only" id="stopwatch-reset-btn" title="Reset Stopwatch" aria-label="Reset Stopwatch">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="stopwatch-laps-container" id="stopwatch-laps" style="display: none;">
+                <!-- Lap rows -->
+              </div>
+            </div>
+
+            <!-- Tool 5: Local Interactive Calendar -->
+            <div class="tool-card calendar-card" id="tool-calendar">
+              <div class="tool-card-header">
+                <div class="tool-title-wrap">
+                  <div class="tool-icon calendar-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="tool-title">Calendar</h3>
+                    <span class="tool-subtitle" id="cal-today-label">Current Month</span>
+                  </div>
+                </div>
+
+                <div class="calendar-nav-buttons">
+                  <button class="cal-nav-btn" id="cal-prev-btn" aria-label="Previous Month">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                      <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                  </button>
+                  <button class="cal-today-btn" id="cal-today-btn">Today</button>
+                  <button class="cal-nav-btn" id="cal-next-btn" aria-label="Next Month">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="calendar-month-heading" id="cal-month-year-title">Month Year</div>
+
+              <div class="calendar-table-wrapper">
+                <div class="calendar-weekdays-grid">
+                  <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                </div>
+                <div class="calendar-days-grid" id="calendar-days-grid">
+                  <!-- Populated by JavaScript -->
+                </div>
+              </div>
+
+              <div class="calendar-selected-info" id="cal-selected-info">
+                <span>Selected Date: <strong id="cal-selected-date-txt">Today</strong></span>
+              </div>
+            </div>
+
+            <!-- Tool 6: Quick Launch Tools Hub (Calculator, Focus Mode, AI) -->
+            <div class="tool-card tools-hub-card" id="tool-hub">
+              <div class="tool-card-header">
+                <div class="tool-title-wrap">
+                  <div class="tool-icon hub-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                      <polyline points="2 17 12 22 22 17"></polyline>
+                      <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="tool-title">Study Hub</h3>
+                    <span class="tool-subtitle">Direct Shortcuts</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="quick-launch-grid">
+                <button class="quick-action-item" id="hub-open-calc-btn">
+                  <div class="quick-action-icon icon-blue">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                      <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                      <line x1="8" y1="6" x2="16" y2="6"></line>
+                      <line x1="16" y1="14" x2="16" y2="18"></line>
+                      <path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path>
+                    </svg>
+                  </div>
+                  <div class="quick-action-text">
+                    <strong>Scientific Calculator</strong>
+                    <span>Arithmetic & percentage</span>
+                  </div>
+                </button>
+
+                <button class="quick-action-item" id="hub-open-focus-btn">
+                  <div class="quick-action-icon icon-purple">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div class="quick-action-text">
+                    <strong>Focus Mode</strong>
+                    <span>Distraction-free environment</span>
+                  </div>
+                </button>
+
+                <a href="ai-assistant.html" class="quick-action-item" id="hub-open-ai-link">
+                  <div class="quick-action-icon icon-gradient">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                      <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                    </svg>
+                  </div>
+                  <div class="quick-action-text">
+                    <strong>AI Assistant</strong>
+                    <span>Ask questions & solve problems</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 6. RECENT ACTIVITY SECTION                 -->
+        <!-- ========================================== -->
+        <section class="activity-section" id="activity-section" aria-labelledby="activity-section-title">
+          <div class="activity-card">
+            <div class="activity-header">
+              <div>
+                <span class="section-eyebrow">Local Session Log</span>
+                <h2 class="section-title-sm" id="activity-section-title">Recent Activity</h2>
+              </div>
+              <button class="text-btn text-muted" id="activity-clear-btn" title="Clear activity history">Clear History</button>
+            </div>
+
+            <div class="activity-list" id="activity-list-container">
+              <!-- Dynamically rendered or fallback -->
+              <div class="activity-empty-state" id="activity-empty-state">
+                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 14 14"></polyline>
+                </svg>
+                <p>No recent activity yet.</p>
+                <span>Your grade explorations, study sessions, and notes will be tracked here locally.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- ========================================== -->
+      <!-- FOOTER                                     -->
+      <!-- ========================================== -->
+      <footer class="dashboard-footer">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="brand-name">EduNexa <span class="brand-accent">AI</span></span>
+            <p>Empowering students across Grade 1 to 10 with personalized AI-driven education.</p>
+          </div>
+          <div class="footer-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="#grades-section">Grades 1–10</a>
+            <a href="ai-assistant.html">AI Assistant</a>
+            <button class="footer-text-btn" id="footer-settings-btn">Settings</button>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; EduNexa AI. All rights reserved. Designed for student excellence.</p>
+        </div>
+      </footer>
+
+    </div><!-- /main-wrapper -->
+  </div><!-- /app-container -->
+
+  <!-- ========================================== -->
+  <!-- MODAL: CALCULATOR                          -->
+  <!-- ========================================== -->
+  <div id="calculator-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="calc-modal-title" style="display: none;">
+    <div class="modal-card calculator-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="tool-icon calc-header-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+              <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+              <line x1="8" y1="6" x2="16" y2="6"></line>
+              <line x1="16" y1="14" x2="16" y2="18"></line>
+              <path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path>
+            </svg>
+          </div>
+          <h3 id="calc-modal-title">Study Calculator</h3>
+        </div>
+        <button class="modal-close-btn" id="calc-modal-close-btn" aria-label="Close calculator">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="calc-body">
+        <!-- Display -->
+        <div class="calc-screen">
+          <div class="calc-history" id="calc-history">0</div>
+          <div class="calc-main-display" id="calc-display">0</div>
+        </div>
+
+        <!-- Keypad -->
+        <div class="calc-grid">
+          <!-- Row 1 -->
+          <button class="calc-btn calc-btn-action" data-action="clear" id="calc-key-clear">AC</button>
+          <button class="calc-btn calc-btn-action" data-action="backspace" id="calc-key-backspace">⌫</button>
+          <button class="calc-btn calc-btn-action" data-action="percent" id="calc-key-percent">%</button>
+          <button class="calc-btn calc-btn-op" data-action="operator" data-val="/" id="calc-key-div">÷</button>
+
+          <!-- Row 2 -->
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="7" id="calc-key-7">7</button>
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="8" id="calc-key-8">8</button>
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="9" id="calc-key-9">9</button>
+          <button class="calc-btn calc-btn-op" data-action="operator" data-val="*" id="calc-key-mul">×</button>
+
+          <!-- Row 3 -->
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="4" id="calc-key-4">4</button>
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="5" id="calc-key-5">5</button>
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="6" id="calc-key-6">6</button>
+          <button class="calc-btn calc-btn-op" data-action="operator" data-val="-" id="calc-key-sub">−</button>
+
+          <!-- Row 4 -->
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="1" id="calc-key-1">1</button>
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="2" id="calc-key-2">2</button>
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="3" id="calc-key-3">3</button>
+          <button class="calc-btn calc-btn-op" data-action="operator" data-val="+" id="calc-key-add">+</button>
+
+          <!-- Row 5 -->
+          <button class="calc-btn calc-btn-num" data-action="toggleSign" id="calc-key-sign">±</button>
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="0" id="calc-key-0">0</button>
+          <button class="calc-btn calc-btn-num" data-action="num" data-val="." id="calc-key-dec">.</button>
+          <button class="calc-btn calc-btn-equals" data-action="equals" id="calc-key-equals">=</button>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script type="module" src="dashboard.js"></script>
+  <!-- ========================================== -->
+  <!-- MODAL: SETTINGS                            -->
+  <!-- ========================================== -->
+  <div id="settings-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title" style="display: none;">
+    <div class="modal-card settings-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="tool-icon settings-header-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+          <h3 id="settings-modal-title">EduNexa Preferences</h3>
+        </div>
+        <button class="modal-close-btn" id="settings-modal-close-btn" aria-label="Close settings">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="settings-body">
+        <!-- Student Name Setting -->
+        <div class="setting-group">
+          <label for="setting-student-name" class="setting-label">Student Name</label>
+          <input type="text" id="setting-student-name" class="setting-input" placeholder="e.g. Alex" maxlength="30">
+          <span class="setting-help">Personalizes your dashboard greeting and header profile.</span>
+        </div>
+
+        <!-- Timer Audio Chime Setting -->
+        <div class="setting-group">
+          <div class="setting-toggle-row">
+            <div>
+              <span class="setting-label">Timer Audio Alerts</span>
+              <span class="setting-help">Play browser chime sound when study timer finishes</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="setting-sound-toggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 24-Hour Clock Toggle -->
+        <div class="setting-group">
+          <div class="setting-toggle-row">
+            <div>
+              <span class="setting-label">24-Hour Digital Clock</span>
+              <span class="setting-help">Display time in 24h format instead of 12h AM/PM</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="setting-clock-format-toggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Storage & Reset -->
+        <div class="setting-group danger-zone">
+          <span class="setting-label text-danger">Local Data Management</span>
+          <p class="setting-help">All study session counts, saved tasks, notes, and local activity are stored securely in your browser's local storage.</p>
+          <button class="btn btn-outline-danger" id="setting-reset-data-btn">Reset All Local Study Data</button>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="settings-cancel-btn">Cancel</button>
+        <button class="btn btn-primary" id="settings-save-btn">Save Preferences</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- FULLSCREEN FOCUS MODE OVERLAY              -->
+  <!-- ========================================== -->
+  <div id="focus-mode-overlay" class="focus-mode-overlay" style="display: none;" aria-hidden="true">
+    <div class="focus-container">
+      <div class="focus-header">
+        <div class="focus-brand">
+          <span class="pulse-dot"></span>
+          <span>EduNexa AI &bull; Focus Mode</span>
+        </div>
+        <button class="btn-exit-focus" id="focus-exit-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+          <span>Exit Focus Mode (Esc)</span>
+        </button>
+      </div>
+
+      <div class="focus-main">
+        <div class="focus-quote-wrap">
+          <blockquote id="focus-quote-text">"Deep focus is the superpower that unlocks all knowledge."</blockquote>
+          <span class="focus-quote-author" id="focus-quote-author">— EduNexa AI Wisdom</span>
+        </div>
+
+        <div class="focus-timer-box">
+          <div class="focus-timer-display" id="focus-timer-display">25:00</div>
+          <div class="focus-timer-label" id="focus-timer-status">Active Session</div>
+          
+          <div class="focus-timer-controls">
+            <button class="btn btn-focus-primary" id="focus-timer-toggle-btn">Pause</button>
+            <button class="btn btn-focus-secondary" id="focus-timer-reset-btn">Reset</button>
+          </div>
+        </div>
+
+        <div class="focus-todo-preview">
+          <h4>Current Study Goal</h4>
+          <p id="focus-current-goal">No active task selected. Keep up the great concentration!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TOAST NOTIFICATION CONTAINER               -->
+  <!-- ========================================== -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Dashboard JavaScript -->
+  <script src="dashboard.js"></script>
+  <script type="module" src="auth-guard.js"></script>
 </body>
-</html>f
+</html>

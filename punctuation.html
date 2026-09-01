@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Punctuation Mastery Guide & Practice Lab</title>
+  <meta name="description" content="Comprehensive, interactive English punctuation learning guide. Complete 21 detailed notes, rules, meaning shifts, quizzes, 3D flashcards, and sentence fixer lab.">
+  
+  <!-- Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="punctuation.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-bar-container" title="Reading Progress">
+    <div class="progress-bar-fill" id="progressBarFill"></div>
+  </div>
+
+  <!-- Main Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-logo" onclick="app.switchView('notes'); return false;">
+        <div class="brand-mark">¶</div>
+        <div class="brand-title">
+          <span>Punctuation</span>
+          <span class="brand-sub">Mastery Guide</span>
+        </div>
+      </a>
+
+      <!-- Quick Action Controls -->
+      <div class="header-actions">
+        <span class="stat-pill" id="masteryBadgeCount" style="display: inline-flex; font-size: 0.8rem;">
+          0/21 Read (0%)
+        </span>
+        <button class="icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-content">
+      <div>
+        <div class="hero-badge">📘 Complete 21-Topic Comprehensive Curriculum</div>
+        <h1 class="hero-title">
+          Master English <span class="highlight">Punctuation</span> with Clarity & Precision
+        </h1>
+        <p class="hero-description">
+          Punctuation is the traffic control system of language. Explore detailed rules, avoid comma splices and run-ons, test your skills in interactive quizzes, and explore how a single comma can save lives!
+        </p>
+
+        <div class="hero-quick-stats">
+          <div class="stat-pill"><span class="stat-num">21</span> Detailed Topics</div>
+          <div class="stat-pill"><span class="stat-num">14</span> Punctuation Marks</div>
+          <div class="stat-pill"><span class="stat-num">100%</span> Practical Examples</div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Contrast Showcase -->
+      <div class="hero-visual-card">
+        <div class="visual-card-header">
+          <span class="visual-card-title">💡 The Power of a Comma</span>
+          <span style="font-size: 0.8rem; color: var(--brand-primary); font-weight: 700;">Rule 5C</span>
+        </div>
+        <div class="contrast-box-grid">
+          <div class="contrast-card danger">
+            <div class="contrast-sentence">"Let's eat students."</div>
+            <div class="contrast-meaning">🚨 <strong>No Comma:</strong> Suggests cannibalism — eating students as food!</div>
+          </div>
+          <div class="contrast-card success">
+            <div class="contrast-sentence">"Let's eat, students."</div>
+            <div class="contrast-meaning">🥗 <strong>With Comma:</strong> A polite lunch invitation to the students.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Views Navigation Bar -->
+  <nav class="view-tabs-bar" aria-label="Learning Modules">
+    <div class="container tabs-wrapper">
+      <div class="tabs-list">
+        <button class="tab-button active" data-view="notes">
+          <span>📖</span> Detailed Notes
+        </button>
+        <button class="tab-button" data-view="meaning">
+          <span>🔀</span> Meaning Shifts
+        </button>
+        <button class="tab-button" data-view="quiz">
+          <span>📝</span> Practice Quiz
+        </button>
+        <button class="tab-button" data-view="flashcards">
+          <span>🃏</span> 3D Flashcards
+        </button>
+        <button class="tab-button" data-view="fixer">
+          <span>🛠️</span> Sentence Fixer Lab
+        </button>
+        <button class="tab-button" data-view="cheatsheet">
+          <span>📋</span> Quick Cheat Sheet
+        </button>
+      </div>
+
+      <!-- Instant Search Filter -->
+      <div class="search-input-wrapper">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          class="search-input" 
+          id="globalSearchInput" 
+          placeholder="Search rules, symbols, or mistakes..."
+          aria-label="Search rules"
+        >
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Views Container -->
+  <main class="container main-view-container">
+
+    <!-- VIEW 1: DETAILED NOTES (ALL 21 TOPICS) -->
+    <section class="view-section active" id="view-notes">
+      <div class="notes-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="notes-sidebar">
+          <div class="sidebar-heading">Curriculum Index</div>
+          <div id="topicsNavList"></div>
+        </aside>
+
+        <!-- Main Content Lessons Area -->
+        <div class="notes-content-area" id="lessonsContentArea">
+          <!-- Populated by punctuation.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: MEANING SHIFTS VISUAL LAB -->
+    <section class="view-section" id="view-meaning">
+      <div class="meaning-lab-header">
+        <h2 class="meaning-lab-title">Punctuation Can Change Meaning</h2>
+        <p class="meaning-lab-subtitle">
+          See how moving, adding, or removing a punctuation mark completely alters sentence semantics, legal obligations, and comedic tone.
+        </p>
+      </div>
+      <div class="meaning-cards-grid" id="meaningCardsGrid">
+        <!-- Populated by punctuation.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 3: PRACTICE QUIZ -->
+    <section class="view-section" id="view-quiz">
+      <div class="quiz-wrapper">
+        <div class="quiz-header-card">
+          <h2 style="font-size: 1.8rem; font-weight: 800;">🎯 Punctuation Mastery Quiz</h2>
+          <p style="color: var(--text-muted); margin-top: 6px;">
+            Test your knowledge on commas, semicolons, colons, apostrophes, and error correction.
+          </p>
+          <div class="quiz-stats-row">
+            <div class="quiz-stat-item">
+              <span class="quiz-stat-val" id="quizAnsweredCount">0/10</span>
+              <span class="quiz-stat-lbl">Progress</span>
+            </div>
+            <div class="quiz-stat-item">
+              <span class="quiz-stat-val" id="quizScoreCount">0 pts</span>
+              <span class="quiz-stat-lbl">Current Score</span>
+            </div>
+            <div class="quiz-stat-item">
+              <span class="quiz-stat-val">10</span>
+              <span class="quiz-stat-lbl">Total Questions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card" id="activeQuizCard">
+          <!-- Active Question Populated by punctuation.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: 3D FLASHCARDS -->
+    <section class="view-section" id="view-flashcards">
+      <div class="flashcards-container">
+        <div class="flashcard-header">
+          <h2 style="font-size: 1.8rem; font-weight: 800;">🃏 Interactive Punctuation Flashcards</h2>
+          <p style="color: var(--text-muted); margin-top: 6px;">
+            Test your quick-recall memory. Click the card to flip between mark and rules.
+          </p>
+          <div id="flashcardIndexDisplay" style="font-weight: 700; color: var(--brand-primary); margin-top: 10px;">
+            Card 1 of 10
+          </div>
+        </div>
+
+        <div class="flashcard-scene" id="flashcardScene">
+          <!-- 3D Card Populated by punctuation.js -->
+        </div>
+
+        <div class="flashcard-controls">
+          <button class="secondary-btn" onclick="app.prevFlashcard()">← Previous</button>
+          <button class="primary-btn" onclick="app.flipFlashcard()">🔄 Flip Card</button>
+          <button class="secondary-btn" onclick="app.nextFlashcard()">Next Card →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: SENTENCE FIXER LAB -->
+    <section class="view-section" id="view-fixer">
+      <div class="meaning-lab-header">
+        <h2 class="meaning-lab-title">🛠️ Sentence Fixer & Error Lab</h2>
+        <p class="meaning-lab-subtitle">
+          Repair real-world comma splices, fused run-ons, and colon errors. Select the grammatically flawless fix for each challenge.
+        </p>
+      </div>
+
+      <div class="fixer-grid" id="fixerCardsGrid">
+        <!-- Fixer challenges populated by punctuation.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 6: QUICK CHEAT SHEET TABLE -->
+    <section class="view-section" id="view-cheatsheet">
+      <div class="meaning-lab-header">
+        <h2 class="meaning-lab-title">📋 Punctuation Symbols Cheat Sheet</h2>
+        <p class="meaning-lab-subtitle">
+          A rapid lookup reference table summarizing all 14 official punctuation marks with one-click copy buttons.
+        </p>
+      </div>
+
+      <div class="table-card">
+        <table class="cheatsheet-table">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Punctuation Name</th>
+              <th>Main Function</th>
+              <th>Quick Example</th>
+            </tr>
+          </thead>
+          <tbody id="cheatSheetTableBody">
+            <!-- Table rows populated by punctuation.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notifications Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-text">
+        <strong>English Punctuation Mastery Guide</strong> — A comprehensive reference for writers, students, and researchers.
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <button class="secondary-btn" onclick="window.print()" style="padding: 6px 14px; font-size: 0.8rem;">
+          🖨️ Print Cheat Sheet
+        </button>
+        <button class="secondary-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="padding: 6px 14px; font-size: 0.8rem;">
+          ↑ Back to Top
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Application -->
+  <script src="punctuation.js"></script>
+</body>
+</html>

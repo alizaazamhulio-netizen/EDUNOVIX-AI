@@ -1,932 +1,504 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Study Planner - NOVIX
-  <!-- Google Fonts: Plus Jakarta Sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Base Theme & Planner Styles -->
-  <link rel="stylesheet" href="progress.css">
+  <title>EduNexa | Study Planner</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="planner.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
 </head>
-<body>
+<body class="bg-[#090D16] text-slate-100 min-h-screen">
+
   <div class="app-container">
-    <!-- ==========================================
-         1. LEFT SIDEBAR NAVIGATION
-         ========================================== -->
-    <aside class="sidebar">
-      <div class="sidebar-top">
-        <div class="sidebar-header">
-          <div class="logo-icon"><i class="fa-solid fa-brain"></i></div>
-          <div class="logo-title-group">
-            <span class="logo-text">StudyMate</span>
-            <span class="logo-badge">AI</span>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar p-5 flex flex-col justify-between" id="sidebar">
+      <div>
+        <!-- Logo -->
+        <div class="flex items-center gap-3 px-2 py-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center text-white text-xl font-extrabold shadow-lg shadow-indigo-500/25">
+            S
+          </div>
+          <div>
+            <h1 class="text-lg font-bold bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent leading-none">EduNexa</h1>
+            <p class="text-[11px] text-indigo-400 font-medium tracking-wider uppercase mt-1">NOVIX Platform</p>
           </div>
         </div>
-        <nav class="sidebar-nav">
-          <div class="nav-section-title">Core Workspace</div>
+
+        <!-- Navigation Links -->
+        <nav class="space-y-1">
           <a href="dashboard.html" class="nav-item">
-            <i class="fa-solid fa-chart-pie"></i>
+            <span class="text-lg">📊</span>
             <span>Dashboard</span>
           </a>
+          <a href="planner.html" class="nav-item active">
+            <span class="text-lg">📅</span>
+            <span>Study Planner</span>
+          </a>
           <a href="subjects.html" class="nav-item">
-            <i class="fa-solid fa-book-bookmark"></i>
+            <span class="text-lg">📚</span>
             <span>Subjects</span>
           </a>
-          <a href="planner.html" class="nav-item active">
-            <i class="fa-solid fa-calendar-days"></i>
-            <span>Planner</span>
-            <div class="active-indicator"></div>
-          </a>
           <a href="ai-assistant.html" class="nav-item">
-            <i class="fa-solid fa-robot"></i>
-            <span>AI Assistant</span>
+            <span class="text-lg">✨</span>
+            <span>AI Study Copilot</span>
           </a>
           <a href="progress.html" class="nav-item">
-            <i class="fa-solid fa-chart-line"></i>
-            <span>Progress</span>
+            <span class="text-lg">📈</span>
+            <span>Analytics &amp; Progress</span>
           </a>
-          
-          <div class="nav-section-title" style="margin-top: 16px;">Preferences</div>
           <a href="settings.html" class="nav-item">
-            <i class="fa-solid fa-gear"></i>
-            <span>Settings</span>
+            <span class="text-lg">⚙️</span>
+            <span>Settings &amp; DB</span>
           </a>
         </nav>
       </div>
 
-      <div class="sidebar-footer">
-        <div class="sidebar-user">
-          <div class="user-avatar" id="sidebarAvatar">AV<div class="online-dot"></div></div>
-          <div class="user-info">
-            <span class="user-name" id="sidebarUserName">Alex Vance</span>
-            <span class="user-role">Premium Scholar</span>
+      <!-- User Profile Widget in Sidebar Footer -->
+      <div class="pt-4 border-t border-white/10">
+        <div class="flex items-center justify-between p-2 rounded-xl bg-slate-900/60 border border-white/5 cursor-pointer hover:border-indigo-500/40 transition" id="userProfileBtn">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-xs font-bold text-white shadow" id="userAvatar">
+              ST
+            </div>
+            <div class="min-w-0">
+              <p class="text-sm font-semibold text-white truncate" id="userDisplayName">Loading...</p>
+              <p class="text-[11px] text-slate-400 truncate" id="userEmail">student@studymate.app</p>
+            </div>
           </div>
+          <span class="text-slate-400 text-xs">✏️</span>
         </div>
       </div>
     </aside>
 
-    <!-- ==========================================
-         MAIN CONTENT WRAPPER
-         ========================================== -->
-    <main class="main-wrapper">
-      <!-- ==========================================
-           2. TOP HEADER
-           ========================================== -->
-      <header class="top-header">
-        <div class="header-left">
-          <h1 class="page-title"><i class="fa-solid fa-calendar-days"></i> Study Planner</h1>
-          <p class="page-subtitle">Master your academic schedule, task deadlines & study blocks with AI precision</p>
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Header Bar -->
+      <header class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight" id="dashboardGreeting">
+            Study Planner
+          </h2>
+          <p class="text-sm text-slate-400 mt-0.5">
+            Organize daily tasks, manage study sessions, and track real progress with Firestore.
+          </p>
         </div>
 
-        <div class="header-right">
-          <!-- Search Bar -->
-          <div class="header-search-box">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="plannerSearchInput" placeholder="Search tasks, subjects, schedules... (Ctrl+K)">
-            <kbd class="search-kbd">⌘K</kbd>
-          </div>
-
-          <!-- Live Date & Clock -->
-          <div class="header-clock" id="liveClockDisplay">
-            <div class="time-text" id="liveTimeText">00:00 AM</div>
-            <div class="date-text" id="liveDateText"><i class="fa-regular fa-calendar"></i> <span>Sat, Aug 1</span></div>
-          </div>
-
-          <!-- Notification Button -->
-          <button class="header-action-btn" id="notifBtn" title="Notifications">
-            <i class="fa-regular fa-bell"></i>
-            <span class="notif-badge">3</span>
+        <div class="flex items-center gap-3 w-full md:w-auto">
+          <!-- Quick Add Task Button -->
+          <button id="btnQuickAddTask" class="btn-primary flex-1 md:flex-initial">
+            <span class="text-lg">+</span>
+            <span>Add Task</span>
           </button>
-
-          <!-- Dark / Light Mode Toggle -->
-          <button class="header-action-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode">
-            <i class="fa-solid fa-moon" id="themeIcon"></i>
-          </button>
-
-          <!-- User Avatar Badge -->
-          <div class="header-user-badge">
-            <div class="mini-avatar">AV</div>
-          </div>
         </div>
       </header>
 
-      <!-- ==========================================
-           MAIN PLANNER CONTENT GRID & RIGHT SIDEBAR
-           ========================================== -->
-      <div class="content-area planner-layout-container">
+      <!-- Real Statistics Grid (Calculated dynamically from real user data) -->
+      <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+        <div class="glass-card p-4 rounded-2xl">
+          <p class="text-xs font-medium text-slate-400">Today's Study</p>
+          <h3 class="text-xl font-bold text-white mt-1" id="statTodayHours">0.0 hrs</h3>
+          <span class="text-[11px] text-indigo-400 mt-1 inline-block">Real-time tracked</span>
+        </div>
+
+        <div class="glass-card p-4 rounded-2xl">
+          <p class="text-xs font-medium text-slate-400">Completed Tasks</p>
+          <h3 class="text-xl font-bold text-emerald-400 mt-1" id="statCompletedTasks">0</h3>
+          <span class="text-[11px] text-slate-400 mt-1 inline-block">Finished tasks</span>
+        </div>
+
+        <div class="glass-card p-4 rounded-2xl">
+          <p class="text-xs font-medium text-slate-400">Pending Tasks</p>
+          <h3 class="text-xl font-bold text-amber-400 mt-1" id="statPendingTasks">0</h3>
+          <span class="text-[11px] text-slate-400 mt-1 inline-block">To be done</span>
+        </div>
+
+        <div class="glass-card p-4 rounded-2xl">
+          <p class="text-xs font-medium text-slate-400">Weekly Study</p>
+          <h3 class="text-xl font-bold text-cyan-400 mt-1" id="statWeeklyHours">0.0 hrs</h3>
+          <span class="text-[11px] text-slate-400 mt-1 inline-block">Last 7 days</span>
+        </div>
+
+        <div class="glass-card p-4 rounded-2xl">
+          <p class="text-xs font-medium text-slate-400">Study Streak</p>
+          <h3 class="text-xl font-bold text-orange-400 mt-1" id="statStreakDays">0 days</h3>
+          <span class="text-[11px] text-slate-400 mt-1 inline-block">Active streak</span>
+        </div>
+
+        <div class="glass-card p-4 rounded-2xl">
+          <p class="text-xs font-medium text-slate-400">Completion Rate</p>
+          <h3 class="text-xl font-bold text-indigo-300 mt-1" id="statCompletionRate">0%</h3>
+          <span class="text-[11px] text-slate-400 mt-1 inline-block">Task velocity</span>
+        </div>
+      </section>
+
+      <!-- Main Grid: Planner Workspace -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- MAIN CONTENT COLUMN (LEFT / CENTER) -->
-        <div class="planner-main-column">
+        <!-- Left 8 Columns: Tasks, Subject Planner, and Calendar -->
+        <div class="lg:col-span-8 space-y-8">
           
-          <!-- ==========================================
-               3. HERO SECTION
-               ========================================== -->
-          <section class="glass-card hero-planner-card" id="heroPlannerCard">
-            <div class="hero-bg-decoration">
-              <div class="floating-orb orb-1"></div>
-              <div class="floating-orb orb-2"></div>
-            </div>
-
-            <div class="hero-content">
-              <div class="hero-left-text">
-                <div class="hero-badge"><i class="fa-solid fa-sparkles"></i> AI Study Optimizer Active</div>
-                <h2 class="hero-headline">Today's Academic Strategy</h2>
-                <p class="hero-quote" id="motivationalQuoteText">
-                  "Success is the sum of small efforts repeated day in and day out."
-                </p>
-
-                <div class="hero-stats-row">
-                  <div class="hero-stat-pill">
-                    <span class="label"><i class="fa-solid fa-bullseye"></i> Current Focus Subject</span>
-                    <span class="val text-indigo" id="heroCurrentFocus">Mathematics &bull; Calculus II</span>
-                  </div>
-                  <div class="hero-stat-pill">
-                    <span class="label"><i class="fa-solid fa-clock"></i> Daily Goal</span>
-                    <span class="val" id="heroDailyGoal">3.5 / 4.5 Hrs</span>
-                  </div>
-                  <div class="hero-stat-pill">
-                    <span class="label"><i class="fa-solid fa-chart-line"></i> Weekly Pace</span>
-                    <span class="val text-emerald" id="heroWeeklyPace">22.5 / 30.0 Hrs</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Animated Progress Ring & Task Meter -->
-              <div class="hero-right-ring">
-                <div class="progress-ring-wrapper">
-                  <svg class="progress-ring-svg" width="130" height="130">
-                    <circle class="ring-bg" cx="65" cy="65" r="54"></circle>
-                    <circle class="ring-fill" id="heroProgressCircle" cx="65" cy="65" r="54" style="stroke-dashoffset: 85;"></circle>
-                  </svg>
-                  <div class="ring-center-content">
-                    <span class="percent-val" id="heroProgressPercent">78%</span>
-                    <span class="percent-label">Completed</span>
-                  </div>
-                </div>
-                <div class="hero-tasks-counter">
-                  <span id="heroCompletedTasksCount">5</span> of <span id="heroTotalTasksCount">7</span> Tasks Done
-                  <div class="remaining-tag" id="heroRemainingTasksTag"><i class="fa-solid fa-hourglass-half"></i> 2 Remaining</div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- ==========================================
-               4. QUICK ACTIONS
-               ========================================== -->
-          <section class="planner-section-block">
-            <div class="section-title-row">
-              <h3><i class="fa-solid fa-bolt text-amber"></i> Quick Actions</h3>
-              <span class="section-badge">Fast Tools</span>
-            </div>
-
-            <div class="quick-actions-grid">
-              <button class="quick-action-card" id="qaAddTaskBtn">
-                <div class="qa-icon-box icon-indigo"><i class="fa-solid fa-plus"></i></div>
-                <div class="qa-info">
-                  <span class="qa-title">Add Task</span>
-                  <span class="qa-desc">New assignment or goal</span>
-                </div>
-              </button>
-
-              <button class="quick-action-card" id="qaAddSubjectBtn">
-                <div class="qa-icon-box icon-emerald"><i class="fa-solid fa-book-medical"></i></div>
-                <div class="qa-info">
-                  <span class="qa-title">Add Subject</span>
-                  <span class="qa-desc">Track new course module</span>
-                </div>
-              </button>
-
-              <button class="quick-action-card" id="qaStartSessionBtn">
-                <div class="qa-icon-box icon-cyan"><i class="fa-solid fa-play"></i></div>
-                <div class="qa-info">
-                  <span class="qa-title">Start Study Session</span>
-                  <span class="qa-desc">Log live study time</span>
-                </div>
-              </button>
-
-              <a href="ai-assistant.html" class="quick-action-card">
-                <div class="qa-icon-box icon-purple"><i class="fa-solid fa-robot"></i></div>
-                <div class="qa-info">
-                  <span class="qa-title">Open AI Assistant</span>
-                  <span class="qa-desc">Ask homework questions</span>
-                </div>
-              </a>
-
-              <button class="quick-action-card" id="qaGenerateNotesBtn">
-                <div class="qa-icon-box icon-rose"><i class="fa-solid fa-file-pen"></i></div>
-                <div class="qa-info">
-                  <span class="qa-title">Generate Notes</span>
-                  <span class="qa-desc">AI summary from topic</span>
-                </div>
-              </button>
-
-              <button class="quick-action-card" id="qaGenerateQuizBtn">
-                <div class="qa-icon-box icon-amber"><i class="fa-solid fa-circle-question"></i></div>
-                <div class="qa-info">
-                  <span class="qa-title">Generate Quiz</span>
-                  <span class="qa-desc">Practice exam questions</span>
-                </div>
-              </button>
-
-              <button class="quick-action-card" id="qaStartRevisionBtn">
-                <div class="qa-icon-box icon-teal"><i class="fa-solid fa-rotate"></i></div>
-                <div class="qa-info">
-                  <span class="qa-title">Start Revision</span>
-                  <span class="qa-desc">Spaced repetition review</span>
-                </div>
-              </button>
-
-              <button class="quick-action-card" id="qaPomodoroScrollBtn">
-                <div class="qa-icon-box icon-red"><i class="fa-solid fa-stopwatch"></i></div>
-                <div class="qa-info">
-                  <span class="qa-title">Pomodoro Timer</span>
-                  <span class="qa-desc">25m focus & break cycles</span>
-                </div>
-              </button>
-            </div>
-          </section>
-
-          <!-- ==========================================
-               5. SMART STUDY CALENDAR
-               ========================================== -->
-          <section class="glass-card calendar-section-card" id="smartCalendarCard">
-            <div class="calendar-header-row">
-              <div class="cal-title-group">
-                <h3><i class="fa-solid fa-calendar-check text-indigo"></i> Smart Study Calendar</h3>
-                <span class="cal-sub-text">Interactive monthly schedule & deadline tracker</span>
-              </div>
-              <div class="cal-controls">
-                <button class="btn-icon-pill" id="calPrevMonthBtn" title="Previous Month"><i class="fa-solid fa-chevron-left"></i></button>
-                <span class="calendar-month-title" id="calCurrentMonthTitle">August 2026</span>
-                <button class="btn-icon-pill" id="calNextMonthBtn" title="Next Month"><i class="fa-solid fa-chevron-right"></i></button>
-                <button class="btn-secondary-pill" id="calTodayBtn">Today</button>
-              </div>
-            </div>
-
-            <!-- Calendar Legend Badges -->
-            <div class="calendar-legend-bar">
-              <span class="legend-item"><span class="dot dot-study"></span> Study Days</span>
-              <span class="legend-item"><span class="dot dot-exam"></span> Exam Dates</span>
-              <span class="legend-item"><span class="dot dot-deadline"></span> Deadlines</span>
-              <span class="legend-item"><span class="dot dot-holiday"></span> Holidays</span>
-            </div>
-
-            <!-- Calendar Table Grid -->
-            <div class="calendar-grid-container">
-              <div class="cal-day-header">Sun</div>
-              <div class="cal-day-header">Mon</div>
-              <div class="cal-day-header">Tue</div>
-              <div class="cal-day-header">Wed</div>
-              <div class="cal-day-header">Thu</div>
-              <div class="cal-day-header">Fri</div>
-              <div class="cal-day-header">Sat</div>
-
-              <!-- Calendar Days Grid Rendered dynamically by JS -->
-              <div class="calendar-days-grid" id="calendarDaysGrid"></div>
-            </div>
-          </section>
-
-          <!-- ==========================================
-               6. TODAY'S TASKS
-               ========================================== -->
-          <section class="glass-card task-manager-card" id="todaysTasksCard">
-            <div class="task-card-header">
-              <div class="title-with-badge">
-                <h3><i class="fa-solid fa-list-check text-emerald"></i> Today's Study Tasks</h3>
-                <span class="task-count-badge" id="taskManagerCounter">5 / 7 Tasks Completed</span>
-              </div>
-              <button class="btn-primary-gradient" id="addNewTaskTopBtn">
-                <i class="fa-solid fa-plus"></i> Add New Task
-              </button>
-            </div>
-
-            <!-- Task Controls Bar (Filter Pills & Search) -->
-            <div class="task-controls-bar">
-              <div class="filter-pills" id="taskFilterPills">
-                <button class="pill-btn active" data-filter="all">All Tasks</button>
-                <button class="pill-btn" data-filter="pending">Pending</button>
-                <button class="pill-btn" data-filter="completed">Completed</button>
-                <button class="pill-btn" data-filter="high">High Priority</button>
-                <button class="pill-btn" data-filter="math">Mathematics</button>
-                <button class="pill-btn" data-filter="cs">Computer Science</button>
-              </div>
-              <div class="task-search-input-wrap">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="taskFilterInput" placeholder="Filter tasks...">
-              </div>
-            </div>
-
-            <!-- Task List Container -->
-            <div class="task-list-container" id="tasksListContainer">
-              <!-- Rendered via JS -->
-            </div>
-          </section>
-
-          <!-- ==========================================
-               7. UPCOMING TASKS
-               ========================================== -->
-          <section class="glass-card upcoming-tasks-card" id="upcomingTasksCard">
-            <div class="section-title-row">
-              <h3><i class="fa-solid fa-clock-rotate-left text-cyan"></i> Upcoming Tasks & Assignments</h3>
-              <span class="section-badge">Next 7 Days</span>
-            </div>
-
-            <div class="upcoming-tasks-list" id="upcomingTasksList">
-              <!-- Rendered dynamically via JS -->
-            </div>
-          </section>
-
-          <!-- ==========================================
-               8. SUBJECT PLANNER
-               ========================================== -->
-          <section class="planner-section-block" id="subjectPlannerCard">
-            <div class="section-title-row">
-              <h3><i class="fa-solid fa-book-open-reader text-purple"></i> Subject Planner & Progress</h3>
-              <a href="subjects.html" class="view-all-link">Manage All Subjects <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="subject-cards-grid" id="subjectCardsGrid">
-              <!-- Rendered via JS -->
-            </div>
-          </section>
-
-          <!-- ==========================================
-               9. POMODORO TIMER
-               ========================================== -->
-          <section class="glass-card pomodoro-card" id="pomodoroTimerCard">
-            <div class="pomodoro-header">
+          <!-- Study Tasks Section -->
+          <div class="glass-card p-6 rounded-2xl">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
               <div>
-                <h3><i class="fa-solid fa-stopwatch text-rose"></i> Focus Pomodoro Timer</h3>
-                <p class="sub-text">Boost productivity with structured study sprints & breaks</p>
-              </div>
-              <div class="pomo-session-badge">
-                <i class="fa-solid fa-fire text-amber"></i> Completed Sessions Today: <strong id="pomoSessionCount">4</strong> / 8
-              </div>
-            </div>
-
-            <div class="pomodoro-body">
-              <!-- Mode Tabs -->
-              <div class="pomo-tabs" id="pomoTabs">
-                <button class="pomo-tab active" data-mode="focus" data-time="1500">25m Focus</button>
-                <button class="pomo-tab" data-mode="shortBreak" data-time="300">5m Short Break</button>
-                <button class="pomo-tab" data-mode="longBreak" data-time="900">15m Long Break</button>
-              </div>
-
-              <!-- Timer Display Ring -->
-              <div class="pomo-timer-display">
-                <svg class="pomo-ring-svg" width="220" height="220">
-                  <circle class="pomo-ring-bg" cx="110" cy="110" r="95"></circle>
-                  <circle class="pomo-ring-fill" id="pomoRingFill" cx="110" cy="110" r="95"></circle>
-                </svg>
-                <div class="pomo-center-text">
-                  <span class="pomo-time-digits" id="pomoTimeDigits">25:00</span>
-                  <span class="pomo-mode-label" id="pomoModeLabel">Focus Session</span>
+                <div class="flex items-center gap-3">
+                  <h3 class="text-xl font-bold text-white">Study Tasks</h3>
+                  <span id="taskCountBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                    0 tasks
+                  </span>
                 </div>
+                <p class="text-xs text-slate-400 mt-0.5">Manage and track coursework, readings, and homework.</p>
               </div>
 
-              <!-- Control Buttons -->
-              <div class="pomo-controls-row">
-                <button class="btn-primary-gradient pomo-btn-lg" id="pomoStartBtn">
-                  <i class="fa-solid fa-play"></i> Start Timer
-                </button>
-                <button class="btn-secondary-pill pomo-btn-lg" id="pomoResetBtn">
-                  <i class="fa-solid fa-rotate-left"></i> Reset
-                </button>
+              <!-- Filter Tabs -->
+              <div class="flex items-center gap-1.5 p-1 rounded-xl bg-slate-900/80 border border-white/10 text-xs">
+                <button class="task-filter-btn px-3 py-1.5 rounded-lg text-white font-medium bg-indigo-600/30 border border-indigo-500 active transition" data-filter="all">All</button>
+                <button class="task-filter-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white font-medium transition" data-filter="pending">Pending</button>
+                <button class="task-filter-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white font-medium transition" data-filter="completed">Completed</button>
+                <button class="task-filter-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white font-medium transition" data-filter="high">High Priority</button>
               </div>
             </div>
-          </section>
 
-          <!-- ==========================================
-               10. WEEKLY STUDY TIMETABLE
-               ========================================== -->
-          <section class="glass-card timetable-card" id="weeklyTimetableCard">
-            <div class="section-title-row">
+            <!-- Search and Action Bar -->
+            <div class="flex items-center gap-3 mb-6">
+              <div class="relative flex-1">
+                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm">🔍</span>
+                <input type="text" id="taskSearchInput" placeholder="Search tasks by title, subject, or notes..." class="custom-input pl-10 text-sm">
+              </div>
+              <button id="btnAddNewTask" class="btn-secondary whitespace-nowrap">
+                <span>+ Add Task</span>
+              </button>
+            </div>
+
+            <!-- Task List Container (Populated dynamically) -->
+            <div id="taskListContainer" class="space-y-3">
+              <!-- Tasks will be rendered here via planner.js -->
+            </div>
+          </div>
+
+          <!-- Smart Study Calendar Section -->
+          <div class="glass-card p-6 rounded-2xl">
+            <div class="flex items-center justify-between mb-6">
               <div>
-                <h3><i class="fa-solid fa-table-cells text-indigo"></i> Weekly Study Timetable</h3>
-                <p class="sub-text">Structured study allocation per time block</p>
-              </div>
-              <span class="section-badge">Mon &ndash; Sun Schedule</span>
-            </div>
-
-            <div class="timetable-overflow-wrap">
-              <table class="timetable-grid" id="timetableGrid">
-                <thead>
-                  <tr>
-                    <th>Time Slot</th>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
-                    <th>Sun</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="slot-label"><i class="fa-regular fa-sun text-amber"></i> Morning<br><span class="time-range">08:00 - 12:00</span></td>
-                    <td class="cell-block bg-math">Mathematics<span class="block-topic">Calculus</span></td>
-                    <td class="cell-block bg-cs">Computer Science<span class="block-topic">Data Struct.</span></td>
-                    <td class="cell-block bg-math">Mathematics<span class="block-topic">Linear Alg.</span></td>
-                    <td class="cell-block bg-physics">Physics<span class="block-topic">Mechanics</span></td>
-                    <td class="cell-block bg-cs">Computer Science<span class="block-topic">Algorithms</span></td>
-                    <td class="cell-block bg-chem">Chemistry<span class="block-topic">Lab Work</span></td>
-                    <td class="cell-block bg-free">Free Revision</td>
-                  </tr>
-                  <tr>
-                    <td class="slot-label"><i class="fa-solid fa-sun text-amber"></i> Afternoon<br><span class="time-range">12:00 - 17:00</span></td>
-                    <td class="cell-block bg-physics">Physics<span class="block-topic">Electromagnetism</span></td>
-                    <td class="cell-block bg-chem">Chemistry<span class="block-topic">Organic Chem</span></td>
-                    <td class="cell-block bg-bio">Biology<span class="block-topic">Genetics</span></td>
-                    <td class="cell-block bg-english">English<span class="block-topic">Literature Essay</span></td>
-                    <td class="cell-block bg-physics">Physics<span class="block-topic">Quantum Intro</span></td>
-                    <td class="cell-block bg-math">Mathematics<span class="block-topic">Problem Set</span></td>
-                    <td class="cell-block bg-bio">Biology<span class="block-topic">Cellular Bio</span></td>
-                  </tr>
-                  <tr>
-                    <td class="slot-label"><i class="fa-solid fa-moon text-indigo"></i> Evening<br><span class="time-range">17:00 - 21:00</span></td>
-                    <td class="cell-block bg-cs">AI Assistant Sprints</td>
-                    <td class="cell-block bg-math">Math Practice</td>
-                    <td class="cell-block bg-chem">Chem Notes</td>
-                    <td class="cell-block bg-cs">Code Projects</td>
-                    <td class="cell-block bg-english">English Reading</td>
-                    <td class="cell-block bg-free">Quiz Tests</td>
-                    <td class="cell-block bg-free">Weekly Review</td>
-                  </tr>
-                  <tr>
-                    <td class="slot-label"><i class="fa-solid fa-bed text-purple"></i> Night<br><span class="time-range">21:00 - 00:00</span></td>
-                    <td class="cell-block bg-free">Flashcards</td>
-                    <td class="cell-block bg-free">Light Reading</td>
-                    <td class="cell-block bg-free">Flashcards</td>
-                    <td class="cell-block bg-free">Rest & Plan</td>
-                    <td class="cell-block bg-free">Light Reading</td>
-                    <td class="cell-block bg-free">Rest</td>
-                    <td class="cell-block bg-free">Schedule Next Wk</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <!-- ==========================================
-               11. GOALS SECTION
-               ========================================== -->
-          <section class="glass-card goals-card" id="goalsSectionCard">
-            <div class="section-title-row">
-              <h3><i class="fa-solid fa-bullseye text-emerald"></i> Academic Goals & Target Milestones</h3>
-              <span class="section-badge">Completion Trackers</span>
-            </div>
-
-            <div class="goals-grid">
-              <!-- Daily Goal -->
-              <div class="goal-item-box">
-                <div class="goal-header">
-                  <span class="goal-title"><i class="fa-solid fa-sun text-amber"></i> Daily Goal</span>
-                  <span class="goal-pct">78%</span>
-                </div>
-                <div class="goal-bar-bg">
-                  <div class="goal-bar-fill fill-amber" style="width: 78%;"></div>
-                </div>
-                <div class="goal-footer">
-                  <span>3.5 / 4.5 Hours Logged</span>
-                  <span class="goal-status text-emerald"><i class="fa-solid fa-check"></i> On Track</span>
-                </div>
+                <h3 class="text-xl font-bold text-white">Smart Study Calendar</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Visual schedule of your daily deadlines and revision goals.</p>
               </div>
 
-              <!-- Weekly Goal -->
-              <div class="goal-item-box">
-                <div class="goal-header">
-                  <span class="goal-title"><i class="fa-solid fa-calendar-week text-indigo"></i> Weekly Goal</span>
-                  <span class="goal-pct">75%</span>
-                </div>
-                <div class="goal-bar-bg">
-                  <div class="goal-bar-fill fill-indigo" style="width: 75%;"></div>
-                </div>
-                <div class="goal-footer">
-                  <span>22.5 / 30.0 Hours Completed</span>
-                  <span class="goal-status text-indigo">7.5h Remaining</span>
-                </div>
-              </div>
-
-              <!-- Monthly Goal -->
-              <div class="goal-item-box">
-                <div class="goal-header">
-                  <span class="goal-title"><i class="fa-solid fa-calendar-alt text-purple"></i> Monthly Goal</span>
-                  <span class="goal-pct">82%</span>
-                </div>
-                <div class="goal-bar-bg">
-                  <div class="goal-bar-fill fill-purple" style="width: 82%;"></div>
-                </div>
-                <div class="goal-footer">
-                  <span>98 / 120 Hours Logged</span>
-                  <span class="goal-status text-emerald"><i class="fa-solid fa-fire"></i> High Pace</span>
+              <div class="flex items-center gap-2">
+                <button id="todayBtn" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 transition">
+                  Today
+                </button>
+                <div class="flex items-center gap-1">
+                  <button id="prevMonthBtn" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 transition" title="Previous Month">
+                    ◀
+                  </button>
+                  <span id="calendarMonthTitle" class="text-sm font-semibold text-white px-3">
+                    Month Year
+                  </span>
+                  <button id="nextMonthBtn" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 transition" title="Next Month">
+                    ▶
+                  </button>
                 </div>
               </div>
             </div>
-          </section>
 
-          <!-- ==========================================
-               12. AI STUDY SUGGESTIONS
-               ========================================== -->
-          <section class="planner-section-block" id="aiSuggestionsCard">
-            <div class="section-title-row">
-              <h3><i class="fa-solid fa-wand-magic-sparkles text-indigo"></i> AI Study Recommendations</h3>
-              <span class="section-badge">Personalized for Alex</span>
+            <!-- Calendar Days Header -->
+            <div class="calendar-grid mb-2">
+              <div class="calendar-day-header">Sun</div>
+              <div class="calendar-day-header">Mon</div>
+              <div class="calendar-day-header">Tue</div>
+              <div class="calendar-day-header">Wed</div>
+              <div class="calendar-day-header">Thu</div>
+              <div class="calendar-day-header">Fri</div>
+              <div class="calendar-day-header">Sat</div>
             </div>
 
-            <div class="ai-suggestions-grid">
-              <div class="ai-recommend-card">
-                <div class="ai-rec-icon bg-indigo-glow"><i class="fa-solid fa-calculator"></i></div>
-                <div class="ai-rec-content">
-                  <span class="ai-rec-tag">Priority Recommendation</span>
-                  <h4 class="ai-rec-title">Study Mathematics Calculus First</h4>
-                  <p class="ai-rec-desc">Calculus Midterm exam is in 3 days. Focus on Integration by Parts today for maximum score boost.</p>
-                  <button class="ai-action-btn" id="aiActionStartMath"><i class="fa-solid fa-play"></i> Start Math Sprint</button>
-                </div>
-              </div>
-
-              <div class="ai-recommend-card">
-                <div class="ai-rec-icon bg-cyan-glow"><i class="fa-solid fa-atom"></i></div>
-                <div class="ai-rec-content">
-                  <span class="ai-rec-tag">Review Alert</span>
-                  <h4 class="ai-rec-title">Review Yesterday's Physics Notes</h4>
-                  <p class="ai-rec-desc">You completed Electromagnetism yesterday. Review formula cards today to solidify long-term memory.</p>
-                  <button class="ai-action-btn" id="aiActionReviewPhysics"><i class="fa-solid fa-rotate"></i> Review Physics</button>
-                </div>
-              </div>
-
-              <div class="ai-recommend-card">
-                <div class="ai-rec-icon bg-emerald-glow"><i class="fa-solid fa-dna"></i></div>
-                <div class="ai-rec-content">
-                  <span class="ai-rec-tag">Quiz Practice</span>
-                  <h4 class="ai-rec-title">Take a 10-Question Biology Quiz</h4>
-                  <p class="ai-rec-desc">Test your retention on Cell Division & Mitosis before tomorrow's lecture.</p>
-                  <button class="ai-action-btn" id="aiActionTakeBioQuiz"><i class="fa-solid fa-circle-question"></i> Launch Bio Quiz</button>
-                </div>
-              </div>
-
-              <div class="ai-recommend-card">
-                <div class="ai-rec-icon bg-rose-glow"><i class="fa-solid fa-feather"></i></div>
-                <div class="ai-rec-content">
-                  <span class="ai-rec-tag">Note Synthesis</span>
-                  <h4 class="ai-rec-title">Generate English Literature Notes</h4>
-                  <p class="ai-rec-desc">Synthesize key themes and character quotes for Hamlet essay prep.</p>
-                  <button class="ai-action-btn" id="aiActionGenEnglishNotes"><i class="fa-solid fa-file-pen"></i> Generate Notes</button>
-                </div>
-              </div>
+            <!-- Calendar Days Grid (Rendered dynamically) -->
+            <div id="calendarDaysGrid" class="calendar-grid">
+              <!-- Rendered via planner.js -->
             </div>
-          </section>
+          </div>
 
-          <!-- ==========================================
-               13. RECENT ACTIVITY TIMELINE
-               ========================================== -->
-          <section class="glass-card activity-timeline-card" id="recentActivityCard">
-            <div class="section-title-row">
-              <h3><i class="fa-solid fa-timeline text-cyan"></i> Recent Study Activity</h3>
-              <span class="section-badge">Live Log</span>
+          <!-- Subject Planner Section -->
+          <div class="glass-card p-6 rounded-2xl">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">Subject Planner</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Real hours logged and task distribution across your courses.</p>
+              </div>
+              <button id="btnOpenSubjectModal" class="btn-secondary text-xs">
+                + Add Subject
+              </button>
             </div>
 
-            <div class="timeline-wrapper">
-              <div class="timeline-item">
-                <div class="tl-icon bg-emerald-dot"><i class="fa-solid fa-check"></i></div>
-                <div class="tl-body">
-                  <div class="tl-header">
-                    <span class="tl-title">Completed Task: Calculus Problem Set #4</span>
-                    <span class="tl-time">15 mins ago</span>
-                  </div>
-                  <p class="tl-desc">Logged 45 mins of focused problem solving under Mathematics.</p>
-                </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="tl-icon bg-indigo-dot"><i class="fa-solid fa-calendar-plus"></i></div>
-                <div class="tl-body">
-                  <div class="tl-header">
-                    <span class="tl-title">Planner Schedule Updated</span>
-                    <span class="tl-time">1 hour ago</span>
-                  </div>
-                  <p class="tl-desc">Scheduled Chemistry Lab exam deadline for Aug 12th.</p>
-                </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="tl-icon bg-rose-dot"><i class="fa-solid fa-file-lines"></i></div>
-                <div class="tl-body">
-                  <div class="tl-header">
-                    <span class="tl-title">Generated Study Notes: Data Structures</span>
-                    <span class="tl-time">3 hours ago</span>
-                  </div>
-                  <p class="tl-desc">AI Assistant created a 4-page summary on Binary Trees & Graphs.</p>
-                </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="tl-icon bg-amber-dot"><i class="fa-solid fa-trophy"></i></div>
-                <div class="tl-body">
-                  <div class="tl-header">
-                    <span class="tl-title">Quiz Completed: Organic Chemistry</span>
-                    <span class="tl-time">Yesterday</span>
-                  </div>
-                  <p class="tl-desc">Scored 90% (9/10 questions correct) in 12 minutes.</p>
-                </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="tl-icon bg-purple-dot"><i class="fa-solid fa-stopwatch"></i></div>
-                <div class="tl-body">
-                  <div class="tl-header">
-                    <span class="tl-title">Pomodoro Study Session Finished</span>
-                    <span class="tl-time">Yesterday</span>
-                  </div>
-                  <p class="tl-desc">Completed 4 consecutive focus sprints (100 total study minutes).</p>
-                </div>
-              </div>
+            <!-- Subject Cards Grid -->
+            <div id="subjectCardsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <!-- Rendered dynamically -->
             </div>
-          </section>
+          </div>
 
-          <!-- ==========================================
-               14. STATISTICS GRID
-               ========================================== -->
-          <section class="planner-section-block" id="statisticsGridCard">
-            <div class="section-title-row">
-              <h3><i class="fa-solid fa-chart-pie text-amber"></i> Productivity & Academic Statistics</h3>
-              <span class="section-badge">Real-Time Metrics</span>
-            </div>
+        </div>
 
-            <div class="stats-cards-grid">
-              <div class="stat-glass-card">
-                <div class="stat-card-icon icon-indigo"><i class="fa-solid fa-hourglass-start"></i></div>
-                <div class="stat-card-data">
-                  <span class="stat-number">3.5 / 4.5h</span>
-                  <span class="stat-label">Today's Study Hours</span>
-                </div>
-              </div>
-
-              <div class="stat-glass-card">
-                <div class="stat-card-icon icon-emerald"><i class="fa-solid fa-square-check"></i></div>
-                <div class="stat-card-data">
-                  <span class="stat-number">5 Tasks</span>
-                  <span class="stat-label">Completed Today</span>
-                </div>
-              </div>
-
-              <div class="stat-glass-card">
-                <div class="stat-card-icon icon-amber"><i class="fa-solid fa-list-ul"></i></div>
-                <div class="stat-card-data">
-                  <span class="stat-number">2 Tasks</span>
-                  <span class="stat-label">Pending Today</span>
-                </div>
-              </div>
-
-              <div class="stat-glass-card">
-                <div class="stat-card-icon icon-cyan"><i class="fa-solid fa-calendar-week"></i></div>
-                <div class="stat-card-data">
-                  <span class="stat-number">22.5 hrs</span>
-                  <span class="stat-label">Weekly Hours</span>
-                </div>
-              </div>
-
-              <div class="stat-glass-card">
-                <div class="stat-card-icon icon-purple"><i class="fa-solid fa-chart-column"></i></div>
-                <div class="stat-card-data">
-                  <span class="stat-number">98 hrs</span>
-                  <span class="stat-label">Monthly Hours</span>
-                </div>
-              </div>
-
-              <div class="stat-glass-card">
-                <div class="stat-card-icon icon-rose"><i class="fa-solid fa-fire"></i></div>
-                <div class="stat-card-data">
-                  <span class="stat-number">14 Days</span>
-                  <span class="stat-label">Active Streak</span>
-                </div>
-              </div>
-
-              <div class="stat-glass-card">
-                <div class="stat-card-icon icon-teal"><i class="fa-solid fa-brain"></i></div>
-                <div class="stat-card-data">
-                  <span class="stat-number">92%</span>
-                  <span class="stat-label">Focus Score</span>
-                </div>
-              </div>
-
-              <div class="stat-glass-card">
-                <div class="stat-card-icon icon-indigo"><i class="fa-solid fa-gauge-high"></i></div>
-                <div class="stat-card-data">
-                  <span class="stat-number">88 / 100</span>
-                  <span class="stat-label">Productivity Score</span>
-                </div>
-              </div>
-            </div>
-          </section>
-
-        </div> <!-- END MAIN CONTENT COLUMN -->
-
-
-        <!-- ==========================================
-             15. RIGHT SIDEBAR WIDGETS
-             ========================================== -->
-        <aside class="planner-right-sidebar">
+        <!-- Right 4 Columns: Study Session, Pomodoro, Scratchpad, Upcoming -->
+        <div class="lg:col-span-4 space-y-8">
           
-          <!-- Today's Schedule Widget -->
-          <div class="glass-card widget-card">
-            <div class="widget-header">
-              <h4><i class="fa-solid fa-calendar-day text-indigo"></i> Today's Schedule</h4>
-              <span class="mini-date">Aug 1</span>
+          <!-- Live Study Session Controller -->
+          <div class="glass-card p-6 rounded-2xl border-indigo-500/30">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                <h3 class="text-lg font-bold text-white">Study Session</h3>
+              </div>
+              <span class="text-xs text-indigo-400 font-medium">Real-Time Tracker</span>
             </div>
-            <div class="widget-timeline">
-              <div class="widget-time-block">
-                <span class="time-tag">09:00 AM</span>
-                <div class="time-info">
-                  <span class="title">Math Calculus Lecture</span>
-                  <span class="sub">Room 302 &bull; Prof. Davis</span>
-                </div>
+
+            <!-- Subject & Task Selector for Session -->
+            <div class="space-y-3 mb-5">
+              <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1">Target Subject</label>
+                <select id="studySessionSubjectSelect" class="custom-input text-xs">
+                  <!-- Populated from subjects -->
+                </select>
               </div>
 
-              <div class="widget-time-block active-now">
-                <span class="time-tag">11:30 AM</span>
-                <div class="time-info">
-                  <span class="title">CS Algorithms Lab</span>
-                  <span class="sub">In Progress &bull; Lab 4</span>
-                </div>
+              <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1">Optional Linked Task</label>
+                <select id="studySessionTaskSelect" class="custom-input text-xs">
+                  <!-- Populated from tasks -->
+                </select>
               </div>
+            </div>
 
-              <div class="widget-time-block">
-                <span class="time-tag">02:00 PM</span>
-                <div class="time-info">
-                  <span class="title">Physics Study Sprint</span>
-                  <span class="sub">Library Silent Zone</span>
-                </div>
+            <!-- Timer Display -->
+            <div class="text-center py-4 rounded-xl bg-slate-900/80 border border-white/5 mb-5">
+              <div class="text-4xl font-mono font-bold text-white tracking-wider" id="studyTimerDisplay">
+                00:00:00
               </div>
+              <p class="text-[11px] text-slate-500 mt-1">Elapsed Time (Logs to Firestore on Stop)</p>
+            </div>
 
-              <div class="widget-time-block">
-                <span class="time-tag">05:00 PM</span>
-                <div class="time-info">
-                  <span class="title">Biology Quiz Review</span>
-                  <span class="sub">AI Study Mate</span>
-                </div>
-              </div>
+            <!-- Controller Buttons -->
+            <div class="flex items-center gap-2">
+              <button id="btnStartStudy" class="btn-primary flex-1">
+                <span>▶️ Start Session</span>
+              </button>
+              <button id="btnPauseStudy" class="btn-secondary flex-1" style="display: none;">
+                <span>⏸️ Pause</span>
+              </button>
+              <button id="btnStopStudy" class="btn-secondary flex-1 border-rose-500/40 text-rose-300 hover:bg-rose-500/10" style="display: none;">
+                <span>⏹️ Stop &amp; Save</span>
+              </button>
             </div>
           </div>
 
-          <!-- Upcoming Exams Countdown Widget -->
-          <div class="glass-card widget-card">
-            <div class="widget-header">
-              <h4><i class="fa-solid fa-graduation-cap text-rose"></i> Upcoming Exams</h4>
+          <!-- Pomodoro Timer Widget -->
+          <div class="glass-card p-6 rounded-2xl">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <span>⏱️</span> Pomodoro Focus
+              </h3>
+              <span id="completedPomodoroBadge" class="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                0 Focus Sessions
+              </span>
             </div>
-            <div class="widget-exams-list">
-              <div class="exam-countdown-item">
-                <div class="exam-left">
-                  <span class="exam-subject text-indigo">Mathematics</span>
-                  <span class="exam-name">Calculus II Midterm</span>
-                </div>
-                <div class="exam-badge-days bg-rose-glow">3 Days Left</div>
-              </div>
 
-              <div class="exam-countdown-item">
-                <div class="exam-left">
-                  <span class="exam-subject text-purple">Computer Science</span>
-                  <span class="exam-name">Data Structures Final</span>
-                </div>
-                <div class="exam-badge-days bg-indigo-glow">8 Days Left</div>
-              </div>
+            <!-- Interval Selector -->
+            <div class="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-slate-900/80 border border-white/10 text-xs mb-5">
+              <button id="pomoFocusBtn" class="py-1.5 rounded-lg text-white font-medium bg-indigo-600 border-indigo-500 transition">25m Focus</button>
+              <button id="pomoShortBreakBtn" class="py-1.5 rounded-lg text-slate-400 hover:text-white font-medium transition">5m Break</button>
+              <button id="pomoLongBreakBtn" class="py-1.5 rounded-lg text-slate-400 hover:text-white font-medium transition">15m Break</button>
+            </div>
 
-              <div class="exam-countdown-item">
-                <div class="exam-left">
-                  <span class="exam-subject text-emerald">Chemistry</span>
-                  <span class="exam-name">Organic Chem Lab</span>
-                </div>
-                <div class="exam-badge-days bg-emerald-glow">12 Days Left</div>
+            <!-- Pomodoro Clock -->
+            <div class="text-center py-4 mb-4">
+              <div class="timer-display text-white" id="pomodoroTimerDisplay">
+                25:00
               </div>
             </div>
-          </div>
 
-          <!-- Study Tip of the Day -->
-          <div class="glass-card widget-card tip-widget-card">
-            <div class="widget-header">
-              <h4><i class="fa-solid fa-lightbulb text-amber"></i> AI Study Tip</h4>
-            </div>
-            <div class="tip-content-box">
-              <p class="tip-text">"Interleaving subjects improves retention by up to 40%. Switch between Math and Physics rather than studying Math for 6 straight hours."</p>
-            </div>
-          </div>
-
-          <!-- Quick Notes Scratchpad -->
-          <div class="glass-card widget-card">
-            <div class="widget-header">
-              <h4><i class="fa-solid fa-note-sticky text-teal"></i> Quick Scratchpad</h4>
-              <button class="btn-text-action" id="saveQuickNoteBtn">Save</button>
-            </div>
-            <textarea id="quickNotesArea" class="quick-notes-textarea" placeholder="Jot down quick reminders, formula notes, or thoughts..."></textarea>
-          </div>
-
-          <!-- Mini Calendar Widget -->
-          <div class="glass-card widget-card">
-            <div class="widget-header">
-              <h4><i class="fa-solid fa-calendar text-cyan"></i> Mini Overview</h4>
-            </div>
-            <div class="mini-cal-wrap">
-              <div class="mini-cal-grid" id="miniCalGrid"></div>
+            <div class="flex items-center gap-2">
+              <button id="pomoStartBtn" class="btn-primary flex-1">
+                Start Focus
+              </button>
+              <button id="pomoResetBtn" class="btn-secondary">
+                Reset
+              </button>
             </div>
           </div>
 
-          <!-- Learning Quote Card -->
-          <div class="glass-card widget-card quote-widget-card">
-            <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-            <p class="quote-phrase">"Education is not the learning of facts, but the training of the mind to think."</p>
-            <span class="quote-author">&mdash; Albert Einstein</span>
+          <!-- Quick Scratchpad -->
+          <div class="glass-card p-6 rounded-2xl">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <span>📝</span> Quick Scratchpad
+              </h3>
+              <span id="scratchpadStatus" class="text-[11px] text-slate-400">
+                Auto-saved
+              </span>
+            </div>
+            <textarea id="scratchpadText" rows="4" placeholder="Jot down quick study formulas, notes, or thoughts... (persists automatically)" class="custom-input text-xs font-mono resize-none mb-3"></textarea>
+            <div class="flex items-center justify-between">
+              <button id="clearScratchpadBtn" class="text-xs text-slate-400 hover:text-rose-400 transition">
+                Clear Note
+              </button>
+              <button id="saveScratchpadBtn" class="btn-secondary text-xs py-1.5 px-3">
+                💾 Save Note
+              </button>
+            </div>
           </div>
 
-        </aside>
-      </div> <!-- END CONTENT AREA PLANNER LAYOUT -->
+          <!-- Upcoming Tasks in Next 7 Days -->
+          <div class="glass-card p-6 rounded-2xl">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-bold text-white">Upcoming (7 Days)</h3>
+              <span class="text-xs text-indigo-400 font-medium">Sorted by Date</span>
+            </div>
+            <div id="upcomingTasksContainer" class="space-y-2.5">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
 
-      <!-- ==========================================
-           16. FOOTER
-           ========================================== -->
-      <footer class="app-footer">
-        <div class="footer-left">
-          <span class="footer-brand"><i class="fa-solid fa-brain"></i> NOVIX
-          <span class="footer-copy">&copy; 2026 NOVIX Platform &bull; All Rights Reserved</span>
         </div>
-        <div class="footer-right">
-          <span class="status-indicator"><span class="status-dot"></span> AI Engine Online</span>
-          <a href="settings.html" class="footer-link">Help & FAQ</a>
-          <a href="settings.html" class="footer-link">Privacy</a>
-        </div>
-      </footer>
+
+      </div>
     </main>
   </div>
 
-  <!-- ==========================================
-       MODAL DIALOG: ADD / EDIT TASK
-       ========================================== -->
-  <div class="modal-backdrop hidden" id="addTaskModal">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h3 id="taskModalTitle"><i class="fa-solid fa-plus text-indigo"></i> Add New Task</h3>
-        <button class="modal-close-btn" id="closeTaskModalBtn"><i class="fa-solid fa-xmark"></i></button>
+  <!-- Task Modal Overlay -->
+  <div class="modal-overlay" id="taskModalOverlay">
+    <div class="modal-box">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="text-xl font-bold text-white" id="taskModalTitle">Create New Study Task</h3>
+        <button id="closeTaskModal" class="text-slate-400 hover:text-white text-xl">✕</button>
       </div>
 
-      <form id="taskForm" class="modal-form">
-        <input type="hidden" id="taskIdInput" value="">
-        
-        <div class="form-group">
-          <label for="taskNameInput">Task Name *</label>
-          <input type="text" id="taskNameInput" placeholder="e.g. Calculus Integration Practice Set" required>
+      <form id="taskForm" class="space-y-4">
+        <input type="hidden" id="editingTaskId">
+
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Task Title <span class="text-rose-400">*</span></label>
+          <input type="text" id="taskTitleInput" placeholder="e.g. Complete Calculus Problem Set #4" required class="custom-input">
         </div>
 
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="taskSubjectSelect">Subject *</label>
-            <select id="taskSubjectSelect" required>
-              <option value="Mathematics">Mathematics</option>
-              <option value="Physics">Physics</option>
-              <option value="Chemistry">Chemistry</option>
-              <option value="Biology">Biology</option>
-              <option value="English">English</option>
-              <option value="Computer Science">Computer Science</option>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Subject</label>
+            <select id="taskSubjectSelect" class="custom-input">
+              <!-- Dynamic -->
             </select>
           </div>
 
-          <div class="form-group">
-            <label for="taskPrioritySelect">Priority *</label>
-            <select id="taskPrioritySelect" required>
-              <option value="High">High Priority</option>
-              <option value="Medium" selected>Medium Priority</option>
-              <option value="Low">Low Priority</option>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Priority</label>
+            <select id="taskPrioritySelect" class="custom-input">
+              <option value="low">Low Priority</option>
+              <option value="medium" selected>Medium Priority</option>
+              <option value="high">High Priority</option>
+              <option value="urgent">Urgent</option>
             </select>
           </div>
         </div>
 
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="taskStartTimeInput">Start Time</label>
-            <input type="text" id="taskStartTimeInput" placeholder="e.g. 02:00 PM">
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Date</label>
+            <input type="date" id="taskDateInput" required class="custom-input text-xs">
           </div>
-
-          <div class="form-group">
-            <label for="taskDurationInput">Est. Duration</label>
-            <input type="text" id="taskDurationInput" placeholder="e.g. 45 mins">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Start Time</label>
+            <input type="time" id="taskTimeInput" value="09:00" class="custom-input text-xs">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Duration (mins)</label>
+            <input type="number" id="taskDurationInput" value="45" min="5" step="5" class="custom-input text-xs">
           </div>
         </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn-secondary-pill" id="cancelTaskModalBtn">Cancel</button>
-          <button type="submit" class="btn-primary-gradient"><i class="fa-solid fa-check"></i> Save Task</button>
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Notes &amp; Key Focus Points</label>
+          <textarea id="taskNotesInput" rows="2" placeholder="Optional notes, chapter sections, or page numbers..." class="custom-input text-xs resize-none"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
+          <button type="button" id="cancelTaskBtn" class="btn-secondary">Cancel</button>
+          <button type="submit" class="btn-primary">Save Task</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- TOAST NOTIFICATION CONTAINER -->
-  <div class="toast-container" id="toastContainer"></div>
+  <!-- Subject Modal Overlay -->
+  <div class="modal-overlay" id="subjectModalOverlay">
+    <div class="modal-box">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="text-xl font-bold text-white">Add New Subject</h3>
+        <button id="closeSubjectModal" class="text-slate-400 hover:text-white text-xl">✕</button>
+      </div>
 
-  <!-- JavaScript Entry Point -->
-  <script src="planner.js"></script>
+      <form id="subjectForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Subject Name <span class="text-rose-400">*</span></label>
+          <input type="text" id="subjectNameInput" placeholder="e.g. Organic Chemistry, Macroeconomics" required class="custom-input">
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Icon / Emoji</label>
+            <input type="text" id="subjectIconInput" value="📖" maxlength="4" class="custom-input text-center text-lg">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Color Theme</label>
+            <input type="color" id="subjectColorInput" value="#6366f1" class="custom-input h-10 p-1 cursor-pointer">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Weekly Goal (hrs)</label>
+            <input type="number" id="subjectGoalInput" value="5" min="1" max="50" class="custom-input">
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
+          <button type="submit" class="btn-primary w-full">Create Subject</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- User Profile Modal Overlay -->
+  <div class="modal-overlay" id="profileModalOverlay">
+    <div class="modal-box">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="text-xl font-bold text-white">Student Profile Settings</h3>
+        <button id="closeProfileModal" class="text-slate-400 hover:text-white text-xl">✕</button>
+      </div>
+
+      <form id="profileForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Display Name</label>
+          <input type="text" id="profileNameInput" placeholder="Your name" class="custom-input">
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Account Email</label>
+          <input type="email" id="profileEmailInput" disabled class="custom-input opacity-60">
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Weekly Study Target (Hours)</label>
+          <input type="number" id="profileGoalInput" value="20" min="1" max="80" class="custom-input">
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
+          <button type="submit" class="btn-primary w-full">Save Profile</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer"></div>
+
+  <!-- Main JavaScript Bundle -->
+  <script type="module" src="planner.js"></script>
+  <script type="module" src="auth-guard.js"></script>
 </body>
 </html>

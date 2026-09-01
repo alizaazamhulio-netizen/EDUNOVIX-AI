@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Comprehensive MDCAT Chemistry chapter on Basic Concepts: Matter, Mole calculations, Stoichiometry, Empirical Formulas, Limiting Reactants, and interactive calculators.">
+  <title>Basic Concepts — MDCAT Chemistry Notes & Interactive Learning</title>
+  <link rel="stylesheet" href="basic concepts.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress-container">
+    <div id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Site Sticky Header -->
+  <header class="site-header" id="main-header">
+    <div class="header-container">
+      <div class="brand-wrapper">
+        <div class="brand-icon" id="brand-logo">⚗️</div>
+        <div class="brand-info">
+          <div class="brand-title">
+            MDCAT Chemistry <span class="brand-badge">Chapter 01</span>
+          </div>
+          <div class="brand-subtitle">Basic Concepts & Stoichiometry</div>
+        </div>
+      </div>
+
+      <nav class="header-nav" aria-label="Quick Section Navigation">
+        <a href="#section-1-matter" class="nav-link">Notes</a>
+        <a href="#interactive-mole-calculator" class="nav-link">Calculators</a>
+        <a href="#quick-revision-tables" class="nav-link">Revision</a>
+        <a href="#flashcards-section-container" class="nav-link">Flashcards</a>
+        <a href="#mdcat-quiz-section" class="nav-link">MCQ Quiz</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="header-progress-chip" id="header-progress-chip">
+          <span class="header-progress-dot"></span>
+          <span id="header-progress-text">Progress: 0%</span>
+        </div>
+        <button type="button" class="btn-header-action" id="header-bookmarks-badge" title="Bookmarked sections">
+          🔖 <span id="header-bookmarks-count">0 Saved</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero-banner">
+    <div class="hero-pattern-bg"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge-group">
+          <span class="hero-pill hero-pill-primary">MDCAT Chemistry</span>
+          <span class="hero-pill hero-pill-sky">Concept Builder</span>
+          <span class="hero-pill hero-pill-amber">High-Yield Series</span>
+        </div>
+
+        <h1 class="hero-title">
+          BASIC CONCEPTS <br>
+          <span class="hero-title-gradient">The Foundation of Chemistry</span>
+        </h1>
+
+        <p class="hero-subtitle">Master Matter, Moles, Stoichiometry & Formula Derivations</p>
+
+        <p class="hero-description">
+          A high-yield interactive learning module structured for MDCAT excellence. Explore crystal-clear conceptual notes, live formula calculators, particle visualizers, 3D revision flashcards, and exam-style MCQs.
+        </p>
+
+        <div class="hero-stats-bar">
+          <div class="stat-item">
+            <span class="stat-number">20+</span>
+            <span class="stat-label">Core Concepts</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Key Formulas</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">15</span>
+            <span class="stat-label">MDCAT MCQs</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">20</span>
+            <span class="stat-label">Flip Flashcards</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Molecular Canvas Card -->
+      <div class="hero-visual-card">
+        <div class="molecule-canvas-container">
+          <canvas id="hero-molecule-canvas"></canvas>
+        </div>
+        <div class="molecule-legend">
+          <span><span class="legend-dot dot-h"></span> Hydrogen (H)</span>
+          <span><span class="legend-dot dot-o"></span> Oxygen (O)</span>
+          <span><span class="legend-dot dot-c"></span> Carbon (C)</span>
+          <span><span class="legend-dot dot-na"></span> Sodium (Na)</span>
+        </div>
+        <div class="molecule-caption">Interactive Molecular Simulation • Covalent Bonds & Ionic Particles</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Study Metrics & Overview Panel -->
+  <div class="study-panel-section" id="study-panel">
+    <div class="study-panel-card">
+      <div class="study-metrics-group">
+        <div class="study-metric-badge">
+          ⏱️ <strong>Est. Reading Time:</strong> 25 mins
+        </div>
+        <div class="study-metric-badge">
+          📖 <strong>Sections:</strong> 20 Modules
+        </div>
+        <div class="study-metric-badge">
+          🧪 <strong>Calculators:</strong> 6 Interactive Tools
+        </div>
+      </div>
+
+      <div class="study-tip-box">
+        <span class="study-tip-label">⭐ High-Yield MDCAT Tip:</span>
+        <span>Always convert the given quantity into moles before applying stoichiometric ratios!</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Bar Component -->
+  <div class="search-container" id="notes-search-section">
+    <div class="search-input-wrapper">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="notes-search-input" class="search-input" placeholder="Search Basic Concepts (e.g. mole, Avogadro, stoichiometry, limiting reactant, empirical)..." autocomplete="off" aria-label="Search chapter notes">
+      <button type="button" id="search-clear-btn" class="search-clear-btn" title="Clear search">✕</button>
+    </div>
+    <div class="search-quick-tags">
+      <span>Quick Filters:</span>
+      <button type="button" class="quick-tag" data-term="mole">Mole</button>
+      <button type="button" class="quick-tag" data-term="Avogadro">Avogadro</button>
+      <button type="button" class="quick-tag" data-term="stoichiometry">Stoichiometry</button>
+      <button type="button" class="quick-tag" data-term="limiting reactant">Limiting Reactant</button>
+      <button type="button" class="quick-tag" data-term="empirical">Empirical Formula</button>
+      <button type="button" class="quick-tag" data-term="yield">Yield</button>
+      <button type="button" class="quick-tag" data-term="mixture">Mixture</button>
+    </div>
+    <div id="search-feedback" class="search-results-feedback"></div>
+  </div>
+
+  <!-- Main Content Layout -->
+  <main class="main-content-layout">
+
+    <!-- Left Sticky Table of Contents -->
+    <aside class="sidebar-toc" id="sidebar-table-of-contents" aria-label="Table of Contents">
+      <div class="toc-header">
+        <span class="toc-title">📑 Table of Contents</span>
+      </div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#section-1-matter">1. Matter & Classification</a></li>
+        <li class="toc-item"><a href="#section-2-pure-vs-mixture">2. Pure Substance vs Mixture</a></li>
+        <li class="toc-item"><a href="#section-3-changes">3. Physical & Chemical Changes</a></li>
+        <li class="toc-item"><a href="#section-4-combination-laws">4. Laws of Combination</a></li>
+        <li class="toc-item"><a href="#section-5-atomic-mass">5. Relative Atomic Mass</a></li>
+        <li class="toc-item"><a href="#section-6-molecular-mass">6. Relative Molecular Mass</a></li>
+        <li class="toc-item"><a href="#section-7-formula-mass">7. Formula Mass</a></li>
+        <li class="toc-item"><a href="#section-8-mole-concept">8. Mole Concept & Avogadro</a></li>
+        <li class="toc-item"><a href="#section-9-molar-mass">9. Molar Mass</a></li>
+        <li class="toc-item"><a href="#section-10-mole-calculations">10. Mole Calculations</a></li>
+        <li class="toc-item"><a href="#interactive-mole-calculator">🧮 Interactive Calculator</a></li>
+        <li class="toc-item"><a href="#interactive-mole-visualizer">⚖️ Mole Visualizer</a></li>
+        <li class="toc-item"><a href="#interactive-matter-classifier">🧪 Matter Classifier</a></li>
+        <li class="toc-item"><a href="#section-11-percentage-comp">11. Percentage Composition</a></li>
+        <li class="toc-item"><a href="#section-12-empirical-formula">12. Empirical Formula</a></li>
+        <li class="toc-item"><a href="#section-13-molecular-formula">13. Molecular Formula</a></li>
+        <li class="toc-item"><a href="#interactive-empirical-solver">🧮 Empirical Solver</a></li>
+        <li class="toc-item"><a href="#section-14-stoichiometry">14. Stoichiometry</a></li>
+        <li class="toc-item"><a href="#section-15-limiting-reactant">15. Limiting Reactant</a></li>
+        <li class="toc-item"><a href="#interactive-stoichiometry-tool">⚗️ Stoichiometry Lab</a></li>
+        <li class="toc-item"><a href="#section-16-yields">16. Yields & Efficiency</a></li>
+        <li class="toc-item"><a href="#quick-revision-tables">📋 Comparison Tables</a></li>
+        <li class="toc-item"><a href="#flashcards-section-container">⭐ High-Yield Flashcards</a></li>
+        <li class="toc-item"><a href="#mdcat-quiz-section">📝 MDCAT Mini Quiz</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Articles & Content Feed -->
+    <div class="articles-feed" id="articles-container">
+
+      <!-- Section 1: Matter -->
+      <article class="note-section-card" id="section-1-matter">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">01</div>
+            <h2 class="section-title">Matter & Classification</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-1-matter">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            <strong>Matter</strong> is defined as anything that possesses mass and occupies physical space (volume). In chemistry, all matter in the universe is broadly categorized into <strong>pure substances</strong> (elements and compounds) and <strong>mixtures</strong>.
+          </p>
+
+          <!-- Particle Model Grid Comparison -->
+          <div class="particle-model-grid">
+            <div class="particle-box">
+              <svg class="particle-svg-canvas" viewBox="0 0 160 90" aria-label="Element particle model">
+                <circle cx="30" cy="30" r="10" fill="#10b981" />
+                <circle cx="80" cy="30" r="10" fill="#10b981" />
+                <circle cx="130" cy="30" r="10" fill="#10b981" />
+                <circle cx="55" cy="65" r="10" fill="#10b981" />
+                <circle cx="105" cy="65" r="10" fill="#10b981" />
+              </svg>
+              <span class="particle-title">Element</span>
+              <span class="particle-desc">Only one type of atom present. (e.g. Fe, Na, He)</span>
+            </div>
+
+            <div class="particle-box">
+              <svg class="particle-svg-canvas" viewBox="0 0 160 90" aria-label="Compound particle model">
+                <!-- Molecule 1 -->
+                <circle cx="35" cy="45" r="10" fill="#f43f5e" />
+                <circle cx="25" cy="35" r="6" fill="#38bdf8" />
+                <circle cx="45" cy="35" r="6" fill="#38bdf8" />
+                <!-- Molecule 2 -->
+                <circle cx="115" cy="45" r="10" fill="#f43f5e" />
+                <circle cx="105" cy="35" r="6" fill="#38bdf8" />
+                <circle cx="125" cy="35" r="6" fill="#38bdf8" />
+              </svg>
+              <span class="particle-title">Compound</span>
+              <span class="particle-desc">Two or more elements chemically combined in fixed ratio. (e.g. H₂O, CO₂)</span>
+            </div>
+
+            <div class="particle-box">
+              <svg class="particle-svg-canvas" viewBox="0 0 160 90" aria-label="Mixture particle model">
+                <circle cx="30" cy="30" r="9" fill="#10b981" />
+                <circle cx="70" cy="55" r="9" fill="#f59e0b" />
+                <circle cx="120" cy="35" r="9" fill="#10b981" />
+                <circle cx="135" cy="65" r="9" fill="#f59e0b" />
+                <circle cx="45" cy="70" r="9" fill="#8b5cf6" />
+              </svg>
+              <span class="particle-title">Mixture</span>
+              <span class="particle-desc">Physical blend of distinct substances; variable composition. (e.g. Air, Sea water)</span>
+            </div>
+          </div>
+
+          <div class="callout-mdcat">
+            <span class="callout-icon">⭐</span>
+            <div class="callout-content">
+              <span class="callout-title">MDCAT Fundamental Rule</span>
+              An <strong>element</strong> cannot be decomposed into simpler substances by chemical means because all atoms share the same atomic number (nuclear charge $Z$).
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section 2: Pure Substances vs Mixtures -->
+      <article class="note-section-card" id="section-2-pure-vs-mixture">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">02</div>
+            <h2 class="section-title">Pure Substances vs. Mixtures</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-2-pure-vs-mixture">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            A <strong>Pure Substance</strong> has an invariable, fixed composition and distinct physical properties (sharp melting point, fixed boiling point). Mixtures have variable compositions with constituents retaining their original identities.
+          </p>
+
+          <div class="steps-container">
+            <div class="step-card">
+              <span class="step-badge">Type A</span>
+              <div class="step-content">
+                <span class="step-title">Homogeneous Mixture (Solution)</span>
+                <span>Has a uniform composition and a single observable phase throughout. Individual particles are dispersed at the molecular/ionic level and do not settle. <em>Examples: Pure air, saline water, brass alloy, vinegar.</em></span>
+              </div>
+            </div>
+            <div class="step-card">
+              <span class="step-badge">Type B</span>
+              <div class="step-content">
+                <span class="step-title">Heterogeneous Mixture</span>
+                <span>Has a non-uniform composition containing two or more distinct phases with visible boundary interfaces. <em>Examples: Sand in water, oil-water emulsion, smoke, garden soil, blood.</em></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section 3: Physical & Chemical Changes -->
+      <article class="note-section-card" id="section-3-changes">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">03</div>
+            <h2 class="section-title">Physical and Chemical Changes</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-3-changes">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            Understanding the distinction between state transformations and chemical bond reorganizations is critical for MDCAT reasoning questions:
+          </p>
+
+          <div class="particle-model-grid">
+            <div class="particle-box">
+              <span class="particle-title">Physical Change</span>
+              <p class="particle-desc">
+                <strong>No new chemical substance is formed.</strong> Intermolecular distances or state of matter alter, but molecular formula remains identical.
+              </p>
+              <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--sky-700); font-weight: 700; margin-top: 0.5rem;">
+                H₂O(s) ➔ H₂O(l)
+              </div>
+              <span class="particle-desc">Melting, boiling, dissolving sugar in water.</span>
+            </div>
+
+            <div class="particle-box">
+              <span class="particle-title">Chemical Change</span>
+              <p class="particle-desc">
+                <strong>One or more new chemical substances are formed.</strong> Chemical bonds break and reform, resulting in altered chemical properties.
+              </p>
+              <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--rose-600); font-weight: 700; margin-top: 0.5rem;">
+                2H₂ + O₂ ➔ 2H₂O
+              </div>
+              <span class="particle-desc">Rusting of iron, combustion of methane, cellular respiration.</span>
+            </div>
+
+            <div class="particle-box">
+              <span class="particle-title">Diagnostic Test</span>
+              <p class="particle-desc">
+                Check whether chemical bonds within molecules have been broken or if the mass ratio of constituent elements remains intact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section 4: Laws of Chemical Combination -->
+      <article class="note-section-card" id="section-4-combination-laws">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">04</div>
+            <h2 class="section-title">Laws of Chemical Combination</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-4-combination-laws">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <div class="steps-container">
+            <div class="step-card">
+              <span class="step-badge">Law 1</span>
+              <div class="step-content">
+                <span class="step-title">Law of Conservation of Mass (Lavoisier, 1789)</span>
+                <span>Mass is neither created nor destroyed during an ordinary chemical reaction.</span>
+                <div class="formula-card" style="margin: 0.4rem 0; padding: 0.6rem;">
+                  <span class="formula-math">Total Mass of Reactants = Total Mass of Products</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <span class="step-badge">Law 2</span>
+              <div class="step-content">
+                <span class="step-title">Law of Definite (Constant) Proportions (Proust, 1799)</span>
+                <span>A pure chemical compound always contains the exact same elements combined in the exact same fixed ratio by mass, regardless of source or method of preparation.</span>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Example: Pure water ($H_2O$) always contains Hydrogen and Oxygen in a 1:8 mass ratio ($2.016\text{ g H} : 16.00\text{ g O}$).</span>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <span class="step-badge">Law 3</span>
+              <div class="step-content">
+                <span class="step-title">Law of Multiple Proportions (Dalton, 1803)</span>
+                <span>When two elements combine to form more than one compound, the different masses of one element that combine with a fixed mass of the other bear a simple whole-number ratio.</span>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Example: In Carbon Monoxide ($CO$) and Carbon Dioxide ($CO_2$), for a fixed mass of 12g Carbon, Oxygen masses combine as $16\text{ g} : 32\text{ g} = 1:2$.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section 5: Relative Atomic Mass -->
+      <article class="note-section-card" id="section-5-atomic-mass">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">05</div>
+            <h2 class="section-title">Relative Atomic Mass (Ar)</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-5-atomic-mass">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            <strong>Relative Atomic Mass ($A_r$)</strong> is the weighted average mass of naturally occurring atoms of an element relative to $\frac{1}{12}\text{th}$ the mass of one atom of Carbon-12 ($^{12}\text{C}$).
+          </p>
+          <div class="formula-card">
+            <div class="formula-label">Definition of Unified Atomic Mass Unit</div>
+            <div class="formula-math">1 \text{ amu} = \frac{1}{12} \times \text{Mass of 1 atom of }^{12}\text{C} \approx 1.66054 \times 10^{-24} \text{ g}</div>
+          </div>
+          <div class="callout-mdcat callout-info">
+            <span class="callout-icon">💡</span>
+            <div class="callout-content">
+              <strong>Why are atomic masses in decimals?</strong> Because elements exist as isotopes with distinct natural abundances. For example, Chlorine has $^{35}\text{Cl}$ (75.77%) and $^{37}\text{Cl}$ (24.23%), giving an average $A_r \approx 35.45$.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section 6: Relative Molecular Mass -->
+      <article class="note-section-card" id="section-6-molecular-mass">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">06</div>
+            <h2 class="section-title">Relative Molecular Mass (Mr)</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-6-molecular-mass">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            <strong>Relative Molecular Mass ($M_r$)</strong> is the sum of the relative atomic masses of all atoms present in one molecule of a covalent substance.
+          </p>
+          <div class="formula-card">
+            <div class="formula-label">Worked Calculation Examples</div>
+            <div class="formula-math">
+              \text{For } \text{H}_2\text{O}: 2(1.008) + 16.00 = 18.016 \approx 18
+            </div>
+            <div class="formula-math" style="margin-top: 0.5rem;">
+              \text{For } \text{C}_6\text{H}_{12}\text{O}_6: 6(12.01) + 12(1.008) + 6(16.00) = 180.16 \approx 180
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section 7: Formula Mass -->
+      <article class="note-section-card" id="section-7-formula-mass">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">07</div>
+            <h2 class="section-title">Formula Mass (Ionic Compounds)</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-7-formula-mass">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            Ionic compounds (such as $\text{NaCl}$, $\text{CaCO}_3$, $\text{CuSO}_4$) do not exist as discrete independent molecules in solid state. They form infinite three-dimensional crystal lattices where each ion is surrounded by oppositely charged ions.
+          </p>
+          <div class="callout-mdcat">
+            <span class="callout-icon">⭐</span>
+            <div class="callout-content">
+              <span class="callout-title">Critical MDCAT Distinction</span>
+              For ionic compounds, we strictly use <strong>Formula Mass</strong> (mass of one formula unit), NOT molecular mass!
+              <br>
+              $\text{NaCl Formula Mass} = 22.99\text{ (Na)} + 35.45\text{ (Cl)} = 58.44 \approx 58.5\text{ amu}$.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section 8: Mole Concept -->
+      <article class="note-section-card" id="section-8-mole-concept">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">08</div>
+            <h2 class="section-title">Mole Concept & Avogadro's Constant</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-8-mole-concept">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            A <strong>Mole</strong> is the SI unit for the amount of substance containing exactly $6.02214076 \times 10^{23}$ elementary particles. This fundamental constant is called the <strong>Avogadro Constant ($N_A$)</strong>.
+          </p>
+          <div class="formula-card">
+            <div class="formula-label">The Avogadro Constant</div>
+            <div class="formula-math">N_A = 6.022 \times 10^{23} \text{ mol}^{-1}</div>
+          </div>
+
+          <div class="steps-container">
+            <div class="step-card">
+              <span class="step-badge">Entities</span>
+              <div class="step-content">
+                <span class="step-title">Applicable Particle Species:</span>
+                <span>• <strong>Atoms:</strong> 1 mol C = $6.022 \times 10^{23}$ C atoms (12 g)<br>
+                • <strong>Molecules:</strong> 1 mol H₂O = $6.022 \times 10^{23}$ H₂O molecules (18 g)<br>
+                • <strong>Formula Units:</strong> 1 mol NaCl = $6.022 \times 10^{23}$ NaCl units (58.5 g)<br>
+                • <strong>Ions:</strong> 1 mol $\text{Na}^+$ = $6.022 \times 10^{23}$ $\text{Na}^+$ ions (23 g)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section 9: Molar Mass -->
+      <article class="note-section-card" id="section-9-molar-mass">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">09</div>
+            <h2 class="section-title">Molar Mass ($M$)</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-9-molar-mass">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            <strong>Molar Mass ($M$)</strong> is the mass in grams of one mole of a chemical substance. Its SI unit is $\text{g}\cdot\text{mol}^{-1}$.
+          </p>
+          <p>
+            Numerically, the molar mass in $\text{g}\cdot\text{mol}^{-1}$ is identical to the substance's relative atomic mass, molecular mass, or formula mass in $\text{amu}$.
+          </p>
+        </div>
+      </article>
+
+      <!-- Section 10: Mole Calculations -->
+      <article class="note-section-card" id="section-10-mole-calculations">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">10</div>
+            <h2 class="section-title">Mole Calculations & Conversion Triangle</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-10-mole-calculations">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            Every numerical problem in MDCAT chemistry stems from this fundamental conversion triangle:
+          </p>
+
+          <div class="formula-card">
+            <div class="formula-label">Fundamental Conversion Formulas</div>
+            <div class="formula-math">
+              n = \frac{m}{M} \quad \Longleftrightarrow \quad N = n \times N_A \quad \Longleftrightarrow \quad n = \frac{N}{N_A}
+            </div>
+            <div class="formula-subtext">Where $n$ = moles, $m$ = mass in grams, $M$ = molar mass ($\text{g/mol}$), $N$ = particle count, $N_A = 6.022 \times 10^{23}$.</div>
+          </div>
+
+          <div class="callout-mdcat callout-info">
+            <span class="callout-icon">📝</span>
+            <div class="callout-content">
+              <strong>Worked Numerical:</strong> How many molecules are in 36 g of water ($H_2O$)?<br>
+              1. $n = \frac{m}{M} = \frac{36\text{ g}}{18\text{ g/mol}} = 2.0\text{ mol}$.<br>
+              2. $N = n \times N_A = 2.0 \times 6.022 \times 10^{23} = 1.2044 \times 10^{24}\text{ molecules}$.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- INTERACTIVE TOOL 1: MOLE CALCULATOR -->
+      <section class="interactive-tool-card" id="interactive-mole-calculator">
+        <span class="tool-header-badge">🧮 Interactive Tool 01</span>
+        <h3 class="tool-title">Comprehensive Mole Calculator</h3>
+        <p class="tool-subtitle">Convert seamlessly between Mass (g), Moles (n), and Particles (N) with step-by-step mathematical breakdowns.</p>
+
+        <div class="tab-controls" role="tablist">
+          <button type="button" class="tab-btn active" data-target="mole-tab-1">Mass ➔ Moles</button>
+          <button type="button" class="tab-btn" data-target="mole-tab-2">Moles ➔ Particles</button>
+          <button type="button" class="tab-btn" data-target="mole-tab-3">Particles ➔ Moles & Mass</button>
+        </div>
+
+        <!-- Tab 1: Mass -> Moles -->
+        <div class="tab-panel active" id="mole-tab-1">
+          <div class="calc-form-grid">
+            <div class="form-group">
+              <label class="form-label" for="calc-mass-val">Given Mass (m) <span class="form-unit">(grams)</span></label>
+              <input type="number" id="calc-mass-val" class="form-input" value="36" step="any" placeholder="e.g. 36">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="calc-molarmass-val1">Molar Mass (M) <span class="form-unit">(g/mol)</span></label>
+              <input type="number" id="calc-molarmass-val1" class="form-input" value="18" step="any" placeholder="e.g. 18">
+              <div class="form-preset-chips">
+                <button type="button" class="chip-btn preset-mm-btn" data-mm="18">H₂O (18)</button>
+                <button type="button" class="chip-btn preset-mm-btn" data-mm="180">Glucose (180)</button>
+                <button type="button" class="chip-btn preset-mm-btn" data-mm="58.5">NaCl (58.5)</button>
+                <button type="button" class="chip-btn preset-mm-btn" data-mm="44">CO₂ (44)</button>
+                <button type="button" class="chip-btn preset-mm-btn" data-mm="98">H₂SO₄ (98)</button>
+              </div>
+            </div>
+          </div>
+          <button type="button" id="btn-calc-tab1" class="btn-calculate">Calculate Moles (n = m/M)</button>
+          <div id="calc-res-tab1" class="calc-result-box"></div>
+        </div>
+
+        <!-- Tab 2: Moles -> Particles -->
+        <div class="tab-panel" id="mole-tab-2">
+          <div class="calc-form-grid">
+            <div class="form-group">
+              <label class="form-label" for="calc-moles-val2">Number of Moles (n)</label>
+              <input type="number" id="calc-moles-val2" class="form-input" value="2.5" step="any" placeholder="e.g. 2.5">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="calc-particle-type2">Particle Type</label>
+              <select id="calc-particle-type2" class="form-select">
+                <option value="molecules">Molecules</option>
+                <option value="atoms">Atoms</option>
+                <option value="ions">Ions</option>
+                <option value="formula units">Formula Units</option>
+              </select>
+            </div>
+          </div>
+          <button type="button" id="btn-calc-tab2" class="btn-calculate">Calculate Particles (N = n × NA)</button>
+          <div id="calc-res-tab2" class="calc-result-box"></div>
+        </div>
+
+        <!-- Tab 3: Particles -> Moles -->
+        <div class="tab-panel" id="mole-tab-3">
+          <div class="calc-form-grid">
+            <div class="form-group">
+              <label class="form-label">Particle Count (N)</label>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <input type="number" id="calc-particle-coeff" class="form-input" value="1.2044" step="any" placeholder="1.2044" style="flex:1;">
+                <span>× 10^</span>
+                <input type="number" id="calc-particle-exp" class="form-input" value="24" placeholder="24" style="width: 70px;">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="calc-molarmass-val3">Molar Mass (M) <span class="form-unit">(g/mol, optional)</span></label>
+              <input type="number" id="calc-molarmass-val3" class="form-input" value="18" step="any">
+            </div>
+          </div>
+          <button type="button" id="btn-calc-tab3" class="btn-calculate">Calculate Moles & Mass</button>
+          <div id="calc-res-tab3" class="calc-result-box"></div>
+        </div>
+      </section>
+
+      <!-- INTERACTIVE TOOL 2: MOLE CONCEPT VISUALIZER -->
+      <section class="interactive-tool-card" id="interactive-mole-visualizer">
+        <span class="tool-header-badge">⚖️ Interactive Tool 02</span>
+        <h3 class="tool-title">Mole Concept & Particle Swarm Visualizer</h3>
+        <p class="tool-subtitle">Slide to see how moles scale Avogadro's constant, gas volumes at STP, and mass live in real-time.</p>
+
+        <div class="mole-slider-controls">
+          <div class="slider-label-row">
+            <label for="vis-mole-slider" style="font-weight:700;">Select Quantity of Substance:</label>
+            <span class="slider-val-badge" id="vis-mole-badge">1.0 mol</span>
+          </div>
+          <input type="range" id="vis-mole-slider" class="mole-range-input" min="0.1" max="10" step="0.1" value="1.0" aria-label="Mole quantity slider">
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label for="vis-substance-select" style="font-size:0.85rem; font-weight:700; color:var(--text-secondary);">Substance Preview:</label>
+          <select id="vis-substance-select" class="form-select" style="max-width: 260px; margin-top: 0.3rem;">
+            <option value="H2O">Water (H₂O, 18.0 g/mol)</option>
+            <option value="C">Carbon (C, 12.0 g/mol)</option>
+            <option value="Fe">Iron (Fe, 55.8 g/mol)</option>
+            <option value="NaCl">Salt (NaCl, 58.5 g/mol)</option>
+            <option value="O2">Oxygen Gas (O₂, 32.0 g/mol)</option>
+          </select>
+        </div>
+
+        <div class="mole-vis-grid">
+          <div class="vis-stat-card">
+            <span class="vis-stat-label">Total Particles (N)</span>
+            <span class="vis-stat-val" id="vis-particles-val">6.022e+23</span>
+            <span class="vis-stat-unit">particles</span>
+          </div>
+          <div class="vis-stat-card">
+            <span class="vis-stat-label">Total Mass (m)</span>
+            <span class="vis-stat-val" id="vis-mass-val">18.02 g</span>
+            <span class="vis-stat-unit">grams</span>
+          </div>
+          <div class="vis-stat-card">
+            <span class="vis-stat-label">STP Gas Volume</span>
+            <span class="vis-stat-val" id="vis-volume-val">22.41 dm³</span>
+            <span class="vis-stat-unit">liters (if gas)</span>
+          </div>
+
+          <div class="particle-swarm-container">
+            <canvas id="mole-particle-canvas"></canvas>
+            <div class="swarm-overlay-text">Live Particle Velocity & Swarm Density</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERACTIVE TOOL 3: MATTER CLASSIFIER -->
+      <section class="interactive-tool-card" id="interactive-matter-classifier">
+        <span class="tool-header-badge">🧪 Interactive Tool 03</span>
+        <h3 class="tool-title">Matter Classification Laboratory</h3>
+        <p class="tool-subtitle">Classify real-world chemistry samples to test your conceptual clarity for MDCAT.</p>
+
+        <div class="classifier-card-container">
+          <div class="sample-display-box">
+            <div class="sample-chemical-formula" id="classifier-sample-formula">O₂</div>
+            <div class="sample-chemical-name" id="classifier-sample-name">Oxygen Gas</div>
+            <div class="sample-hint-badge" id="classifier-sample-hint">Hint: Made of one kind of atom bonded together (diatomic)</div>
+          </div>
+
+          <div class="classifier-options-grid">
+            <button type="button" class="btn-classify-option" data-type="element">Element</button>
+            <button type="button" class="btn-classify-option" data-type="compound">Compound</button>
+            <button type="button" class="btn-classify-option" data-type="homogeneous">Homogeneous Mixture</button>
+            <button type="button" class="btn-classify-option" data-type="heterogeneous">Heterogeneous Mixture</button>
+          </div>
+
+          <div id="classifier-feedback" class="classifier-feedback-box"></div>
+
+          <div class="classifier-score-tracker">
+            <span id="classifier-score-text">Score: 0/0 (0%)</span>
+            <button type="button" id="btn-next-sample" class="btn-header-action" style="display:none;">Next Sample →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 11: Percentage Composition -->
+      <article class="note-section-card" id="section-11-percentage-comp">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">11</div>
+            <h2 class="section-title">Percentage Composition</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-11-percentage-comp">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            The <strong>Percentage Composition</strong> of an element is the percentage by mass of that element in the compound.
+          </p>
+          <div class="formula-card">
+            <div class="formula-label">Formula for Percentage Composition</div>
+            <div class="formula-math">
+              \% \text{ Element} = \frac{\text{Mass of element in 1 mole of compound}}{\text{Molar mass of compound}} \times 100
+            </div>
+          </div>
+
+          <div class="callout-mdcat">
+            <span class="callout-icon">⭐</span>
+            <div class="callout-content">
+              <strong>Classic MDCAT Exam Example (Water, H₂O, M = 18.016 g/mol):</strong><br>
+              • $\% \text{H} = \frac{2 \times 1.008}{18.016} \times 100 = \mathbf{11.19\%} \approx 11.1\%$<br>
+              • $\% \text{O} = \frac{16.000}{18.016} \times 100 = \mathbf{88.81\%} \approx 88.9\%$
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- INTERACTIVE TOOL 4: PERCENTAGE COMPOSITION CALCULATOR -->
+      <section class="interactive-tool-card" id="interactive-pct-tool">
+        <span class="tool-header-badge">📊 Interactive Tool 04</span>
+        <h3 class="tool-title">Percentage Composition Calculator</h3>
+        <p class="tool-subtitle">Type any chemical formula or select a preset to analyze elemental mass contributions.</p>
+
+        <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap;">
+          <input type="text" id="pct-formula-input" class="form-input" value="C6H12O6" placeholder="e.g. H2O, C6H12O6, CaCO3, H2SO4" style="flex:1; min-width: 220px;">
+          <button type="button" id="btn-calc-pct" class="btn-calculate" style="width: auto; padding: 0.65rem 1.5rem;">Calculate %</button>
+        </div>
+
+        <div class="form-preset-chips" style="margin-bottom: 1rem;">
+          <span>Presets:</span>
+          <button type="button" class="chip-btn preset-formula-chip" data-formula="H2O">H₂O</button>
+          <button type="button" class="chip-btn preset-formula-chip" data-formula="C6H12O6">Glucose (C₆H₁₂O₆)</button>
+          <button type="button" class="chip-btn preset-formula-chip" data-formula="H2SO4">H₂SO₄</button>
+          <button type="button" class="chip-btn preset-formula-chip" data-formula="CaCO3">CaCO₃</button>
+          <button type="button" class="chip-btn preset-formula-chip" data-formula="C2H5OH">Ethanol (C₂H₅OH)</button>
+          <button type="button" class="chip-btn preset-formula-chip" data-formula="Fe2O3">Fe₂O₃</button>
+        </div>
+
+        <div id="pct-result-box" class="calc-result-box"></div>
+      </section>
+
+      <!-- Section 12: Empirical Formula -->
+      <article class="note-section-card" id="section-12-empirical-formula">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">12</div>
+            <h2 class="section-title">Empirical Formula</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-12-empirical-formula">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            The <strong>Empirical Formula</strong> expresses the simplest whole-number ratio of atoms of each element in a compound.
+          </p>
+
+          <div class="steps-container">
+            <div class="step-card">
+              <span class="step-badge">Step 1</span>
+              <div class="step-content">
+                <span class="step-title">Assume 100 g Sample</span>
+                <span>Convert given percentages directly into grams ($40\% \➔ 40\text{ g}$).</span>
+              </div>
+            </div>
+            <div class="step-card">
+              <span class="step-badge">Step 2</span>
+              <div class="step-content">
+                <span class="step-title">Calculate Moles</span>
+                <span>Divide grams by atomic mass ($n = \frac{m}{A_r}$).</span>
+              </div>
+            </div>
+            <div class="step-card">
+              <span class="step-badge">Step 3</span>
+              <div class="step-content">
+                <span class="step-title">Divide by Smallest</span>
+                <span>Divide each mole quantity by the smallest mole value obtained.</span>
+              </div>
+            </div>
+            <div class="step-card">
+              <span class="step-badge">Step 4</span>
+              <div class="step-content">
+                <span class="step-title">Convert to Whole Numbers</span>
+                <span>If non-integer decimals appear (e.g. $.5 \times 2$, $.33 \times 3$), multiply by suitable integer.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section 13: Molecular Formula -->
+      <article class="note-section-card" id="section-13-molecular-formula">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">13</div>
+            <h2 class="section-title">Molecular Formula</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-13-molecular-formula">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            The <strong>Molecular Formula</strong> shows the actual number of atoms of each element in a single molecule.
+          </p>
+          <div class="formula-card">
+            <div class="formula-label">Relationship Formula</div>
+            <div class="formula-math">
+              \text{Molecular Formula} = (\text{Empirical Formula})_n \quad \text{where} \quad n = \frac{\text{Molar Mass}}{\text{Empirical Formula Mass}}
+            </div>
+          </div>
+          <div class="callout-mdcat">
+            <span class="callout-icon">💡</span>
+            <div class="callout-content">
+              <strong>Example:</strong> Glucose has empirical formula $\text{CH}_2\text{O}$ ($\text{EF mass} = 12 + 2 + 16 = 30$).<br>
+              With molar mass = $180\text{ g/mol}$, $n = \frac{180}{30} = 6$.<br>
+              $\text{Molecular Formula} = (\text{CH}_2\text{O})_6 = \mathbf{C_6H_{12}O_6}$.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- INTERACTIVE TOOL 5: EMPIRICAL FORMULA SOLVER -->
+      <section class="interactive-tool-card" id="interactive-empirical-solver">
+        <span class="tool-header-badge">🧮 Interactive Tool 05</span>
+        <h3 class="tool-title">Empirical & Molecular Formula Solver</h3>
+        <p class="tool-subtitle">Enter elemental percentages or masses to compute the simplest integer ratio and molecular formula automatically.</p>
+
+        <div class="form-preset-chips" style="margin-bottom: 1rem;">
+          <span>Sample Presets:</span>
+          <button type="button" class="chip-btn preset-emp-btn" data-preset="glucose">Glucose (C, H, O)</button>
+          <button type="button" class="chip-btn preset-emp-btn" data-preset="ethanol">Ethanol (C, H, O)</button>
+          <button type="button" class="chip-btn preset-emp-btn" data-preset="iron_oxide">Iron(III) Oxide (Fe, O)</button>
+          <button type="button" class="chip-btn preset-emp-btn" data-preset="acetic_acid">Acetic Acid (C, H, O)</button>
+        </div>
+
+        <div class="empirical-table-wrapper">
+          <table class="empirical-input-table">
+            <thead>
+              <tr>
+                <th>Element Symbol</th>
+                <th>Mass / %</th>
+                <th>Atomic Mass (Ar)</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="empirical-table-body">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+
+        <button type="button" id="btn-add-empirical-row" class="btn-add-row">+ Add Another Element</button>
+
+        <div class="form-group" style="max-width: 320px; margin-bottom: 1.25rem;">
+          <label class="form-label" for="empirical-molarmass-input">Experimental Molar Mass (Optional for Molecular Formula)</label>
+          <input type="number" id="empirical-molarmass-input" class="form-input" value="180.16" placeholder="e.g. 180.16">
+        </div>
+
+        <button type="button" id="btn-solve-empirical" class="btn-calculate">Solve Empirical & Molecular Formula</button>
+        <div id="empirical-result-box" class="calc-result-box"></div>
+      </section>
+
+      <!-- Section 14: Stoichiometry -->
+      <article class="note-section-card" id="section-14-stoichiometry">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">14</div>
+            <h2 class="section-title">Stoichiometry & Balanced Equations</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-14-stoichiometry">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            <strong>Stoichiometry</strong> deals with the quantitative relationships between the amounts of reactants consumed and products formed in a chemical reaction.
+          </p>
+          <div class="formula-card">
+            <div class="formula-label">Mole Ratio from Balanced Equation</div>
+            <div class="formula-math">2\text{H}_2 + \text{O}_2 \longrightarrow 2\text{H}_2\text{O}</div>
+            <div class="formula-subtext">2 moles H₂ react with 1 mole O₂ to yield 2 moles H₂O (Mole ratio: 2 : 1 ➔ 2).</div>
+          </div>
+          <div class="callout-mdcat">
+            <span class="callout-icon">⭐</span>
+            <div class="callout-content">
+              <strong>MDCAT Requirement:</strong> Never perform stoichiometry without balancing the chemical equation first!
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section 15: Limiting Reactant -->
+      <article class="note-section-card" id="section-15-limiting-reactant">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">15</div>
+            <h2 class="section-title">Limiting and Excess Reactants</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-15-limiting-reactant">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            The <strong>Limiting Reactant</strong> is the reactant that is completely consumed first in a reaction. It restricts and determines the maximum theoretical yield of products.
+          </p>
+
+          <div class="sandwich-analogy-box">
+            <div class="sandwich-icon">🥪</div>
+            <div>
+              <strong>The Sandwich Analogy:</strong> If 1 sandwich requires 2 slices of bread + 1 slice of cheese, and you have 10 slices of bread and only 3 slices of cheese: <em>Cheese is the limiting reactant</em> (you can only make 3 sandwiches; 4 slices of bread remain in excess).
+            </div>
+          </div>
+
+          <div class="steps-container">
+            <div class="step-card">
+              <span class="step-badge">5-Step Strategy</span>
+              <div class="step-content">
+                <span class="step-title">How to Find the Limiting Reactant in MDCAT:</span>
+                <span>1. Balance the chemical equation.<br>
+                2. Convert given masses/volumes of all reactants into moles ($n = m/M$).<br>
+                3. Divide each mole value by its stoichiometric coefficient in the balanced equation.<br>
+                4. The reactant with the <strong>smallest quotient</strong> is the Limiting Reactant.<br>
+                5. Use the moles of the limiting reactant to compute theoretical product yield!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- INTERACTIVE TOOL 6: STOICHIOMETRY & LIMITING REACTANT TOOL -->
+      <section class="interactive-tool-card" id="interactive-stoichiometry-tool">
+        <span class="tool-header-badge">⚗️ Interactive Tool 06</span>
+        <h3 class="tool-title">Stoichiometry & Limiting Reactant Visualizer</h3>
+        <p class="tool-subtitle">Simulate real stoichiometric reactions to see which component limits production.</p>
+
+        <div class="stoich-reaction-banner">
+          <div class="reaction-equation" id="stoich-equation-display">2H₂ + O₂ ➔ 2H₂O</div>
+          <div class="reaction-ratio-legend">Mole ratio: 2 mol Reactant A : 1 mol Reactant B</div>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label for="stoich-reaction-select" style="font-size:0.85rem; font-weight:700;">Select Chemical Reaction:</label>
+          <select id="stoich-reaction-select" class="form-select" style="max-width: 340px; margin-top: 0.3rem;">
+            <option value="water">2H₂ + O₂ ➔ 2H₂O (Water Synthesis)</option>
+            <option value="ammonia">N₂ + 3H₂ ➔ 2NH₃ (Haber Process)</option>
+            <option value="methane">CH₄ + 2O₂ ➔ CO₂ + 2H₂O (Combustion)</option>
+          </select>
+        </div>
+
+        <div class="stoich-inputs-grid">
+          <div class="stoich-reactant-card" id="card-reactant-a">
+            <span class="reactant-status-pill pill-limiting" id="pill-reactant-a">REACTANT A</span>
+            <label class="form-label" id="label-reactant-a" for="stoich-amount-a">Hydrogen (H₂)</label>
+            <input type="number" id="stoich-amount-a" class="form-input" value="4.0" step="0.5" min="0.1">
+            <span class="form-unit">Initial available moles</span>
+          </div>
+
+          <div class="stoich-reactant-card" id="card-reactant-b">
+            <span class="reactant-status-pill pill-excess" id="pill-reactant-b">REACTANT B</span>
+            <label class="form-label" id="label-reactant-b" for="stoich-amount-b">Oxygen (O₂)</label>
+            <input type="number" id="stoich-amount-b" class="form-input" value="1.0" step="0.5" min="0.1">
+            <span class="form-unit">Initial available moles</span>
+          </div>
+        </div>
+
+        <div id="stoich-output-result" class="calc-result-box"></div>
+      </section>
+
+      <!-- Section 16: Yields -->
+      <article class="note-section-card" id="section-16-yields">
+        <div class="section-header-row">
+          <div class="section-title-wrapper">
+            <div class="section-number-badge">16</div>
+            <h2 class="section-title">Theoretical, Actual & Percentage Yield</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-bookmark" data-section-id="section-16-yields">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            In chemical manufacturing and lab synthesis, reactions rarely deliver 100% efficiency.
+          </p>
+
+          <div class="steps-container">
+            <div class="step-card">
+              <span class="step-badge">Theoretical</span>
+              <div class="step-content">
+                <span class="step-title">Theoretical Yield</span>
+                <span>The maximum amount of product calculated from stoichiometric equations assuming 100% complete conversion.</span>
+              </div>
+            </div>
+            <div class="step-card">
+              <span class="step-badge">Actual</span>
+              <div class="step-content">
+                <span class="step-title">Actual Yield</span>
+                <span>The real amount of product physically collected and weighed experimentally in the laboratory ($\text{Actual} \le \text{Theoretical}$).</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="formula-card">
+            <div class="formula-label">Percentage Yield Formula</div>
+            <div class="formula-math">
+              \% \text{ Yield} = \frac{\text{Actual Yield}}{\text{Theoretical Yield}} \times 100
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- QUICK REVISION COMPARISON TABLES -->
+      <section class="comparison-table-section" id="quick-revision-tables">
+        <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--text-primary);">📋 Quick Revision Comparison Tables</h2>
+
+        <!-- Table 1 -->
+        <div class="comp-table-container">
+          <div class="comp-table-header">
+            <span class="comp-table-title">1. Element vs. Compound vs. Mixture</span>
+          </div>
+          <div class="comp-table-wrapper">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Element</th>
+                  <th>Compound</th>
+                  <th>Mixture</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Composition</strong></td>
+                  <td>Only one type of atom</td>
+                  <td>Fixed ratio of combined elements</td>
+                  <td>Variable proportion of substances</td>
+                </tr>
+                <tr>
+                  <td><strong>Separation</strong></td>
+                  <td>Cannot be broken down chemically</td>
+                  <td>Separable only by chemical reactions</td>
+                  <td>Separable by physical means (filtration, distillation)</td>
+                </tr>
+                <tr>
+                  <td><strong>Properties</strong></td>
+                  <td>Unique atomic properties</td>
+                  <td>Distinct from constituent elements</td>
+                  <td>Constituents retain individual identities</td>
+                </tr>
+                <tr>
+                  <td><strong>Examples</strong></td>
+                  <td><span class="comp-pill comp-pill-green">Fe, O₂, Na, He</span></td>
+                  <td><span class="comp-pill comp-pill-blue">H₂O, NaCl, CO₂</span></td>
+                  <td><span class="comp-pill comp-pill-purple">Air, Sea water, Brass</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 2 -->
+        <div class="comp-table-container">
+          <div class="comp-table-header">
+            <span class="comp-table-title">2. Homogeneous vs. Heterogeneous Mixture</span>
+          </div>
+          <div class="comp-table-wrapper">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>Characteristic</th>
+                  <th>Homogeneous Mixture</th>
+                  <th>Heterogeneous Mixture</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Uniformity</strong></td>
+                  <td>Uniform composition throughout</td>
+                  <td>Non-uniform composition</td>
+                </tr>
+                <tr>
+                  <td><strong>Phases</strong></td>
+                  <td>Single phase</td>
+                  <td>Two or more distinct phases</td>
+                </tr>
+                <tr>
+                  <td><strong>Visibility of Particles</strong></td>
+                  <td>Particles invisible under light microscope</td>
+                  <td>Particles or boundaries visible</td>
+                </tr>
+                <tr>
+                  <td><strong>Examples</strong></td>
+                  <td>Saline solution, Gasoline, Air</td>
+                  <td>Sand + water, Oil + water, Blood, Milk</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 3 -->
+        <div class="comp-table-container">
+          <div class="comp-table-header">
+            <span class="comp-table-title">3. Physical Change vs. Chemical Change</span>
+          </div>
+          <div class="comp-table-wrapper">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Physical Change</th>
+                  <th>Chemical Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>New Substance</strong></td>
+                  <td>No new substance is formed</td>
+                  <td>New substance with new properties formed</td>
+                </tr>
+                <tr>
+                  <td><strong>Chemical Bonds</strong></td>
+                  <td>Intramolecular bonds remain intact</td>
+                  <td>Bonds break and new bonds form</td>
+                </tr>
+                <tr>
+                  <td><strong>Reversibility</strong></td>
+                  <td>Generally easily reversible</td>
+                  <td>Usually irreversible or requires chemical work</td>
+                </tr>
+                <tr>
+                  <td><strong>Examples</strong></td>
+                  <td>Melting ice, evaporating alcohol, cutting wood</td>
+                  <td>Rusting iron, burning wood, digesting food</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 4 -->
+        <div class="comp-table-container">
+          <div class="comp-table-header">
+            <span class="comp-table-title">4. Empirical Formula vs. Molecular Formula</span>
+          </div>
+          <div class="comp-table-wrapper">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Empirical Formula</th>
+                  <th>Molecular Formula</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Meaning</strong></td>
+                  <td>Simplest whole-number atomic ratio</td>
+                  <td>Actual number of atoms per molecule</td>
+                </tr>
+                <tr>
+                  <td><strong>Glucose Example</strong></td>
+                  <td>CH₂O</td>
+                  <td>C₆H₁₂O₆</td>
+                </tr>
+                <tr>
+                  <td><strong>Hydrogen Peroxide</strong></td>
+                  <td>HO</td>
+                  <td>H₂O₂</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 5 -->
+        <div class="comp-table-container">
+          <div class="comp-table-header">
+            <span class="comp-table-title">5. Actual Yield vs. Theoretical Yield</span>
+          </div>
+          <div class="comp-table-wrapper">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Theoretical Yield</th>
+                  <th>Actual Yield</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Origin</strong></td>
+                  <td>Stoichiometrically calculated on paper</td>
+                  <td>Experimentally obtained and weighed in lab</td>
+                </tr>
+                <tr>
+                  <td><strong>Relative Value</strong></td>
+                  <td>Maximum possible (100% ideal)</td>
+                  <td>Almost always less than theoretical</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 6 -->
+        <div class="comp-table-container">
+          <div class="comp-table-header">
+            <span class="comp-table-title">6. Limiting Reactant vs. Excess Reactant</span>
+          </div>
+          <div class="comp-table-wrapper">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>Criteria</th>
+                  <th>Limiting Reactant</th>
+                  <th>Excess Reactant</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Consumption</strong></td>
+                  <td>Completely consumed first</td>
+                  <td>Remains unreacted after reaction stops</td>
+                </tr>
+                <tr>
+                  <td><strong>Role</strong></td>
+                  <td>Controls and decides product amount</td>
+                  <td>Does not limit reaction yield</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- FLASHCARDS SECTION -->
+      <section class="flashcards-section" id="flashcards-section-container">
+        <div class="flashcards-controls">
+          <div>
+            <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--text-primary);">⭐ MDCAT High-Yield Flashcards</h2>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Click any card to flip and test your active recall.</p>
+          </div>
+          <div class="flashcards-filter-group">
+            <button type="button" class="btn-filter-fc active" data-filter="all">All (20)</button>
+            <button type="button" class="btn-filter-fc" data-filter="mole">Mole Concept</button>
+            <button type="button" class="btn-filter-fc" data-filter="formulas">Formulas</button>
+            <button type="button" class="btn-filter-fc" data-filter="stoich">Stoichiometry</button>
+            <button type="button" class="btn-filter-fc" data-filter="laws">Laws & Mass</button>
+          </div>
+        </div>
+
+        <div class="flashcards-grid" id="flashcards-grid">
+          <!-- Dynamically populated with 20 3D flip cards -->
+        </div>
+      </section>
+
+      <!-- MDCAT MINI QUIZ -->
+      <section class="quiz-container-card" id="mdcat-quiz-section">
+        <div id="quiz-active-area">
+          <div class="quiz-header-bar">
+            <span class="quiz-progress-badge" id="quiz-progress-badge">Question 1 of 15</span>
+            <span class="quiz-score-badge" id="quiz-score-badge">Score: 0/0</span>
+          </div>
+
+          <div class="quiz-question-card">
+            <div class="question-text" id="quiz-question-text">Loading question...</div>
+            <div class="quiz-options-list" id="quiz-options-container"></div>
+            <div id="quiz-explanation-box" class="quiz-explanation-box"></div>
+          </div>
+
+          <div class="quiz-nav-row">
+            <button type="button" id="btn-quiz-prev" class="btn-quiz-nav" disabled>← Previous</button>
+            <button type="button" id="btn-quiz-next" class="btn-quiz-nav btn-quiz-next">Next Question →</button>
+          </div>
+        </div>
+
+        <div id="quiz-results-area" style="display:none;"></div>
+      </section>
+
+      <!-- Chapter Completion Banner -->
+      <div class="chapter-completion-banner" id="completion-box">
+        <div class="completion-badge-icon">🎓</div>
+        <h2 class="completion-title">Complete Your Basic Concepts Review</h2>
+        <p class="completion-subtitle">Ready for the next MDCAT chemistry chapter? Mark this milestone to keep track of your overall study syllabus progress.</p>
+        <button type="button" id="btn-mark-completed" class="btn-mark-completed">Mark Chapter as Completed</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Floating Back to Top Button -->
+  <button type="button" id="btn-back-to-top" title="Back to top" aria-label="Scroll back to top">↑</button>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">⚗️ MDCAT Chemistry Learning Suite</div>
+      <p class="footer-text">Curated academic preparation notes and interactive simulations for medical college admission test candidates.</p>
+      <p class="footer-text" style="font-size: 0.75rem;">© EduNexa MDCAT Series • Pure HTML, CSS & Vanilla JS Module</p>
+    </div>
+  </footer>
+
+  <script src="basic concepts.js"></script>
+</body>
+</html>

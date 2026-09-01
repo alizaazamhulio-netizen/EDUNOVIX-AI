@@ -1,0 +1,423 @@
+/* ==========================================================================
+   EduNexa AI - UNIFIED DESIGN SYSTEM v2.0
+   Master Color Palette & Theme Tokens
+   Light, Clean, Professional EdTech Platform
+   ========================================================================== */
+
+:root {
+  /* PRIMARY COLOR SYSTEM */
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --primary-dark: #1E3A8A;
+  --primary-light: #EFF6FF;
+  --primary-lighter: #DBEAFE;
+  --primary-glow: rgba(37, 99, 235, 0.12);
+
+  /* SECONDARY ACCENT COLORS */
+  --secondary: #4F46E5;     /* Indigo */
+  --secondary-light: #EEF2FF;
+  --accent: #14B8A6;         /* Teal */
+  --accent-light: #F0FDFA;
+
+  /* BACKGROUND & SURFACE */
+  --background: #F8FAFC;
+  --background-alt: #F1F5F9;
+  --surface: #FFFFFF;
+  --surface-secondary: #F0F4F8;
+  --surface-hover: #F3F6FA;
+
+  /* TEXT COLORS */
+  --text-primary: #111827;      /* Black-ish for headings */
+  --text-body: #1F2937;         /* Dark gray for body text */
+  --text-secondary: #374151;    /* Medium gray for secondary text */
+  --text-muted: #6B7280;        /* Light gray for muted text */
+  --text-inverse: #FFFFFF;      /* White text on dark backgrounds */
+  --text-disabled: #9CA3AF;     /* Disabled text */
+
+  /* BORDERS & DIVIDERS */
+  --border: #E5E7EB;
+  --border-light: #EEF2FF;
+  --border-focus: #3B82F6;
+
+  /* STATE COLORS */
+  --success: #16A34A;
+  --success-light: #ECFDF5;
+  --warning: #D97706;
+  --warning-light: #FFFBEB;
+  --error: #DC2626;
+  --error-light: #FEF2F2;
+  --info: #0284C7;
+  --info-light: #E0F2FE;
+
+  /* SHADOWS */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 8px 10px rgba(0, 0, 0, 0.04);
+
+  /* SPACING & GEOMETRY */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* TYPOGRAPHY */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* TRANSITIONS */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.25s ease-in-out;
+  --transition-slow: 0.4s ease-in-out;
+
+  /* LAYOUT */
+  --max-width: 1240px;
+  --container-padding: 1.5rem;
+  --header-height: 72px;
+  --sidebar-width: 260px;
+
+  /* SUBJECT-SPECIFIC ACCENT COLORS (subtle, not dominant) */
+  --accent-bio: #10B981;
+  --accent-bio-light: #ECFDF5;
+  --accent-chem: #A855F7;
+  --accent-chem-light: #F5F3FF;
+  --accent-physics: #0EA5E9;
+  --accent-physics-light: #E0F2FE;
+  --accent-math: #2563EB;
+  --accent-math-light: #EFF6FF;
+  --accent-english: #F59E0B;
+  --accent-english-light: #FFFBEB;
+  --accent-cs: #6366F1;
+  --accent-cs-light: #EEF2FF;
+}
+
+/* ==========================================================================
+   GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--text-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* ==========================================================================
+   BUTTON SYSTEM
+   ========================================================================== */
+
+.btn, button, input[type="button"], input[type="submit"] {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--background-alt);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-light);
+}
+
+/* ==========================================================================
+   FORM CONTROLS
+   ========================================================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+/* ==========================================================================
+   NAVIGATION & HEADERS
+   ========================================================================== */
+
+header, nav {
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+/* ==========================================================================
+   ALERTS & MESSAGES
+   ========================================================================== */
+
+.alert {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+}
+
+.alert-success {
+  background-color: var(--success-light);
+  color: #15803d;
+  border-color: var(--success);
+}
+
+.alert-warning {
+  background-color: var(--warning-light);
+  color: #92400e;
+  border-color: var(--warning);
+}
+
+.alert-error {
+  background-color: var(--error-light);
+  color: #991b1b;
+  border-color: var(--error);
+}
+
+.alert-info {
+  background-color: var(--info-light);
+  color: #0c4a6e;
+  border-color: var(--info);
+}
+
+/* ==========================================================================
+   BADGES & LABELS
+   ========================================================================== */
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   LISTS & TABLES
+   ========================================================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: var(--background-alt);
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-body);
+}
+
+tr:hover {
+  background-color: var(--background-alt);
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.text-error {
+  color: var(--error);
+}
+
+.bg-light {
+  background-color: var(--background);
+}
+
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.border-light {
+  border: 1px solid var(--border);
+}
+
+/* Disable dark mode classes/attributes */
+[data-theme="dark"] { display: none !important; }
+.dark-mode { display: none !important; }
+.dark-theme { display: none !important; }
+.dark { background-color: var(--surface) !important; color: var(--text-primary) !important; }
+
+/* ==========================================================================
+   SCROLLBAR STYLING
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

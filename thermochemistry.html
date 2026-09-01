@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MDCAT Thermochemistry Interactive Lab | Complete PMDC Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="thermochemistry.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <nav class="top-nav" id="topNav">
+    <div class="container top-nav-inner">
+      <a href="#heroSection" class="brand-logo" id="brandLogo">
+        <span>🧪 MDCAT<span>THERMO</span></span>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Live Global Search -->
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="globalSearchInput" class="search-input" placeholder="Search concept or formula..." autocomplete="off">
+        </div>
+
+        <!-- Overall Study Mastery Pill -->
+        <div class="nav-mastery-pill" id="navMasteryWrapper">
+          <span>Mastery</span>
+          <div class="nav-mastery-bar-wrap">
+            <div class="nav-mastery-fill" id="navMasteryFill"></div>
+          </div>
+          <span id="navMasteryPct" style="color:var(--accent-cyan);">0%</span>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="btn-icon" id="themeToggleBtn" title="Switch Theme">
+          <span id="themeIcon">☀️</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sticky Topic Navigation Scrollbar -->
+  <div class="topic-nav-wrap">
+    <div class="container topic-nav-scroll" id="topicNavScroll">
+      <a href="#secBasics" class="topic-pill">1. Basics</a>
+      <a href="#secSystem" class="topic-pill">2. System & Surroundings</a>
+      <a href="#secHeat" class="topic-pill">3. Heat (q)</a>
+      <a href="#secExoEndo" class="topic-pill">4. Exo vs Endo</a>
+      <a href="#secEnthalpy" class="topic-pill">5. Enthalpy (H)</a>
+      <a href="#secCalorimetry" class="topic-pill">6. Calorimetry</a>
+      <a href="#secHeatCapacity" class="topic-pill">7. Heat Capacities</a>
+      <a href="#secStandardEnthalpies" class="topic-pill">8. Formation & Combustion</a>
+      <a href="#secNeutralization" class="topic-pill">9. Neutralization</a>
+      <a href="#secHessLaw" class="topic-pill">10. Hess's Law</a>
+      <a href="#secBondEnergy" class="topic-pill">11. Bond Energy</a>
+      <a href="#secEnergyProfile" class="topic-pill">12. Energy Profiles</a>
+      <a href="#secActivationEnergy" class="topic-pill">13. Activation Energy</a>
+      <a href="#secCatalyst" class="topic-pill">14. Catalysts</a>
+      <a href="#secStateFunctions" class="topic-pill">15. State Functions</a>
+      <a href="#secHeatingConcept" class="topic-pill">16. Particle Energy</a>
+      <a href="#secCombustionLab" class="topic-pill">17. Combustion Lab</a>
+      <a href="#secFormulaWall" class="topic-pill">18. Formula Wall</a>
+      <a href="#secMdcatTraps" class="topic-pill">19. MDCAT Traps</a>
+      <a href="#secQuickRevision" class="topic-pill">20. 2-Min Revision</a>
+      <a href="#secNumericalSolver" class="topic-pill">21. Numerical Solvers</a>
+      <a href="#secMdcatQuiz" class="topic-pill">22. 25-Q Practice Quiz</a>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- HERO SECTION & LIVE REACTION CHAMBER -->
+    <section class="hero-section" id="heroSection">
+      <div class="hero-grid">
+        <div class="hero-text-col">
+          <div class="hero-badges">
+            <span class="badge badge-exo">🔥 EXOTHERMIC (ΔH &lt; 0)</span>
+            <span class="badge badge-endo">❄️ ENDOTHERMIC (ΔH > 0)</span>
+            <span class="badge badge-gold">🎯 100% PMDC MDCAT SYLLABUS</span>
+          </div>
+
+          <h1 class="hero-title">Thermochemistry Interactive Lab</h1>
+          <p class="hero-subtitle">Heat Changes, Enthalpy Profiles & Calorimetry for MDCAT</p>
+          <p class="hero-desc">
+            Master every heat formula, reaction profile, Hess's Law calculation, and examiner trap with real interactive laboratory simulations and simple step-by-step English explanations.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#secExoEndo" class="btn btn-primary">🔬 Open Reaction Chamber</a>
+            <a href="#secNumericalSolver" class="btn btn-secondary">🧮 Numerical Solvers</a>
+            <a href="#secMdcatQuiz" class="btn btn-secondary">📝 25-Q Quiz</a>
+          </div>
+        </div>
+
+        <!-- REAL WORKING HERO REACTION CHAMBER -->
+        <div class="chamber-visual-card">
+          <div class="chamber-top-bar">
+            <span style="font-weight:800; font-size:0.85rem; color:var(--accent-blue);">⚡ LIVE REACTION CHAMBER</span>
+            <div class="chamber-btn-group">
+              <button class="chamber-btn active exo" id="heroBtnExo">🔥 Exothermic</button>
+              <button class="chamber-btn endo" id="heroBtnEndo">❄️ Endothermic</button>
+              <button class="chamber-btn" id="heroBtnPause">⏸</button>
+              <button class="chamber-btn" id="heroBtnReset">↻</button>
+            </div>
+          </div>
+
+          <div class="canvas-container">
+            <canvas id="heroReactionCanvas"></canvas>
+          </div>
+
+          <div class="chamber-footer-bar">
+            <div class="chamber-footer-item">
+              <div class="chamber-footer-label">Heat Flow (q)</div>
+              <div class="chamber-footer-val" id="heroHeatFlowText" style="color:var(--exo-orange);">Leaves System (q &lt; 0)</div>
+            </div>
+            <div class="chamber-footer-item">
+              <div class="chamber-footer-label">Enthalpy Change</div>
+              <div class="chamber-footer-val" id="heroDeltaHText" style="color:var(--exo-orange);">ΔH is Negative (−)</div>
+            </div>
+            <div class="chamber-footer-item">
+              <div class="chamber-footer-label">Surroundings Temp</div>
+              <div class="chamber-footer-val" id="heroTempText" style="color:var(--warning);">Rises ↑ (+ΔT)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MASTER PROGRESS DASHBOARD -->
+      <div class="mastery-dashboard">
+        <div class="dashboard-header">
+          <div>
+            <h3 style="font-size:1.1rem;">📊 MDCAT Thermochemistry Mastery Tracker</h3>
+            <p style="font-size:0.85rem; margin-bottom:0;">Track topics completed, formulas mastered, and quiz performance.</p>
+          </div>
+          <button class="btn btn-sm btn-secondary" id="btnResetAllProgress">↻ Reset Progress</button>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="mastery-card">
+            <div class="progress-ring-wrap">
+              <svg class="progress-ring-svg">
+                <circle class="progress-ring-bg" cx="24" cy="24" r="18" fill="transparent"/>
+                <circle class="progress-ring-indicator" id="ringTopics" cx="24" cy="24" r="18" fill="transparent" stroke="var(--accent-blue)" stroke-dasharray="113.1" stroke-dashoffset="113.1"/>
+              </svg>
+              <span class="progress-ring-text" id="txtTopicsPct" style="color:var(--accent-blue);">0%</span>
+            </div>
+            <div class="mastery-card-info">
+              <h4>Topics Done</h4>
+              <div class="mastery-num" id="statTopicsDone">0 / 22</div>
+            </div>
+          </div>
+
+          <div class="mastery-card">
+            <div class="progress-ring-wrap">
+              <svg class="progress-ring-svg">
+                <circle class="progress-ring-bg" cx="24" cy="24" r="18" fill="transparent"/>
+                <circle class="progress-ring-indicator" id="ringFormulas" cx="24" cy="24" r="18" fill="transparent" stroke="var(--accent-cyan)" stroke-dasharray="113.1" stroke-dashoffset="113.1"/>
+              </svg>
+              <span class="progress-ring-text" id="txtFormulasPct" style="color:var(--accent-cyan);">0%</span>
+            </div>
+            <div class="mastery-card-info">
+              <h4>Formulas Mastered</h4>
+              <div class="mastery-num" id="statFormulasDone">0 / 8</div>
+            </div>
+          </div>
+
+          <div class="mastery-card">
+            <div class="progress-ring-wrap">
+              <svg class="progress-ring-svg">
+                <circle class="progress-ring-bg" cx="24" cy="24" r="18" fill="transparent"/>
+                <circle class="progress-ring-indicator" id="ringTraps" cx="24" cy="24" r="18" fill="transparent" stroke="var(--warning)" stroke-dasharray="113.1" stroke-dashoffset="113.1"/>
+              </svg>
+              <span class="progress-ring-text" id="txtTrapsPct" style="color:var(--warning);">0%</span>
+            </div>
+            <div class="mastery-card-info">
+              <h4>Traps Reviewed</h4>
+              <div class="mastery-num" id="statTrapsDone">0 / 8</div>
+            </div>
+          </div>
+
+          <div class="mastery-card">
+            <div class="progress-ring-wrap">
+              <svg class="progress-ring-svg">
+                <circle class="progress-ring-bg" cx="24" cy="24" r="18" fill="transparent"/>
+                <circle class="progress-ring-indicator" id="ringQuiz" cx="24" cy="24" r="18" fill="transparent" stroke="var(--success)" stroke-dasharray="113.1" stroke-dashoffset="113.1"/>
+              </svg>
+              <span class="progress-ring-text" id="txtQuizPct" style="color:var(--success);">0%</span>
+            </div>
+            <div class="mastery-card-info">
+              <h4>Quiz Best Score</h4>
+              <div class="mastery-num" id="statQuizBest">0 / 25</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 1: THERMOCHEMISTRY BASICS -->
+    <section class="section" id="secBasics">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🔥</div>
+          <div>
+            <h2 class="section-title">1. Thermochemistry Basics</h2>
+            <p style="margin-bottom:0;">What happens to heat during chemical changes?</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="basics"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <div class="concept-part what">
+          <div class="concept-label">WHAT IS IT?</div>
+          <div class="concept-text">
+            <strong>Thermochemistry</strong> is the study of heat changes during chemical reactions.
+          </div>
+        </div>
+
+        <div class="concept-part how">
+          <div class="concept-label">HOW DOES IT WORK?</div>
+          <div class="concept-text">
+            When chemical bonds break and new bonds form, energy is transferred. If heat goes out of the reaction into the surrounding air or water, the reaction is <strong>exothermic</strong>. If heat enters the reaction from the surroundings, the reaction is <strong>endothermic</strong>.
+          </div>
+        </div>
+
+        <div class="concept-part example">
+          <div class="concept-label">EXAMPLE</div>
+          <div class="concept-text">
+            Burning natural gas on your kitchen stove releases heat (exothermic). Melting an ice cube absorbs heat from the air (endothermic).
+          </div>
+        </div>
+
+        <div class="concept-part tip">
+          <div class="concept-label">MDCAT TIP</div>
+          <div class="concept-text">
+            Thermochemistry only measures the <strong>heat change (ΔH)</strong> between reactants and products. It does not tell you how fast a reaction is (that is kinetics).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 2: SYSTEM AND SURROUNDINGS -->
+    <section class="section" id="secSystem">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🌐</div>
+          <div>
+            <h2 class="section-title">2. System and Surroundings</h2>
+            <p style="margin-bottom:0;">Defining the boundaries of a chemical reaction</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="system"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">WHAT IS A SYSTEM?</div>
+            <div class="concept-text">
+              The <strong>system</strong> is the exact reaction mixture or substance under study.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">HOW DOES IT WORK?</div>
+            <div class="concept-text">
+              It consists of the reacting molecules, ions, and products. Everything that directly takes part in the reaction is inside the system.
+            </div>
+          </div>
+          <div class="concept-part example">
+            <div class="concept-label">EXAMPLE</div>
+            <div class="concept-text">
+              Hydrochloric acid and sodium hydroxide reacting inside a beaker.
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              A <strong>closed system</strong> can exchange energy with surroundings, but cannot exchange matter.
+            </div>
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">WHAT ARE SURROUNDINGS?</div>
+            <div class="concept-text">
+              The <strong>surroundings</strong> are everything outside the reaction system.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">HOW DOES IT WORK?</div>
+            <div class="concept-text">
+              The beaker glass, the water dissolving the ions, the thermometer, and the room air are all part of the surroundings.
+            </div>
+          </div>
+          <div class="concept-part example">
+            <div class="concept-label">EXAMPLE</div>
+            <div class="concept-text">
+              When a thermometer shows temperature going UP, the surroundings gained heat from the system.
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              System + Surroundings = <strong>Universe</strong>. Heat lost by the system equals heat gained by the surroundings!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 3: HEAT (q) -->
+    <section class="section" id="secHeat">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🌡️</div>
+          <div>
+            <h2 class="section-title">3. Heat (q)</h2>
+            <p style="margin-bottom:0;">Energy transfer due to temperature differences</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="heat"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <div class="concept-part what">
+          <div class="concept-label">WHAT IS HEAT?</div>
+          <div class="concept-text">
+            <strong>Heat (q)</strong> is thermal energy flowing from a hotter body to a colder body.
+          </div>
+        </div>
+
+        <div class="concept-part how">
+          <div class="concept-label">HOW DOES IT WORK?</div>
+          <div class="concept-text">
+            Heat is measured in Joules (J) or kiloJoules (kJ). By convention:
+            <br>• If heat <strong>leaves</strong> the system into surroundings: <strong>q is negative (−)</strong>
+            <br>• If heat <strong>enters</strong> the system from surroundings: <strong>q is positive (+)</strong>
+          </div>
+        </div>
+
+        <div class="concept-part example">
+          <div class="concept-label">EXAMPLE</div>
+          <div class="concept-text">
+            If a reaction gives off 500 Joules of heat to the water around it, q(reaction) = −500 J, and q(water) = +500 J.
+          </div>
+        </div>
+
+        <div class="concept-part tip">
+          <div class="concept-label">MDCAT TIP</div>
+          <div class="concept-text">
+            Heat is a <strong>path function</strong>, not a state function. The amount of heat exchanged depends on the pathway followed.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 4 & 5: EXOTHERMIC VS ENDOTHERMIC REACTIONS -->
+    <section class="section" id="secExoEndo">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">⚖️</div>
+          <div>
+            <h2 class="section-title">4 & 5. Exothermic vs Endothermic Reactions</h2>
+            <p style="margin-bottom:0;">Comparing heat flow, enthalpy change, and temperature shifts</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="exoendo"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- Exothermic Card -->
+        <div class="lab-card" style="border-top:4px solid var(--exo-red);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+            <h3 style="color:var(--exo-orange); font-size:1.15rem;">🔥 Exothermic Reactions</h3>
+            <span class="badge badge-exo">ΔH is Negative (−)</span>
+          </div>
+
+          <div class="concept-box" style="margin-bottom:0.75rem;">
+            <div class="concept-part what">
+              <div class="concept-label">WHAT IS IT?</div>
+              <div class="concept-text">A reaction that <strong>releases heat</strong> to its surroundings.</div>
+            </div>
+            <div class="concept-part how">
+              <div class="concept-label">HOW DOES IT WORK?</div>
+              <div class="concept-text">
+                Energy of reactants is higher than energy of products. Excess energy is released as heat. Temperature of surroundings <strong>rises</strong>.
+              </div>
+            </div>
+            <div class="concept-part example">
+              <div class="concept-label">EXAMPLE</div>
+              <div class="concept-text">
+                CH₄ + 2O₂ → CO₂ + 2H₂O &nbsp;&nbsp; (ΔH = −890 kJ/mol)
+              </div>
+            </div>
+            <div class="concept-part tip">
+              <div class="concept-label">MDCAT TIP</div>
+              <div class="concept-text">All combustion and all acid-base neutralization reactions are exothermic!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Endothermic Card -->
+        <div class="lab-card" style="border-top:4px solid var(--endo-blue);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+            <h3 style="color:var(--endo-cyan); font-size:1.15rem;">❄️ Endothermic Reactions</h3>
+            <span class="badge badge-endo">ΔH is Positive (+)</span>
+          </div>
+
+          <div class="concept-box" style="margin-bottom:0.75rem;">
+            <div class="concept-part what">
+              <div class="concept-label">WHAT IS IT?</div>
+              <div class="concept-text">A reaction that <strong>absorbs heat</strong> from its surroundings.</div>
+            </div>
+            <div class="concept-part how">
+              <div class="concept-label">HOW DOES IT WORK?</div>
+              <div class="concept-text">
+                Energy of products is higher than energy of reactants. System takes thermal energy from surroundings. Temperature of surroundings <strong>drops</strong>.
+              </div>
+            </div>
+            <div class="concept-part example">
+              <div class="concept-label">EXAMPLE</div>
+              <div class="concept-text">
+                CaCO₃ → CaO + CO₂ &nbsp;&nbsp; (ΔH = +178 kJ/mol)
+              </div>
+            </div>
+            <div class="concept-part tip">
+              <div class="concept-label">MDCAT TIP</div>
+              <div class="concept-text">Thermal decomposition of metal carbonates and photosynthesis are endothermic!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 6 & 7: ENTHALPY (H) AND ENTHALPY CHANGE (ΔH) -->
+    <section class="section" id="secEnthalpy">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">📈</div>
+          <div>
+            <h2 class="section-title">6 & 7. Enthalpy (H) and Enthalpy Change (ΔH)</h2>
+            <p style="margin-bottom:0;">The total heat content of a chemical system</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="enthalpy"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <div class="concept-part what">
+          <div class="concept-label">WHAT IS ENTHALPY (H)?</div>
+          <div class="concept-text">
+            <strong>Enthalpy (H)</strong> is the total heat content of a system at constant pressure.
+          </div>
+        </div>
+
+        <div class="concept-part how">
+          <div class="concept-label">HOW DOES ENTHALPY CHANGE (ΔH) WORK?</div>
+          <div class="concept-text">
+            We cannot measure absolute enthalpy H directly. We can only measure the change:
+            <div class="formula-highlight">ΔH = H(products) − H(reactants)</div>
+            • If H(products) &lt; H(reactants), then <strong>ΔH is negative</strong> (Exothermic)<br>
+            • If H(products) &gt; H(reactants), then <strong>ΔH is positive</strong> (Endothermic)
+          </div>
+        </div>
+
+        <div class="concept-part example">
+          <div class="concept-label">EXAMPLE</div>
+          <div class="concept-text">
+            If reactants have 300 kJ and products have 100 kJ, then ΔH = 100 − 300 = −200 kJ (heat was released).
+          </div>
+        </div>
+
+        <div class="concept-part tip">
+          <div class="concept-label">MDCAT TIP</div>
+          <div class="concept-text">
+            Enthalpy (H) is a <strong>state function</strong>. Its change depends only on initial and final states, not the path taken.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 8: CALORIMETRY -->
+    <section class="section" id="secCalorimetry">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🧪</div>
+          <div>
+            <h2 class="section-title">8. Calorimetry & The Virtual Calorimeter</h2>
+            <p style="margin-bottom:0;">Measuring heat changes in laboratory experiments</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="calorimetry"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="calorimeter-grid">
+        <!-- Interactive Animated Calorimeter Canvas -->
+        <div class="lab-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+            <h3 style="font-size:1rem; color:var(--accent-blue);">🧪 Virtual Coffee-Cup Calorimeter</h3>
+            <span class="badge badge-success">Live Animation</span>
+          </div>
+
+          <div class="calorimeter-canvas-wrap">
+            <canvas id="calorimeterCanvas"></canvas>
+          </div>
+
+          <div style="display:flex; gap:0.5rem; margin-top:0.75rem;">
+            <button class="btn btn-sm btn-primary" id="btnCalExoPreset">🔥 Exothermic Reaction (Temp ↑)</button>
+            <button class="btn btn-sm btn-secondary" id="btnCalEndoPreset">❄️ Endothermic Reaction (Temp ↓)</button>
+          </div>
+        </div>
+
+        <!-- Working Calorimetry Inputs & Live Calculator -->
+        <div class="lab-card">
+          <h3 style="font-size:1rem; color:var(--accent-cyan); margin-bottom:0.75rem;">🧮 Live Calorimeter Measurements</h3>
+
+          <div class="form-grid-2" style="margin-bottom:0.75rem;">
+            <div class="form-group">
+              <label class="form-label">Water Mass (m) in grams</label>
+              <input type="number" id="calInputMass" class="form-control" value="100">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Specific Heat (c) J/g·°C</label>
+              <input type="number" id="calInputC" class="form-control" value="4.184" step="0.01">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Initial Temp Ti (°C)</label>
+              <input type="number" id="calInputTi" class="form-control" value="20.0" step="0.5">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Final Temp Tf (°C)</label>
+              <input type="number" id="calInputTf" class="form-control" value="27.5" step="0.5">
+            </div>
+          </div>
+
+          <div class="calc-steps-box" id="calResultsBox">
+            <div class="calc-step-line">
+              <span>Temperature Change (ΔT = Tf − Ti):</span>
+              <strong id="calResDeltaT" style="color:var(--warning);">+7.50 °C</strong>
+            </div>
+            <div class="calc-step-line">
+              <span>Heat Gained by Water (q = m × c × ΔT):</span>
+              <strong id="calResQWater" style="color:var(--accent-cyan);">+3138.0 J (+3.14 kJ)</strong>
+            </div>
+            <div class="calc-step-line">
+              <span>Heat of Reaction (q_rxn = −q_water):</span>
+              <strong id="calResQRxn" style="color:var(--exo-orange);">−3138.0 J (−3.14 kJ)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 9 & 10: SPECIFIC HEAT CAPACITY & HEAT CAPACITY -->
+    <section class="section" id="secHeatCapacity">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">💧</div>
+          <div>
+            <h2 class="section-title">9 & 10. Specific Heat Capacity vs Heat Capacity</h2>
+            <p style="margin-bottom:0;">Understanding heat requirements for substances</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="heatcapacity"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">WHAT IS SPECIFIC HEAT CAPACITY (c)?</div>
+            <div class="concept-text">
+              The heat needed to raise the temperature of <strong>1 gram</strong> of a substance by <strong>1 °C (or 1 Kelvin)</strong>.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">FORMULA & UNITS</div>
+            <div class="concept-text">
+              <div class="formula-highlight">q = m × c × ΔT &nbsp;→&nbsp; c = q / (m × ΔT)</div>
+              Unit: <strong>J / (g · °C)</strong> or <strong>J / (g · K)</strong>
+            </div>
+          </div>
+          <div class="concept-part example">
+            <div class="concept-label">EXAMPLE</div>
+            <div class="concept-text">
+              Water has a high specific heat capacity of <strong>4.184 J/g·°C</strong>. That is why water heats up and cools down slowly.
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              Specific heat is an <strong>intensive property</strong> (does not depend on the amount of substance).
+            </div>
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">WHAT IS HEAT CAPACITY (C)?</div>
+            <div class="concept-text">
+              The heat needed to raise the temperature of an <strong>entire object</strong> or body by <strong>1 °C (or 1 Kelvin)</strong>.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">FORMULA & UNITS</div>
+            <div class="concept-text">
+              <div class="formula-highlight">C = q / ΔT &nbsp;or&nbsp; C = m × c</div>
+              Unit: <strong>J / °C</strong> or <strong>J / K</strong> (Notice no mass in unit!)
+            </div>
+          </div>
+          <div class="concept-part example">
+            <div class="concept-label">EXAMPLE</div>
+            <div class="concept-text">
+              A bomb calorimeter with a heat capacity of 5000 J/°C absorbs 5000 Joules for every 1 °C temperature rise.
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              Heat capacity (capital C) is an <strong>extensive property</strong> (it depends on mass).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 11 & 12: STANDARD ENTHALPY OF FORMATION & COMBUSTION -->
+    <section class="section" id="secStandardEnthalpies">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">📦</div>
+          <div>
+            <h2 class="section-title">11 & 12. Enthalpies of Formation & Combustion</h2>
+            <p style="margin-bottom:0;">Standard conditions: 298 K (25 °C) and 1 atmosphere pressure</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="formation_combustion"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">STANDARD ENTHALPY OF FORMATION (ΔHf°)</div>
+            <div class="concept-text">
+              The heat change when <strong>1 mole</strong> of a compound is formed from its <strong>elements in their standard states</strong>.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">CRITICAL RULE</div>
+            <div class="concept-text">
+              The standard enthalpy of formation of any pure element in its standard state is <strong>ZERO</strong>.
+              <br>• ΔHf° of O₂(g) = 0
+              <br>• ΔHf° of C(graphite) = 0
+              <br>• ΔHf° of Na(s) = 0
+            </div>
+          </div>
+          <div class="concept-part example">
+            <div class="concept-label">REACTION FORMULA</div>
+            <div class="concept-text">
+              <div class="formula-highlight">ΔH°_rxn = Total ΔHf°(Products) − Total ΔHf°(Reactants)</div>
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              More negative ΔHf° means the compound is <strong>more thermodynamically stable</strong>!
+            </div>
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">STANDARD ENTHALPY OF COMBUSTION (ΔHc°)</div>
+            <div class="concept-text">
+              The heat released when <strong>1 mole</strong> of a substance is completely burned in excess oxygen.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">ALWAYS EXOTHERMIC</div>
+            <div class="concept-text">
+              Combustion ALWAYS gives off heat. Therefore, <strong>ΔHc° is ALWAYS NEGATIVE</strong>.
+            </div>
+          </div>
+          <div class="concept-part example">
+            <div class="concept-label">EXAMPLE</div>
+            <div class="concept-text">
+              C(s) + O₂(g) → CO₂(g) &nbsp;&nbsp; ΔHc° = −393.5 kJ/mol
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              For carbon dioxide, the enthalpy of formation of CO₂ is identical to the enthalpy of combustion of carbon!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 13: ENTHALPY OF NEUTRALIZATION -->
+    <section class="section" id="secNeutralization">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">💧</div>
+          <div>
+            <h2 class="section-title">13. Enthalpy of Neutralization (ΔHn°)</h2>
+            <p style="margin-bottom:0;">Acid and base reaction forming one mole of water</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="neutralization"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">WHAT IS IT?</div>
+            <div class="concept-text">
+              The heat released when an acid and a base react to produce <strong>1 mole of water (H₂O)</strong>.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">STRONG ACID + STRONG BASE VALUE</div>
+            <div class="concept-text">
+              For ANY strong acid with ANY strong base, the reaction is simply:
+              <div class="formula-highlight">H+(aq) + OH−(aq) → H₂O(l) &nbsp;&nbsp; ΔHn° = −57.3 kJ/mol</div>
+              The value is constant because both acids and bases are completely ionized.
+            </div>
+          </div>
+          <div class="concept-part example">
+            <div class="concept-label">WEAK ACID / WEAK BASE EXCEPTION</div>
+            <div class="concept-text">
+              For weak acids (like CH₃COOH) or weak bases, the heat released is <strong>LESS negative</strong> (e.g. −55 kJ/mol) because some heat is consumed to ionize the weak acid first.
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              Neutralization is ALWAYS exothermic (ΔHn is always negative).
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated Neutralization Lab Visual -->
+        <div class="lab-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+            <h3 style="font-size:1rem; color:var(--accent-cyan);">💧 Neutralization Ion Lab</h3>
+            <span class="badge badge-exo">Exothermic: −57.3 kJ/mol</span>
+          </div>
+          <div class="canvas-container" style="height:210px; min-height:210px;">
+            <canvas id="neutralizationCanvas"></canvas>
+          </div>
+          <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.5rem; text-align:center;">
+            H+ (Acid) and OH− (Base) ions collide and combine to form stable H₂O molecules, releasing heat energy.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 14: HESS'S LAW -->
+    <section class="section" id="secHessLaw">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">⚡</div>
+          <div>
+            <h2 class="section-title">14. Hess's Law of Constant Heat Summation</h2>
+            <p style="margin-bottom:0;">Path independence of total enthalpy change</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="hess"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="concept-box" style="margin-bottom:1.25rem;">
+        <div class="concept-part what">
+          <div class="concept-label">WHAT IS HESS'S LAW?</div>
+          <div class="concept-text">
+            The overall enthalpy change of a chemical reaction is <strong>the same</strong> whether it takes place in one step or in several steps.
+          </div>
+        </div>
+        <div class="concept-part how">
+          <div class="concept-label">TWO GOLDEN RULES FOR HESS'S LAW</div>
+          <div class="concept-text">
+            1. <strong>Reverse the reaction</strong> → <strong>Reverse the sign of ΔH</strong> (+ becomes −, − becomes +)<br>
+            2. <strong>Multiply reaction by n</strong> → <strong>Multiply ΔH by n</strong>
+          </div>
+        </div>
+        <div class="concept-part example">
+          <div class="concept-label">PATHWAY PRINCIPLE</div>
+          <div class="concept-text">
+            Direct Path: A → C (ΔH_total) &nbsp;=&nbsp; Indirect Path: A → B (ΔH₁) + B → C (ΔH₂)
+          </div>
+        </div>
+        <div class="concept-part tip">
+          <div class="concept-label">MDCAT TIP</div>
+          <div class="concept-text">
+            Hess's Law is a direct consequence of the <strong>Law of Conservation of Energy</strong> (First Law of Thermodynamics).
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Hess's Law Interactive Builder -->
+      <div class="lab-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+          <h3 style="font-size:1.1rem; color:var(--accent-blue);">⚡ Hess's Law Interactive Builder</h3>
+          <div style="display:flex; gap:0.4rem;">
+            <button class="btn btn-sm btn-secondary" id="btnHessPresetCO">Puzzle: Formation of CO</button>
+            <button class="btn btn-sm btn-secondary" id="btnHessPresetSO3">Puzzle: Formation of SO₃</button>
+            <button class="btn btn-sm btn-secondary" id="btnHessReset">↻ Reset</button>
+          </div>
+        </div>
+
+        <div class="hess-builder-wrap">
+          <div class="hess-target-box">
+            <div class="hess-target-title">Target Reaction to Find Enthalpy For:</div>
+            <div class="hess-target-eqn" id="hessTargetEqn">C(s) + ½O₂(g) → CO(g) &nbsp;&nbsp;&nbsp; ΔH° = ?</div>
+          </div>
+
+          <div class="hess-cards-grid" id="hessCardsGrid">
+            <!-- Dynamically populated by JS -->
+          </div>
+
+          <div class="calc-steps-box" style="margin-top:0.5rem;">
+            <div class="calc-step-line">
+              <span>Combined Enthalpy Sum:</span>
+              <strong id="hessCurrentSum" style="color:var(--exo-orange); font-size:1.1rem;">−110.5 kJ/mol</strong>
+            </div>
+            <div id="hessSuccessBadge" style="text-align:center; padding:0.4rem; color:var(--success); font-weight:800;">
+              🎉 Target Achieved! Target ΔH = −110.5 kJ/mol
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 15: BOND ENERGY -->
+    <section class="section" id="secBondEnergy">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🔗</div>
+          <div>
+            <h2 class="section-title">15. Bond Energy & Enthalpy from Bonds</h2>
+            <p style="margin-bottom:0;">Breaking bonds absorbs energy; forming bonds releases energy</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="bond"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">WHAT IS BOND ENERGY?</div>
+            <div class="concept-text">
+              The average energy needed to break <strong>1 mole</strong> of a specific chemical bond in gaseous state.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">THE FUNDAMENTAL RULE</div>
+            <div class="concept-text">
+              • <strong>Breaking bonds</strong> = <strong>NEEDS energy</strong> (Endothermic, +ΔH)<br>
+              • <strong>Making bonds</strong> = <strong>RELEASES energy</strong> (Exothermic, −ΔH)
+            </div>
+          </div>
+          <div class="concept-part example">
+            <div class="concept-label">BOND ENERGY FORMULA</div>
+            <div class="concept-text">
+              <div class="formula-highlight">ΔH = Energy of Bonds Broken − Energy of Bonds Formed</div>
+              <em>(Notice: Reactants minus Products for bond energies!)</em>
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              If stronger bonds are formed than broken, the overall reaction is exothermic!
+            </div>
+          </div>
+        </div>
+
+        <!-- Bond Energy Interactive Calculator -->
+        <div class="lab-card">
+          <h3 style="font-size:1rem; color:var(--accent-cyan); margin-bottom:0.75rem;">🔗 Interactive Bond Energy Calculator</h3>
+          
+          <div class="form-group" style="margin-bottom:0.75rem;">
+            <label class="form-label">Select Reaction:</label>
+            <select id="bondSelectReaction" class="form-control">
+              <option value="h2_cl2">H₂(g) + Cl₂(g) → 2HCl(g)</option>
+              <option value="ch4_o2">CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g)</option>
+              <option value="n2_h2">N₂(g) + 3H₂(g) → 2NH₃(g)</option>
+            </select>
+          </div>
+
+          <div class="calc-steps-box" id="bondCalcBreakdown">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 16: ENERGY PROFILE DIAGRAMS -->
+    <section class="section" id="secEnergyProfile">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">📉</div>
+          <div>
+            <h2 class="section-title">16. Reaction Energy Profile Diagrams</h2>
+            <p style="margin-bottom:0;">Visualizing potential energy from reactants to products</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="energy_profile"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="lab-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;">
+          <div>
+            <h3 style="font-size:1.1rem; color:var(--accent-blue);">📉 Dynamic Energy Profile Canvas</h3>
+            <p style="font-size:0.85rem; margin-bottom:0;">Watch energy level transitions and glowing reaction progression.</p>
+          </div>
+          <div class="chamber-btn-group">
+            <button class="chamber-btn active exo" id="btnProfileExo">Exothermic Profile</button>
+            <button class="chamber-btn endo" id="btnProfileEndo">Endothermic Profile</button>
+            <button class="chamber-btn" id="btnProfileCatToggle">⚡ Toggle Catalyst</button>
+          </div>
+        </div>
+
+        <div class="profile-canvas-wrap">
+          <canvas id="energyProfileCanvas"></canvas>
+        </div>
+
+        <div class="chamber-footer-bar" style="margin-top:0.75rem;">
+          <div class="chamber-footer-item">
+            <div class="chamber-footer-label">Reactants Energy (Hr)</div>
+            <div class="chamber-footer-val" id="profileHrVal" style="color:var(--accent-blue);">200 kJ</div>
+          </div>
+          <div class="chamber-footer-item">
+            <div class="chamber-footer-label">Products Energy (Hp)</div>
+            <div class="chamber-footer-val" id="profileHpVal" style="color:var(--accent-purple);">80 kJ</div>
+          </div>
+          <div class="chamber-footer-item">
+            <div class="chamber-footer-label">Enthalpy Change (ΔH)</div>
+            <div class="chamber-footer-val" id="profileDeltaHVal" style="color:var(--exo-orange);">−120 kJ (Exo)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 17 & 18: ACTIVATION ENERGY & CATALYSTS -->
+    <section class="section" id="secActivationEnergy">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">⚡</div>
+          <div>
+            <h2 class="section-title">17 & 18. Activation Energy (Ea) & Catalyst Action</h2>
+            <p style="margin-bottom:0;">The energy barrier particles must overcome to react</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="activation_energy"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="barrier-sim-grid">
+        <!-- Live Particle Crossing Barrier Canvas -->
+        <div class="lab-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+            <h3 style="font-size:1rem; color:var(--accent-cyan);">⚡ Particle Energy Barrier Simulator</h3>
+            <span class="badge badge-gold" id="simCrossedCountBadge">Crossed: <span id="simCrossedCount">0</span></span>
+          </div>
+
+          <div class="barrier-canvas-wrap">
+            <canvas id="activationEnergyCanvas"></canvas>
+          </div>
+        </div>
+
+        <!-- Simulation Controls & Facts -->
+        <div class="sim-sidebar">
+          <h4 style="font-size:0.9rem; color:var(--accent-blue);">Simulator Controls</h4>
+
+          <div class="form-group">
+            <label class="form-label">Catalyst State:</label>
+            <div style="display:flex; gap:0.4rem;">
+              <button class="btn btn-sm btn-secondary active" id="btnSimNoCat" style="flex:1;">No Catalyst</button>
+              <button class="btn btn-sm btn-primary" id="btnSimWithCat" style="flex:1;">With Catalyst</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Temperature (K): <span id="simTempVal" style="color:var(--warning);">300 K</span></label>
+            <input type="range" id="simTempSlider" class="custom-range" min="150" max="600" value="300" step="25">
+          </div>
+
+          <button class="btn btn-sm btn-secondary" id="btnSimResetParticles">↻ Reset Particles</button>
+
+          <div class="mdcat-callout tip" style="margin-top:auto; font-size:0.8rem;">
+            <div class="mdcat-callout-header">⚡ Catalyst Facts:</div>
+            • Lowers activation energy (Ea)<br>
+            • Does <strong>NOT</strong> change ΔH<br>
+            • Does <strong>NOT</strong> change equilibrium position
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 19: STATE FUNCTIONS -->
+    <section class="section" id="secStateFunctions">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🏛️</div>
+          <div>
+            <h2 class="section-title">19. State Functions vs Path Functions</h2>
+            <p style="margin-bottom:0;">Properties determined only by current state</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="statefunctions"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">WHAT IS A STATE FUNCTION?</div>
+            <div class="concept-text">
+              A macroscopic property whose value depends <strong>only on the present state</strong> of the system, not on how it got there.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">EXAMPLES OF STATE FUNCTIONS</div>
+            <div class="concept-text">
+              • <strong>Pressure (P)</strong><br>
+              • <strong>Volume (V)</strong><br>
+              • <strong>Temperature (T)</strong><br>
+              • <strong>Internal Energy (E or U)</strong><br>
+              • <strong>Enthalpy (H)</strong>
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              For any state function, the change around a closed cycle is always <strong>ZERO</strong> (ΔH_cycle = 0).
+            </div>
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">WHAT IS A PATH FUNCTION?</div>
+            <div class="concept-text">
+              A quantity whose value <strong>depends on the path</strong> taken between states.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">EXAMPLES OF PATH FUNCTIONS</div>
+            <div class="concept-text">
+              • <strong>Heat (q)</strong><br>
+              • <strong>Work (w)</strong>
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              Heat (q) and Work (w) are NOT state functions! But at constant pressure, heat equals enthalpy change (q_p = ΔH), which is a state function.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 20: PARTICLE ENERGY & HEATING -->
+    <section class="section" id="secHeatingConcept">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🔥</div>
+          <div>
+            <h2 class="section-title">20. Particle Kinetic Energy & Heating</h2>
+            <p style="margin-bottom:0;">Microscopic view: Temperature is average kinetic energy</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="heating"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="lab-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+            <h3 style="font-size:1rem; color:var(--accent-blue);">🔥 Particle Motion Simulation</h3>
+            <span class="badge badge-gold" id="particleSpeedBadge">Medium Speed</span>
+          </div>
+
+          <div class="canvas-container" style="height:210px; min-height:210px;">
+            <canvas id="particleHeatCanvas"></canvas>
+          </div>
+
+          <div style="margin-top:0.75rem;">
+            <label class="form-label">Adjust Thermal Energy:</label>
+            <input type="range" id="sliderParticleEnergy" class="custom-range" min="1" max="5" value="3" step="1">
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">WHAT IS TEMPERATURE?</div>
+            <div class="concept-text">
+              Temperature is a direct measure of the <strong>average kinetic energy</strong> of particles in a substance.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">HOW DOES IT WORK?</div>
+            <div class="concept-text">
+              • <strong>Low Energy / Cold</strong>: Particles vibrate or move slowly with few effective collisions.<br>
+              • <strong>High Energy / Hot</strong>: Particles move rapidly, collide with high energy, and easily cross activation barriers.
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              At Absolute Zero (0 Kelvin or −273.15 °C), all molecular translational motion ceases.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 21: COMBUSTION LAB -->
+    <section class="section" id="secCombustionLab">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🔥</div>
+          <div>
+            <h2 class="section-title">21. Combustion Chamber Lab</h2>
+            <p style="margin-bottom:0;">Fuel + Oxygen → Carbon Dioxide + Water + Heat</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="combustion"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="lab-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+            <h3 style="font-size:1rem; color:var(--exo-orange);">🔥 Flame Reaction Simulation</h3>
+            <span class="badge badge-exo">Always Exothermic</span>
+          </div>
+
+          <div class="canvas-container" style="height:210px; min-height:210px;">
+            <canvas id="combustionCanvas"></canvas>
+          </div>
+
+          <div style="display:flex; gap:0.5rem; margin-top:0.75rem;">
+            <button class="btn btn-sm btn-primary" id="btnCombustMethane">Methane CH₄</button>
+            <button class="btn btn-sm btn-secondary" id="btnCombustEthanol">Ethanol C₂H₅OH</button>
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <div class="concept-part what">
+            <div class="concept-label">COMBUSTION BASICS</div>
+            <div class="concept-text">
+              Combustion is the rapid oxidation of a fuel by oxygen, accompanied by heat and light.
+            </div>
+          </div>
+          <div class="concept-part how">
+            <div class="concept-label">WHY IS IT ALWAYS EXOTHERMIC?</div>
+            <div class="concept-text">
+              The double bonds in C=O (in CO₂) and single bonds in O–H (in H₂O) are extremely strong. Forming these strong bonds releases far more energy than is required to break the weaker fuel and O=O bonds.
+            </div>
+          </div>
+          <div class="concept-part tip">
+            <div class="concept-label">MDCAT TIP</div>
+            <div class="concept-text">
+              Enthalpy of combustion (ΔHc) is measured using a <strong>Bomb Calorimeter</strong> at constant volume.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 22: MDCAT FORMULA WALL -->
+    <section class="section" id="secFormulaWall">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">📚</div>
+          <div>
+            <h2 class="section-title">22. MDCAT Thermochemistry Formula Wall</h2>
+            <p style="margin-bottom:0;">All essential formulas rendered in clean HTML with usage instructions</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="formulas"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="formula-wall-grid">
+        <div class="formula-wall-card">
+          <div class="f-eqn">q = m × c × ΔT</div>
+          <div class="f-name">1. Calorimetry Heat Formula</div>
+          <div class="f-meaning"><strong>m</strong> = mass (g), <strong>c</strong> = specific heat (J/g·°C), <strong>ΔT</strong> = Tf − Ti (°C)</div>
+          <div class="f-when"><strong>When to use:</strong> To calculate heat gained or lost by a solution or water in a calorimeter.</div>
+          <div class="f-tip">💡 Tip: Convert q (Joules) to kJ by dividing by 1000!</div>
+        </div>
+
+        <div class="formula-wall-card">
+          <div class="f-eqn">C = q / ΔT = m × c</div>
+          <div class="f-name">2. Heat Capacity Formula</div>
+          <div class="f-meaning"><strong>C</strong> = heat capacity (J/°C or J/K)</div>
+          <div class="f-when"><strong>When to use:</strong> When given an entire calorimeter without individual mass.</div>
+          <div class="f-tip">💡 Tip: Heat capacity (C) does not have grams in its unit!</div>
+        </div>
+
+        <div class="formula-wall-card">
+          <div class="f-eqn">ΔH = q_p / n</div>
+          <div class="f-name">3. Molar Enthalpy Change</div>
+          <div class="f-meaning"><strong>q_p</strong> = heat at constant pressure (kJ), <strong>n</strong> = moles reacted</div>
+          <div class="f-when"><strong>When to use:</strong> To find heat released per mole of limiting reactant.</div>
+          <div class="f-tip">💡 Tip: Remember to assign the negative sign if exothermic!</div>
+        </div>
+
+        <div class="formula-wall-card">
+          <div class="f-eqn">ΔH°_rxn = Σ ΔHf°(Products) − Σ ΔHf°(Reactants)</div>
+          <div class="f-name">4. Formation Enthalpy Summation</div>
+          <div class="f-meaning">Sum of products' formation enthalpies minus reactants' formation enthalpies.</div>
+          <div class="f-when"><strong>When to use:</strong> When standard enthalpies of formation (ΔHf°) are given in the problem.</div>
+          <div class="f-tip">💡 Tip: Pure elements in standard state have ΔHf° = 0!</div>
+        </div>
+
+        <div class="formula-wall-card">
+          <div class="f-eqn">ΔH = Σ E(Bonds Broken) − Σ E(Bonds Formed)</div>
+          <div class="f-name">5. Bond Energy Enthalpy</div>
+          <div class="f-meaning">Energy of broken reactant bonds minus energy of formed product bonds.</div>
+          <div class="f-when"><strong>When to use:</strong> When individual bond dissociation energies are provided.</div>
+          <div class="f-tip">💡 Tip: Notice this is Reactants minus Products!</div>
+        </div>
+
+        <div class="formula-wall-card">
+          <div class="f-eqn">ΔH_total = ΔH₁ + ΔH₂ + ΔH₃ + ...</div>
+          <div class="f-name">6. Hess's Law Summation</div>
+          <div class="f-meaning">Total enthalpy change equals sum of stepwise reactions.</div>
+          <div class="f-when"><strong>When to use:</strong> When adding multiple intermediate chemical reactions.</div>
+          <div class="f-tip">💡 Tip: Reversing a reaction flips the sign of ΔH!</div>
+        </div>
+
+        <div class="formula-wall-card">
+          <div class="f-eqn">ΔH = ΔE + PΔV</div>
+          <div class="f-name">7. First Law Enthalpy Relation</div>
+          <div class="f-meaning"><strong>ΔE</strong> = internal energy change, <strong>PΔV</strong> = expansion work</div>
+          <div class="f-when"><strong>When to use:</strong> Relating internal energy change with enthalpy for gaseous reactions.</div>
+          <div class="f-tip">💡 Tip: For reactions with no gas volume change, ΔH ≈ ΔE!</div>
+        </div>
+
+        <div class="formula-wall-card">
+          <div class="f-eqn">Ea(rev) = Ea(fwd) − ΔH</div>
+          <div class="f-name">8. Reverse Activation Energy</div>
+          <div class="f-meaning">Relationship between forward Ea, reverse Ea, and reaction enthalpy.</div>
+          <div class="f-when"><strong>When to use:</strong> Calculating reverse reaction activation barrier.</div>
+          <div class="f-tip">💡 Tip: For exothermic reactions, Ea(rev) is always greater than Ea(fwd)!</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 23: MDCAT TRAPS -->
+    <section class="section" id="secMdcatTraps">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🚨</div>
+          <div>
+            <h2 class="section-title">23. MDCAT High-Frequency Traps</h2>
+            <p style="margin-bottom:0;">Common examiner tricks and misunderstandings to avoid</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="traps"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="traps-grid">
+        <div class="trap-card">
+          <div class="trap-title">⚠️ Trap 1: Temperature Rise vs ΔH Sign</div>
+          <div class="trap-rule">RULE: When thermometer temperature rises, ΔH is NEGATIVE!</div>
+          <div class="trap-explanation">The thermometer is part of the surroundings. Temperature rises because the system <em>lost</em> heat. Therefore ΔH(reaction) &lt; 0.</div>
+        </div>
+
+        <div class="trap-card">
+          <div class="trap-title">⚠️ Trap 2: Bond Breaking is Never Exothermic</div>
+          <div class="trap-rule">RULE: Breaking a chemical bond ALWAYS absorbs energy (+ΔH).</div>
+          <div class="trap-explanation">No bond breaks spontaneously to release heat. Energy is released only when <em>new</em> bonds form!</div>
+        </div>
+
+        <div class="trap-card">
+          <div class="trap-title">⚠️ Trap 3: Catalyst and ΔH</div>
+          <div class="trap-rule">RULE: A catalyst has ZERO effect on ΔH of a reaction.</div>
+          <div class="trap-explanation">A catalyst lowers activation energy (Ea) equally in both forward and reverse directions, leaving the net enthalpy change untouched.</div>
+        </div>
+
+        <div class="trap-card">
+          <div class="trap-title">⚠️ Trap 4: Pure Elements Formation Enthalpy</div>
+          <div class="trap-rule">RULE: ΔHf° is zero ONLY in the element's standard state!</div>
+          <div class="trap-explanation">ΔHf° of C(graphite) = 0, but ΔHf° of C(diamond) = +1.9 kJ/mol. ΔHf° of O₂(g) = 0, but ΔHf° of O₃(g) = +142.7 kJ/mol!</div>
+        </div>
+
+        <div class="trap-card">
+          <div class="trap-title">⚠️ Trap 5: Formation vs Bond Energy Formula</div>
+          <div class="trap-rule">RULE: Formation is (Products − Reactants), but Bond Energy is (Reactants − Products)!</div>
+          <div class="trap-explanation">Never mix up these two directions in enthalpy calculations.</div>
+        </div>
+
+        <div class="trap-card">
+          <div class="trap-title">⚠️ Trap 6: Specific Heat vs Heat Capacity Units</div>
+          <div class="trap-rule">RULE: Specific heat = J/(g·°C); Heat capacity = J/°C.</div>
+          <div class="trap-explanation">If the question gives J/°C, you do NOT multiply by mass in q = C × ΔT!</div>
+        </div>
+
+        <div class="trap-card">
+          <div class="trap-title">⚠️ Trap 7: Reversing Reactions in Hess's Law</div>
+          <div class="trap-rule">RULE: When an equation is flipped, change the sign of ΔH.</div>
+          <div class="trap-explanation">Forgetting to flip the negative sign to positive is the #1 math error in MDCAT Hess's Law questions.</div>
+        </div>
+
+        <div class="trap-card">
+          <div class="trap-title">⚠️ Trap 8: Water Mass in Calorimetry</div>
+          <div class="trap-rule">RULE: In aqueous calorimetry, 1 mL of solution = 1 gram of water.</div>
+          <div class="trap-explanation">Mixing 50 mL acid + 50 mL base gives a total mass of 100 grams for the m in q = mcΔT.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPIC 24: QUICK 2-MINUTE REVISION -->
+    <section class="section" id="secQuickRevision">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🧠</div>
+          <div>
+            <h2 class="section-title">24. Thermochemistry in 2 Minutes</h2>
+            <p style="margin-bottom:0;">Ultra-condensed high-yield summary for quick exam review</p>
+          </div>
+        </div>
+        <div class="section-tools">
+          <button class="study-action-btn" data-topic="revision"><span>✓</span> Mark Completed</button>
+        </div>
+      </div>
+
+      <div class="revision-grid">
+        <div class="revision-card">
+          <div class="rev-topic">Exothermic Reactions</div>
+          <div class="rev-text">Heat leaves reaction (ΔH &lt; 0)</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="rev-topic">Endothermic Reactions</div>
+          <div class="rev-text">Heat enters reaction (ΔH &gt; 0)</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="rev-topic">Calorimetry Formula</div>
+          <div class="rev-text">q = m × c × ΔT</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="rev-topic">Hess's Law</div>
+          <div class="rev-text">Total ΔH is path-independent</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="rev-topic">Bond Energy</div>
+          <div class="rev-text">Breaking needs energy; making releases</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="rev-topic">Catalyst Role</div>
+          <div class="rev-text">Lowers Ea, does not change ΔH</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="rev-topic">Standard States</div>
+          <div class="rev-text">298 K (25 °C) and 1 atm pressure</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="rev-topic">Neutralization ΔH</div>
+          <div class="rev-text">Strong acid + base = −57.3 kJ/mol</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE NUMERICAL SOLVER -->
+    <section class="section" id="secNumericalSolver">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">🧮</div>
+          <div>
+            <h2 class="section-title">MDCAT Numerical Problem Solvers</h2>
+            <p style="margin-bottom:0;">Step-by-step calculations with clear formulas and explanations</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-card">
+        <div class="solver-tabs-bar">
+          <button class="solver-tab-btn active" data-tab="tabCalorimetry">1. Calorimetry (q = mcΔT)</button>
+          <button class="solver-tab-btn" data-tab="tabFormation">2. Formation Enthalpy (ΔHf°)</button>
+          <button class="solver-tab-btn" data-tab="tabBonds">3. Bond Energy Calculation</button>
+        </div>
+
+        <!-- Tab 1: Calorimetry Solver -->
+        <div class="solver-tab-content active" id="tabCalorimetry">
+          <h3 style="font-size:1.1rem; color:var(--accent-blue); margin-bottom:0.5rem;">Calorimetry Problem Solver</h3>
+          <p style="font-size:0.85rem;">Enter experimental values to calculate heat exchanged and molar enthalpy.</p>
+
+          <div class="form-grid-2" style="margin-bottom:1rem;">
+            <div class="form-group">
+              <label class="form-label">Mass of Water (m) in grams:</label>
+              <input type="number" id="numMass" class="form-control" value="200">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Specific Heat (c) in J/g·°C:</label>
+              <input type="number" id="numC" class="form-control" value="4.184" step="0.01">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Initial Temperature Ti (°C):</label>
+              <input type="number" id="numTi" class="form-control" value="21.0" step="0.1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Final Temperature Tf (°C):</label>
+              <input type="number" id="numTf" class="form-control" value="28.5" step="0.1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Moles of Reactant (n):</label>
+              <input type="number" id="numMoles" class="form-control" value="0.05" step="0.01">
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="btnSolveCalorimetry" style="margin-bottom:1rem;">⚡ Calculate Step-by-Step Solution</button>
+
+          <div class="calc-steps-box" id="numCalResults">
+            <!-- Dynamically solved -->
+          </div>
+        </div>
+
+        <!-- Tab 2: Formation Solver -->
+        <div class="solver-tab-content" id="tabFormation">
+          <h3 style="font-size:1.1rem; color:var(--accent-cyan); margin-bottom:0.5rem;">Reaction Enthalpy from ΔHf° Data</h3>
+          <p style="font-size:0.85rem;">Formula: ΔH°_rxn = Total ΔHf°(Products) − Total ΔHf°(Reactants)</p>
+
+          <div class="form-grid-2" style="margin-bottom:1rem;">
+            <div class="form-group">
+              <label class="form-label">Sum of Products' ΔHf° (kJ):</label>
+              <input type="number" id="numSumProducts" class="form-control" value="-393.5">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Sum of Reactants' ΔHf° (kJ):</label>
+              <input type="number" id="numSumReactants" class="form-control" value="-110.5">
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="btnSolveFormation" style="margin-bottom:1rem;">⚡ Calculate ΔH°_rxn</button>
+
+          <div class="calc-steps-box" id="numFormationResults">
+            <!-- Dynamically solved -->
+          </div>
+        </div>
+
+        <!-- Tab 3: Bond Energy Solver -->
+        <div class="solver-tab-content" id="tabBonds">
+          <h3 style="font-size:1.1rem; color:var(--accent-purple); margin-bottom:0.5rem;">Bond Energy Reaction Solver</h3>
+          <p style="font-size:0.85rem;">Formula: ΔH = Energy of Bonds Broken − Energy of Bonds Formed</p>
+
+          <div class="form-grid-2" style="margin-bottom:1rem;">
+            <div class="form-group">
+              <label class="form-label">Energy of Bonds Broken in Reactants (kJ):</label>
+              <input type="number" id="numBondsBroken" class="form-control" value="678">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Energy of Bonds Formed in Products (kJ):</label>
+              <input type="number" id="numBondsFormed" class="form-control" value="862">
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="btnSolveBonds" style="margin-bottom:1rem;">⚡ Calculate ΔH</button>
+
+          <div class="calc-steps-box" id="numBondsResults">
+            <!-- Dynamically solved -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 25-QUESTION MDCAT PRACTICE QUIZ -->
+    <section class="section" id="secMdcatQuiz">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div class="section-icon">📝</div>
+          <div>
+            <h2 class="section-title">Authentic 25-Question MDCAT Quiz</h2>
+            <p style="margin-bottom:0;">Timed, scored, with instant explanations for every question</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-container">
+        <div class="quiz-top-bar">
+          <div style="font-weight:800; font-size:0.95rem; color:var(--accent-blue);">
+            Question <span id="quizCurrentIndex">1</span> of <span id="quizTotalQuestions">25</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <span class="badge badge-gold" id="quizScoreBadge">Score: 0 / 0</span>
+          </div>
+        </div>
+
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quizProgressFill"></div>
+        </div>
+
+        <div id="quizQuestionBox">
+          <div class="question-text" id="quizQuestionText">Loading Question...</div>
+
+          <div class="quiz-options-list" id="quizOptionsList">
+            <!-- Dynamically generated buttons -->
+          </div>
+
+          <div class="quiz-explanation-box" id="quizExplanationBox" style="display:none;">
+            <strong style="color:var(--accent-cyan);">Explanation:</strong>
+            <p id="quizExplanationText" style="margin-bottom:0; font-size:0.875rem; color:var(--text-secondary);"></p>
+          </div>
+
+          <div class="quiz-footer-actions">
+            <button class="btn btn-secondary" id="btnQuizPrev" style="visibility:hidden;">← Previous</button>
+            <button class="btn btn-primary" id="btnQuizNext">Next Question →</button>
+          </div>
+        </div>
+
+        <!-- Quiz Completion Screen -->
+        <div id="quizResultsScreen" style="display:none; text-align:center; padding:1.5rem 0;">
+          <h3 style="font-size:1.6rem; color:var(--accent-cyan); margin-bottom:0.5rem;">🎉 Quiz Complete!</h3>
+          <p style="font-size:1rem; color:var(--text-secondary);">Here is your final MDCAT Thermochemistry performance summary:</p>
+
+          <div class="grid-3" style="max-width:600px; margin:1.5rem auto;">
+            <div class="mastery-card" style="justify-content:center; text-align:center;">
+              <div>
+                <h4 style="font-size:0.75rem; color:var(--text-muted);">FINAL SCORE</h4>
+                <div class="mastery-num" id="quizFinalScore" style="color:var(--accent-blue); font-size:1.5rem;">0 / 25</div>
+              </div>
+            </div>
+
+            <div class="mastery-card" style="justify-content:center; text-align:center;">
+              <div>
+                <h4 style="font-size:0.75rem; color:var(--text-muted);">PERCENTAGE</h4>
+                <div class="mastery-num" id="quizFinalPct" style="color:var(--success); font-size:1.5rem;">0%</div>
+              </div>
+            </div>
+
+            <div class="mastery-card" style="justify-content:center; text-align:center;">
+              <div>
+                <h4 style="font-size:0.75rem; color:var(--text-muted);">STATUS</h4>
+                <div class="mastery-num" id="quizFinalStatus" style="font-size:1.1rem; color:var(--warning);">Needs Review</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="btnRetakeQuiz">🔄 Retake 25-Question Quiz</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container">
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.25rem;">
+        🧪 MDCAT Chemistry — Thermochemistry Interactive Lab | PMDC Syllabus Aligned
+      </p>
+      <p style="font-size:0.75rem; color:var(--text-muted);">
+        All formulas and explanations crafted in simple English for instant conceptual mastery.
+      </p>
+    </div>
+  </footer>
+
+  <script src="thermochemistry.js"></script>
+</body>
+</html>

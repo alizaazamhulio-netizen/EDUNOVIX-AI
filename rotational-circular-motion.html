@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MDCAT Rotational & Circular Motion Mastery Suite</title>
+  <meta name="description" content="Complete interactive physics laboratory, real-time visual simulations, mathematical calculators, formula matrix, and exam question bank for Circular and Rotational Motion." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="rotational-circular-motion.css" />
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <a href="#hero" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a10 10 0 0 1 10 10"></path>
+          </svg>
+        </div>
+        <span>Physics <span class="text-gradient-cyan">Rotational</span> Suite</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><button class="nav-btn" onclick="document.querySelector('[data-tab=\'tab-sims\']').click(); document.getElementById('mainTabs').scrollIntoView({behavior:'smooth'});">Simulations</button></li>
+        <li><button class="nav-btn" onclick="document.querySelector('[data-tab=\'tab-calcs\']').click(); document.getElementById('mainTabs').scrollIntoView({behavior:'smooth'});">Calculators</button></li>
+        <li><button class="nav-btn" onclick="document.querySelector('[data-tab=\'tab-formulas\']').click(); document.getElementById('mainTabs').scrollIntoView({behavior:'smooth'});">Formula Wall</button></li>
+        <li><button class="nav-btn" onclick="document.querySelector('[data-tab=\'tab-traps\']').click(); document.getElementById('mainTabs').scrollIntoView({behavior:'smooth'});">Exam Traps</button></li>
+        <li><button class="nav-btn" onclick="document.querySelector('[data-tab=\'tab-quiz\']').click(); document.getElementById('mainTabs').scrollIntoView({behavior:'smooth'});">MCQ Quiz</button></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Hero Section -->
+  <main class="container">
+    <section id="hero" class="hero">
+      <div class="badge-tag">
+        <span class="pulse-dot"></span>
+        <span>MDCAT & Physics Interactive Engine</span>
+      </div>
+      <h1 class="hero-title">
+        Rotational & <span class="text-gradient-cyan">Circular Motion</span> Lab
+      </h1>
+      <p class="hero-desc">
+        Explore interactive real-time vector simulations, calculate dynamic centripetal and rolling parameters, master moment of inertia derivations, and ace high-yield entrance exam problems.
+      </p>
+
+      <!-- Quick Metrics Strip -->
+      <div class="quick-strip">
+        <div class="metric-card">
+          <div class="metric-icon blue">⚡</div>
+          <div class="metric-info">
+            <h4>Centripetal Force</h4>
+            <p class="mono text-cyan-400">Fc = mv²/r = mrω²</p>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon green">🏎️</div>
+          <div class="metric-info">
+            <h4>Road Banking</h4>
+            <p class="mono text-emerald-400">tan θ = v²/(rg)</p>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon purple">🔄</div>
+          <div class="metric-info">
+            <h4>Moment of Inertia</h4>
+            <p class="mono text-purple-400">I = Σ m r²</p>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon amber">🎯</div>
+          <div class="metric-info">
+            <h4>Angular Momentum</h4>
+            <p class="mono text-amber-400">L = Iω = r × p</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Tab Navigator -->
+    <div id="mainTabs" class="tab-container">
+      <div class="tab-nav">
+        <button class="tab-link active" data-tab="tab-sims">
+          <span>🔬</span> Interactive Simulations
+        </button>
+        <button class="tab-link" data-tab="tab-calcs">
+          <span>🧮</span> Real-Time Calculators
+        </button>
+        <button class="tab-link" data-tab="tab-formulas">
+          <span>📐</span> Formula Matrix & Units
+        </button>
+        <button class="tab-link" data-tab="tab-traps">
+          <span>⚠️</span> MDCAT High-Yield Traps
+        </button>
+        <button class="tab-link" data-tab="tab-quiz">
+          <span>📝</span> Practice MCQ Exam
+        </button>
+      </div>
+
+      <!-- ===================================================================
+           TAB 1: INTERACTIVE SIMULATIONS
+           =================================================================== -->
+      <div id="tab-sims" class="tab-pane active">
+        
+        <!-- Simulation 1: Road Banking -->
+        <div class="card">
+          <div class="section-header">
+            <div>
+              <h3 class="card-title">1. Banking of Roads & Centripetal Dynamics</h3>
+              <p class="card-desc">Simulate normal force vector resolution on a banked turn. Watch <span class="mono text-cyan-400">N sin θ</span> provide centripetal force without relying on tire friction.</p>
+            </div>
+            <div class="btn-group">
+              <button id="bankPlayBtn" class="btn btn-primary btn-sm"><span>⏸ Pause</span></button>
+              <button id="bankResetBtn" class="btn btn-sm"><span>🔄 Reset</span></button>
+            </div>
+          </div>
+
+          <div class="grid-sim">
+            <!-- Canvas -->
+            <div>
+              <div class="canvas-box">
+                <canvas id="bankingCanvas" width="540" height="320"></canvas>
+              </div>
+            </div>
+
+            <!-- Controls & Telemetry -->
+            <div>
+              <div class="control-group">
+                <div class="control-label">
+                  <span>Curve Radius (r):</span>
+                  <span id="valBankRadius" class="control-value">50 m</span>
+                </div>
+                <input type="range" id="bankRadius" min="20" max="150" value="50" step="5">
+              </div>
+
+              <div class="control-group">
+                <div class="control-label">
+                  <span>Vehicle Speed (v):</span>
+                  <span id="valBankSpeed" class="control-value">20.0 m/s</span>
+                </div>
+                <input type="range" id="bankSpeed" min="5" max="45" value="20" step="0.5">
+              </div>
+
+              <div class="control-group">
+                <div class="control-label">
+                  <span>Banking Angle (θ):</span>
+                  <span id="valBankAngle" class="control-value">25.0°</span>
+                </div>
+                <input type="range" id="bankAngle" min="0" max="45" value="25" step="1">
+              </div>
+
+              <div class="control-group">
+                <div class="control-label">
+                  <span>Tire Friction (μ):</span>
+                  <span id="valBankMu" class="control-value">0.20</span>
+                </div>
+                <input type="range" id="bankMu" min="0.0" max="0.8" value="0.2" step="0.05">
+              </div>
+
+              <div class="telemetry-panel">
+                <div class="telemetry-row">
+                  <span class="label">Ideal Safe Speed (No Friction):</span>
+                  <span id="outBankOptimum" class="val text-emerald-400">15.1 m/s</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="label">Max Safe Speed with Friction:</span>
+                  <span id="outBankMax" class="val text-cyan-400">22.4 m/s</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="label">Required Centripetal Force:</span>
+                  <span id="outBankFc" class="val text-purple-400">9.60 kN</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="label">Dynamic Stability:</span>
+                  <span id="outBankStatus" class="val" style="color:#10b981;">STABLE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulation 2: Rolling Motion Without Slipping -->
+        <div class="card">
+          <div class="section-header">
+            <div>
+              <h3 class="card-title">2. Rolling Motion Without Slipping (Pure Roll)</h3>
+              <p class="card-desc">Superposition of translational + rotational velocity: <span class="mono text-emerald-400">v_top = 2v_cm</span>, <span class="mono text-cyan-400">v_center = v_cm</span>, and <span class="mono text-rose-400">v_bottom = 0</span> (instantaneous rest).</p>
+            </div>
+            <div class="btn-group">
+              <button id="rollPlayBtn" class="btn btn-primary btn-sm"><span>⏸ Pause</span></button>
+              <button id="rollResetBtn" class="btn btn-sm"><span>🔄 Reset</span></button>
+            </div>
+          </div>
+
+          <div class="grid-sim">
+            <div>
+              <div class="canvas-box">
+                <canvas id="rollingCanvas" width="540" height="320"></canvas>
+              </div>
+
+              <!-- Shape Selectors -->
+              <div class="btn-group" style="margin-top:0.75rem; justify-content:center; flex-wrap:wrap;">
+                <button class="btn btn-sm btn-shape active-shape" data-shape="sphere">Solid Sphere (0.4 mr²)</button>
+                <button class="btn btn-sm btn-shape" data-shape="disk">Solid Disk/Cylinder (0.5 mr²)</button>
+                <button class="btn btn-sm btn-shape" data-shape="ring">Thin Ring/Hoop (1.0 mr²)</button>
+                <button class="btn btn-sm btn-shape" data-shape="hollowSphere">Hollow Sphere (0.67 mr²)</button>
+              </div>
+            </div>
+
+            <div>
+              <div class="control-group">
+                <div class="control-label">
+                  <span>Translational Velocity (v_cm):</span>
+                  <span id="valRollVel" class="control-value">3.0 m/s</span>
+                </div>
+                <input type="range" id="rollVel" min="0.5" max="6.0" value="3.0" step="0.1">
+              </div>
+
+              <div class="telemetry-panel">
+                <div class="telemetry-row">
+                  <span class="label">Angular Spin Rate (ω = v/r):</span>
+                  <span id="valRollOmega" class="val text-cyan-400">6.00 rad/s</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="label">Translational Kinetic Energy:</span>
+                  <span id="outTransJ" class="val text-sky-400">9.0 J</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="label">Rotational Kinetic Energy:</span>
+                  <span id="outRotJ" class="val text-purple-400">3.6 J</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="label">Total Mechanical Energy:</span>
+                  <span id="outTotalJ" class="val text-emerald-400">12.6 J</span>
+                </div>
+              </div>
+
+              <div class="energy-bar-wrap">
+                <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:0.35rem;">
+                  <span id="outTransPct" class="text-sky-400 font-bold">Translational (71%)</span>
+                  <span id="outRotPct" class="text-purple-400 font-bold">Rotational (29%)</span>
+                </div>
+                <div class="energy-bar">
+                  <div id="barTransKE" class="energy-segment-trans" style="width:71%;"></div>
+                  <div id="barRotKE" class="energy-segment-rot" style="width:29%;"></div>
+                </div>
+              </div>
+
+              <div class="tip-box emerald">
+                <span>🏆</span>
+                <div>
+                  <strong>MDCAT Incline Race:</strong> Solid sphere dedicates the largest portion of its potential energy to translation (71.4%) because it has the lowest rotational inertia (0.4 mr²). Hence, it wins the downhill race!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulation 3: Vertical Circle & Loop-the-Loop -->
+        <div class="card">
+          <div class="section-header">
+            <div>
+              <h3 class="card-title">3. Vertical Circular Motion & String Tension</h3>
+              <p class="card-desc">Observe dynamic speed and tension changes. Verify critical speed <span class="mono text-cyan-400">v_top ≥ √(gr)</span> and bottom speed <span class="mono text-emerald-400">v_bottom ≥ √(5gr)</span>.</p>
+            </div>
+            <div class="btn-group">
+              <button id="vertPlayBtn" class="btn btn-primary btn-sm"><span>⏸ Pause</span></button>
+            </div>
+          </div>
+
+          <div class="grid-sim">
+            <div>
+              <div class="canvas-box">
+                <canvas id="vertCircleCanvas" width="540" height="320"></canvas>
+              </div>
+            </div>
+
+            <div>
+              <div class="control-group">
+                <div class="control-label">
+                  <span>Speed at Bottom (v_bottom):</span>
+                  <span id="valVertSpeed" class="control-value">10.0 m/s</span>
+                </div>
+                <input type="range" id="vertSpeed" min="4.0" max="16.0" value="10.0" step="0.5">
+              </div>
+
+              <div class="control-group">
+                <div class="control-label">
+                  <span>Circle Radius (r):</span>
+                  <span id="valVertRadius" class="control-value">2.0 m</span>
+                </div>
+                <input type="range" id="vertRadius" min="1.0" max="4.0" value="2.0" step="0.2">
+              </div>
+
+              <div class="telemetry-panel">
+                <div class="telemetry-row">
+                  <span class="label">Critical Speed Thresholds:</span>
+                  <span id="outVertCrit" class="val text-purple-400">Bottom: ≥ 9.9 m/s | Top: ≥ 4.4 m/s</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="label">Tension Difference (T_bot - T_top):</span>
+                  <span class="val text-emerald-400 font-bold">6 mg (58.8 N)</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="label">Motion Regime:</span>
+                  <span id="outVertStatus" class="val" style="color:#10b981;">COMPLETE LOOP</span>
+                </div>
+              </div>
+
+              <div class="tip-box amber">
+                <span>⚠️</span>
+                <div>
+                  <strong>Entrance Exam Rule:</strong> For any mass completing a full vertical loop of radius r, the tension difference between bottom and top is <em>strictly independent</em> of speed: <span class="mono">T_bottom - T_top = 6mg</span>.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulation 4: Conservation of Angular Momentum -->
+        <div class="card">
+          <div class="section-header">
+            <div>
+              <h3 class="card-title">4. Conservation of Angular Momentum (Figure Skater Lab)</h3>
+              <p class="card-desc">When external torque is zero, <span class="mono text-cyan-400">L = I₁ω₁ = I₂ω₂ = Constant</span>. Pulling weights inward reduces moment of inertia and spins the platform faster!</p>
+            </div>
+            <div class="btn-group">
+              <button id="angPlayBtn" class="btn btn-primary btn-sm"><span>⏸ Pause</span></button>
+            </div>
+          </div>
+
+          <div class="grid-sim">
+            <div>
+              <div class="canvas-box">
+                <canvas id="angMomCanvas" width="540" height="320"></canvas>
+              </div>
+            </div>
+
+            <div>
+              <div class="control-group">
+                <div class="control-label">
+                  <span>Arm Extension Distance (r):</span>
+                  <span id="valAngArm" class="control-value">1.20 m</span>
+                </div>
+                <input type="range" id="angArmRadius" min="0.3" max="1.5" value="1.2" step="0.05">
+              </div>
+
+              <div class="telemetry-panel">
+                <div class="telemetry-row">
+                  <span class="label">Instantaneous Spin Rate (ω):</span>
+                  <span id="outAngOmega" class="val text-amber-400 font-bold">6.12 rad/s</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="label">Total Moment of Inertia (I):</span>
+                  <span id="outAngInertia" class="val text-cyan-400">10.14 kg·m²</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="label">Rotational Kinetic Energy:</span>
+                  <span id="outAngKE" class="val text-purple-400">189.7 J</span>
+                </div>
+              </div>
+
+              <div class="tip-box cyan">
+                <span>💡</span>
+                <div>
+                  <strong>Why does Kinetic Energy increase?</strong> <span class="mono">K_rot = L² / (2I)</span>. Because the skater does positive internal muscular work pulling the masses inward against centrifugal forces, kinetic energy increases while angular momentum remains constant!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===================================================================
+           TAB 2: REAL-TIME CALCULATORS
+           =================================================================== -->
+      <div id="tab-calcs" class="tab-pane">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Physics Mathematical Solvers</h2>
+            <p class="section-subtitle">Real-time parametric solvers with instant output calculation for circular and rotational dynamics.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Solver 1: Centripetal Force -->
+          <div class="card">
+            <h3 class="card-title">1. Centripetal Force & Acceleration</h3>
+            <p class="card-desc">Calculate required inward force <span class="mono">Fc = m v² / r = m r ω²</span></p>
+
+            <div class="grid-3" style="margin-bottom:1rem;">
+              <div>
+                <label class="control-label">Mass (kg):</label>
+                <input type="number" id="calcFc_m" class="input-num" value="1000" step="50">
+              </div>
+              <div>
+                <label class="control-label">Speed (m/s):</label>
+                <input type="number" id="calcFc_v" class="input-num" value="25" step="1">
+              </div>
+              <div>
+                <label class="control-label">Radius (m):</label>
+                <input type="number" id="calcFc_r" class="input-num" value="50" step="5">
+              </div>
+            </div>
+
+            <div id="calcFc_out" class="telemetry-panel"></div>
+          </div>
+
+          <!-- Solver 2: Road Banking Angle -->
+          <div class="card">
+            <h3 class="card-title">2. Road Banking Optimum Angle</h3>
+            <p class="card-desc">Calculate banking angle where friction is zero: <span class="mono">tan θ = v² / (rg)</span></p>
+
+            <div class="grid-2" style="margin-bottom:1rem;">
+              <div>
+                <label class="control-label">Design Speed (m/s):</label>
+                <input type="number" id="calcBank_v" class="input-num" value="20" step="1">
+              </div>
+              <div>
+                <label class="control-label">Curve Radius (m):</label>
+                <input type="number" id="calcBank_r" class="input-num" value="80" step="5">
+              </div>
+            </div>
+
+            <div id="calcBank_out" class="telemetry-panel"></div>
+          </div>
+
+          <!-- Solver 3: Incline Rolling Speed -->
+          <div class="card">
+            <h3 class="card-title">3. Incline Pure Rolling Speed</h3>
+            <p class="card-desc">Speed at bottom of incline of height h: <span class="mono">v = √(2gh / (1 + k))</span></p>
+
+            <div class="grid-2" style="margin-bottom:1rem;">
+              <div>
+                <label class="control-label">Incline Height h (m):</label>
+                <input type="number" id="calcInc_h" class="input-num" value="10" step="1">
+              </div>
+              <div>
+                <label class="control-label">Rolling Geometry:</label>
+                <select id="calcInc_shape" class="input-select">
+                  <option value="sphere">Solid Sphere (k = 0.4)</option>
+                  <option value="disk">Solid Cylinder / Disk (k = 0.5)</option>
+                  <option value="hollowSphere">Hollow Sphere (k = 0.67)</option>
+                  <option value="ring">Thin Ring / Hoop (k = 1.0)</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="calcInc_out" class="telemetry-panel"></div>
+          </div>
+
+          <!-- Solver 4: Moment of Inertia -->
+          <div class="card">
+            <h3 class="card-title">4. Moment of Inertia for Standard Geometries</h3>
+            <p class="card-desc">Calculate <span class="mono">I = k · M R²</span> and radius of gyration <span class="mono">k = √(I/M)</span></p>
+
+            <div class="grid-3" style="margin-bottom:1rem;">
+              <div>
+                <label class="control-label">Body Geometry:</label>
+                <select id="calcMOI_shape" class="input-select">
+                  <option value="solid_sphere">Solid Sphere (2/5 MR²)</option>
+                  <option value="solid_cylinder">Solid Cylinder (1/2 MR²)</option>
+                  <option value="thin_ring">Thin Ring / Hoop (MR²)</option>
+                  <option value="hollow_sphere">Hollow Sphere (2/3 MR²)</option>
+                  <option value="rod_center">Thin Rod (Center, 1/12 ML²)</option>
+                  <option value="rod_end">Thin Rod (End, 1/3 ML²)</option>
+                </select>
+              </div>
+              <div>
+                <label class="control-label">Mass M (kg):</label>
+                <input type="number" id="calcMOI_m" class="input-num" value="4.0" step="0.5">
+              </div>
+              <div>
+                <label class="control-label">Radius / Length (m):</label>
+                <input type="number" id="calcMOI_r" class="input-num" value="0.5" step="0.1">
+              </div>
+            </div>
+
+            <div id="calcMOI_out" class="telemetry-panel"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           TAB 3: FORMULA MATRIX & UNITS
+           =================================================================== -->
+      <div id="tab-formulas" class="tab-pane">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">MDCAT High-Yield Formula Matrix</h2>
+            <p class="section-subtitle">Complete direct comparison between linear translational mechanics and rotational dynamics.</p>
+          </div>
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="globalSearchInput" class="search-input" placeholder="Search formulas, units, or concepts (e.g. torque, inertia)...">
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="table-responsive">
+            <table class="physics-table">
+              <thead>
+                <tr>
+                  <th>Quantity Concept</th>
+                  <th>Linear Translational Analogue</th>
+                  <th>Rotational Analogue</th>
+                  <th>Connecting Bridge Equation</th>
+                  <th>S.I. Units & Dimensions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Position / Displacement</strong></td>
+                  <td>Linear displacement <span class="mono">s or x</span></td>
+                  <td>Angular displacement <span class="mono">θ</span></td>
+                  <td><span class="math-tag">s = r θ</span></td>
+                  <td><span class="mono">rad</span> (Dimensionless: <span class="mono">[M⁰L⁰T⁰]</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Velocity / Speed</strong></td>
+                  <td>Linear velocity <span class="mono">v = ds/dt</span></td>
+                  <td>Angular velocity <span class="mono">ω = dθ/dt</span></td>
+                  <td><span class="math-tag">v = r ω</span> (Vector: <span class="mono">v = ω × r</span>)</td>
+                  <td><span class="mono">rad/s</span> (<span class="mono">[T⁻¹]</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Acceleration</strong></td>
+                  <td>Linear acceleration <span class="mono">a = dv/dt</span></td>
+                  <td>Angular acceleration <span class="mono">α = dω/dt</span></td>
+                  <td><span class="math-tag">a_t = r α</span> (Tangential)</td>
+                  <td><span class="mono">rad/s²</span> (<span class="mono">[T⁻²]</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Centripetal Acceleration</strong></td>
+                  <td>Radial inward <span class="mono">a_c</span></td>
+                  <td><span class="mono">a_c = v²/r = r ω²</span></td>
+                  <td><span class="math-tag purple">a_total = √(a_t² + a_c²)</span></td>
+                  <td><span class="mono">m/s²</span> (<span class="mono">[LT⁻²]</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Inertia (Mass)</strong></td>
+                  <td>Inertial mass <span class="mono">m</span></td>
+                  <td>Moment of Inertia <span class="mono">I = Σ m r²</span></td>
+                  <td><span class="math-tag purple">I = m k²</span> (k = radius of gyration)</td>
+                  <td><span class="mono">kg·m²</span> (<span class="mono">[ML²]</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Cause of Motion (Force / Torque)</strong></td>
+                  <td>Force <span class="mono">F = m a</span></td>
+                  <td>Torque <span class="mono">τ = I α</span></td>
+                  <td><span class="math-tag emerald">τ = r × F = r F sin θ</span></td>
+                  <td><span class="mono">N·m</span> (<span class="mono">[ML²T⁻²]</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Momentum</strong></td>
+                  <td>Linear momentum <span class="mono">p = m v</span></td>
+                  <td>Angular momentum <span class="mono">L = I ω</span></td>
+                  <td><span class="math-tag emerald">L = r × p = m v r sin θ</span></td>
+                  <td><span class="mono">J·s = kg·m²/s</span> (<span class="mono">[ML²T⁻¹]</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Work Done</strong></td>
+                  <td><span class="mono">W = F · s</span></td>
+                  <td><span class="mono">W = τ · θ</span></td>
+                  <td><span class="math-tag amber">W = ΔK_rot = 1/2 I (ω_f² - ω_i²)</span></td>
+                  <td><span class="mono">Joules (J)</span> (<span class="mono">[ML²T⁻²]</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Power</strong></td>
+                  <td><span class="mono">P = F · v</span></td>
+                  <td><span class="mono">P = τ · ω</span></td>
+                  <td><span class="math-tag amber">P = dW/dt = τ ω</span></td>
+                  <td><span class="mono">Watts (W)</span> (<span class="mono">[ML²T⁻³]</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Kinetic Energy</strong></td>
+                  <td><span class="mono">K_trans = 1/2 m v²</span></td>
+                  <td><span class="mono">K_rot = 1/2 I ω² = L²/(2I)</span></td>
+                  <td><span class="math-tag">K_total = 1/2 m v² + 1/2 I ω²</span></td>
+                  <td><span class="mono">Joules (J)</span> (<span class="mono">[ML²T⁻²]</span>)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Axial vs Polar Vector Note -->
+        <div class="grid-2">
+          <div class="card">
+            <h3 class="card-title text-cyan-400">📌 Axial (Pseudovectors)</h3>
+            <p class="card-desc">Directed along the axis of rotation determined by the <strong>Right Hand Rule</strong>:</p>
+            <ul style="list-style:disc; margin-left:1.25rem; font-size:0.875rem; color:var(--text-muted); line-height:1.7;">
+              <li>Angular displacement (<span class="mono">Δθ</span>) for infinitesimal angles</li>
+              <li>Angular velocity (<span class="mono">ω</span>)</li>
+              <li>Angular acceleration (<span class="mono">α</span>)</li>
+              <li>Torque (<span class="mono">τ</span>)</li>
+              <li>Angular momentum (<span class="mono">L</span>)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title text-emerald-400">📌 Polar (True) Vectors</h3>
+            <p class="card-desc">Directed along the line of translational motion or in the plane of rotation:</p>
+            <ul style="list-style:disc; margin-left:1.25rem; font-size:0.875rem; color:var(--text-muted); line-height:1.7;">
+              <li>Position vector (<span class="mono">r</span>)</li>
+              <li>Linear velocity (<span class="mono">v</span>, tangential to circle)</li>
+              <li>Centripetal acceleration (<span class="mono">a_c</span>, directed radially inward)</li>
+              <li>Linear momentum (<span class="mono">p</span>)</li>
+              <li>Linear Force (<span class="mono">F</span>)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           TAB 4: MDCAT HIGH-YIELD TRAPS
+           =================================================================== -->
+      <div id="tab-traps" class="tab-pane">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">MDCAT High-Yield Examiner Traps</h2>
+            <p class="section-subtitle">Common misconceptions, trick questions, and rapid mental shortcuts tested on entrance exams.</p>
+          </div>
+        </div>
+
+        <div class="trap-grid">
+          <!-- Trap 1 -->
+          <div class="trap-card">
+            <div class="trap-card-header">
+              <span class="trap-tag">Trap #1</span>
+              <h4 class="trap-title">Uniform Circular Motion Acceleration</h4>
+            </div>
+            <div class="trap-content">
+              <strong>Mistake:</strong> Thinking that because speed is constant (<span class="mono">v = const</span>), acceleration is zero.<br>
+              <strong>Reality:</strong> Direction of velocity changes continuously, creating a non-zero centripetal acceleration <span class="mono">a_c = v²/r = rω²</span> directed toward the center.
+            </div>
+            <div class="trap-remedy">
+              ✓ In uniform circular motion: Speed and Kinetic Energy are constant, but Velocity, Momentum, and Acceleration are <strong>constantly changing vectors</strong>!
+            </div>
+          </div>
+
+          <!-- Trap 2 -->
+          <div class="trap-card">
+            <div class="trap-card-header">
+              <span class="trap-tag">Trap #2</span>
+              <h4 class="trap-title">Work Done by Centripetal Force</h4>
+            </div>
+            <div class="trap-content">
+              <strong>Mistake:</strong> Calculating work over one revolution as <span class="mono">W = F · 2πr</span>.<br>
+              <strong>Reality:</strong> Centripetal force is always perpendicular to instantaneous displacement (<span class="mono">θ = 90°</span>), so <span class="mono">W = F · d · cos(90°) = 0</span> at every single instant.
+            </div>
+            <div class="trap-remedy">
+              ✓ Centripetal force can NEVER change the kinetic energy or speed of a body; it can only change its direction.
+            </div>
+          </div>
+
+          <!-- Trap 3 -->
+          <div class="trap-card">
+            <div class="trap-card-header">
+              <span class="trap-tag">Trap #3</span>
+              <h4 class="trap-title">Tension Difference in Vertical Loop</h4>
+            </div>
+            <div class="trap-content">
+              <strong>Question:</strong> How much greater is the tension at the bottom of a vertical circle than at the top?<br>
+              <strong>Reality:</strong> <span class="mono">T_bottom - T_top = 6 mg</span>, regardless of the loop radius or entry speed (as long as a full loop is made).
+            </div>
+            <div class="trap-remedy">
+              ✓ Shortcut Formula: <span class="mono">ΔT = 6mg</span>. If mass is 2 kg, <span class="mono">ΔT = 6 × 2 × 9.8 = 117.6 N</span> immediately!
+            </div>
+          </div>
+
+          <!-- Trap 4 -->
+          <div class="trap-card">
+            <div class="trap-card-header">
+              <span class="trap-tag">Trap #4</span>
+              <h4 class="trap-title">Top of a Pure Rolling Wheel</h4>
+            </div>
+            <div class="trap-content">
+              <strong>Mistake:</strong> Assuming all points on a rolling wheel move at the vehicle speed <span class="mono">v</span>.<br>
+              <strong>Reality:</strong> Contact point with ground is instantaneously at rest (<span class="mono">v = 0</span>). Center moves at <span class="mono">v_cm</span>. The topmost point moves at twice the vehicle speed (<span class="mono">v = 2 v_cm</span>).
+            </div>
+            <div class="trap-remedy">
+              ✓ Instantaneous axis of rotation passes through the contact point with the ground.
+            </div>
+          </div>
+
+          <!-- Trap 5 -->
+          <div class="trap-card">
+            <div class="trap-card-header">
+              <span class="trap-tag">Trap #5</span>
+              <h4 class="trap-title">Skater Angular Kinetic Energy</h4>
+            </div>
+            <div class="trap-content">
+              <strong>Mistake:</strong> Claiming kinetic energy is conserved when a skater pulls arms in.<br>
+              <strong>Reality:</strong> Angular momentum <span class="mono">L = Iω</span> is conserved. Since <span class="mono">K = L² / (2I)</span> and <span class="mono">I</span> decreases, kinetic energy <strong>increases</strong>.
+            </div>
+            <div class="trap-remedy">
+              ✓ The skater performs internal muscular work to pull masses in against the outward centrifugal inertia.
+            </div>
+          </div>
+
+          <!-- Trap 6 -->
+          <div class="trap-card">
+            <div class="trap-card-header">
+              <span class="trap-tag">Trap #6</span>
+              <h4 class="trap-title">Angular Displacement as a Vector</h4>
+            </div>
+            <div class="trap-content">
+              <strong>Mistake:</strong> Treating large angular rotations as true vectors.<br>
+              <strong>Reality:</strong> Finite angular rotations do NOT obey the commutative law of vector addition (<span class="mono">θ₁ + θ₂ ≠ θ₂ + θ₁</span>).
+            </div>
+            <div class="trap-remedy">
+              ✓ Only infinitesimal angular displacements (<span class="mono">dθ</span>) obey commutative addition and are true vectors!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           TAB 5: PRACTICE MCQ EXAM
+           =================================================================== -->
+      <div id="tab-quiz" class="tab-pane">
+        <div class="quiz-header-card">
+          <div>
+            <h2 class="section-title">MDCAT Physics Practice Test Bank</h2>
+            <p class="section-subtitle">Real-time self-assessment with instant answer evaluation and detailed mathematical solutions.</p>
+          </div>
+          <div class="quiz-score-badge">
+            <span>Current Score</span>
+            <strong><span id="quizScoreVal">0</span> / <span id="quizTotalVal">8</span></strong>
+          </div>
+        </div>
+
+        <div class="quiz-filters">
+          <button class="filter-chip active" data-filter="all">All Topics</button>
+          <button class="filter-chip" data-filter="centripetal">Centripetal Force</button>
+          <button class="filter-chip" data-filter="rolling">Rolling Motion</button>
+          <button class="filter-chip" data-filter="banking">Road Banking</button>
+          <button class="filter-chip" data-filter="verticalCircle">Vertical Circle</button>
+          <button class="filter-chip" data-filter="angularMomentum">Angular Momentum</button>
+          <button class="filter-chip" data-filter="momentOfInertia">Moment of Inertia</button>
+        </div>
+
+        <div id="quizQuestionsList"></div>
+
+        <div style="text-align:center; margin-top:2rem;">
+          <button id="resetQuizBtn" class="btn btn-primary">
+            <span>🔄 Retake / Reset Practice Exam</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p><strong>MDCAT Rotational & Circular Motion Mastery Suite</strong> — Interactive Physics Engine</p>
+      <p>Self-contained 3-file system: <span class="mono text-cyan-400">rotational-circular-motion.html</span>, <span class="mono text-purple-400">rotational-circular-motion.css</span>, and <span class="mono text-emerald-400">rotational-circular-motion.js</span>.</p>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="rotational-circular-motion.js"></script>
+</body>
+</html>

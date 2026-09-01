@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDCAT Solutions Lab — High-Yield Chemistry Study Suite</title>
+  <link rel="stylesheet" href="solutions.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+<div class="app-wrapper">
+
+  <!-- TOP HEADER -->
+  <header class="header-bar" id="appHeader">
+    <div class="header-top">
+      <div class="brand-group">
+        <div class="brand-icon" id="brandIcon">🧪</div>
+        <div class="brand-title">
+          <h1>SOLUTIONS — MDCAT NOTES</h1>
+          <p>High-Yield Chemistry • 34 Concepts • Real Working Calculators • Particle Simulations • MDCAT Traps</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-pill" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+          <span id="themeIcon">☀️</span> <span id="themeText">Light</span>
+        </button>
+        <button class="btn-pill" id="flashcardModeBtn" title="Rapid-Fire Revision">
+          <span>⚡</span> Flashcards
+        </button>
+        <button class="btn-pill" id="bookmarkFilterBtn" title="Show Bookmarked Notes Only">
+          <span>⭐</span> <span id="savedCountLabel">Saved (0)</span>
+        </button>
+        <button class="btn-pill" id="printNotesBtn" title="Print or Save as PDF">
+          <span>🖨️</span> Print Notes
+        </button>
+      </div>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="progress-container">
+      <div class="progress-info" id="masteryProgressText">Progress: 0 / 34 Mastered (0%)</div>
+      <div class="progress-track">
+        <div class="progress-fill" id="masteryProgressBar"></div>
+      </div>
+      <button class="btn-pill" id="resetProgressBtn" style="padding: 0.3rem 0.75rem; font-size: 0.75rem;">Reset</button>
+    </div>
+  </header>
+
+  <!-- STICKY SEARCH & CATEGORY FILTER -->
+  <div class="search-nav-container" id="searchNavBox">
+    <div class="search-box-row">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="topicSearch" class="search-input" placeholder="Search any note, formula, trap (e.g. Molarity, Raoult, Henry, Tyndall, Osmosis)..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-search-btn" title="Clear search">✕</button>
+      </div>
+    </div>
+
+    <!-- Horizontal Category Filter Tabs -->
+    <nav class="topic-nav-tabs" id="categoryNav">
+      <button class="nav-tab-btn active" data-category="all">All (34 Notes)</button>
+      <button class="nav-tab-btn" data-category="traps">🚨 MDCAT Traps</button>
+      <button class="nav-tab-btn" data-category="simulations">🔬 Lab Simulations</button>
+      <button class="nav-tab-btn" data-category="calculators">🧮 Calculators</button>
+      <button class="nav-tab-btn" data-category="basics">1-8 Basics</button>
+      <button class="nav-tab-btn" data-category="concentration">9-16 Concentration & Dilution</button>
+      <button class="nav-tab-btn" data-category="electrolytes">17-19 Electrolytes</button>
+      <button class="nav-tab-btn" data-category="gases">20-24 Gases & Vapor Pressure</button>
+      <button class="nav-tab-btn" data-category="colligative">25-30 Colligative & Osmosis</button>
+      <button class="nav-tab-btn" data-category="colloids">31-34 Colloids & Suspensions</button>
+      <button class="nav-tab-btn" data-category="quiz">📝 Practice Quiz</button>
+    </nav>
+  </div>
+
+  <!-- SECTION: MDCAT TRAPS WALL -->
+  <section class="section-wrapper" id="sectionTraps" data-section="traps">
+    <div class="section-header">
+      <div class="section-title">
+        <span>🚨</span> MDCAT TRAPS & HIGH-YIELD POINTS
+      </div>
+      <div class="section-subtitle">Examine these 12 critical traps before test day — questions are frequently set on these exact distinctions!</div>
+    </div>
+    <div class="traps-grid">
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 1: Molarity vs Molality Denominator</div>
+        <div class="trap-card-body">
+          <span class="trap-highlight">Molarity</span> uses litres of <span class="trap-highlight">SOLUTION</span>.<br>
+          <span class="trap-highlight">Molality</span> uses kilograms of <span class="trap-highlight">SOLVENT</span>.<br>
+          Never mix up solution and solvent in calculations!
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 2: Temperature Dependence</div>
+        <div class="trap-card-body">
+          <span class="trap-highlight">Molarity changes with temperature</span> (because liquid volume expands or contracts with heat).<br>
+          <span class="trap-highlight">Molality is temperature independent</span> (mass does not change with temperature).
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 3: Gas Solubility vs Temperature</div>
+        <div class="trap-card-body">
+          While solid solutes usually dissolve more at high temperature, <span class="trap-highlight">gas solubility DECREASES with temperature</span>.<br>
+          Warm soda goes flat faster because dissolved CO₂ escapes!
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 4: Gas Solubility vs Pressure (Henry's Law)</div>
+        <div class="trap-card-body">
+          <span class="trap-highlight">Gas solubility INCREASES as pressure increases</span>.<br>
+          When you open a carbonated drink bottle, pressure drops and gas bubbles out.
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 5: Non-Volatile Solute & Vapor Pressure</div>
+        <div class="trap-card-body">
+          Adding a non-volatile solute (e.g. glucose, NaCl) <span class="trap-highlight">LOWERS the vapour pressure</span> of the solvent because solute particles occupy surface spots.
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 6: Boiling Point Elevation</div>
+        <div class="trap-card-body">
+          Adding a non-volatile solute <span class="trap-highlight">RAISES the boiling point</span>.<br>
+          Because vapour pressure is lowered, more thermal energy is needed to reach atmospheric pressure.
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 7: Freezing Point Depression</div>
+        <div class="trap-card-body">
+          Adding a solute <span class="trap-highlight">LOWERS the freezing point</span>.<br>
+          Salt melts ice on cold roads because it lowers the freezing point of water below 0°C.
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 8: Colligative Particle Count</div>
+        <div class="trap-card-body">
+          Colligative properties depend on the <span class="trap-highlight">number of dissolved particles</span>, not their chemical nature.<br>
+          1M NaCl produces 2 moles of particles (Na⁺ + Cl⁻), so it has double the colligative effect of 1M glucose!
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 9: Osmosis Direction</div>
+        <div class="trap-card-body">
+          In osmosis, <span class="trap-highlight">SOLVENT molecules move</span> through a semipermeable membrane from <span class="trap-highlight">dilute to concentrated solution</span> ("Water moves toward more solute").
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 10: Tyndall Effect</div>
+        <div class="trap-card-body">
+          <span class="trap-highlight">Tyndall effect is exhibited by Colloids and Suspensions</span>, but NOT by true solutions (true solution particles are too small to scatter light).
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 11: Settling on Standing</div>
+        <div class="trap-card-body">
+          <span class="trap-highlight">Suspension particles settle down</span> under gravity when left undisturbed.<br>
+          True solutions and colloids do NOT settle.
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-header">⚠️ Trap 12: Dilution Equation M₁V₁ = M₂V₂</div>
+        <div class="trap-card-body">
+          During dilution, <span class="trap-highlight">the number of moles of solute stays CONSTANT</span>.<br>
+          Only solvent volume increases, which decreases the molar concentration.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: VIRTUAL LAB SIMULATIONS -->
+  <section class="section-wrapper" id="sectionSimulations" data-section="simulations">
+    <div class="section-header">
+      <div class="section-title">
+        <span>🔬</span> VIRTUAL SOLUTIONS LAB
+      </div>
+      <div class="section-subtitle">Interact with real particle physics, Tyndall laser scattering, saturation states, and U-tube osmosis.</div>
+    </div>
+
+    <div class="lab-container">
+      <div class="lab-tabs">
+        <button class="lab-tab-btn active" data-tab="sim-tyndall">1. Particle Size & Tyndall Effect</button>
+        <button class="lab-tab-btn" data-tab="sim-saturation">2. Saturation & Crystallization</button>
+        <button class="lab-tab-btn" data-tab="sim-osmosis">3. Osmosis & Reverse Osmosis</button>
+      </div>
+
+      <!-- SIM 1: TYNDALL EFFECT & PARTICLE SIZES -->
+      <div class="sim-pane active" id="sim-tyndall">
+        <div class="sim-layout">
+          <div class="sim-canvas-box">
+            <canvas id="tyndallCanvas" width="500" height="280"></canvas>
+          </div>
+          <div class="sim-controls-card">
+            <h3>Tyndall Effect & Mixture Type</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              Select a mixture and toggle the red laser to observe light scattering.
+            </p>
+            <div class="sim-btn-group">
+              <button class="btn-action btn-primary" id="btnSetSolution">True Solution</button>
+              <button class="btn-action" id="btnSetColloid">Colloid (Milk/Fog)</button>
+              <button class="btn-action" id="btnSetSuspension">Suspension (Mud)</button>
+            </div>
+            <div class="sim-btn-group">
+              <button class="btn-action" id="btnToggleLaser">🔴 Toggle Laser: ON</button>
+              <button class="btn-action" id="btnStirMixture">🌀 Stir / Agitate</button>
+            </div>
+            <div class="sim-live-status" id="tyndallStatusText">
+              <strong>True Solution:</strong> Particle size &lt; 1 nm. Homogeneous. Light passes straight through without scattering (No Tyndall effect).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIM 2: SATURATION BEAKER -->
+      <div class="sim-pane" id="sim-saturation">
+        <div class="sim-layout">
+          <div class="sim-canvas-box">
+            <canvas id="saturationCanvas" width="500" height="280"></canvas>
+          </div>
+          <div class="sim-controls-card">
+            <h3>Solubility & Temperature</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              Add solute to the beaker, adjust temperature, and observe saturation and crystal formation.
+            </p>
+            <div class="input-row" style="margin-bottom: 0.75rem;">
+              <label for="tempSlider">Beaker Temperature: <span id="tempDisplay" style="color: var(--accent-cyan); font-weight: 700;">25°C</span></label>
+              <input type="range" id="tempSlider" min="0" max="100" value="25" style="width: 100%; cursor: pointer;">
+            </div>
+            <div class="sim-btn-group">
+              <button class="btn-action btn-primary" id="btnAddSolute">+ Add 10g Solute</button>
+              <button class="btn-action" id="btnSeedCrystal">🌱 Add Seed Crystal</button>
+              <button class="btn-action" id="btnResetSaturation">🔄 Reset Beaker</button>
+            </div>
+            <div class="sim-live-status" id="saturationStatusText">
+              <strong>Current State:</strong> Unsaturated (10g / 40g max solubility at 25°C). More solute can easily dissolve.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIM 3: OSMOSIS & REVERSE OSMOSIS -->
+      <div class="sim-pane" id="sim-osmosis">
+        <div class="sim-layout">
+          <div class="sim-canvas-box">
+            <canvas id="osmosisCanvas" width="500" height="280"></canvas>
+          </div>
+          <div class="sim-controls-card">
+            <h3>U-Tube Osmosis & Reverse Osmosis</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              Watch solvent molecules move across the semi-permeable membrane toward higher solute concentration.
+            </p>
+            <div class="sim-btn-group">
+              <button class="btn-action btn-primary" id="btnStartOsmosis">▶ Start Normal Osmosis</button>
+              <button class="btn-action" id="btnApplyReversePressure">⚡ Apply Reverse Osmosis Piston</button>
+              <button class="btn-action" id="btnResetOsmosis">🔄 Reset U-Tube</button>
+            </div>
+            <div class="sim-live-status" id="osmosisStatusText">
+              <strong>Osmosis:</strong> Solvent flows from dilute (pure water, left) to concentrated solution (right) through the semipermeable membrane.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION: INTERACTIVE CALCULATORS -->
+  <section class="section-wrapper" id="sectionCalculators" data-section="calculators">
+    <div class="section-header">
+      <div class="section-title">
+        <span>🧮</span> MDCAT FORMULA WALL & CALCULATORS
+      </div>
+      <div class="section-subtitle">Real working chemistry calculators with step-by-step working.</div>
+    </div>
+
+    <div class="calcs-grid">
+
+      <!-- CALC 1: MOLARITY -->
+      <div class="calc-card" id="calcMolarityCard">
+        <div class="calc-header">
+          <div class="calc-title">Molarity (M) Calculator</div>
+          <span class="calc-tag">Point 10</span>
+        </div>
+        <div class="calc-formula-display">M = moles of solute / volume of solution in L</div>
+        <div class="calc-inputs">
+          <div class="input-row">
+            <label for="mol_solute">Solute Amount</label>
+            <div class="input-group">
+              <input type="number" id="mol_solute" class="calc-input" value="0.5" step="any">
+              <select id="mol_solute_unit" class="calc-select">
+                <option value="moles">moles</option>
+                <option value="grams_nacl">grams NaCl (MW: 58.5)</option>
+                <option value="grams_glucose">grams Glucose (MW: 180)</option>
+                <option value="grams_naoh">grams NaOH (MW: 40)</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-row">
+            <label for="mol_volume">Volume of Solution</label>
+            <div class="input-group">
+              <input type="number" id="mol_volume" class="calc-input" value="500" step="any">
+              <select id="mol_volume_unit" class="calc-select">
+                <option value="mL">mL</option>
+                <option value="L">L (Litres)</option>
+                <option value="dm3">dm³</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="calc-result-box">
+          <div class="calc-result-val" id="mol_result">M = 1.000 M (mol/L)</div>
+          <div class="calc-steps" id="mol_steps">0.500 moles ÷ 0.500 L = 1.000 mol/L</div>
+        </div>
+      </div>
+
+      <!-- CALC 2: MOLALITY -->
+      <div class="calc-card" id="calcMolalityCard">
+        <div class="calc-header">
+          <div class="calc-title">Molality (m) Calculator</div>
+          <span class="calc-tag">Point 11</span>
+        </div>
+        <div class="calc-formula-display">m = moles of solute / mass of solvent in kg</div>
+        <div class="calc-inputs">
+          <div class="input-row">
+            <label for="moly_solute">Moles of Solute</label>
+            <div class="input-group">
+              <input type="number" id="moly_solute" class="calc-input" value="0.25" step="any">
+              <span class="calc-unit">moles</span>
+            </div>
+          </div>
+          <div class="input-row">
+            <label for="moly_solvent">Mass of Solvent (Water)</label>
+            <div class="input-group">
+              <input type="number" id="moly_solvent" class="calc-input" value="500" step="any">
+              <select id="moly_solvent_unit" class="calc-select">
+                <option value="g">grams (g)</option>
+                <option value="kg">kilograms (kg)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="calc-result-box">
+          <div class="calc-result-val" id="moly_result">m = 0.500 mol/kg</div>
+          <div class="calc-steps" id="moly_steps">0.250 moles ÷ 0.500 kg solvent = 0.500 m (Temperature Independent!)</div>
+        </div>
+      </div>
+
+      <!-- CALC 3: DILUTION FORMULA -->
+      <div class="calc-card" id="calcDilutionCard">
+        <div class="calc-header">
+          <div class="calc-title">Dilution Equation (M₁V₁ = M₂V₂)</div>
+          <span class="calc-tag">Point 16</span>
+        </div>
+        <div class="calc-formula-display">M₁ × V₁ = M₂ × V₂</div>
+        <div class="calc-inputs">
+          <div class="input-row">
+            <label for="dil_solve_for">Solve For Unknown</label>
+            <select id="dil_solve_for" class="calc-input" style="border-radius: var(--radius-sm);">
+              <option value="M2">M₂ (Final Concentration)</option>
+              <option value="V2">V₂ (Final Total Volume)</option>
+              <option value="V1">V₁ (Initial Volume Needed)</option>
+              <option value="M1">M₁ (Initial Stock Concentration)</option>
+            </select>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <div class="input-row" id="wrap_dil_m1">
+              <label>Stock M₁ (M)</label>
+              <input type="number" id="dil_m1" class="calc-input" value="6.0" step="any" style="border-radius: var(--radius-sm);">
+            </div>
+            <div class="input-row" id="wrap_dil_v1">
+              <label>Stock V₁ (mL)</label>
+              <input type="number" id="dil_v1" class="calc-input" value="50" step="any" style="border-radius: var(--radius-sm);">
+            </div>
+            <div class="input-row" id="wrap_dil_m2">
+              <label>Target M₂ (M)</label>
+              <input type="number" id="dil_m2" class="calc-input" value="1.0" step="any" style="border-radius: var(--radius-sm);" disabled>
+            </div>
+            <div class="input-row" id="wrap_dil_v2">
+              <label>Target V₂ (mL)</label>
+              <input type="number" id="dil_v2" class="calc-input" value="300" step="any" style="border-radius: var(--radius-sm);">
+            </div>
+          </div>
+        </div>
+        <div class="calc-result-box">
+          <div class="calc-result-val" id="dil_result">M₂ = 1.000 M</div>
+          <div class="calc-steps" id="dil_steps">(6.0 M × 50 mL) ÷ 300 mL = 1.000 M</div>
+        </div>
+      </div>
+
+      <!-- CALC 4: MOLE FRACTION -->
+      <div class="calc-card" id="calcMoleFractionCard">
+        <div class="calc-header">
+          <div class="calc-title">Mole Fraction (X) & Sum = 1</div>
+          <span class="calc-tag">Point 13</span>
+        </div>
+        <div class="calc-formula-display">X₁ = n₁ / (n₁ + n₂), &nbsp; X₁ + X₂ = 1</div>
+        <div class="calc-inputs">
+          <div class="input-row">
+            <label for="mf_n1">Moles of Solute (n₁)</label>
+            <input type="number" id="mf_n1" class="calc-input" value="1" step="any" style="border-radius: var(--radius-sm);">
+          </div>
+          <div class="input-row">
+            <label for="mf_n2">Moles of Solvent (n₂)</label>
+            <input type="number" id="mf_n2" class="calc-input" value="4" step="any" style="border-radius: var(--radius-sm);">
+          </div>
+        </div>
+        <div class="calc-result-box">
+          <div class="calc-result-val" id="mf_result">X₁ = 0.200 &nbsp;|&nbsp; X₂ = 0.800</div>
+          <div class="calc-steps" id="mf_steps">Total moles = 5. X₁ = 1/5 = 0.200. X₂ = 4/5 = 0.800. X₁ + X₂ = 1.000. (Unitless)</div>
+        </div>
+      </div>
+
+      <!-- CALC 5: PERCENTAGE CONCENTRATIONS & PPM -->
+      <div class="calc-card" id="calcPercentCard">
+        <div class="calc-header">
+          <div class="calc-title">Percentage & PPM Solver</div>
+          <span class="calc-tag">Points 14 & 15</span>
+        </div>
+        <div class="calc-formula-display">Mass % = (mass solute / mass solution) × 100</div>
+        <div class="calc-inputs">
+          <div class="input-row">
+            <label for="pct_solute">Mass of Solute (g)</label>
+            <input type="number" id="pct_solute" class="calc-input" value="15" step="any" style="border-radius: var(--radius-sm);">
+          </div>
+          <div class="input-row">
+            <label for="pct_solution">Mass/Vol of Solution</label>
+            <div class="input-group">
+              <input type="number" id="pct_solution" class="calc-input" value="300" step="any">
+              <select id="pct_unit" class="calc-select">
+                <option value="g">grams (Mass %)</option>
+                <option value="mL">mL (Mass/Vol %)</option>
+                <option value="ppm_L">Litres (for PPM)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="calc-result-box">
+          <div class="calc-result-val" id="pct_result">5.000 %</div>
+          <div class="calc-steps" id="pct_steps">(15g ÷ 300g) × 100 = 5.000 % by mass</div>
+        </div>
+      </div>
+
+      <!-- CALC 6: RAOULT'S LAW & COLLIGATIVE EFFECT -->
+      <div class="calc-card" id="calcRaoultCard">
+        <div class="calc-header">
+          <div class="calc-title">Raoult's Law & Vapor Pressure</div>
+          <span class="calc-tag">Point 24</span>
+        </div>
+        <div class="calc-formula-display">P = X_solvent × P°_pure</div>
+        <div class="calc-inputs">
+          <div class="input-row">
+            <label for="raoult_p0">Vapor Pressure of Pure Solvent (P° in mmHg / torr)</label>
+            <input type="number" id="raoult_p0" class="calc-input" value="23.8" step="any" style="border-radius: var(--radius-sm);">
+          </div>
+          <div class="input-row">
+            <label for="raoult_x">Mole Fraction of Solvent (X_solvent)</label>
+            <input type="number" id="raoult_x" class="calc-input" value="0.95" min="0" max="1" step="0.01" style="border-radius: var(--radius-sm);">
+          </div>
+        </div>
+        <div class="calc-result-box">
+          <div class="calc-result-val" id="raoult_result">P = 22.610 mmHg</div>
+          <div class="calc-steps" id="raoult_steps">VP lowering ΔP = 23.8 - 22.61 = 1.19 mmHg (Vapour pressure decreases when non-volatile solute is added).</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION: 34 MDCAT NOTES -->
+  <section class="section-wrapper" id="sectionNotes" data-section="all">
+    <div class="section-header">
+      <div class="section-title">
+        <span>📖</span> ALL 34 MDCAT SOLUTIONS NOTES
+      </div>
+      <div class="section-subtitle">Click the star ⭐ to save for revision or the checkmark ✓ when you've mastered the concept.</div>
+    </div>
+
+    <!-- Empty Search State -->
+    <div class="no-results" id="noResultsMsg">
+      <h3>No topics matched your search query.</h3>
+      <p style="margin-top: 0.5rem;">Try searching for "Molarity", "Raoult", "Tyndall", "Osmosis", or click "All (34 Notes)" above.</p>
+    </div>
+
+    <div class="notes-grid" id="notesGridContainer">
+
+      <!-- Note 1 -->
+      <article class="note-card" data-note-id="1" data-category="basics">
+        <div class="note-top-bar">
+          <span class="note-number-badge">1</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">1. Solution</h2>
+        <div class="note-content">
+          <p>A <strong>solution</strong> is a homogeneous mixture of two or more substances.</p>
+          <p>It has the same composition and properties throughout the entire sample.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Example:</strong> Salt dissolved in water.<br>
+          Salt = solute, Water = solvent
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> A solution is strictly <strong>homogeneous</strong> at the molecular level.</div>
+        </div>
+      </article>
+
+      <!-- Note 2 -->
+      <article class="note-card" data-note-id="2" data-category="basics">
+        <div class="note-top-bar">
+          <span class="note-number-badge">2</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">2. Solute</h2>
+        <div class="note-content">
+          <p>The substance that is dissolved in a solution is called the <strong>solute</strong>.</p>
+          <p>It is generally the component present in lesser quantity.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Example:</strong> In salt water, <strong>salt</strong> is the solute.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> A solution can contain multiple solutes dissolved in a single solvent.</div>
+        </div>
+      </article>
+
+      <!-- Note 3 -->
+      <article class="note-card" data-note-id="3" data-category="basics">
+        <div class="note-top-bar">
+          <span class="note-number-badge">3</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">3. Solvent</h2>
+        <div class="note-content">
+          <p>The substance that dissolves the solute is called the <strong>solvent</strong>.</p>
+          <p>It provides the continuous medium in which solute particles disperse.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Example:</strong> In salt water, <strong>water</strong> is the solvent.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> The component present in <strong>greater amount</strong> is usually designated as the solvent.</div>
+        </div>
+      </article>
+
+      <!-- Note 4 -->
+      <article class="note-card" data-note-id="4" data-category="basics">
+        <div class="note-top-bar">
+          <span class="note-number-badge">4</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">4. Types of Solutions</h2>
+        <div class="note-content">
+          <p>Solutions can exist in <strong>different physical states</strong> depending on the state of the solute and solvent.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Key Types & Examples:</strong><br>
+          • <strong>Solid in Liquid:</strong> Salt in water<br>
+          • <strong>Liquid in Liquid:</strong> Alcohol in water<br>
+          • <strong>Gas in Liquid:</strong> CO₂ in soft drink<br>
+          • <strong>Gas in Gas:</strong> Air (N₂, O₂, etc.)<br>
+          • <strong>Solid in Solid:</strong> Brass (Cu + Zn alloy)
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Brass and bronze are solid solutions (alloys). Air is a gaseous solution.</div>
+        </div>
+      </article>
+
+      <!-- Note 5 -->
+      <article class="note-card" data-note-id="5" data-category="basics">
+        <div class="note-top-bar">
+          <span class="note-number-badge">5</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">5. Solubility</h2>
+        <div class="note-content">
+          <p><strong>Solubility</strong> is the maximum amount of a solute that can dissolve in a given amount of solvent at a particular temperature.</p>
+          <p><strong>Simple idea:</strong> Solubility tells us how much solute can dissolve.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Example:</strong> ~36g of NaCl dissolves in 100g of water at 20°C.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Solubility is temperature-dependent and usually measured in g of solute per 100g of solvent.</div>
+        </div>
+      </article>
+
+      <!-- Note 6 -->
+      <article class="note-card" data-note-id="6" data-category="basics">
+        <div class="note-top-bar">
+          <span class="note-number-badge">6</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">6. Unsaturated Solution</h2>
+        <div class="note-content">
+          <p>An <strong>unsaturated solution</strong> contains <em>less</em> than the maximum amount of dissolved solute.</p>
+          <p>More solute can still dissolve at that temperature without changing external conditions.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Example:</strong> Adding 10g of salt into 100g water (it can hold 36g, so it remains unsaturated).
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Adding more solute to an unsaturated solution results in complete dissolution.</div>
+        </div>
+      </article>
+
+      <!-- Note 7 -->
+      <article class="note-card" data-note-id="7" data-category="basics">
+        <div class="note-top-bar">
+          <span class="note-number-badge">7</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">7. Saturated Solution</h2>
+        <div class="note-content">
+          <p>A <strong>saturated solution</strong> contains the <em>maximum amount</em> of solute that can dissolve at a particular temperature.</p>
+          <p>Adding more solute will leave some undissolved at the bottom (dynamic equilibrium between dissolved and undissolved solute).</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Example:</strong> Adding 40g NaCl to 100g water at 20°C (36g dissolves, 4g stays at the bottom).
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Saturated = maximum dissolved solute in equilibrium with undissolved solute.</div>
+        </div>
+      </article>
+
+      <!-- Note 8 -->
+      <article class="note-card" data-note-id="8" data-category="basics">
+        <div class="note-top-bar">
+          <span class="note-number-badge">8</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">8. Supersaturated Solution</h2>
+        <div class="note-content">
+          <p>A <strong>supersaturated solution</strong> contains <em>more dissolved solute</em> than normally possible at that temperature.</p>
+          <p>It is prepared by heating, saturating, and cooling slowly without disturbance.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Key property:</strong> It is highly <strong>unstable</strong>. Adding a tiny seed crystal or scratching the glass causes rapid crystallization!
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Supersaturated solutions are metastable and easily precipitate excess solute upon disturbance.</div>
+        </div>
+      </article>
+
+      <!-- Note 9 -->
+      <article class="note-card" data-note-id="9" data-category="concentration">
+        <div class="note-top-bar">
+          <span class="note-number-badge">9</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">9. Concentration</h2>
+        <div class="note-content">
+          <p><strong>Concentration</strong> tells us how much solute is present in a certain amount of solution or solvent.</p>
+          <p>• <strong>Dilute:</strong> Relatively small amount of solute.<br>
+          • <strong>Concentrated:</strong> Relatively large amount of solute.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Units:</strong> Molarity, Molality, Mole Fraction, %, and PPM.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Dilute and concentrated are qualitative terms; Molarity and Molality are quantitative.</div>
+        </div>
+      </article>
+
+      <!-- Note 10 -->
+      <article class="note-card" data-note-id="10" data-category="concentration">
+        <div class="note-top-bar">
+          <span class="note-number-badge">10</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">10. Molarity</h2>
+        <div class="note-content">
+          <p><strong>Molarity (M)</strong> is the number of moles of solute present in <strong>one litre of solution</strong>.</p>
+          <p style="font-family: var(--font-mono); color: var(--text-accent);">Molarity = moles of solute / volume of solution in litres</p>
+          <p><strong>Unit:</strong> mol/L, mol/dm³, or <strong>M</strong></p>
+        </div>
+        <div class="note-example-box">
+          <strong>Formula expansion:</strong> M = (Mass in g / Molar Mass) × (1000 / Volume in mL)
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Remember: Molarity uses <strong>volume of solution</strong> and changes with temperature.</div>
+        </div>
+      </article>
+
+      <!-- Note 11 -->
+      <article class="note-card" data-note-id="11" data-category="concentration">
+        <div class="note-top-bar">
+          <span class="note-number-badge">11</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">11. Molality</h2>
+        <div class="note-content">
+          <p><strong>Molality (m)</strong> is the number of moles of solute present in <strong>one kilogram of solvent</strong>.</p>
+          <p style="font-family: var(--font-mono); color: var(--text-accent);">Molality = moles of solute / mass of solvent in kg</p>
+          <p><strong>Unit:</strong> mol/kg or <strong>m</strong></p>
+        </div>
+        <div class="note-example-box">
+          <strong>Formula expansion:</strong> m = (Mass of solute in g / Molar Mass) × (1000 / Mass of solvent in g)
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Remember: Molality uses <strong>mass of solvent</strong> and is independent of temperature.</div>
+        </div>
+      </article>
+
+      <!-- Note 12 -->
+      <article class="note-card" data-note-id="12" data-category="concentration">
+        <div class="note-top-bar">
+          <span class="note-number-badge">12</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">12. Molarity vs Molality</h2>
+        <div class="note-content">
+          <p>A very frequent comparison in MDCAT entrance exams:</p>
+          <div style="font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.5;">
+            • <strong>Molarity:</strong> Moles / Litre of solution | Uses volume | Changes with temperature | Unit: mol/L<br>
+            • <strong>Molality:</strong> Moles / kg of solvent | Uses mass | Independent of temperature | Unit: mol/kg
+          </div>
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">🚨</span>
+          <div><strong>MDCAT Trap:</strong> Do not confuse solution and solvent. For dilute aqueous solutions at 4°C, Molarity ≈ Molality because 1L water ≈ 1kg.</div>
+        </div>
+      </article>
+
+      <!-- Note 13 -->
+      <article class="note-card" data-note-id="13" data-category="concentration">
+        <div class="note-top-bar">
+          <span class="note-number-badge">13</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">13. Mole Fraction</h2>
+        <div class="note-content">
+          <p><strong>Mole fraction (X)</strong> is the ratio of the moles of one component to the total moles of all components in the mixture.</p>
+          <p style="font-family: var(--font-mono); color: var(--text-accent);">Mole fraction = moles of component / total moles</p>
+          <p>It has <strong>no unit</strong> (dimensionless quantity).</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Binary solution:</strong> X₁ + X₂ = 1
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Sum of mole fractions of all components is always equal to 1. Temperature independent!</div>
+        </div>
+      </article>
+
+      <!-- Note 14 -->
+      <article class="note-card" data-note-id="14" data-category="concentration">
+        <div class="note-top-bar">
+          <span class="note-number-badge">14</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">14. Percentage Concentration</h2>
+        <div class="note-content">
+          <p>Three common ways to express percentage:</p>
+          <p>• <strong>Mass % (m/m):</strong> (mass of solute / mass of solution) × 100<br>
+          • <strong>Volume % (v/v):</strong> (volume of solute / volume of solution) × 100<br>
+          • <strong>Mass/Volume % (m/v):</strong> (mass of solute in g / volume of solution in mL) × 100</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Example:</strong> 5% (w/w) NaCl solution contains 5g NaCl in 100g of solution (95g water).
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> m/m is temperature independent; m/v and v/v depend on temperature.</div>
+        </div>
+      </article>
+
+      <!-- Note 15 -->
+      <article class="note-card" data-note-id="15" data-category="concentration">
+        <div class="note-top-bar">
+          <span class="note-number-badge">15</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">15. Parts Per Million (ppm)</h2>
+        <div class="note-content">
+          <p><strong>ppm</strong> is used for expressing very small (trace) amounts of solute.</p>
+          <p style="font-family: var(--font-mono); color: var(--text-accent);">ppm = (mass of solute / mass of solution) × 10⁶</p>
+          <p>For dilute aqueous solutions: <strong>1 ppm ≈ 1 mg of solute / litre of solution</strong></p>
+        </div>
+        <div class="note-example-box">
+          <strong>Applications:</strong> Water pollution, heavy metals, fluoride levels in drinking water.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> 1 ppm = 1 mg/L = 1 μg/mL in dilute water solutions.</div>
+        </div>
+      </article>
+
+      <!-- Note 16 -->
+      <article class="note-card" data-note-id="16" data-category="concentration">
+        <div class="note-top-bar">
+          <span class="note-number-badge">16</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">16. Dilution</h2>
+        <div class="note-content">
+          <p><strong>Dilution</strong> means making a solution less concentrated by adding more solvent.</p>
+          <p>• Amount of solute <strong>stays the same</strong>.<br>
+          • Total volume <strong>increases</strong>.<br>
+          • Molar concentration <strong>decreases</strong>.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Important Formula:</strong> M₁V₁ = M₂V₂
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Number of millimoles before dilution = number of millimoles after dilution.</div>
+        </div>
+      </article>
+
+      <!-- Note 17 -->
+      <article class="note-card" data-note-id="17" data-category="electrolytes">
+        <div class="note-top-bar">
+          <span class="note-number-badge">17</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">17. Solvation & Hydration</h2>
+        <div class="note-content">
+          <p><strong>Solvation</strong> is the process in which solvent molecules surround and interact with solute particles.</p>
+          <p>When the solvent is water, this process is specifically called <strong>hydration</strong>.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Example:</strong> In NaCl solution, water's partial negative O atoms surround Na⁺, and partial positive H atoms surround Cl⁻.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Hydration energy must overcome lattice energy for an ionic solid to dissolve spontaneously.</div>
+        </div>
+      </article>
+
+      <!-- Note 18 -->
+      <article class="note-card" data-note-id="18" data-category="electrolytes">
+        <div class="note-top-bar">
+          <span class="note-number-badge">18</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">18. Electrolytes</h2>
+        <div class="note-content">
+          <p><strong>Electrolytes</strong> produce mobile ions in solution and allow the solution to conduct electricity.</p>
+          <p>• <strong>Strong Electrolytes:</strong> Almost completely ionize (HCl, NaOH, NaCl, H₂SO₄).<br>
+          • <strong>Weak Electrolytes:</strong> Only partially ionize (CH₃COOH, NH₄OH, HF).</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Example:</strong> NaCl(s) → Na⁺(aq) + Cl⁻(aq) (100% dissociation)
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Strong electrolytes cause larger colligative effects due to higher ion counts.</div>
+        </div>
+      </article>
+
+      <!-- Note 19 -->
+      <article class="note-card" data-note-id="19" data-category="electrolytes">
+        <div class="note-top-bar">
+          <span class="note-number-badge">19</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">19. Non-Electrolytes</h2>
+        <div class="note-content">
+          <p><strong>Non-electrolytes</strong> do not produce ions in solution and do not conduct electricity.</p>
+          <p>They dissolve as neutral intact molecules.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Examples:</strong> Glucose (C₆H₁₂O₆), Sucrose, Urea, Ethyl alcohol.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> For non-electrolytes, the van 't Hoff factor i = 1 (1 mole dissolves into 1 mole of particles).</div>
+        </div>
+      </article>
+
+      <!-- Note 20 -->
+      <article class="note-card" data-note-id="20" data-category="gases">
+        <div class="note-top-bar">
+          <span class="note-number-badge">20</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">20. Solubility of Gases</h2>
+        <div class="note-content">
+          <p>Gas solubility in liquids is strongly influenced by temperature and pressure:</p>
+          <p>• <strong>Pressure ↑:</strong> Gas solubility <strong>increases</strong>.<br>
+          • <strong>Temperature ↑:</strong> Gas solubility generally <strong>decreases</strong>.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Example:</strong> A warm soft drink loses dissolved CO₂ much more quickly than a cold one.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">🚨</span>
+          <div><strong>MDCAT Trap:</strong> Do not confuse solid solute temp effect (usually increases) with gas solute temp effect (decreases).</div>
+        </div>
+      </article>
+
+      <!-- Note 21 -->
+      <article class="note-card" data-note-id="21" data-category="gases">
+        <div class="note-top-bar">
+          <span class="note-number-badge">21</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">21. Henry's Law</h2>
+        <div class="note-content">
+          <p>At constant temperature, the solubility of a gas in a liquid is directly proportional to the partial pressure of that gas above the liquid.</p>
+          <p style="font-family: var(--font-mono); color: var(--text-accent);">C = k × P &nbsp;(or Solubility ∝ Pressure)</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Real-world:</strong> CO₂ remains dissolved in sealed bottles under high pressure. Opening the cap releases pressure, causing effervescence.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Henry's law applies to gases that do not chemically react with the solvent.</div>
+        </div>
+      </article>
+
+      <!-- Note 22 -->
+      <article class="note-card" data-note-id="22" data-category="gases">
+        <div class="note-top-bar">
+          <span class="note-number-badge">22</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">22. Vapour Pressure</h2>
+        <div class="note-content">
+          <p><strong>Vapour pressure</strong> is the pressure exerted by vapour in equilibrium with its liquid phase in a closed container at a given temperature.</p>
+          <p>Liquids with stronger intermolecular forces have <strong>lower</strong> vapour pressure.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Comparison:</strong> Diethyl ether (weak forces) has higher vapour pressure than water (strong hydrogen bonding).
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Vapour pressure increases exponentially with temperature. Boiling occurs when VP = atmospheric pressure.</div>
+        </div>
+      </article>
+
+      <!-- Note 23 -->
+      <article class="note-card" data-note-id="23" data-category="gases">
+        <div class="note-top-bar">
+          <span class="note-number-badge">23</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">23. Non-Volatile Solute</h2>
+        <div class="note-content">
+          <p>A <strong>non-volatile solute</strong> is one that does not evaporate easily (has negligible vapour pressure).</p>
+          <p>When added to a solvent, solute particles occupy surface area, so fewer solvent molecules can escape into the vapour phase.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Result:</strong> Adding non-volatile solute → <strong>Vapour pressure decreases</strong> (Lowering of vapour pressure).
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Lowering of vapour pressure is the primary driver for boiling point elevation and freezing point depression.</div>
+        </div>
+      </article>
+
+      <!-- Note 24 -->
+      <article class="note-card" data-note-id="24" data-category="gases">
+        <div class="note-top-bar">
+          <span class="note-number-badge">24</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">24. Raoult's Law</h2>
+        <div class="note-content">
+          <p>For an ideal solution, the partial vapour pressure of a component is equal to the product of its mole fraction and the vapour pressure of the pure component.</p>
+          <p style="font-family: var(--font-mono); color: var(--text-accent);">P = X × P°</p>
+          <p><strong>Key idea:</strong> Higher mole fraction → greater vapour pressure contribution.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Relative lowering of VP:</strong> (P° - P) / P° = X_solute
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Raoult's Law applies strictly to ideal solutions with similar intermolecular forces.</div>
+        </div>
+      </article>
+
+      <!-- Note 25 -->
+      <article class="note-card" data-note-id="25" data-category="colligative">
+        <div class="note-top-bar">
+          <span class="note-number-badge">25</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">25. Colligative Properties</h2>
+        <div class="note-content">
+          <p><strong>Colligative properties</strong> depend <em>only</em> on the <strong>number of dissolved solute particles</strong>, not on their chemical identity.</p>
+          <p>Four major colligative properties:</p>
+          <p>1. Lowering of vapour pressure<br>
+          2. Elevation of boiling point<br>
+          3. Depression of freezing point<br>
+          4. Osmotic pressure</p>
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>High Yield:</strong> More dissolved particles → stronger colligative effect! 1M AlCl₃ (4 ions) > 1M CaCl₂ (3 ions) > 1M NaCl (2 ions) > 1M Glucose (1 particle).</div>
+        </div>
+      </article>
+
+      <!-- Note 26 -->
+      <article class="note-card" data-note-id="26" data-category="colligative">
+        <div class="note-top-bar">
+          <span class="note-number-badge">26</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">26. Elevation of Boiling Point</h2>
+        <div class="note-content">
+          <p>Adding a non-volatile solute <strong>raises the boiling point</strong> of a solution.</p>
+          <p><strong>Why?</strong> The solute lowers the vapour pressure, so the solution must be heated to a higher temperature to make its vapour pressure equal atmospheric pressure.</p>
+          <p style="font-family: var(--font-mono); color: var(--text-accent);">ΔTb = Kb × m × i</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Rule:</strong> Boiling point of Solution &gt; Boiling point of pure solvent (e.g. Salt water boils &gt; 100°C).
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Kb is the ebullioscopic constant; it depends strictly on the solvent.</div>
+        </div>
+      </article>
+
+      <!-- Note 27 -->
+      <article class="note-card" data-note-id="27" data-category="colligative">
+        <div class="note-top-bar">
+          <span class="note-number-badge">27</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">27. Depression of Freezing Point</h2>
+        <div class="note-content">
+          <p>Adding a solute <strong>lowers the freezing point</strong> of a solution.</p>
+          <p>Solute particles disrupt the orderly formation of the solvent crystal lattice, requiring a lower temperature to freeze.</p>
+          <p style="font-family: var(--font-mono); color: var(--text-accent);">ΔTf = Kf × m × i</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Applications:</strong> Rock salt spread on icy roads melts ice; ethylene glycol in car radiators acts as antifreeze.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Freezing point of Solution &lt; Freezing point of pure solvent (Freezing point decreases!).</div>
+        </div>
+      </article>
+
+      <!-- Note 28 -->
+      <article class="note-card" data-note-id="28" data-category="colligative">
+        <div class="note-top-bar">
+          <span class="note-number-badge">28</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">28. Osmosis</h2>
+        <div class="note-content">
+          <p><strong>Osmosis</strong> is the net movement of <strong>solvent molecules</strong> through a semipermeable membrane from a dilute solution (high solvent potential) toward a more concentrated solution (low solvent potential).</p>
+          <p><strong>Easy way to remember:</strong> Water moves toward more solute.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Biological role:</strong> Water absorption by plant roots and cell turgidity.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">🚨</span>
+          <div><strong>MDCAT Trap:</strong> In osmosis, SOLVENT moves, not solute! The membrane blocks solute particles.</div>
+        </div>
+      </article>
+
+      <!-- Note 29 -->
+      <article class="note-card" data-note-id="29" data-category="colligative">
+        <div class="note-top-bar">
+          <span class="note-number-badge">29</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">29. Osmotic Pressure</h2>
+        <div class="note-content">
+          <p><strong>Osmotic pressure (π)</strong> is the minimum hydrostatic pressure that must be applied to the solution to prevent the inward flow of solvent across the semipermeable membrane.</p>
+          <p style="font-family: var(--font-mono); color: var(--text-accent);">π = i × C × R × T</p>
+          <p>Higher concentration of dissolved particles → <strong>Higher osmotic pressure</strong>.</p>
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Osmotic pressure is best suited for determining the molar mass of high-molecular-weight polymers and proteins.</div>
+        </div>
+      </article>
+
+      <!-- Note 30 -->
+      <article class="note-card" data-note-id="30" data-category="colligative">
+        <div class="note-top-bar">
+          <span class="note-number-badge">30</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">30. Reverse Osmosis (RO)</h2>
+        <div class="note-content">
+          <p>In <strong>reverse osmosis</strong>, an external pressure <em>greater than the osmotic pressure</em> is applied to the concentrated solution.</p>
+          <p>This forces pure solvent molecules to pass through the semipermeable membrane in the opposite direction (from concentrated to dilute).</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Application:</strong> Desalination of seawater to produce fresh drinking water.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Applied Pressure &gt; Osmotic Pressure (P_ext &gt; π) is required for RO.</div>
+        </div>
+      </article>
+
+      <!-- Note 31 -->
+      <article class="note-card" data-note-id="31" data-category="colloids">
+        <div class="note-top-bar">
+          <span class="note-number-badge">31</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">31. Colloid</h2>
+        <div class="note-content">
+          <p>A <strong>colloid</strong> is a heterogeneous mixture containing particles larger than ordinary solution molecules (1 nm to 1000 nm) but small enough to remain dispersed without settling.</p>
+          <p>Consists of a <strong>dispersed phase</strong> and a <strong>dispersion medium</strong>.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Examples:</strong> Milk, Fog, Smoke, Blood, Gelatin, Mayonnaise, Paints.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Colloidal particles pass through normal filter paper but are retained by animal membranes / ultra-filters.</div>
+        </div>
+      </article>
+
+      <!-- Note 32 -->
+      <article class="note-card" data-note-id="32" data-category="colloids">
+        <div class="note-top-bar">
+          <span class="note-number-badge">32</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">32. Tyndall Effect</h2>
+        <div class="note-content">
+          <p>The <strong>Tyndall effect</strong> is the scattering of light by colloidal particles when a beam of light passes through the mixture.</p>
+          <p>The illuminated path of the beam becomes clearly visible.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Examples:</strong> Headlight beams visible in fog; sunlight streaming through dusty room air or forest canopy.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT:</strong> Tyndall effect → <strong>Colloid</strong> & Suspension (True solutions show NO Tyndall effect).</div>
+        </div>
+      </article>
+
+      <!-- Note 33 -->
+      <article class="note-card" data-note-id="33" data-category="colloids">
+        <div class="note-top-bar">
+          <span class="note-number-badge">33</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">33. Suspension</h2>
+        <div class="note-content">
+          <p>A <strong>suspension</strong> is a heterogeneous mixture containing relatively large particles (&gt; 1000 nm) that do not dissolve and <strong>settle down</strong> when left undisturbed.</p>
+          <p>Particles are visible to the naked eye or under a standard light microscope.</p>
+        </div>
+        <div class="note-example-box">
+          <strong>Examples:</strong> Muddy water, chalk in water, milk of magnesia, flour in water.
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Suspension particles can be easily separated by ordinary filter paper.</div>
+        </div>
+      </article>
+
+      <!-- Note 34 -->
+      <article class="note-card" data-note-id="34" data-category="colloids">
+        <div class="note-top-bar">
+          <span class="note-number-badge">34</span>
+          <div class="note-card-actions">
+            <button class="icon-btn star-btn" title="Bookmark for revision">⭐</button>
+            <button class="icon-btn check-btn" title="Mark as Mastered">✓</button>
+          </div>
+        </div>
+        <h2 class="note-title">34. Solution vs Colloid vs Suspension</h2>
+        <div class="note-content">
+          <p>Complete comparison matrix for MDCAT classification questions:</p>
+          <div style="font-size: 0.85rem; line-height: 1.5; margin-top: 0.5rem;">
+            • <strong>Solution:</strong> &lt; 1 nm | Homogeneous | Never settles | No Tyndall effect | Salt in water<br>
+            • <strong>Colloid:</strong> 1 - 1000 nm | Heterogeneous | Does not settle | Strong Tyndall effect | Milk, Fog<br>
+            • <strong>Suspension:</strong> &gt; 1000 nm | Heterogeneous | Settles on standing | Scatters / blocks light | Muddy water
+          </div>
+        </div>
+        <div class="mdcat-tip-box">
+          <span class="mdcat-tip-icon">⭐</span>
+          <div><strong>MDCAT Tip:</strong> Memorize particle sizes: True Solution &lt; 1 nm &lt; Colloid &lt; 1000 nm &lt; Suspension.</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SECTION: HIGH-YIELD TABLES -->
+  <section class="section-wrapper" id="sectionTables">
+    <div class="section-header">
+      <div class="section-title">
+        <span>📊</span> HIGH-YIELD COMPARISON TABLES
+      </div>
+      <div class="section-subtitle">Side-by-side matrices for rapid review.</div>
+    </div>
+
+    <!-- Table 1: Solution Types -->
+    <div class="table-container">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Solute State</th>
+            <th>Solvent State</th>
+            <th>Type of Solution</th>
+            <th>MDCAT Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Solid</td>
+            <td>Liquid</td>
+            <td>Solid in Liquid</td>
+            <td>Salt or Glucose dissolved in water</td>
+          </tr>
+          <tr>
+            <td>Liquid</td>
+            <td>Liquid</td>
+            <td>Liquid in Liquid</td>
+            <td>Alcohol (ethanol) in water</td>
+          </tr>
+          <tr>
+            <td>Gas</td>
+            <td>Liquid</td>
+            <td>Gas in Liquid</td>
+            <td>CO₂ in soft drinks, O₂ dissolved in water</td>
+          </tr>
+          <tr>
+            <td>Gas</td>
+            <td>Gas</td>
+            <td>Gas in Gas</td>
+            <td>Air (N₂, O₂, Ar, CO₂)</td>
+          </tr>
+          <tr>
+            <td>Solid</td>
+            <td>Solid</td>
+            <td>Solid in Solid</td>
+            <td>Brass (Cu + Zn), Bronze (Cu + Sn), Steel</td>
+          </tr>
+          <tr>
+            <td>Liquid</td>
+            <td>Solid</td>
+            <td>Liquid in Solid</td>
+            <td>Dental amalgam (Hg in Ag)</td>
+          </tr>
+          <tr>
+            <td>Gas</td>
+            <td>Solid</td>
+            <td>Gas in Solid</td>
+            <td>H₂ gas adsorbed on Palladium (Pd) metal</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table 2: 3-way comparison -->
+    <div class="table-container">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>True Solution</th>
+            <th>Colloid</th>
+            <th>Suspension</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Particle Size</strong></td>
+            <td>&lt; 1 nm (molecular/ionic)</td>
+            <td>1 nm to 1000 nm</td>
+            <td>&gt; 1000 nm (macroscopic)</td>
+          </tr>
+          <tr>
+            <td><strong>Homogeneity</strong></td>
+            <td>Homogeneous (single phase)</td>
+            <td>Heterogeneous (two phases)</td>
+            <td>Heterogeneous</td>
+          </tr>
+          <tr>
+            <td><strong>Settling (Gravity)</strong></td>
+            <td>Do not settle</td>
+            <td>Do not settle (stable)</td>
+            <td>Settles down on standing</td>
+          </tr>
+          <tr>
+            <td><strong>Filtration</strong></td>
+            <td>Passes through all filter papers</td>
+            <td>Passes ordinary filter paper, stopped by ultra-filter</td>
+            <td>Retained on ordinary filter paper</td>
+          </tr>
+          <tr>
+            <td><strong>Tyndall Effect</strong></td>
+            <td>Negative (No scattering)</td>
+            <td>Positive (Scatters light beam)</td>
+            <td>Strong scattering / opaque</td>
+          </tr>
+          <tr>
+            <td><strong>Examples</strong></td>
+            <td>NaCl in water, Aqueous Sugar</td>
+            <td>Milk, Blood, Smoke, Fog, Gelatin</td>
+            <td>Muddy water, Chalk in water, Flour</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION: PRACTICE QUIZ -->
+  <section class="section-wrapper" id="sectionQuiz" data-section="quiz">
+    <div class="section-header">
+      <div class="section-title">
+        <span>📝</span> MDCAT HIGH-YIELD PRACTICE QUIZ
+      </div>
+      <div class="section-subtitle">Test your grasp of solutions concepts and numerical traps.</div>
+    </div>
+
+    <div class="quiz-wrapper">
+      <div class="quiz-header-status">
+        <span class="quiz-badge" id="quizProgressBadge">Question 1 of 12</span>
+        <span class="quiz-score-badge" id="quizScoreBadge">Score: 0 / 0 (0%)</span>
+      </div>
+
+      <div class="quiz-question-box">
+        <div class="quiz-question-text" id="quizQuestionText">Loading Question...</div>
+      </div>
+
+      <div class="quiz-options-list" id="quizOptionsContainer">
+        <!-- Dynamic options rendered by JS -->
+      </div>
+
+      <div class="quiz-explanation" id="quizExplanationBox">
+        <strong>Explanation:</strong> <span id="quizExplanationText"></span>
+      </div>
+
+      <div class="quiz-controls">
+        <button class="btn-pill" id="quizPrevBtn" disabled>← Previous</button>
+        <button class="btn-action btn-primary" id="quizNextBtn" disabled>Next Question →</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FLASHCARD MODAL OVERLAY -->
+<div class="flashcards-overlay" id="flashcardsModal">
+  <div class="flashcard-box">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <span class="calc-tag" id="flashcardCounter">Card 1 / 34</span>
+      <button class="icon-btn" id="closeFlashcardsBtn" style="font-size: 1.2rem;" title="Close">✕</button>
+    </div>
+
+    <div class="flashcard-card-scene" id="flashcardScene">
+      <div class="flashcard-inner" id="flashcardInner">
+        <div class="flashcard-face flashcard-front">
+          <div style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.5rem;" id="flashcardCategory">CONCEPT</div>
+          <h3 id="flashcardQuestion" style="font-size: 1.3rem; margin-bottom: 0.5rem;">Definition</h3>
+          <div class="flashcard-hint">Click card or press Space to Flip 🔄</div>
+        </div>
+        <div class="flashcard-face flashcard-back">
+          <div style="font-size: 0.8rem; color: var(--accent-emerald); font-weight: 700; margin-bottom: 0.5rem;">ANSWER & KEY TAKEAWAYS</div>
+          <div id="flashcardAnswer" style="font-size: 0.95rem; line-height: 1.5;">Explanation</div>
+          <div class="flashcard-hint" style="color: var(--accent-amber);">⭐ MDCAT High Yield</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
+      <button class="btn-pill" id="fcPrevBtn">← Prev</button>
+      <button class="btn-action btn-primary" id="fcFlipBtn">🔄 Flip Card</button>
+      <button class="btn-pill" id="fcNextBtn">Next →</button>
+    </div>
+  </div>
+</div>
+
+<script src="solutions.js"></script>
+</body>
+</html>

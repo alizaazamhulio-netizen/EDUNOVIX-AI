@@ -1,0 +1,1580 @@
+/* ==========================================================================
+   MDCAT BIOLOGY: EVOLUTION MASTERCLASS
+   Stylesheet: evolution.css
+   Style Archetype: Premium Medical Entrance Academy / VIP Scientific Glass
+   Palette: Deep Navy Typography, Pure White & Subtle Slate Canvas, Emerald & Mint Accents
+   ========================================================================== */
+
+:root {
+  /* Core Color Palette */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-accent-soft: #ecfdf5;
+  --bg-accent-subtle: #d1fae5;
+  
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-light: #64748b;
+  --text-invert: #ffffff;
+
+  --emerald-50: #ecfdf5;
+  --emerald-100: #d1fae5;
+  --emerald-200: #a7f3d0;
+  --emerald-500: #10b981;
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-800: #065f46;
+  --emerald-900: #064e3b;
+
+  --amber-500: #f59e0b;
+  --amber-50: #fffbeb;
+  --rose-500: #f43f5e;
+  --rose-50: #fff1f2;
+  --sky-500: #0ea5e9;
+  --sky-50: #f0f9ff;
+  --indigo-500: #6366f1;
+  --indigo-50: #eef2ff;
+
+  /* Elevation & Borders */
+  --border-subtle: rgba(226, 232, 240, 0.85);
+  --border-emerald: rgba(16, 185, 129, 0.25);
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+  --shadow-emerald: 0 10px 25px -5px rgba(16, 185, 129, 0.25);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: light;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.65;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Evolution-Themed Watermark Background Layers
+   ========================================================================== */
+.evolution-watermark-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(5, 150, 105, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.5) 0%, transparent 45%);
+}
+
+.watermark-pattern {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  background-size: 420px 420px;
+  background-image: url("data:image/svg+xml,%3Csvg width='420' height='420' viewBox='0 0 420 420' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230f172a' fill-opacity='0.4'%3E%3Cpath d='M60 40c10 0 20 15 30 15s20-15 30-15 20 15 30 15 20-15 30-15m-120 40c10 0 20-15 30-15s20 15 30 15 20-15 30-15 20 15 30 15' stroke='%230f172a' stroke-width='2' fill='none'/%3E%3Ccircle cx='60' cy='40' r='3'/%3E%3Ccircle cx='120' cy='40' r='3'/%3E%3Ccircle cx='180' cy='40' r='3'/%3E%3Ccircle cx='90' cy='55' r='3'/%3E%3Ccircle cx='150' cy='55' r='3'/%3E%3Cpath d='M300 120a40 40 0 1 0 40 40c0-10-8-20-20-20a20 20 0 1 0 0 20' stroke='%230f172a' stroke-width='1.5' fill='none'/%3E%3Cpath d='M70 280l30-20 30 20-15 35h-30z' stroke='%230f172a' stroke-width='1.5' fill='none'/%3E%3Cpath d='M320 310c15-10 25 5 40 0 10-5 15-20 25-15' stroke='%230f172a' stroke-width='2' fill='none'/%3E%3Ctext x='230' y='360' font-family='sans-serif' font-size='18' font-weight='800' letter-spacing='4' fill='%230f172a' opacity='0.5'%3EEVOLUTION%3C/text%3E%3Cpath d='M220 50l15 15-15 15m-10-15h25' stroke='%230f172a' stroke-width='2' fill='none'/%3E%3C/g%3E%3C/svg%3E");
+  animation: watermarkDrift 140s linear infinite;
+}
+
+@keyframes watermarkDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: 420px 420px; }
+}
+
+/* App Container */
+.app-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px 80px 24px;
+}
+
+/* ==========================================================================
+   Header & Fixed Reading Progress Bar
+   ========================================================================== */
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--emerald-500), #059669, #34d399);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+
+.top-navbar {
+  position: sticky;
+  top: 16px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 12px 24px;
+  margin-top: 16px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--emerald-600), var(--emerald-800));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
+}
+
+.brand-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--emerald-700);
+  background: var(--emerald-100);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--emerald-700);
+  background: var(--bg-accent-soft);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-tertiary);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.progress-pill-bar {
+  width: 50px;
+  height: 6px;
+  background: #cbd5e1;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-pill-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--emerald-600);
+  transition: width var(--transition-normal);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: center;
+  background: linear-gradient(145deg, #ffffff, #f0fdf4 40%, #ffffff 90%);
+  border: 1px solid var(--border-emerald);
+  border-radius: var(--radius-xl);
+  padding: 44px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.badge-mdcat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--emerald-900);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 6px rgba(6, 78, 59, 0.25);
+}
+
+.badge-yield {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--amber-50);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--text-main);
+  margin-bottom: 14px;
+}
+
+.hero-title .highlight {
+  color: var(--emerald-600);
+  background: linear-gradient(120deg, var(--emerald-700), var(--emerald-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 580px;
+}
+
+.hero-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.hero-stat-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--emerald-600);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: var(--emerald-700);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  border-color: var(--emerald-500);
+  color: var(--emerald-700);
+  background: var(--bg-accent-soft);
+  transform: translateY(-2px);
+}
+
+/* Hero Evolution Interactive Visual Container */
+.hero-visual-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.hero-visual-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-visual-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--emerald-800);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-bottom: 8px;
+  border: 1px solid transparent;
+}
+
+.flow-step-item:hover, .flow-step-item.active {
+  background: var(--bg-accent-soft);
+  border-color: var(--border-emerald);
+}
+
+.flow-step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--emerald-100);
+  color: var(--emerald-800);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.flow-step-item.active .flow-step-num {
+  background: var(--emerald-600);
+  color: white;
+}
+
+.flow-step-content h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.flow-step-content p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Section Layouts & General Card Archetypes
+   ========================================================================== */
+.content-section {
+  margin-bottom: 56px;
+  scroll-margin-top: 90px;
+}
+
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--emerald-700);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 800px;
+}
+
+/* Standard Premium Glass Cards */
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  position: relative;
+}
+
+.card:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* Callout Cards & MDCAT Alert Boxes */
+.callout-box {
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: flex;
+  gap: 14px;
+  margin: 18px 0;
+  align-items: flex-start;
+}
+
+.callout-mdcat {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #14532d;
+}
+
+.callout-warning {
+  background: #fff1f2;
+  border: 1px solid #fda4af;
+  color: #881337;
+}
+
+.callout-tip {
+  background: #f0f9ff;
+  border: 1px solid #7dd3fc;
+  color: #0c4a6e;
+}
+
+.callout-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.callout-content h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.callout-content p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Section 1 & 2: Terms & Variation
+   ========================================================================== */
+.terms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.term-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.term-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--emerald-500);
+  background: var(--bg-accent-soft);
+}
+
+.term-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--emerald-800);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.term-def {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Lamarckism vs Darwinism Split Visuals
+   ========================================================================== */
+.comparison-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: stretch;
+  margin-top: 24px;
+}
+
+.theory-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.theory-card.lamarck {
+  border-top: 4px solid var(--amber-500);
+}
+
+.theory-card.darwin {
+  border-top: 4px solid var(--emerald-600);
+  background: linear-gradient(180deg, #ffffff, #f0fdf4 95%);
+}
+
+.theory-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+}
+
+.lamarck .theory-badge {
+  background: var(--amber-50);
+  color: #b45309;
+}
+
+.darwin .theory-badge {
+  background: var(--emerald-100);
+  color: var(--emerald-800);
+}
+
+.theory-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 14px;
+}
+
+.theory-pillar-list {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.theory-pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border-subtle);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.theory-pillar-item:last-child {
+  border-bottom: none;
+}
+
+.pillar-bullet {
+  font-weight: 700;
+  color: var(--emerald-600);
+}
+
+.vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vs-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  border: 2px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Giraffe Visual Container */
+.giraffe-interactive-box {
+  margin-top: 24px;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.giraffe-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.giraffe-step-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+  position: relative;
+}
+
+.giraffe-step-card::after {
+  content: "→";
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--emerald-600);
+  z-index: 2;
+}
+
+.giraffe-step-card:last-child::after {
+  display: none;
+}
+
+.giraffe-svg-container {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.giraffe-step-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.giraffe-step-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   Interactive Simulator #1: Natural Selection Simulator
+   ========================================================================== */
+.sim-container {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  margin-top: 20px;
+}
+
+.sim-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+}
+
+.sim-canvas-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 2px solid #cbd5e1;
+  background: #e2e8f0;
+  transition: background 0.5s ease;
+}
+
+.sim-canvas-wrapper.env-light {
+  background: #eef2f6;
+  border-color: #cbd5e1;
+}
+
+.sim-canvas-wrapper.env-dark {
+  background: #1e293b;
+  border-color: #0f172a;
+}
+
+.sim-canvas-wrapper.env-forest {
+  background: #365314;
+  border-color: #1a2e05;
+}
+
+#mothCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sim-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.control-group {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.control-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.env-selector-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.btn-env-select {
+  padding: 8px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-env-select.active {
+  background: var(--emerald-600);
+  color: white;
+  border-color: var(--emerald-600);
+  box-shadow: var(--shadow-sm);
+}
+
+.sim-stats-bar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.sim-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.sim-bar-label {
+  width: 90px;
+  color: var(--text-muted);
+}
+
+.sim-bar-track {
+  flex: 1;
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.sim-bar-fill-light {
+  height: 100%;
+  width: 50%;
+  background: #94a3b8;
+  transition: width 0.3s ease;
+}
+
+.sim-bar-fill-dark {
+  height: 100%;
+  width: 50%;
+  background: #1e293b;
+  transition: width 0.3s ease;
+}
+
+.sim-action-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   Darwin's Finches Interactive Grid
+   ========================================================================== */
+.finch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.finch-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.finch-card:hover, .finch-card.active {
+  border-color: var(--emerald-600);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.finch-card.active {
+  background: var(--bg-accent-soft);
+}
+
+.finch-avatar-box {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 12px auto;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--emerald-200);
+}
+
+.finch-species-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.finch-latin-name {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.finch-beak-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--emerald-800);
+  background: var(--emerald-100);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+/* Finch Detail Drawer */
+.finch-detail-panel {
+  margin-top: 24px;
+  background: #ffffff;
+  border: 1px solid var(--border-emerald);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+}
+
+/* ==========================================================================
+   Homologous vs Analogous Structures Anatomical Explorer
+   ========================================================================== */
+.anatomy-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.anatomy-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+}
+
+.bone-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.bone-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--bg-tertiary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.bone-legend-item:hover, .bone-legend-item.active {
+  background: var(--emerald-600);
+  color: white;
+}
+
+.bone-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.bone-svg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.bone-organism-box {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.bone-organism-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 6px;
+}
+
+.bone-organism-function {
+  font-size: 0.72rem;
+  color: var(--text-light);
+}
+
+/* ==========================================================================
+   Antibiotic Resistance Interactive Lab #2 (Petri Dish)
+   ========================================================================== */
+.petri-lab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.petri-dish-visual {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: 8px solid #cbd5e1;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.06), var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.petri-colony {
+  position: absolute;
+  border-radius: 50%;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.colony-susceptible {
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.colony-resistant {
+  background: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+}
+
+.antibiotic-disc {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #64748b;
+  font-size: 0.68rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.zone-of-inhibition {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px dashed #94a3b8;
+  transition: all 0.6s ease;
+  transform: scale(0);
+}
+
+.zone-of-inhibition.active {
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   Section: Evidence of Evolution 4 Cards
+   ========================================================================== */
+.evidence-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: all var(--transition-normal);
+}
+
+.evidence-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--emerald-500);
+  box-shadow: var(--shadow-lg);
+}
+
+.evidence-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--emerald-100);
+  color: var(--emerald-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 14px;
+}
+
+.evidence-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.evidence-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.evidence-highlight {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--emerald-800);
+  background: var(--bg-accent-soft);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   Section: Quick Revision Cards / Flashcards
+   ========================================================================== */
+.revision-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.revision-item {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.revision-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.revision-header:hover {
+  background: var(--bg-accent-soft);
+  color: var(--emerald-800);
+}
+
+.revision-chevron {
+  transition: transform var(--transition-normal);
+  font-size: 0.8rem;
+}
+
+.revision-item.open .revision-chevron {
+  transform: rotate(180deg);
+}
+
+.revision-body {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  background: #fafafa;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.revision-item.open .revision-body {
+  padding: 16px 20px;
+  max-height: 200px;
+}
+
+/* ==========================================================================
+   Section: 12-Question High-Yield MDCAT Quiz Engine
+   ========================================================================== */
+.quiz-wrapper {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  box-shadow: var(--shadow-md);
+  margin-top: 24px;
+}
+
+.quiz-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.quiz-counter {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--emerald-800);
+}
+
+.quiz-score-tracker {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.quiz-question-box {
+  margin-bottom: 24px;
+}
+
+.quiz-question-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quiz-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-main);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.quiz-option-btn:hover:not(:disabled) {
+  border-color: var(--emerald-500);
+  background: var(--bg-accent-soft);
+}
+
+.option-prefix {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.quiz-option-btn.selected-correct {
+  background: #ecfdf5;
+  border-color: #10b981;
+  color: #065f46;
+}
+
+.quiz-option-btn.selected-correct .option-prefix {
+  background: #10b981;
+  color: white;
+}
+
+.quiz-option-btn.selected-wrong {
+  background: #fff1f2;
+  border-color: #f43f5e;
+  color: #9f1239;
+}
+
+.quiz-option-btn.selected-wrong .option-prefix {
+  background: #f43f5e;
+  color: white;
+}
+
+.quiz-feedback-box {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  display: none;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.quiz-feedback-box.correct {
+  display: block;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.quiz-feedback-box.wrong {
+  display: block;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #9f1239;
+}
+
+.quiz-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+/* Quiz Completion Modal/Card */
+.quiz-summary-card {
+  display: none;
+  text-align: center;
+  padding: 36px 20px;
+}
+
+.summary-score-big {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--emerald-600);
+  margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   Chapter Completion Banner & Confetti
+   ========================================================================== */
+.completion-section {
+  background: linear-gradient(135deg, #064e3b, #047857);
+  border-radius: var(--radius-xl);
+  padding: 44px;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  margin-top: 56px;
+}
+
+.completion-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.completion-desc {
+  font-size: 1.05rem;
+  color: #a7f3d0;
+  max-width: 600px;
+  margin: 0 auto 24px auto;
+}
+
+.btn-complete-chapter {
+  background: #ffffff;
+  color: var(--emerald-900);
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 14px 32px;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-fast);
+}
+
+.btn-complete-chapter:hover {
+  transform: scale(1.04);
+  background: #f0fdf4;
+}
+
+/* ==========================================================================
+   Animations & Responsive Adjustments
+   ========================================================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    padding: 32px;
+  }
+  .sim-grid {
+    grid-template-columns: 1fr;
+  }
+  .petri-lab-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .comparison-container {
+    grid-template-columns: 1fr;
+  }
+  .vs-divider {
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-navbar {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-title {
+    font-size: 2.1rem;
+  }
+  .hero-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-grid-2, .card-grid-3, .card-grid-4 {
+    grid-template-columns: 1fr;
+  }
+  .giraffe-flow {
+    grid-template-columns: 1fr;
+  }
+  .giraffe-step-card::after {
+    display: none;
+  }
+  .anatomy-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pricing = calculatePricing();
 
     // Plan Box Details
-    summaryPlanName.textContent = `StudyMate ${plan.name}`;
+    summaryPlanName.textContent = `EduNexa ${plan.name}`;
     summaryPlanBadge.textContent = plan.badgeText;
     summaryPlanCycle.textContent = plan.summaryCycle;
     summaryPlanBasePrice.textContent = `$${plan.basePrice.toFixed(2)}`;
@@ -766,7 +766,7 @@ Date: ${new Date().toLocaleDateString()}
 Status: PAID (Confirmed)
 
 Customer Email: ${email}
-Plan: StudyMate ${plan.name}
+Plan: EduNexa ${plan.name}
 Billing Cycle: ${plan.summaryCycle}
 
 Subtotal: $${pricing.subtotal.toFixed(2)}
@@ -787,7 +787,7 @@ Access your dashboard anytime at dashboard.html
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `StudyMate_Receipt_${orderId}.txt`;
+    link.download = `EduNexa_Receipt_${orderId}.txt`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Force & Motion — Interactive MDCAT Physics Chapter</title>
+  <link rel="stylesheet" href="force-motion.css" />
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+<!-- ============ TOP NAV ============ -->
+<nav class="top-nav" id="topNav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="nav-logo">F&amp;M</span>
+      <span class="nav-title">Force &amp; Motion</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#hero">Home</a>
+      <a href="#path">Topics</a>
+      <a href="#numericals">Numericals</a>
+      <a href="#mcqs">MCQs</a>
+      <a href="#revision">Revision</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <span class="badge badge-mdcat">MDCAT Physics</span>
+      <h1 class="hero-title">FORCE &amp; MOTION</h1>
+      <p class="hero-subtitle">Understand how forces change motion — from Newton's laws to momentum and circular motion.</p>
+      <div class="hero-meta">
+        <div class="meta-item"><span class="meta-label">Chapter</span><span class="meta-value">01 of Physics</span></div>
+        <div class="meta-item"><span class="meta-label">Study Time</span><span class="meta-value">~45 min</span></div>
+        <div class="meta-item"><span class="meta-label">Difficulty</span><span class="meta-value">Intermediate</span></div>
+        <div class="meta-item"><span class="meta-label">Progress</span><span class="meta-value" id="heroProgress">0%</span></div>
+      </div>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="document.getElementById('sec-1').scrollIntoView({behavior:'smooth'})">Start Learning</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('mcqs').scrollIntoView({behavior:'smooth'})">Practice MCQs</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-anim-box">
+        <svg class="hero-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- ground -->
+          <line x1="20" y1="180" x2="380" y2="180" stroke="var(--border)" stroke-width="2" stroke-dasharray="6 4"/>
+          <!-- box -->
+          <rect id="heroBox" x="60" y="130" width="50" height="50" rx="6" fill="var(--primary)" stroke="var(--primary-dark)" stroke-width="2"/>
+          <text x="85" y="160" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">m</text>
+          <!-- velocity arrow -->
+          <g id="heroVelArrow">
+            <line x1="115" y1="155" x2="175" y2="155" stroke="var(--accent)" stroke-width="3" marker-end="url(#arrowAccent)"/>
+            <text x="145" y="145" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="bold">v</text>
+          </g>
+          <!-- force arrow -->
+          <g id="heroForceArrow">
+            <line x1="115" y1="135" x2="190" y2="135" stroke="var(--success)" stroke-width="3" marker-end="url(#arrowSuccess)"/>
+            <text x="155" y="125" text-anchor="middle" fill="var(--success)" font-size="12" font-weight="bold">F</text>
+          </g>
+          <!-- friction arrow -->
+          <g id="heroFricArrow">
+            <line x1="60" y1="170" x2="20" y2="170" stroke="var(--error)" stroke-width="3" marker-end="url(#arrowError)"/>
+            <text x="40" y="185" text-anchor="middle" fill="var(--error)" font-size="12" font-weight="bold">f</text>
+          </g>
+          <defs>
+            <marker id="arrowAccent" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--accent)"/></marker>
+            <marker id="arrowSuccess" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--success)"/></marker>
+            <marker id="arrowError" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--error)"/></marker>
+          </defs>
+        </svg>
+        <div class="hero-anim-labels">
+          <span class="lbl lbl-v">→ Velocity</span>
+          <span class="lbl lbl-f">→ Force</span>
+          <span class="lbl lbl-fr">← Friction</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-progress-bar"><div class="hero-progress-fill" id="progressFill"></div></div>
+</header>
+
+<!-- ============ LEARNING PATH ============ -->
+<section class="learning-path" id="path">
+  <div class="container">
+    <h2 class="section-title">Learning Path</h2>
+    <p class="section-sub">Click any step to jump to that topic</p>
+    <div class="path-track">
+      <div class="path-step" onclick="scrollToSection('sec-1')"><span class="step-num">01</span><span class="step-name">Motion</span></div>
+      <div class="path-step" onclick="scrollToSection('sec-2')"><span class="step-num">02</span><span class="step-name">Distance &amp; Displacement</span></div>
+      <div class="path-step" onclick="scrollToSection('sec-3')"><span class="step-num">03</span><span class="step-name">Speed &amp; Velocity</span></div>
+      <div class="path-step" onclick="scrollToSection('sec-4')"><span class="step-num">04</span><span class="step-name">Acceleration</span></div>
+      <div class="path-step" onclick="scrollToSection('sec-5')"><span class="step-num">05</span><span class="step-name">Equations of Motion</span></div>
+      <div class="path-step" onclick="scrollToSection('sec-6')"><span class="step-num">06</span><span class="step-name">Force</span></div>
+      <div class="path-step" onclick="scrollToSection('sec-7')"><span class="step-num">07</span><span class="step-name">Newton's Laws</span></div>
+      <div class="path-step" onclick="scrollToSection('sec-8')"><span class="step-num">08</span><span class="step-name">Weight &amp; Friction</span></div>
+      <div class="path-step" onclick="scrollToSection('sec-9')"><span class="step-num">09</span><span class="step-name">Momentum</span></div>
+      <div class="path-step" onclick="scrollToSection('sec-10')"><span class="step-num">10</span><span class="step-name">Circular Motion</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 1: MOTION ============ -->
+<section class="topic-section" id="sec-1">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">01</span>
+      <h2 class="sec-title">What is Motion?</h2>
+    </div>
+    <div class="content-grid">
+      <div class="content-text">
+        <span class="label label-understand">💡 Understand</span>
+        <p>Motion is the <strong>change in position</strong> of an object with respect to a <strong>reference point</strong> as time passes.</p>
+        <p>A car moving along a road changes its position with time, so it is in motion. But to judge motion, we must compare the object's position against a <strong>reference point</strong> — a fixed object or location we consider "stationary".</p>
+        <div class="example-box">
+          <strong>Real-life example:</strong> A passenger sitting inside a moving bus is <em>at rest</em> relative to another passenger, but <em>moving</em> relative to a person standing on the road. Motion is always relative to the observer.
+        </div>
+        <span class="label label-think">🧠 Think About It</span>
+        <div class="reveal-card">
+          <p class="reveal-q">How do we know that an object has moved?</p>
+          <button class="btn btn-small" onclick="revealAnswer('reveal1')">Reveal Answer</button>
+          <p class="reveal-a" id="reveal1" style="display:none;">An object has moved if its <strong>position changes relative to a reference point</strong> over time. If the distance from the reference point changes, the object is in motion. If it stays the same, the object is at rest relative to that point.</p>
+        </div>
+      </div>
+      <div class="content-visual">
+        <div class="sim-card">
+          <h3 class="sim-title">Interactive: Car in Motion</h3>
+          <div class="sim-canvas" id="motionCanvas">
+            <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+              <line x1="10" y1="130" x2="390" y2="130" stroke="var(--border)" stroke-width="2" stroke-dasharray="5 3"/>
+              <text x="20" y="125" fill="var(--text-muted)" font-size="11">A</text>
+              <text x="370" y="125" fill="var(--text-muted)" font-size="11">B</text>
+              <g id="motionCar" transform="translate(20,95)">
+                <rect x="0" y="0" width="50" height="30" rx="5" fill="var(--primary)"/>
+                <circle cx="10" cy="30" r="6" fill="var(--neutral-dark)"/>
+                <circle cx="40" cy="30" r="6" fill="var(--neutral-dark)"/>
+                <rect x="10" y="-12" width="30" height="14" rx="3" fill="var(--primary-light)"/>
+              </g>
+            </svg>
+          </div>
+          <div class="sim-data" id="motionData">
+            <div class="data-row"><span>Position:</span><span id="motionPos">0 m</span></div>
+            <div class="data-row"><span>Time:</span><span id="motionTime">0 s</span></div>
+            <div class="data-row"><span>Direction:</span><span class="dir-east">East →</span></div>
+          </div>
+          <button class="btn btn-primary" id="playMotionBtn" onclick="playMotion()">Play Motion</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: DISTANCE & DISPLACEMENT ============ -->
+<section class="topic-section alt-bg" id="sec-2">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">02</span>
+      <h2 class="sec-title">Distance &amp; Displacement</h2>
+    </div>
+    <div class="content-grid">
+      <div class="content-text">
+        <span class="label label-understand">💡 Understand</span>
+        <p><strong>Distance</strong> is the total path length travelled by an object. It is a <strong>scalar</strong> quantity — it has magnitude only and is always positive.</p>
+        <p><strong>Displacement</strong> is the straight-line change in position from the initial point to the final point, including direction. It is a <strong>vector</strong> quantity — it has both magnitude and direction.</p>
+        <div class="example-box">
+          <strong>Example:</strong> If a student walks 5 m east and then 5 m west:<br>
+          Distance = 10 m (total path walked)<br>
+          Displacement = 0 m (start and end are the same point)
+        </div>
+        <span class="label label-trap">⚠ Common Trap</span>
+        <div class="trap-box">Distance is <strong>scalar</strong>, displacement is <strong>vector</strong>. Distance can never be negative. Displacement can be positive, negative, or zero depending on the chosen direction.</div>
+      </div>
+      <div class="content-visual">
+        <div class="sim-card">
+          <h3 class="sim-title">Interactive: East &amp; West Walk</h3>
+          <div class="sim-canvas">
+            <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+              <line x1="200" y1="140" x2="200" y2="30" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3"/>
+              <text x="200" y="25" text-anchor="middle" fill="var(--text-muted)" font-size="11">Start/Finish</text>
+              <text x="80" y="155" text-anchor="middle" fill="var(--text-muted)" font-size="11">West</text>
+              <text x="320" y="155" text-anchor="middle" fill="var(--text-muted)" font-size="11">East</text>
+              <!-- distance path -->
+              <path id="distPath" d="M 200 100 L 320 100 L 200 100" stroke="var(--accent)" stroke-width="3" fill="none" stroke-dasharray="0" opacity="0.7"/>
+              <!-- displacement path -->
+              <path id="dispPath" d="M 200 100 L 200 100" stroke="var(--primary)" stroke-width="4" fill="none" marker-end="url(#arrowPrimary)"/>
+              <circle id="walkStudent" cx="200" cy="100" r="8" fill="var(--primary)"/>
+              <defs><marker id="arrowPrimary" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--primary)"/></marker></defs>
+            </svg>
+          </div>
+          <div class="sim-data">
+            <div class="data-row"><span>Distance:</span><span id="distVal">0 m</span></div>
+            <div class="data-row"><span>Displacement:</span><span id="dispVal">0 m</span></div>
+          </div>
+          <div class="sim-buttons">
+            <button class="btn btn-small btn-primary" onclick="showDistance()">Show Distance</button>
+            <button class="btn btn-small btn-secondary" onclick="showDisplacement()">Show Displacement</button>
+            <button class="btn btn-small btn-ghost" onclick="resetWalk()">Reset</button>
+          </div>
+          <p class="sim-note" id="walkNote">Click "Show Distance" to see the full path, or "Show Displacement" to see the straight-line result.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: SPEED & VELOCITY ============ -->
+<section class="topic-section" id="sec-3">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">03</span>
+      <h2 class="sec-title">Speed &amp; Velocity</h2>
+    </div>
+    <div class="content-grid">
+      <div class="content-text">
+        <span class="label label-understand">💡 Understand</span>
+        <p><strong>Speed</strong> tells us how fast an object covers distance. <span class="formula-inline">Speed = Distance / Time</span>. It is a <strong>scalar</strong> quantity. SI unit: m/s.</p>
+        <p><strong>Velocity</strong> is the rate of change of displacement. <span class="formula-inline">v = Δx / Δt</span>. It is a <strong>vector</strong> — it has magnitude <em>and</em> direction. SI unit: m/s.</p>
+        <div class="compare-mini">
+          <div class="cmp-item"><strong>Speed</strong><br>Scalar · Distance/time · No direction · Cannot be negative</div>
+          <div class="cmp-item"><strong>Velocity</strong><br>Vector · Displacement/time · Has direction · Can be +/−</div>
+        </div>
+        <span class="label label-mdcat">🎯 MDCAT Focus</span>
+        <p>A car going 60 km/h north and another going 60 km/h south have the <em>same speed</em> but <em>different velocities</em> — because direction matters for velocity.</p>
+      </div>
+      <div class="content-visual">
+        <div class="sim-card">
+          <h3 class="sim-title">Interactive: Speed vs Velocity</h3>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="toggleSpeed" onclick="setSpeedVelocityMode('speed')">Speed</button>
+            <button class="toggle-btn" id="toggleVel" onclick="setSpeedVelocityMode('velocity')">Velocity</button>
+          </div>
+          <div class="sim-canvas">
+            <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+              <line x1="10" y1="110" x2="390" y2="110" stroke="var(--border)" stroke-width="2" stroke-dasharray="5 3"/>
+              <g id="svCar" transform="translate(20,75)">
+                <rect x="0" y="0" width="45" height="25" rx="4" fill="var(--primary)"/>
+                <circle cx="8" cy="25" r="5" fill="var(--neutral-dark)"/>
+                <circle cx="37" cy="25" r="5" fill="var(--neutral-dark)"/>
+              </g>
+              <g id="svArrow" opacity="0">
+                <line x1="70" y1="55" x2="130" y2="55" stroke="var(--accent)" stroke-width="3" marker-end="url(#arrowAccent2)"/>
+                <text x="100" y="48" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="bold">v</text>
+              </g>
+              <defs><marker id="arrowAccent2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--accent)"/></marker></defs>
+            </svg>
+          </div>
+          <div class="sim-data" id="svData">
+            <div class="data-row"><span>Distance:</span><span id="svDist">0 m</span></div>
+            <div class="data-row"><span>Time:</span><span id="svTime">0 s</span></div>
+            <div class="data-row"><span id="svLabel">Speed:</span><span id="svVal">0 m/s</span></div>
+          </div>
+          <button class="btn btn-primary" id="svPlayBtn" onclick="playSpeedVelocity()">Play</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: ACCELERATION ============ -->
+<section class="topic-section alt-bg" id="sec-4">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">04</span>
+      <h2 class="sec-title">Acceleration</h2>
+    </div>
+    <div class="content-grid">
+      <div class="content-text">
+        <span class="label label-understand">💡 Understand</span>
+        <p><strong>Acceleration</strong> is the rate of change of velocity with time.</p>
+        <div class="formula-box"><span class="formula">a = (v<sub>f</sub> − v<sub>i</sub>) / t</span></div>
+        <p>Where v<sub>i</sub> = initial velocity, v<sub>f</sub> = final velocity, t = time. SI unit: m/s².</p>
+        <p><strong>Positive acceleration:</strong> velocity increases in the chosen positive direction. <strong>Negative acceleration (deceleration):</strong> velocity decreases when acceleration acts opposite to velocity.</p>
+        <span class="label label-trap">⚠ Common Trap</span>
+        <div class="trap-box">Zero acceleration does <strong>NOT</strong> mean zero velocity. It means velocity is <em>constant</em> — the object can be moving fast, just not speeding up or slowing down.</div>
+      </div>
+      <div class="content-visual">
+        <div class="sim-card">
+          <h3 class="sim-title">Interactive: Acceleration Simulator</h3>
+          <div class="sim-canvas">
+            <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+              <line x1="10" y1="110" x2="390" y2="110" stroke="var(--border)" stroke-width="2" stroke-dasharray="5 3"/>
+              <g id="accelCar" transform="translate(20,75)">
+                <rect x="0" y="0" width="45" height="25" rx="4" fill="var(--primary)"/>
+                <circle cx="8" cy="25" r="5" fill="var(--neutral-dark)"/>
+                <circle cx="37" cy="25" r="5" fill="var(--neutral-dark)"/>
+              </g>
+              <g id="accelArrow">
+                <line x1="70" y1="55" x2="110" y2="55" stroke="var(--success)" stroke-width="3" marker-end="url(#arrowSuccess2)"/>
+                <text x="90" y="48" text-anchor="middle" fill="var(--success)" font-size="12" font-weight="bold">a</text>
+              </g>
+              <defs><marker id="arrowSuccess2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--success)"/></marker></defs>
+            </svg>
+          </div>
+          <div class="slider-group">
+            <label>Acceleration: <span id="accelSliderVal">2</span> m/s²</label>
+            <input type="range" id="accelSlider" min="0" max="10" value="2" step="0.5" oninput="updateAccel()" />
+          </div>
+          <div class="sim-data">
+            <div class="data-row"><span>Initial velocity (u):</span><span>0 m/s</span></div>
+            <div class="data-row"><span>Final velocity (v):</span><span id="accelFinalV">0 m/s</span></div>
+            <div class="data-row"><span>Time (t):</span><span id="accelTime">0 s</span></div>
+            <div class="data-row"><span>Acceleration (a):</span><span id="accelVal">2 m/s²</span></div>
+          </div>
+          <button class="btn btn-primary" id="accelPlayBtn" onclick="playAccel()">Play</button>
+          <button class="btn btn-small btn-ghost" onclick="playZeroAccel()">Zero Acceleration (Constant Velocity)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: EQUATIONS OF MOTION ============ -->
+<section class="topic-section" id="sec-5">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">05</span>
+      <h2 class="sec-title">Equations of Motion</h2>
+    </div>
+    <p class="sec-intro">For <strong>uniform acceleration</strong>, these three equations connect velocity, displacement, acceleration, and time.</p>
+    <div class="formula-lab">
+      <div class="formula-card">
+        <div class="formula-card-eq">v = u + at</div>
+        <div class="formula-card-info"><strong>First Equation</strong><br>Use when you have u, a, t and need v.</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-card-eq">s = ut + ½at²</div>
+        <div class="formula-card-info"><strong>Second Equation</strong><br>Use when you have u, a, t and need s.</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-card-eq">v² = u² + 2as</div>
+        <div class="formula-card-info"><strong>Third Equation</strong><br>Use when you have u, a, s and need v (no time).</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-card-eq">s = ½(u + v)t</div>
+        <div class="formula-card-info"><strong>Fourth Equation</strong><br>Use when you have u, v, t and need s (no acceleration).</div>
+      </div>
+    </div>
+    <div class="legend">
+      <span><strong>u</strong> = initial velocity</span>
+      <span><strong>v</strong> = final velocity</span>
+      <span><strong>a</strong> = acceleration</span>
+      <span><strong>s</strong> = displacement</span>
+      <span><strong>t</strong> = time</span>
+    </div>
+
+    <div class="quiz-mini">
+      <h3 class="quiz-title">Which Formula? — Mini Quiz</h3>
+      <div class="quiz-question" id="formulaQuiz">
+        <p class="quiz-q" id="formulaQuizQ">If u, a and t are given and you need v, which equation should you use?</p>
+        <div class="quiz-options" id="formulaQuizOpts">
+          <button class="quiz-opt" onclick="answerFormulaQuiz(0)">s = ut + ½at²</button>
+          <button class="quiz-opt" onclick="answerFormulaQuiz(1)">v = u + at</button>
+          <button class="quiz-opt" onclick="answerFormulaQuiz(2)">v² = u² + 2as</button>
+          <button class="quiz-opt" onclick="answerFormulaQuiz(3)">s = ½(u + v)t</button>
+        </div>
+        <p class="quiz-feedback" id="formulaQuizFb"></p>
+        <button class="btn btn-small btn-ghost" onclick="nextFormulaQuiz()">Next Question →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: FORCE ============ -->
+<section class="topic-section alt-bg" id="sec-6">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">06</span>
+      <h2 class="sec-title">Force</h2>
+    </div>
+    <div class="content-grid">
+      <div class="content-text">
+        <span class="label label-understand">💡 Understand</span>
+        <p>A <strong>force</strong> is an interaction that can change an object's motion — it can make a stationary object move, speed it up, slow it down, change its direction, or change its shape.</p>
+        <p>Force is a <strong>vector</strong> quantity. SI unit: <strong>Newton (N)</strong>, where 1 N = 1 kg·m/s².</p>
+        <span class="label label-remember">📌 Remember</span>
+        <p>Net force determines acceleration. If the net force on an object is zero, its velocity does not change (Newton's First Law).</p>
+      </div>
+      <div class="content-visual">
+        <div class="sim-card">
+          <h3 class="sim-title">Interactive: Force &amp; Net Force</h3>
+          <div class="sim-canvas">
+            <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+              <line x1="10" y1="130" x2="390" y2="130" stroke="var(--border)" stroke-width="2" stroke-dasharray="5 3"/>
+              <rect id="forceBox" x="160" y="85" width="50" height="45" rx="5" fill="var(--primary)" stroke="var(--primary-dark)" stroke-width="2"/>
+              <text x="185" y="113" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" id="forceBoxMass">5kg</text>
+              <line id="appliedArrow" x1="210" y1="107" x2="280" y2="107" stroke="var(--success)" stroke-width="3" marker-end="url(#arrowSuccess3)"/>
+              <text x="245" y="100" text-anchor="middle" fill="var(--success)" font-size="12" font-weight="bold" id="appliedLabel">F</text>
+              <line id="frictionArrow" x1="160" y1="107" x2="100" y2="107" stroke="var(--error)" stroke-width="3" marker-end="url(#arrowError2)"/>
+              <text x="130" y="100" text-anchor="middle" fill="var(--error)" font-size="12" font-weight="bold">f</text>
+              <defs>
+                <marker id="arrowSuccess3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--success)"/></marker>
+                <marker id="arrowError2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--error)"/></marker>
+              </defs>
+            </svg>
+          </div>
+          <div class="slider-group">
+            <label>Applied Force: <span id="appliedForceVal">10</span> N</label>
+            <input type="range" id="appliedForceSlider" min="0" max="30" value="10" step="1" oninput="updateForceSim()" />
+          </div>
+          <div class="slider-group">
+            <label>Friction: <span id="frictionForceVal">3</span> N</label>
+            <input type="range" id="frictionForceSlider" min="0" max="20" value="3" step="1" oninput="updateForceSim()" />
+          </div>
+          <div class="slider-group">
+            <label>Mass: <span id="massForceVal">5</span> kg</label>
+            <input type="range" id="massForceSlider" min="1" max="20" value="5" step="1" oninput="updateForceSim()" />
+          </div>
+          <div class="sim-data">
+            <div class="data-row"><span>Net Force:</span><span id="netForceVal">7 N</span></div>
+            <div class="data-row"><span>Acceleration:</span><span id="forceAccelVal">1.4 m/s²</span></div>
+          </div>
+          <button class="btn btn-primary" id="forcePlayBtn" onclick="playForceSim()">Animate Box</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 7: NEWTON'S LAWS ============ -->
+<section class="topic-section" id="sec-7">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">07</span>
+      <h2 class="sec-title">Newton's Laws of Motion</h2>
+    </div>
+
+    <!-- First Law -->
+    <div class="law-block">
+      <div class="law-header"><span class="law-tag">First Law</span><h3>Law of Inertia</h3></div>
+      <p>An object remains <strong>at rest</strong>, or <strong>moving with constant velocity</strong>, unless an unbalanced external force acts on it.</p>
+      <p><strong>Inertia</strong> is the tendency of an object to resist a change in its state of motion. Greater mass → greater inertia.</p>
+      <div class="law-sim">
+        <div class="sim-card">
+          <h3 class="sim-title">Interactive: Bus Inertia Demo</h3>
+          <div class="sim-canvas">
+            <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+              <line x1="10" y1="140" x2="390" y2="140" stroke="var(--border)" stroke-width="2" stroke-dasharray="5 3"/>
+              <g id="busBody" transform="translate(50,70)">
+                <rect x="0" y="0" width="120" height="55" rx="6" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="2"/>
+                <rect x="10" y="8" width="30" height="18" rx="2" fill="var(--accent-light)"/>
+                <rect x="50" y="8" width="30" height="18" rx="2" fill="var(--accent-light)"/>
+                <rect x="90" y="8" width="20" height="18" rx="2" fill="var(--accent-light)"/>
+                <circle cx="20" cy="55" r="8" fill="var(--neutral-dark)"/>
+                <circle cx="100" cy="55" r="8" fill="var(--neutral-dark)"/>
+              </g>
+              <circle id="busPassenger" cx="110" cy="100" r="10" fill="var(--error)"/>
+              <text x="110" y="103" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">P</text>
+              <text x="200" y="30" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold" id="inertiaLabel">INERTIA</text>
+            </svg>
+          </div>
+          <div class="sim-buttons">
+            <button class="btn btn-small btn-primary" onclick="playInertia('start')">Bus Starts Moving</button>
+            <button class="btn btn-small btn-primary" onclick="playInertia('stop')">Bus Suddenly Stops</button>
+            <button class="btn btn-small btn-ghost" onclick="resetInertia()">Reset</button>
+          </div>
+          <p class="sim-note" id="inertiaNote">Click a scenario to see how inertia affects the passenger.</p>
+        </div>
+      </div>
+      <div class="example-grid">
+        <div class="example-item"><strong>Seat belt</strong><br>When a car suddenly stops, your body tends to continue moving forward because of inertia.</div>
+        <div class="example-item"><strong>Bus</strong><br>When a stationary bus suddenly starts, passengers lean backward because their bodies tend to remain at rest.</div>
+        <div class="example-item"><strong>Tablecloth</strong><br>A quick pull leaves dishes in place — they resist motion due to inertia.</div>
+        <div class="example-item"><strong>Dust from carpet</strong><br>Beating a carpet dislodges dust — the dust stays in place while the carpet moves.</div>
+      </div>
+    </div>
+
+    <!-- Second Law -->
+    <div class="law-block">
+      <div class="law-header"><span class="law-tag">Second Law</span><h3>F = ma</h3></div>
+      <p>Newton's Second Law connects force, mass, and acceleration: <span class="formula-inline">F = ma</span>. Greater force → greater acceleration. Greater mass → smaller acceleration for the same force.</p>
+      <div class="content-grid">
+        <div class="content-visual">
+          <div class="sim-card">
+            <h3 class="sim-title">Interactive: F = ma Simulator</h3>
+            <div class="sim-canvas">
+              <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+                <line x1="10" y1="130" x2="390" y2="130" stroke="var(--border)" stroke-width="2" stroke-dasharray="5 3"/>
+                <rect id="newtonBox" x="150" y="85" width="50" height="45" rx="5" fill="var(--primary)" stroke="var(--primary-dark)" stroke-width="2"/>
+                <text x="175" y="113" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" id="newtonBoxMass">5kg</text>
+                <line id="newtonForceArrow" x1="200" y1="107" x2="260" y2="107" stroke="var(--success)" stroke-width="3" marker-end="url(#arrowSuccess4)"/>
+                <text x="230" y="100" text-anchor="middle" fill="var(--success)" font-size="12" font-weight="bold">F</text>
+                <line id="newtonAccelArrow" x1="200" y1="75" x2="250" y2="75" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#arrowAccent3)"/>
+                <text x="225" y="68" text-anchor="middle" fill="var(--accent)" font-size="11" font-weight="bold">a</text>
+                <defs>
+                  <marker id="arrowSuccess4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--success)"/></marker>
+                  <marker id="arrowAccent3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--accent)"/></marker>
+                </defs>
+              </svg>
+            </div>
+            <div class="slider-group">
+              <label>Mass: <span id="newtonMassVal">5</span> kg</label>
+              <input type="range" id="newtonMassSlider" min="1" max="20" value="5" step="1" oninput="updateNewtonSim()" />
+            </div>
+            <div class="slider-group">
+              <label>Force: <span id="newtonForceVal">10</span> N</label>
+              <input type="range" id="newtonForceSlider" min="0" max="50" value="10" step="1" oninput="updateNewtonSim()" />
+            </div>
+            <div class="sim-data">
+              <div class="data-row"><span>Mass:</span><span id="newtonMassDisp">5 kg</span></div>
+              <div class="data-row"><span>Force:</span><span id="newtonForceDisp">10 N</span></div>
+              <div class="data-row"><span>Acceleration:</span><span id="newtonAccelDisp">2.00 m/s²</span></div>
+            </div>
+            <button class="btn btn-primary" id="newtonPlayBtn" onclick="playNewtonSim()">Animate</button>
+          </div>
+        </div>
+        <div class="content-visual">
+          <div class="sim-card">
+            <h3 class="sim-title">Force vs Acceleration Graph</h3>
+            <canvas id="newtonGraph" width="360" height="200" class="sim-canvas-canvas"></canvas>
+            <p class="sim-note">As force increases (with constant mass), acceleration increases linearly. The slope of the line equals 1/m.</p>
+          </div>
+        </div>
+      </div>
+      <div class="numerical-inline">
+        <span class="label label-numerical">🔢 Numerical Example 1</span>
+        <div class="num-card">
+          <p><strong>Question:</strong> A net force of 8 N acts on a 2 kg object. Find the acceleration.</p>
+          <button class="btn btn-small" onclick="revealAnswer('num1')">Show Solution</button>
+          <div class="num-solution" id="num1" style="display:none;">
+            <p><strong>Given:</strong> F = 8 N, m = 2 kg</p>
+            <p><strong>Formula:</strong> F = ma → a = F/m</p>
+            <p><strong>Substitution:</strong> a = 8 / 2 = 4 m/s²</p>
+            <p><strong>Answer:</strong> 4 m/s²</p>
+          </div>
+        </div>
+      </div>
+      <div class="numerical-inline">
+        <span class="label label-numerical">🔢 Numerical Example 2</span>
+        <div class="num-card">
+          <p><strong>Question:</strong> A 5 kg object accelerates at 2 m/s². What force is needed?</p>
+          <button class="btn btn-small" onclick="revealAnswer('num2')">Show Solution</button>
+          <div class="num-solution" id="num2" style="display:none;">
+            <p><strong>Given:</strong> m = 5 kg, a = 2 m/s²</p>
+            <p><strong>Formula:</strong> F = ma</p>
+            <p><strong>Substitution:</strong> F = 5 × 2 = 10 N</p>
+            <p><strong>Answer:</strong> 10 N</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Third Law -->
+    <div class="law-block">
+      <div class="law-header"><span class="law-tag">Third Law</span><h3>Action &amp; Reaction</h3></div>
+      <p>For every action, there is an <strong>equal and opposite reaction</strong>. When object A exerts a force on object B, object B simultaneously exerts an equal-magnitude force in the opposite direction on object A.</p>
+      <span class="label label-trap">⚠ Common Trap</span>
+      <div class="trap-box">Action and reaction are equal in magnitude, opposite in direction, and act on <strong>DIFFERENT objects</strong>. They do not cancel each other because they act on different bodies.</div>
+      <div class="law-sim">
+        <div class="sim-card">
+          <h3 class="sim-title">Interactive: Action-Reaction</h3>
+          <div class="sim-canvas">
+            <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+              <line x1="10" y1="140" x2="390" y2="140" stroke="var(--border)" stroke-width="2" stroke-dasharray="5 3"/>
+              <circle cx="100" cy="105" r="18" fill="var(--accent)" stroke="var(--accent-dark)" stroke-width="2"/>
+              <text x="100" y="109" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">P</text>
+              <rect x="220" y="90" width="50" height="45" rx="5" fill="var(--primary)" stroke="var(--primary-dark)" stroke-width="2"/>
+              <text x="245" y="118" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">B</text>
+              <line x1="118" y1="105" x2="215" y2="105" stroke="var(--success)" stroke-width="3" marker-end="url(#arrowSuccess5)"/>
+              <text x="165" y="98" text-anchor="middle" fill="var(--success)" font-size="11" font-weight="bold">F (P→B)</text>
+              <line x1="222" y1="125" x2="125" y2="125" stroke="var(--error)" stroke-width="3" marker-end="url(#arrowError3)"/>
+              <text x="175" y="138" text-anchor="middle" fill="var(--error)" font-size="11" font-weight="bold">F (B→P)</text>
+              <defs>
+                <marker id="arrowSuccess5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--success)"/></marker>
+                <marker id="arrowError3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--error)"/></marker>
+              </defs>
+            </svg>
+          </div>
+          <p class="sim-note">The person pushes the box right (green), and the box pushes the person left (red). Equal magnitude, opposite direction, different objects.</p>
+        </div>
+      </div>
+      <div class="example-grid">
+        <div class="example-item"><strong>Walking</strong><br>You push the ground backward; the ground pushes you forward.</div>
+        <div class="example-item"><strong>Swimming</strong><br>You push water backward; water pushes you forward.</div>
+        <div class="example-item"><strong>Rocket propulsion</strong><br>Exhaust gases are pushed downward; the rocket is pushed upward.</div>
+      </div>
+      <div class="quiz-mini">
+        <h3 class="quiz-title">Which pair is an action-reaction pair?</h3>
+        <div class="quiz-options" id="arQuizOpts">
+          <button class="quiz-opt" onclick="answerARQuiz(0)">Weight pulling down &amp; normal force pushing up on a book</button>
+          <button class="quiz-opt" onclick="answerARQuiz(1)">Earth pulls the Moon &amp; the Moon pulls the Earth</button>
+          <button class="quiz-opt" onclick="answerARQuiz(2)">A box pushes down on a table &amp; the table pushes up on the box</button>
+          <button class="quiz-opt" onclick="answerARQuiz(3)">Both B and C</button>
+        </div>
+        <p class="quiz-feedback" id="arQuizFb"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 8: WEIGHT & FRICTION ============ -->
+<section class="topic-section alt-bg" id="sec-8">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">08</span>
+      <h2 class="sec-title">Weight &amp; Friction</h2>
+    </div>
+
+    <!-- Weight -->
+    <div class="sub-block">
+      <h3 class="sub-title">Weight</h3>
+      <p><strong>Weight</strong> is the gravitational force acting on an object: <span class="formula-inline">W = mg</span>. Mass stays essentially constant everywhere, but weight changes if gravitational field strength changes.</p>
+      <div class="content-grid">
+        <div class="content-visual">
+          <div class="sim-card">
+            <h3 class="sim-title">Interactive: Earth vs Moon Weight</h3>
+            <div class="toggle-group">
+              <button class="toggle-btn active" id="toggleEarth" onclick="setPlanet('earth')">Earth</button>
+              <button class="toggle-btn" id="toggleMoon" onclick="setPlanet('moon')">Moon</button>
+            </div>
+            <div class="sim-canvas planet-canvas">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="sim-svg planet-svg" id="planetSvg">
+                <circle cx="100" cy="100" r="60" fill="var(--primary)" id="planetBody"/>
+                <text x="100" y="105" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" id="planetName">EARTH</text>
+              </svg>
+            </div>
+            <div class="slider-group">
+              <label>Mass: <span id="weightMassVal">10</span> kg</label>
+              <input type="range" id="weightMassSlider" min="1" max="100" value="10" step="1" oninput="updateWeight()" />
+            </div>
+            <div class="sim-data">
+              <div class="data-row"><span>Mass:</span><span id="weightMassDisp">10 kg</span></div>
+              <div class="data-row"><span>Gravity (g):</span><span id="weightGDisp">9.8 m/s²</span></div>
+              <div class="data-row"><span>Weight:</span><span id="weightDisp">98.0 N</span></div>
+            </div>
+            <p class="sim-note">Mass stays the same on Earth and Moon. Only weight changes because g is different.</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <span class="label label-mdcat">🎯 MDCAT Focus</span>
+          <p>Mass is the amount of matter in an object — it does not change with location. Weight is the force of gravity on that mass — it depends on the local gravitational field strength.</p>
+          <div class="numerical-inline">
+            <span class="label label-numerical">🔢 Numerical Example</span>
+            <div class="num-card">
+              <p><strong>Question:</strong> An 8 kg object is on Earth. Find its weight (g = 9.8 m/s²).</p>
+              <button class="btn btn-small" onclick="revealAnswer('num3')">Show Solution</button>
+              <div class="num-solution" id="num3" style="display:none;">
+                <p><strong>Given:</strong> m = 8 kg, g = 9.8 m/s²</p>
+                <p><strong>Formula:</strong> W = mg</p>
+                <p><strong>Substitution:</strong> W = 8 × 9.8 = 78.4 N</p>
+                <p><strong>Answer:</strong> 78.4 N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Friction -->
+    <div class="sub-block">
+      <h3 class="sub-title">Friction</h3>
+      <p><strong>Friction</strong> is a force that opposes relative motion or the tendency of relative motion between surfaces in contact.</p>
+      <div class="content-grid">
+        <div class="content-text">
+          <p><strong>Static friction:</strong> acts when surfaces are not sliding relative to each other. It prevents motion from starting.</p>
+          <p><strong>Kinetic friction:</strong> acts when surfaces are sliding relative to each other. It opposes ongoing motion.</p>
+          <span class="label label-think">🧠 Think</span>
+          <p><strong>Is friction always bad?</strong> No! Without friction, we couldn't walk, cars couldn't brake, and we couldn't hold objects. Friction is useful for walking, braking, writing, and gripping. It's harmful when it causes wear, heat, and energy loss in machinery.</p>
+          <div class="example-grid">
+            <div class="example-item"><strong>Walking</strong><br>Friction between feet and ground lets us push forward.</div>
+            <div class="example-item"><strong>Car brakes</strong><br>Friction between brake pads and wheels stops the car.</div>
+            <div class="example-item"><strong>Writing</strong><br>Friction between pencil and paper leaves marks.</div>
+            <div class="example-item"><strong>Holding objects</strong><br>Friction between fingers and objects prevents slipping.</div>
+          </div>
+        </div>
+        <div class="content-visual">
+          <div class="sim-card">
+            <h3 class="sim-title">Interactive: Friction Demo</h3>
+            <div class="sim-canvas">
+              <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+                <line x1="10" y1="130" x2="390" y2="130" stroke="var(--border)" stroke-width="2"/>
+                <rect id="fricBox" x="150" y="85" width="50" height="45" rx="5" fill="var(--primary)" stroke="var(--primary-dark)" stroke-width="2"/>
+                <text x="175" y="113" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Box</text>
+                <line id="fricAppliedArrow" x1="200" y1="107" x2="270" y2="107" stroke="var(--success)" stroke-width="3" marker-end="url(#arrowSuccess6)"/>
+                <text x="235" y="100" text-anchor="middle" fill="var(--success)" font-size="11" font-weight="bold">Applied</text>
+                <line id="fricOpposeArrow" x1="150" y1="107" x2="90" y2="107" stroke="var(--error)" stroke-width="3" marker-end="url(#arrowError4)"/>
+                <text x="120" y="100" text-anchor="middle" fill="var(--error)" font-size="11" font-weight="bold">Friction</text>
+                <text x="200" y="150" text-anchor="middle" fill="var(--text-muted)" font-size="11" id="fricStatus">Static — box not moving</text>
+                <defs>
+                  <marker id="arrowSuccess6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--success)"/></marker>
+                  <marker id="arrowError4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--error)"/></marker>
+                </defs>
+              </svg>
+            </div>
+            <div class="slider-group">
+              <label>Applied Force: <span id="fricAppliedVal">5</span> N</label>
+              <input type="range" id="fricAppliedSlider" min="0" max="20" value="5" step="1" oninput="updateFriction()" />
+            </div>
+            <div class="slider-group">
+              <label>Static Friction Limit: <span id="fricStaticVal">8</span> N</label>
+              <input type="range" id="fricStaticSlider" min="1" max="20" value="8" step="1" oninput="updateFriction()" />
+            </div>
+            <div class="sim-data">
+              <div class="data-row"><span>Applied:</span><span id="fricAppliedDisp">5 N</span></div>
+              <div class="data-row"><span>Friction:</span><span id="fricActualDisp">5 N</span></div>
+              <div class="data-row"><span>Status:</span><span id="fricStatusDisp">Static</span></div>
+            </div>
+            <button class="btn btn-primary" id="fricPlayBtn" onclick="playFriction()">Animate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FBD -->
+    <div class="sub-block">
+      <h3 class="sub-title">Free-Body Diagram (FBD)</h3>
+      <p>A Free-Body Diagram shows <strong>all external forces</strong> acting on an object. It is the first step in solving any force problem: draw the object → identify forces → choose directions → apply Newton's laws.</p>
+      <div class="content-grid">
+        <div class="content-visual">
+          <div class="sim-card">
+            <h3 class="sim-title">Interactive: FBD Builder</h3>
+            <div class="sim-canvas">
+              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+                <line x1="10" y1="180" x2="390" y2="180" stroke="var(--border)" stroke-width="2"/>
+                <rect x="160" y="130" width="60" height="50" rx="5" fill="var(--primary)" stroke="var(--primary-dark)" stroke-width="2"/>
+                <text x="190" y="160" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">Box</text>
+                <!-- Weight -->
+                <g id="fbdWeight" opacity="1">
+                  <line x1="190" y1="180" x2="190" y2="215" stroke="var(--error)" stroke-width="3" marker-end="url(#arrowError5)"/>
+                  <text x="200" y="210" fill="var(--error)" font-size="12" font-weight="bold">W (Weight)</text>
+                </g>
+                <!-- Normal -->
+                <g id="fbdNormal" opacity="1">
+                  <line x1="190" y1="130" x2="190" y2="95" stroke="var(--success)" stroke-width="3" marker-end="url(#arrowSuccess7)"/>
+                  <text x="200" y="100" fill="var(--success)" font-size="12" font-weight="bold">N (Normal)</text>
+                </g>
+                <!-- Applied -->
+                <g id="fbdApplied" opacity="1">
+                  <line x1="220" y1="155" x2="290" y2="155" stroke="var(--accent)" stroke-width="3" marker-end="url(#arrowAccent4)"/>
+                  <text x="255" y="148" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="bold">F (Applied)</text>
+                </g>
+                <!-- Friction -->
+                <g id="fbdFriction" opacity="1">
+                  <line x1="160" y1="170" x2="90" y2="170" stroke="var(--warning)" stroke-width="3" marker-end="url(#arrowWarning)"/>
+                  <text x="125" y="163" text-anchor="middle" fill="var(--warning)" font-size="12" font-weight="bold">f (Friction)</text>
+                </g>
+                <defs>
+                  <marker id="arrowError5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--error)"/></marker>
+                  <marker id="arrowSuccess7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--success)"/></marker>
+                  <marker id="arrowAccent4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--accent)"/></marker>
+                  <marker id="arrowWarning" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--warning)"/></marker>
+                </defs>
+              </svg>
+            </div>
+            <div class="fbd-toggles">
+              <label class="toggle-check"><input type="checkbox" checked onchange="toggleFBD('Weight', this)" /> <span class="lbl-weight">Weight ↓</span></label>
+              <label class="toggle-check"><input type="checkbox" checked onchange="toggleFBD('Normal', this)" /> <span class="lbl-normal">Normal ↑</span></label>
+              <label class="toggle-check"><input type="checkbox" checked onchange="toggleFBD('Applied', this)" /> <span class="lbl-applied">Applied →</span></label>
+              <label class="toggle-check"><input type="checkbox" checked onchange="toggleFBD('Friction', this)" /> <span class="lbl-friction">Friction ←</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="content-text">
+          <span class="label label-understand">💡 Understand</span>
+          <h4>How to construct an FBD:</h4>
+          <ol class="steps-list">
+            <li><strong>Isolate the object</strong> — draw it alone, separated from its surroundings.</li>
+            <li><strong>Draw all external forces</strong> — weight, normal, applied, friction, tension, etc.</li>
+            <li><strong>Choose coordinate directions</strong> — pick x and y axes for the problem.</li>
+            <li><strong>Resolve forces if needed</strong> — break angled forces into x and y components.</li>
+            <li><strong>Apply Newton's laws</strong> — ΣF = ma in each direction.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 9: MOMENTUM ============ -->
+<section class="topic-section" id="sec-9">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">09</span>
+      <h2 class="sec-title">Momentum &amp; Conservation</h2>
+    </div>
+    <div class="content-grid">
+      <div class="content-text">
+        <span class="label label-understand">💡 Understand</span>
+        <p><strong>Momentum</strong> is the product of mass and velocity: <span class="formula-inline">p = mv</span>. It is a <strong>vector</strong> quantity. SI unit: kg·m/s.</p>
+        <p>A heavier object or a faster object generally has greater momentum. A heavy slow truck can have similar momentum to a light fast bullet.</p>
+        <p><strong>Conservation of Momentum:</strong> For an isolated system, total initial momentum = total final momentum.</p>
+        <div class="formula-box"><span class="formula">m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂</span></div>
+      </div>
+      <div class="content-visual">
+        <div class="sim-card">
+          <h3 class="sim-title">Interactive: Momentum Calculator</h3>
+          <div class="slider-group">
+            <label>Mass: <span id="momMassVal">2</span> kg</label>
+            <input type="range" id="momMassSlider" min="1" max="20" value="2" step="1" oninput="updateMomentum()" />
+          </div>
+          <div class="slider-group">
+            <label>Velocity: <span id="momVelVal">5</span> m/s</label>
+            <input type="range" id="momVelSlider" min="0" max="30" value="5" step="1" oninput="updateMomentum()" />
+          </div>
+          <div class="sim-data">
+            <div class="data-row"><span>Mass:</span><span id="momMassDisp">2 kg</span></div>
+            <div class="data-row"><span>Velocity:</span><span id="momVelDisp">5 m/s</span></div>
+            <div class="data-row"><span>Momentum (p = mv):</span><span id="momVal">10 kg·m/s</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="content-visual">
+        <div class="sim-card">
+          <h3 class="sim-title">Interactive: Two-Cart Collision</h3>
+          <div class="sim-canvas">
+            <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+              <line x1="10" y1="130" x2="390" y2="130" stroke="var(--border)" stroke-width="2" stroke-dasharray="5 3"/>
+              <g id="cart1" transform="translate(40,90)">
+                <rect x="0" y="0" width="50" height="35" rx="4" fill="var(--primary)"/>
+                <text x="25" y="22" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">m₁</text>
+                <circle cx="10" cy="35" r="5" fill="var(--neutral-dark)"/>
+                <circle cx="40" cy="35" r="5" fill="var(--neutral-dark)"/>
+              </g>
+              <g id="cart2" transform="translate(280,90)">
+                <rect x="0" y="0" width="50" height="35" rx="4" fill="var(--accent)"/>
+                <text x="25" y="22" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">m₂</text>
+                <circle cx="10" cy="35" r="5" fill="var(--neutral-dark)"/>
+                <circle cx="40" cy="35" r="5" fill="var(--neutral-dark)"/>
+              </g>
+            </svg>
+          </div>
+          <div class="slider-group">
+            <label>Cart 1 Mass: <span id="collM1Val">2</span> kg</label>
+            <input type="range" id="collM1Slider" min="1" max="10" value="2" step="1" oninput="updateCollision()" />
+          </div>
+          <div class="slider-group">
+            <label>Cart 1 Velocity: <span id="collU1Val">4</span> m/s</label>
+            <input type="range" id="collU1Slider" min="0" max="10" value="4" step="1" oninput="updateCollision()" />
+          </div>
+          <div class="slider-group">
+            <label>Cart 2 Mass: <span id="collM2Val">3</span> kg</label>
+            <input type="range" id="collM2Slider" min="1" max="10" value="3" step="1" oninput="updateCollision()" />
+          </div>
+          <div class="slider-group">
+            <label>Cart 2 Velocity: <span id="collU2Val">0</span> m/s</label>
+            <input type="range" id="collU2Slider" min="0" max="10" value="0" step="1" oninput="updateCollision()" />
+          </div>
+          <div class="sim-data">
+            <div class="data-row"><span>Initial Total Momentum:</span><span id="collInitP">8 kg·m/s</span></div>
+            <div class="data-row"><span>Final Total Momentum:</span><span id="collFinalP">8 kg·m/s</span></div>
+          </div>
+          <div class="sim-buttons">
+            <button class="btn btn-small btn-primary" id="collPlayBtn" onclick="playCollision()">Play Collision</button>
+            <button class="btn btn-small btn-ghost" onclick="resetCollision()">Reset</button>
+          </div>
+        </div>
+      </div>
+      <div class="content-text">
+        <span class="label label-mdcat">🎯 MDCAT Focus</span>
+        <p>In an isolated system (no external force), total momentum is always conserved. The carts may exchange momentum, but the total stays the same.</p>
+        <div class="numerical-inline">
+          <span class="label label-numerical">🔢 Numerical Example</span>
+          <div class="num-card">
+            <p><strong>Question:</strong> A 2 kg ball moving at 3 m/s hits a stationary 1 kg ball. After collision, the 2 kg ball stops. Find the velocity of the 1 kg ball.</p>
+            <button class="btn btn-small" onclick="revealAnswer('num4')">Show Solution</button>
+            <div class="num-solution" id="num4" style="display:none;">
+              <p><strong>Given:</strong> m₁ = 2 kg, u₁ = 3 m/s, m₂ = 1 kg, u₂ = 0, v₁ = 0</p>
+              <p><strong>Formula:</strong> m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂</p>
+              <p><strong>Substitution:</strong> 2(3) + 1(0) = 2(0) + 1(v₂) → 6 = v₂</p>
+              <p><strong>Answer:</strong> v₂ = 6 m/s</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 10: CIRCULAR MOTION ============ -->
+<section class="topic-section alt-bg" id="sec-10">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">10</span>
+      <h2 class="sec-title">Circular Motion</h2>
+    </div>
+    <div class="content-grid">
+      <div class="content-text">
+        <span class="label label-understand">💡 Understand</span>
+        <p>When an object moves along a circular path, its velocity <strong>continuously changes direction</strong>. Therefore, even if speed remains constant, the object is <strong>accelerating</strong>.</p>
+        <p>The inward force required for circular motion is called <strong>centripetal force</strong>:</p>
+        <div class="formula-box"><span class="formula">F<sub>c</sub> = mv² / r</span></div>
+        <span class="label label-trap">⚠ Common Trap</span>
+        <div class="trap-box">Constant speed in circular motion can still mean <strong>acceleration</strong> — because velocity is a vector and its direction is changing. Any change in velocity (magnitude OR direction) means acceleration.</div>
+      </div>
+      <div class="content-visual">
+        <div class="sim-card">
+          <h3 class="sim-title">Interactive: Centripetal Force</h3>
+          <div class="sim-canvas">
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" class="sim-svg">
+              <circle cx="150" cy="150" r="80" fill="none" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 3"/>
+              <circle id="circObj" cx="230" cy="150" r="12" fill="var(--primary)" stroke="var(--primary-dark)" stroke-width="2"/>
+              <!-- velocity tangent -->
+              <line id="circVel" x1="230" y1="150" x2="280" y2="150" stroke="var(--accent)" stroke-width="3" marker-end="url(#arrowAccent5)"/>
+              <text id="circVelLabel" x="255" y="142" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="bold">v</text>
+              <!-- centripetal force inward -->
+              <line id="circForce" x1="230" y1="150" x2="190" y2="150" stroke="var(--error)" stroke-width="3" marker-end="url(#arrowError6)"/>
+              <text id="circForceLabel" x="210" y="165" text-anchor="middle" fill="var(--error)" font-size="12" font-weight="bold">Fc</text>
+              <circle cx="150" cy="150" r="3" fill="var(--text-muted)"/>
+              <defs>
+                <marker id="arrowAccent5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--accent)"/></marker>
+                <marker id="arrowError6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="var(--error)"/></marker>
+              </defs>
+            </svg>
+          </div>
+          <div class="slider-group">
+            <label>Mass: <span id="circMassVal">2</span> kg</label>
+            <input type="range" id="circMassSlider" min="1" max="10" value="2" step="1" oninput="updateCircular()" />
+          </div>
+          <div class="slider-group">
+            <label>Velocity: <span id="circVelSliderVal">4</span> m/s</label>
+            <input type="range" id="circVelSlider2" min="1" max="10" value="4" step="0.5" oninput="updateCircular()" />
+          </div>
+          <div class="slider-group">
+            <label>Radius: <span id="circRadVal">2</span> m</label>
+            <input type="range" id="circRadSlider" min="1" max="5" value="2" step="0.5" oninput="updateCircular()" />
+          </div>
+          <div class="sim-data">
+            <div class="data-row"><span>Mass:</span><span id="circMassDisp">2 kg</span></div>
+            <div class="data-row"><span>Velocity:</span><span id="circVelDisp">4 m/s</span></div>
+            <div class="data-row"><span>Radius:</span><span id="circRadDisp">2 m</span></div>
+            <div class="data-row"><span>Centripetal Force:</span><span id="circFcDisp">16.0 N</span></div>
+          </div>
+          <button class="btn btn-primary" id="circPlayBtn" onclick="toggleCircularAnim()">Start Animation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMULA WALL ============ -->
+<section class="topic-section" id="formulaWall">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">★</span>
+      <h2 class="sec-title">Formula Wall</h2>
+    </div>
+    <div class="formula-wall-grid">
+      <div class="fw-card"><div class="fw-eq">v = d/t</div><div class="fw-info"><strong>Speed</strong><br>v = speed, d = distance, t = time<br>Unit: m/s</div><button class="copy-btn" onclick="copyFormula('v = d/t')">Copy</button></div>
+      <div class="fw-card"><div class="fw-eq">v = Δx/Δt</div><div class="fw-info"><strong>Velocity</strong><br>v = velocity, Δx = displacement, Δt = time<br>Unit: m/s</div><button class="copy-btn" onclick="copyFormula('v = Δx/Δt')">Copy</button></div>
+      <div class="fw-card"><div class="fw-eq">a = (v−u)/t</div><div class="fw-info"><strong>Acceleration</strong><br>a = accel, v = final vel, u = initial vel, t = time<br>Unit: m/s²</div><button class="copy-btn" onclick="copyFormula('a = (v-u)/t')">Copy</button></div>
+      <div class="fw-card"><div class="fw-eq">v = u + at</div><div class="fw-info"><strong>Equation 1</strong><br>v = final vel, u = initial vel, a = accel, t = time<br>Unit: m/s</div><button class="copy-btn" onclick="copyFormula('v = u + at')">Copy</button></div>
+      <div class="fw-card"><div class="fw-eq">s = ut + ½at²</div><div class="fw-info"><strong>Equation 2</strong><br>s = displacement, u = initial vel, a = accel, t = time<br>Unit: m</div><button class="copy-btn" onclick="copyFormula('s = ut + 1/2 at^2')">Copy</button></div>
+      <div class="fw-card"><div class="fw-eq">v² = u² + 2as</div><div class="fw-info"><strong>Equation 3</strong><br>v = final vel, u = initial vel, a = accel, s = displacement<br>Unit: (m/s)²</div><button class="copy-btn" onclick="copyFormula('v^2 = u^2 + 2as')">Copy</button></div>
+      <div class="fw-card"><div class="fw-eq">F = ma</div><div class="fw-info"><strong>Newton's 2nd Law</strong><br>F = force, m = mass, a = acceleration<br>Unit: N (kg·m/s²)</div><button class="copy-btn" onclick="copyFormula('F = ma')">Copy</button></div>
+      <div class="fw-card"><div class="fw-eq">W = mg</div><div class="fw-info"><strong>Weight</strong><br>W = weight, m = mass, g = grav. accel<br>Unit: N</div><button class="copy-btn" onclick="copyFormula('W = mg')">Copy</button></div>
+      <div class="fw-card"><div class="fw-eq">p = mv</div><div class="fw-info"><strong>Momentum</strong><br>p = momentum, m = mass, v = velocity<br>Unit: kg·m/s</div><button class="copy-btn" onclick="copyFormula('p = mv')">Copy</button></div>
+      <div class="fw-card"><div class="fw-eq">Fc = mv²/r</div><div class="fw-info"><strong>Centripetal Force</strong><br>Fc = centripetal force, m = mass, v = speed, r = radius<br>Unit: N</div><button class="copy-btn" onclick="copyFormula('Fc = mv^2/r')">Copy</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MDCAT CONCEPT TRAPS ============ -->
+<section class="topic-section traps-section" id="traps">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">⚠</span>
+      <h2 class="sec-title">MDCAT Concept Traps</h2>
+    </div>
+    <div class="traps-grid">
+      <div class="trap-item"><span class="trap-icon">⚠</span> Distance is <strong>scalar</strong>, displacement is <strong>vector</strong>.</div>
+      <div class="trap-item"><span class="trap-icon">⚠</span> Speed is <strong>scalar</strong>, velocity is <strong>vector</strong>.</div>
+      <div class="trap-item"><span class="trap-icon">⚠</span> Zero acceleration does <strong>NOT</strong> necessarily mean zero velocity.</div>
+      <div class="trap-item"><span class="trap-icon">⚠</span> Action and reaction act on <strong>different objects</strong>.</div>
+      <div class="trap-item"><span class="trap-icon">⚠</span> Greater mass means <strong>greater inertia</strong>.</div>
+      <div class="trap-item"><span class="trap-icon">⚠</span> <strong>Weight</strong> and <strong>mass</strong> are not the same.</div>
+      <div class="trap-item"><span class="trap-icon">⚠</span> Constant speed in circular motion can still mean <strong>acceleration</strong>.</div>
+      <div class="trap-item"><span class="trap-icon">⚠</span> Friction opposes <strong>relative motion</strong> or tendency of relative motion.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMERICALS ============ -->
+<section class="topic-section" id="numericals">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">🔢</span>
+      <h2 class="sec-title">MDCAT-Style Numericals</h2>
+    </div>
+    <p class="sec-intro">Click "Show Solution" to reveal each worked solution.</p>
+    <div class="numericals-grid" id="numericalsGrid"></div>
+  </div>
+</section>
+
+<!-- ============ MCQs ============ -->
+<section class="topic-section alt-bg" id="mcqs">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">✓</span>
+      <h2 class="sec-title">Practice MCQs</h2>
+    </div>
+    <p class="sec-intro">25 MDCAT-style questions. Answer all, then see your score. Your best score is saved locally.</p>
+    <div class="mcq-controls">
+      <button class="btn btn-primary" onclick="submitMCQs()">Submit &amp; See Score</button>
+      <button class="btn btn-ghost" onclick="resetMCQs()">Reset All</button>
+      <div class="mcq-score-display" id="mcqScoreDisplay" style="display:none;">
+        <span class="score-label">Best Score:</span><span class="score-value" id="bestScore">—</span>
+      </div>
+    </div>
+    <div class="mcq-list" id="mcqList"></div>
+    <div class="mcq-result" id="mcqResult" style="display:none;">
+      <h3>Your Result</h3>
+      <div class="result-stats">
+        <div class="stat"><span class="stat-num" id="statScore">0</span><span class="stat-label">Score</span></div>
+        <div class="stat"><span class="stat-num" id="statPct">0%</span><span class="stat-label">Percentage</span></div>
+        <div class="stat"><span class="stat-num" id="statCorrect">0</span><span class="stat-label">Correct</span></div>
+        <div class="stat"><span class="stat-num" id="statIncorrect">0</span><span class="stat-label">Incorrect</span></div>
+      </div>
+      <p class="result-msg" id="resultMsg"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVISION ============ -->
+<section class="topic-section" id="revision">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-number">⚡</span>
+      <h2 class="sec-title">2-Minute Revision</h2>
+    </div>
+    <div class="revision-grid">
+      <div class="revision-card">
+        <h3>⚡ Quick Revision Bullets</h3>
+        <ul class="revision-list">
+          <li>Motion = change in position relative to a reference point over time.</li>
+          <li>Distance = total path (scalar, always positive). Displacement = straight-line start to end (vector, can be zero/negative).</li>
+          <li>Speed = distance/time (scalar). Velocity = displacement/time (vector).</li>
+          <li>Acceleration = rate of change of velocity. a = (v−u)/t. Unit: m/s².</li>
+          <li>Equations of motion: v = u+at, s = ut+½at², v² = u²+2as, s = ½(u+v)t.</li>
+          <li>1st Law: Object stays at rest or constant velocity unless net force acts (inertia).</li>
+          <li>2nd Law: F = ma. More force → more accel. More mass → less accel.</li>
+          <li>3rd Law: Action-reaction equal, opposite, on different objects.</li>
+          <li>Weight W = mg. Mass constant, weight changes with g.</li>
+          <li>Friction opposes relative motion. Static (no sliding) vs kinetic (sliding).</li>
+          <li>Momentum p = mv. Conserved in isolated systems.</li>
+          <li>Centripetal force Fc = mv²/r. Direction changes → acceleration even at constant speed.</li>
+        </ul>
+      </div>
+      <div class="revision-card">
+        <h3>🔥 10 Things You Must Remember</h3>
+        <ol class="revision-list">
+          <li>Distance is scalar; displacement is vector. Distance ≥ |displacement|.</li>
+          <li>Speed is scalar; velocity is vector. Same speed, different velocity = different directions.</li>
+          <li>Zero acceleration means constant velocity, NOT zero velocity.</li>
+          <li>Newton's 1st Law is the law of inertia. Mass measures inertia.</li>
+          <li>F = ma. Force causes acceleration, not velocity.</li>
+          <li>Action and reaction never cancel — they act on different objects.</li>
+          <li>Mass ≠ weight. Mass is constant; weight = mg changes with gravity.</li>
+          <li>Momentum p = mv is conserved in isolated systems (no external force).</li>
+          <li>Circular motion at constant speed still has acceleration (direction changes).</li>
+          <li>Friction opposes relative motion — useful for walking/braking, harmful for machinery wear.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <p>Force &amp; Motion — Interactive MDCAT Physics Chapter</p>
+    <p class="footer-sub">Built for the READ → SEE → INTERACT → SOLVE → TEST learning flow.</p>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="force-motion.js"></script>
+</body>
+</html>

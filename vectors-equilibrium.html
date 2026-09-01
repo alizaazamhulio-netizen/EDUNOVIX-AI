@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vectors & Equilibrium — MDCAT Physics | EduNexa AI</title>
+  <meta name="description" content="Master vectors, components, resultant forces, torque and equilibrium for MDCAT Physics with interactive notes, MCQs, flashcards and calculators." />
+  <link rel="stylesheet" href="vectors-equilibrium.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-bar" id="progressBar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#" class="brand">
+        <span class="brand-mark"><i class="fa-solid fa-atom"></i></span>
+        <span class="brand-text">EduNexa <span class="brand-accent">AI</span></span>
+      </a>
+      <div class="header-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search this chapter…" autocomplete="off" />
+        <button class="search-clear" id="searchClear" aria-label="Clear search"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="header-actions">
+        <a href="#" class="header-link" onclick="return false;"><i class="fa-solid fa-book-open"></i><span>Physics</span></a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-head">
+          <span class="sidebar-title">Chapter Contents</span>
+          <button class="sidebar-close" id="sidebarClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <nav class="chapter-nav">
+          <a href="#sec-scalars-vectors" class="nav-item" data-num="1"><span class="nav-num">1</span><span class="nav-label">Scalars & Vectors</span></a>
+          <a href="#sec-representation" class="nav-item" data-num="2"><span class="nav-num">2</span><span class="nav-label">Representation of Vectors</span></a>
+          <a href="#sec-types" class="nav-item" data-num="3"><span class="nav-num">3</span><span class="nav-label">Types of Vectors</span></a>
+          <a href="#sec-addition" class="nav-item" data-num="4"><span class="nav-num">4</span><span class="nav-label">Addition of Vectors</span></a>
+          <a href="#sec-resultant" class="nav-item" data-num="5"><span class="nav-num">5</span><span class="nav-label">Resultant of Two Vectors</span></a>
+          <a href="#sec-resolution" class="nav-item" data-num="6"><span class="nav-num">6</span><span class="nav-label">Resolution of Vectors</span></a>
+          <a href="#sec-equilibrium" class="nav-item" data-num="7"><span class="nav-num">7</span><span class="nav-label">Equilibrium</span></a>
+          <a href="#sec-torque" class="nav-item" data-num="8"><span class="nav-num">8</span><span class="nav-label">Torque / Moment of Force</span></a>
+          <a href="#sec-moments" class="nav-item" data-num="9"><span class="nav-num">9</span><span class="nav-label">Principle of Moments</span></a>
+          <a href="#sec-couple" class="nav-item" data-num="10"><span class="nav-num">10</span><span class="nav-label">Couple</span></a>
+          <a href="#sec-cog" class="nav-item" data-num="11"><span class="nav-num">11</span><span class="nav-label">Centre of Gravity</span></a>
+          <a href="#sec-conditions" class="nav-item" data-num="12"><span class="nav-num">12</span><span class="nav-label">Conditions of Equilibrium</span></a>
+          <a href="#sec-formulas" class="nav-item" data-num="13"><span class="nav-num">13</span><span class="nav-label">Formula Sheet</span></a>
+          <a href="#sec-practice" class="nav-item" data-num="14"><span class="nav-num">14</span><span class="nav-label">MDCAT Practice MCQs</span></a>
+          <a href="#sec-tips" class="nav-item"><span class="nav-num"><i class="fa-solid fa-fire"></i></span><span class="nav-label">MDCAT Quick Tips</span></a>
+          <a href="#sec-mistakes" class="nav-item"><span class="nav-num"><i class="fa-solid fa-triangle-exclamation"></i></span><span class="nav-label">Common Mistakes</span></a>
+          <a href="#sec-interactive" class="nav-item"><span class="nav-num"><i class="fa-solid fa-wand-magic-sparkles"></i></span><span class="nav-label">Interactive Demo</span></a>
+          <a href="#sec-calculator" class="nav-item"><span class="nav-num"><i class="fa-solid fa-calculator"></i></span><span class="nav-label">Vector Calculator</span></a>
+          <a href="#sec-flashcards" class="nav-item"><span class="nav-num"><i class="fa-solid fa-layer-group"></i></span><span class="nav-label">Flashcards</span></a>
+          <a href="#sec-revision" class="nav-item"><span class="nav-num"><i class="fa-solid fa-bolt"></i></span><span class="nav-label">60-Second Revision</span></a>
+        </nav>
+        <div class="sidebar-footer">
+          <button class="btn-complete" id="markCompleteBtn">
+            <i class="fa-solid fa-circle-check"></i>
+            <span id="completeLabel">Mark Chapter Complete</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Backdrop for mobile sidebar -->
+    <div class="backdrop" id="backdrop"></div>
+
+    <!-- Main Content -->
+    <main class="main">
+
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <div class="hero-bg">
+          <div class="hero-blob blob-a"></div>
+          <div class="hero-blob blob-b"></div>
+          <div class="hero-blob blob-c"></div>
+        </div>
+        <div class="hero-content">
+          <div class="hero-left">
+            <div class="hero-badge"><i class="fa-solid fa-atom"></i> MDCAT Physics</div>
+            <h1 class="hero-title">Vectors &amp; Equilibrium</h1>
+            <p class="hero-sub">Master vectors, components, resultant forces, torque and equilibrium for MDCAT.</p>
+            <div class="hero-meta">
+              <div class="meta-pill"><i class="fa-solid fa-signal"></i> Moderate</div>
+              <div class="meta-pill"><i class="fa-solid fa-list-ol"></i> 12 Topics</div>
+              <div class="meta-pill"><i class="fa-solid fa-clock"></i> ~45 min</div>
+              <div class="meta-pill"><i class="fa-solid fa-chart-line"></i> <span id="heroProgress">0</span>% done</div>
+            </div>
+            <div class="hero-actions">
+              <a href="#sec-scalars-vectors" class="btn-primary" id="startBtn"><i class="fa-solid fa-play"></i> Start Learning</a>
+              <a href="#sec-practice" class="btn-ghost"><i class="fa-solid fa-pen-to-square"></i> Jump to MCQs</a>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="vector-art">
+              <svg viewBox="0 0 320 260" class="vector-svg" aria-hidden="true">
+                <defs>
+                  <marker id="arrA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="#10b981" />
+                  </marker>
+                  <marker id="arrB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="#0ea5e9" />
+                  </marker>
+                  <marker id="arrR" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1" />
+                  </marker>
+                </defs>
+                <line x1="60" y1="200" x2="220" y2="200" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4" />
+                <line x1="60" y1="200" x2="60" y2="60" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4" />
+                <line x1="60" y1="200" x2="180" y2="110" stroke="#10b981" stroke-width="4" marker-end="url(#arrA)" />
+                <line x1="180" y1="110" x2="260" y2="70" stroke="#0ea5e9" stroke-width="4" marker-end="url(#arrB)" />
+                <line x1="60" y1="200" x2="260" y2="70" stroke="#6366f1" stroke-width="4" marker-end="url(#arrR)" />
+                <text x="110" y="165" fill="#10b981" font-size="16" font-weight="700" font-family="JetBrains Mono">A</text>
+                <text x="215" y="100" fill="#0ea5e9" font-size="16" font-weight="700" font-family="JetBrains Mono">B</text>
+                <text x="150" y="130" fill="#6366f1" font-size="16" font-weight="700" font-family="JetBrains Mono">R</text>
+                <text x="35" y="205" fill="#94a3b8" font-size="12" font-family="JetBrains Mono">x</text>
+                <text x="45" y="65" fill="#94a3b8" font-size="12" font-family="JetBrains Mono">y</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1 -->
+      <section class="content-section" id="sec-scalars-vectors" data-search>
+        <div class="section-head">
+          <span class="section-tag">01</span>
+          <h2 class="section-title">Scalars and Vectors</h2>
+        </div>
+        <div class="content-grid two-col">
+          <div class="card glass">
+            <div class="card-icon green"><i class="fa-solid fa-ruler"></i></div>
+            <h3>Scalar Quantity</h3>
+            <p>A <strong>scalar quantity</strong> is a physical quantity that has <strong>magnitude only</strong> — it has no direction associated with it. Scalars are fully described by a single number and a unit.</p>
+            <div class="chip-row">
+              <span class="chip">Mass</span><span class="chip">Time</span><span class="chip">Temperature</span>
+              <span class="chip">Distance</span><span class="chip">Speed</span><span class="chip">Energy</span>
+            </div>
+          </div>
+          <div class="card glass">
+            <div class="card-icon blue"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            <h3>Vector Quantity</h3>
+            <p>A <strong>vector quantity</strong> is a physical quantity that has <strong>both magnitude and direction</strong>. A direction must always be specified for a vector to be fully described.</p>
+            <div class="chip-row">
+              <span class="chip chip-blue">Displacement</span><span class="chip chip-blue">Velocity</span>
+              <span class="chip chip-blue">Acceleration</span><span class="chip chip-blue">Force</span>
+              <span class="chip chip-blue">Momentum</span>
+            </div>
+          </div>
+        </div>
+        <div class="compare-card">
+          <h4><i class="fa-solid fa-scale-balanced"></i> Scalar vs Vector — Key Differences</h4>
+          <div class="compare-table-wrap">
+            <table class="compare-table">
+              <thead>
+                <tr><th>Property</th><th>Scalar</th><th>Vector</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Magnitude</td><td>Yes</td><td>Yes</td></tr>
+                <tr><td>Direction</td><td>No</td><td>Yes</td></tr>
+                <tr><td>Representation</td><td>Number + unit</td><td>Arrow</td></tr>
+                <tr><td>Addition rule</td><td>Simple arithmetic</td><td>Vector addition (head-to-tail / parallelogram)</td></tr>
+                <tr><td>Example</td><td>Speed = 5 m/s</td><td>Velocity = 5 m/s east</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section class="content-section" id="sec-representation" data-search>
+        <div class="section-head">
+          <span class="section-tag">02</span>
+          <h2 class="section-title">Representation of Vectors</h2>
+        </div>
+        <div class="content-grid two-col">
+          <div class="card">
+            <h3>How a Vector is Drawn</h3>
+            <p>A vector is represented graphically by a <strong>directed arrow</strong>. The <strong>length</strong> of the arrow is proportional to the magnitude of the vector, and the <strong>arrowhead</strong> points in the direction of the vector.</p>
+            <ul class="note-list">
+              <li><strong>Initial point (tail):</strong> where the vector starts.</li>
+              <li><strong>Terminal point (head):</strong> where the arrow points.</li>
+              <li><strong>Magnitude:</strong> the length of the arrow (drawn to scale).</li>
+              <li><strong>Direction:</strong> indicated by the arrowhead.</li>
+            </ul>
+            <p>In notation, a vector is written with an arrow above the letter, such as <span class="mono">A⃗</span> or <span class="mono">→A</span>, or in bold as <strong>A</strong>.</p>
+          </div>
+          <div class="card diagram-card">
+            <h3>Unit Vector Notation</h3>
+            <p>A vector in 3D can be written using unit vectors <span class="mono">î</span>, <span class="mono">ĵ</span>, <span class="mono">k̂</span> along the x, y and z axes:</p>
+            <div class="formula-box">A⃗ = A<sub>x</sub>î + A<sub>y</sub>ĵ + A<sub>z</sub>k̂</div>
+            <svg viewBox="0 0 240 200" class="mini-svg" aria-hidden="true">
+              <defs>
+                <marker id="rArr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker>
+              </defs>
+              <line x1="40" y1="160" x2="200" y2="160" stroke="#94a3b8" stroke-width="1.5"/>
+              <line x1="40" y1="160" x2="40" y2="30" stroke="#94a3b8" stroke-width="1.5"/>
+              <line x1="40" y1="160" x2="160" y2="60" stroke="#10b981" stroke-width="3" marker-end="url(#rArr)"/>
+              <circle cx="40" cy="160" r="3" fill="#475569"/>
+              <text x="20" y="175" fill="#64748b" font-size="11" font-family="JetBrains Mono">O</text>
+              <text x="100" y="100" fill="#10b981" font-size="14" font-weight="700" font-family="JetBrains Mono">A⃗</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section class="content-section" id="sec-types" data-search>
+        <div class="section-head">
+          <span class="section-tag">03</span>
+          <h2 class="section-title">Types of Vectors</h2>
+        </div>
+        <div class="type-grid">
+          <div class="card type-card">
+            <div class="type-icon green"><i class="fa-solid fa-1"></i></div>
+            <h4>Unit Vector</h4>
+            <p>A vector whose magnitude is exactly <strong>1</strong>. It indicates direction only. Common unit vectors are <span class="mono">î</span> (x-axis), <span class="mono">ĵ</span> (y-axis) and <span class="mono">k̂</span> (z-axis).</p>
+          </div>
+          <div class="card type-card">
+            <div class="type-icon blue"><i class="fa-solid fa-equals"></i></div>
+            <h4>Equal Vectors</h4>
+            <p>Two vectors are equal if they have the <strong>same magnitude</strong> and the <strong>same direction</strong>, regardless of where they start.</p>
+          </div>
+          <div class="card type-card">
+            <div class="type-icon red"><i class="fa-solid fa-arrows-left-right"></i></div>
+            <h4>Negative / Opposite Vectors</h4>
+            <p>Same magnitude but <strong>opposite direction</strong>. If <span class="mono">A⃗</span> is a vector, then <span class="mono">−A⃗</span> is its negative.</p>
+          </div>
+          <div class="card type-card">
+            <div class="type-icon slate"><i class="fa-solid fa-circle-dot"></i></div>
+            <h4>Zero Vector</h4>
+            <p>A vector whose magnitude is <strong>zero</strong>. It has no defined direction. Written as <span class="mono">0⃗</span>.</p>
+          </div>
+          <div class="card type-card">
+            <div class="type-icon teal"><i class="fa-solid fa-grip-lines"></i></div>
+            <h4>Parallel Vectors</h4>
+            <p>Vectors acting along <strong>parallel lines</strong> in the <strong>same direction</strong>.</p>
+          </div>
+          <div class="card type-card">
+            <div class="type-icon amber"><i class="fa-solid fa-grip-lines-vertical"></i></div>
+            <h4>Anti-parallel Vectors</h4>
+            <p>Parallel vectors acting in <strong>opposite directions</strong>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section class="content-section" id="sec-addition" data-search>
+        <div class="section-head">
+          <span class="section-tag">04</span>
+          <h2 class="section-title">Addition of Vectors</h2>
+        </div>
+        <div class="content-grid two-col">
+          <div class="card">
+            <div class="card-icon green"><i class="fa-solid fa-arrows-to-circle"></i></div>
+            <h3>Head-to-Tail Method</h3>
+            <p>Place the <strong>tail</strong> of the second vector at the <strong>head</strong> of the first vector. The resultant goes from the tail of the first to the head of the last. This is also called the <strong>triangle method</strong>.</p>
+            <svg viewBox="0 0 260 160" class="mini-svg" aria-hidden="true">
+              <defs>
+                <marker id="hA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker>
+                <marker id="hB" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0ea5e9"/></marker>
+                <marker id="hR" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6366f1"/></marker>
+              </defs>
+              <line x1="30" y1="120" x2="130" y2="120" stroke="#10b981" stroke-width="3" marker-end="url(#hA)"/>
+              <line x1="130" y1="120" x2="200" y2="40" stroke="#0ea5e9" stroke-width="3" marker-end="url(#hB)"/>
+              <line x1="30" y1="120" x2="200" y2="40" stroke="#6366f1" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#hR)"/>
+              <text x="70" y="140" fill="#10b981" font-size="13" font-weight="700" font-family="JetBrains Mono">A</text>
+              <text x="165" y="90" fill="#0ea5e9" font-size="13" font-weight="700" font-family="JetBrains Mono">B</text>
+              <text x="100" y="75" fill="#6366f1" font-size="13" font-weight="700" font-family="JetBrains Mono">R</text>
+            </svg>
+          </div>
+          <div class="card">
+            <div class="card-icon blue"><i class="fa-solid fa-vector-square"></i></div>
+            <h3>Parallelogram Method</h3>
+            <p>If two vectors act from the <strong>same point</strong>, they are represented by the adjacent sides of a parallelogram. The <strong>diagonal</strong> drawn from the common point gives the resultant.</p>
+            <svg viewBox="0 0 260 160" class="mini-svg" aria-hidden="true">
+              <defs>
+                <marker id="pA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker>
+                <marker id="pB" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0ea5e9"/></marker>
+                <marker id="pR" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6366f1"/></marker>
+              </defs>
+              <polygon points="40,130 120,130 180,50 100,50" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <line x1="40" y1="130" x2="120" y2="130" stroke="#10b981" stroke-width="3" marker-end="url(#pA)"/>
+              <line x1="40" y1="130" x2="100" y2="50" stroke="#0ea5e9" stroke-width="3" marker-end="url(#pB)"/>
+              <line x1="40" y1="130" x2="180" y2="50" stroke="#6366f1" stroke-width="3" marker-end="url(#pR)"/>
+              <text x="70" y="148" fill="#10b981" font-size="13" font-weight="700" font-family="JetBrains Mono">A</text>
+              <text x="50" y="50" fill="#0ea5e9" font-size="13" font-weight="700" font-family="JetBrains Mono">B</text>
+              <text x="110" y="80" fill="#6366f1" font-size="13" font-weight="700" font-family="JetBrains Mono">R</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section class="content-section" id="sec-resultant" data-search>
+        <div class="section-head">
+          <span class="section-tag">05</span>
+          <h2 class="section-title">Resultant of Two Vectors</h2>
+        </div>
+        <div class="card">
+          <p>When two vectors <span class="mono">A</span> and <span class="mono">B</span> make an angle <span class="mono">θ</span> with each other, the magnitude of the resultant <span class="mono">R</span> is given by:</p>
+          <div class="formula-box big">R = √(A² + B² + 2AB cosθ)</div>
+          <p class="formula-vars"><strong>Where:</strong> A = magnitude of first vector, B = magnitude of second vector, θ = angle between the two vectors, R = magnitude of the resultant.</p>
+        </div>
+        <h3 class="subhead">Special Cases</h3>
+        <div class="content-grid three-col">
+          <div class="card special-case">
+            <div class="case-badge green">Same Direction (θ = 0°)</div>
+            <div class="formula-box">R = A + B</div>
+            <p>The vectors add directly since cos 0° = 1.</p>
+          </div>
+          <div class="card special-case">
+            <div class="case-badge red">Opposite Direction (θ = 180°)</div>
+            <div class="formula-box">R = |A − B|</div>
+            <p>The vectors subtract since cos 180° = −1.</p>
+          </div>
+          <div class="card special-case">
+            <div class="case-badge blue">Perpendicular (θ = 90°)</div>
+            <div class="formula-box">R = √(A² + B²)</div>
+            <p>cos 90° = 0, so the cross term vanishes.</p>
+          </div>
+        </div>
+        <div class="worked-example">
+          <h4><i class="fa-solid fa-pen-ruler"></i> Worked Example</h4>
+          <p><strong>Question:</strong> Two vectors A = 3 N and B = 4 N act at an angle of 60° to each other. Find the magnitude of the resultant.</p>
+          <div class="solution-steps">
+            <p><strong>Step 1:</strong> R = √(A² + B² + 2AB cosθ)</p>
+            <p><strong>Step 2:</strong> R = √(3² + 4² + 2 × 3 × 4 × cos 60°)</p>
+            <p><strong>Step 3:</strong> cos 60° = 0.5, so R = √(9 + 16 + 24 × 0.5) = √(9 + 16 + 12)</p>
+            <p><strong>Step 4:</strong> R = √37 ≈ <strong>6.08 N</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section class="content-section" id="sec-resolution" data-search>
+        <div class="section-head">
+          <span class="section-tag">06</span>
+          <h2 class="section-title">Resolution of Vectors</h2>
+        </div>
+        <div class="content-grid two-col">
+          <div class="card">
+            <h3>Components of a Vector</h3>
+            <p>A single vector can be split into two <strong>perpendicular components</strong> — one along the x-axis and one along the y-axis. If vector <span class="mono">A</span> makes an angle <span class="mono">θ</span> with the x-axis:</p>
+            <div class="formula-box">A<sub>x</sub> = A cosθ</div>
+            <div class="formula-box">A<sub>y</sub> = A sinθ</div>
+            <p>The original vector can be recovered from its components:</p>
+            <div class="formula-box big">A = √(A<sub>x</sub>² + A<sub>y</sub>²)</div>
+            <p class="note-emphasis">This is extremely important for MDCAT numerical questions.</p>
+          </div>
+          <div class="card diagram-card">
+            <h3>Component Diagram</h3>
+            <svg viewBox="0 0 260 220" class="mini-svg" aria-hidden="true">
+              <defs>
+                <marker id="cA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker>
+                <marker id="cAx" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0ea5e9"/></marker>
+                <marker id="cAy" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b"/></marker>
+              </defs>
+              <line x1="30" y1="180" x2="230" y2="180" stroke="#94a3b8" stroke-width="1.5"/>
+              <line x1="30" y1="180" x2="30" y2="20" stroke="#94a3b8" stroke-width="1.5"/>
+              <line x1="30" y1="180" x2="180" y2="50" stroke="#10b981" stroke-width="3" marker-end="url(#cA)"/>
+              <line x1="30" y1="180" x2="180" y2="180" stroke="#0ea5e9" stroke-width="3" stroke-dasharray="5 3" marker-end="url(#cAx)"/>
+              <line x1="180" y1="180" x2="180" y2="50" stroke="#f59e0b" stroke-width="3" stroke-dasharray="5 3" marker-end="url(#cAy)"/>
+              <path d="M 55 180 A 25 25 0 0 0 48 156" fill="none" stroke="#6366f1" stroke-width="1.5"/>
+              <text x="58" y="170" fill="#6366f1" font-size="13" font-weight="700" font-family="JetBrains Mono">θ</text>
+              <text x="100" y="200" fill="#0ea5e9" font-size="13" font-weight="700" font-family="JetBrains Mono">Aₓ</text>
+              <text x="186" y="120" fill="#f59e0b" font-size="13" font-weight="700" font-family="JetBrains Mono">Aᵧ</text>
+              <text x="95" y="110" fill="#10b981" font-size="14" font-weight="700" font-family="JetBrains Mono">A</text>
+            </svg>
+          </div>
+        </div>
+        <div class="worked-example">
+          <h4><i class="fa-solid fa-pen-ruler"></i> Solved Example</h4>
+          <p><strong>Question:</strong> A force of 10 N acts at an angle of 30° to the horizontal. Find its horizontal and vertical components.</p>
+          <div class="solution-steps">
+            <p><strong>Step 1:</strong> A<sub>x</sub> = A cosθ = 10 × cos 30° = 10 × 0.866 = <strong>8.66 N</strong></p>
+            <p><strong>Step 2:</strong> A<sub>y</sub> = A sinθ = 10 × sin 30° = 10 × 0.5 = <strong>5.0 N</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7 -->
+      <section class="content-section" id="sec-equilibrium" data-search>
+        <div class="section-head">
+          <span class="section-tag">07</span>
+          <h2 class="section-title">Equilibrium</h2>
+        </div>
+        <div class="card">
+          <p>An object is in <strong>equilibrium</strong> when the <strong>net force</strong> acting on it is <strong>zero</strong>.</p>
+          <div class="formula-box big">ΣF = 0</div>
+          <p>For complete equilibrium in two dimensions, the forces must balance along each axis:</p>
+          <div class="formula-row">
+            <div class="formula-box">ΣF<sub>x</sub> = 0</div>
+            <div class="formula-box">ΣF<sub>y</sub> = 0</div>
+          </div>
+        </div>
+        <div class="content-grid two-col">
+          <div class="card">
+            <div class="card-icon slate"><i class="fa-solid fa-pause"></i></div>
+            <h3>Static Equilibrium</h3>
+            <p>The object remains <strong>at rest</strong>. All forces and torques balance, and there is no motion at all.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon teal"><i class="fa-solid fa-arrows-spin"></i></div>
+            <h3>Dynamic Equilibrium</h3>
+            <p>The object moves with <strong>constant velocity</strong> — no acceleration. Forces still balance, but the object is in motion.</p>
+          </div>
+        </div>
+        <div class="card diagram-card">
+          <h3>Equilibrium Diagram — Three Forces Balancing</h3>
+          <svg viewBox="0 0 260 200" class="mini-svg" aria-hidden="true">
+            <defs>
+              <marker id="e1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker>
+              <marker id="e2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0ea5e9"/></marker>
+              <marker id="e3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b"/></marker>
+            </defs>
+            <circle cx="130" cy="100" r="8" fill="#475569"/>
+            <line x1="130" y1="100" x2="190" y2="100" stroke="#10b981" stroke-width="3" marker-end="url(#e1)"/>
+            <line x1="130" y1="100" x2="80" y2="150" stroke="#0ea5e9" stroke-width="3" marker-end="url(#e2)"/>
+            <line x1="130" y1="100" x2="80" y2="50" stroke="#f59e0b" stroke-width="3" marker-end="url(#e3)"/>
+            <text x="195" y="105" fill="#10b981" font-size="12" font-weight="700" font-family="JetBrains Mono">F₁</text>
+            <text x="55" y="160" fill="#0ea5e9" font-size="12" font-weight="700" font-family="JetBrains Mono">F₂</text>
+            <text x="55" y="45" fill="#f59e0b" font-size="12" font-weight="700" font-family="JetBrains Mono">F₃</text>
+            <text x="100" y="120" fill="#64748b" font-size="11" font-family="JetBrains Mono">ΣF=0</text>
+          </svg>
+        </div>
+        <p class="note-emphasis">In both static and dynamic equilibrium, acceleration a = 0 and the net force is zero.</p>
+      </section>
+
+      <!-- SECTION 8 -->
+      <section class="content-section" id="sec-torque" data-search>
+        <div class="section-head">
+          <span class="section-tag">08</span>
+          <h2 class="section-title">Torque / Moment of Force</h2>
+        </div>
+        <div class="card">
+          <p><strong>Torque</strong> is the <strong>turning effect</strong> of a force about a pivot point. It depends on the force, the distance from the pivot, and the angle at which the force is applied.</p>
+          <div class="formula-box big">τ = F r sinθ</div>
+          <p class="formula-vars"><strong>Where:</strong> τ = torque, F = force, r = distance from pivot to point of force application, θ = angle between F and r.</p>
+          <div class="formula-box">τ = F × r  (when θ = 90°)</div>
+          <p><strong>SI Unit:</strong> Newton-meter (N·m)</p>
+        </div>
+        <div class="content-grid two-col">
+          <div class="card">
+            <h3>Key Terms</h3>
+            <ul class="note-list">
+              <li><strong>Pivot:</strong> the fixed point about which rotation occurs.</li>
+              <li><strong>Force (F):</strong> the applied push or pull.</li>
+              <li><strong>Lever arm (r):</strong> the perpendicular distance from the pivot to the line of action of the force.</li>
+              <li><strong>Angle (θ):</strong> the angle between the force vector and the lever arm.</li>
+            </ul>
+          </div>
+          <div class="card diagram-card">
+            <h3>Rotating Lever Diagram</h3>
+            <svg viewBox="0 0 260 180" class="mini-svg" aria-hidden="true">
+              <defs>
+                <marker id="tF" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ef4444"/></marker>
+              </defs>
+              <polygon points="40,140 50,120 60,140" fill="#475569"/>
+              <line x1="50" y1="120" x2="200" y2="120" stroke="#64748b" stroke-width="4"/>
+              <line x1="200" y1="120" x2="200" y2="40" stroke="#ef4444" stroke-width="3" marker-end="url(#tF)"/>
+              <path d="M 200 120 A 20 20 0 0 0 190 105" fill="none" stroke="#6366f1" stroke-width="1.5"/>
+              <text x="175" y="105" fill="#6366f1" font-size="12" font-weight="700" font-family="JetBrains Mono">θ</text>
+              <text x="210" y="80" fill="#ef4444" font-size="13" font-weight="700" font-family="JetBrains Mono">F</text>
+              <text x="120" y="115" fill="#64748b" font-size="12" font-family="JetBrains Mono">r</text>
+              <text x="35" y="155" fill="#64748b" font-size="11" font-family="JetBrains Mono">pivot</text>
+            </svg>
+            <p class="diagram-note">Maximum torque occurs when θ = 90° (force perpendicular to the lever arm), because sin 90° = 1.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 9 -->
+      <section class="content-section" id="sec-moments" data-search>
+        <div class="section-head">
+          <span class="section-tag">09</span>
+          <h2 class="section-title">Principle of Moments</h2>
+        </div>
+        <div class="card">
+          <p>For a body in <strong>rotational equilibrium</strong>, the sum of clockwise moments equals the sum of anticlockwise moments about any pivot.</p>
+          <div class="formula-box big">Clockwise moments = Anticlockwise moments</div>
+          <div class="formula-box">Στ = 0</div>
+          <p>This principle is commonly used in <strong>beam, balance and lever problems</strong>.</p>
+        </div>
+        <div class="worked-example">
+          <h4><i class="fa-solid fa-pen-ruler"></i> Balanced Beam Example</h4>
+          <p>A uniform beam is balanced on a pivot. A 20 N weight hangs 2 m to the left of the pivot. What weight must hang 1 m to the right to balance it?</p>
+          <div class="solution-steps">
+            <p><strong>Step 1:</strong> Anticlockwise moment = 20 N × 2 m = 40 N·m</p>
+            <p><strong>Step 2:</strong> Clockwise moment = W × 1 m</p>
+            <p><strong>Step 3:</strong> W × 1 = 40 → W = <strong>40 N</strong></p>
+          </div>
+        </div>
+        <div class="card diagram-card">
+          <svg viewBox="0 0 300 140" class="mini-svg" aria-hidden="true">
+            <polygon points="145,100 155,100 150,115" fill="#475569"/>
+            <line x1="30" y1="100" x2="270" y2="100" stroke="#64748b" stroke-width="4"/>
+            <line x1="80" y1="100" x2="80" y2="130" stroke="#10b981" stroke-width="2"/>
+            <rect x="70" y="130" width="20" height="8" fill="#10b981"/>
+            <text x="65" y="148" fill="#10b981" font-size="11" font-family="JetBrains Mono">20 N</text>
+            <line x1="220" y1="100" x2="220" y2="130" stroke="#0ea5e9" stroke-width="2"/>
+            <rect x="210" y="130" width="20" height="8" fill="#0ea5e9"/>
+            <text x="205" y="148" fill="#0ea5e9" font-size="11" font-family="JetBrains Mono">W</text>
+            <text x="100" y="95" fill="#64748b" font-size="10" font-family="JetBrains Mono">2 m</text>
+            <text x="195" y="95" fill="#64748b" font-size="10" font-family="JetBrains Mono">1 m</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- SECTION 10 -->
+      <section class="content-section" id="sec-couple" data-search>
+        <div class="section-head">
+          <span class="section-tag">10</span>
+          <h2 class="section-title">Couple</h2>
+        </div>
+        <div class="card">
+          <p>A <strong>couple</strong> consists of <strong>two equal and opposite parallel forces</strong> acting at different points on a body. The net force is zero, but the couple produces a <strong>pure rotational effect</strong> (torque) without any translation.</p>
+          <div class="formula-box big">τ = F × d</div>
+          <p class="formula-vars"><strong>Where:</strong> F = magnitude of each force, d = perpendicular distance between the two forces.</p>
+        </div>
+        <div class="card diagram-card">
+          <h3>Couple Diagram</h3>
+          <svg viewBox="0 0 260 160" class="mini-svg" aria-hidden="true">
+            <defs>
+              <marker id="cp1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker>
+              <marker id="cp2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ef4444"/></marker>
+            </defs>
+            <rect x="80" y="50" width="100" height="60" rx="6" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+            <line x1="50" y1="80" x2="80" y2="80" stroke="#10b981" stroke-width="3" marker-end="url(#cp1)"/>
+            <line x1="210" y1="80" x2="180" y2="80" stroke="#ef4444" stroke-width="3" marker-end="url(#cp2)"/>
+            <text x="25" y="75" fill="#10b981" font-size="13" font-weight="700" font-family="JetBrains Mono">F</text>
+            <text x="215" y="75" fill="#ef4444" font-size="13" font-weight="700" font-family="JetBrains Mono">F</text>
+            <line x1="80" y1="110" x2="180" y2="110" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <text x="120" y="128" fill="#6366f1" font-size="12" font-weight="700" font-family="JetBrains Mono">d</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- SECTION 11 -->
+      <section class="content-section" id="sec-cog" data-search>
+        <div class="section-head">
+          <span class="section-tag">11</span>
+          <h2 class="section-title">Centre of Gravity</h2>
+        </div>
+        <div class="card">
+          <p>The <strong>centre of gravity</strong> (C.G.) is the point through which the entire <strong>weight</strong> of an object appears to act. It is the average position of all the weight distributed throughout the body.</p>
+          <ul class="note-list">
+            <li>For a <strong>symmetrical, uniform object</strong>, the centre of gravity is at its <strong>geometric centre</strong>.</li>
+            <li>For a <strong>uniform rod</strong>, the C.G. is at its midpoint.</li>
+            <li>For a <strong>uniform circular disc</strong>, the C.G. is at its centre.</li>
+            <li>For a <strong>triangle</strong>, the C.G. is at the intersection of the medians (1/3 from the base).</li>
+            <li>An object is <strong>stable</strong> when its centre of gravity lies directly above its base of support.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SECTION 12 -->
+      <section class="content-section" id="sec-conditions" data-search>
+        <div class="section-head">
+          <span class="section-tag">12</span>
+          <h2 class="section-title">Conditions of Equilibrium</h2>
+        </div>
+        <div class="content-grid two-col">
+          <div class="card">
+            <div class="card-icon green"><i class="fa-solid fa-arrows-left-right"></i></div>
+            <h3>Translational Equilibrium</h3>
+            <p>The net force on the body is zero, so there is no linear acceleration.</p>
+            <div class="formula-box">ΣF<sub>x</sub> = 0</div>
+            <div class="formula-box">ΣF<sub>y</sub> = 0</div>
+          </div>
+          <div class="card">
+            <div class="card-icon blue"><i class="fa-solid fa-rotate"></i></div>
+            <h3>Rotational Equilibrium</h3>
+            <p>The net torque on the body is zero, so there is no angular acceleration.</p>
+            <div class="formula-box">Στ = 0</div>
+          </div>
+        </div>
+        <div class="card highlight-card">
+          <p><strong>Complete equilibrium</strong> requires <strong>both</strong> conditions to be satisfied simultaneously:</p>
+          <div class="formula-row">
+            <div class="formula-box">Net force = 0</div>
+            <div class="formula-box">Net torque = 0</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORMULA SHEET -->
+      <section class="content-section" id="sec-formulas" data-search>
+        <div class="section-head">
+          <span class="section-tag"><i class="fa-solid fa-table-list"></i></span>
+          <h2 class="section-title">Formula Sheet</h2>
+        </div>
+        <div class="formula-grid" id="formulaGrid">
+          <div class="formula-card" data-formula="R = √(A² + B² + 2AB cosθ)">
+            <div class="formula-card-head"><span class="formula-label">Resultant of Two Vectors</span></div>
+            <div class="formula-text">R = √(A² + B² + 2AB cosθ)</div>
+            <p class="formula-desc">Magnitude of resultant when A and B meet at angle θ.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="formula-card" data-formula="Ax = A cosθ">
+            <div class="formula-card-head"><span class="formula-label">X-Component</span></div>
+            <div class="formula-text">A<sub>x</sub> = A cosθ</div>
+            <p class="formula-desc">Horizontal component of vector A at angle θ to x-axis.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="formula-card" data-formula="Ay = A sinθ">
+            <div class="formula-card-head"><span class="formula-label">Y-Component</span></div>
+            <div class="formula-text">A<sub>y</sub> = A sinθ</div>
+            <p class="formula-desc">Vertical component of vector A at angle θ to x-axis.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="formula-card" data-formula="A = √(Ax² + Ay²)">
+            <div class="formula-card-head"><span class="formula-label">Vector Magnitude</span></div>
+            <div class="formula-text">A = √(A<sub>x</sub>² + A<sub>y</sub>²)</div>
+            <p class="formula-desc">Reconstruct magnitude from perpendicular components.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="formula-card" data-formula="τ = F r sinθ">
+            <div class="formula-card-head"><span class="formula-label">Torque</span></div>
+            <div class="formula-text">τ = F r sinθ</div>
+            <p class="formula-desc">Turning effect of force F at distance r and angle θ.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="formula-card" data-formula="τ = F r">
+            <div class="formula-card-head"><span class="formula-label">Perpendicular Torque</span></div>
+            <div class="formula-text">τ = F r</div>
+            <p class="formula-desc">Maximum torque when force is perpendicular to lever arm.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="formula-card" data-formula="τ = F d">
+            <div class="formula-card-head"><span class="formula-label">Moment of Couple</span></div>
+            <div class="formula-text">τ = F d</div>
+            <p class="formula-desc">d is the perpendicular distance between the two forces.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="formula-card" data-formula="ΣF = 0">
+            <div class="formula-card-head"><span class="formula-label">Equilibrium</span></div>
+            <div class="formula-text">ΣF = 0</div>
+            <p class="formula-desc">Net force on a body in equilibrium is zero.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="formula-card" data-formula="ΣFx = 0">
+            <div class="formula-card-head"><span class="formula-label">Horizontal Equilibrium</span></div>
+            <div class="formula-text">ΣF<sub>x</sub> = 0</div>
+            <p class="formula-desc">Sum of all horizontal force components is zero.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="formula-card" data-formula="ΣFy = 0">
+            <div class="formula-card-head"><span class="formula-label">Vertical Equilibrium</span></div>
+            <div class="formula-text">ΣF<sub>y</sub> = 0</div>
+            <p class="formula-desc">Sum of all vertical force components is zero.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="formula-card" data-formula="Στ = 0">
+            <div class="formula-card-head"><span class="formula-label">Rotational Equilibrium</span></div>
+            <div class="formula-text">Στ = 0</div>
+            <p class="formula-desc">Net torque on a body in rotational equilibrium is zero.</p>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- MDCAT QUICK TIPS -->
+      <section class="content-section" id="sec-tips" data-search>
+        <div class="section-head">
+          <span class="section-tag"><i class="fa-solid fa-fire"></i></span>
+          <h2 class="section-title">MDCAT Quick Tips</h2>
+        </div>
+        <div class="tips-grid">
+          <div class="tip-card"><i class="fa-solid fa-arrow-trend-up"></i><p>Always identify the <strong>magnitude and direction</strong> of every vector before solving.</p></div>
+          <div class="tip-card"><i class="fa-solid fa-pencil"></i><p>Draw a <strong>diagram</strong> before solving any vector problem — it prevents sign errors.</p></div>
+          <div class="tip-card"><i class="fa-solid fa-square-root-variable"></i><p>Remember <strong>sin/cos</strong> when resolving vectors: cos for x, sin for y.</p></div>
+          <div class="tip-card"><i class="fa-solid fa-shapes"></i><p>For perpendicular vectors, use the <strong>Pythagorean theorem</strong>: R = √(A² + B²).</p></div>
+          <div class="tip-card"><i class="fa-solid fa-scale-balanced"></i><p>Equilibrium means <strong>net force is zero</strong> — both ΣF<sub>x</sub> and ΣF<sub>y</sub> must vanish.</p></div>
+          <div class="tip-card"><i class="fa-solid fa-rotate"></i><p>For rotational equilibrium, <strong>net torque is zero</strong> — clockwise = anticlockwise.</p></div>
+          <div class="tip-card"><i class="fa-solid fa-up-right-from-square"></i><p>Maximum torque occurs when force is <strong>perpendicular</strong> to the lever arm (θ = 90°).</p></div>
+          <div class="tip-card"><i class="fa-solid fa-ruler"></i><p>Always <strong>check units</strong> — torque is in N·m, not joules, even though the dimensions match.</p></div>
+        </div>
+      </section>
+
+      <!-- COMMON MISTAKES -->
+      <section class="content-section" id="sec-mistakes" data-search>
+        <div class="section-head">
+          <span class="section-tag"><i class="fa-solid fa-triangle-exclamation"></i></span>
+          <h2 class="section-title">Common Mistakes</h2>
+        </div>
+        <div class="mistake-list">
+          <div class="mistake-card"><span class="mistake-num">1</span><p><strong>Confusing scalar with vector.</strong> Speed is a scalar; velocity is a vector. Always check if direction matters.</p></div>
+          <div class="mistake-card"><span class="mistake-num">2</span><p><strong>Forgetting direction.</strong> Two vectors with the same magnitude but different directions are not equal.</p></div>
+          <div class="mistake-card"><span class="mistake-num">3</span><p><strong>Using sin instead of cos</strong> for the wrong component. Remember: A<sub>x</sub> = A cosθ, A<sub>y</sub> = A sinθ.</p></div>
+          <div class="mistake-card"><span class="mistake-num">4</span><p><strong>Ignoring signs of clockwise and anticlockwise torque.</strong> Assign one direction positive and the other negative consistently.</p></div>
+          <div class="mistake-card"><span class="mistake-num">5</span><p><strong>Forgetting that equilibrium requires zero resultant force</strong> AND zero net torque — not just one of them.</p></div>
+          <div class="mistake-card"><span class="mistake-num">6</span><p><strong>Mixing up distance and perpendicular distance</strong> in torque. Use the perpendicular distance (lever arm), not the full length.</p></div>
+        </div>
+      </section>
+
+      <!-- INTERACTIVE DEMO -->
+      <section class="content-section" id="sec-interactive" data-search>
+        <div class="section-head">
+          <span class="section-tag"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+          <h2 class="section-title">Interactive Vector Demonstration</h2>
+        </div>
+        <div class="interactive-wrap">
+          <div class="card control-panel">
+            <h3>Adjust the Vectors</h3>
+            <div class="control-group">
+              <label for="vecA">Vector A magnitude</label>
+              <input type="range" id="vecA" min="0" max="10" step="0.5" value="5" />
+              <span class="control-val" id="vecAVal">5.0</span>
+            </div>
+            <div class="control-group">
+              <label for="vecB">Vector B magnitude</label>
+              <input type="range" id="vecB" min="0" max="10" step="0.5" value="4" />
+              <span class="control-val" id="vecBVal">4.0</span>
+            </div>
+            <div class="control-group">
+              <label for="vecTheta">Angle θ (degrees)</label>
+              <input type="range" id="vecTheta" min="0" max="180" step="1" value="60" />
+              <span class="control-val" id="vecThetaVal">60°</span>
+            </div>
+            <div class="result-display">
+              <div class="result-item"><span class="result-label">Resultant R</span><span class="result-value" id="demoResultant">—</span></div>
+              <div class="result-item"><span class="result-label">A<sub>x</sub> component</span><span class="result-value" id="demoAx">—</span></div>
+              <div class="result-item"><span class="result-label">A<sub>y</sub> component</span><span class="result-value" id="demoAy">—</span></div>
+            </div>
+          </div>
+          <div class="card demo-visual">
+            <h3>Vector Diagram</h3>
+            <svg id="demoSvg" viewBox="0 0 300 280" class="demo-svg"></svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALCULATOR -->
+      <section class="content-section" id="sec-calculator" data-search>
+        <div class="section-head">
+          <span class="section-tag"><i class="fa-solid fa-calculator"></i></span>
+          <h2 class="section-title">Vector Calculator</h2>
+        </div>
+        <div class="card calc-card">
+          <p>Enter the magnitudes of vectors A and B and the angle between them to calculate the resultant.</p>
+          <div class="calc-form">
+            <div class="calc-input">
+              <label for="calcA">Vector A</label>
+              <input type="number" id="calcA" placeholder="e.g. 3" step="any" />
+            </div>
+            <div class="calc-input">
+              <label for="calcB">Vector B</label>
+              <input type="number" id="calcB" placeholder="e.g. 4" step="any" />
+            </div>
+            <div class="calc-input">
+              <label for="calcTheta">Angle θ (°)</label>
+              <input type="number" id="calcTheta" placeholder="e.g. 60" step="any" />
+            </div>
+          </div>
+          <button class="btn-primary" id="calcBtn"><i class="fa-solid fa-calculator"></i> Calculate Resultant</button>
+          <div class="calc-result" id="calcResult"></div>
+        </div>
+      </section>
+
+      <!-- PRACTICE MCQs -->
+      <section class="content-section" id="sec-practice" data-search>
+        <div class="section-head">
+          <span class="section-tag"><i class="fa-solid fa-pen-to-square"></i></span>
+          <h2 class="section-title">MDCAT Practice MCQs</h2>
+        </div>
+        <p class="section-intro">Test yourself with 20 MDCAT-style multiple choice questions. Select an option, then click <strong>Check Answer</strong> to see if you were right. Your score is saved automatically.</p>
+        <div class="mcq-list" id="mcqList"></div>
+        <div class="score-card" id="scoreCard">
+          <h3>Your Results</h3>
+          <div class="score-grid">
+            <div class="score-item"><span class="score-label">Total Score</span><span class="score-value" id="totalScore">0 / 20</span></div>
+            <div class="score-item"><span class="score-label">Correct</span><span class="score-value green-text" id="correctCount">0</span></div>
+            <div class="score-item"><span class="score-label">Incorrect</span><span class="score-value red-text" id="incorrectCount">0</span></div>
+            <div class="score-item"><span class="score-label">Percentage</span><span class="score-value" id="percentage">0%</span></div>
+          </div>
+          <p class="performance-msg" id="performanceMsg"></p>
+          <button class="btn-ghost" id="resetMcqBtn"><i class="fa-solid fa-rotate-right"></i> Reset Quiz</button>
+        </div>
+      </section>
+
+      <!-- FLASHCARDS -->
+      <section class="content-section" id="sec-flashcards" data-search>
+        <div class="section-head">
+          <span class="section-tag"><i class="fa-solid fa-layer-group"></i></span>
+          <h2 class="section-title">Flashcards</h2>
+        </div>
+        <p class="section-intro">Click any card to flip it and reveal the answer.</p>
+        <div class="flashcard-grid" id="flashcardGrid"></div>
+      </section>
+
+      <!-- QUICK REVISION -->
+      <section class="content-section" id="sec-revision" data-search>
+        <div class="section-head">
+          <span class="section-tag"><i class="fa-solid fa-bolt"></i></span>
+          <h2 class="section-title">60-Second Revision</h2>
+        </div>
+        <div class="card revision-card">
+          <ul class="revision-list">
+            <li><strong>Scalar:</strong> magnitude only (mass, time, speed).</li>
+            <li><strong>Vector:</strong> magnitude + direction (force, velocity).</li>
+            <li><strong>Unit vector:</strong> magnitude = 1 (î, ĵ, k̂).</li>
+            <li><strong>Resultant:</strong> R = √(A² + B² + 2AB cosθ).</li>
+            <li><strong>Same direction:</strong> R = A + B.</li>
+            <li><strong>Opposite direction:</strong> R = |A − B|.</li>
+            <li><strong>Perpendicular:</strong> R = √(A² + B²).</li>
+            <li><strong>Components:</strong> A<sub>x</sub> = A cosθ, A<sub>y</sub> = A sinθ.</li>
+            <li><strong>Magnitude from components:</strong> A = √(A<sub>x</sub>² + A<sub>y</sub>²).</li>
+            <li><strong>Equilibrium:</strong> ΣF = 0 (net force zero).</li>
+            <li><strong>Static:</strong> at rest. <strong>Dynamic:</strong> constant velocity.</li>
+            <li><strong>Torque:</strong> τ = F r sinθ. Unit: N·m.</li>
+            <li><strong>Max torque:</strong> θ = 90°, τ = F r.</li>
+            <li><strong>Principle of moments:</strong> clockwise = anticlockwise.</li>
+            <li><strong>Couple:</strong> two equal, opposite, parallel forces; τ = F d.</li>
+            <li><strong>Centre of gravity:</strong> point where weight acts; at geometric centre for uniform objects.</li>
+            <li><strong>Complete equilibrium:</strong> ΣF = 0 AND Στ = 0.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Chapter Navigation -->
+      <section class="chapter-nav-section">
+        <div class="chapter-nav-grid">
+          <a href="#" class="nav-card prev" onclick="return false;">
+            <span class="nav-card-label"><i class="fa-solid fa-arrow-left"></i> Previous Chapter</span>
+            <span class="nav-card-title">Motion & Force</span>
+          </a>
+          <a href="#" class="nav-card center" onclick="return false;">
+            <span class="nav-card-label"><i class="fa-solid fa-book"></i> Back to Physics</span>
+            <span class="nav-card-title">All Chapters</span>
+          </a>
+          <a href="#" class="nav-card next" onclick="return false;">
+            <span class="nav-card-label">Next Chapter <i class="fa-solid fa-arrow-right"></i></span>
+            <span class="nav-card-title">Work, Energy & Power</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark"><i class="fa-solid fa-atom"></i></span>
+        <div>
+          <p class="footer-title">EduNexa AI — MDCAT Preparation</p>
+          <p class="footer-sub">Physics • Vectors &amp; Equilibrium</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#" onclick="return false;"><i class="fa-solid fa-house"></i> Back to Home</a>
+        <a href="#" onclick="return false;"><i class="fa-solid fa-book-open"></i> Back to Physics</a>
+        <a href="#" id="footerScrollTop"><i class="fa-solid fa-arrow-up"></i> Scroll to Top</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 EduNexa AI. Built for MDCAT aspirants.</p>
+  </footer>
+
+  <script src="vectors-equilibrium.js"></script>
+</body>
+</html>

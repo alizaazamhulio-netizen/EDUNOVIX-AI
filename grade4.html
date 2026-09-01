@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduNexa AI | Grade 4 Digital Classroom</title>
+  <!-- Google Fonts: Poppins, Outfit, Plus Jakarta Sans, and Noto Nastaliq Urdu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="grade4.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+  <!-- Canvas for Confetti celebrations -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Sticky Top Navigation -->
+  <header class="top-nav" id="main-header">
+    <div class="nav-container">
+      <div class="nav-brand" id="brand-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+            <path d="M6 6h10"></path>
+            <path d="M6 10h10"></path>
+            <path d="m14 16 2 2 4-4"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">EduNexa <span class="brand-ai">AI</span></span>
+          <span class="brand-badge">GRADE 4</span>
+        </div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper" id="search-wrapper">
+        <div class="search-input-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="global-search" placeholder="Search 200+ Grade 4 lessons, stories, games, science..." autocomplete="off">
+          <button id="clear-search" class="clear-search-btn" title="Clear search" style="display:none;">&times;</button>
+        </div>
+        <div class="search-results-dropdown" id="search-results-dropdown"></div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#subjects-section" class="nav-link" id="nav-subjects">Subjects</a>
+        <a href="#stories-section" class="nav-link" id="nav-stories">Reading Corner</a>
+        <a href="#games-section" class="nav-link" id="nav-games">10 Games</a>
+        <a href="#practice-section" class="nav-link" id="nav-practice">Practice Center</a>
+        <a href="#quiz-section" class="nav-link nav-highlight" id="nav-quiz">50Q Master Quiz</a>
+        <a href="#resources-section" class="nav-link" id="nav-resources">Books</a>
+      </nav>
+
+      <!-- User Quick Stats & Actions -->
+      <div class="nav-actions">
+        <!-- Streak Chip -->
+        <div class="stat-chip streak-chip" id="streak-chip" title="Daily Learning Streak">
+          <span class="chip-icon">🔥</span>
+          <span class="chip-val" id="nav-streak-val">0</span>
+          <span class="chip-label">d</span>
+        </div>
+
+        <!-- Stars Chip -->
+        <div class="stat-chip stars-chip" id="stars-chip" title="Total Stars Earned">
+          <span class="chip-icon">⭐</span>
+          <span class="chip-val" id="nav-stars-val">0</span>
+        </div>
+
+        <!-- Level Chip -->
+        <div class="stat-chip level-chip" id="level-chip" title="Explorer Level">
+          <span class="level-indicator" id="nav-level-name">Lvl 1</span>
+        </div>
+
+        <!-- Audio toggle -->
+        <button class="icon-btn" id="audio-toggle-btn" title="Sound Effects & Speech" aria-label="Toggle Sound">
+          <svg id="sound-icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+        </button>
+
+        <!-- Parent Portal Button -->
+        <button class="parent-portal-btn" id="open-parent-modal-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span>Parents</span>
+        </button>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="hamburger-btn" id="hamburger-toggle" aria-label="Open Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <div class="mobile-links">
+        <a href="#dashboard-section" class="mobile-nav-link">📊 Student Dashboard</a>
+        <a href="#daily-plan-section" class="mobile-nav-link">📅 Today's Study Plan</a>
+        <a href="#subjects-section" class="mobile-nav-link">📚 Grade 4 Subjects</a>
+        <a href="#stories-section" class="mobile-nav-link">📖 Reading Corner</a>
+        <a href="#games-section" class="mobile-nav-link">🎮 10 Educational Games</a>
+        <a href="#practice-section" class="mobile-nav-link">🧠 Practice Center</a>
+        <a href="#quiz-section" class="mobile-nav-link">🏆 50Q Master Quiz</a>
+        <a href="#achievements-section" class="mobile-nav-link">⭐ Badges & Achievements</a>
+        <a href="#resources-section" class="mobile-nav-link">📖 Books & Resources</a>
+        <button class="mobile-parent-btn" id="mobile-parent-btn">👨‍👩‍👧 Open Parent Learning Report</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section" id="hero-section">
+      <div class="hero-backdrop-glow"></div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span class="hero-pill-sparkle">✨</span>
+            <span>Grade 4 Smart Learner Platform • Oxford & Sindh Aligned</span>
+          </div>
+          <h1 class="hero-title">
+            Welcome to <span class="gradient-text">Grade 4!</span> 🚀
+          </h1>
+          <p class="hero-subtitle">
+            Think Bigger. Learn Smarter. Explore More.
+          </p>
+          <p class="hero-description">
+            Build stronger language, mathematics, science and problem-solving skills through interactive lessons, practice, stories and challenges designed for young explorers.
+          </p>
+          <div class="hero-actions">
+            <a href="#subjects-section" class="btn btn-primary" id="hero-start-btn">
+              <span>Start Learning</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#daily-plan-section" class="btn btn-secondary" id="hero-today-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Explore Today's Lessons</span>
+            </a>
+            <a href="#quiz-section" class="btn btn-tertiary" id="hero-challenge-btn">
+              <span>Take a Challenge</span>
+              <span class="btn-badge">50Q</span>
+            </a>
+          </div>
+
+          <!-- Quick trust tags -->
+          <div class="hero-tags">
+            <span class="hero-tag"><span class="tag-dot"></span> 7 Core Subjects</span>
+            <span class="hero-tag"><span class="tag-dot"></span> 10 Playable Games</span>
+            <span class="hero-tag"><span class="tag-dot"></span> 50-Question Master Quiz</span>
+            <span class="hero-tag"><span class="tag-dot"></span> 100% Original Curriculum</span>
+          </div>
+        </div>
+
+        <!-- Hero Animated Educational Visual -->
+        <div class="hero-visual" id="hero-visual">
+          <div class="visual-card">
+            <!-- Floating Elements -->
+            <div class="floating-badge badge-math" style="top: 8%; left: -6%;">
+              <span class="badge-icon">📐</span>
+              <span class="badge-label">Maths • 100k Numbers</span>
+            </div>
+            <div class="floating-badge badge-science" style="top: 14%; right: -4%;">
+              <span class="badge-icon">🔬</span>
+              <span class="badge-label">Science • Photosynthesis</span>
+            </div>
+            <div class="floating-badge badge-english" style="bottom: 22%; left: -8%;">
+              <span class="badge-icon">📚</span>
+              <span class="badge-label">English • Grammar Pro</span>
+            </div>
+            <div class="floating-badge badge-computer" style="bottom: 12%; right: -2%;">
+              <span class="badge-icon">💻</span>
+              <span class="badge-label">Digital Lab • Safe Web</span>
+            </div>
+
+            <!-- Central Hero Illustration -->
+            <div class="hero-svg-container">
+              <svg viewBox="0 0 500 420" class="hero-scene-svg" aria-label="Smart Grade 4 Student exploring science, math, books, and space">
+                <defs>
+                  <linearGradient id="grad-sky" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#818cf8" stop-opacity="0.1"/>
+                  </linearGradient>
+                  <linearGradient id="grad-book" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#2563eb"/>
+                    <stop offset="100%" stop-color="#3b82f6"/>
+                  </linearGradient>
+                  <linearGradient id="grad-globe" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#06b6d4"/>
+                    <stop offset="100%" stop-color="#0284c7"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Soft Glow Backdrop Circle -->
+                <circle cx="250" cy="210" r="180" fill="url(#grad-sky)" />
+
+                <!-- Orbit Ring -->
+                <ellipse cx="250" cy="210" rx="200" ry="110" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.6"/>
+
+                <!-- Student Explorer Character -->
+                <g id="hero-student" transform="translate(190, 90)">
+                  <!-- Body & Jacket -->
+                  <path d="M 60 140 C 20 140 15 200 15 250 L 105 250 C 105 200 100 140 60 140 Z" fill="#1e40af"/>
+                  <path d="M 45 140 L 60 210 L 75 140 Z" fill="#f8fafc"/>
+                  <polygon points="60,155 55,200 60,208 65,200" fill="#dc2626"/>
+                  
+                  <!-- Neck & Head -->
+                  <rect x="52" y="120" width="16" height="25" rx="5" fill="#fbcfe8"/>
+                  <circle cx="60" cy="90" r="38" fill="#fbcfe8"/>
+                  
+                  <!-- Hair -->
+                  <path d="M 22 85 C 22 45 98 45 98 85 C 85 65 75 65 60 65 C 45 65 35 70 22 85 Z" fill="#1e293b"/>
+                  
+                  <!-- Smart Glasses -->
+                  <circle cx="48" cy="90" r="11" fill="none" stroke="#0284c7" stroke-width="3"/>
+                  <circle cx="72" cy="90" r="11" fill="none" stroke="#0284c7" stroke-width="3"/>
+                  <line x1="59" y1="90" x2="61" y2="90" stroke="#0284c7" stroke-width="3"/>
+                  
+                  <!-- Eyes & Smile -->
+                  <circle cx="48" cy="90" r="3" fill="#0f172a"/>
+                  <circle cx="72" cy="90" r="3" fill="#0f172a"/>
+                  <path d="M 52 108 Q 60 118 68 108" fill="none" stroke="#be123c" stroke-width="2.5" stroke-linecap="round"/>
+                </g>
+
+                <!-- Large Book Podium -->
+                <g id="hero-podium" transform="translate(100, 270)">
+                  <path d="M 50 40 Q 150 10 250 40 L 250 80 Q 150 50 50 80 Z" fill="url(#grad-book)"/>
+                  <path d="M 250 40 Q 350 10 450 40 L 450 80 Q 350 50 250 80 Z" fill="#1d4ed8"/>
+                  <path d="M 50 40 Q 150 10 250 40 Q 350 10 450 40 L 450 50 Q 350 20 250 50 Q 150 20 50 50 Z" fill="#f1f5f9"/>
+                  <!-- Book Pages Text Lines -->
+                  <line x1="90" y1="42" x2="210" y2="42" stroke="#cbd5e1" stroke-width="2"/>
+                  <line x1="90" y1="52" x2="190" y2="52" stroke="#cbd5e1" stroke-width="2"/>
+                  <line x1="290" y1="42" x2="410" y2="42" stroke="#cbd5e1" stroke-width="2"/>
+                  <line x1="290" y1="52" x2="380" y2="52" stroke="#cbd5e1" stroke-width="2"/>
+                </g>
+
+                <!-- Globe on Orbit -->
+                <g transform="translate(60, 120)">
+                  <circle cx="35" cy="35" r="30" fill="url(#grad-globe)"/>
+                  <path d="M 15 25 Q 30 15 50 22 Q 40 45 25 48 Z" fill="#10b981" opacity="0.85"/>
+                  <path d="M 32 40 Q 45 35 55 45 Q 40 60 25 55 Z" fill="#10b981" opacity="0.85"/>
+                  <ellipse cx="35" cy="35" rx="30" ry="12" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                  <!-- Stand -->
+                  <path d="M 20 62 C 20 75 50 75 50 62 L 40 65 L 40 75 L 30 75 L 30 65 Z" fill="#64748b"/>
+                </g>
+
+                <!-- Science Flask & Bubbles -->
+                <g transform="translate(370, 100)">
+                  <path d="M 30 10 L 30 30 L 10 70 C 5 80 15 90 25 90 L 55 90 C 65 90 75 80 70 70 L 50 30 L 50 10 Z" fill="#818cf8" opacity="0.3"/>
+                  <path d="M 16 60 L 22 75 C 25 82 32 85 40 85 C 48 85 55 82 58 75 L 64 60 Z" fill="#a855f7"/>
+                  <!-- Cork & Rim -->
+                  <rect x="26" y="6" width="28" height="6" rx="2" fill="#d97706"/>
+                  <!-- Bubbles -->
+                  <circle cx="35" cy="70" r="4" fill="#ffffff" opacity="0.8"/>
+                  <circle cx="45" cy="55" r="3" fill="#ffffff" opacity="0.8"/>
+                  <circle cx="38" cy="40" r="2.5" fill="#ffffff" opacity="0.6"/>
+                </g>
+
+                <!-- Glowing Light Bulb of Ideas -->
+                <g transform="translate(225, 15)">
+                  <circle cx="25" cy="25" r="20" fill="#fef08a" filter="drop-shadow(0 0 10px #facc15)"/>
+                  <path d="M 18 38 L 32 38 L 30 45 L 20 45 Z" fill="#94a3b8"/>
+                  <line x1="25" y1="2" x2="25" y2="-6" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="45" y1="12" x2="52" y2="7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="5" y1="12" x2="-2" y2="7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                </g>
+
+                <!-- Sparkle Stars -->
+                <g transform="translate(130, 60)"><polygon points="10,0 13,7 20,10 13,13 10,20 7,13 0,10 7,7" fill="#fbbf24"/></g>
+                <g transform="translate(340, 240)"><polygon points="8,0 10,5 16,8 10,11 8,16 6,11 0,8 6,5" fill="#38bdf8"/></g>
+                <g transform="translate(70, 230)"><polygon points="8,0 10,5 16,8 10,11 8,16 6,11 0,8 6,5" fill="#ec4899"/></g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. STUDENT DASHBOARD (LIVE STATS) -->
+    <section class="dashboard-section" id="dashboard-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Your Learning Dashboard</h2>
+          <p class="section-subtitle">Real-time Grade 4 progress, daily streaks, and skill mastery</p>
+        </div>
+        <div class="dashboard-target-chip" id="daily-target-indicator">
+          <span>🎯 Daily Target: <strong>3/5 Activities</strong></span>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <!-- 1. Lessons Completed -->
+        <div class="stat-card" id="stat-lessons-card">
+          <div class="stat-card-header">
+            <span class="stat-icon-wrap icon-blue">📚</span>
+            <span class="stat-trend">+2 today</span>
+          </div>
+          <div class="stat-number" id="dash-lessons-count">0</div>
+          <div class="stat-label">Lessons Completed</div>
+          <div class="stat-progress-bar">
+            <div class="stat-progress-fill bg-blue" id="dash-lessons-bar" style="width: 0%;"></div>
+          </div>
+          <div class="stat-meta"><span id="dash-lessons-pct">0%</span> of Grade 4 curriculum</div>
+        </div>
+
+        <!-- 2. Practice Questions -->
+        <div class="stat-card" id="stat-practice-card">
+          <div class="stat-card-header">
+            <span class="stat-icon-wrap icon-emerald">🧠</span>
+            <span class="stat-badge-small">Active</span>
+          </div>
+          <div class="stat-number" id="dash-questions-count">0</div>
+          <div class="stat-label">Practice Questions Solved</div>
+          <div class="stat-progress-bar">
+            <div class="stat-progress-fill bg-emerald" id="dash-questions-bar" style="width: 0%;"></div>
+          </div>
+          <div class="stat-meta">Accuracy: <span id="dash-accuracy-val">100%</span></div>
+        </div>
+
+        <!-- 3. Quiz Average -->
+        <div class="stat-card" id="stat-quiz-card">
+          <div class="stat-card-header">
+            <span class="stat-icon-wrap icon-purple">🎯</span>
+            <span class="stat-badge-small" id="dash-quiz-grade">Grade A</span>
+          </div>
+          <div class="stat-number" id="dash-quiz-avg">0%</div>
+          <div class="stat-label">Quiz Average Score</div>
+          <div class="stat-progress-bar">
+            <div class="stat-progress-fill bg-purple" id="dash-quiz-bar" style="width: 0%;"></div>
+          </div>
+          <div class="stat-meta"><span id="dash-quiz-attempts">0</span> tests completed</div>
+        </div>
+
+        <!-- 4. Learning Stars -->
+        <div class="stat-card" id="stat-stars-card">
+          <div class="stat-card-header">
+            <span class="stat-icon-wrap icon-amber">⭐</span>
+            <span class="stat-trend" id="dash-stars-rank">Young Explorer</span>
+          </div>
+          <div class="stat-number" id="dash-stars-count">0</div>
+          <div class="stat-label">Learning Stars Earned</div>
+          <div class="stat-progress-bar">
+            <div class="stat-progress-fill bg-amber" id="dash-stars-bar" style="width: 0%;"></div>
+          </div>
+          <div class="stat-meta">Next badge at <span id="dash-stars-next">50</span> ⭐</div>
+        </div>
+
+        <!-- 5. Current Streak -->
+        <div class="stat-card" id="stat-streak-card">
+          <div class="stat-card-header">
+            <span class="stat-icon-wrap icon-orange">🔥</span>
+            <button class="claim-streak-btn" id="claim-daily-streak-btn">Check In Today</button>
+          </div>
+          <div class="stat-number" id="dash-streak-count">0 <span class="unit">Days</span></div>
+          <div class="stat-label">Current Learning Streak</div>
+          <div class="stat-progress-bar">
+            <div class="stat-progress-fill bg-orange" id="dash-streak-bar" style="width: 0%;"></div>
+          </div>
+          <div class="stat-meta">Best Streak: <span id="dash-best-streak">0 Days</span></div>
+        </div>
+
+        <!-- 6. Best Score -->
+        <div class="stat-card" id="stat-best-card">
+          <div class="stat-card-header">
+            <span class="stat-icon-wrap icon-pink">🏆</span>
+            <span class="stat-badge-small">High Mark</span>
+          </div>
+          <div class="stat-number" id="dash-best-score">0%</div>
+          <div class="stat-label">Best Master Quiz Score</div>
+          <div class="stat-progress-bar">
+            <div class="stat-progress-fill bg-pink" id="dash-best-bar" style="width: 0%;"></div>
+          </div>
+          <div class="stat-meta">Target: 90%+ for Gold Badge</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TODAY'S SMART STUDY PLAN -->
+    <section class="daily-plan-section" id="daily-plan-section">
+      <div class="plan-card-wrapper">
+        <div class="plan-header">
+          <div class="plan-title-box">
+            <div class="plan-icon">📅</div>
+            <div>
+              <h2 class="plan-title">Today's Smart Study Plan</h2>
+              <p class="plan-desc">Structured 100-minute balanced daily schedule designed for Grade 4 mastery</p>
+            </div>
+          </div>
+          <div class="plan-timer-box">
+            <div class="study-stopwatch">
+              <span class="stopwatch-icon">⏱️</span>
+              <span class="stopwatch-time" id="study-timer-display">25:00</span>
+              <button class="timer-btn" id="timer-toggle-btn">Start Timer</button>
+              <button class="timer-reset-btn" id="timer-reset-btn" title="Reset 25m focus timer">↺</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="plan-grid" id="daily-plan-grid">
+          <!-- 1. English -->
+          <div class="plan-item" data-plan="english">
+            <div class="plan-item-left">
+              <input type="checkbox" id="plan-check-1" class="plan-checkbox" data-subject="English">
+              <label for="plan-check-1" class="plan-item-label">
+                <span class="plan-subject-name">English Language</span>
+                <span class="plan-task-desc">Reading comprehension & grammar practice</span>
+              </label>
+            </div>
+            <div class="plan-item-right">
+              <span class="plan-duration">20 min</span>
+              <button class="plan-action-btn" onclick="openSubjectCurriculum('english')">Start</button>
+            </div>
+          </div>
+
+          <!-- 2. Mathematics -->
+          <div class="plan-item" data-plan="math">
+            <div class="plan-item-left">
+              <input type="checkbox" id="plan-check-2" class="plan-checkbox" data-subject="Mathematics">
+              <label for="plan-check-2" class="plan-item-label">
+                <span class="plan-subject-name">Mathematics</span>
+                <span class="plan-task-desc">Multi-digit numbers & fraction concepts</span>
+              </label>
+            </div>
+            <div class="plan-item-right">
+              <span class="plan-duration">25 min</span>
+              <button class="plan-action-btn" onclick="openSubjectCurriculum('math')">Start</button>
+            </div>
+          </div>
+
+          <!-- 3. Science -->
+          <div class="plan-item" data-plan="science">
+            <div class="plan-item-left">
+              <input type="checkbox" id="plan-check-3" class="plan-checkbox" data-subject="Science">
+              <label for="plan-check-3" class="plan-item-label">
+                <span class="plan-subject-name">Science Explorer</span>
+                <span class="plan-task-desc">Living things, plant parts & human body</span>
+              </label>
+            </div>
+            <div class="plan-item-right">
+              <span class="plan-duration">20 min</span>
+              <button class="plan-action-btn" onclick="openSubjectCurriculum('science')">Start</button>
+            </div>
+          </div>
+
+          <!-- 4. Language Practice -->
+          <div class="plan-item" data-plan="languages">
+            <div class="plan-item-left">
+              <input type="checkbox" id="plan-check-4" class="plan-checkbox" data-subject="UrduSindhi">
+              <label for="plan-check-4" class="plan-item-label">
+                <span class="plan-subject-name">Urdu & Sindhi Practice</span>
+                <span class="plan-task-desc">Vocabulary, grammar & sentence building</span>
+              </label>
+            </div>
+            <div class="plan-item-right">
+              <span class="plan-duration">15 min</span>
+              <button class="plan-action-btn" onclick="openSubjectCurriculum('urdu')">Start</button>
+            </div>
+          </div>
+
+          <!-- 5. Computer & GK -->
+          <div class="plan-item" data-plan="computergk">
+            <div class="plan-item-left">
+              <input type="checkbox" id="plan-check-5" class="plan-checkbox" data-subject="ComputerGK">
+              <label for="plan-check-5" class="plan-item-label">
+                <span class="plan-subject-name">Digital Skills & GK</span>
+                <span class="plan-task-desc">Internet safety & Pakistan geography</span>
+              </label>
+            </div>
+            <div class="plan-item-right">
+              <span class="plan-duration">10 min</span>
+              <button class="plan-action-btn" onclick="openSubjectCurriculum('computer')">Start</button>
+            </div>
+          </div>
+
+          <!-- 6. Challenge Game -->
+          <div class="plan-item" data-plan="game">
+            <div class="plan-item-left">
+              <input type="checkbox" id="plan-check-6" class="plan-checkbox" data-subject="Game">
+              <label for="plan-check-6" class="plan-item-label">
+                <span class="plan-subject-name">Educational Game Challenge</span>
+                <span class="plan-task-desc">Play 1 math or vocabulary speed round</span>
+              </label>
+            </div>
+            <div class="plan-item-right">
+              <span class="plan-duration">10 min</span>
+              <button class="plan-action-btn" onclick="launchGame('math-speed')">Play</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SUBJECTS (7 CORE AREAS) -->
+    <section class="subjects-section" id="subjects-section">
+      <div class="section-header">
+        <div>
+          <span class="section-tag">Core Curriculum</span>
+          <h2 class="section-title">What Are You Learning?</h2>
+          <p class="section-subtitle">Complete Grade 4 learning framework aligned with Oxford & Sindh standards</p>
+        </div>
+        <div class="subject-filters">
+          <button class="filter-pill active" data-subject-filter="all">All Subjects (7)</button>
+          <button class="filter-pill" data-subject-filter="stem">Math & Science</button>
+          <button class="filter-pill" data-subject-filter="languages">Languages</button>
+          <button class="filter-pill" data-subject-filter="skills">Digital & GK</button>
+        </div>
+      </div>
+
+      <div class="subjects-grid" id="subjects-grid">
+        <!-- 1. English Card -->
+        <div class="subject-card card-english" data-cat="languages" id="subject-card-english">
+          <div class="subject-card-banner banner-english">
+            <div class="subject-card-badge">45 Lessons</div>
+            <div class="subject-card-svg">
+              <svg viewBox="0 0 100 100" class="sub-icon-svg">
+                <rect x="20" y="20" width="60" height="60" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="4"/>
+                <path d="M35 35h30M35 50h30M35 65h20" stroke="#1d4ed8" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="70" cy="65" r="4" fill="#3b82f6"/>
+              </svg>
+            </div>
+          </div>
+          <div class="subject-card-body">
+            <h3 class="subject-card-title">English Language</h3>
+            <p class="subject-card-desc">Reading comprehension, 17 grammar topics, sentence building, vocabulary, prefixes, and 7 writing masterclasses.</p>
+            <div class="subject-card-progress-box">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span class="progress-pct" id="english-prog-pct">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-blue" id="english-prog-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="subject-card-actions">
+              <button class="btn btn-card-primary" onclick="openSubjectCurriculum('english')">Start Learning</button>
+              <button class="btn btn-card-secondary" onclick="openPracticeModal('english')">Practice</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Mathematics Card -->
+        <div class="subject-card card-math" data-cat="stem" id="subject-card-math">
+          <div class="subject-card-banner banner-math">
+            <div class="subject-card-badge">45 Lessons</div>
+            <div class="subject-card-svg">
+              <svg viewBox="0 0 100 100" class="sub-icon-svg">
+                <rect x="20" y="20" width="60" height="60" rx="12" fill="#f0fdf4" stroke="#10b981" stroke-width="4"/>
+                <text x="32" y="45" font-size="20" font-weight="bold" fill="#047857">+</text>
+                <text x="58" y="45" font-size="20" font-weight="bold" fill="#047857">−</text>
+                <text x="32" y="70" font-size="20" font-weight="bold" fill="#047857">×</text>
+                <text x="58" y="70" font-size="20" font-weight="bold" fill="#047857">÷</text>
+              </svg>
+            </div>
+          </div>
+          <div class="subject-card-body">
+            <h3 class="subject-card-title">Mathematics</h3>
+            <p class="subject-card-desc">Numbers to 100,000, multi-digit operations, long division, fractions, decimals, time, geometry & data graphs.</p>
+            <div class="subject-card-progress-box">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span class="progress-pct" id="math-prog-pct">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-emerald" id="math-prog-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="subject-card-actions">
+              <button class="btn btn-card-primary" onclick="openSubjectCurriculum('math')">Start Learning</button>
+              <button class="btn btn-card-secondary" onclick="openPracticeModal('math')">Practice</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Science Card -->
+        <div class="subject-card card-science" data-cat="stem" id="subject-card-science">
+          <div class="subject-card-banner banner-science">
+            <div class="subject-card-badge">31 Lessons</div>
+            <div class="subject-card-svg">
+              <svg viewBox="0 0 100 100" class="sub-icon-svg">
+                <rect x="20" y="20" width="60" height="60" rx="12" fill="#faf5ff" stroke="#a855f7" stroke-width="4"/>
+                <path d="M40 30h20v15l15 25H25l15-25V30z" fill="#f3e8ff" stroke="#7e22ce" stroke-width="3"/>
+                <circle cx="50" cy="62" r="3" fill="#a855f7"/>
+                <circle cx="43" cy="58" r="2" fill="#a855f7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="subject-card-body">
+            <h3 class="subject-card-title">Science Explorer</h3>
+            <p class="subject-card-desc">Living things, plant photosynthesis, human body systems, states of matter, energy forms, solar system & environment.</p>
+            <div class="subject-card-progress-box">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span class="progress-pct" id="science-prog-pct">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-purple" id="science-prog-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="subject-card-actions">
+              <button class="btn btn-card-primary" onclick="openSubjectCurriculum('science')">Start Learning</button>
+              <button class="btn btn-card-secondary" onclick="openPracticeModal('science')">Practice</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Urdu Card -->
+        <div class="subject-card card-urdu" data-cat="languages" id="subject-card-urdu">
+          <div class="subject-card-banner banner-urdu">
+            <div class="subject-card-badge">15 Lessons</div>
+            <div class="subject-card-svg">
+              <svg viewBox="0 0 100 100" class="sub-icon-svg">
+                <rect x="20" y="20" width="60" height="60" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="4"/>
+                <text x="50" y="58" font-size="28" font-family="'Noto Nastaliq Urdu', serif" text-anchor="middle" fill="#c2410c">اردو</text>
+              </svg>
+            </div>
+          </div>
+          <div class="subject-card-body">
+            <h3 class="subject-card-title">Urdu (اردو زبان)</h3>
+            <p class="subject-card-desc">قواعد (اسم، فعل، صفت)، الفاظ متضاد، واحد جمع، تفہیم عبارت، جملہ سازی، اور پیراگراف نگاری۔</p>
+            <div class="subject-card-progress-box">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span class="progress-pct" id="urdu-prog-pct">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-orange" id="urdu-prog-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="subject-card-actions">
+              <button class="btn btn-card-primary" onclick="openSubjectCurriculum('urdu')">Start Learning</button>
+              <button class="btn btn-card-secondary" onclick="openPracticeModal('urdu')">Practice</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Sindhi Card -->
+        <div class="subject-card card-sindhi" data-cat="languages" id="subject-card-sindhi">
+          <div class="subject-card-banner banner-sindhi">
+            <div class="subject-card-badge">15 Lessons</div>
+            <div class="subject-card-svg">
+              <svg viewBox="0 0 100 100" class="sub-icon-svg">
+                <rect x="20" y="20" width="60" height="60" rx="12" fill="#fdf2f8" stroke="#ec4899" stroke-width="4"/>
+                <text x="50" y="58" font-size="26" font-family="'Noto Nastaliq Urdu', serif" text-anchor="middle" fill="#be185d">سنڌي</text>
+              </svg>
+            </div>
+          </div>
+          <div class="subject-card-body">
+            <h3 class="subject-card-title">Sindhi (سنڌي ٻولي)</h3>
+            <p class="subject-card-desc">گرامر، واحد جمع، ضد لفظ، جملا ٺاهڻ، سنڌي پڙهڻ ۽ سمجهڻ، مضمون ۽ خط نويسي۔</p>
+            <div class="subject-card-progress-box">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span class="progress-pct" id="sindhi-prog-pct">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-pink" id="sindhi-prog-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="subject-card-actions">
+              <button class="btn btn-card-primary" onclick="openSubjectCurriculum('sindhi')">Start Learning</button>
+              <button class="btn btn-card-secondary" onclick="openPracticeModal('sindhi')">Practice</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Computer Studies Card -->
+        <div class="subject-card card-computer" data-cat="skills" id="subject-card-computer">
+          <div class="subject-card-banner banner-computer">
+            <div class="subject-card-badge">13 Lessons</div>
+            <div class="subject-card-svg">
+              <svg viewBox="0 0 100 100" class="sub-icon-svg">
+                <rect x="20" y="20" width="60" height="60" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="4"/>
+                <rect x="28" y="30" width="44" height="28" rx="4" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+                <rect x="44" y="58" width="12" height="8" fill="#0f766e"/>
+                <line x1="36" y1="66" x2="64" y2="66" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="subject-card-body">
+            <h3 class="subject-card-title">Computer Studies</h3>
+            <p class="subject-card-desc">Digital Skills Lab: Hardware, input/output devices, typing, word processing, files, internet safety & strong passwords.</p>
+            <div class="subject-card-progress-box">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span class="progress-pct" id="computer-prog-pct">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-teal" id="computer-prog-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="subject-card-actions">
+              <button class="btn btn-card-primary" onclick="openSubjectCurriculum('computer')">Start Learning</button>
+              <button class="btn btn-card-secondary" onclick="openPracticeModal('computer')">Practice</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. General Knowledge Card -->
+        <div class="subject-card card-gk" data-cat="skills" id="subject-card-gk">
+          <div class="subject-card-banner banner-gk">
+            <div class="subject-card-badge">15 Topics</div>
+            <div class="subject-card-svg">
+              <svg viewBox="0 0 100 100" class="sub-icon-svg">
+                <rect x="20" y="20" width="60" height="60" rx="12" fill="#fefce8" stroke="#eab308" stroke-width="4"/>
+                <circle cx="50" cy="50" r="18" fill="none" stroke="#ca8a04" stroke-width="3"/>
+                <line x1="50" y1="32" x2="50" y2="68" stroke="#ca8a04" stroke-width="2"/>
+                <ellipse cx="50" cy="50" rx="10" ry="18" fill="none" stroke="#ca8a04" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+          <div class="subject-card-body">
+            <h3 class="subject-card-title">General Knowledge</h3>
+            <p class="subject-card-desc">Pakistan provinces, national symbols, geography, continents, world oceans, famous inventions & community helpers.</p>
+            <div class="subject-card-progress-box">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span class="progress-pct" id="gk-prog-pct">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-amber" id="gk-prog-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="subject-card-actions">
+              <button class="btn btn-card-primary" onclick="openSubjectCurriculum('gk')">Start Learning</button>
+              <button class="btn btn-card-secondary" onclick="openPracticeModal('gk')">Practice</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ENGLISH READING CORNER (6 ORIGINAL STORIES) -->
+    <section class="stories-section" id="stories-section">
+      <div class="section-header">
+        <div>
+          <span class="section-tag">Reading & Comprehension</span>
+          <h2 class="section-title">English Reading Corner 📖</h2>
+          <p class="section-subtitle">Original illustrated Grade 4 stories with Read Aloud, vocabulary builders, and thinking questions</p>
+        </div>
+      </div>
+
+      <div class="stories-grid" id="stories-grid">
+        <!-- Story 1 -->
+        <div class="story-card" onclick="openStoryModal('story-1')">
+          <div class="story-card-image" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">
+            <div class="story-illus-icon">🗺️</div>
+            <span class="story-badge">Mystery & Adventure</span>
+          </div>
+          <div class="story-card-content">
+            <h3 class="story-title">The Mystery of the Missing Map</h3>
+            <p class="story-snippet">Ayaan and Zara discover an old blueprint in the school attic that reveals hidden botanical gardens...</p>
+            <div class="story-meta">
+              <span>⏱️ 6 min read</span>
+              <span>📝 5 Questions</span>
+              <span>⭐ 3 Stars</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="story-card" onclick="openStoryModal('story-2')">
+          <div class="story-card-image" style="background: linear-gradient(135deg, #065f46, #10b981);">
+            <div class="story-illus-icon">🌱</div>
+            <span class="story-badge">Science & Discovery</span>
+          </div>
+          <div class="story-card-content">
+            <h3 class="story-title">The Science Fair Surprise</h3>
+            <p class="story-snippet">When their solar water purifier malfunctions on competition morning, quick thinking saves the day...</p>
+            <div class="story-meta">
+              <span>⏱️ 5 min read</span>
+              <span>📝 5 Questions</span>
+              <span>⭐ 3 Stars</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="story-card" onclick="openStoryModal('story-3')">
+          <div class="story-card-image" style="background: linear-gradient(135deg, #581c87, #a855f7);">
+            <div class="story-illus-icon">⚙️</div>
+            <span class="story-badge">Innovation & STEM</span>
+          </div>
+          <div class="story-card-content">
+            <h3 class="story-title">The Little Inventor</h3>
+            <p class="story-snippet">Daniyal designs a pedal-powered grain thresher to help his grandfather during the golden wheat harvest...</p>
+            <div class="story-meta">
+              <span>⏱️ 6 min read</span>
+              <span>📝 5 Questions</span>
+              <span>⭐ 3 Stars</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 4 -->
+        <div class="story-card" onclick="openStoryModal('story-4')">
+          <div class="story-card-image" style="background: linear-gradient(135deg, #9a3412, #f97316);">
+            <div class="story-illus-icon">🏛️</div>
+            <span class="story-badge">Historical Explorer</span>
+          </div>
+          <div class="story-card-content">
+            <h3 class="story-title">Journey to the Old Library</h3>
+            <p class="story-snippet">Exploring the historic Frere Hall archives in search of an 1800s astronomy logbook...</p>
+            <div class="story-meta">
+              <span>⏱️ 7 min read</span>
+              <span>📝 5 Questions</span>
+              <span>⭐ 3 Stars</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 5 -->
+        <div class="story-card" onclick="openStoryModal('story-5')">
+          <div class="story-card-image" style="background: linear-gradient(135deg, #0f766e, #14b8a6);">
+            <div class="story-illus-icon">🤝</div>
+            <span class="story-badge">Teamwork & Ethics</span>
+          </div>
+          <div class="story-card-content">
+            <h3 class="story-title">The Clever Team</h3>
+            <p class="story-snippet">Four students combine their unique talents in art, math, coding, and speaking to build a flood relief dashboard...</p>
+            <div class="story-meta">
+              <span>⏱️ 5 min read</span>
+              <span>📝 5 Questions</span>
+              <span>⭐ 3 Stars</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 6 -->
+        <div class="story-card" onclick="openStoryModal('story-6')">
+          <div class="story-card-image" style="background: linear-gradient(135deg, #831843, #ec4899);">
+            <div class="story-illus-icon">🌊</div>
+            <span class="story-badge">Nature & Ecology</span>
+          </div>
+          <div class="story-card-content">
+            <h3 class="story-title">The Day the River Changed</h3>
+            <p class="story-snippet">Investigating how seasonal monsoon rains replenish the mighty Indus River and nurture the mangrove forests...</p>
+            <div class="story-meta">
+              <span>⏱️ 6 min read</span>
+              <span>📝 5 Questions</span>
+              <span>⭐ 3 Stars</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. EDUCATIONAL GAME CENTER (10 PLAYABLE GAMES) -->
+    <section class="games-section" id="games-section">
+      <div class="section-header">
+        <div>
+          <span class="section-tag">Interactive Arcade</span>
+          <h2 class="section-title">Educational Game Center 🎮</h2>
+          <p class="section-subtitle">10 interactive skill-building games with live scoring, sound feedback, and reward stars</p>
+        </div>
+        <div class="game-stars-badge">
+          <span>🏆 Games Score: <strong id="total-games-score">0 pts</strong></span>
+        </div>
+      </div>
+
+      <div class="games-grid">
+        <!-- Game 1: Math Speed Challenge -->
+        <div class="game-card" onclick="launchGame('math-speed')">
+          <div class="game-card-icon icon-blue">⚡</div>
+          <h3 class="game-card-title">Math Speed Challenge</h3>
+          <p class="game-card-desc">Rapid mental arithmetic: Solve multi-digit addition, subtraction, and tables before the clock expires!</p>
+          <div class="game-card-footer">
+            <span class="game-tag">Maths</span>
+            <button class="btn-play">Play Now ➔</button>
+          </div>
+        </div>
+
+        <!-- Game 2: Fraction Builder -->
+        <div class="game-card" onclick="launchGame('fraction-builder')">
+          <div class="game-card-icon icon-emerald">🍕</div>
+          <h3 class="game-card-title">Fraction Builder</h3>
+          <p class="game-card-desc">Slice pizza and chocolate bars to visually match target proper and equivalent fractions.</p>
+          <div class="game-card-footer">
+            <span class="game-tag">Visual Math</span>
+            <button class="btn-play">Play Now ➔</button>
+          </div>
+        </div>
+
+        <!-- Game 3: Times Table Race -->
+        <div class="game-card" onclick="launchGame('tables-race')">
+          <div class="game-card-icon icon-purple">🏎️</div>
+          <h3 class="game-card-title">Times Table Race</h3>
+          <p class="game-card-desc">Race your car across the finish line by clicking the correct 2 to 12 multiplication facts.</p>
+          <div class="game-card-footer">
+            <span class="game-tag">Multiplication</span>
+            <button class="btn-play">Play Now ➔</button>
+          </div>
+        </div>
+
+        <!-- Game 4: Word Builder -->
+        <div class="game-card" onclick="launchGame('word-builder')">
+          <div class="game-card-icon icon-orange">🔤</div>
+          <h3 class="game-card-title">Word Builder</h3>
+          <p class="game-card-desc">Unscramble high-level Grade 4 vocabulary letters using definition and context clues.</p>
+          <div class="game-card-footer">
+            <span class="game-tag">Spelling</span>
+            <button class="btn-play">Play Now ➔</button>
+          </div>
+        </div>
+
+        <!-- Game 5: Vocabulary Match -->
+        <div class="game-card" onclick="launchGame('vocab-match')">
+          <div class="game-card-icon icon-pink">🃏</div>
+          <h3 class="game-card-title">Vocabulary Match</h3>
+          <p class="game-card-desc">Pair up synonyms, antonyms, and homophones in an interactive memory card grid.</p>
+          <div class="game-card-footer">
+            <span class="game-tag">Vocabulary</span>
+            <button class="btn-play">Play Now ➔</button>
+          </div>
+        </div>
+
+        <!-- Game 6: Science Detective -->
+        <div class="game-card" onclick="launchGame('science-detective')">
+          <div class="game-card-icon icon-teal">🔬</div>
+          <h3 class="game-card-title">Science Detective</h3>
+          <p class="game-card-desc">Classify mystery specimens: Solids vs Liquids vs Gases, Vertebrates vs Invertebrates.</p>
+          <div class="game-card-footer">
+            <span class="game-tag">Science</span>
+            <button class="btn-play">Play Now ➔</button>
+          </div>
+        </div>
+
+        <!-- Game 7: Human Body Explorer -->
+        <div class="game-card" onclick="launchGame('body-explorer')">
+          <div class="game-card-icon icon-amber">🫀</div>
+          <h3 class="game-card-title">Human Body Explorer</h3>
+          <p class="game-card-desc">Identify organs and body systems (Digestive, Respiratory, Circulatory, Skeletal) correctly.</p>
+          <div class="game-card-footer">
+            <span class="game-tag">Biology</span>
+            <button class="btn-play">Play Now ➔</button>
+          </div>
+        </div>
+
+        <!-- Game 8: Map Explorer -->
+        <div class="game-card" onclick="launchGame('map-explorer')">
+          <div class="game-card-icon icon-blue">🗺️</div>
+          <h3 class="game-card-title">Map Explorer</h3>
+          <p class="game-card-desc">Locate Pakistan's provinces, rivers, capital cities, world continents, and oceans on the map.</p>
+          <div class="game-card-footer">
+            <span class="game-tag">Geography</span>
+            <button class="btn-play">Play Now ➔</button>
+          </div>
+        </div>
+
+        <!-- Game 9: Grammar Challenge -->
+        <div class="game-card" onclick="launchGame('grammar-challenge')">
+          <div class="game-card-icon icon-emerald">✍️</div>
+          <h3 class="game-card-title">Grammar Challenge</h3>
+          <p class="game-card-desc">Catch grammatical errors in sentences: Parts of speech, tenses, and punctuation.</p>
+          <div class="game-card-footer">
+            <span class="game-tag">Grammar</span>
+            <button class="btn-play">Play Now ➔</button>
+          </div>
+        </div>
+
+        <!-- Game 10: Reading Detective -->
+        <div class="game-card" onclick="launchGame('reading-detective')">
+          <div class="game-card-icon icon-purple">🕵️</div>
+          <h3 class="game-card-title">Reading Detective</h3>
+          <p class="game-card-desc">Read short mystery crime clues and make accurate logical inferences to solve the case!</p>
+          <div class="game-card-footer">
+            <span class="game-tag">Inference</span>
+            <button class="btn-play">Play Now ➔</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. PRACTICE CENTER (ADAPTIVE QUESTION GENERATOR) -->
+    <section class="practice-section" id="practice-section">
+      <div class="practice-card">
+        <div class="practice-header">
+          <div>
+            <span class="section-tag">Targeted Mastery</span>
+            <h2 class="section-title">Grade 4 Practice Center 🧠</h2>
+            <p class="section-subtitle">Choose a subject and difficulty to generate instant practice with step-by-step explanations</p>
+          </div>
+        </div>
+
+        <div class="practice-controls">
+          <div class="control-group">
+            <label for="practice-subject-select">Select Subject:</label>
+            <select id="practice-subject-select" class="practice-select">
+              <option value="english">English Language</option>
+              <option value="math">Mathematics</option>
+              <option value="science">Science Explorer</option>
+              <option value="urdu">Urdu (اردو)</option>
+              <option value="sindhi">Sindhi (سنڌي)</option>
+              <option value="computer">Computer Studies</option>
+              <option value="gk">General Knowledge</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label>Difficulty Tier:</label>
+            <div class="difficulty-toggle" id="diff-toggle">
+              <button class="diff-btn active" data-diff="easy">Easy</button>
+              <button class="diff-btn" data-diff="medium">Medium</button>
+              <button class="diff-btn" data-diff="challenge">Challenge ⚡</button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="start-practice-btn" onclick="generatePracticeSession()">
+            <span>Generate 10 Questions</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </button>
+        </div>
+
+        <!-- Active Practice Container (Dynamic) -->
+        <div class="practice-stage" id="practice-stage" style="display:none;">
+          <div class="practice-stage-header">
+            <span class="q-counter" id="practice-q-num">Question 1 of 10</span>
+            <div class="practice-score-chip">Score: <strong id="practice-score">0</strong> / 10</div>
+          </div>
+          <div class="practice-q-box" id="practice-q-box">
+            <!-- Populated via JS -->
+          </div>
+          <div class="practice-explanation-box" id="practice-explanation-box" style="display:none;">
+            <!-- Populated via JS -->
+          </div>
+          <div class="practice-actions">
+            <button class="btn btn-secondary" id="practice-next-btn" onclick="nextPracticeQuestion()" style="display:none;">Next Question ➔</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. MASTER GRADE 4 QUIZ (50 QUESTIONS COMPREHENSIVE) -->
+    <section class="quiz-section" id="quiz-section">
+      <div class="quiz-hero-card">
+        <div class="quiz-hero-content">
+          <div class="quiz-badge-top">🏆 Official Assessment</div>
+          <h2 class="quiz-title">50-Question Master Grade 4 Quiz</h2>
+          <p class="quiz-desc">
+            A comprehensive, rigorous diagnostic exam covering all 7 subjects: English (12), Math (12), Science (10), Urdu (5), Sindhi (5), Computer & GK (6). Features a real-time 30-minute timer and detailed positive performance feedback.
+          </p>
+
+          <div class="quiz-features-row">
+            <div class="q-feat"><span class="q-feat-icon">⏱️</span> 30 Minutes</div>
+            <div class="q-feat"><span class="q-feat-icon">❓</span> 50 Questions</div>
+            <div class="q-feat"><span class="q-feat-icon">📊</span> Subject Analytics</div>
+            <div class="q-feat"><span class="q-feat-icon">⭐</span> Up to 50 Stars</div>
+          </div>
+
+          <div class="quiz-start-box">
+            <button class="btn btn-quiz-start" id="start-master-quiz-btn" onclick="startMasterQuiz()">
+              <span>Begin 50Q Master Exam</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </button>
+            <span class="quiz-hint">Take your time and read each question carefully. You can review all questions before submitting!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. WEEKLY CHALLENGE & ACHIEVEMENTS -->
+    <section class="achievements-section" id="achievements-section">
+      <div class="weekly-challenge-box">
+        <div class="challenge-header">
+          <div class="challenge-title-group">
+            <span class="challenge-icon">🎯</span>
+            <div>
+              <h3 class="challenge-heading">Weekly Explorer Quest</h3>
+              <p class="challenge-sub">Complete all 3 missions before Sunday to earn the <strong>Weekly Star Trophy</strong>!</p>
+            </div>
+          </div>
+          <div class="weekly-trophy-badge" id="weekly-trophy-status">
+            <span>🏆 Quest in Progress</span>
+          </div>
+        </div>
+
+        <div class="challenge-missions-grid">
+          <div class="mission-item" id="mission-1">
+            <input type="checkbox" id="mission-chk-1" class="mission-checkbox" disabled>
+            <div class="mission-info">
+              <span class="mission-title">1. Math Quest</span>
+              <span class="mission-desc">Score 80%+ on any 10-Question Math Practice</span>
+            </div>
+            <button class="btn-mission" onclick="openPracticeModal('math')">Go ➔</button>
+          </div>
+          <div class="mission-item" id="mission-2">
+            <input type="checkbox" id="mission-chk-2" class="mission-checkbox" disabled>
+            <div class="mission-info">
+              <span class="mission-title">2. English Quest</span>
+              <span class="mission-desc">Read 1 story in Reading Corner & answer questions</span>
+            </div>
+            <button class="btn-mission" onclick="document.getElementById('stories-section').scrollIntoView({behavior:'smooth'})">Go ➔</button>
+          </div>
+          <div class="mission-item" id="mission-3">
+            <input type="checkbox" id="mission-chk-3" class="mission-checkbox" disabled>
+            <div class="mission-info">
+              <span class="mission-title">3. Science Quest</span>
+              <span class="mission-desc">Complete any 2 Science Explorer lessons</span>
+            </div>
+            <button class="btn-mission" onclick="openSubjectCurriculum('science')">Go ➔</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges Gallery -->
+      <div class="badges-gallery-card">
+        <div class="section-header">
+          <div>
+            <span class="section-tag">Badges & Medals</span>
+            <h2 class="section-title">Your Trophy Room ⭐</h2>
+            <p class="section-subtitle">15 collectible achievements earned through diligent learning</p>
+          </div>
+          <div class="badges-counter"><span id="unlocked-badge-count">0</span> / 15 Unlocked</div>
+        </div>
+
+        <div class="badges-grid" id="badges-grid">
+          <!-- 15 Badges generated dynamically or statically with lock states -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. BOOKS & AUTHORIZED EDUCATIONAL RESOURCES -->
+    <section class="resources-section" id="resources-section">
+      <div class="section-header">
+        <div>
+          <span class="section-tag">Authorized References</span>
+          <h2 class="section-title">Grade 4 Books & Learning Resources 📚</h2>
+          <p class="section-subtitle">Legitimate Oxford-style and Sindh primary curriculum official links and educational references</p>
+        </div>
+      </div>
+
+      <div class="resources-grid">
+        <!-- Resource 1: Oxford University Press Pakistan -->
+        <div class="resource-card">
+          <div class="resource-card-header">
+            <span class="resource-type">Curriculum Reference</span>
+            <span class="resource-grade">Grade 4 Primary</span>
+          </div>
+          <h3 class="resource-title">Oxford University Press Pakistan - Primary Learning</h3>
+          <p class="resource-author">Oxford University Press Pakistan (Authorized Education)</p>
+          <p class="resource-desc">Explore the official Oxford Primary curriculum frameworks, New Oxford Modern English, and Oxford Reading Tree guidelines for primary schools.</p>
+          <a href="https://oup.com.pk/" target="_blank" rel="noopener noreferrer" class="resource-link">
+            <span>Visit Oxford Pakistan Official Portal</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <!-- Resource 2: Sindh Textbook Board Official Portal -->
+        <div class="resource-card">
+          <div class="resource-card-header">
+            <span class="resource-type">Provincial Curriculum</span>
+            <span class="resource-grade">Grade 4 Sindh</span>
+          </div>
+          <h3 class="resource-title">Sindh Textbook Board (STBB) Official Portal</h3>
+          <p class="resource-author">Government of Sindh Education & Literacy Department</p>
+          <p class="resource-desc">Official curriculum outlines, Sindhi & Urdu primary learning frameworks, and state educational guidelines for primary schools.</p>
+          <a href="http://stbb.edu.pk/" target="_blank" rel="noopener noreferrer" class="resource-link">
+            <span>Visit Sindh Textbook Board Portal</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <!-- Resource 3: Khan Academy Primary Mathematics & Science -->
+        <div class="resource-card">
+          <div class="resource-card-header">
+            <span class="resource-type">STEM Practice</span>
+            <span class="resource-grade">Grade 4 Math</span>
+          </div>
+          <h3 class="resource-title">Khan Academy 4th Grade Math & Science</h3>
+          <p class="resource-author">Khan Academy (Free World-Class Education)</p>
+          <p class="resource-desc">Self-paced interactive exercises in multi-digit multiplication, division, fractions, measurement, and early geometry.</p>
+          <a href="https://www.khanacademy.org/math/cc-fourth-grade-math" target="_blank" rel="noopener noreferrer" class="resource-link">
+            <span>Visit Khan Academy Grade 4 Math</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <!-- Resource 4: National Curriculum of Pakistan Portal -->
+        <div class="resource-card">
+          <div class="resource-card-header">
+            <span class="resource-type">National Standards</span>
+            <span class="resource-grade">Primary Standards</span>
+          </div>
+          <h3 class="resource-title">National Curriculum Council (NCC) Pakistan</h3>
+          <p class="resource-author">Ministry of Federal Education and Professional Training</p>
+          <p class="resource-desc">National single curriculum frameworks for primary science, general knowledge, languages, and digital citizenship standards.</p>
+          <a href="https://ncc.gov.pk/" target="_blank" rel="noopener noreferrer" class="resource-link">
+            <span>Visit NCC Pakistan Standards</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-text">
+          <span class="brand-name">EduNexa <span class="brand-ai">AI</span></span>
+          <span class="brand-badge">GRADE 4</span>
+        </div>
+        <p class="footer-tagline">Think Bigger. Learn Smarter. Explore More.</p>
+        <p class="footer-copyright">Empowering young explorers across Pakistan with premium digital education.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Subjects</h4>
+          <a href="#subjects-section" onclick="openSubjectCurriculum('english')">English (45 Lessons)</a>
+          <a href="#subjects-section" onclick="openSubjectCurriculum('math')">Mathematics (45 Lessons)</a>
+          <a href="#subjects-section" onclick="openSubjectCurriculum('science')">Science (31 Lessons)</a>
+          <a href="#subjects-section" onclick="openSubjectCurriculum('urdu')">Urdu & Sindhi</a>
+        </div>
+        <div class="footer-col">
+          <h4>Activities</h4>
+          <a href="#stories-section">Reading Corner</a>
+          <a href="#games-section">10 Playable Games</a>
+          <a href="#practice-section">Practice Center</a>
+          <a href="#quiz-section">50Q Master Quiz</a>
+        </div>
+        <div class="footer-col">
+          <h4>Portals</h4>
+          <a href="#" onclick="openParentModal(); return false;">Parent Dashboard</a>
+          <a href="#achievements-section">Trophy Room</a>
+          <a href="#daily-plan-section">Daily Study Plan</a>
+          <a href="#resources-section">Authorized Books</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- MODALS CONTAINER                                             -->
+  <!-- ============================================================ -->
+
+  <!-- 1. SUBJECT CURRICULUM EXPLORER & LESSON VIEWER MODAL -->
+  <div class="modal-overlay" id="curriculum-modal">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <span class="modal-tag" id="curriculum-subject-badge">English</span>
+          <h2 class="modal-title" id="curriculum-subject-title">English Complete Curriculum</h2>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('curriculum-modal')">&times;</button>
+      </div>
+      <div class="modal-body curriculum-body">
+        <!-- Sidebar with Lesson Index -->
+        <aside class="curriculum-sidebar">
+          <div class="sidebar-header">
+            <span class="sidebar-title">Lesson Directory</span>
+            <span class="sidebar-count" id="sidebar-lesson-count">45 Lessons</span>
+          </div>
+          <div class="curriculum-section-tabs" id="curriculum-section-tabs">
+            <!-- Dynamic Section Pills: Section A, B, C, D, E -->
+          </div>
+          <div class="lesson-list-scroll" id="lesson-list-scroll">
+            <!-- Dynamic Lesson List Items -->
+          </div>
+        </aside>
+
+        <!-- Main Lesson Content Area -->
+        <div class="lesson-content-pane" id="lesson-content-pane">
+          <!-- Loaded dynamically: Explanation, Examples, Visual Diagram, Mini-Activity, 5 Questions -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. GAME PLAYER MODAL (10 INTERACTIVE GAMES) -->
+  <div class="modal-overlay" id="game-modal">
+    <div class="modal-card modal-game">
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <span class="modal-tag" id="game-tag-badge">Math Game</span>
+          <h2 class="modal-title" id="game-title">Math Speed Challenge</h2>
+        </div>
+        <div class="game-top-stats">
+          <span class="game-timer-pill" id="game-timer-display">⏱️ 45s</span>
+          <span class="game-score-pill">Score: <strong id="game-live-score">0</strong></span>
+        </div>
+        <button class="modal-close-btn" onclick="closeGameModal()">&times;</button>
+      </div>
+      <div class="modal-body game-modal-body" id="game-viewport">
+        <!-- Interactive Game Canvas / DOM injected here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. STORY READER MODAL -->
+  <div class="modal-overlay" id="story-modal">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <span class="modal-tag">Reading Corner</span>
+          <h2 class="modal-title" id="story-modal-title">Story Title</h2>
+        </div>
+        <div class="story-audio-controls">
+          <button class="btn btn-audio-read" id="story-read-aloud-btn" onclick="toggleStorySpeech()">
+            <span id="speech-icon">🔊</span>
+            <span id="speech-text">Read Aloud</span>
+          </button>
+        </div>
+        <button class="modal-close-btn" onclick="closeStoryModal()">&times;</button>
+      </div>
+      <div class="modal-body story-modal-body" id="story-modal-body">
+        <!-- Story text, illustration, vocabulary spotlight, 5 questions -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. MASTER 50-QUESTION QUIZ FULL-SCREEN EXAM MODAL -->
+  <div class="modal-overlay" id="master-quiz-modal">
+    <div class="modal-card modal-quiz">
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <span class="modal-tag">Diagnostic Exam</span>
+          <h2 class="modal-title">Master Grade 4 Comprehensive Quiz (50 Questions)</h2>
+        </div>
+        <div class="quiz-timer-pill">
+          <span>⏱️ Time Remaining:</span>
+          <strong id="master-quiz-timer">30:00</strong>
+        </div>
+        <button class="modal-close-btn" onclick="confirmQuitQuiz()">&times;</button>
+      </div>
+
+      <div class="modal-body master-quiz-body">
+        <!-- Quiz Left Question Stage -->
+        <div class="quiz-question-stage">
+          <div class="quiz-stage-top">
+            <span class="quiz-q-subject" id="mq-subject-badge">English</span>
+            <span class="quiz-q-index" id="mq-index-display">Question 1 of 50</span>
+          </div>
+
+          <div class="quiz-progress-bar-wrap">
+            <div class="quiz-progress-bar-fill" id="mq-progress-bar" style="width: 2%;"></div>
+          </div>
+
+          <div class="quiz-question-box" id="mq-question-box">
+            <!-- Question text, choices A, B, C, D -->
+          </div>
+
+          <div class="quiz-nav-buttons">
+            <button class="btn btn-secondary" id="mq-prev-btn" onclick="prevMasterQuizQ()">← Previous</button>
+            <button class="btn btn-secondary" id="mq-flag-btn" onclick="toggleFlagMasterQuizQ()">🚩 Mark for Review</button>
+            <button class="btn btn-primary" id="mq-next-btn" onclick="nextMasterQuizQ()">Next Question →</button>
+            <button class="btn btn-quiz-finish" id="mq-finish-btn" onclick="submitMasterQuiz()" style="display:none;">Submit Exam ➔</button>
+          </div>
+        </div>
+
+        <!-- Quiz Right Question Matrix Palette -->
+        <aside class="quiz-matrix-palette">
+          <div class="palette-title">Question Navigator</div>
+          <div class="palette-legend">
+            <span class="legend-item"><span class="legend-dot current"></span> Current</span>
+            <span class="legend-item"><span class="legend-dot answered"></span> Answered</span>
+            <span class="legend-item"><span class="legend-dot flagged"></span> Flagged</span>
+            <span class="legend-item"><span class="legend-dot unread"></span> Unanswered</span>
+          </div>
+          <div class="matrix-grid" id="mq-matrix-grid">
+            <!-- 1 to 50 buttons -->
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. QUIZ RESULT & ANALYSIS MODAL -->
+  <div class="modal-overlay" id="quiz-result-modal">
+    <div class="modal-card modal-medium">
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <span class="modal-tag">Official Assessment Result</span>
+          <h2 class="modal-title">Your Grade 4 Result 🎉</h2>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('quiz-result-modal')">&times;</button>
+      </div>
+      <div class="modal-body result-modal-body" id="quiz-result-content">
+        <!-- Populated via JS: Score, %, subject radar/bars, strongest subject, positive suggestions -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. PARENT'S LEARNING REPORT (PARENT DASHBOARD MODAL) -->
+  <div class="modal-overlay" id="parent-modal">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <span class="modal-tag">Parent Portal</span>
+          <h2 class="modal-title">Parent's Learning Report 📊</h2>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('parent-modal')">&times;</button>
+      </div>
+      <div class="modal-body parent-modal-body" id="parent-report-content">
+        <!-- Populated via JS: Comprehensive metrics, subject breakdown, areas doing well, suggested practice, print report -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="grade4.js"></script>
+</body>
+</html>

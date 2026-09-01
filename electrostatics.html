@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrostatics — Complete MDCAT Physics Master Chapter</title>
+  <meta name="description" content="Complete textbook-quality MDCAT Physics chapter on Electrostatics featuring textbook definitions, formulas, interactive calculators, solved numericals, 28 MCQs quiz, and exam traps.">
+  <link rel="stylesheet" href="electrostatics.css">
+  <!-- KaTeX for pristine textbook math typography -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body class="theme-light">
+
+  <!-- Top Progress Indicator -->
+  <div id="scroll-progress" class="scroll-progress-bar"></div>
+
+  <!-- Top Header Navigation -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="brand-badge">⚡ MDCAT CORE</div>
+        <div class="brand-title-wrap">
+          <h1 class="brand-title">Electrostatics</h1>
+          <span class="brand-subtitle">Physics Chapter 12 • PMDC High-Yield Master Notes</span>
+        </div>
+      </div>
+
+      <div class="header-search-wrap">
+        <span class="search-ico">🔍</span>
+        <input type="text" id="global-search-input" placeholder="Search topics, formulas, or definitions (e.g. Coulomb, Flux, Dielectric)..." aria-label="Search notes">
+        <button id="search-clear-btn" class="search-clear hidden" title="Clear search">✕</button>
+      </div>
+
+      <div class="header-actions">
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+        <button id="quick-rev-jump" class="btn-accent-sm">⚡ Quick Revision</button>
+        <button id="quiz-jump" class="btn-primary-sm">📝 Practice MCQs</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Chapter Outline Nav -->
+  <nav class="sticky-subnav" aria-label="Chapter Navigation">
+    <div class="subnav-container">
+      <ul class="subnav-list">
+        <li><a href="#sec-intro" class="subnav-link active">1. Intro & Charge</a></li>
+        <li><a href="#sec-coulomb" class="subnav-link">2. Coulomb's Law</a></li>
+        <li><a href="#sec-field" class="subnav-link">3. Electric Field</a></li>
+        <li><a href="#sec-lines" class="subnav-link">4. Field Lines</a></li>
+        <li><a href="#sec-flux" class="subnav-link">5. Electric Flux</a></li>
+        <li><a href="#sec-gauss" class="subnav-link">6. Gauss's Law</a></li>
+        <li><a href="#sec-potential" class="subnav-link">7. Electric Potential</a></li>
+        <li><a href="#sec-relation" class="subnav-link">8. E vs V Relation</a></li>
+        <li><a href="#sec-energy" class="subnav-link">9. Potential Energy</a></li>
+        <li><a href="#sec-capacitors" class="subnav-link">10. Capacitors</a></li>
+        <li><a href="#sec-combinations" class="subnav-link">11. Combinations</a></li>
+        <li><a href="#sec-stored-energy" class="subnav-link">12. Energy Stored</a></li>
+        <li><a href="#sec-rc" class="subnav-link">13. RC Circuits</a></li>
+        <li><a href="#sec-comparisons" class="subnav-link">14. Tables</a></li>
+        <li><a href="#sec-vault" class="subnav-link">15. Formula Vault</a></li>
+        <li><a href="#sec-calculators" class="subnav-link">16. Calculators</a></li>
+        <li><a href="#sec-numericals" class="subnav-link">17. Solved Numericals</a></li>
+        <li><a href="#sec-mcqs" class="subnav-link">18. 28 MCQs Quiz</a></li>
+        <li><a href="#sec-revision" class="subnav-link">19. Revision Sheet</a></li>
+        <li><a href="#sec-checklist" class="subnav-link">20. Checklist</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content Layout -->
+  <div class="content-layout">
+
+    <!-- MAIN ARTICLE -->
+    <main class="main-content">
+
+      <!-- HERO BANNER -->
+      <section class="hero-banner" id="sec-intro">
+        <div class="hero-text-side">
+          <div class="hero-chip">📘 Complete MDCAT Physics Master Module</div>
+          <h2 class="hero-heading">Electrostatics <span class="highlight-text">(Charges at Rest)</span></h2>
+          <p class="hero-desc">
+            Electrostatics is the branch of physics that deals with the properties, forces, fields, and potentials of static electric charges. Every concept here is structured strictly according to PMDC & UHS syllabus standards.
+          </p>
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <span class="metric-num">20+</span>
+              <span class="metric-lbl">Core Topics</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-num">18</span>
+              <span class="metric-lbl">Formulas</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-num">6</span>
+              <span class="metric-lbl">Interactive Tools</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-num">28</span>
+              <span class="metric-lbl">Exam MCQs</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-diagram-side">
+          <div class="diagram-frame">
+            <div class="diagram-header">Interactive Field Visualizer</div>
+            <canvas id="hero-field-canvas" width="360" height="240"></canvas>
+            <div class="diagram-controls">
+              <button id="btn-dipole-mode" class="ctrl-btn active">Dipole (+ / −)</button>
+              <button id="btn-like-mode" class="ctrl-btn">Repulsion (+ / +)</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1: ELECTRIC CHARGE -->
+      <section class="topic-section" id="topic-charge">
+        <div class="topic-header">
+          <div class="topic-number">Topic 01</div>
+          <h3 class="topic-title">Electric Charge & Fundamental Properties</h3>
+        </div>
+
+        <!-- DEFINITION CARD -->
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Electric Charge</div>
+          <div class="def-quote">"Electric charge is the fundamental intrinsic property of matter by virtue of which it produces and experiences electrical and magnetic effects."</div>
+          <div class="def-plain">
+            <strong>In simple words:</strong> Just as mass gives a body gravitational attraction, electric charge gives a body the ability to exert and experience electric forces on other charged objects.
+          </div>
+        </div>
+
+        <p class="paragraph-text">
+          There are two types of charges in nature: <strong>Positive Charge</strong> (carried by protons) and <strong>Negative Charge</strong> (carried by electrons). In an uncharged neutral atom, the number of protons equals the number of electrons.
+        </p>
+
+        <!-- FORMULA CARD -->
+        <div class="formula-card">
+          <div class="formula-card-top">
+            <span class="formula-type">Formula • Quantization of Charge</span>
+            <button class="btn-copy-formula" data-formula="q = n * e" title="Copy formula">📋 Copy Formula</button>
+          </div>
+          <div class="formula-display">
+            <span class="math-eq">q = n · e</span>
+          </div>
+          <div class="formula-where-box">
+            <div class="where-title">Where:</div>
+            <ul class="where-list">
+              <li><strong>q</strong> = Total net charge on the body</li>
+              <li><strong>n</strong> = An integer number of transferred electrons (n = ±1, ±2, ±3, ...)</li>
+              <li><strong>e</strong> = Elementary magnitude of electronic charge = <span class="math-sym">1.602 × 10⁻¹⁹ C</span></li>
+            </ul>
+            <div class="where-unit">
+              <strong>SI Unit:</strong> Coulomb (C) • <span class="math-sub">1 Coulomb = Charge carried by 6.25 × 10¹⁸ electrons</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-grid">
+          <div class="info-card">
+            <h4 class="card-title">1. Quantization of Charge</h4>
+            <p class="card-text">Charge always exists in discrete integer multiples of the elementary charge <em>e</em>. A body cannot possess a fraction of an electron charge such as 0.5e, 1.7e, or 2.3e in an isolated state.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">2. Conservation of Charge</h4>
+            <p class="card-text">The total algebraic sum of electric charge in an isolated system remains strictly constant. Charge can neither be created nor destroyed; it can only be transferred from one body to another.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">3. Additive Nature</h4>
+            <p class="card-text">Total charge of a system containing individual charges q₁, q₂, q₃... is simply their algebraic sum: <span class="math-sym">q_total = q₁ + q₂ + q₃ + ...</span> (taking their positive and negative signs into account).</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">4. Invariance of Charge</h4>
+            <p class="card-text">The magnitude of electric charge on a particle is independent of its speed or frame of reference. Unlike relativistic mass, charge does not change when moving close to the speed of light.</p>
+          </div>
+        </div>
+
+        <!-- CALLOUTS -->
+        <div class="callout callout-mdcat">
+          <div class="callout-header">⚡ MDCAT High-Yield Tip</div>
+          <div class="callout-body">
+            To find the number of electrons in <strong>1 Coulomb of negative charge</strong>, simply compute:<br>
+            <span class="math-inline">n = q / e = 1 / (1.6 × 10⁻¹⁹) = 6.25 × 10¹⁸ electrons</span>. Memorize this constant for lightning-fast calculations!
+          </div>
+        </div>
+
+        <div class="callout callout-mistake">
+          <div class="callout-header">⚠️ Common Mistake</div>
+          <div class="callout-body">
+            Do not assume that mass remains unchanged when a body is charged. When a body becomes <strong>negatively charged</strong>, it gains electrons, so its mass <em>increases slightly</em>. When a body becomes <strong>positively charged</strong>, it loses electrons, so its mass <em>decreases slightly</em>.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: COULOMB'S LAW -->
+      <section class="topic-section" id="sec-coulomb">
+        <div class="topic-header">
+          <div class="topic-number">Topic 02</div>
+          <h3 class="topic-title">Coulomb's Law & Force Interactions</h3>
+        </div>
+
+        <!-- DEFINITION CARD -->
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Coulomb's Law</div>
+          <div class="def-quote">"The electrostatic force between two stationary point charges is directly proportional to the product of the magnitudes of the charges and inversely proportional to the square of the distance between them."</div>
+          <div class="def-plain">
+            <strong>In simple words:</strong> Double the charge, force doubles. Double the separation distance, force drops to one-fourth (inverse-square relationship).
+          </div>
+        </div>
+
+        <!-- FORMULA CARD -->
+        <div class="formula-card">
+          <div class="formula-card-top">
+            <span class="formula-type">Formula • Coulomb's Force in Vacuum & Medium</span>
+            <button class="btn-copy-formula" data-formula="F = (k * q1 * q2) / r^2" title="Copy formula">📋 Copy Formula</button>
+          </div>
+          <div class="formula-display">
+            <span class="math-eq">F = k · \frac{|q₁ · q₂|}{r²} = \frac{1}{4\pi\varepsilon₀\varepsilon_r} · \frac{|q₁ · q₂|}{r²}</span>
+          </div>
+          <div class="formula-where-box">
+            <div class="where-title">Where:</div>
+            <ul class="where-list">
+              <li><strong>F</strong> = Electrostatic force of attraction or repulsion (in Newtons, N)</li>
+              <li><strong>q₁, q₂</strong> = Magnitudes of the two interacting point charges (in Coulombs, C)</li>
+              <li><strong>r</strong> = Distance of separation between the charges (in meters, m)</li>
+              <li><strong>k</strong> = Coulomb's electrostatic constant = <span class="math-sym">1 / (4πε₀) ≈ 8.99 × 10⁹ N·m²/C² ≈ 9 × 10⁹ N·m²/C²</span></li>
+              <li><strong>ε₀</strong> = Permittivity of free space = <span class="math-sym">8.854 × 10⁻¹² C²/(N·m²)</span></li>
+              <li><strong>ε_r</strong> = Relative permittivity (Dielectric constant) of the intervening medium (<span class="math-sym">ε_r ≥ 1</span>; for vacuum <span class="math-sym">ε_r = 1</span>, for air <span class="math-sym">ε_r ≈ 1.0006</span>)</li>
+            </ul>
+            <div class="where-unit">
+              <strong>SI Unit of Force:</strong> Newton (N) • <strong>SI Unit of k:</strong> N·m²/C² • <strong>SI Unit of ε₀:</strong> C²/(N·m²) or F/m
+            </div>
+          </div>
+        </div>
+
+        <!-- EFFECT OF MEDIUM -->
+        <div class="topic-subblock">
+          <h4 class="subblock-title">Effect of Dielectric Medium on Electrostatic Force</h4>
+          <p class="paragraph-text">
+            When an insulating medium (dielectric) of relative permittivity <span class="math-sym">ε_r</span> is inserted between two charges, the electric force is reduced due to polarization of the dielectric molecules:
+          </p>
+          <div class="formula-card mini">
+            <div class="formula-display">
+              <span class="math-eq">F_{medium} = \frac{F_{vacuum}}{\varepsilon_r}</span>
+            </div>
+            <div class="where-unit">
+              Since <span class="math-sym">ε_r > 1</span> for all material media, <strong>electrostatic force is always maximum in vacuum</strong> and decreases in any dielectric.
+            </div>
+          </div>
+        </div>
+
+        <!-- SOLVED NUMERICAL 1 -->
+        <div class="example-card">
+          <div class="example-tag">Solved Example 1 • Coulomb's Law & Medium</div>
+          <div class="example-q">
+            <strong>Question:</strong> Two point charges of <span class="math-sym">+2 μC</span> and <span class="math-sym">+8 μC</span> are placed <span class="math-sym">20 cm</span> apart in vacuum. (a) Calculate the force between them. (b) What will be the force if a dielectric slab with <span class="math-sym">ε_r = 4</span> is inserted between them?
+          </div>
+          <div class="example-solution">
+            <div class="sol-step"><strong>Given:</strong> q₁ = 2 × 10⁻⁶ C, q₂ = 8 × 10⁻⁶ C, r = 20 cm = 0.2 m, k = 9 × 10⁹ N·m²/C², ε_r = 4</div>
+            <div class="sol-step"><strong>Required:</strong> Force in vacuum F_vac = ? and Force in medium F_med = ?</div>
+            <div class="sol-step"><strong>Formula:</strong> F_vac = k(q₁q₂) / r² and F_med = F_vac / ε_r</div>
+            <div class="sol-step">
+              <strong>Substitution:</strong><br>
+              F_vac = [(9 × 10⁹)(2 × 10⁻⁶)(8 × 10⁻⁶)] / (0.2)² = (0.144) / 0.04 = <strong>3.6 N</strong><br>
+              F_med = 3.6 N / 4 = <strong>0.9 N</strong>
+            </div>
+            <div class="sol-answer">
+              ✓ Final Answer: Vacuum Force = 3.6 N (Repulsive); Medium Force = 0.9 N (Repulsive)
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-must">
+          <div class="callout-header">⭐ Must Remember: Vector Form of Coulomb's Law</div>
+          <div class="callout-body">
+            Coulomb's force strictly obeys <strong>Newton's Third Law of Motion</strong>. The force exerted by q₁ on q₂ is equal in magnitude and opposite in direction to the force exerted by q₂ on q₁: <br>
+            <span class="math-inline">F₁₂ = - F₂₁</span>. Hence, electrostatic force is an action-reaction pair and acts along the line joining the centers of the two charges (central force).
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: PRINCIPLE OF SUPERPOSITION -->
+      <section class="topic-section" id="sec-superposition">
+        <div class="topic-header">
+          <div class="topic-number">Topic 03</div>
+          <h3 class="topic-title">Principle of Superposition</h3>
+        </div>
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Principle of Superposition</div>
+          <div class="def-quote">"When multiple charges are present, the total electrostatic force acting on any given charge is the vector sum of all individual forces exerted on it by the other charges independently."</div>
+        </div>
+        <div class="formula-card mini">
+          <div class="formula-display">
+            <span class="math-eq">F_{net} = F₁ + F₂ + F₃ + ... + F_n = \sum F_i</span>
+          </div>
+          <div class="where-unit">
+            <strong>Key Concept:</strong> The force between any two charges is not affected by the presence of other surrounding charges.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: ELECTRIC FIELD & INTENSITY -->
+      <section class="topic-section" id="sec-field">
+        <div class="topic-header">
+          <div class="topic-number">Topic 04</div>
+          <h3 class="topic-title">Electric Field & Field Intensity</h3>
+        </div>
+
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Electric Field & Electric Field Intensity (E)</div>
+          <div class="def-quote">"Electric field is the region or space around an electric charge in which another charge experiences an electrostatic force. Electric Field Intensity (E) is the force experienced per unit positive test charge placed at that point."</div>
+          <div class="def-plain">
+            <strong>In simple words:</strong> The electric field tells us the strength and direction of electrostatic push or pull at any point in space.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-card-top">
+            <span class="formula-type">Formula • Electric Field of Point Charge</span>
+            <button class="btn-copy-formula" data-formula="E = F / q0 = (k * Q) / r^2" title="Copy formula">📋 Copy Formula</button>
+          </div>
+          <div class="formula-display">
+            <span class="math-eq">E = \frac{F}{q₀} = \frac{k · Q}{r²} = \frac{1}{4\pi\varepsilon₀} · \frac{Q}{r²}</span>
+          </div>
+          <div class="formula-where-box">
+            <div class="where-title">Where:</div>
+            <ul class="where-list">
+              <li><strong>E</strong> = Electric field intensity vector (N/C or V/m)</li>
+              <li><strong>F</strong> = Electrostatic force on test charge q₀ (in Newtons)</li>
+              <li><strong>q₀</strong> = Infinitesimally small positive test charge (in Coulombs)</li>
+              <li><strong>Q</strong> = Source charge producing the field (in Coulombs)</li>
+              <li><strong>r</strong> = Distance from source charge to observation point (in meters)</li>
+            </ul>
+            <div class="where-unit">
+              <strong>SI Unit:</strong> Newton per Coulomb (N/C) or Volt per meter (V/m) • <strong>Dimensions:</strong> [M L T⁻³ I⁻¹] • <strong>Vector Quantity</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOLVED NUMERICAL 2 -->
+        <div class="example-card">
+          <div class="example-tag">Solved Example 2 • Electric Field Calculation</div>
+          <div class="example-q">
+            <strong>Question:</strong> Determine the electric field intensity at a point situated <span class="math-sym">30 cm</span> away from an isolated point charge of <span class="math-sym">+5 μC</span> in air.
+          </div>
+          <div class="example-solution">
+            <div class="sol-step"><strong>Given:</strong> Q = +5 × 10⁻⁶ C, r = 30 cm = 0.3 m, k = 9 × 10⁹ N·m²/C²</div>
+            <div class="sol-step"><strong>Required:</strong> Electric field intensity E = ?</div>
+            <div class="sol-step"><strong>Formula:</strong> E = (k · Q) / r²</div>
+            <div class="sol-step">
+              <strong>Substitution:</strong><br>
+              E = [(9 × 10⁹)(5 × 10⁻⁶)] / (0.3)² = (4.5 × 10⁴) / 0.09 = <strong>5.0 × 10⁵ N/C</strong>
+            </div>
+            <div class="sol-answer">
+              ✓ Final Answer: E = 5.0 × 10⁵ N/C directed radially outward away from the positive charge.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: ELECTRIC FIELD LINES -->
+      <section class="topic-section" id="sec-lines">
+        <div class="topic-header">
+          <div class="topic-number">Topic 05</div>
+          <h3 class="topic-title">Electric Field Lines & Physical Rules</h3>
+        </div>
+
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Electric Field Lines (Lines of Force)</div>
+          <div class="def-quote">"Electric field lines are imaginary continuous curves drawn in an electric field such that the tangent to the curve at any point gives the direction of the electric field intensity at that point."</div>
+          <div class="def-plain">
+            <strong>Concept introduced by Michael Faraday</strong> to provide a visual map of the strength and direction of electric fields.
+          </div>
+        </div>
+
+        <div class="cards-grid">
+          <div class="info-card">
+            <h4 class="card-title">1. Origin and Termination</h4>
+            <p class="card-text">Field lines always originate from <strong>positive charges</strong> (+) and terminate on <strong>negative charges</strong> (−). For an isolated positive charge, they extend radially outward to infinity.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">2. Tangent Gives Direction</h4>
+            <p class="card-text">A tangent drawn to an electric field line at any point indicates the exact direction of the electric force on a positive test charge placed at that location.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">3. Never Intersect Each Other</h4>
+            <p class="card-text">Two field lines can <strong>never cross each other</strong>. If they did, there would be two tangents at the intersection point, meaning two distinct field directions at the same physical point, which is physically impossible.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">4. Density Equals Strength</h4>
+            <p class="card-text">The number of field lines per unit cross-sectional area perpendicular to the lines is directly proportional to the magnitude of the electric field intensity. Closely spaced lines = Strong Field; Widely spaced lines = Weak Field.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">5. Perpendicular to Conductors</h4>
+            <p class="card-text">Field lines always enter or leave the surface of a charged conductor at <strong>right angles (90°)</strong> in electrostatic equilibrium.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">6. No Closed Loops</h4>
+            <p class="card-text">Electrostatic field lines never form closed loops because electrostatic fields are <strong>conservative</strong> in nature.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: ELECTRIC FLUX -->
+      <section class="topic-section" id="sec-flux">
+        <div class="topic-header">
+          <div class="topic-number">Topic 06</div>
+          <h3 class="topic-title">Electric Flux (Φ)</h3>
+        </div>
+
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Electric Flux (Φ)</div>
+          <div class="def-quote">"Electric flux is defined as the total number of electric field lines passing through a given surface area placed in an electric field."</div>
+          <div class="def-plain">
+            <strong>Mathematically:</strong> It is the scalar dot product of the electric field vector E and the vector area A.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-card-top">
+            <span class="formula-type">Formula • Electric Flux</span>
+            <button class="btn-copy-formula" data-formula="Phi = E * A * cos(theta)" title="Copy formula">📋 Copy Formula</button>
+          </div>
+          <div class="formula-display">
+            <span class="math-eq">\Phi = \vec{E} \cdot \vec{A} = E · A · \cos(\theta)</span>
+          </div>
+          <div class="formula-where-box">
+            <div class="where-title">Where:</div>
+            <ul class="where-list">
+              <li><strong>Φ</strong> = Electric flux (Scalar quantity)</li>
+              <li><strong>E</strong> = Magnitude of electric field intensity (N/C)</li>
+              <li><strong>A</strong> = Area of the surface (m²)</li>
+              <li><strong>θ</strong> = Angle between the electric field vector E and the <strong>normal vector (vector area A)</strong> of the surface</li>
+            </ul>
+            <div class="where-unit">
+              <strong>SI Unit:</strong> N·m²/C or Volt·meter (V·m) • <strong>Scalar Quantity</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-grid">
+          <div class="info-card">
+            <h4 class="card-title">Maximum Flux (Φ_max = EA)</h4>
+            <p class="card-text">Occurs when the surface is held <strong>perpendicular</strong> to the electric field lines. In this case, the normal area vector is parallel to E (θ = 0° ⟹ cos 0° = 1).</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">Zero Flux (Φ = 0)</h4>
+            <p class="card-text">Occurs when the surface is held <strong>parallel</strong> to the electric field lines. In this case, the normal area vector is perpendicular to E (θ = 90° ⟹ cos 90° = 0).</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">Negative Flux</h4>
+            <p class="card-text">When field lines enter a closed surface (θ &gt; 90°), flux is negative (inward flux). When field lines leave a closed surface (θ &lt; 90°), flux is positive (outward flux).</p>
+          </div>
+        </div>
+
+        <div class="callout callout-mistake">
+          <div class="callout-header">⚠️ Major MDCAT Angle Trap</div>
+          <div class="callout-body">
+            Always check whether the question gives the angle with the <strong>surface plane</strong> or with the <strong>normal to the surface</strong>!<br>
+            If a question says: <em>"The plane of a surface makes an angle of 30° with the electric field"</em>, then the angle θ with the normal is <span class="math-inline">θ = 90° - 30° = 60°</span>. Thus <span class="math-inline">\Phi = EA \cos(60°) = 0.5 EA</span>.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: GAUSS'S LAW & APPLICATIONS -->
+      <section class="topic-section" id="sec-gauss">
+        <div class="topic-header">
+          <div class="topic-number">Topic 07</div>
+          <h3 class="topic-title">Gauss's Law & Symmetrical Applications</h3>
+        </div>
+
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Gauss's Law</div>
+          <div class="def-quote">"The total electric flux passing outward through any closed imaginary surface (Gaussian surface) is equal to 1/ε₀ times the total net electric charge enclosed inside the surface."</div>
+          <div class="def-plain">
+            <strong>Key Property:</strong> Gauss's law is independent of the size, shape, or geometric form of the closed surface.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-card-top">
+            <span class="formula-type">Formula • Gauss's Law</span>
+            <button class="btn-copy-formula" data-formula="Phi_total = Q_enclosed / epsilon_0" title="Copy formula">📋 Copy Formula</button>
+          </div>
+          <div class="formula-display">
+            <span class="math-eq">\Phi_{total} = \oint \vec{E} \cdot d\vec{A} = \frac{Q_{enclosed}}{\varepsilon₀}</span>
+          </div>
+          <div class="formula-where-box">
+            <div class="where-title">Where:</div>
+            <ul class="where-list">
+              <li><strong>Φ_total</strong> = Total net electric flux passing through the closed Gaussian surface</li>
+              <li><strong>Q_enclosed</strong> = Algebraic sum of all charges enclosed completely inside the surface</li>
+              <li><strong>ε₀</strong> = Permittivity of free space = 8.854 × 10⁻¹² C²/(N·m²)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4 class="subblock-title" style="margin-top:1.5rem;">Three Classic MDCAT Applications of Gauss's Law</h4>
+        <div class="cards-grid">
+          <div class="info-card">
+            <h4 class="card-title">1. Hollow Charged Conductor (Inside)</h4>
+            <p class="card-text">
+              Inside a hollow charged conducting sphere of radius R, the enclosed charge is zero (<span class="math-sym">Q_enc = 0</span>).<br>
+              <strong>Result:</strong> <span class="math-sym">E_{inside} = 0</span><br>
+              This is the scientific basis of <strong>Electrostatic Shielding</strong> (Faraday Cage).
+            </p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">2. Infinite Sheet of Charge</h4>
+            <p class="card-text">
+              For an infinite plane sheet of charge with uniform surface charge density <span class="math-sym">\sigma = Q / A</span>:<br>
+              <strong>Result:</strong> <span class="math-sym">E = \frac{\sigma}{2\varepsilon₀}</span><br>
+              Notice that the field is completely <strong>independent of distance</strong> from the sheet!
+            </p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">3. Between Two Oppositely Charged Plates</h4>
+            <p class="card-text">
+              Between two parallel plates carrying equal and opposite charges (<span class="math-sym">+\sigma</span> and <span class="math-sym">-\sigma</span>):<br>
+              <strong>Result:</strong> <span class="math-sym">E = \frac{\sigma}{\varepsilon₀}</span><br>
+              (Fields from both plates add constructively between plates and cancel outside).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: ELECTRIC POTENTIAL & POTENTIAL GRADIENT -->
+      <section class="topic-section" id="sec-potential">
+        <div class="topic-header">
+          <div class="topic-number">Topic 08</div>
+          <h3 class="topic-title">Electric Potential (V) & Potential Gradient</h3>
+        </div>
+
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Electric Potential (V)</div>
+          <div class="def-quote">"Electric potential at any point in an electric field is the work done per unit positive test charge in moving it from infinity to that point against the electrostatic force without producing any acceleration."</div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-card-top">
+            <span class="formula-type">Formula • Electric Potential & Potential Gradient</span>
+            <button class="btn-copy-formula" data-formula="V = W / q0 = (k * Q) / r" title="Copy formula">📋 Copy Formula</button>
+          </div>
+          <div class="formula-display">
+            <span class="math-eq">V = \frac{W}{q₀} = \frac{k · Q}{r} \quad \text{and} \quad E = - \frac{\Delta V}{\Delta r}</span>
+          </div>
+          <div class="formula-where-box">
+            <div class="where-title">Where:</div>
+            <ul class="where-list">
+              <li><strong>V</strong> = Electric potential at distance r (in Volts, V)</li>
+              <li><strong>W</strong> = Work done by external agent (in Joules, J)</li>
+              <li><strong>Q</strong> = Source charge (with algebraic sign included: positive for +Q, negative for −Q)</li>
+              <li><strong>-ΔV/Δr</strong> = <strong>Potential Gradient</strong> (rate of change of potential with distance)</li>
+            </ul>
+            <div class="where-unit">
+              <strong>SI Unit of Potential:</strong> Volt (V) = Joule/Coulomb (J/C) • <strong>Scalar Quantity</strong> • <strong>1 Electron-Volt (1 eV)</strong> = 1.602 × 10⁻¹⁹ J
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-mdcat" id="sec-relation">
+          <div class="callout-header">⚡ Crucial Direction Rule for Potential Gradient</div>
+          <div class="callout-body">
+            The negative sign in <span class="math-inline">E = - \frac{\Delta V}{\Delta r}</span> indicates that <strong>electric field lines always point in the direction of decreasing electric potential</strong>.<br>
+            • A positive charge naturally accelerates from high potential to low potential.<br>
+            • A negative charge naturally accelerates from low potential to high potential.
+          </div>
+        </div>
+
+        <div class="topic-subblock" id="sec-energy">
+          <h4 class="subblock-title">Equipotential Surfaces & Potential Energy</h4>
+          <div class="cards-grid">
+            <div class="info-card">
+              <h4 class="card-title">Equipotential Surface</h4>
+              <p class="card-text">
+                Any surface over which the electric potential is identical at all points (<span class="math-sym">\Delta V = 0</span>).<br>
+                • <strong>Work done</strong> in moving a charge along an equipotential surface is <strong>ZERO</strong> (<span class="math-sym">W = q\Delta V = 0</span>).<br>
+                • Electric field lines are always <strong>perpendicular</strong> to equipotential surfaces.
+              </p>
+            </div>
+            <div class="info-card">
+              <h4 class="card-title">Electric Potential Energy (U)</h4>
+              <p class="card-text">
+                The work done to assemble a two-charge configuration from infinite separation:<br>
+                <span class="math-sym">U = \frac{k · q₁ · q₂}{r}</span><br>
+                • Like charges: <span class="math-sym">U &gt; 0</span> (Repulsion, positive work required).<br>
+                • Opposite charges: <span class="math-sym">U &lt; 0</span> (Attraction, stable bound state).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 9: CAPACITANCE & CAPACITORS -->
+      <section class="topic-section" id="sec-capacitors">
+        <div class="topic-header">
+          <div class="topic-number">Topic 09</div>
+          <h3 class="topic-title">Capacitors, Capacitance & Dielectric Polarization</h3>
+        </div>
+
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Capacitor & Capacitance (C)</div>
+          <div class="def-quote">"A capacitor is a device designed to store electric charge and electrostatic potential energy. Capacitance (C) is the measure of a capacitor's ability to store charge per unit potential difference applied across its plates."</div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-card-top">
+            <span class="formula-type">Formula • Capacitance & Parallel Plate Geometry</span>
+            <button class="btn-copy-formula" data-formula="C = Q / V = (epsilon_r * epsilon_0 * A) / d" title="Copy formula">📋 Copy Formula</button>
+          </div>
+          <div class="formula-display">
+            <span class="math-eq">C = \frac{Q}{V}, \quad C_{vacuum} = \frac{\varepsilon₀ · A}{d}, \quad C_{medium} = \frac{\varepsilon_r · \varepsilon₀ · A}{d} = \varepsilon_r · C_{vacuum}</span>
+          </div>
+          <div class="formula-where-box">
+            <div class="where-title">Where:</div>
+            <ul class="where-list">
+              <li><strong>C</strong> = Capacitance (in Farads, F)</li>
+              <li><strong>Q</strong> = Magnitude of charge on either plate (in Coulombs, C)</li>
+              <li><strong>V</strong> = Potential difference between plates (in Volts, V)</li>
+              <li><strong>A</strong> = Overlapping surface area of either plate (in m²)</li>
+              <li><strong>d</strong> = Separation distance between the plates (in meters, m)</li>
+              <li><strong>ε_r</strong> = Dielectric constant (relative permittivity) of the insulating medium</li>
+            </ul>
+            <div class="where-unit">
+              <strong>SI Unit:</strong> Farad (F) = 1 Coulomb/Volt • 1 μF = 10⁻⁶ F • 1 nF = 10⁻⁹ F • 1 pF = 10⁻¹² F
+            </div>
+          </div>
+        </div>
+
+        <!-- DIELECTRIC POLARIZATION -->
+        <div class="topic-subblock">
+          <h4 class="subblock-title">How a Dielectric Increases Capacitance</h4>
+          <p class="paragraph-text">
+            When an insulating dielectric is inserted between capacitor plates, the external field aligns the molecular dipoles (Dielectric Polarization). This creates an internal induced electric field <span class="math-sym">E_{ind}</span> that opposes the original field <span class="math-sym">E₀</span>:
+          </p>
+          <div class="cards-grid">
+            <div class="info-card">
+              <h4 class="card-title">Net Electric Field Drops</h4>
+              <p class="card-text"><span class="math-sym">E_{net} = \frac{E₀}{\varepsilon_r}</span> (The electric field intensity is weakened by a factor of ε_r).</p>
+            </div>
+            <div class="info-card">
+              <h4 class="card-title">Potential Difference Drops</h4>
+              <p class="card-text"><span class="math-sym">V = E_{net} · d = \frac{V₀}{\varepsilon_r}</span> (Voltage decreases for a given stored charge Q).</p>
+            </div>
+            <div class="info-card">
+              <h4 class="card-title">Capacitance Increases</h4>
+              <p class="card-text"><span class="math-sym">C = \frac{Q}{V} = \varepsilon_r · C₀</span> (Capacitance increases by exactly a factor of ε_r).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BATTERY CONNECTED VS DISCONNECTED TABLE -->
+        <div class="table-container-card">
+          <h4 class="card-title" style="margin-bottom:0.75rem;">⭐ MDCAT Golden Table: Dielectric Insertion Effects</h4>
+          <div class="table-responsive">
+            <table class="academic-table">
+              <thead>
+                <tr>
+                  <th>Physical Parameter</th>
+                  <th>Case A: Battery remains CONNECTED</th>
+                  <th>Case B: Battery DISCONNECTED (Isolated)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Capacitance (C)</strong></td>
+                  <td><span class="badge-inc">Increases to ε_r · C₀</span></td>
+                  <td><span class="badge-inc">Increases to ε_r · C₀</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Potential Difference (V)</strong></td>
+                  <td><span class="badge-const">Constant (V = V_battery)</span></td>
+                  <td><span class="badge-dec">Decreases to V₀ / ε_r</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Stored Charge (Q)</strong></td>
+                  <td><span class="badge-inc">Increases to ε_r · Q₀</span></td>
+                  <td><span class="badge-const">Constant (Q = Q₀)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Electric Field (E)</strong></td>
+                  <td><span class="badge-const">Constant (E = V/d)</span></td>
+                  <td><span class="badge-dec">Decreases to E₀ / ε_r</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Stored Energy (U)</strong></td>
+                  <td><span class="badge-inc">Increases to ε_r · U₀ (U = ½CV²)</span></td>
+                  <td><span class="badge-dec">Decreases to U₀ / ε_r (U = Q²/2C)</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: COMBINATIONS OF CAPACITORS -->
+      <section class="topic-section" id="sec-combinations">
+        <div class="topic-header">
+          <div class="topic-number">Topic 10</div>
+          <h3 class="topic-title">Capacitor Combinations: Series & Parallel</h3>
+        </div>
+
+        <div class="cards-grid">
+          <!-- SERIES -->
+          <div class="combo-card">
+            <div class="combo-header series">
+              <h4>Series Combination</h4>
+              <span class="combo-pill">Charge Q is Same</span>
+            </div>
+            <div class="combo-body">
+              <div class="formula-display mini">
+                <span class="math-eq">\frac{1}{C_{eq}} = \frac{1}{C₁} + \frac{1}{C₂} + \frac{1}{C₃} + ...</span>
+              </div>
+              <ul class="combo-rules">
+                <li><strong>Charge:</strong> Same charge Q exists on every capacitor (<span class="math-sym">Q₁ = Q₂ = Q_{total}</span>).</li>
+                <li><strong>Voltage:</strong> Potential divides across capacitors (<span class="math-sym">V_{total} = V₁ + V₂ + ...</span>).</li>
+                <li><strong>Equivalent:</strong> <span class="math-sym">C_{eq}</span> is always <strong>less than the smallest</strong> capacitor in the series chain.</li>
+                <li><strong>Shortcut for two capacitors:</strong> <span class="math-sym">C_{eq} = \frac{C₁ · C₂}{C₁ + C₂}</span></li>
+                <li><strong>Shortcut for n identical capacitors:</strong> <span class="math-sym">C_{eq} = \frac{C}{n}</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PARALLEL -->
+          <div class="combo-card">
+            <div class="combo-header parallel">
+              <h4>Parallel Combination</h4>
+              <span class="combo-pill">Voltage V is Same</span>
+            </div>
+            <div class="combo-body">
+              <div class="formula-display mini">
+                <span class="math-eq">C_{eq} = C₁ + C₂ + C₃ + ...</span>
+              </div>
+              <ul class="combo-rules">
+                <li><strong>Voltage:</strong> Potential difference across every branch is identical (<span class="math-sym">V₁ = V₂ = V_{supply}</span>).</li>
+                <li><strong>Charge:</strong> Total charge splits across branches (<span class="math-sym">Q_{total} = Q₁ + Q₂ + ...</span>).</li>
+                <li><strong>Equivalent:</strong> <span class="math-sym">C_{eq}</span> is always <strong>greater than the largest</strong> individual capacitor.</li>
+                <li><strong>Shortcut for n identical capacitors:</strong> <span class="math-sym">C_{eq} = n · C</span></li>
+                <li><strong>Usage:</strong> Used to maximize stored charge at a constant supply voltage.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOLVED NUMERICAL 3 -->
+        <div class="example-card" style="margin-top:1.5rem;">
+          <div class="example-tag">Solved Example 3 • Series Network</div>
+          <div class="example-q">
+            <strong>Question:</strong> Three capacitors of capacitances <span class="math-sym">2 μF</span>, <span class="math-sym">3 μF</span>, and <span class="math-sym">6 μF</span> are connected in series across a <span class="math-sym">12 V</span> battery. Find: (a) Equivalent capacitance, (b) Charge on each capacitor, and (c) Potential difference across the 2 μF capacitor.
+          </div>
+          <div class="example-solution">
+            <div class="sol-step"><strong>Given:</strong> C₁ = 2 μF, C₂ = 3 μF, C₃ = 6 μF, V = 12 V</div>
+            <div class="sol-step"><strong>Formulas:</strong> 1/C_eq = 1/C₁ + 1/C₂ + 1/C₃, Q = C_eq · V, V₁ = Q / C₁</div>
+            <div class="sol-step">
+              <strong>Substitution:</strong><br>
+              1/C_eq = 1/2 + 1/3 + 1/6 = (3 + 2 + 1)/6 = 6/6 = 1 μF⁻¹ ⟹ <strong>C_eq = 1 μF</strong><br>
+              Total Charge Q = (1 μF)(12 V) = <strong>12 μC</strong> (same on each capacitor in series)<br>
+              Voltage across C₁: V₁ = Q / C₁ = (12 μC) / (2 μF) = <strong>6 Volts</strong>
+            </div>
+            <div class="sol-answer">
+              ✓ Final Answers: C_eq = 1 μF; Charge = 12 μC on each; V₁ = 6 V, V₂ = 4 V, V₃ = 2 V (Total = 12 V)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 11: ENERGY STORED & ENERGY DENSITY -->
+      <section class="topic-section" id="sec-stored-energy">
+        <div class="topic-header">
+          <div class="topic-number">Topic 11</div>
+          <h3 class="topic-title">Energy Stored in a Capacitor & Energy Density</h3>
+        </div>
+
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Energy Stored in Capacitor & Energy Density (u)</div>
+          <div class="def-quote">"The electrostatic potential energy stored in a capacitor is the total work done by the charging source in transferring charge from one plate to the other. Energy Density (u) is the electrostatic energy stored per unit volume of the dielectric field space."</div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-card-top">
+            <span class="formula-type">Formula • Three Equivalent Forms of Stored Energy</span>
+            <button class="btn-copy-formula" data-formula="U = 1/2 * C * V^2 = 1/2 * Q * V = Q^2 / (2 * C)" title="Copy formula">📋 Copy Formula</button>
+          </div>
+          <div class="formula-display">
+            <span class="math-eq">U = \frac{1}{2} C V² = \frac{1}{2} Q V = \frac{Q²}{2 C} \quad \text{and} \quad u = \frac{1}{2} \varepsilon₀ \varepsilon_r E²</span>
+          </div>
+          <div class="formula-where-box">
+            <div class="where-title">Where:</div>
+            <ul class="where-list">
+              <li><strong>U</strong> = Total stored electrostatic energy (in Joules, J)</li>
+              <li><strong>u</strong> = Energy density = <span class="math-sym">U / (Area × d)</span> (in J/m³)</li>
+              <li><strong>E</strong> = Electric field intensity between the plates = V / d (in V/m)</li>
+            </ul>
+            <div class="where-unit">
+              <strong>Crucial Takeaway:</strong> Electrostatic energy is stored <strong>inside the electric field</strong> established in the space between the plates!
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 12: RC CHARGING & DISCHARGING -->
+      <section class="topic-section" id="sec-rc">
+        <div class="topic-header">
+          <div class="topic-number">Topic 12</div>
+          <h3 class="topic-title">RC Circuits: Charging, Discharging & Time Constant (τ)</h3>
+        </div>
+
+        <div class="definition-card">
+          <div class="def-badge">DEFINITION</div>
+          <div class="def-term">Time Constant (τ = RC)</div>
+          <div class="def-quote">"The time constant (τ) of an RC circuit is the time required for the capacitor to charge up to 63.2% of its maximum equilibrium charge (q₀ = CV), or discharge down to 36.8% of its initial charge."</div>
+        </div>
+
+        <div class="cards-grid">
+          <div class="info-card">
+            <h4 class="card-title">1. Time Constant Formula</h4>
+            <p class="card-text">
+              <span class="math-sym">\tau = R · C</span><br>
+              <strong>SI Unit:</strong> <span class="math-sym">[Ohm] × [Farad] = [Second (s)]</span><br>
+              Dimensions: <span class="math-sym">[M⁰ L⁰ T¹]</span>
+            </p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">2. Charging Dynamics</h4>
+            <p class="card-text">
+              <span class="math-sym">q(t) = q₀ [1 - e^{-t / RC}]</span><br>
+              • At t = 1τ: q = <strong>0.632 q₀</strong> (63.2% charged)<br>
+              • At t = 5τ: q ≈ <strong>0.993 q₀</strong> (99.3% charged ≈ full)
+            </p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">3. Discharging Dynamics</h4>
+            <p class="card-text">
+              <span class="math-sym">q(t) = q₀ · e^{-t / RC}</span><br>
+              • At t = 1τ: q = <strong>0.368 q₀</strong> (36.8% charge remaining)<br>
+              • At t = 5τ: q drops below 1% (fully discharged)
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 13: COMPARISON TABLES -->
+      <section class="topic-section" id="sec-comparisons">
+        <div class="topic-header">
+          <div class="topic-number">Topic 13</div>
+          <h3 class="topic-title">MDCAT Concept Comparison Tables</h3>
+        </div>
+
+        <!-- TABLE 1 -->
+        <div class="table-container-card">
+          <h4 class="card-title">Table 1: Electric Force (F) vs Electric Field (E) vs Electric Potential (V)</h4>
+          <div class="table-responsive">
+            <table class="academic-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Electric Force (F)</th>
+                  <th>Electric Field (E)</th>
+                  <th>Electric Potential (V)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Definition</strong></td>
+                  <td>Push/pull between two charges</td>
+                  <td>Force per unit positive test charge</td>
+                  <td>Work done per unit positive charge</td>
+                </tr>
+                <tr>
+                  <td><strong>Point Charge Formula</strong></td>
+                  <td><span class="math-sym">k q₁q₂ / r²</span></td>
+                  <td><span class="math-sym">k Q / r²</span></td>
+                  <td><span class="math-sym">k Q / r</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Quantity Type</strong></td>
+                  <td>Vector (with direction)</td>
+                  <td>Vector (with direction)</td>
+                  <td>Scalar (magnitude with sign)</td>
+                </tr>
+                <tr>
+                  <td><strong>Distance Dependence</strong></td>
+                  <td><span class="math-sym">F \propto 1/r²</span></td>
+                  <td><span class="math-sym">E \propto 1/r²</span></td>
+                  <td><span class="math-sym">V \propto 1/r</span></td>
+                </tr>
+                <tr>
+                  <td><strong>SI Unit</strong></td>
+                  <td>Newton (N)</td>
+                  <td>N/C or V/m</td>
+                  <td>Volt (V) or J/C</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TABLE 2 -->
+        <div class="table-container-card" style="margin-top:1.5rem;">
+          <h4 class="card-title">Table 2: Conductors vs Insulators in Electrostatics</h4>
+          <div class="table-responsive">
+            <table class="academic-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Conductors (e.g. Copper, Silver)</th>
+                  <th>Insulators / Dielectrics (e.g. Mica, Glass)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Free Electrons</strong></td>
+                  <td>Abundant (freely moving)</td>
+                  <td>Negligible (tightly bound to nuclei)</td>
+                </tr>
+                <tr>
+                  <td><strong>Location of Static Charge</strong></td>
+                  <td>Resides strictly on outer surface</td>
+                  <td>Can remain localized where deposited</td>
+                </tr>
+                <tr>
+                  <td><strong>Field Inside Equilibrium</strong></td>
+                  <td><span class="math-sym">E = 0</span> strictly inside metal</td>
+                  <td><span class="math-sym">E \neq 0</span> (reduced due to polarization)</td>
+                </tr>
+                <tr>
+                  <td><strong>Potential Inside</strong></td>
+                  <td>Uniform throughout (<span class="math-sym">V_{inside} = V_{surface}</span>)</td>
+                  <td>Varies continuously</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 14: FORMULA VAULT -->
+      <section class="topic-section" id="sec-vault">
+        <div class="topic-header">
+          <div class="topic-number">Topic 14</div>
+          <h3 class="topic-title">MDCAT Formula Vault</h3>
+        </div>
+        <p class="paragraph-text">Master formula bank with quick exam shortcuts and one-click copy functionality:</p>
+
+        <div class="vault-grid">
+          <!-- 1 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 01</span>
+              <button class="btn-copy-formula" data-formula="q = n * e">📋 Copy</button>
+            </div>
+            <div class="vault-name">Quantization of Charge</div>
+            <div class="vault-formula-math">q = n · e</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> Coulomb (C) • <strong>e = 1.6 × 10⁻¹⁹ C</strong></div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Total electron count n = q / (1.6 × 10⁻¹⁹).</div>
+          </div>
+
+          <!-- 2 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 02</span>
+              <button class="btn-copy-formula" data-formula="F = (k * q1 * q2) / r^2">📋 Copy</button>
+            </div>
+            <div class="vault-name">Coulomb's Force (Vacuum)</div>
+            <div class="vault-formula-math">F = \frac{k · q₁ · q₂}{r²}</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> Newton (N) • <strong>k = 9 × 10⁹ N·m²/C²</strong></div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Halving r quadruples force (4F); doubling r quarters force (F/4).</div>
+          </div>
+
+          <!-- 3 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 03</span>
+              <button class="btn-copy-formula" data-formula="F_med = F_vac / epsilon_r">📋 Copy</button>
+            </div>
+            <div class="vault-name">Coulomb Force in Medium</div>
+            <div class="vault-formula-math">F_{med} = \frac{F_{vac}}{\varepsilon_r}</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> Newton (N) • <strong>ε_r = Dielectric Constant</strong></div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Force always drops by factor of ε_r in a dielectric.</div>
+          </div>
+
+          <!-- 4 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 04</span>
+              <button class="btn-copy-formula" data-formula="E = (k * Q) / r^2">📋 Copy</button>
+            </div>
+            <div class="vault-name">Electric Field (Point Charge)</div>
+            <div class="vault-formula-math">E = \frac{F}{q₀} = \frac{k · Q}{r²}</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> N/C or V/m • Vector Quantity</div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Inverse-square law: <span class="math-sym">E \propto 1/r²</span>.</div>
+          </div>
+
+          <!-- 5 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 05</span>
+              <button class="btn-copy-formula" data-formula="Phi = E * A * cos(theta)">📋 Copy</button>
+            </div>
+            <div class="vault-name">Electric Flux</div>
+            <div class="vault-formula-math">\Phi = E · A · \cos(\theta)</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> N·m²/C or V·m • Scalar</div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Max flux at θ = 0° (normal parallel to E), Zero at θ = 90°.</div>
+          </div>
+
+          <!-- 6 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 06</span>
+              <button class="btn-copy-formula" data-formula="Phi = Q_enc / epsilon_0">📋 Copy</button>
+            </div>
+            <div class="vault-name">Gauss's Law</div>
+            <div class="vault-formula-math">\Phi_{total} = \frac{Q_{enclosed}}{\varepsilon₀}</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> N·m²/C • <strong>ε₀ = 8.85 × 10⁻¹²</strong></div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Independent of size or shape of closed Gaussian surface.</div>
+          </div>
+
+          <!-- 7 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 07</span>
+              <button class="btn-copy-formula" data-formula="V = (k * Q) / r">📋 Copy</button>
+            </div>
+            <div class="vault-name">Electric Potential (Point Charge)</div>
+            <div class="vault-formula-math">V = \frac{W}{q₀} = \frac{k · Q}{r}</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> Volt (V) = J/C • Scalar</div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Inverse-linear distance: <span class="math-sym">V \propto 1/r</span>.</div>
+          </div>
+
+          <!-- 8 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 08</span>
+              <button class="btn-copy-formula" data-formula="E = - Delta_V / Delta_r">📋 Copy</button>
+            </div>
+            <div class="vault-name">Potential Gradient</div>
+            <div class="vault-formula-math">E = - \frac{\Delta V}{\Delta r}</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> V/m = N/C • Direction towards decreasing V</div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Uniform field between plates: <span class="math-sym">E = V / d</span>.</div>
+          </div>
+
+          <!-- 9 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 09</span>
+              <button class="btn-copy-formula" data-formula="C = (epsilon_r * epsilon_0 * A) / d">📋 Copy</button>
+            </div>
+            <div class="vault-name">Parallel Plate Capacitance</div>
+            <div class="vault-formula-math">C = \frac{\varepsilon_r · \varepsilon₀ · A}{d}</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> Farad (F) • <strong>1 F = 1 C/V</strong></div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Doubling area doubles C; halving distance doubles C.</div>
+          </div>
+
+          <!-- 10 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 10</span>
+              <button class="btn-copy-formula" data-formula="U = 1/2 * C * V^2">📋 Copy</button>
+            </div>
+            <div class="vault-name">Stored Electrostatic Energy</div>
+            <div class="vault-formula-math">U = \frac{1}{2} C V² = \frac{1}{2} Q V = \frac{Q²}{2 C}</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> Joule (J)</div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Use ½CV² when V is constant; use Q²/2C when Q is constant.</div>
+          </div>
+
+          <!-- 11 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 11</span>
+              <button class="btn-copy-formula" data-formula="u = 1/2 * epsilon_0 * epsilon_r * E^2">📋 Copy</button>
+            </div>
+            <div class="vault-name">Energy Density in Field</div>
+            <div class="vault-formula-math">u = \frac{1}{2} \varepsilon₀ \varepsilon_r E²</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> J/m³ (Joules per cubic meter)</div>
+            <div class="vault-tip"><strong>Shortcut:</strong> Proportional to the square of electric field intensity (<span class="math-sym">u \propto E²</span>).</div>
+          </div>
+
+          <!-- 12 -->
+          <div class="vault-card">
+            <div class="vault-top">
+              <span class="vault-tag">Formula 12</span>
+              <button class="btn-copy-formula" data-formula="tau = R * C">📋 Copy</button>
+            </div>
+            <div class="vault-name">RC Circuit Time Constant</div>
+            <div class="vault-formula-math">\tau = R · C</div>
+            <div class="vault-meta"><strong>SI Unit:</strong> Seconds (s) • Dimensions [T]</div>
+            <div class="vault-tip"><strong>Shortcut:</strong> 1τ = 63.2% charge; 5τ = 99.3% full equilibrium charge.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 15: INTERACTIVE CALCULATORS -->
+      <section class="topic-section" id="sec-calculators">
+        <div class="topic-header">
+          <div class="topic-number">Topic 15</div>
+          <h3 class="topic-title">Interactive Step-by-Step Calculators</h3>
+        </div>
+        <p class="paragraph-text">Compute real electrostatic quantities instantly with step-by-step mathematical breakdowns:</p>
+
+        <div class="calc-grid">
+          <!-- CALC 1: COULOMB'S FORCE -->
+          <div class="calc-card">
+            <div class="calc-header">
+              <span class="calc-icon">⚡</span>
+              <div>
+                <h4 class="calc-heading">1. Coulomb's Law Force</h4>
+                <p class="calc-sub">F = (k · q₁ · q₂) / (ε_r · r²)</p>
+              </div>
+            </div>
+            <div class="calc-inputs">
+              <div class="input-row">
+                <label>Charge q₁ (μC):</label>
+                <input type="number" id="coulomb-q1" value="2" step="any">
+              </div>
+              <div class="input-row">
+                <label>Charge q₂ (μC):</label>
+                <input type="number" id="coulomb-q2" value="-8" step="any">
+              </div>
+              <div class="input-row">
+                <label>Distance r (cm):</label>
+                <input type="number" id="coulomb-r" value="20" step="any">
+              </div>
+              <div class="input-row">
+                <label>Dielectric (ε_r):</label>
+                <input type="number" id="coulomb-er" value="1" min="1" step="any">
+              </div>
+            </div>
+            <div class="calc-btn-row">
+              <button id="btn-calc-coulomb" class="btn-calc-primary">Calculate Force</button>
+              <button id="btn-reset-coulomb" class="btn-calc-reset">Reset</button>
+            </div>
+            <div id="coulomb-output" class="calc-output-box">
+              <div class="out-val">Ready for calculation.</div>
+            </div>
+          </div>
+
+          <!-- CALC 2: ELECTRIC FIELD -->
+          <div class="calc-card">
+            <div class="calc-header">
+              <span class="calc-icon">🌐</span>
+              <div>
+                <h4 class="calc-heading">2. Electric Field Intensity</h4>
+                <p class="calc-sub">E = (k · Q) / r²</p>
+              </div>
+            </div>
+            <div class="calc-inputs">
+              <div class="input-row">
+                <label>Source Charge Q (μC):</label>
+                <input type="number" id="efield-q" value="5" step="any">
+              </div>
+              <div class="input-row">
+                <label>Distance r (cm):</label>
+                <input type="number" id="efield-r" value="30" step="any">
+              </div>
+            </div>
+            <div class="calc-btn-row">
+              <button id="btn-calc-efield" class="btn-calc-primary">Calculate Field</button>
+              <button id="btn-reset-efield" class="btn-calc-reset">Reset</button>
+            </div>
+            <div id="efield-output" class="calc-output-box">
+              <div class="out-val">Ready for calculation.</div>
+            </div>
+          </div>
+
+          <!-- CALC 3: CAPACITANCE -->
+          <div class="calc-card">
+            <div class="calc-header">
+              <span class="calc-icon">🔋</span>
+              <div>
+                <h4 class="calc-heading">3. Parallel Plate Capacitance</h4>
+                <p class="calc-sub">C = (ε_r · ε₀ · A) / d</p>
+              </div>
+            </div>
+            <div class="calc-inputs">
+              <div class="input-row">
+                <label>Plate Area A (cm²):</label>
+                <input type="number" id="cap-area" value="100" step="any">
+              </div>
+              <div class="input-row">
+                <label>Plate Separation d (mm):</label>
+                <input type="number" id="cap-dist" value="2" step="any">
+              </div>
+              <div class="input-row">
+                <label>Dielectric Constant (ε_r):</label>
+                <input type="number" id="cap-er" value="4" min="1" step="any">
+              </div>
+            </div>
+            <div class="calc-btn-row">
+              <button id="btn-calc-cap" class="btn-calc-primary">Calculate Capacitance</button>
+              <button id="btn-reset-cap" class="btn-calc-reset">Reset</button>
+            </div>
+            <div id="cap-output" class="calc-output-box">
+              <div class="out-val">Ready for calculation.</div>
+            </div>
+          </div>
+
+          <!-- CALC 4: STORED ENERGY -->
+          <div class="calc-card">
+            <div class="calc-header">
+              <span class="calc-icon">💡</span>
+              <div>
+                <h4 class="calc-heading">4. Capacitor Stored Energy</h4>
+                <p class="calc-sub">U = ½CV² • Q = CV</p>
+              </div>
+            </div>
+            <div class="calc-inputs">
+              <div class="input-row">
+                <label>Capacitance C (μF):</label>
+                <input type="number" id="energy-c" value="50" step="any">
+              </div>
+              <div class="input-row">
+                <label>Voltage V (Volts):</label>
+                <input type="number" id="energy-v" value="12" step="any">
+              </div>
+            </div>
+            <div class="calc-btn-row">
+              <button id="btn-calc-energy" class="btn-calc-primary">Calculate Energy</button>
+              <button id="btn-reset-energy" class="btn-calc-reset">Reset</button>
+            </div>
+            <div id="energy-output" class="calc-output-box">
+              <div class="out-val">Ready for calculation.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 16: SOLVED NUMERICALS -->
+      <section class="topic-section" id="sec-numericals">
+        <div class="topic-header">
+          <div class="topic-number">Topic 16</div>
+          <h3 class="topic-title">MDCAT Solved Numericals Bank</h3>
+        </div>
+
+        <div class="numericals-container">
+          <!-- NUM 1 -->
+          <div class="num-item-card">
+            <div class="num-item-head">
+              <span class="num-tag">Problem 1 • Charge Transfer</span>
+              <button class="btn-toggle-sol">Show Solution ↓</button>
+            </div>
+            <div class="num-item-q">
+              A metal sphere acquires a net negative charge of <span class="math-sym">-4.8 × 10⁻¹⁶ C</span>. How many excess electrons were transferred to the sphere?
+            </div>
+            <div class="num-item-sol">
+              <p><strong>Given:</strong> q = -4.8 × 10⁻¹⁶ C, e = -1.6 × 10⁻¹⁹ C</p>
+              <p><strong>Formula:</strong> q = n · e ⟹ n = q / e</p>
+              <p><strong>Substitution:</strong> n = (-4.8 × 10⁻¹⁶ C) / (-1.6 × 10⁻¹⁹ C) = <strong>3000 electrons</strong></p>
+              <div class="sol-final-badge">✓ Final Answer: 3000 excess electrons transferred</div>
+            </div>
+          </div>
+
+          <!-- NUM 2 -->
+          <div class="num-item-card">
+            <div class="num-item-head">
+              <span class="num-tag">Problem 2 • Electric Flux</span>
+              <button class="btn-toggle-sol">Show Solution ↓</button>
+            </div>
+            <div class="num-item-q">
+              A uniform electric field of <span class="math-sym">2000 N/C</span> passes through a flat square surface of side <span class="math-sym">10 cm</span>. Calculate the electric flux if the surface plane makes an angle of <span class="math-sym">30°</span> with the field lines.
+            </div>
+            <div class="num-item-sol">
+              <p><strong>Given:</strong> E = 2000 N/C, Area A = (0.1 m)² = 0.01 m²</p>
+              <p><strong>Angle Note:</strong> The plane makes 30° with field ⟹ Angle with normal vector is <span class="math-sym">θ = 90° - 30° = 60°</span></p>
+              <p><strong>Formula:</strong> Φ = E · A · cos(θ)</p>
+              <p><strong>Substitution:</strong> Φ = (2000 N/C)(0.01 m²) cos(60°) = 20 × 0.5 = <strong>10 N·m²/C</strong></p>
+              <div class="sol-final-badge">✓ Final Answer: 10 N·m²/C (or 10 V·m)</div>
+            </div>
+          </div>
+
+          <!-- NUM 3 -->
+          <div class="num-item-card">
+            <div class="num-item-head">
+              <span class="num-tag">Problem 3 • Potential Difference & Work</span>
+              <button class="btn-toggle-sol">Show Solution ↓</button>
+            </div>
+            <div class="num-item-q">
+              How much work is required to move a charge of <span class="math-sym">+3 μC</span> from a point at potential <span class="math-sym">V_A = -20 V</span> to a point at <span class="math-sym">V_B = +60 V</span>?
+            </div>
+            <div class="num-item-sol">
+              <p><strong>Given:</strong> q = +3 × 10⁻⁶ C, V_A = -20 V, V_B = +60 V</p>
+              <p><strong>Formula:</strong> W = q · ΔV = q · (V_B - V_A)</p>
+              <p><strong>Substitution:</strong> ΔV = 60 - (-20) = 80 V ⟹ W = (3 × 10⁻⁶ C)(80 V) = <strong>2.4 × 10⁻⁴ Joules</strong></p>
+              <div class="sol-final-badge">✓ Final Answer: 2.4 × 10⁻⁴ J (or 0.24 mJ)</div>
+            </div>
+          </div>
+
+          <!-- NUM 4 -->
+          <div class="num-item-card">
+            <div class="num-item-head">
+              <span class="num-tag">Problem 4 • Parallel Plate Capacitance</span>
+              <button class="btn-toggle-sol">Show Solution ↓</button>
+            </div>
+            <div class="num-item-q">
+              A parallel plate capacitor has plate area <span class="math-sym">0.04 m²</span> and plate separation <span class="math-sym">1.77 mm</span> in vacuum. Calculate its capacitance.
+            </div>
+            <div class="num-item-sol">
+              <p><strong>Given:</strong> A = 0.04 m², d = 1.77 × 10⁻³ m, ε₀ = 8.854 × 10⁻¹² F/m</p>
+              <p><strong>Formula:</strong> C = (ε₀ · A) / d</p>
+              <p><strong>Substitution:</strong> C = [(8.854 × 10⁻¹²)(0.04)] / (1.77 × 10⁻³) = (0.354 × 10⁻¹²) / (1.77 × 10⁻³) = <strong>2.0 × 10⁻¹⁰ F = 200 pF</strong></p>
+              <div class="sol-final-badge">✓ Final Answer: 200 pF (or 0.2 nF)</div>
+            </div>
+          </div>
+
+          <!-- NUM 5 -->
+          <div class="num-item-card">
+            <div class="num-item-head">
+              <span class="num-tag">Problem 5 • Capacitor Stored Energy</span>
+              <button class="btn-toggle-sol">Show Solution ↓</button>
+            </div>
+            <div class="num-item-q">
+              A <span class="math-sym">100 μF</span> capacitor is charged to <span class="math-sym">50 V</span>. Calculate the stored energy and the total charge stored.
+            </div>
+            <div class="num-item-sol">
+              <p><strong>Given:</strong> C = 100 μF = 10⁻⁴ F, V = 50 V</p>
+              <p><strong>Formula:</strong> U = ½ C V² and Q = C · V</p>
+              <p><strong>Substitution:</strong> U = ½ (10⁻⁴ F)(50 V)² = ½ (10⁻⁴)(2500) = <strong>0.125 J (125 mJ)</strong><br>Q = (100 × 10⁻⁶ F)(50 V) = <strong>5.0 × 10⁻³ C (5 mC)</strong></p>
+              <div class="sol-final-badge">✓ Final Answer: Energy = 0.125 Joules; Stored Charge = 5.0 mC</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 17: MCQS QUIZ (28 QUESTIONS ENGINE) -->
+      <section class="topic-section" id="sec-mcqs">
+        <div class="topic-header">
+          <div class="topic-number">Topic 17</div>
+          <h3 class="topic-title">MDCAT High-Yield 28 MCQs Practice Quiz</h3>
+        </div>
+
+        <div class="quiz-container-card">
+          <div class="quiz-top-bar">
+            <div class="quiz-q-tracker">
+              <span id="quiz-tracker-text">Question 1 of 28</span>
+            </div>
+            <div class="quiz-score-pill">
+              Score: <span id="quiz-score-num">0</span> / 28 (<span id="quiz-score-pct">0%</span>)
+            </div>
+          </div>
+
+          <div class="quiz-progress-track">
+            <div id="quiz-progress-fill" class="quiz-progress-fill"></div>
+          </div>
+
+          <!-- QUESTION CARD -->
+          <div class="quiz-body">
+            <div id="quiz-question-text" class="quiz-question-heading">Loading question...</div>
+            <div id="quiz-options-list" class="quiz-options-container"></div>
+            <div id="quiz-feedback-box" class="quiz-feedback hidden"></div>
+          </div>
+
+          <!-- CONTROLS -->
+          <div class="quiz-bottom-controls">
+            <button id="btn-quiz-prev" class="btn-secondary" disabled>← Previous</button>
+            <button id="btn-quiz-reset" class="btn-danger-outline">Reset Quiz</button>
+            <button id="btn-quiz-next" class="btn-primary">Next Question →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 18: QUICK 1-DAY REVISION SHEET -->
+      <section class="topic-section" id="sec-revision">
+        <div class="topic-header">
+          <div class="topic-number">Topic 18</div>
+          <h3 class="topic-title">Quick 1-Day Before Exam Revision Sheet</h3>
+        </div>
+
+        <div class="cards-grid">
+          <div class="info-card">
+            <h4 class="card-title">1. Charge & Quantization</h4>
+            <p class="card-text"><strong>q = ne</strong> • e = 1.6 × 10⁻¹⁹ C • Minimum free charge packet. 1 Coulomb has 6.25 × 10¹⁸ electrons.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">2. Coulomb's Law</h4>
+            <p class="card-text"><strong>F = kq₁q₂ / r²</strong> • Inverse-square law. In dielectric: <strong>F_med = F_vac / ε_r</strong> (force decreases).</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">3. Electric Field & Potential</h4>
+            <p class="card-text"><strong>E = kQ / r²</strong> (vector, 1/r²). <strong>V = kQ / r</strong> (scalar, 1/r). Relation: <strong>E = -ΔV / Δr</strong>.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">4. Gauss's Law</h4>
+            <p class="card-text"><strong>Φ = Q_enc / ε₀</strong> • E inside hollow sphere = 0. E of infinite sheet = σ / 2ε₀. Between parallel plates = σ / ε₀.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">5. Parallel Plate Capacitor</h4>
+            <p class="card-text"><strong>C = ε_r ε₀ A / d</strong> • Stored energy: <strong>U = ½CV² = ½QV = Q² / 2C</strong>. Energy density: <strong>u = ½ε₀ε_r E²</strong>.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="card-title">6. Combinations</h4>
+            <p class="card-text"><strong>Series:</strong> 1/C_eq = Σ(1/C_i) (Q same). <strong>Parallel:</strong> C_eq = Σ C_i (V same).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 19: CHECKLIST -->
+      <section class="topic-section" id="sec-checklist">
+        <div class="topic-header">
+          <div class="topic-number">Topic 19</div>
+          <h3 class="topic-title">"I Am MDCAT Ready" Mastery Checklist</h3>
+        </div>
+
+        <div class="checklist-wrapper">
+          <div class="checklist-progress-summary">
+            <div class="chk-bar-track">
+              <div id="chk-progress-fill" class="chk-bar-fill"></div>
+            </div>
+            <span id="chk-progress-lbl" class="chk-lbl">0% Mastered (0/16 items)</span>
+          </div>
+
+          <div id="checklist-items-container" class="checklist-grid"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">⚡ MDCAT Physics Prep Engine</div>
+      <p class="footer-copy">Master Electrostatics Chapter • Pure Textbook Standards • Built for Medical Aspirants</p>
+      <div class="footer-note">All formulas, numericals, calculators, and MCQs are calibrated strictly to PMDC and UHS syllabus criteria.</div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BACK TO TOP -->
+  <button id="btn-back-to-top" class="floating-top-btn" title="Back to Top" aria-label="Back to top">↑</button>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-message" class="toast-box">Formula copied to clipboard!</div>
+
+  <!-- External App Script -->
+  <script src="electrostatics.js"></script>
+</body>
+</html>

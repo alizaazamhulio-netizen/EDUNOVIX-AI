@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 9 Learning Hub | Complete Digital Educational Platform</title>
+  <meta name="description" content="Complete Grade 9 Pakistani & Sindh Board curriculum learning system for Mathematics, Physics, Chemistry, Biology, Computer Science, English, Pakistan Studies, and Islamiat.">
+  <link rel="stylesheet" href="/grade9.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header Navigation -->
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand-logo" id="logoLink" onclick="switchView('home')">
+          <span class="logo-badge">GRADE 9</span>
+          <span>EduNexa AI</span>
+        </a>
+
+        <nav>
+          <ul class="nav-links">
+            <li><button class="nav-btn active" id="nav-home" onclick="switchView('home')">🏠 Home</button></li>
+            <li><button class="nav-btn" id="nav-subjects" onclick="switchView('subjects')">📚 Subjects</button></li>
+            <li><button class="nav-btn" id="nav-search" onclick="switchView('search')">🔍 Search</button></li>
+            <li><button class="nav-btn" id="nav-quiz" onclick="switchView('quiz')">✍️ Quiz</button></li>
+            <li><button class="nav-btn" id="nav-examprep" onclick="switchView('examprep')">🎯 Exam Prep</button></li>
+            <li><button class="nav-btn" id="nav-bookmarks" onclick="switchView('bookmarks')">🔖 Bookmarks</button></li>
+            <li><button class="nav-btn" id="nav-progress" onclick="switchView('progress')">📊 Progress</button></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme" onclick="toggleTheme()">
+            <span id="themeIcon">🌙</span>
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="switchView('progress')" title="Student Profile">
+            <span id="profileStudentName">Student Profile</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- ================= 1. HOME DASHBOARD VIEW ================= -->
+      <section id="view-home" class="view-container active">
+        <!-- Hero Section -->
+        <div class="hero-section">
+          <div class="hero-pill">✨ Sindh & National Textbook Curriculum Aligned</div>
+          <h1 class="hero-title">Grade 9 Learning Hub</h1>
+          <p class="hero-subtitle">
+            Learn every subject chapter by chapter, explore comprehensive topic notes, practice step-by-step numericals, take quizzes, and prepare for board examinations.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="switchView('subjects')">🚀 Start Learning</button>
+            <button class="btn btn-secondary" onclick="switchView('quiz')">✍️ Practice Quiz</button>
+            <button class="btn btn-secondary" onclick="openContinueLearning()">📖 Continue Learning</button>
+            <button class="btn btn-secondary" onclick="switchView('examprep')">🎯 Board Exam Prep</button>
+          </div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">📚</div>
+            <div class="stat-details">
+              <div class="stat-value" id="stat-overall-progress">0%</div>
+              <div class="stat-label">Overall Curriculum Progress</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">✅</div>
+            <div class="stat-details">
+              <div class="stat-value" id="stat-completed-topics">0 / 48</div>
+              <div class="stat-label">Topics Completed</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange">🏆</div>
+            <div class="stat-details">
+              <div class="stat-value" id="stat-quiz-score">0%</div>
+              <div class="stat-label">Average Quiz Score</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">🔥</div>
+            <div class="stat-details">
+              <div class="stat-value" id="stat-study-streak">1 Day</div>
+              <div class="stat-label">Active Study Streak</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subject Overview Cards -->
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">📖 Grade 9 Curriculum Subjects</h2>
+            <p class="section-subtitle">Select any subject below to explore chapters, detailed lessons, and step-by-step solutions.</p>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="switchView('subjects')">View All Chapters →</button>
+        </div>
+
+        <div class="subjects-grid" id="homeSubjectsGrid">
+          <!-- Populated by grade9.js -->
+        </div>
+
+        <!-- Quick Revision Banner -->
+        <div class="quick-revision-box" style="margin-top: 1rem;">
+          <div class="flex-between" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div class="revision-title">💡 Did You Know? - Active Board Exam Preparation</div>
+              <p class="doc-paragraph" style="margin-bottom: 0;">
+                All our Grade 9 subjects adhere to standard secondary examination boards (Sindh Textbook Board & National Curriculum). Every topic features <strong>definitions, worked examples, formulas, common pitfalls, and past examination MCQs</strong>.
+              </p>
+            </div>
+            <button class="btn btn-accent" onclick="switchView('examprep')">Open Exam Prep Notes</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 2. SUBJECTS LIST VIEW ================= -->
+      <section id="view-subjects" class="view-container">
+        <div class="section-header">
+          <div>
+            <div class="breadcrumbs">
+              <span class="breadcrumb-link" onclick="switchView('home')">Home</span>
+              <span class="breadcrumb-sep">/</span>
+              <span>All Subjects</span>
+            </div>
+            <h2 class="section-title">Grade 9 Educational Subjects</h2>
+            <p class="section-subtitle">Click on any subject card to access its complete chapter-by-chapter curriculum.</p>
+          </div>
+        </div>
+
+        <div class="subjects-grid" id="allSubjectsGrid">
+          <!-- Populated by grade9.js -->
+        </div>
+      </section>
+
+      <!-- ================= 3. SUBJECT DEEP-DIVE (CHAPTERS & TOPICS) VIEW ================= -->
+      <section id="view-subject-detail" class="view-container">
+        <div class="breadcrumbs">
+          <span class="breadcrumb-link" onclick="switchView('home')">Home</span>
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-link" onclick="switchView('subjects')">Subjects</span>
+          <span class="breadcrumb-sep">/</span>
+          <span id="subjectDetailBreadcrumb">Mathematics</span>
+        </div>
+
+        <div class="subject-banner" id="subjectDetailBanner">
+          <!-- Populated dynamically -->
+        </div>
+
+        <div class="section-header">
+          <h3 class="section-title">📑 Chapters & Topics</h3>
+          <span class="subject-badge" id="subjectDetailChapterCount">0 Chapters</span>
+        </div>
+
+        <div class="chapters-list" id="chaptersContainer">
+          <!-- Populated dynamically with chapter cards & topic grids -->
+        </div>
+      </section>
+
+      <!-- ================= 4. TOPIC MATERIAL PAGE VIEW ================= -->
+      <section id="view-topic-material" class="view-container">
+        <div class="breadcrumbs">
+          <span class="breadcrumb-link" onclick="switchView('home')">Home</span>
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-link" id="topicBreadcrumbSubject" onclick="openSubjectFromTopic()">Subject</span>
+          <span class="breadcrumb-sep">/</span>
+          <span id="topicBreadcrumbChapter">Chapter</span>
+          <span class="breadcrumb-sep">/</span>
+          <span id="topicBreadcrumbTitle">Topic</span>
+        </div>
+
+        <div class="topic-page-layout">
+          <!-- Main Educational Document -->
+          <article class="topic-main-doc" id="topicDocContainer">
+            <!-- Full comprehensive material injected by grade9.js -->
+          </article>
+
+          <!-- Sticky Sidebar with Student Tools -->
+          <aside class="topic-sidebar">
+            <!-- Quick Actions Card -->
+            <div class="sidebar-card">
+              <h4 class="sidebar-title">⚡ Topic Controls</h4>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <button class="btn btn-outline" id="topicBookmarkBtn" onclick="toggleCurrentBookmark()">
+                  <span id="topicBookmarkIcon">🔖</span> <span id="topicBookmarkText">Bookmark Topic</span>
+                </button>
+                <button class="btn btn-accent" id="topicCompleteBtn" onclick="toggleCurrentComplete()">
+                  <span id="topicCompleteIcon">✅</span> <span id="topicCompleteText">Mark as Completed</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Student Personal Notes -->
+            <div class="sidebar-card">
+              <h4 class="sidebar-title">📝 My Personal Notes</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                Write key formulas, memory tricks, or teacher instructions. Saved locally.
+              </p>
+              <textarea class="notes-textarea" id="topicNotesInput" placeholder="Type your personal revision notes here..."></textarea>
+              <div class="flex-between">
+                <button class="btn btn-outline btn-sm" onclick="clearCurrentNotes()">Clear</button>
+                <button class="btn btn-primary btn-sm" onclick="saveCurrentNotes()">Save Note</button>
+              </div>
+              <div id="notesSaveNotice" style="font-size: 0.75rem; color: var(--success); margin-top: 0.4rem; display: none;">Saved to browser memory!</div>
+            </div>
+
+            <!-- Chapter Navigation Quick Links -->
+            <div class="sidebar-card">
+              <h4 class="sidebar-title">🗺️ Chapter Outline</h4>
+              <div id="topicSidebarOutline" style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem;">
+                <!-- Filled with other topics in the same chapter -->
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= 5. GLOBAL SEARCH VIEW ================= -->
+      <section id="view-search" class="view-container">
+        <div class="search-container">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">🔍 Comprehensive Grade 9 Search</h2>
+              <p class="section-subtitle">Instant search across all 8 subjects, definitions, formulas, laws, solved numericals, and exam questions.</p>
+            </div>
+          </div>
+
+          <div class="search-bar-wrap">
+            <span class="search-icon-pos">🔎</span>
+            <input type="text" id="globalSearchInput" class="search-input" placeholder="Search keywords (e.g. 'Photosynthesis', 'Newton second law', 'Logarithm rules', 'Cramer rule', 'Molarity')..." oninput="handleSearch()">
+          </div>
+
+          <div class="filter-chips">
+            <button class="filter-chip active" onclick="setSearchFilter('all', this)">All Subjects</button>
+            <button class="filter-chip" onclick="setSearchFilter('math', this)">Mathematics</button>
+            <button class="filter-chip" onclick="setSearchFilter('physics', this)">Physics</button>
+            <button class="filter-chip" onclick="setSearchFilter('chemistry', this)">Chemistry</button>
+            <button class="filter-chip" onclick="setSearchFilter('biology', this)">Biology</button>
+            <button class="filter-chip" onclick="setSearchFilter('computer', this)">Computer Science</button>
+            <button class="filter-chip" onclick="setSearchFilter('english', this)">English</button>
+            <button class="filter-chip" onclick="setSearchFilter('pakstudy', this)">Pakistan Studies</button>
+            <button class="filter-chip" onclick="setSearchFilter('islamiat', this)">Islamiat</button>
+          </div>
+
+          <div id="searchResultsCount" style="margin-bottom: 1rem; font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">
+            Type a search term above to find matching lessons.
+          </div>
+
+          <div class="search-results-list" id="searchResultsList">
+            <!-- Search Results Rendered here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 6. QUIZ ARENA VIEW ================= -->
+      <section id="view-quiz" class="view-container">
+        <div class="quiz-container">
+          <!-- Setup Box -->
+          <div class="quiz-setup-box" id="quizSetupCard">
+            <h2 class="section-title" style="margin-bottom: 0.5rem;">✍️ Grade 9 Practice Quiz Arena</h2>
+            <p class="section-subtitle" style="margin-bottom: 1.5rem;">Test your conceptual understanding with curriculum-aligned multiple choice questions.</p>
+
+            <div class="form-group">
+              <label class="form-label" for="quizSubjectSelect">Select Subject:</label>
+              <select id="quizSubjectSelect" class="form-select" onchange="populateQuizChapterOptions()">
+                <option value="all">All Subjects (Comprehensive Mock)</option>
+                <option value="math">Mathematics</option>
+                <option value="physics">Physics</option>
+                <option value="chemistry">Chemistry</option>
+                <option value="biology">Biology</option>
+                <option value="computer">Computer Science</option>
+                <option value="english">English</option>
+                <option value="pakstudy">Pakistan Studies</option>
+                <option value="islamiat">Islamiat</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="quizDifficultySelect">Difficulty Level:</label>
+              <select id="quizDifficultySelect" class="form-select">
+                <option value="all">All Levels (Mixed)</option>
+                <option value="easy">Easy (Definitions & Basic Concepts)</option>
+                <option value="medium">Medium (Application & Standard Questions)</option>
+                <option value="hard">Hard (Numericals & High-Order Thinking)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="quizQuestionCount">Number of Questions:</label>
+              <select id="quizQuestionCount" class="form-select">
+                <option value="5">5 Questions (Quick Check)</option>
+                <option value="10" selected>10 Questions (Standard Drill)</option>
+                <option value="15">15 Questions (Full Test)</option>
+                <option value="20">20 Questions (Board Mock)</option>
+              </select>
+            </div>
+
+            <button class="btn btn-accent" style="width: 100%; padding: 0.85rem;" onclick="startQuiz()">🚀 Start Quiz Now</button>
+          </div>
+
+          <!-- Live Quiz Box -->
+          <div class="quiz-live-box" id="quizLiveCard">
+            <div class="quiz-header-bar">
+              <div>
+                <span class="tag-badge subject-tag" id="quizActiveSubject">Subject</span>
+                <span class="tag-badge" id="quizActiveDifficulty">Medium</span>
+              </div>
+              <div style="font-weight: 800; font-size: 1.1rem;" id="quizCounterText">Question 1 / 10</div>
+            </div>
+
+            <div class="progress-track" style="margin-bottom: 1.5rem;">
+              <div class="progress-fill" id="quizProgressBar" style="width: 10%;"></div>
+            </div>
+
+            <div class="quiz-question-text" id="quizQuestionPrompt">
+              Question text goes here...
+            </div>
+
+            <div class="quiz-options-list" id="quizOptionsList">
+              <!-- Rendered options -->
+            </div>
+
+            <div id="quizInstantFeedback" style="display: none; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; font-size: 0.95rem;">
+              <!-- Instant explanation -->
+            </div>
+
+            <div class="flex-between">
+              <button class="btn btn-outline" onclick="quitQuiz()">Quit Quiz</button>
+              <button class="btn btn-accent" id="quizNextBtn" onclick="handleQuizNext()">Next Question →</button>
+            </div>
+          </div>
+
+          <!-- Quiz Result Box -->
+          <div class="quiz-setup-box" id="quizResultCard" style="display: none; text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 0.5rem;" id="quizResultIcon">🏆</div>
+            <h2 class="section-title" style="justify-content: center; margin-bottom: 0.5rem;" id="quizResultHeading">Quiz Completed!</h2>
+            <p class="doc-paragraph" id="quizResultSummary">You scored 8 out of 10 (80%)</p>
+
+            <div class="stats-grid" style="max-width: 500px; margin: 1.5rem auto;">
+              <div class="stat-card">
+                <div class="stat-icon green">🎯</div>
+                <div class="stat-details">
+                  <div class="stat-value" id="quizFinalAccuracy">80%</div>
+                  <div class="stat-label">Accuracy</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon blue">⚡</div>
+                <div class="stat-details">
+                  <div class="stat-value" id="quizFinalAnswered">10/10</div>
+                  <div class="stat-label">Answered</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 1rem;">
+              <button class="btn btn-accent" onclick="resetQuiz()">Retake / New Quiz</button>
+              <button class="btn btn-outline" onclick="switchView('subjects')">Back to Lessons</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 7. EXAM PREPARATION HUB VIEW ================= -->
+      <section id="view-examprep" class="view-container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">🎯 Grade 9 Board Exam Preparation Hub</h2>
+            <p class="section-subtitle">Chapter-wise high-yield exam guidelines, formula sheets, key definitions, and scoring strategies.</p>
+          </div>
+        </div>
+
+        <div class="exam-prep-grid" id="examPrepGrid">
+          <!-- Populated by grade9.js with subject-wise preparation tips -->
+        </div>
+      </section>
+
+      <!-- ================= 8. BOOKMARKS VIEW ================= -->
+      <section id="view-bookmarks" class="view-container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">🔖 My Bookmarked Topics</h2>
+            <p class="section-subtitle">Quick access to topics you saved for revision before tests and exams.</p>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="clearAllBookmarks()">Clear All Bookmarks</button>
+        </div>
+
+        <div class="bookmarks-grid" id="bookmarksContainer">
+          <!-- Rendered bookmarks -->
+        </div>
+      </section>
+
+      <!-- ================= 9. PROGRESS & PROFILE VIEW ================= -->
+      <section id="view-progress" class="view-container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">📊 Learning Progress & Student Profile</h2>
+            <p class="section-subtitle">Track your completed syllabus, quiz statistics, and board settings.</p>
+          </div>
+        </div>
+
+        <div class="topic-page-layout">
+          <!-- Progress breakdown by subject -->
+          <div class="topic-main-doc">
+            <h3 class="content-block-title">📈 Subject-Wise Completion</h3>
+            <div id="subjectProgressBars" style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem;">
+              <!-- Progress meters per subject -->
+            </div>
+
+            <h3 class="content-block-title" style="margin-top: 2.5rem;">📝 Recent Quiz History</h3>
+            <div id="quizHistoryList" style="margin-top: 1rem;">
+              <!-- History records -->
+            </div>
+          </div>
+
+          <!-- Student Profile & Settings -->
+          <aside class="topic-sidebar">
+            <div class="sidebar-card">
+              <h4 class="sidebar-title">👤 Student Profile</h4>
+              <div class="form-group">
+                <label class="form-label" for="profileNameInput">Student Name:</label>
+                <input type="text" id="profileNameInput" class="form-input" value="Grade 9 Scholar" onchange="saveProfile()">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="profileBoardSelect">Exam Board:</label>
+                <select id="profileBoardSelect" class="form-select" onchange="saveProfile()">
+                  <option value="sindh" selected>Sindh Textbook Board (Karachi/Sukkur/Hyd)</option>
+                  <option value="federal">Federal Board (FBISE)</option>
+                  <option value="punjab">Punjab Curriculum & Textbook Board (PCTB)</option>
+                  <option value="kpk">KPK Textbook Board</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="profileGoalInput">Target Grade Goal:</label>
+                <select id="profileGoalInput" class="form-select" onchange="saveProfile()">
+                  <option value="A1" selected>A-1 Grade (90%+ Distinction)</option>
+                  <option value="A">A Grade (80% - 89%)</option>
+                  <option value="B">B Grade (70% - 79%)</option>
+                </select>
+              </div>
+              <button class="btn btn-primary btn-sm" style="width: 100%;" onclick="saveProfile()">Save Preferences</button>
+            </div>
+
+            <div class="sidebar-card">
+              <h4 class="sidebar-title">⚙️ Data Management</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                All topic progress, bookmarks, and quiz scores are stored securely in your browser's localStorage.
+              </p>
+              <button class="btn btn-outline btn-sm" style="width: 100%; color: var(--danger); border-color: var(--danger);" onclick="resetAllProgress()">
+                Reset All Progress & Scores
+              </button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <strong>EduNexa AI - Grade 9 Learning Platform</strong> | Pakistani & Sindh Secondary Curriculum
+        </div>
+        <div>
+          <span>Mathematics • Physics • Chemistry • Biology • Computer Science • English • Pak Studies • Islamiat</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Primary Application JavaScript -->
+  <script src="/grade9.js"></script>
+</body>
+</html>

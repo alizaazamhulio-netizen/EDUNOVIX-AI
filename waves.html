@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDCAT Waves Master — High-Yield Physics Module</title>
+  <meta name="description" content="Master Waves for MDCAT Physics: Interactive wave simulations, formula calculators, phase diagrams, standing waves, beats, Doppler effect, and 20 practice MCQs.">
+  <link rel="stylesheet" href="./waves.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Top Global Header -->
+  <header class="top-header" id="top-header">
+    <div class="container flex items-center justify-between">
+      <a href="#hero" class="brand-badge" id="brand-logo">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M2 12c2.5-4 5.5-4 8 0s5.5 4 8 0 4-4 4-4"/>
+          </svg>
+        </div>
+        <div class="brand-title">MDCAT <span>WAVES</span></div>
+      </a>
+
+      <!-- Search Box -->
+      <div class="search-wrapper">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" id="search-input" class="search-input" placeholder="Search Waves concepts (e.g. Doppler, node)..." aria-label="Search concepts">
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+          <span id="theme-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+          </span>
+        </button>
+        <a href="#quiz-section" class="btn btn-primary btn-sm">Take Quiz (20 MCQs)</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Quick Nav Bar -->
+  <nav class="nav-scroll-wrapper" id="sticky-nav">
+    <div class="container">
+      <div class="nav-links-container">
+        <a href="#hero" class="nav-link active">Overview</a>
+        <a href="#wave-types" class="nav-link">Wave Types</a>
+        <a href="#wave-quantities" class="nav-link">Wave Quantities</a>
+        <a href="#wave-equation" class="nav-link">Wave Equation</a>
+        <a href="#phase" class="nav-link">Phase</a>
+        <a href="#superposition" class="nav-link">Superposition</a>
+        <a href="#interference" class="nav-link">Interference</a>
+        <a href="#standing-waves" class="nav-link">Standing Waves</a>
+        <a href="#beats" class="nav-link">Beats</a>
+        <a href="#doppler" class="nav-link">Doppler Effect</a>
+        <a href="#sound" class="nav-link">Sound Waves</a>
+        <a href="#intensity" class="nav-link">Intensity</a>
+        <a href="#reflection" class="nav-link">Reflection</a>
+        <a href="#refraction" class="nav-link">Refraction</a>
+        <a href="#diffraction" class="nav-link">Diffraction</a>
+        <a href="#polarization" class="nav-link">Polarization</a>
+        <a href="#formula-wall" class="nav-link">Formula Wall</a>
+        <a href="#traps-section" class="nav-link">MDCAT Traps</a>
+        <a href="#quick-revision" class="nav-link">60s Revision</a>
+        <a href="#quiz-section" class="nav-link">MDCAT Quiz</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Progress Indicator Card -->
+    <div class="progress-card" id="progress-card">
+      <div class="progress-header">
+        <div class="progress-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-400)" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          Your Waves Learning Progress
+        </div>
+        <div class="progress-stats" id="overall-progress-text">0 / 18 completed (0%)</div>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="overall-progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-badge-group">
+        <span class="hero-badge">MDCAT Physics</span>
+        <span class="hero-badge">Concept + Formula</span>
+        <span class="hero-badge">High-Yield Topic</span>
+        <span class="hero-badge">Interactive Learning</span>
+      </div>
+
+      <h1 class="hero-title">WAVES</h1>
+      <div class="hero-subtitle">Master Waves for MDCAT Physics</div>
+      <p class="hero-desc">
+        Understand wave motion, wave properties, interference, standing waves, Doppler effect, and sound through clear concepts, formulas, interactive visual simulations, and high-yield MDCAT practice.
+      </p>
+
+      <!-- Animated Wave Visualizer -->
+      <div class="hero-visual-card">
+        <div class="canvas-container">
+          <canvas id="hero-wave-canvas"></canvas>
+        </div>
+        <div class="wave-controls-bar">
+          <div class="control-item">
+            <label for="hero-amplitude-slider">Amplitude (A):</label>
+            <input type="range" id="hero-amplitude-slider" class="slider-input" min="15" max="65" value="40">
+          </div>
+          <div class="control-item">
+            <label for="hero-frequency-slider">Frequency (f):</label>
+            <input type="range" id="hero-frequency-slider" class="slider-input" min="0.008" max="0.03" step="0.002" value="0.015">
+          </div>
+          <div class="control-item">
+            <label for="hero-speed-slider">Wave Speed (v):</label>
+            <input type="range" id="hero-speed-slider" class="slider-input" min="0.01" max="0.08" step="0.005" value="0.04">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. CONCEPT: WHAT IS A WAVE? -->
+    <section class="section-block" id="concept-wave">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">01. Fundamental Concept</span>
+          <h2 class="section-title">What is a Wave?</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-concept-wave">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-concept-wave">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Core Definition</h3>
+          <p>
+            A <strong>wave</strong> is a disturbance that transfers <strong>energy and momentum</strong> from one place to another without the permanent transfer of matter.
+          </p>
+          <div class="highlight-box mdcat-alert">
+            ⭐ <strong>MDCAT Key Phrase:</strong> <em>“Energy is transferred from point A to point B, while medium particles only execute simple harmonic motion about their mean equilibrium position.”</em>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">
+            When a wave travels through water, the water molecules bob up and down or in small circles, but they do not travel across the sea with the wave crests.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Mechanical vs Electromagnetic Waves</h3>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="background: var(--bg-secondary); padding: 12px 16px; border-radius: var(--radius-sm); border-left: 3px solid var(--cyan-400);">
+              <strong style="color: var(--cyan-400);">Mechanical Waves:</strong>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px;">
+                <strong>Require a material medium</strong> for propagation. Cannot travel through vacuum.<br>
+                <em>Examples:</em> Sound waves, waves on stretched strings, water waves, seismic waves.
+              </p>
+            </div>
+            <div style="background: var(--bg-secondary); padding: 12px 16px; border-radius: var(--radius-sm); border-left: 3px solid var(--purple-400);">
+              <strong style="color: var(--purple-400);">Electromagnetic (EM) Waves:</strong>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px;">
+                <strong>Do NOT require a material medium</strong>. Propagate through vacuum at speed $c = 3 \times 10^8\text{ m/s}$.<br>
+                <em>Examples:</em> Visible light, radio waves, microwaves, X-rays, gamma rays.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TRANSVERSE VS LONGITUDINAL WAVES -->
+    <section class="section-block" id="wave-types">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">02. Mode of Propagation</span>
+          <h2 class="section-title">Transverse & Longitudinal Waves</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-wave-types">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-wave-types">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+          <h3 class="card-title" style="margin-bottom: 0;">Interactive Particle Motion Simulator</h3>
+          <div class="tab-group">
+            <button class="tab-btn active" id="btn-type-transverse">Transverse Wave</button>
+            <button class="tab-btn" id="btn-type-longitudinal">Longitudinal Wave</button>
+          </div>
+        </div>
+
+        <div class="canvas-container" style="height: 180px;">
+          <canvas id="wave-type-canvas"></canvas>
+        </div>
+        <div id="wave-type-explanation" class="highlight-box" style="margin-top: 14px;">
+          <strong>Transverse Wave:</strong> Particles oscillate <strong>perpendicular (90°)</strong> to wave propagation. Features: <em>Crest, Trough, Amplitude, Wavelength</em>. Examples: Light, EM Waves, Wave on String.
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title" style="color: var(--cyan-400);">Transverse Wave Features</h3>
+          <ul style="padding-left: 20px; line-height: 1.8; color: var(--text-secondary); font-size: 0.95rem;">
+            <li><strong>Crest:</strong> The point of maximum positive displacement from equilibrium.</li>
+            <li><strong>Trough:</strong> The point of maximum negative displacement from equilibrium.</li>
+            <li><strong>Vibration direction:</strong> Perpendicular ($\perp$) to energy propagation.</li>
+            <li><strong>Polarization:</strong> CAN be polarized.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="card-title" style="color: var(--purple-400);">Longitudinal Wave Features</h3>
+          <ul style="padding-left: 20px; line-height: 1.8; color: var(--text-secondary); font-size: 0.95rem;">
+            <li><strong>Compression:</strong> Region of high pressure and maximum particle density.</li>
+            <li><strong>Rarefaction:</strong> Region of low pressure and minimum particle density.</li>
+            <li><strong>Vibration direction:</strong> Parallel ($\parallel$) to energy propagation.</li>
+            <li><strong>Polarization:</strong> CANNOT be polarized.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. IMPORTANT WAVE QUANTITIES -->
+    <section class="section-block" id="wave-quantities">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">03. Key Parameters</span>
+          <h2 class="section-title">Important Wave Quantities</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-wave-quantities">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-wave-quantities">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="card-title">Frequency (f)</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            Number of complete vibrations/cycles passing a fixed point per second.
+          </p>
+          <div class="formula-display" style="font-size: 1.1rem;">f = 1 / T</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            <strong>SI Unit:</strong> Hertz (Hz) = $\text{s}^{-1}$<br>
+            <strong>MDCAT Rule:</strong> Frequency depends strictly on the source.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Time Period (T)</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            Time taken by a particle of the medium to complete one full oscillation.
+          </p>
+          <div class="formula-display" style="font-size: 1.1rem;">T = 1 / f</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            <strong>SI Unit:</strong> Seconds (s)<br>
+            <strong>Relationship:</strong> $f \times T = 1$
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Wavelength (λ)</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            Distance between two consecutive points in the exact same phase of vibration.
+          </p>
+          <div class="formula-display" style="font-size: 1.1rem;">λ = v / f</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            <strong>SI Unit:</strong> Meter (m)<br>
+            Crest-to-Crest or Compression-to-Compression distance.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Amplitude (A)</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            Maximum displacement of a particle from its central mean equilibrium position.
+          </p>
+          <div class="formula-display" style="font-size: 1.1rem;">Intensity ∝ A²</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            <strong>SI Unit:</strong> Meter (m)<br>
+            <strong>Sound:</strong> Greater amplitude $\to$ louder sound.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Wave Speed (v)</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            Distance covered by the wave disturbance per unit time through a medium.
+          </p>
+          <div class="formula-display" style="font-size: 1.1rem;">v = f λ</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            <strong>SI Unit:</strong> $\text{m/s}$<br>
+            Depends purely on the medium's elasticity and density.
+          </div>
+        </div>
+
+        <div class="card" style="border-color: var(--amber-400);">
+          <h3 class="card-title" style="color: var(--amber-400);">⭐ MDCAT Formula Alert</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+            If the medium does not change, <strong>wave speed $v$ is CONSTANT</strong>. Therefore:
+          </p>
+          <div style="background: var(--bg-secondary); padding: 8px 12px; border-radius: var(--radius-sm); font-family: var(--font-mono); font-weight: 700; color: var(--amber-400); text-align: center; margin: 8px 0;">
+            f ∝ 1 / λ  (when v = const)
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            If frequency doubles ($2f$), wavelength is cut in half ($\lambda/2$).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. INTERACTIVE WAVE EQUATION CALCULATOR -->
+    <section class="section-block" id="wave-equation">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">04. Interactive Tool</span>
+          <h2 class="section-title">Wave Equation Calculator ($v = f\lambda$)</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-wave-equation">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-wave-equation">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="calc-box">
+        <div style="margin-bottom: 16px; font-size: 0.95rem; color: var(--text-secondary);">
+          Enter any <strong>two values</strong> below and click <strong>Calculate</strong> to solve for the third with full step-by-step working:
+        </div>
+
+        <div class="calc-inputs">
+          <div class="input-group">
+            <label for="calc-f">Frequency, f (Hz):</label>
+            <input type="number" id="calc-f" class="input-field" placeholder="e.g. 500" step="any">
+          </div>
+          <div class="input-group">
+            <label for="calc-lambda">Wavelength, λ (m):</label>
+            <input type="number" id="calc-lambda" class="input-field" placeholder="e.g. 0.68" step="any">
+          </div>
+          <div class="input-group">
+            <label for="calc-v">Wave Speed, v (m/s):</label>
+            <input type="number" id="calc-v" class="input-field" placeholder="e.g. 340" step="any">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px;">
+          <button class="btn btn-primary" id="calc-btn-compute">⚡ Calculate</button>
+          <button class="btn btn-secondary" id="calc-btn-reset">Reset</button>
+          <div style="margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">MDCAT Presets:</span>
+            <button class="btn btn-secondary btn-sm calc-preset-btn" data-f="500" data-l="0.68" data-v="">Sound in Air (500Hz)</button>
+            <button class="btn btn-secondary btn-sm calc-preset-btn" data-f="256" data-l="" data-v="340">Tuning Fork (256Hz)</button>
+            <button class="btn btn-secondary btn-sm calc-preset-btn" data-f="" data-l="0.02" data-v="1500">Ultrasound in Water</button>
+          </div>
+        </div>
+
+        <div class="calc-solution" id="calc-result-box">
+          <div class="solution-title">Status</div>
+          <div style="color: var(--text-secondary);">Enter values and click Calculate.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PHASE & PHASE DIFFERENCE -->
+    <section class="section-block" id="phase">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">05. Wave Geometry</span>
+          <h2 class="section-title">Phase & Phase Difference</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-phase">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-phase">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">In-Phase vs Out-of-Phase</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+            <strong>Phase</strong> specifies the state of motion of a vibrating particle (both its position and direction of motion).
+          </p>
+          <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="background: rgba(52, 211, 153, 0.1); border-left: 3px solid var(--emerald-400); padding: 10px 14px; border-radius: var(--radius-sm);">
+              <strong style="color: var(--emerald-400);">In-Phase Points:</strong>
+              <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                Separated by path difference $\Delta x = \lambda, 2\lambda, 3\lambda \dots n\lambda$<br>
+                Phase difference $\Delta \phi = 0, 2\pi, 4\pi \dots 2n\pi\text{ rad}$
+              </div>
+            </div>
+            <div style="background: rgba(244, 63, 94, 0.1); border-left: 3px solid var(--rose-400); padding: 10px 14px; border-radius: var(--radius-sm);">
+              <strong style="color: var(--rose-400);">Opposite Phase (Out-of-Phase):</strong>
+              <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                Separated by path difference $\Delta x = \frac{\lambda}{2}, \frac{3\lambda}{2}, \frac{5\lambda}{2} \dots (2n+1)\frac{\lambda}{2}$<br>
+                Phase difference $\Delta \phi = \pi, 3\pi, 5\pi \dots (2n+1)\pi\text{ rad}$
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card trap-card">
+          <div class="trap-tag">⚠️ MDCAT Formula Alert</div>
+          <h3 class="card-title" style="color: var(--rose-400);">Phase & Path Difference Formula</h3>
+          <div class="formula-display" style="color: var(--rose-400); font-size: 1.15rem;">
+            Δφ = (2π / λ) × Δx
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+            <strong>MDCAT Quick Rule:</strong><br>
+            • For path diff $\Delta x = \lambda \implies \Delta\phi = 2\pi\text{ rad}$ ($360^\circ$)<br>
+            • For path diff $\Delta x = \lambda/2 \implies \Delta\phi = \pi\text{ rad}$ ($180^\circ$)<br>
+            • For path diff $\Delta x = \lambda/4 \implies \Delta\phi = \pi/2\text{ rad}$ ($90^\circ$)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. SUPERPOSITION PRINCIPLE -->
+    <section class="section-block" id="superposition">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">06. Wave Addition</span>
+          <h2 class="section-title">Superposition Principle</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-superposition">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-superposition">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 14px;">
+          When two or more waves overlap in the same medium, the <strong>resultant displacement</strong> at any point is the <strong>algebraic sum</strong> of their individual displacements:
+        </p>
+        <div class="formula-display" style="margin-bottom: 18px;">
+          y = y₁ + y₂ + y₃ + ... + yₙ
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+          <div class="control-item">
+            <label for="superposition-phase-slider">Phase Shift between Wave 1 & 2:</label>
+            <input type="range" id="superposition-phase-slider" class="slider-input" min="0" max="3.14159" step="0.1" value="0">
+          </div>
+          <span id="superposition-phase-label" style="font-size: 0.85rem; font-weight: 700; color: var(--cyan-400);">0° (Constructive)</span>
+        </div>
+
+        <div class="canvas-container" style="height: 200px;">
+          <canvas id="superposition-canvas"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. INTERFERENCE -->
+    <section class="section-block" id="interference">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">07. Interference</span>
+          <h2 class="section-title">Constructive & Destructive Interference</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-interference">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-interference">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="border-top: 4px solid var(--emerald-400);">
+          <h3 class="card-title" style="color: var(--emerald-400);">Constructive Interference</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            Occurs when waves meet <strong>in phase</strong> (Crest meets Crest, Trough meets Trough). Amplitudes reinforce each other to produce maximum intensity.
+          </p>
+          <div class="formula-display" style="color: var(--emerald-400);">
+            Δx = n λ  (n = 0, 1, 2, 3...)
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Resultant Amplitude $A_{\text{max}} = A_1 + A_2$<br>
+            If $A_1 = A_2 = A$, then $A_{\text{resultant}} = 2A$, Intensity $I \propto 4A^2$.
+          </p>
+        </div>
+
+        <div class="card" style="border-top: 4px solid var(--rose-400);">
+          <h3 class="card-title" style="color: var(--rose-400);">Destructive Interference</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            Occurs when waves meet <strong>out of phase by 180°</strong> (Crest meets Trough). Amplitudes cancel each other to produce minimum intensity.
+          </p>
+          <div class="formula-display" style="color: var(--rose-400);">
+            Δx = (2n + 1) λ / 2
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Resultant Amplitude $A_{\text{min}} = |A_1 - A_2|$<br>
+            If $A_1 = A_2$, then $A_{\text{resultant}} = 0$ (complete darkness / silence).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. STANDING WAVES -->
+    <section class="section-block" id="standing-waves">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">08. Stationary Waves</span>
+          <h2 class="section-title">Standing (Stationary) Waves</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-standing-waves">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-standing-waves">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 16px;">
+          Produced when <strong>two identical waves</strong> (same frequency, wavelength, speed, amplitude) travel in <strong>opposite directions</strong> along the same medium.
+        </p>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+          <div class="control-item">
+            <label for="standing-harmonic-slider">Harmonics (Loops):</label>
+            <input type="range" id="standing-harmonic-slider" class="slider-input" min="1" max="5" value="3">
+          </div>
+          <span id="standing-harmonic-label" style="font-size: 0.85rem; font-weight: 700; color: var(--purple-400);">Harmonic n = 3 (3 loops, 4 nodes, 3 antinodes)</span>
+        </div>
+
+        <div class="canvas-container" style="height: 180px;">
+          <canvas id="standing-wave-canvas"></canvas>
+        </div>
+
+        <div class="grid-2" style="margin-top: 20px;">
+          <div style="background: var(--bg-secondary); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid var(--rose-500);">
+            <strong style="color: var(--rose-400);">Node (N):</strong>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px;">
+              Point of <strong>permanently ZERO displacement</strong>, zero velocity, and maximum strain/pressure.
+            </p>
+          </div>
+          <div style="background: var(--bg-secondary); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid var(--emerald-400);">
+            <strong style="color: var(--emerald-400);">Antinode (A):</strong>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px;">
+              Point of <strong>MAXIMUM displacement</strong> and maximum speed ($2A$).
+            </p>
+          </div>
+        </div>
+
+        <div class="highlight-box mdcat-alert" style="margin-top: 18px;">
+          ⭐ <strong>Vital MDCAT Formulas:</strong><br>
+          • Distance between two consecutive nodes $= \frac{\lambda}{2}$<br>
+          • Distance between two consecutive antinodes $= \frac{\lambda}{2}$<br>
+          • Distance between an adjacent node and antinode $= \frac{\lambda}{4}$
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. BEATS -->
+    <section class="section-block" id="beats">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">09. Periodic Interference</span>
+          <h2 class="section-title">Beats & Beat Frequency</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-beats">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-beats">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Beat Phenomena</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+            When two sound waves of <strong>slightly different frequencies</strong> ($f_1 \approx f_2$, diff $\le 10\text{ Hz}$) travel in the same direction, periodic waxings and wanings of sound intensity occur.
+          </p>
+          <div class="formula-display">
+            f_b = |f₁ − f₂|
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            • 1 Beat = 1 Maxima + 1 Minima<br>
+            • Human ear can distinguish beats when $f_b \le 10\text{ Hz}$ due to persistence of hearing ($0.1\text{ s}$).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Interactive Beat Calculator</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div class="input-group">
+              <label for="beat-f1">Frequency f₁ (Hz):</label>
+              <input type="number" id="beat-f1" class="input-field" value="256">
+            </div>
+            <div class="input-group">
+              <label for="beat-f2">Frequency f₂ (Hz):</label>
+              <input type="number" id="beat-f2" class="input-field" value="260">
+            </div>
+          </div>
+          <div id="beat-output" style="font-size: 1rem; color: var(--amber-400); font-weight: 700; margin-bottom: 10px;">
+            Beat Frequency (f_b) = |256 - 260| = 4.0 Hz
+          </div>
+          <div class="canvas-container" style="height: 120px;">
+            <canvas id="beat-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. DOPPLER EFFECT -->
+    <section class="section-block" id="doppler">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">10. Relative Motion</span>
+          <h2 class="section-title">Doppler Effect</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-doppler">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-doppler">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 14px;">
+          The <strong>apparent change in observed frequency</strong> of a wave caused by relative motion between the source of wave and the observer.
+        </p>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+          <div class="control-item">
+            <label for="doppler-speed-slider">Source Speed:</label>
+            <input type="range" id="doppler-speed-slider" class="slider-input" min="0.5" max="3.5" step="0.2" value="1.8">
+          </div>
+          <button class="btn btn-secondary btn-sm" id="doppler-dir-btn">Moving Right ➔</button>
+        </div>
+
+        <div class="canvas-container" style="height: 200px;">
+          <canvas id="doppler-canvas"></canvas>
+        </div>
+
+        <div class="grid-2" style="margin-top: 18px;">
+          <div style="background: var(--bg-secondary); padding: 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--rose-400);">
+            <strong style="color: var(--rose-400);">Source Moving Toward Observer:</strong>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">
+              Wavefronts get compressed $\to$ Wavelength decreases ($\lambda' < \lambda$) $\to$ <strong>Observed frequency INCREASES ($f' > f$)</strong>. Pitch sounds higher.
+            </p>
+          </div>
+          <div style="background: var(--bg-secondary); padding: 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--emerald-400);">
+            <strong style="color: var(--emerald-400);">Source Moving Away from Observer:</strong>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">
+              Wavefronts spread out $\to$ Wavelength increases ($\lambda' > \lambda$) $\to$ <strong>Observed frequency DECREASES ($f' < f$)</strong>. Pitch sounds lower.
+            </p>
+          </div>
+        </div>
+
+        <div class="highlight-box trap-alert" style="margin-top: 14px;">
+          ⭐ <strong>MDCAT Trap:</strong> Doppler effect changes the <em>observed (apparent) frequency</em> perceived by the listener. It does <strong>NOT</strong> mean the source changes its actual emitted frequency!
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. SOUND WAVES -->
+    <section class="section-block" id="sound">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">11. Acoustic Physics</span>
+          <h2 class="section-title">Sound Waves</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-sound">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-sound">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="card-title">Properties of Sound</h3>
+          <ul style="padding-left: 18px; font-size: 0.9rem; line-height: 1.8; color: var(--text-secondary);">
+            <li><strong>Mechanical & Longitudinal</strong> wave.</li>
+            <li>Requires a material medium (air, water, steel).</li>
+            <li><strong>Cannot travel through vacuum.</strong></li>
+            <li>Speed in air $\approx 340\text{ m/s}$ at RTP ($20^\circ\text{C}$).</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Pitch vs Loudness</h3>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+            <div style="background: var(--bg-secondary); padding: 10px; border-radius: var(--radius-sm);">
+              <strong style="color: var(--cyan-400);">Frequency determines Pitch:</strong>
+              <div style="color: var(--text-secondary);">Higher frequency $\implies$ shrill / high-pitched voice.</div>
+            </div>
+            <div style="background: var(--bg-secondary); padding: 10px; border-radius: var(--radius-sm);">
+              <strong style="color: var(--purple-400);">Amplitude determines Loudness:</strong>
+              <div style="color: var(--text-secondary);">Larger amplitude $\implies$ louder sound ($I \propto A^2$).</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Speed in Media</h3>
+          <div class="formula-display" style="font-size: 1.05rem;">
+            v_solid > v_liquid > v_gas
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+            Steel: $\approx 5100\text{ m/s}$<br>
+            Water: $\approx 1500\text{ m/s}$<br>
+            Air: $\approx 340\text{ m/s}$<br>
+            Due to much higher Elastic Modulus ($E$) in solids.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. INTENSITY & INVERSE SQUARE LAW -->
+    <section class="section-block" id="intensity">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">12. Energy Transmission</span>
+          <h2 class="section-title">Intensity & Inverse Square Law</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-intensity">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-intensity">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Intensity Definition & Formula</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            Intensity is the acoustic/radiant power transmitted per unit area perpendicular to wave direction:
+          </p>
+          <div class="formula-display">
+            I = P / A
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+            <strong>SI Unit:</strong> $\text{Watt/m}^2$ ($\text{W}\cdot\text{m}^{-2}$)
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            For a spherical point source spreading in 3D space:
+          </p>
+          <div class="formula-display">
+            I ∝ 1 / r²
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Interactive Distance Slider</h3>
+          <div class="control-item" style="margin-bottom: 12px;">
+            <label for="intensity-distance-slider">Distance from Source (r):</label>
+            <input type="range" id="intensity-distance-slider" class="slider-input" min="1" max="4" step="0.5" value="1">
+            <span id="intensity-dist-val" style="font-weight: 700; color: var(--cyan-400);">1x</span>
+          </div>
+          <div id="intensity-calc-val" style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--amber-400); margin-bottom: 10px;">
+            I = 1 / (1)² = 1.000 I₀ (100.0%)
+          </div>
+          <div class="canvas-container" style="height: 140px;">
+            <canvas id="intensity-visual-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14. REFLECTION -->
+    <section class="section-block" id="reflection">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">13. Boundary Conditions</span>
+          <h2 class="section-title">Reflection of Waves</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-reflection">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-reflection">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Law of Reflection</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            When a wave strikes a boundary, it bounces back into the same medium:
+          </p>
+          <div class="formula-display">
+            Angle of Incidence (i) = Angle of Reflection (r)
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Wave speed $v$, frequency $f$, and wavelength $\lambda$ remain <strong>UNCHANGED</strong> because the wave stays in the same medium.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Phase Change at Boundaries</h3>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+            <div style="background: rgba(244, 63, 94, 0.1); border-left: 3px solid var(--rose-400); padding: 10px; border-radius: var(--radius-sm);">
+              <strong style="color: var(--rose-400);">Fixed / Denser End:</strong>
+              <div style="color: var(--text-secondary);">
+                Undergoes <strong>180° (π rad) phase inversion</strong>. Crest reflects back as a Trough.
+              </div>
+            </div>
+            <div style="background: rgba(52, 211, 153, 0.1); border-left: 3px solid var(--emerald-400); padding: 10px; border-radius: var(--radius-sm);">
+              <strong style="color: var(--emerald-400);">Free / Rarer End:</strong>
+              <div style="color: var(--text-secondary);">
+                Undergoes <strong>0° (0 rad) phase change</strong>. Crest reflects back as a Crest.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. REFRACTION -->
+    <section class="section-block" id="refraction">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">14. Medium Transition</span>
+          <h2 class="section-title">Refraction of Waves</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-refraction">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-refraction">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 14px;">
+          Refraction is the change in direction and wavelength of a wave when it crosses the boundary from one medium into another due to a change in wave speed.
+        </p>
+
+        <div class="canvas-container" style="height: 180px; margin-bottom: 16px;">
+          <canvas id="refraction-canvas"></canvas>
+        </div>
+
+        <div class="highlight-box trap-alert">
+          ⭐ <strong>CRITICAL MDCAT TRAP:</strong> During refraction, <strong>FREQUENCY REMAINS CONSTANT</strong>!
+          <div style="margin-top: 4px; font-size: 0.9rem; color: var(--text-primary);">
+            Since $v = f\lambda$ and $f = \text{constant}$, then $\mathbf{\lambda \propto v}$.<br>
+            • In denser (slower) medium: Speed decreases $\implies$ Wavelength shortens ($\lambda \downarrow$).<br>
+            • In rarer (faster) medium: Speed increases $\implies$ Wavelength lengthens ($\lambda \uparrow$).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16. DIFFRACTION -->
+    <section class="section-block" id="diffraction">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">15. Wave Bending</span>
+          <h2 class="section-title">Diffraction of Waves</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-diffraction">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-diffraction">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 14px;">
+          Diffraction is the <strong>bending and spreading of waves</strong> around the edges of obstacles or through an aperture/slit.
+        </p>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+          <div class="control-item">
+            <label for="diffraction-slit-slider">Aperture / Slit Width (d):</label>
+            <input type="range" id="diffraction-slit-slider" class="slider-input" min="15" max="80" value="25">
+          </div>
+          <span id="diffraction-slit-label" style="font-size: 0.85rem; font-weight: 700; color: var(--cyan-400);">Slit ≈ λ (Maximum Spreading / Strong Diffraction)</span>
+        </div>
+
+        <div class="canvas-container" style="height: 180px; margin-bottom: 16px;">
+          <canvas id="diffraction-canvas"></canvas>
+        </div>
+
+        <div class="highlight-box mdcat-alert">
+          ⭐ <strong>Condition for Maximum Diffraction:</strong> The aperture size ($d$) must be comparable to the wavelength ($\lambda$):
+          <div style="font-family: var(--font-mono); font-weight: 700; margin-top: 4px; color: var(--amber-400);">
+            Opening Size (d) ≈ λ
+          </div>
+          Longer wavelengths (e.g. Sound or Radio waves) diffract much more prominently in daily life than short visible light waves.
+        </div>
+      </div>
+    </section>
+
+    <!-- 17. POLARIZATION -->
+    <section class="section-block" id="polarization">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">16. Wave Orientation</span>
+          <h2 class="section-title">Polarization</h2>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm btn-bookmark" id="bm-polarization">⭐ Bookmark</button>
+          <button class="btn btn-secondary btn-sm btn-mark-complete" id="mc-polarization">✓ Mark Done</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 14px;">
+          Polarization is the process of confining the vibrations of a wave to a <strong>single plane</strong> perpendicular to the direction of propagation.
+        </p>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+          <div class="control-item">
+            <label for="polarizer-angle-slider">Analyzer Filter Angle (θ):</label>
+            <input type="range" id="polarizer-angle-slider" class="slider-input" min="0" max="90" step="5" value="0">
+          </div>
+          <span id="polarizer-angle-label" style="font-size: 0.85rem; font-weight: 700; color: var(--emerald-400);">0° (Parallel - Max Transmission)</span>
+        </div>
+
+        <div class="canvas-container" style="height: 180px; margin-bottom: 16px;">
+          <canvas id="polarization-canvas"></canvas>
+        </div>
+
+        <div class="grid-2">
+          <div class="highlight-box mdcat-alert">
+            ⭐ <strong>MDCAT Proof:</strong> Polarization is strictly a property of <strong>TRANSVERSE WAVES</strong> (such as light). It proves light is transverse.
+          </div>
+          <div class="highlight-box trap-alert">
+            ⭐ <strong>MDCAT Trap:</strong> <strong>Longitudinal waves (sound) CANNOT be polarized</strong> because particle vibrations are already parallel to wave propagation.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18. MDCAT HIGH-YIELD FORMULA WALL -->
+    <section class="section-block" id="formula-wall">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">17. Quick Reference</span>
+          <h2 class="section-title">MDCAT High-Yield Formula Wall</h2>
+        </div>
+      </div>
+
+      <div class="formula-wall-grid">
+        <div class="formula-card">
+          <div class="formula-header">
+            <span class="formula-tag">Wave Velocity</span>
+            <button class="btn btn-secondary btn-sm copy-formula-btn" data-formula="v = fλ">📋 Copy</button>
+          </div>
+          <div class="formula-body">v = f λ</div>
+          <div class="formula-meta">
+            <strong>Meaning:</strong> Wave Speed<br>
+            <strong>Units:</strong> v (m/s), f (Hz), λ (m)<br>
+            <strong>When:</strong> Relating speed, frequency, and wavelength.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-header">
+            <span class="formula-tag">Time Period</span>
+            <button class="btn btn-secondary btn-sm copy-formula-btn" data-formula="T = 1/f">📋 Copy</button>
+          </div>
+          <div class="formula-body">T = 1 / f</div>
+          <div class="formula-meta">
+            <strong>Meaning:</strong> Period of 1 cycle<br>
+            <strong>Units:</strong> T (seconds), f (Hz)<br>
+            <strong>When:</strong> Converting between frequency and time.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-header">
+            <span class="formula-tag">Beat Frequency</span>
+            <button class="btn btn-secondary btn-sm copy-formula-btn" data-formula="fb = |f1 - f2|">📋 Copy</button>
+          </div>
+          <div class="formula-body">f_b = |f₁ − f₂|</div>
+          <div class="formula-meta">
+            <strong>Meaning:</strong> Beats per second<br>
+            <strong>Units:</strong> f_b (Hz)<br>
+            <strong>When:</strong> Two overlapping frequencies produce pulsing loudness.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-header">
+            <span class="formula-tag">Intensity Law</span>
+            <button class="btn btn-secondary btn-sm copy-formula-btn" data-formula="I = P / A = P / (4πr²)">📋 Copy</button>
+          </div>
+          <div class="formula-body">I = P / A ∝ 1/r²</div>
+          <div class="formula-meta">
+            <strong>Meaning:</strong> Inverse Square Law<br>
+            <strong>Units:</strong> W/m²<br>
+            <strong>When:</strong> Calculating sound/light drop-off with distance.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-header">
+            <span class="formula-tag">Constructive Interference</span>
+            <button class="btn btn-secondary btn-sm copy-formula-btn" data-formula="Δx = nλ">📋 Copy</button>
+          </div>
+          <div class="formula-body">Δx = n λ</div>
+          <div class="formula-meta">
+            <strong>Meaning:</strong> Maxima condition<br>
+            <strong>Units:</strong> Path diff (m), n = 0,1,2...<br>
+            <strong>When:</strong> In-phase wave reinforcement.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-header">
+            <span class="formula-tag">Destructive Interference</span>
+            <button class="btn btn-secondary btn-sm copy-formula-btn" data-formula="Δx = (2n+1)λ/2">📋 Copy</button>
+          </div>
+          <div class="formula-body">Δx = (2n+1) λ/2</div>
+          <div class="formula-meta">
+            <strong>Meaning:</strong> Minima condition<br>
+            <strong>Units:</strong> Path diff (m), n = 0,1,2...<br>
+            <strong>When:</strong> Out-of-phase cancellation.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-header">
+            <span class="formula-tag">Standing Wave Nodes</span>
+            <button class="btn btn-secondary btn-sm copy-formula-btn" data-formula="d(N-N) = λ/2">📋 Copy</button>
+          </div>
+          <div class="formula-body">d(N-N) = λ / 2</div>
+          <div class="formula-meta">
+            <strong>Meaning:</strong> Node to Node Distance<br>
+            <strong>Units:</strong> Meters<br>
+            <strong>When:</strong> Distance between consecutive nodes or antinodes.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-header">
+            <span class="formula-tag">Node to Antinode</span>
+            <button class="btn btn-secondary btn-sm copy-formula-btn" data-formula="d(N-A) = λ/4">📋 Copy</button>
+          </div>
+          <div class="formula-body">d(N-A) = λ / 4</div>
+          <div class="formula-meta">
+            <strong>Meaning:</strong> Node to adjacent Antinode<br>
+            <strong>Units:</strong> Meters<br>
+            <strong>When:</strong> Half of a stationary loop.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-header">
+            <span class="formula-tag">Phase Difference</span>
+            <button class="btn btn-secondary btn-sm copy-formula-btn" data-formula="Δφ = (2π/λ)Δx">📋 Copy</button>
+          </div>
+          <div class="formula-body">Δφ = (2π / λ) Δx</div>
+          <div class="formula-meta">
+            <strong>Meaning:</strong> Phase angle from distance<br>
+            <strong>Units:</strong> Radians<br>
+            <strong>When:</strong> Converting spatial separation into phase.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19. MDCAT TRAPS (FLIP CARDS) -->
+    <section class="section-block" id="traps-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">18. High-Yield Pitfalls</span>
+          <h2 class="section-title">⚠️ MDCAT Traps & Pitfalls</h2>
+        </div>
+      </div>
+
+      <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px;">
+        Click or hover on any trap card below to reveal the high-yield examiner trick:
+      </p>
+
+      <div class="flip-grid">
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <span class="trap-tag">Trap 01: Refraction</span>
+              <strong style="font-size: 1.05rem;">Does wave frequency change during refraction?</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Hover/Click to reveal answer ➔</div>
+            </div>
+            <div class="flip-back">
+              <span style="font-weight: 700; color: var(--cyan-400);">NO!</span>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                Frequency is determined solely by the source oscillator and remains <strong>CONSTANT</strong>. Only speed $v$ and wavelength $\lambda$ change!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <span class="trap-tag">Trap 02: Sound in Vacuum</span>
+              <strong style="font-size: 1.05rem;">Can sound propagate through outer space vacuum?</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Hover/Click to reveal answer ➔</div>
+            </div>
+            <div class="flip-back">
+              <span style="font-weight: 700; color: var(--rose-400);">NO!</span>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                Sound is a <strong>mechanical wave</strong> that requires elastic medium particles to transmit compressions. In a vacuum, sound is zero.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <span class="trap-tag">Trap 03: Polarization Nature</span>
+              <strong style="font-size: 1.05rem;">Can sound waves be polarized?</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Hover/Click to reveal answer ➔</div>
+            </div>
+            <div class="flip-back">
+              <span style="font-weight: 700; color: var(--rose-400);">NEVER!</span>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                Sound is longitudinal (particles oscillate parallel to wave direction). Only <strong>transverse waves</strong> can be polarized.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <span class="trap-tag">Trap 04: Node vs Antinode</span>
+              <strong style="font-size: 1.05rem;">What is the displacement and pressure at a node?</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Hover/Click to reveal answer ➔</div>
+            </div>
+            <div class="flip-back">
+              <span style="font-weight: 700; color: var(--cyan-400);">ZERO Displacement!</span>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                At a Node: <strong>Displacement = 0</strong>, but Pressure Variation / Strain is <strong>MAXIMUM</strong>. (At Antinode: Displacement is Max, Pressure Variation is Zero).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <span class="trap-tag">Trap 05: Node Spacings</span>
+              <strong style="font-size: 1.05rem;">Distance between consecutive node & antinode?</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Hover/Click to reveal answer ➔</div>
+            </div>
+            <div class="flip-back">
+              <span style="font-weight: 700; color: var(--cyan-400);">λ / 4</span>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                Node-to-Node is $\lambda/2$. But Node-to-adjacent-Antinode is <strong>$\lambda/4$</strong>!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <span class="trap-tag">Trap 06: Doppler Frequency</span>
+              <strong style="font-size: 1.05rem;">Does the siren really change its emitted pitch?</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Hover/Click to reveal answer ➔</div>
+            </div>
+            <div class="flip-back">
+              <span style="font-weight: 700; color: var(--cyan-400);">Source Frequency is Fixed!</span>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                The siren always emits the same $f$. The Doppler shift only alters the <strong>observed (apparent) frequency</strong> due to relative motion.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <span class="trap-tag">Trap 07: Loudness vs Pitch</span>
+              <strong style="font-size: 1.05rem;">Does increasing sound amplitude increase its pitch?</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Hover/Click to reveal answer ➔</div>
+            </div>
+            <div class="flip-back">
+              <span style="font-weight: 700; color: var(--rose-400);">NO!</span>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                Amplitude controls <strong>Loudness & Energy ($I \propto A^2$)</strong>. Frequency controls <strong>Pitch & Shrillness</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <span class="trap-tag">Trap 08: Speed vs Frequency</span>
+              <strong style="font-size: 1.05rem;">If $f$ increases in air, does wave speed $v$ increase?</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Hover/Click to reveal answer ➔</div>
+            </div>
+            <div class="flip-back">
+              <span style="font-weight: 700; color: var(--cyan-400);">Speed Stays Constant!</span>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                Wave speed in air is fixed by medium properties ($\sqrt{\gamma P/\rho}$). An increase in $f$ causes an exact proportional <strong>decrease in wavelength $\lambda$</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 20. 60-SECOND QUICK REVISION -->
+    <section class="section-block" id="quick-revision">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">19. Rapid Review</span>
+          <h2 class="section-title">60-Second Quick Revision</h2>
+        </div>
+      </div>
+
+      <div class="revision-grid">
+        <div class="revision-card">
+          <div class="revision-icon">🌊</div>
+          <div class="revision-term">Wave Function</div>
+          <div class="revision-val">Energy transfer, no matter transfer</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">⚡</div>
+          <div class="revision-term">Wave Speed</div>
+          <div class="revision-val">v = f λ</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">⏱️</div>
+          <div class="revision-term">Time Period</div>
+          <div class="revision-val">T = 1 / f</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">↕️</div>
+          <div class="revision-term">Transverse</div>
+          <div class="revision-val">Perpendicular vibration (Crest/Trough)</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">↔️</div>
+          <div class="revision-term">Longitudinal</div>
+          <div class="revision-val">Parallel vibration (Compressions)</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">📍</div>
+          <div class="revision-term">Standing Node</div>
+          <div class="revision-val">Zero displacement</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">📈</div>
+          <div class="revision-term">Standing Antinode</div>
+          <div class="revision-val">Maximum displacement</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">🎵</div>
+          <div class="revision-term">Beat Frequency</div>
+          <div class="revision-val">f_b = |f₁ − f₂|</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">💡</div>
+          <div class="revision-term">Refraction Rule</div>
+          <div class="revision-val">Frequency is CONSTANT</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">🕶️</div>
+          <div class="revision-term">Polarization</div>
+          <div class="revision-val">Transverse waves only</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">🚑</div>
+          <div class="revision-term">Doppler Shift</div>
+          <div class="revision-val">Apparent frequency change</div>
+        </div>
+
+        <div class="revision-card">
+          <div class="revision-icon">🔊</div>
+          <div class="revision-term">Sound Speed</div>
+          <div class="revision-val">Solid > Liquid > Gas</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21. MDCAT QUIZ (20 MCQS) -->
+    <section class="section-block" id="quiz-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">20. Practice Exam</span>
+          <h2 class="section-title">MDCAT Waves Exam Simulation (20 MCQs)</h2>
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <div id="quiz-active-area">
+          <div class="quiz-header">
+            <div class="quiz-badge" id="quiz-q-num">Question 1</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);" id="quiz-q-total">of 20</div>
+          </div>
+
+          <div class="quiz-question-box">
+            <div class="question-text" id="quiz-question-text">
+              Loading question...
+            </div>
+            <div class="quiz-options" id="quiz-options-container">
+              <!-- Options populated dynamically by JS -->
+            </div>
+            <div class="quiz-explanation" id="quiz-explanation-box"></div>
+          </div>
+
+          <div class="quiz-footer">
+            <button class="btn btn-secondary" id="quiz-prev-btn">⬅ Previous</button>
+            <button class="btn btn-primary" id="quiz-next-btn">Next Question ➔</button>
+          </div>
+        </div>
+
+        <!-- Score Summary Area -->
+        <div class="quiz-score-summary" id="quiz-score-summary">
+          <div class="score-circle">
+            <div class="score-num" id="quiz-final-score">0/20</div>
+            <div class="score-label" id="quiz-final-pct">0%</div>
+          </div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Quiz Completed!</h3>
+          <p id="quiz-final-msg" style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 24px;">
+            Review your performance against standard MDCAT criteria.
+          </p>
+          <button class="btn btn-primary" id="quiz-retry-btn">🔄 Retake Quiz</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 6px;">MDCAT Physics Master — Waves Edition</p>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">
+        Crafted strictly according to PMDC / MDCAT Physics syllabus guidelines with pure vanilla HTML5, CSS3, and JavaScript physics engines.
+      </p>
+    </div>
+  </footer>
+
+  <script src="./waves.js"></script>
+</body>
+</html>

@@ -1,349 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Aetheria AI - Glassmorphism Assistant</title>
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduNexa AI — AI Learning Coach</title>
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="ai-assistant.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Markdown & Syntax Highlighting -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="ai-assistant.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
 </head>
 <body>
-  <!-- Animated Background Canvas & Orbs -->
-  <div class="bg-effects">
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
-    <div class="bg-orb orb-3"></div>
-    <div class="bg-grid"></div>
+  <!-- Animated Background Orbs -->
+  <div class="glow-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
 
-  <div class="app-container">
+  <div class="app-layout">
     <!-- Sidebar Overlay for Mobile -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- Sidebar Navigation -->
+    <!-- Left Sidebar -->
     <aside class="sidebar" id="sidebar">
-      <!-- Sidebar Header -->
       <div class="sidebar-header">
         <div class="brand">
           <div class="brand-icon">
-            <i data-lucide="sparkles"></i>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
           </div>
           <div class="brand-info">
-            <span class="brand-name">Aetheria AI</span>
-            <span class="brand-tag">v2.5 Pro</span>
+            <span class="brand-name">EDUNEXA</span>
+            <span class="brand-badge">AI</span>
           </div>
         </div>
-        <button class="icon-btn mobile-close-btn" id="closeSidebarBtn" aria-label="Close sidebar">
-          <i data-lucide="x"></i>
+        <button class="icon-btn close-sidebar-btn" id="closeSidebarBtn" title="Close Sidebar" aria-label="Close sidebar" aria-controls="sidebar" aria-expanded="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
 
-      <!-- New Chat Button -->
-      <button class="new-chat-btn" id="newChatBtn">
-        <i data-lucide="plus"></i>
-        <span>New Chat</span>
-        <kbd class="shortcut-badge">⌘N</kbd>
-      </button>
-
-      <!-- Chat History Search -->
-      <div class="sidebar-search">
-        <i data-lucide="search" class="search-icon"></i>
-        <input type="text" id="searchChatsInput" placeholder="Search conversations..." aria-label="Search chats">
-        <button class="clear-search-btn" id="clearSearchBtn" aria-label="Clear search">
-          <i data-lucide="x"></i>
+      <div class="sidebar-actions">
+        <button class="btn btn-primary btn-new-chat" id="newChatBtn">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <span>New Conversation</span>
+          <kbd class="shortcut-badge">⌘N</kbd>
         </button>
       </div>
 
-      <!-- Chat History List -->
-      <div class="chat-history-container" id="chatHistoryContainer">
-        <div class="history-empty" id="historyEmptyState">
-          <i data-lucide="message-square"></i>
-          <p>No chats found</p>
-        </div>
-        <div class="chat-list" id="chatList">
-          <!-- Chat items rendered dynamically via ai-assistant.js -->
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search conversations..." aria-label="Search conversations">
+      </div>
+
+      <div class="history-section">
+        <div class="history-label">Recent Conversations</div>
+        <div class="conversations-list" id="conversationsList">
+          <!-- Dynamic conversation items -->
         </div>
       </div>
 
-      <!-- Sidebar Footer -->
       <div class="sidebar-footer">
-        <button class="sidebar-footer-btn" id="settingsBtn">
-          <i data-lucide="sliders"></i>
+        <button class="footer-btn" id="settingsBtn" title="Settings">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
           <span>Settings</span>
         </button>
-        <button class="sidebar-footer-btn" id="profileBtn">
-          <div class="user-avatar-sm">
-            <i data-lucide="user"></i>
-          </div>
-          <span class="user-name">Pro Account</span>
+        <button class="footer-btn" id="profileBtn" title="User Profile">
+          <div class="user-avatar-sm">AI</div>
+          <span data-auth-name>Student</span>
         </button>
       </div>
     </aside>
 
     <!-- Main Chat Workspace -->
-    <main class="chat-workspace">
-      <!-- Sticky Workspace Header -->
-      <header class="chat-header">
+    <main class="main-content">
+      <!-- Header -->
+      <header class="app-header">
         <div class="header-left">
-          <button class="icon-btn toggle-sidebar-btn" id="toggleSidebarBtn" aria-label="Toggle sidebar">
-            <i data-lucide="panel-left"></i>
+          <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
           </button>
-          <div class="header-title-container">
-            <h1 class="chat-title" id="currentChatTitle">New Conversation</h1>
-            <div class="model-badge">
-              <span class="status-dot online"></span>
-              <span id="headerModelName">Gemini 3.6 Flash</span>
-            </div>
+          <div class="model-status-pill">
+            <div class="status-dot"></div>
+            <span class="active-model-name" id="activeModelLabel">gemini-3.6-flash</span>
+            <span class="status-tag">Connected</span>
           </div>
         </div>
 
-        <div class="header-actions">
-          <button class="header-action-btn" id="exportChatBtn" title="Export Chat (JSON/Markdown)" aria-label="Export chat">
-            <i data-lucide="download"></i>
-            <span class="btn-label">Export</span>
+        <div class="header-center">
+          <h1 class="chat-title" id="chatTitle">New Conversation</h1>
+        </div>
+
+        <div class="header-right">
+          <button class="icon-btn" id="exportChatBtn" title="Export Current Chat" aria-label="Export conversation">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           </button>
-          <button class="header-action-btn danger" id="clearChatBtn" title="Clear current messages" aria-label="Clear chat">
-            <i data-lucide="trash-2"></i>
-            <span class="btn-label">Clear</span>
+          <button class="icon-btn" id="clearChatBtn" title="Clear Conversation" aria-label="Clear chat">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
           </button>
         </div>
       </header>
 
       <!-- Chat Scroll Container -->
-      <div class="chat-messages-container" id="chatMessagesContainer">
-        <!-- Welcome Hero Screen (shown when no messages) -->
-        <div class="welcome-hero" id="welcomeHero">
-          <div class="hero-orb">
-            <i data-lucide="bot"></i>
+      <div class="chat-viewport" id="chatViewport">
+        <!-- Welcome Screen -->
+        <div class="welcome-screen" id="welcomeScreen">
+          <div class="welcome-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Neural Intelligence Active
           </div>
-          <h2>Where shall we begin today?</h2>
-          <p class="hero-subtitle">Powered by Gemini 3.6 Flash with real-time streaming, markdown, and glass code blocks.</p>
+          <h2 class="welcome-headline">What would you like to learn next?</h2>
+          <p class="welcome-sub">Plan your study path, generate a quiz, explain a concept, or track the next steps for your learning goals with EduNexa AI.</p>
 
           <div class="prompt-suggestions">
-            <button class="suggestion-card" data-prompt="Explain Quantum Computing in simple terms with an everyday analogy.">
-              <div class="card-icon"><i data-lucide="atom"></i></div>
-              <div class="card-text">
-                <span class="card-title">Explain Quantum Physics</span>
-                <span class="card-desc">Clear analogy for complex ideas</span>
+            <button class="suggestion-card" data-prompt="Create a 7-day study plan for me to master cellular respiration for MDCAT, with daily tasks, quick quizzes, and revision checkpoints.">
+              <div class="suggestion-icon">📚</div>
+              <div class="suggestion-text">
+                <strong>Build a study plan</strong>
+                <span>Personalized 7-day learning roadmap with milestones</span>
               </div>
             </button>
 
-            <button class="suggestion-card" data-prompt="Write a clean TypeScript function to handle retry logic with exponential backoff.">
-              <div class="card-icon"><i data-lucide="code-2"></i></div>
-              <div class="card-text">
-                <span class="card-title">Write TypeScript Code</span>
-                <span class="card-desc">Exponential backoff retry function</span>
+            <button class="suggestion-card" data-prompt="Explain the difference between mitosis and meiosis in simple terms and then give me a 5-question quiz with answers.">
+              <div class="suggestion-icon">🧠</div>
+              <div class="suggestion-text">
+                <strong>Explain a concept</strong>
+                <span>Clear concept breakdown plus active practice</span>
               </div>
             </button>
 
-            <button class="suggestion-card" data-prompt="Brainstorm 5 innovative feature ideas for a modern dark-mode AI assistant.">
-              <div class="card-icon"><i data-lucide="lightbulb"></i></div>
-              <div class="card-text">
-                <span class="card-title">Brainstorm Features</span>
-                <span class="card-desc">Creative ideas for web apps</span>
+            <button class="suggestion-card" data-prompt="I want to improve my physics score in 2 weeks. Recommend a study strategy, key topics, and daily tasks focused on problem-solving.">
+              <div class="suggestion-icon">📈</div>
+              <div class="suggestion-text">
+                <strong>Get recommendations</strong>
+                <span>Focused learning plan based on your goal and timeline</span>
               </div>
             </button>
 
-            <button class="suggestion-card" data-prompt="Analyze this table format and create a clean markdown table summarizing web framework performance.">
-              <div class="card-icon"><i data-lucide="table"></i></div>
-              <div class="card-text">
-                <span class="card-title">Create Data Tables</span>
-                <span class="card-desc">Markdown comparison layout</span>
+            <button class="suggestion-card" data-prompt="Generate a quick quiz on algebraic equations with answers and a short explanation for each one so I can practice.">
+              <div class="suggestion-icon">✅</div>
+              <div class="suggestion-text">
+                <strong>Generate a quiz</strong>
+                <span>Practice questions with reasoning and answers</span>
               </div>
             </button>
           </div>
         </div>
 
-        <!-- Dynamic Messages List -->
-        <div class="messages-list" id="messagesList"></div>
-
-        <!-- Scroll to Bottom Floating Button -->
-        <button class="scroll-bottom-btn" id="scrollBottomBtn" aria-label="Scroll to bottom">
-          <i data-lucide="arrow-down"></i>
-        </button>
+        <!-- Messages stream container -->
+        <div class="messages-container" id="messagesContainer"></div>
       </div>
 
-      <!-- Sticky Input Bar -->
+      <!-- Scroll to bottom button -->
+      <button class="scroll-bottom-btn" id="scrollBottomBtn" aria-label="Scroll to bottom">
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+
+      <!-- Input Area -->
       <div class="chat-input-wrapper">
-        <div class="input-glass-container">
-          <!-- Attachment Preview Box -->
-          <div class="attachment-preview" id="attachmentPreview" style="display: none;">
-            <div class="attachment-thumb-wrapper">
-              <img id="attachmentThumb" src="" alt="Attachment preview" />
-              <button class="remove-attachment-btn" id="removeAttachmentBtn" title="Remove attachment">
-                <i data-lucide="x"></i>
-              </button>
-            </div>
-            <span class="attachment-filename" id="attachmentFilename">image.png</span>
+        <!-- Image Preview Card -->
+        <div class="attachment-preview" id="attachmentPreview" style="display: none;">
+          <div class="preview-thumb-container">
+            <img id="previewImg" src="" alt="Attachment preview">
+            <button class="remove-attachment-btn" id="removeAttachmentBtn" title="Remove image">&times;</button>
           </div>
-
-          <!-- Input Controls Line -->
-          <div class="input-controls-row">
-            <!-- Left Action Buttons -->
-            <div class="input-actions-left">
-              <button class="input-icon-btn" id="attachFileBtn" title="Attach image" aria-label="Attach file">
-                <i data-lucide="paperclip"></i>
-              </button>
-              <input type="file" id="fileInput" accept="image/*" style="display: none;" />
-
-              <button class="input-icon-btn" id="micBtn" title="Voice Input (Speech-to-text)" aria-label="Microphone">
-                <i data-lucide="mic"></i>
-              </button>
-            </div>
-
-            <!-- Auto-Resizing Textarea -->
-            <textarea
-              id="chatTextarea"
-              placeholder="Ask Aetheria anything... (Shift + Enter for new line)"
-              rows="1"
-              maxlength="4000"
-              aria-label="Message input"
-            ></textarea>
-
-            <!-- Right Action Buttons -->
-            <div class="input-actions-right">
-              <span class="char-counter" id="charCounter">0/4000</span>
-
-              <button class="send-btn" id="sendBtn" title="Send message (Enter)" aria-label="Send message">
-                <i data-lucide="arrow-up" id="sendIcon"></i>
-                <i data-lucide="square" id="stopIcon" style="display: none;"></i>
-              </button>
-            </div>
-          </div>
+          <span class="preview-filename" id="previewFilename">image.png</span>
         </div>
-        
-        <p class="input-disclaimer">
-          Aetheria AI can generate creative responses. Check key information.
-        </p>
+
+        <form class="chat-form" id="chatForm">
+          <input type="file" id="imageFileInput" accept="image/png, image/jpeg, image/webp" style="display: none;">
+          
+          <button type="button" class="action-btn" id="attachBtn" title="Attach Image (PNG, JPG, WEBP)">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          </button>
+
+          <button type="button" class="action-btn" id="studyPlanBtn" title="Generate a study plan">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6.5 3z"></path><path d="M8 7h8M8 11h8M8 15h5"></path></svg>
+          </button>
+
+          <button type="button" class="action-btn" id="voiceBtn" title="Voice Input (Speech-to-text)">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          </button>
+
+          <textarea 
+            id="chatTextarea" 
+            placeholder="Ask EduNexa AI about concepts, quizzes, plans, and progress... (Shift+Enter for newline, ⌘K to focus)" 
+            rows="1" 
+            maxlength="4000"
+            aria-label="Ask EduNexa AI"></textarea>
+
+          <div class="input-controls">
+            <span class="char-counter" id="charCounter">0/4000</span>
+            
+            <button type="button" class="action-btn btn-stop" id="stopBtn" style="display: none;" title="Stop generation">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"></rect></svg>
+            </button>
+
+            <button type="submit" class="action-btn btn-send" id="sendBtn" title="Send message">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </div>
+        </form>
+        <div class="input-footer">
+          <span>EduNexa AI uses Gemini for adaptive study guidance, quiz generation, concept explanations, and learning progress support.</span>
+        </div>
       </div>
     </main>
   </div>
 
   <!-- Settings Modal -->
-  <div class="modal-overlay" id="settingsModal">
-    <div class="modal-glass">
+  <div class="modal-backdrop" id="settingsModal">
+    <div class="modal-card">
       <div class="modal-header">
-        <div class="modal-title">
-          <i data-lucide="sliders"></i>
-          <span>Assistant Settings</span>
-        </div>
-        <button class="modal-close-btn" id="closeSettingsBtn"><i data-lucide="x"></i></button>
+        <h3 class="modal-title">System Settings</h3>
+        <button class="icon-btn modal-close-btn" data-close="settingsModal">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="setting-group">
-          <label for="systemInstructionInput" class="setting-label">System Instructions</label>
-          <textarea id="systemInstructionInput" rows="3" placeholder="You are a helpful, precise AI Assistant..."></textarea>
-          <span class="setting-hint">Defines the core persona and behavior of the AI assistant.</span>
-        </div>
-
-        <div class="setting-group">
-          <label for="modelSelect" class="setting-label">AI Model</label>
-          <select id="modelSelect" class="setting-select">
-            <option value="gemini-3.6-flash">Gemini 3.6 Flash (Fast & Intelligent - Recommended)</option>
-            <option value="gemini-3.1-pro-preview">Gemini 3.1 Pro (Advanced Reasoning)</option>
+        <div class="form-group">
+          <label for="modelSelect">Gemini Model</label>
+          <select id="modelSelect" class="form-select">
+            <option value="gemini-3.7-flash" selected>Gemini 3.7 Flash (Fastest & Flagship)</option>
+            <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+            <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
           </select>
+          <span class="field-hint">Securely dispatched through server-side environment.</span>
         </div>
 
-        <div class="setting-group">
-          <label class="setting-label">Options</label>
-          <div class="setting-toggle-row">
-            <span>Auto-Scroll on New Tokens</span>
-            <label class="switch">
-              <input type="checkbox" id="autoScrollToggle" checked>
-              <span class="slider round"></span>
-            </label>
-          </div>
-          <div class="setting-toggle-row">
-            <span>Sound Effects</span>
-            <label class="switch">
-              <input type="checkbox" id="soundToggle" checked>
-              <span class="slider round"></span>
-            </label>
-          </div>
+        <div class="form-group">
+          <label for="systemInstructionInput">Custom System Instruction</label>
+          <textarea id="systemInstructionInput" class="form-textarea" rows="3" placeholder="You are EduNexa AI, a helpful, precise, and futuristic AI assistant."></textarea>
+          <span class="field-hint">Sent directly to Gemini with every conversation turn.</span>
         </div>
 
-        <div class="setting-group danger-zone">
-          <label class="setting-label danger-text">Danger Zone</label>
-          <button class="btn-danger" id="clearAllDataBtn">
-            <i data-lucide="trash-2"></i>
-            <span>Clear All Local History & Data</span>
-          </button>
+        <div class="setting-toggle-row">
+          <div>
+            <strong>Auto-Scroll Chat</strong>
+            <div class="field-hint">Smoothly scroll down as new tokens arrive</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="autoScrollToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-toggle-row">
+          <div>
+            <strong>Interface Audio Chimes</strong>
+            <div class="field-hint">Subtle acoustic feedback for messages & actions</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="soundToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-divider"></div>
+
+        <div class="form-group">
+          <label>Data Management & Backups</label>
+          <div class="modal-btn-row">
+            <button class="btn btn-secondary" id="exportAllDataBtn">Backup All (JSON)</button>
+            <label class="btn btn-secondary file-upload-label">
+              Restore Backup
+              <input type="file" id="importDataInput" accept=".json" style="display: none;">
+            </label>
+            <button class="btn btn-danger" id="clearAllDataBtn">Clear All Data</button>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn-secondary" id="cancelSettingsBtn">Cancel</button>
-        <button class="btn-primary" id="saveSettingsBtn">Save Changes</button>
+        <button class="btn btn-primary" id="saveSettingsBtn">Save Settings</button>
       </div>
     </div>
   </div>
 
   <!-- Profile Modal -->
-  <div class="modal-overlay" id="profileModal">
-    <div class="modal-glass">
+  <div class="modal-backdrop" id="profileModal">
+    <div class="modal-card">
       <div class="modal-header">
-        <div class="modal-title">
-          <i data-lucide="user"></i>
-          <span>Account & Profile</span>
-        </div>
-        <button class="modal-close-btn" id="closeProfileBtn"><i data-lucide="x"></i></button>
+        <h3 class="modal-title">User Intelligence Profile</h3>
+        <button class="icon-btn modal-close-btn" data-close="profileModal">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="profile-card">
-          <div class="profile-avatar">
-            <i data-lucide="bot"></i>
-          </div>
-          <div class="profile-details">
-            <h3>Pro AI User</h3>
-            <span class="badge-pro">Active Subscription</span>
-            <p class="profile-email">alizahulio51@gmail.com</p>
+        <div class="profile-card-header">
+          <div class="profile-avatar-lg">AI</div>
+          <div>
+            <h4 class="profile-user-name" data-auth-name>Student</h4>
+            <span class="profile-badge">Standard Session</span>
           </div>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat-card">
-            <span class="stat-value" id="statChatsCount">0</span>
-            <span class="stat-label">Saved Chats</span>
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-val" id="metricChats">0</div>
+            <div class="metric-lbl">Saved Chats</div>
           </div>
-          <div class="stat-card">
-            <span class="stat-value" id="statMessagesCount">0</span>
-            <span class="stat-label">Total Messages</span>
+          <div class="metric-card">
+            <div class="metric-val" id="metricMessages">0</div>
+            <div class="metric-lbl">Total Messages</div>
           </div>
-          <div class="stat-card">
-            <span class="stat-value" id="statStorageSize">0 KB</span>
-            <span class="stat-label">Storage Used</span>
+          <div class="metric-card">
+            <div class="metric-val" id="metricStorage">0 KB</div>
+            <div class="metric-lbl">Local Storage</div>
           </div>
         </div>
 
-        <div class="setting-group">
-          <label class="setting-label">Data Management</label>
-          <div class="modal-btn-row">
-            <button class="btn-secondary" id="exportDataBtn">
-              <i data-lucide="download"></i>
-              <span>Export Backup</span>
-            </button>
-            <button class="btn-secondary" id="importDataBtn">
-              <i data-lucide="upload"></i>
-              <span>Import Backup</span>
-            </button>
-            <input type="file" id="importFileInput" accept=".json" style="display: none;" />
-          </div>
+        <div class="info-banner">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <div>All chat records and attachments are securely stored in your private local browser cache and processed directly via server-side Gemini endpoints.</div>
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn-primary" id="doneProfileBtn">Done</button>
+        <button class="btn btn-secondary" data-close="profileModal">Close</button>
       </div>
     </div>
   </div>
 
-  <!-- Toast Notification Container -->
-  <div class="toast-container" id="toastContainer"></div>
+  <!-- Confirmation Dialog Modal -->
+  <div class="modal-backdrop" id="confirmModal">
+    <div class="modal-card modal-sm">
+      <div class="modal-header">
+        <h3 class="modal-title" id="confirmTitle">Confirm Action</h3>
+        <button class="icon-btn modal-close-btn" data-close="confirmModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmMessage">Are you sure you want to proceed?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close="confirmModal">Cancel</button>
+        <button class="btn btn-danger" id="confirmActionBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
 
-  <!-- Main JavaScript File -->
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
   <script src="ai-assistant.js"></script>
+  <script type="module" src="auth-guard.js"></script>
 </body>
 </html>

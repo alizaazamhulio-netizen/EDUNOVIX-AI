@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDCAT Modern Physics — Complete Textbook & Interactive Lab</title>
+  <meta name="description" content="Comprehensive MDCAT Modern Physics Chapter with interactive photoelectric and Bohr atom simulators, numerical solvers, and quizzes.">
+  <link rel="stylesheet" href="modern-physics.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+  <!-- Reading Progress Bar -->
+  <div id="scroll-progress-container" class="scroll-progress-container">
+    <div id="scroll-progress-bar" class="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">⚛</div>
+        <div class="brand-text">
+          <h1>MODERN PHYSICS <span class="badge">MDCAT REVISION</span></h1>
+          <p>Complete 20-Topic Theory, Virtual Physics Simulators & Practice Questions</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <button class="nav-btn active" data-tab="textbook">📖 20 Topics</button>
+        <button class="nav-btn" data-tab="photoelectric">⚡ Photoelectric Lab</button>
+        <button class="nav-btn" data-tab="bohr">⚛️ Bohr Atom Lab</button>
+        <button class="nav-btn" data-tab="calculators">🧮 Numerical Solvers</button>
+        <button class="nav-btn" data-tab="traps">🎯 14 Exam Traps</button>
+        <button class="nav-btn" data-tab="quiz">📝 Practice Quiz</button>
+        <button class="nav-btn" data-tab="formulas">📑 Formula Sheet</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    <!-- SECTION 1: TEXTBOOK (20 TOPICS) -->
+    <section id="section-textbook" class="tab-pane active">
+      <div class="card card-toolbar">
+        <div class="search-box">
+          <input type="text" id="topic-search-input" placeholder="Search across all 20 topics (e.g. photon, work function, Balmer)...">
+        </div>
+        <div class="category-filters">
+          <button class="filter-btn active" data-filter="all">All Topics</button>
+          <button class="filter-btn" data-filter="quantum">Quantum</button>
+          <button class="filter-btn" data-filter="photoelectric">Photoelectric</button>
+          <button class="filter-btn" data-filter="matter-waves">Matter Waves</button>
+          <button class="filter-btn" data-filter="bohr">Bohr Atom</button>
+          <button class="filter-btn" data-filter="relativity">Relativity</button>
+        </div>
+      </div>
+
+      <div id="topics-list" class="topics-list">
+        <!-- Injected via modern-physics.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 2: PHOTOELECTRIC LAB -->
+    <section id="section-photoelectric" class="tab-pane">
+      <div class="card lab-card">
+        <div class="card-header">
+          <div>
+            <h2>⚡ Photoelectric Effect Virtual Laboratory</h2>
+            <p>Tune wavelength, intensity, target cathode metals, and retarding potential.</p>
+          </div>
+          <div class="sim-actions">
+            <button id="pe-toggle-play" class="btn btn-secondary">⏸ Pause</button>
+            <button id="pe-reset" class="btn btn-secondary">↺ Reset</button>
+          </div>
+        </div>
+
+        <div class="canvas-container">
+          <canvas id="photoelectric-canvas" height="340"></canvas>
+          <div id="pe-hud-badge" class="hud-badge">
+            Current: <span id="pe-current-readout" class="highlight">0.00 µA</span> | 
+            Stopping V₀: <span id="pe-v0-readout" class="highlight">0.00 V</span>
+          </div>
+        </div>
+
+        <!-- Telemetry Cards -->
+        <div class="telemetry-grid">
+          <div class="telemetry-box">
+            <span class="telemetry-label">Photon Energy (E)</span>
+            <span id="pe-energy-ev" class="telemetry-val text-indigo">3.26 eV</span>
+            <span id="pe-energy-j" class="telemetry-sub">5.22 × 10⁻¹⁹ J</span>
+          </div>
+          <div class="telemetry-box">
+            <span class="telemetry-label">Work Function (ϕ)</span>
+            <span id="pe-phi-ev" class="telemetry-val text-amber">2.46 eV</span>
+            <span id="pe-lambda0" class="telemetry-sub">λ₀ = 504 nm</span>
+          </div>
+          <div class="telemetry-box">
+            <span class="telemetry-label">Max Kinetic Energy (Kmax)</span>
+            <span id="pe-kmax-ev" class="telemetry-val text-emerald">0.80 eV</span>
+            <span class="telemetry-sub">E - ϕ</span>
+          </div>
+          <div class="telemetry-box">
+            <span class="telemetry-label">Max Electron Speed</span>
+            <span id="pe-speed-kms" class="telemetry-val text-cyan">530 km/s</span>
+            <span class="telemetry-sub">√(2Kmax/m)</span>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-grid">
+          <div class="control-group">
+            <label for="pe-metal-select">Cathode Metal Target</label>
+            <select id="pe-metal-select" class="form-control">
+              <option value="Cs">Cesium (Cs) — ϕ = 2.14 eV (λ₀ = 579 nm)</option>
+              <option value="K">Potassium (K) — ϕ = 2.30 eV (λ₀ = 539 nm)</option>
+              <option value="Na" selected>Sodium (Na) — ϕ = 2.46 eV (λ₀ = 504 nm)</option>
+              <option value="Ca">Calcium (Ca) — ϕ = 2.87 eV (λ₀ = 432 nm)</option>
+              <option value="Zn">Zinc (Zn) — ϕ = 4.31 eV (λ₀ = 288 nm)</option>
+              <option value="Pt">Platinum (Pt) — ϕ = 6.35 eV (λ₀ = 195 nm)</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <div class="label-row">
+              <label for="pe-wl-slider">Incident Wavelength (λ)</label>
+              <span id="pe-wl-val" class="slider-val">380 nm</span>
+            </div>
+            <input type="range" id="pe-wl-slider" min="200" max="750" value="380" step="5">
+          </div>
+
+          <div class="control-group">
+            <div class="label-row">
+              <label for="pe-intensity-slider">Light Intensity (Flux)</label>
+              <span id="pe-intensity-val" class="slider-val">60%</span>
+            </div>
+            <input type="range" id="pe-intensity-slider" min="0" max="100" value="60" step="5">
+          </div>
+
+          <div class="control-group">
+            <div class="label-row">
+              <label for="pe-voltage-slider">Bias Potential (V)</label>
+              <span id="pe-voltage-val" class="slider-val">0.0 V</span>
+            </div>
+            <input type="range" id="pe-voltage-slider" min="-5.0" max="5.0" value="0.0" step="0.1">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: BOHR ATOM LAB -->
+    <section id="section-bohr" class="tab-pane">
+      <div class="card lab-card">
+        <div class="card-header">
+          <div>
+            <h2>⚛️ Bohr Hydrogen Atom & Spectral Series Visualizer</h2>
+            <p>Click stationary orbits (n = 1 to 6) to trigger quantum transitions and photon rays.</p>
+          </div>
+          <button id="bohr-reset-btn" class="btn btn-secondary">↺ Ground State (n=1)</button>
+        </div>
+
+        <div class="bohr-layout">
+          <div class="canvas-container">
+            <canvas id="bohr-canvas" height="380"></canvas>
+            <div class="bohr-orbit-buttons" id="bohr-quick-orbits">
+              <span>Orbits:</span>
+              <button class="orbit-btn" data-n="1">n=1</button>
+              <button class="orbit-btn" data-n="2">n=2</button>
+              <button class="orbit-btn active" data-n="3">n=3</button>
+              <button class="orbit-btn" data-n="4">n=4</button>
+              <button class="orbit-btn" data-n="5">n=5</button>
+              <button class="orbit-btn" data-n="6">n=6</button>
+            </div>
+          </div>
+
+          <div class="bohr-sidebar">
+            <div class="card-inner">
+              <h3>Quantum Transition Calculator</h3>
+              <div class="form-row">
+                <div>
+                  <label for="bohr-ni-select">Initial Orbit (nᵢ)</label>
+                  <select id="bohr-ni-select" class="form-control">
+                    <option value="1">n = 1 (-13.60 eV)</option>
+                    <option value="2">n = 2 (-3.40 eV)</option>
+                    <option value="3" selected>n = 3 (-1.51 eV)</option>
+                    <option value="4">n = 4 (-0.85 eV)</option>
+                    <option value="5">n = 5 (-0.54 eV)</option>
+                    <option value="6">n = 6 (-0.38 eV)</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="bohr-nf-select">Final Orbit (n𝒻)</label>
+                  <select id="bohr-nf-select" class="form-control">
+                    <option value="1">n = 1 (-13.60 eV)</option>
+                    <option value="2" selected>n = 2 (-3.40 eV)</option>
+                    <option value="3">n = 3 (-1.51 eV)</option>
+                    <option value="4">n = 4 (-0.85 eV)</option>
+                    <option value="5">n = 5 (-0.54 eV)</option>
+                    <option value="6">n = 6 (-0.38 eV)</option>
+                  </select>
+                </div>
+              </div>
+              <button id="bohr-jump-btn" class="btn btn-primary btn-full">Trigger Quantum Jump</button>
+
+              <!-- Telemetry Output -->
+              <div class="bohr-telemetry">
+                <div class="row"><span>Energy Gap (ΔE):</span> <strong id="bohr-delta-e">1.89 eV</strong></div>
+                <div class="row"><span>Wavelength (λ):</span> <strong id="bohr-wl">656.3 nm</strong></div>
+                <div class="row"><span>Spectral Series:</span> <strong id="bohr-series">Balmer Series</strong></div>
+                <div class="row"><span>EM Region:</span> <strong id="bohr-region">Visible (Red)</strong></div>
+                <div class="row"><span>Line Identity:</span> <strong id="bohr-line-name" class="text-emerald">H-α Line</strong></div>
+              </div>
+            </div>
+
+            <!-- Visible Spectrum Strip -->
+            <div class="spectrum-strip-box">
+              <div class="label-row">
+                <span>Hydrogen Balmer Spectrum</span>
+                <span>400nm → 700nm</span>
+              </div>
+              <div class="spectrum-bar">
+                <div class="spectrum-line line-red" style="left: 85%;" title="H-α: 656.3 nm"></div>
+                <div class="spectrum-line line-cyan" style="left: 42%;" title="H-β: 486.1 nm"></div>
+                <div class="spectrum-line line-blue" style="left: 23%;" title="H-γ: 434.0 nm"></div>
+                <div class="spectrum-line line-violet" style="left: 12%;" title="H-δ: 410.2 nm"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CALCULATORS -->
+    <section id="section-calculators" class="tab-pane">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2>🧮 MDCAT Numerical Solvers</h2>
+            <p>Instant step-by-step problem solver for photon energy, work function, de Broglie & mass defect.</p>
+          </div>
+        </div>
+        <div class="calc-grid">
+          <!-- Calc 1 -->
+          <div class="calc-box">
+            <h3>1. Photon Energy & Momentum</h3>
+            <label>Wavelength λ (nm):</label>
+            <input type="number" id="calc-photon-wl" class="form-control" value="500">
+            <div class="calc-result" id="calc-photon-out">
+              <!-- Result calculated via JS -->
+            </div>
+          </div>
+
+          <!-- Calc 2 -->
+          <div class="calc-box">
+            <h3>2. Photoelectric Kmax & V₀</h3>
+            <label>Wavelength λ (nm):</label>
+            <input type="number" id="calc-pe-wl" class="form-control" value="300">
+            <label>Work Function ϕ (eV):</label>
+            <input type="number" id="calc-pe-phi" class="form-control" value="2.46" step="0.1">
+            <div class="calc-result" id="calc-pe-out">
+              <!-- Result calculated via JS -->
+            </div>
+          </div>
+
+          <!-- Calc 3 -->
+          <div class="calc-box">
+            <h3>3. Electron de Broglie Wavelength</h3>
+            <label>Accelerating Potential (V):</label>
+            <input type="number" id="calc-db-v" class="form-control" value="100">
+            <div class="calc-result" id="calc-db-out">
+              <!-- Result calculated via JS -->
+            </div>
+          </div>
+
+          <!-- Calc 4 -->
+          <div class="calc-box">
+            <h3>4. Mass-Energy (E = mc²)</h3>
+            <label>Mass Defect (amu / u):</label>
+            <input type="number" id="calc-mass-u" class="form-control" value="0.02" step="0.005">
+            <div class="calc-result" id="calc-mass-out">
+              <!-- Result calculated via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: TRAPS -->
+    <section id="section-traps" class="tab-pane">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2>🎯 14 High-Yield MDCAT Traps</h2>
+            <p>Examiner tricks and misconceptions with scientific reasoning.</p>
+          </div>
+          <div id="traps-mastered-count" class="badge">Mastered: 0 / 14</div>
+        </div>
+        <div id="traps-grid" class="traps-grid">
+          <!-- Injected via modern-physics.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: QUIZ -->
+    <section id="section-quiz" class="tab-pane">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2>📝 High-Yield MDCAT Practice Quiz</h2>
+            <p>Authentic multiple choice questions with detailed solutions and trap warnings.</p>
+          </div>
+          <button id="quiz-reset-btn" class="btn btn-secondary">↺ Retake Quiz</button>
+        </div>
+
+        <div id="quiz-container" class="quiz-container">
+          <div class="quiz-progress-bar-row">
+            <span id="quiz-progress-text">Question 1 of 20</span>
+            <span id="quiz-score-live">Score: 0</span>
+          </div>
+
+          <div id="quiz-question-card" class="quiz-question-card">
+            <!-- Question content injected via JS -->
+          </div>
+
+          <div class="quiz-nav-row">
+            <button id="quiz-prev-btn" class="btn btn-secondary">← Previous</button>
+            <button id="quiz-submit-btn" class="btn btn-primary">Submit Exam</button>
+            <button id="quiz-next-btn" class="btn btn-secondary">Next →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: FORMULAS -->
+    <section id="section-formulas" class="tab-pane">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2>📑 Formula Cheat Sheet & Physical Constants</h2>
+            <p>Master equations, SI units, and MDCAT shortcut relations.</p>
+          </div>
+        </div>
+        <div id="constants-grid" class="constants-grid">
+          <!-- Constants injected via JS -->
+        </div>
+        <div id="formulas-grid" class="formulas-grid">
+          <!-- Formulas injected via JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>MDCAT Modern Physics Comprehensive Digital Textbook & Virtual Science Lab</p>
+  </footer>
+
+  <script src="modern-physics.js"></script>
+</body>
+</html>

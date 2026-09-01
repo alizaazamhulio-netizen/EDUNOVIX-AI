@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDCAT English Vocabulary Mastery | Complete Prep Platform</title>
+  <meta name="description" content="Master MDCAT English vocabulary with 4 comprehensive levels, interactive flashcards, practice quizzes, confusing word pairs, prefixes & suffixes, and spaced repetition.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans, Outfit, and Noto Nastaliq Urdu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="vocabulary.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body class="app-body">
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Top Announcement / MDCAT Target Bar -->
+  <aside class="top-announcement" aria-label="MDCAT High Yield Prep Notice">
+    <div class="container announcement-content">
+      <span class="badge-live"><i class="fa-solid fa-bolt"></i> High-Yield MDCAT Syllabus</span>
+      <span class="announcement-text">Curated for NUMS, UHS, SZABMU, KMU & National MDCAT English Section</span>
+      <div class="top-stats-pill" id="header-stats-pill">
+        <i class="fa-solid fa-graduation-cap"></i> <span id="header-learned-count">0</span> / <span id="header-total-count">0</span> Mastered
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <div class="brand-group">
+        <div class="brand-icon">
+          <i class="fa-solid fa-book-medical"></i>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-title">Vocabulary Mastery</h1>
+          <p class="brand-subtitle">Build the vocabulary you need to master MDCAT English.</p>
+        </div>
+      </div>
+
+      <!-- Quick Search in Header -->
+      <div class="header-search-wrap">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="global-search-input" class="header-search-input" placeholder="Search any word, Urdu meaning, synonym..." autocomplete="off">
+        <button id="search-clear-btn" class="search-clear-btn" title="Clear Search" style="display: none;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+        <button id="header-bookmark-filter-btn" class="btn-header-action" title="View Bookmarks">
+          <i class="fa-solid fa-bookmark"></i>
+          <span class="btn-text">Saved</span>
+          <span class="counter-badge" id="bookmark-badge">0</span>
+        </button>
+        <button id="header-review-filter-btn" class="btn-header-action" title="Review Queue">
+          <i class="fa-solid fa-rotate"></i>
+          <span class="btn-text">Review Queue</span>
+          <span class="counter-badge badge-warning" id="review-badge">0</span>
+        </button>
+        <button id="sound-toggle-btn" class="btn-header-action btn-icon-only" title="Toggle Sound Feedback">
+          <i class="fa-solid fa-volume-high" id="sound-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Top Level Navigation Tabs -->
+  <nav class="nav-tabs-bar" aria-label="Main Navigation">
+    <div class="container nav-tabs-container">
+      <ul class="nav-tabs-list" id="main-nav-tabs" role="tablist">
+        <li role="presentation">
+          <button class="nav-tab-btn active" data-tab="explorer" role="tab" aria-selected="true" id="tab-explorer">
+            <i class="fa-solid fa-book-open"></i> Word Explorer
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="nav-tab-btn" data-tab="flashcards" role="tab" aria-selected="false" id="tab-flashcards">
+            <i class="fa-solid fa-layer-group"></i> Flashcard Mode
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="nav-tab-btn" data-tab="quiz" role="tab" aria-selected="false" id="tab-quiz">
+            <i class="fa-solid fa-circle-question"></i> Practice Quiz
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="nav-tab-btn" data-tab="confusing" role="tab" aria-selected="false" id="tab-confusing">
+            <i class="fa-solid fa-scale-balanced"></i> Confusing Pairs
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="nav-tab-btn" data-tab="morphology" role="tab" aria-selected="false" id="tab-morphology">
+            <i class="fa-solid fa-dna"></i> Prefixes & Suffixes
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="nav-tab-btn" data-tab="families" role="tab" aria-selected="false" id="tab-families">
+            <i class="fa-solid fa-sitemap"></i> Word Families
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="nav-tab-btn" data-tab="synonyms" role="tab" aria-selected="false" id="tab-synonyms">
+            <i class="fa-solid fa-link"></i> Synonym Chains
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="nav-tab-btn" data-tab="queue" role="tab" aria-selected="false" id="tab-queue">
+            <i class="fa-solid fa-clock-rotate-left"></i> Review Queue (<span id="tab-queue-count">0</span>)
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="nav-tab-btn" data-tab="strategy" role="tab" aria-selected="false" id="tab-strategy">
+            <i class="fa-solid fa-bullseye"></i> MDCAT Strategy
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Container Body -->
+  <main class="container main-content-layout">
+
+    <!-- Overall Progress Dashboard Panel -->
+    <section class="dashboard-progress-panel" id="dashboard-progress-panel">
+      <div class="progress-info-row">
+        <div class="progress-text-block">
+          <span class="progress-eyebrow">STUDY DASHBOARD</span>
+          <h2 class="progress-title">Vocabulary Progress — <span id="overall-percentage-text">0%</span></h2>
+          <p class="progress-desc">Track your mastery across all 4 MDCAT difficulty tiers.</p>
+        </div>
+        <div class="dashboard-stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon-wrap stat-icon-learned"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="stat-data">
+              <span class="stat-number" id="dash-learned-num">0</span>
+              <span class="stat-label">Words Learned</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-wrap stat-icon-mastered"><i class="fa-solid fa-award"></i></div>
+            <div class="stat-data">
+              <span class="stat-number" id="dash-mastered-num">0</span>
+              <span class="stat-label">Mastered</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-wrap stat-icon-bookmark"><i class="fa-solid fa-bookmark"></i></div>
+            <div class="stat-data">
+              <span class="stat-number" id="dash-bookmarked-num">0</span>
+              <span class="stat-label">Bookmarks</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-wrap stat-icon-review"><i class="fa-solid fa-rotate-left"></i></div>
+            <div class="stat-data">
+              <span class="stat-number" id="dash-review-num">0</span>
+              <span class="stat-label">Review Queue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Progress Bar Track -->
+      <div class="progress-track-wrapper">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="overall-progress-fill" style="width: 0%;"></div>
+        </div>
+        <div class="progress-labels-row">
+          <span>0 Words</span>
+          <span id="progress-words-fraction">0 / 0 Words Completed</span>
+          <span>100% Target</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Word of the Day Feature Card -->
+    <section class="word-of-the-day-section" id="word-of-the-day-section">
+      <div class="wotd-card">
+        <div class="wotd-header">
+          <div class="wotd-badge">
+            <i class="fa-solid fa-sun"></i> WORD OF THE DAY
+          </div>
+          <span class="wotd-date" id="wotd-date-display">Today's Selection</span>
+        </div>
+        <div class="wotd-body">
+          <div class="wotd-word-group">
+            <div class="wotd-main-row">
+              <h3 class="wotd-word" id="wotd-word-title">Alleviate</h3>
+              <button class="btn-audio-circle" id="wotd-audio-btn" title="Listen Pronunciation">
+                <i class="fa-solid fa-volume-high"></i>
+              </button>
+              <span class="wotd-pronunciation" id="wotd-pronunciation">/əˈliː.vi.eɪt/</span>
+              <span class="wotd-pos-badge" id="wotd-pos">verb</span>
+              <span class="level-badge badge-intermediate" id="wotd-level-badge">INTERMEDIATE</span>
+            </div>
+            <div class="wotd-meaning-group">
+              <p class="wotd-english-def" id="wotd-english-def">To make pain, distress, or difficulty less severe or more bearable.</p>
+              <p class="wotd-urdu-def" id="wotd-urdu-def">تسکین دینا / شدت کم کرنا / تخفیف کرنا</p>
+            </div>
+            <div class="wotd-synonyms-row">
+              <span class="wotd-meta-label">Synonyms:</span>
+              <div class="synonym-tags-wrap" id="wotd-synonyms-list">
+                <span class="tag-synonym">Relieve</span>
+                <span class="tag-synonym">Mitigate</span>
+                <span class="tag-synonym">Assuage</span>
+                <span class="tag-synonym">Palliate</span>
+              </div>
+            </div>
+            <div class="wotd-example-box">
+              <i class="fa-solid fa-quote-left quote-icon"></i>
+              <p class="wotd-example-text" id="wotd-example-text">The physician administered analgesics to <strong>alleviate</strong> the acute postoperative pain.</p>
+            </div>
+          </div>
+          <div class="wotd-actions">
+            <button class="btn-primary" id="wotd-add-btn">
+              <i class="fa-solid fa-plus"></i> Add to My Words
+            </button>
+            <button class="btn-outline" id="wotd-practice-btn">
+              <i class="fa-solid fa-circle-question"></i> Practice Word
+            </button>
+            <button class="btn-outline" id="wotd-bookmark-btn">
+              <i class="fa-solid fa-bookmark"></i> Bookmark
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Level Cards Section (Level Switchers) -->
+    <section class="level-cards-section" aria-label="Vocabulary Difficulty Levels">
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-heading">MDCAT Vocabulary Tiers</h2>
+          <p class="section-subheading">Select any tier to filter words instantly or test your mastery level.</p>
+        </div>
+        <div class="level-quick-filters">
+          <button class="btn-filter-pill active" data-level="ALL" id="filter-all-levels-btn">Show All Tiers</button>
+        </div>
+      </div>
+
+      <div class="level-cards-grid">
+        <!-- Level 1: BASIC -->
+        <article class="level-card level-card-basic" data-level="BASIC" id="card-level-basic" tabindex="0">
+          <div class="level-card-top">
+            <div class="level-indicator-dot dot-basic"></div>
+            <span class="level-number-badge">LEVEL 1</span>
+            <span class="level-word-count" id="count-level-basic">20 Words</span>
+          </div>
+          <h3 class="level-card-name">BASIC</h3>
+          <p class="level-card-desc">Everyday foundational English words common in passage comprehension & fundamental questions.</p>
+          <div class="level-card-progress">
+            <div class="level-progress-bar">
+              <div class="level-progress-fill fill-basic" id="progress-fill-basic" style="width: 0%;"></div>
+            </div>
+            <div class="level-progress-text">
+              <span>Mastery</span>
+              <strong id="percent-level-basic">0%</strong>
+            </div>
+          </div>
+          <div class="level-card-footer">
+            <span class="btn-text-link">Explore Basic Words <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </article>
+
+        <!-- Level 2: INTERMEDIATE -->
+        <article class="level-card level-card-intermediate" data-level="INTERMEDIATE" id="card-level-intermediate" tabindex="0">
+          <div class="level-card-top">
+            <div class="level-indicator-dot dot-intermediate"></div>
+            <span class="level-number-badge">LEVEL 2</span>
+            <span class="level-word-count" id="count-level-intermediate">25 Words</span>
+          </div>
+          <h3 class="level-card-name">INTERMEDIATE</h3>
+          <p class="level-card-desc">Crucial core MDCAT vocabulary testing semantic precision, subtle nuance & context.</p>
+          <div class="level-card-progress">
+            <div class="level-progress-bar">
+              <div class="level-progress-fill fill-intermediate" id="progress-fill-intermediate" style="width: 0%;"></div>
+            </div>
+            <div class="level-progress-text">
+              <span>Mastery</span>
+              <strong id="percent-level-intermediate">0%</strong>
+            </div>
+          </div>
+          <div class="level-card-footer">
+            <span class="btn-text-link">Explore Intermediate Words <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </article>
+
+        <!-- Level 3: ADVANCED -->
+        <article class="level-card level-card-advanced" data-level="ADVANCED" id="card-level-advanced" tabindex="0">
+          <div class="level-card-top">
+            <div class="level-indicator-dot dot-advanced"></div>
+            <span class="level-number-badge">LEVEL 3</span>
+            <span class="level-word-count" id="count-level-advanced">25 Words</span>
+          </div>
+          <h3 class="level-card-name">ADVANCED</h3>
+          <p class="level-card-desc">Distinction-level words for top scores in rigorous provincial and national MDCAT papers.</p>
+          <div class="level-card-progress">
+            <div class="level-progress-bar">
+              <div class="level-progress-fill fill-advanced" id="progress-fill-advanced" style="width: 0%;"></div>
+            </div>
+            <div class="level-progress-text">
+              <span>Mastery</span>
+              <strong id="percent-level-advanced">0%</strong>
+            </div>
+          </div>
+          <div class="level-card-footer">
+            <span class="btn-text-link">Explore Advanced Words <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </article>
+
+        <!-- Level 4: ELITE / VERY ADVANCED -->
+        <article class="level-card level-card-elite" data-level="ELITE" id="card-level-elite" tabindex="0">
+          <div class="level-card-top">
+            <div class="level-indicator-dot dot-elite"></div>
+            <span class="level-number-badge">LEVEL 4</span>
+            <span class="level-word-count" id="count-level-elite">25 Words</span>
+          </div>
+          <h3 class="level-card-name">ELITE</h3>
+          <p class="level-card-desc">Highly challenging, competitive academic lexicon for aspiring top-rank medical aspirants.</p>
+          <div class="level-card-progress">
+            <div class="level-progress-bar">
+              <div class="level-progress-fill fill-elite" id="progress-fill-elite" style="width: 0%;"></div>
+            </div>
+            <div class="level-progress-text">
+              <span>Mastery</span>
+              <strong id="percent-level-elite">0%</strong>
+            </div>
+          </div>
+          <div class="level-card-footer">
+            <span class="btn-text-link">Explore Elite Words <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 1: WORD EXPLORER (DICTIONARY & INTERACTIVE CARDS) -->
+    <!-- ========================================================================= -->
+    <section class="tab-pane active" id="pane-explorer" role="tabpanel" aria-labelledby="tab-explorer">
+      <!-- Filter and Control Bar -->
+      <div class="explorer-controls-panel">
+        <div class="controls-top-row">
+          <div class="filter-group">
+            <label for="filter-status" class="filter-label"><i class="fa-solid fa-filter"></i> Status:</label>
+            <select id="filter-status" class="custom-select">
+              <option value="ALL">All Words</option>
+              <option value="LEARNED">Learned Words</option>
+              <option value="UNLEARNED">Unlearned Words</option>
+              <option value="BOOKMARKED">Bookmarked (Saved)</option>
+              <option value="REVIEW">Needs Review</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-pos" class="filter-label"><i class="fa-solid fa-shapes"></i> Part of Speech:</label>
+            <select id="filter-pos" class="custom-select">
+              <option value="ALL">All Types</option>
+              <option value="verb">Verbs</option>
+              <option value="noun">Nouns</option>
+              <option value="adjective">Adjectives</option>
+              <option value="adverb">Adverbs</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-sort" class="filter-label"><i class="fa-solid fa-arrow-down-a-z"></i> Sort By:</label>
+            <select id="filter-sort" class="custom-select">
+              <option value="A-Z">Word (A to Z)</option>
+              <option value="Z-A">Word (Z to A)</option>
+              <option value="LEVEL-ASC">Difficulty (Basic to Elite)</option>
+              <option value="LEVEL-DESC">Difficulty (Elite to Basic)</option>
+            </select>
+          </div>
+
+          <div class="controls-actions">
+            <button id="btn-shuffle-words" class="btn-outline btn-sm" title="Shuffle order">
+              <i class="fa-solid fa-shuffle"></i> Shuffle
+            </button>
+            <button id="btn-reset-filters" class="btn-outline btn-sm" title="Reset all filters">
+              <i class="fa-solid fa-arrows-rotate"></i> Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Pills Sub-row -->
+        <div class="filter-pills-row" id="explorer-level-pills">
+          <span class="pills-label">Level Filter:</span>
+          <button class="pill-btn active" data-filter-level="ALL">All (<span id="pill-count-all">0</span>)</button>
+          <button class="pill-btn pill-basic" data-filter-level="BASIC">🟢 Basic (<span id="pill-count-basic">0</span>)</button>
+          <button class="pill-btn pill-intermediate" data-filter-level="INTERMEDIATE">🟡 Intermediate (<span id="pill-count-intermediate">0</span>)</button>
+          <button class="pill-btn pill-advanced" data-filter-level="ADVANCED">🔴 Advanced (<span id="pill-count-advanced">0</span>)</button>
+          <button class="pill-btn pill-elite" data-filter-level="ELITE">🟣 Elite (<span id="pill-count-elite">0</span>)</button>
+        </div>
+      </div>
+
+      <!-- Results Count Bar -->
+      <div class="results-meta-bar">
+        <div class="results-counter" id="results-count-display">
+          <i class="fa-solid fa-list-check"></i> Showing <strong>0</strong> words
+        </div>
+        <div class="results-quick-actions">
+          <span class="keyboard-tip"><kbd>Space</kbd> / Click card to view details</span>
+        </div>
+      </div>
+
+      <!-- Interactive Word Cards Grid Container -->
+      <div class="word-cards-grid" id="word-cards-container">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+      <!-- Empty State Container -->
+      <div class="empty-state-card" id="empty-state-display" style="display: none;">
+        <div class="empty-state-icon">
+          <i class="fa-solid fa-book-skull"></i>
+        </div>
+        <h3 class="empty-state-title">No Words Match Your Filter</h3>
+        <p class="empty-state-text">We couldn't find any vocabulary entries matching your current search or filter criteria. Try adjusting your query or resetting filters.</p>
+        <button class="btn-primary" id="btn-empty-reset">
+          <i class="fa-solid fa-rotate-left"></i> Reset All Filters
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 2: FLASHCARD MODE -->
+    <!-- ========================================================================= -->
+    <section class="tab-pane" id="pane-flashcards" role="tabpanel" aria-labelledby="tab-flashcards">
+      <div class="flashcard-deck-header">
+        <div class="deck-settings">
+          <div class="deck-filter-group">
+            <label for="flashcard-deck-select"><i class="fa-solid fa-layer-group"></i> Select Deck:</label>
+            <select id="flashcard-deck-select" class="custom-select">
+              <option value="ALL">All Tiers (Complete Deck)</option>
+              <option value="BASIC">Level 1: Basic</option>
+              <option value="INTERMEDIATE">Level 2: Intermediate</option>
+              <option value="ADVANCED">Level 3: Advanced</option>
+              <option value="ELITE">Level 4: Elite</option>
+              <option value="BOOKMARKED">Bookmarked Words</option>
+              <option value="REVIEW">Review Queue Words</option>
+            </select>
+          </div>
+          <div class="deck-counter-badge">
+            Card <span id="fc-current-index">1</span> of <span id="fc-total-count">0</span>
+          </div>
+        </div>
+        <div class="flashcard-top-actions">
+          <button id="fc-shuffle-btn" class="btn-outline btn-sm" title="Shuffle flashcards">
+            <i class="fa-solid fa-shuffle"></i> Shuffle Deck
+          </button>
+          <button id="fc-reset-btn" class="btn-outline btn-sm" title="Restart Deck">
+            <i class="fa-solid fa-rotate-left"></i> Restart
+          </button>
+        </div>
+      </div>
+
+      <!-- Flashcard Stage -->
+      <div class="flashcard-stage-container">
+        <div class="flashcard-wrapper" id="flashcard-element" tabindex="0" role="button" aria-label="Vocabulary Flashcard. Click to flip.">
+          <div class="flashcard-inner">
+            <!-- Front of Flashcard -->
+            <div class="flashcard-face flashcard-front">
+              <div class="fc-card-top">
+                <span class="level-badge" id="fc-front-level">LEVEL</span>
+                <span class="fc-pos" id="fc-front-pos">part of speech</span>
+                <button class="fc-bookmark-btn" id="fc-front-bookmark" title="Bookmark Word">
+                  <i class="fa-regular fa-bookmark"></i>
+                </button>
+              </div>
+              <div class="fc-front-center">
+                <h2 class="fc-word-title" id="fc-front-word">Word</h2>
+                <div class="fc-pronunciation-row">
+                  <button class="btn-audio-circle btn-sm" id="fc-front-audio" title="Listen Audio">
+                    <i class="fa-solid fa-volume-high"></i>
+                  </button>
+                  <span class="fc-phonetic" id="fc-front-phonetic">/phonetic/</span>
+                </div>
+              </div>
+              <div class="fc-card-bottom">
+                <span class="fc-flip-hint"><i class="fa-solid fa-repeat"></i> Click or tap card to flip for meaning</span>
+              </div>
+            </div>
+
+            <!-- Back of Flashcard -->
+            <div class="flashcard-face flashcard-back">
+              <div class="fc-card-top">
+                <span class="fc-back-word-mini" id="fc-back-word-mini">Word</span>
+                <span class="level-badge" id="fc-back-level">LEVEL</span>
+              </div>
+              <div class="fc-back-content">
+                <div class="fc-meaning-section">
+                  <div class="fc-label">English Meaning</div>
+                  <p class="fc-english-def" id="fc-back-meaning">Definition</p>
+                </div>
+                <div class="fc-urdu-section">
+                  <div class="fc-label">Urdu Translation</div>
+                  <p class="fc-urdu-def" id="fc-back-urdu">اردو معنی</p>
+                </div>
+                <div class="fc-synonyms-section">
+                  <div class="fc-label">Key Synonyms & Antonyms</div>
+                  <div class="fc-syn-grid">
+                    <div><strong>Syn:</strong> <span id="fc-back-synonyms">Synonyms</span></div>
+                    <div><strong>Ant:</strong> <span id="fc-back-antonyms">Antonyms</span></div>
+                  </div>
+                </div>
+                <div class="fc-example-section">
+                  <div class="fc-label">Contextual Example</div>
+                  <p class="fc-example-text" id="fc-back-example">Example sentence</p>
+                </div>
+              </div>
+              <div class="fc-card-bottom">
+                <span class="fc-flip-hint"><i class="fa-solid fa-repeat"></i> Click to flip back to word</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flashcard Controls -->
+      <div class="flashcard-controls-panel">
+        <div class="fc-nav-controls">
+          <button class="btn-outline btn-lg" id="fc-btn-prev" title="Previous Card (Left Arrow)">
+            <i class="fa-solid fa-chevron-left"></i> Prev
+          </button>
+          <button class="btn-primary btn-lg" id="fc-btn-flip" title="Flip Card (Spacebar)">
+            <i class="fa-solid fa-rotate"></i> Flip Card
+          </button>
+          <button class="btn-outline btn-lg" id="fc-btn-next" title="Next Card (Right Arrow)">
+            Next <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div class="fc-action-ratings">
+          <button class="btn-rating btn-review-again" id="fc-btn-review-again" title="Add to Review Queue (Press 1)">
+            <i class="fa-solid fa-rotate-left"></i>
+            <span>Review Again</span>
+            <small>Needs Practice</small>
+          </button>
+          <button class="btn-rating btn-know-it" id="fc-btn-know-it" title="Mark as Learned (Press 2)">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Know It!</span>
+            <small>Mark Learned</small>
+          </button>
+        </div>
+
+        <div class="fc-keyboard-shortcuts-bar">
+          <span><kbd>Space</kbd> Flip</span>
+          <span><kbd>&larr;</kbd> Prev</span>
+          <span><kbd>&rarr;</kbd> Next</span>
+          <span><kbd>1</kbd> Review</span>
+          <span><kbd>2</kbd> Master</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 3: PRACTICE QUIZ -->
+    <!-- ========================================================================= -->
+    <section class="tab-pane" id="pane-quiz" role="tabpanel" aria-labelledby="tab-quiz">
+      <!-- Quiz Setup Screen -->
+      <div class="quiz-setup-container" id="quiz-setup-screen">
+        <div class="quiz-hero-header">
+          <div class="quiz-badge-icon"><i class="fa-solid fa-trophy"></i></div>
+          <h2 class="quiz-title">MDCAT Vocabulary Test Simulator</h2>
+          <p class="quiz-subtitle">Test yourself with real MDCAT-style MCQs: synonyms, antonyms, definitions, and contextual sentences.</p>
+        </div>
+
+        <div class="quiz-config-grid">
+          <div class="config-card">
+            <label class="config-label"><i class="fa-solid fa-layer-group"></i> Select Difficulty Level</label>
+            <div class="config-options-list" id="quiz-level-options">
+              <label class="radio-option">
+                <input type="radio" name="quiz-level" value="ALL" checked>
+                <span class="radio-custom"></span>
+                <span>Mixed MDCAT (All Levels)</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="quiz-level" value="BASIC">
+                <span class="radio-custom"></span>
+                <span>Level 1: Basic Everyday</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="quiz-level" value="INTERMEDIATE">
+                <span class="radio-custom"></span>
+                <span>Level 2: Intermediate Core</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="quiz-level" value="ADVANCED">
+                <span class="radio-custom"></span>
+                <span>Level 3: Advanced High-Yield</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="quiz-level" value="ELITE">
+                <span class="radio-custom"></span>
+                <span>Level 4: Elite / Distinction</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="config-card">
+            <label class="config-label"><i class="fa-solid fa-list-ol"></i> Question Count</label>
+            <div class="config-options-list">
+              <label class="radio-option">
+                <input type="radio" name="quiz-count" value="10" checked>
+                <span class="radio-custom"></span>
+                <span>10 Questions (Quick Check)</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="quiz-count" value="20">
+                <span class="radio-custom"></span>
+                <span>20 Questions (Standard Test)</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="quiz-count" value="35">
+                <span class="radio-custom"></span>
+                <span>35 Questions (Full MDCAT Drill)</span>
+              </label>
+            </div>
+
+            <label class="config-label mt-4"><i class="fa-solid fa-sliders"></i> Question Types Included</label>
+            <div class="config-checkbox-list">
+              <span class="pill-badge"><i class="fa-solid fa-check"></i> Definitions</span>
+              <span class="pill-badge"><i class="fa-solid fa-check"></i> Synonyms</span>
+              <span class="pill-badge"><i class="fa-solid fa-check"></i> Antonyms</span>
+              <span class="pill-badge"><i class="fa-solid fa-check"></i> Context Sentences</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-launch-bar">
+          <button class="btn-primary btn-xl" id="btn-start-quiz">
+            <i class="fa-solid fa-play"></i> Start Vocabulary Quiz
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Quiz Screen -->
+      <div class="active-quiz-container" id="active-quiz-screen" style="display: none;">
+        <div class="quiz-header-bar">
+          <div class="quiz-meta-left">
+            <span class="quiz-q-badge" id="quiz-question-badge">Question 1 of 10</span>
+            <span class="level-badge" id="quiz-question-level">INTERMEDIATE</span>
+            <span class="quiz-type-badge" id="quiz-question-type">SYNONYM</span>
+          </div>
+          <div class="quiz-meta-right">
+            <div class="quiz-score-pill">
+              Score: <strong id="quiz-current-score">0</strong> / <span id="quiz-answered-count">0</span>
+            </div>
+            <button class="btn-outline btn-sm" id="btn-quit-quiz" title="Quit Quiz">
+              <i class="fa-solid fa-xmark"></i> Quit
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Progress Bar -->
+        <div class="quiz-progress-track">
+          <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 10%;"></div>
+        </div>
+
+        <!-- Question Body Card -->
+        <div class="quiz-card-surface">
+          <div class="quiz-prompt-box">
+            <p class="quiz-prompt-instruction" id="quiz-instruction-text">Choose the word that is most nearly SYNONYMOUS with:</p>
+            <h3 class="quiz-target-word" id="quiz-target-word">Alleviate</h3>
+            <div class="quiz-context-sentence" id="quiz-context-sentence" style="display: none;">
+              <!-- Context sentence if applicable -->
+            </div>
+          </div>
+
+          <!-- Options Grid (4 Multiple Choice Options) -->
+          <div class="quiz-options-grid" id="quiz-options-container">
+            <!-- Dynamically populated options A, B, C, D -->
+          </div>
+
+          <!-- Feedback & Explanation Panel (Shown upon answering) -->
+          <div class="quiz-feedback-box" id="quiz-feedback-box" style="display: none;">
+            <div class="feedback-status-row">
+              <div class="feedback-status-icon" id="feedback-icon">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <div class="feedback-text-wrap">
+                <h4 class="feedback-title" id="feedback-title">Correct Answer!</h4>
+                <p class="feedback-detail" id="feedback-explanation">Explanation text</p>
+              </div>
+            </div>
+            <div class="feedback-meta-grid" id="feedback-meta-grid">
+              <div><strong>Urdu Meaning:</strong> <span id="fb-urdu-meaning">معنی</span></div>
+              <div><strong>Key Synonyms:</strong> <span id="fb-synonyms">Synonyms</span></div>
+            </div>
+          </div>
+
+          <!-- Quiz Action Footer -->
+          <div class="quiz-action-footer">
+            <button class="btn-primary btn-lg" id="btn-quiz-next" style="display: none;">
+              Next Question <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz Results Screen -->
+      <div class="quiz-result-screen" id="quiz-result-screen" style="display: none;">
+        <div class="result-hero-card">
+          <div class="result-trophy-icon" id="result-icon-display">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <h2 class="result-title" id="result-title-text">Quiz Completed!</h2>
+          <p class="result-subtitle" id="result-subtitle-text">Here is your MDCAT vocabulary score summary.</p>
+          
+          <div class="score-radial-wrap">
+            <div class="score-big-number" id="result-final-percentage">80%</div>
+            <div class="score-ratio" id="result-score-ratio">8 out of 10 Correct</div>
+          </div>
+
+          <div class="result-breakdown-stats">
+            <div class="res-stat-card">
+              <i class="fa-solid fa-circle-check text-success"></i>
+              <div>
+                <strong id="res-correct-count">8</strong>
+                <span>Correct</span>
+              </div>
+            </div>
+            <div class="res-stat-card">
+              <i class="fa-solid fa-circle-xmark text-danger"></i>
+              <div>
+                <strong id="res-wrong-count">2</strong>
+                <span>Incorrect</span>
+              </div>
+            </div>
+            <div class="res-stat-card">
+              <i class="fa-solid fa-chart-line text-primary"></i>
+              <div>
+                <strong id="res-accuracy-rate">80%</strong>
+                <span>Accuracy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions Bar -->
+          <div class="result-actions-bar">
+            <button class="btn-primary" id="btn-quiz-retry">
+              <i class="fa-solid fa-rotate-left"></i> Retry Quiz
+            </button>
+            <button class="btn-outline" id="btn-add-missed-to-queue">
+              <i class="fa-solid fa-plus"></i> Add Missed Words to Review Queue
+            </button>
+            <button class="btn-outline" id="btn-quiz-back-setup">
+              <i class="fa-solid fa-sliders"></i> Change Settings
+            </button>
+          </div>
+        </div>
+
+        <!-- Missed Questions Review List -->
+        <div class="missed-questions-section" id="missed-questions-section" style="display: none;">
+          <h3 class="section-heading"><i class="fa-solid fa-triangle-exclamation"></i> Review Incorrect Answers</h3>
+          <div class="missed-cards-list" id="missed-cards-list">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 4: CONFUSING PAIRS -->
+    <!-- ========================================================================= -->
+    <section class="tab-pane" id="pane-confusing" role="tabpanel" aria-labelledby="tab-confusing">
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-heading">Commonly Confused MDCAT Word Pairs</h2>
+          <p class="section-subheading">Master commonly tested homophones, homographs, and deceptive pairs tested in error detection and sentence completion.</p>
+        </div>
+        <div class="confusing-search-wrap">
+          <input type="text" id="confusing-search-input" class="search-input-field" placeholder="Filter confusing pairs...">
+        </div>
+      </div>
+
+      <div class="confusing-pairs-grid" id="confusing-pairs-container">
+        <!-- Dynamically rendered confusing pair cards -->
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 5: PREFIXES & SUFFIXES (MORPHOLOGY) -->
+    <!-- ========================================================================= -->
+    <section class="tab-pane" id="pane-morphology" role="tabpanel" aria-labelledby="tab-morphology">
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-heading">Word Morphology: Prefixes & Suffixes</h2>
+          <p class="section-subheading">Learn root affixes to decode unfamiliar scientific and academic words instantly in MDCAT reading passages.</p>
+        </div>
+        <div class="morphology-tab-toggles">
+          <button class="btn-filter-pill active" id="btn-show-prefixes" data-affix="prefixes">Prefixes (Before Root)</button>
+          <button class="btn-filter-pill" id="btn-show-suffixes" data-affix="suffixes">Suffixes (After Root)</button>
+        </div>
+      </div>
+
+      <!-- Prefixes Container -->
+      <div class="affix-group-section" id="prefixes-container">
+        <h3 class="affix-section-title"><i class="fa-solid fa-arrow-right-to-bracket"></i> High-Yield MDCAT Prefixes</h3>
+        <div class="affix-cards-grid" id="prefixes-cards-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Suffixes Container -->
+      <div class="affix-group-section" id="suffixes-container" style="display: none;">
+        <h3 class="affix-section-title"><i class="fa-solid fa-arrow-right-from-bracket"></i> High-Yield MDCAT Suffixes</h3>
+        <div class="affix-cards-grid" id="suffixes-cards-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 6: WORD FAMILIES -->
+    <!-- ========================================================================= -->
+    <section class="tab-pane" id="pane-families" role="tabpanel" aria-labelledby="tab-families">
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-heading">MDCAT Word Families & Part-of-Speech Derivatives</h2>
+          <p class="section-subheading">Recognize how base words transform across Verb, Noun, Adjective, and Adverb forms for grammatical accuracy questions.</p>
+        </div>
+      </div>
+
+      <div class="word-families-grid" id="word-families-container">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 7: SYNONYM CHAINS -->
+    <!-- ========================================================================= -->
+    <section class="tab-pane" id="pane-synonyms" role="tabpanel" aria-labelledby="tab-synonyms">
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-heading">High-Yield Synonym Clusters & Nuance Ladders</h2>
+          <p class="section-subheading">Group related words by emotional intensity and academic formality to master MDCAT synonym replacement questions.</p>
+        </div>
+      </div>
+
+      <div class="synonym-chains-grid" id="synonym-chains-container">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 8: REVIEW QUEUE -->
+    <!-- ========================================================================= -->
+    <section class="tab-pane" id="pane-queue" role="tabpanel" aria-labelledby="tab-queue">
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-heading">Spaced Repetition Review Queue</h2>
+          <p class="section-subheading">Words you marked for review or missed during practice quizzes. Reinforce these until fully mastered.</p>
+        </div>
+        <div class="queue-actions-row">
+          <button class="btn-primary" id="btn-practice-queue-flashcards">
+            <i class="fa-solid fa-layer-group"></i> Practice Queue in Flashcards
+          </button>
+          <button class="btn-outline text-danger" id="btn-clear-review-queue">
+            <i class="fa-solid fa-trash-can"></i> Clear Queue
+          </button>
+        </div>
+      </div>
+
+      <div class="word-cards-grid" id="queue-cards-container">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="empty-state-card" id="queue-empty-state" style="display: none;">
+        <div class="empty-state-icon">
+          <i class="fa-solid fa-circle-check text-success"></i>
+        </div>
+        <h3 class="empty-state-title">Your Review Queue is Clear!</h3>
+        <p class="empty-state-text">Great job! You have no pending words needing urgent review. Keep testing yourself with the quiz to identify new vocabulary challenges.</p>
+        <button class="btn-primary" id="btn-queue-go-explore">
+          <i class="fa-solid fa-book-open"></i> Browse Words
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 9: MDCAT STRATEGY -->
+    <!-- ========================================================================= -->
+    <section class="tab-pane" id="pane-strategy" role="tabpanel" aria-labelledby="tab-strategy">
+      <div class="strategy-layout">
+        <!-- Why Vocabulary Matters Card -->
+        <div class="strategy-hero-card">
+          <div class="strategy-badge"><i class="fa-solid fa-graduation-cap"></i> MDCAT ENGLISH BLUEPRINT</div>
+          <h2 class="strategy-title">Why Vocabulary Matters in MDCAT</h2>
+          <p class="strategy-lead">The English section of the Medical & Dental College Admission Test evaluates more than simple word memorization—it assesses semantic precision, contextual deduction, and reading velocity.</p>
+
+          <div class="strategy-points-grid">
+            <div class="strat-point-card">
+              <div class="strat-icon"><i class="fa-solid fa-book-reader"></i></div>
+              <h3>Comprehension Speed</h3>
+              <p>Recognizing academic vocabulary instantly prevents cognitive slowdown while reading lengthy biology and scientific stimulus passages.</p>
+            </div>
+            <div class="strat-point-card">
+              <div class="strat-icon"><i class="fa-solid fa-arrows-split-up-and-left"></i></div>
+              <h3>Contextual Deduction</h3>
+              <p>MDCAT often tests words in tricky sentences where only the secondary or contextual nuance fits the author's argument.</p>
+            </div>
+            <div class="strat-point-card">
+              <div class="strat-icon"><i class="fa-solid fa-code-compare"></i></div>
+              <h3>Synonym & Antonym Precision</h3>
+              <p>Options usually include close distractors. High-yield knowledge allows you to eliminate trap answers with confidence.</p>
+            </div>
+            <div class="strat-point-card">
+              <div class="strat-icon"><i class="fa-solid fa-microscope"></i></div>
+              <h3>Scientific Passage Decoding</h3>
+              <p>Understanding medical/Latin affixes (hypo-, hyper-, -itis, -ectomy) helps decode unseen terminology in biological reasoning.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7-Step MDCAT Vocabulary Strategy Framework -->
+        <div class="strategy-steps-section">
+          <h3 class="section-heading"><i class="fa-solid fa-arrow-trend-up"></i> The 7-Step MDCAT Retention Strategy</h3>
+          
+          <div class="strategy-timeline">
+            <div class="step-card">
+              <div class="step-number">01</div>
+              <div class="step-content">
+                <h4>Learn the Core Meaning & Urdu Concept</h4>
+                <p>Do not just memorize an isolated English dictionary string. Understand the actual concept and its exact Urdu nuance (e.g. <em>Alleviate</em> means <em>تسکین دینا یا شدت کم کرنا</em>).</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">02</div>
+              <div class="step-content">
+                <h4>Learn 2–4 High-Frequency Synonyms</h4>
+                <p>MDCAT options often swap words with near-synonyms (e.g., <em>Aberration</em> &rarr; <em>Anomaly, Deviation, Irregularity</em>).</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">03</div>
+              <div class="step-content">
+                <h4>Learn the Direct Antonyms</h4>
+                <p>Understanding polar opposites cements semantic boundaries and prevents confusing opposite meanings during stress.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">04</div>
+              <div class="step-content">
+                <h4>Read the Word in a Medical/Academic Context</h4>
+                <p>Always review a real sentence. Contextual memory is 300% more durable than isolated flashcard memorization.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">05</div>
+              <div class="step-content">
+                <h4>Active Recall (Without Looking at Options)</h4>
+                <p>Use the Flashcard mode. When you see <em>Ephemeral</em>, force your brain to recall "Fleeting / عارضی" before flipping the card.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">06</div>
+              <div class="step-content">
+                <h4>Spaced Repetition via Review Queue</h4>
+                <p>Words you miss or find tricky must be added to your Review Queue and revisited on Day 1, Day 3, and Day 7.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">07</div>
+              <div class="step-content">
+                <h4>Test Yourself with Timed Quizzes</h4>
+                <p>Use the Practice Quiz tab with randomized distractors to build test stamina and speed under pressure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Single Word Practice / Details Modal Dialog -->
+  <dialog id="word-detail-modal" class="custom-modal" aria-labelledby="modal-word-title">
+    <div class="modal-dialog-content">
+      <div class="modal-header">
+        <div class="modal-word-head">
+          <h3 class="modal-word-title" id="modal-word-title">Word</h3>
+          <button class="btn-audio-circle btn-sm" id="modal-audio-btn" title="Pronounce">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+          <span class="modal-phonetic" id="modal-phonetic">/phonetic/</span>
+          <span class="modal-pos" id="modal-pos">part of speech</span>
+          <span class="level-badge" id="modal-level-badge">LEVEL</span>
+        </div>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body" id="modal-body-content">
+        <div class="modal-meaning-block">
+          <div class="meta-label">English Meaning:</div>
+          <p class="modal-eng-def" id="modal-eng-def">Definition</p>
+        </div>
+        <div class="modal-meaning-block">
+          <div class="meta-label">Urdu Meaning:</div>
+          <p class="modal-urdu-def" id="modal-urdu-def">اردو ترجمہ</p>
+        </div>
+        <div class="modal-syn-ant-grid">
+          <div class="modal-sub-block">
+            <div class="meta-label">Synonyms:</div>
+            <div class="tag-chips-wrap" id="modal-synonyms-list"></div>
+          </div>
+          <div class="modal-sub-block">
+            <div class="meta-label">Antonyms:</div>
+            <div class="tag-chips-wrap" id="modal-antonyms-list"></div>
+          </div>
+        </div>
+        <div class="modal-example-block">
+          <div class="meta-label">Contextual Example:</div>
+          <p class="modal-example-text" id="modal-example-text">Example sentence</p>
+        </div>
+        <div class="modal-extra-block" id="modal-extra-block">
+          <div class="meta-label">Morphology / Word Family:</div>
+          <p class="modal-extra-text" id="modal-extra-text">Root details</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-outline" id="modal-btn-bookmark">
+          <i class="fa-solid fa-bookmark"></i> Bookmark
+        </button>
+        <button class="btn-outline" id="modal-btn-queue">
+          <i class="fa-solid fa-rotate-left"></i> Add to Review Queue
+        </button>
+        <button class="btn-primary" id="modal-btn-learn">
+          <i class="fa-solid fa-check"></i> Mark as Learned
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Footer Area -->
+  <footer class="app-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="brand-group">
+          <div class="brand-icon small"><i class="fa-solid fa-book-medical"></i></div>
+          <span class="footer-brand-title">MDCAT Vocabulary Mastery</span>
+        </div>
+        <p class="footer-tagline">Academic preparation platform for medical entrance exams.</p>
+      </div>
+      <div class="footer-meta">
+        <span><i class="fa-solid fa-shield-halved"></i> 100% Offline-Capable (LocalStorage Storage)</span>
+        <button id="btn-export-progress" class="btn-text-link"><i class="fa-solid fa-download"></i> Backup Study Data</button>
+        <button id="btn-reset-all-progress" class="btn-text-link text-danger"><i class="fa-solid fa-trash-arrow-up"></i> Reset Study Data</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Module -->
+  <script src="vocabulary.js" defer></script>
+</body>
+</html>

@@ -1,248 +1,422 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NOVIX | Mathematics</title>
-    <link rel="stylesheet" href="maths.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mathematics Hub | NOVIX Learning Platform</title>
+  
+  <!-- Fonts & Math Typesetting -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX for crisp mathematical formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/maths.css" />
+  <link rel="stylesheet" href="edunexa-theme.css">
 </head>
 <body>
-    <header class="nav">
-        <div class="container nav-wrap">
-            <a class="logo" href="index.html" aria-label="NOVIX home">
-                <span class="logo-mark">AI</span>
-                <span>NOVIX</span>
-            </a>
 
-            <p class="nav-center" aria-label="Current subject">Mathematics Learning Hub</p>
+  <!-- =========================================================================
+       Navigation Header
+       ========================================================================= -->
+  <header class="novix-navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-icon">N</div>
+        <span>NOVIX</span>
+        <span class="brand-badge">Maths</span>
+      </a>
 
-            <a class="btn btn-outline back-btn" href="subject.html">
-                <i class="fa-solid fa-arrow-left"></i>
-                Back to Subjects
-            </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/index.html" class="nav-link">Home</a></li>
+          <li><a href="/dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="/subjects.html" class="nav-link">Subjects</a></li>
+          <li><a href="/maths.html" class="nav-link active">Mathematics</a></li>
+          <li><a href="/progress.html" class="nav-link">Progress</a></li>
+          <li><a href="/planner.html" class="nav-link">Planner</a></li>
+          <li><a href="/ai-assistant.html" class="nav-link">AI Tutor</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle-btn" onclick="window.novixMath.toggleTheme()" title="Toggle Dark/Light Mode">
+          ☀️
+        </button>
+        <button class="btn-ask-ai-topic" onclick="window.novixMath.openAITutorModal('solve')">
+          <span>✨ AI Solver</span>
+        </button>
+        <div class="user-badge" title="Authenticated Student Profile">
+          <div class="user-avatar">S</div>
+          <span>Student</span>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <main>
-        <section class="hero section">
-            <div class="container hero-grid">
-                <div class="hero-copy reveal">
-                    <p class="badge">✨ Mathematics with AI Precision</p>
-                    <h1>Mathematics Learning Hub</h1>
-                    <p>
-                        Master algebra, geometry, trigonometry, and problem-solving with AI guidance, step-by-step explanations, and focused practice.
-                    </p>
+  <!-- =========================================================================
+       Main Application Container
+       ========================================================================= -->
+  <main class="maths-app-container">
 
-                    <div class="hero-actions">
-                        <a class="btn btn-primary" href="#topics">Start Learning</a>
-                        <a class="btn btn-outline" href="#ai-assistant">Try AI Assistant</a>
-                    </div>
-
-                    <label class="search-wrap" for="topicSearch">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input id="topicSearch" type="search" placeholder="Search Mathematics topics..." aria-label="Search Mathematics topics" />
-                    </label>
-                </div>
-
-                <aside class="hero-card reveal delay-1" aria-label="Mathematics subject intro">
-                    <div class="hero-icon">
-                        <i class="fa-solid fa-square-root-variable"></i>
-                    </div>
-                    <h2>Think clearly. Solve confidently.</h2>
-                    <p>Build strong fundamentals, improve speed, and solve complex questions with confidence.</p>
-                </aside>
-            </div>
-        </section>
-
-        <section class="section content" id="topics">
-            <div class="container content-grid">
-                <aside class="quick-access reveal delay-1" aria-label="Quick access">
-                    <h3>Quick Access</h3>
-                    <nav>
-                        <a href="#algebra">Algebra</a>
-                        <a href="#geometry">Geometry</a>
-                        <a href="#formulas">Formulas</a>
-                        <a href="#practice-questions">Practice</a>
-                        <a href="#ai-quiz">Quiz</a>
-                        <a href="#ai-solver">AI Solver</a>
-                    </nav>
-                </aside>
-
-                <div class="topics-area">
-                    <div class="topics-grid" id="topicsGrid">
-                        <article class="topic-card reveal topic-item" id="algebra" data-topic="algebra">
-                            <div class="topic-icon"><i class="fa-solid fa-superscript"></i></div>
-                            <h3>Algebra</h3>
-                            <p>Learn equations, expressions, and identities with guided methods.</p>
-                            <button class="btn btn-primary topic-btn" type="button">Open</button>
-                        </article>
-
-                        <article class="topic-card reveal delay-1 topic-item" id="geometry" data-topic="geometry">
-                            <div class="topic-icon"><i class="fa-solid fa-draw-polygon"></i></div>
-                            <h3>Geometry</h3>
-                            <p>Understand shapes, angles, and theorems with visual clarity.</p>
-                            <button class="btn btn-primary topic-btn" type="button">Open</button>
-                        </article>
-
-                        <article class="topic-card reveal delay-2 topic-item" id="trigonometry" data-topic="trigonometry">
-                            <div class="topic-icon"><i class="fa-solid fa-wave-square"></i></div>
-                            <h3>Trigonometry</h3>
-                            <p>Master ratios, identities, and angle-based problem solving.</p>
-                            <button class="btn btn-primary topic-btn" type="button">Open</button>
-                        </article>
-
-                        <article class="topic-card reveal delay-3 topic-item" id="mensuration" data-topic="mensuration">
-                            <div class="topic-icon"><i class="fa-solid fa-ruler-combined"></i></div>
-                            <h3>Mensuration</h3>
-                            <p>Calculate perimeter, area, and volume using practical formulas.</p>
-                            <button class="btn btn-primary topic-btn" type="button">Open</button>
-                        </article>
-
-                        <article class="topic-card reveal delay-1 topic-item" id="statistics" data-topic="statistics">
-                            <div class="topic-icon"><i class="fa-solid fa-chart-column"></i></div>
-                            <h3>Statistics</h3>
-                            <p>Analyze data, averages, and trends for better interpretation.</p>
-                            <button class="btn btn-primary topic-btn" type="button">Open</button>
-                        </article>
-
-                        <article class="topic-card reveal delay-2 topic-item" id="formulas" data-topic="formulas">
-                            <div class="topic-icon"><i class="fa-solid fa-not-equal"></i></div>
-                            <h3>Formulas</h3>
-                            <p>Revise key formulas quickly with structured topic grouping.</p>
-                            <button class="btn btn-primary topic-btn" type="button">Open</button>
-                        </article>
-
-                        <article class="topic-card reveal delay-3 topic-item" id="practice-questions" data-topic="practice questions">
-                            <div class="topic-icon"><i class="fa-solid fa-pen-to-square"></i></div>
-                            <h3>Practice Questions</h3>
-                            <p>Strengthen concepts through leveled and exam-style exercises.</p>
-                            <button class="btn btn-primary topic-btn" type="button">Open</button>
-                        </article>
-
-                        <article class="topic-card reveal delay-4 topic-item" id="mcqs" data-topic="mcqs">
-                            <div class="topic-icon"><i class="fa-solid fa-list-check"></i></div>
-                            <h3>MCQs</h3>
-                            <p>Attempt objective questions with quick feedback and scoring.</p>
-                            <button class="btn btn-primary topic-btn" type="button">Open</button>
-                        </article>
-
-                        <article class="topic-card reveal delay-2 topic-item" id="ai-quiz" data-topic="ai quiz">
-                            <div class="topic-icon"><i class="fa-solid fa-robot"></i></div>
-                            <h3>AI Quiz</h3>
-                            <p>Generate adaptive quizzes from your selected math topics.</p>
-                            <button class="btn btn-primary topic-btn" type="button">Open</button>
-                        </article>
-
-                        <article class="topic-card reveal delay-3 topic-item" id="ai-solver" data-topic="ai solver">
-                            <div class="topic-icon"><i class="fa-solid fa-calculator"></i></div>
-                            <h3>AI Solver</h3>
-                            <p>Solve difficult questions step by step with AI-powered logic.</p>
-                            <button class="btn btn-primary topic-btn" type="button">Open</button>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section progress">
-            <div class="container">
-                <div class="section-head reveal">
-                    <h2>Progress Snapshot</h2>
-                    <p>Track consistency and improve your Mathematics performance.</p>
-                </div>
-
-                <div class="progress-grid">
-                    <article class="progress-card reveal delay-1">
-                        <h3>Lessons Completed</h3>
-                        <strong>68%</strong>
-                        <div class="bar"><span class="fill w-68"></span></div>
-                    </article>
-
-                    <article class="progress-card reveal delay-2">
-                        <h3>Quizzes Solved</h3>
-                        <strong>61%</strong>
-                        <div class="bar"><span class="fill w-61"></span></div>
-                    </article>
-
-                    <article class="progress-card reveal delay-3">
-                        <h3>Study Time</h3>
-                        <strong>56%</strong>
-                        <div class="bar"><span class="fill w-56"></span></div>
-                    </article>
-
-                    <article class="progress-card reveal delay-4">
-                        <h3>Current Streak</h3>
-                        <strong>79%</strong>
-                        <div class="bar"><span class="fill w-79"></span></div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="ai-assistant">
-            <div class="container">
-                <article class="ai-card reveal">
-                    <div>
-                        <p class="badge">🤖 AI Assistant</p>
-                        <h2>Personal AI support for Mathematics mastery</h2>
-                        <p>Use intelligent tools to reduce confusion and solve faster with confidence.</p>
-                    </div>
-
-                    <div class="ai-actions">
-                        <button class="btn btn-outline" type="button"><i class="fa-solid fa-route"></i> Solve Step by Step</button>
-                        <button class="btn btn-outline" type="button"><i class="fa-solid fa-function"></i> Explain Formula</button>
-                        <button class="btn btn-primary" type="button"><i class="fa-solid fa-list-check"></i> Generate Quiz</button>
-                        <button class="btn btn-outline" type="button"><i class="fa-solid fa-dumbbell"></i> Practice Problems</button>
-                    </div>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container footer-wrap">
-            <p>2026 NOVIX. Built for focused learners.</p>
-            <div class="footer-links">
-                <a href="subject.html">Subjects</a>
-                <a href="index.html">Home</a>
-            </div>
+    <!-- SUBJECT HEADER BANNER -->
+    <section class="subject-header-banner">
+      <div class="banner-content">
+        <div class="banner-title-area">
+          <div class="banner-tag-row">
+            <span class="subject-pill">📐 Mathematics (Core & Advanced)</span>
+            <span class="exam-target-pill">🎯 Exam Preparation & Mastery</span>
+          </div>
+          <h1 class="banner-heading">Mathematics Learning & Exam Hub</h1>
+          <p class="banner-description">
+            Comprehensive curriculum spanning 17 core topics with step-by-step solved examples, formula sheets, interactive practice questions, timed diagnostic mock tests, and AI mathematical reasoning.
+          </p>
         </div>
-    </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("loaded");
+        <div class="banner-stats-cluster">
+          <div class="metric-card">
+            <span class="metric-label">Mastery</span>
+            <span class="metric-value" id="metric-mastery-val">0%</span>
+            <span class="metric-subtitle">Calculated Activity</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Completed</span>
+            <span class="metric-value" id="metric-completed-val">0/17</span>
+            <span class="metric-subtitle">Core Topics</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Streak</span>
+            <span class="metric-value" id="metric-streak-val">3 Days</span>
+            <span class="metric-subtitle">Consistent Study</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Study Time</span>
+            <span class="metric-value" id="metric-studytime-val">45m</span>
+            <span class="metric-subtitle">Active Learning</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            const revealItems = document.querySelectorAll(".reveal");
-            if (revealItems.length) {
-                const observer = new IntersectionObserver((entries, obs) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("active");
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.15 });
+    <!-- CONTINUE LEARNING BAR -->
+    <div class="continue-learning-card" id="continue-learning-bar">
+      <div class="continue-left">
+        <div class="continue-icon">📖</div>
+        <div class="continue-text">
+          <h4 id="continue-topic-title">1. Number System & Real Numbers</h4>
+          <p id="continue-topic-desc">Ready for concept theory and interactive practice questions (25 mins)</p>
+        </div>
+      </div>
+      <button class="continue-btn" onclick="window.novixMath.openTopicView('number-system')">
+        Resume Learning →
+      </button>
+    </div>
 
-                revealItems.forEach((item) => observer.observe(item));
-            }
+    <!-- MAIN HUB VIEW -->
+    <div id="main-hub-view">
+      <!-- Hub Navigation Tabs -->
+      <div class="hub-nav-tabs">
+        <button class="hub-tab-btn active" id="tab-all-topics" onclick="window.novixMath.closeTopicView()">
+          <span>📚 Curriculum Topics</span>
+          <span class="badge-counter">17</span>
+        </button>
+        <button class="hub-tab-btn" onclick="window.novixMath.startMockTest('mock-mixed')">
+          <span>⏱ Mixed Mock Exam</span>
+        </button>
+        <button class="hub-tab-btn" onclick="window.novixMath.startMockTest('mock-full')">
+          <span>🏆 Full Practice Test</span>
+        </button>
+        <button class="hub-tab-btn" onclick="window.novixMath.openAITutorModal('solve')">
+          <span>✨ AI Math Tools</span>
+        </button>
+      </div>
 
-            const searchInput = document.getElementById("topicSearch");
-            const topicCards = document.querySelectorAll(".topic-item");
-            if (searchInput && topicCards.length) {
-                searchInput.addEventListener("input", () => {
-                    const query = searchInput.value.trim().toLowerCase();
-                    topicCards.forEach((card) => {
-                        const title = card.querySelector("h3")?.textContent?.toLowerCase() || "";
-                        const desc = card.querySelector("p")?.textContent?.toLowerCase() || "";
-                        const tag = card.getAttribute("data-topic")?.toLowerCase() || "";
-                        const show = title.includes(query) || desc.includes(query) || tag.includes(query);
-                        card.style.display = show ? "" : "none";
-                    });
-                });
-            }
-        });
-    </script>
+      <!-- Filters & Search Controls -->
+      <div class="filter-control-bar">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="topic-search-input" placeholder="Search topics, formulas, quadratics, calculus, geometry..." />
+        </div>
+
+        <div class="filter-group">
+          <select class="filter-select" id="category-filter-select">
+            <option value="all">All Domains</option>
+            <option value="Foundation & Number Theory">Foundation & Number Theory</option>
+            <option value="Algebra & Equations">Algebra & Equations</option>
+            <option value="Commercial Math & Foundations">Commercial Mathematics</option>
+            <option value="Geometry & Spatial">Geometry & Mensuration</option>
+            <option value="Trigonometry & Calculus">Trigonometry & Calculus</option>
+            <option value="Data & Probability">Statistics & Probability</option>
+            <option value="Advanced Topics">Advanced Topics (AP/GP, Matrices)</option>
+          </select>
+
+          <select class="filter-select" id="difficulty-filter-select">
+            <option value="all">All Levels</option>
+            <option value="foundation">Foundation</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Topics Grid -->
+      <div class="topics-grid" id="topics-grid-container">
+        <!-- Rendered dynamically by maths.js -->
+      </div>
+
+      <!-- DEDICATED MOCK TESTS AREA -->
+      <div style="margin-top: 48px; margin-bottom: 24px;">
+        <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">
+          🎯 Dedicated Examination Mock Tests
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px;">
+          Timed assessments with instant automated scoring, question reviews, and solution breakdowns.
+        </p>
+
+        <div class="mock-tests-grid">
+          <div class="mock-test-card">
+            <div>
+              <span class="topic-difficulty-badge difficulty-intermediate" style="margin-bottom: 8px; display: inline-block;">Mixed Domains</span>
+              <h4>Mixed Mathematics Diagnostic Test</h4>
+              <p>15 multiple-choice questions covering Number Systems, Quadratics, Geometry, Trigonometry, and Probability.</p>
+              <div class="mock-test-meta">
+                <span>⏱ 25 Minutes</span>
+                <span>📊 15 Questions</span>
+                <span>💯 Scoring + Review</span>
+              </div>
+            </div>
+            <button class="continue-btn" onclick="window.novixMath.startMockTest('mock-mixed')">
+              Start Mixed Test →
+            </button>
+          </div>
+
+          <div class="mock-test-card">
+            <div>
+              <span class="topic-difficulty-badge difficulty-advanced" style="margin-bottom: 8px; display: inline-block;">Comprehensive</span>
+              <h4>Full NOVIX Mathematics Practice Exam</h4>
+              <p>Full-length entrance & scholarship style exam testing mastery across all 17 syllabus modules.</p>
+              <div class="mock-test-meta">
+                <span>⏱ 45 Minutes</span>
+                <span>📊 20+ Questions</span>
+                <span>🏆 Full Analytics</span>
+              </div>
+            </div>
+            <button class="continue-btn" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);" onclick="window.novixMath.startMockTest('mock-full')">
+              Start Full Exam →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         Full Topic Learning View (Khan Academy / Exam Prep Layout)
+         ========================================================================= -->
+    <div id="topic-learning-view-container" class="topic-learning-view" style="display: none;">
+      <div class="topic-view-header">
+        <div class="topic-header-left">
+          <button class="back-to-topics-btn" onclick="window.novixMath.closeTopicView()">
+            ← Back to Topics
+          </button>
+          <div class="topic-title-stack">
+            <h2 id="topic-view-title">Topic Title</h2>
+            <p id="topic-view-category">Category • Level • Est. Study Time</p>
+          </div>
+        </div>
+
+        <div class="topic-header-actions">
+          <button class="btn-ask-ai-topic" onclick="window.novixMath.openAITutorModal('solve')">
+            <span>✨ Ask AI on this Topic</span>
+          </button>
+          <button class="continue-btn" style="background: var(--bg-surface); border: 1px solid var(--border-color);" onclick="window.novixMath.startQuizForTopic(window.novixMath.currentTopicId)">
+            Start Topic Quiz ⏱
+          </button>
+        </div>
+      </div>
+
+      <!-- Sub-Tabs Bar -->
+      <div class="topic-sub-tabs">
+        <button class="topic-sub-tab-btn active" data-tab="concept" onclick="window.novixMath.switchTopicSubTab('concept')">
+          📖 Concept & Lesson
+        </button>
+        <button class="topic-sub-tab-btn" data-tab="examples" onclick="window.novixMath.switchTopicSubTab('examples')">
+          ✍️ Solved Examples
+        </button>
+        <button class="topic-sub-tab-btn" data-tab="formulas" onclick="window.novixMath.switchTopicSubTab('formulas')">
+          📐 Formula Sheet
+        </button>
+        <button class="topic-sub-tab-btn" data-tab="practice" onclick="window.novixMath.switchTopicSubTab('practice')">
+          📝 Practice (Easy-Hard)
+        </button>
+        <button class="topic-sub-tab-btn" data-tab="mcqs" onclick="window.novixMath.switchTopicSubTab('mcqs')">
+          🔘 Multiple Choice (MCQs)
+        </button>
+        <button class="topic-sub-tab-btn" data-tab="tips" onclick="window.novixMath.switchTopicSubTab('tips')">
+          💡 Exam Tips & Pitfalls
+        </button>
+      </div>
+
+      <!-- Sub-Tab Content Sections -->
+      <div class="topic-view-body">
+        <div class="topic-section-content active" id="section-concept"></div>
+        <div class="topic-section-content" id="section-examples"></div>
+        <div class="topic-section-content" id="section-formulas"></div>
+        <div class="topic-section-content" id="section-practice"></div>
+        <div class="topic-section-content" id="section-mcqs"></div>
+        <div class="topic-section-content" id="section-tips"></div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         Interactive Quiz & Mock Test Engine View
+         ========================================================================= -->
+    <div id="quiz-engine-container" class="quiz-engine-view" style="display: none;">
+      <div class="quiz-header-bar">
+        <div class="quiz-title-info">
+          <h3 id="quiz-title-display">Topic Diagnostic Quiz</h3>
+          <p>Read each question carefully and select the best answer option.</p>
+        </div>
+        <div class="quiz-timer-box" id="quiz-timer-countdown">
+          ⏱ 15:00
+        </div>
+      </div>
+
+      <div class="quiz-progress-track">
+        <div class="quiz-progress-fill" id="quiz-progress-fill-bar" style="width: 10%;"></div>
+      </div>
+
+      <!-- Question Palette -->
+      <div class="quiz-palette-row" id="quiz-palette-container"></div>
+
+      <!-- Active Question Container -->
+      <div class="quiz-question-container">
+        <div class="quiz-question-meta">
+          <span class="question-number-pill" id="quiz-question-number-pill">Question 1 of 10</span>
+        </div>
+        <div class="quiz-question-prompt" id="quiz-question-prompt">Question prompt goes here...</div>
+        <div class="mcq-options-grid" id="quiz-options-container"></div>
+      </div>
+
+      <div class="quiz-controls-footer">
+        <button class="btn-quiz-nav" id="btn-quiz-prev" onclick="window.novixMath.navigateQuiz(-1)">← Previous</button>
+        <button class="btn-quiz-nav" id="btn-quiz-next" onclick="window.novixMath.navigateQuiz(1)">Next →</button>
+        <button class="btn-submit-quiz-final" onclick="window.novixMath.submitQuizFinal()">Submit Exam ✓</button>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         Quiz & Exam Results Scorecard View
+         ========================================================================= -->
+    <div id="quiz-results-container" class="quiz-results-card" style="display: none;">
+      <div class="result-badge-circle">🏆</div>
+      <h2 class="result-title" id="result-status-grade">Mastery Achieved</h2>
+      <p class="result-summary-text">Your test performance has been logged to your progress portfolio.</p>
+
+      <div class="result-metrics-grid">
+        <div class="result-metric-tile">
+          <div class="val" id="result-score-val">8 / 10</div>
+          <div class="lbl">Raw Score</div>
+        </div>
+        <div class="result-metric-tile">
+          <div class="val" id="result-pct-val">80%</div>
+          <div class="lbl">Accuracy Rate</div>
+        </div>
+        <div class="result-metric-tile">
+          <div class="val" style="color: var(--accent-emerald);">+50 XP</div>
+          <div class="lbl">Mastery Points</div>
+        </div>
+      </div>
+
+      <div class="result-actions-row">
+        <button class="btn-secondary" onclick="window.novixMath.returnToHubFromQuiz()">
+          ← Return to Curriculum
+        </button>
+        <button class="continue-btn" onclick="window.novixMath.startMockTest('mock-mixed')">
+          Retake / Next Test
+        </button>
+      </div>
+
+      <!-- Question-by-Question Review Breakdown -->
+      <div class="review-questions-list" id="quiz-review-list-container"></div>
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       AI Assistant Math Tutor Modal
+       ========================================================================= -->
+  <div class="ai-tutor-modal-overlay" id="ai-tutor-modal">
+    <div class="ai-tutor-dialog">
+      <div class="ai-dialog-header">
+        <div class="ai-header-brand">
+          <div class="ai-spark-icon">✨</div>
+          <h3>NOVIX AI Mathematical Tutor</h3>
+        </div>
+        <button class="btn-close-modal" onclick="window.novixMath.closeAITutorModal()">✕</button>
+      </div>
+
+      <div class="ai-mode-selector-bar">
+        <button class="ai-mode-pill-btn active" data-mode="solve" onclick="window.novixMath.setAIMode('solve')">
+          Solve Step by Step
+        </button>
+        <button class="ai-mode-pill-btn" data-mode="explain-formula" onclick="window.novixMath.setAIMode('explain-formula')">
+          Explain Formula
+        </button>
+        <button class="ai-mode-pill-btn" data-mode="explain-question" onclick="window.novixMath.setAIMode('explain-question')">
+          Explain Question
+        </button>
+        <button class="ai-mode-pill-btn" data-mode="generate-practice" onclick="window.novixMath.setAIMode('generate-practice')">
+          Generate Practice
+        </button>
+        <button class="ai-mode-pill-btn" data-mode="generate-quiz" onclick="window.novixMath.setAIMode('generate-quiz')">
+          Generate Quiz
+        </button>
+      </div>
+
+      <div class="ai-dialog-body">
+        <div class="ai-context-indicator" id="ai-current-topic-context">
+          Active Subject Context: Mathematics → General
+        </div>
+        <textarea class="ai-input-textarea" id="ai-prompt-textarea" placeholder="Ask any mathematical question or request a step-by-step derivation..."></textarea>
+        <div class="ai-response-stream-box" id="ai-response-stream-box">
+          Ready to assist. Ask any problem or choose a mode above.
+        </div>
+      </div>
+
+      <div class="ai-dialog-footer">
+        <span style="font-size: 0.78rem; color: var(--text-muted);">Powered by NOVIX AI & Gemini</span>
+        <button class="btn-ai-submit" id="btn-ai-submit-query" onclick="window.novixMath.submitAITutorQuery()">
+          <span>✨ Ask Math Engine</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Footer
+       ========================================================================= -->
+  <footer class="novix-footer">
+    <div class="footer-container">
+      <div>
+        <strong>NOVIX Learning System</strong> — Comprehensive Mathematics Education & Examination Preparation.
+      </div>
+      <ul class="footer-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/dashboard.html">Dashboard</a></li>
+        <li><a href="/subjects.html">Subjects</a></li>
+        <li><a href="/progress.html">Progress</a></li>
+        <li><a href="/ai-assistant.html">AI Assistant</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="/maths.js"></script>
 </body>
 </html>

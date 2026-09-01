@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>States of Matter — MDCAT Chemistry Virtual Lab</title>
+  <meta name="description" content="Complete interactive MDCAT Chemistry Virtual Lab for States of Matter: Particle Model, Gas Laws, Phase Changes, and 25 MCQs.">
+  <link rel="stylesheet" href="./states-of-matter.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Sticky Lab Header -->
+  <header class="lab-header" id="top">
+    <a href="#top" class="brand-logo">
+      <span class="brand-icon">⚛️</span>
+      <span>MDCAT <span style="color: var(--accent-cyan);">MatterLab</span></span>
+    </a>
+
+    <div class="nav-actions">
+      <!-- Search Input -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" class="search-input" placeholder="Search Matter Lab..." aria-label="Search States of Matter">
+      </div>
+
+      <!-- Overall Progress Pill -->
+      <div class="progress-pill" title="MDCAT Study Progress">
+        <span>Progress:</span>
+        <div class="progress-bar-inline">
+          <div id="progress-fill" class="progress-fill-inline"></div>
+        </div>
+        <span id="header-progress-pct">0%</span>
+      </div>
+
+      <!-- Theme Switcher -->
+      <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle Light/Dark Theme">
+        ☀️ Light Mode
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- Quick Navigation Anchors -->
+    <nav class="quick-nav" aria-label="Module Quick Links">
+      <a href="#hero-lab" class="quick-nav-link active">🔬 Overview</a>
+      <a href="#three-states" class="quick-nav-link">🧊 3 States Lab</a>
+      <a href="#phase-changes" class="quick-nav-link">🔄 Phase Changes</a>
+      <a href="#heating-curve" class="quick-nav-link">🌡️ Heating Curve</a>
+      <a href="#evaporation-boiling" class="quick-nav-link">💧 Evap vs Boiling</a>
+      <a href="#gas-laws" class="quick-nav-link">🎈 Gas Laws</a>
+      <a href="#diffusion-graham" class="quick-nav-link">🌬️ Diffusion</a>
+      <a href="#plasma-bec" class="quick-nav-link">⚡ Plasma & BEC</a>
+      <a href="#particle-tool" class="quick-nav-link">🧠 Particle Tool</a>
+      <a href="#calculator" class="quick-nav-link">🧮 Calculator</a>
+      <a href="#mdcat-traps" class="quick-nav-link">🚨 MDCAT Traps</a>
+      <a href="#quick-revision" class="quick-nav-link">⚡ 60s Revision</a>
+      <a href="#mdcat-quiz" class="quick-nav-link">📝 Practice Quiz</a>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="hero-section searchable-content" id="hero-lab" data-topic-id="hero-overview">
+      <div class="hero-badges">
+        <span class="badge badge-mdcat">MDCAT CHEMISTRY</span>
+        <span class="badge badge-builder">CONCEPT BUILDER</span>
+        <span class="badge badge-lab">INTERACTIVE LAB</span>
+        <span class="badge badge-highyield">HIGH-YIELD</span>
+      </div>
+
+      <h1 class="hero-title">STATES OF MATTER</h1>
+      <div class="hero-subtitle">Explore Solids • Liquids • Gases • Plasma</div>
+      <p class="hero-description">
+        Understand how particles move, interact, and change state with simple English explanations, real-time particle simulations, and high-yield MDCAT practice.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#three-states" class="btn-primary">🧪 Launch Three States Lab</a>
+        <a href="#mdcat-quiz" class="btn-secondary">📝 Take 25 MDCAT MCQs</a>
+        <a href="#calculator" class="btn-secondary">🧮 Gas Law Calculator</a>
+      </div>
+
+      <!-- Live Hero 3-Zone Particle Visualizer -->
+      <div class="sim-container" style="margin-top: 2rem; margin-bottom: 0; background: var(--bg-input);">
+        <div class="sim-header">
+          <div class="sim-title-group">
+            <span style="font-size: 1.25rem;">🔬</span>
+            <span class="sim-title">Live Particle Zone Visualizer</span>
+          </div>
+          <div class="sim-controls">
+            <button class="btn-icon" onclick="LabState.heroPlaying = !LabState.heroPlaying; this.textContent = LabState.heroPlaying ? '⏸️ Pause' : '▶️ Play';">
+              ⏸️ Pause
+            </button>
+            <button class="btn-icon" onclick="createHeroParticles()">
+              🔄 Reset
+            </button>
+          </div>
+        </div>
+
+        <div class="canvas-wrapper" style="height: 280px;">
+          <canvas id="hero-canvas" class="canvas-element"></canvas>
+          <div class="canvas-overlay-stats">Real-time Molecular Kinetic Engine</div>
+        </div>
+
+        <div class="control-bar">
+          <div class="control-item">
+            <span class="control-label">🔥 Temperature:</span>
+            <input type="range" class="slider-input" min="100" max="600" value="300" oninput="LabState.heroTemp = parseInt(this.value, 10); document.getElementById('hero-temp-val').textContent = this.value + ' K';">
+            <span id="hero-temp-val" class="slider-value">300 K</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. What is Matter & Particle Model (Topic 1 & 2) -->
+    <section class="sim-container searchable-content" data-topic-id="particle-model">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
+          1. What is Matter & The Particle Model
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('particle-model')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('particle-model')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div style="background: var(--bg-input); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.5rem;">What is Matter?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+            Matter is anything that has <strong>mass</strong>, occupies <strong>space (volume)</strong>, and is composed of tiny moving particles.
+          </p>
+          <ul style="list-style: square; padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+            <li><strong>Main States:</strong> Solid → Liquid → Gas</li>
+            <li><strong>Special States:</strong> Plasma &amp; Bose-Einstein Condensate (BEC)</li>
+            <li>For MDCAT, solid, liquid, and gas form the core syllabus.</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-input); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.5rem;">The Particle Model Rules</h3>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem; color: var(--text-secondary);">
+            <li>✓ Particles are in <strong>continuous motion</strong> at all temperatures above 0 Kelvin.</li>
+            <li>✓ Particles have <strong>empty spaces</strong> between them.</li>
+            <li>✓ Particles exert <strong>intermolecular attractive forces</strong> on each other.</li>
+            <li>✓ When temperature rises, particles move faster and kinetic energy increases.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Interactive "Three States" Lab (Solids, Liquids, Gases) -->
+    <section class="sim-container searchable-content" id="three-states" data-topic-id="three-states-lab">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
+          2. Interactive Three States Lab (Solids • Liquids • Gases)
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('three-states-lab')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('three-states-lab')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <!-- State Selection Cards -->
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <div class="state-card state-card-select active" data-state="solid" onclick="selectState('solid')">
+          <div class="state-card-header">
+            <div class="state-icon-title">
+              <span class="state-emoji">🧊</span>
+              <span class="state-name">SOLID</span>
+            </div>
+            <span class="badge badge-mdcat">LATTICE</span>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-secondary);">
+            Strong forces, tightly packed, particles only vibrate in place.
+          </p>
+        </div>
+
+        <div class="state-card state-card-select" data-state="liquid" onclick="selectState('liquid')">
+          <div class="state-card-header">
+            <div class="state-icon-title">
+              <span class="state-emoji">💧</span>
+              <span class="state-name">LIQUID</span>
+            </div>
+            <span class="badge badge-builder">FLUID</span>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-secondary);">
+            Moderate forces, fixed volume, particles flow past each other.
+          </p>
+        </div>
+
+        <div class="state-card state-card-select" data-state="gas" onclick="selectState('gas')">
+          <div class="state-card-header">
+            <div class="state-icon-title">
+              <span class="state-emoji">💨</span>
+              <span class="state-name">GAS</span>
+            </div>
+            <span class="badge badge-highyield">CHAOTIC</span>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-secondary);">
+            Negligible forces, rapid random motion, highly compressible.
+          </p>
+        </div>
+      </div>
+
+      <!-- Interactive Simulation & Inspector Split -->
+      <div class="grid-2">
+        <div>
+          <div class="canvas-wrapper">
+            <canvas id="statelab-canvas" class="canvas-element"></canvas>
+            <div class="canvas-overlay-stats">Chamber Inspector</div>
+          </div>
+
+          <!-- Heat The Matter Control -->
+          <div class="control-bar">
+            <div class="control-item">
+              <span class="control-label">🔥 Heat Matter:</span>
+              <input type="range" class="slider-input" min="80" max="600" value="300" oninput="updateStateLabTemp(this.value)">
+              <span id="statelab-temp-val" class="slider-value">300 K</span>
+            </div>
+            <div id="statelab-energy-badge" class="energy-pill energy-med">
+              ⚡ MEDIUM KINETIC ENERGY
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic State Details Inspector -->
+        <div id="state-info-display" style="background: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Changes of State Lab (Phase Transitions) -->
+    <section class="sim-container searchable-content" id="phase-changes" data-topic-id="phase-changes">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
+          3. Changes of State Lab (Phase Transitions Matrix)
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('phase-changes')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('phase-changes')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <!-- Phase Selector Buttons -->
+      <div class="phase-matrix">
+        <button class="phase-btn active" data-transition="melting" onclick="selectTransition('melting')">🧊 → 💧 Melting</button>
+        <button class="phase-btn" data-transition="freezing" onclick="selectTransition('freezing')">💧 → 🧊 Freezing</button>
+        <button class="phase-btn" data-transition="vaporization" onclick="selectTransition('vaporization')">💧 → 💨 Vaporization</button>
+        <button class="phase-btn" data-transition="condensation" onclick="selectTransition('condensation')">💨 → 💧 Condensation</button>
+        <button class="phase-btn" data-transition="sublimation" onclick="selectTransition('sublimation')">🧊 → 💨 Sublimation</button>
+        <button class="phase-btn" data-transition="deposition" onclick="selectTransition('deposition')">💨 → 🧊 Deposition</button>
+      </div>
+
+      <div id="phase-details-container">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- 5. Heating Curve Simulation -->
+    <section class="sim-container searchable-content" id="heating-curve" data-topic-id="heating-curve">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
+          4. Heating Curve &amp; Latent Heat Simulation
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('heating-curve')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('heating-curve')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <div class="canvas-wrapper" style="height: 280px;">
+            <canvas id="heating-curve-canvas" class="canvas-element"></canvas>
+          </div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
+            <button class="btn-secondary" style="flex: 1;" onclick="setHeatCurveStep(1)">Stage 1: Solid</button>
+            <button class="btn-secondary" style="flex: 1;" onclick="setHeatCurveStep(2)">Stage 2: Melting (Flat)</button>
+            <button class="btn-secondary" style="flex: 1;" onclick="setHeatCurveStep(3)">Stage 3: Liquid</button>
+            <button class="btn-secondary" style="flex: 1;" onclick="setHeatCurveStep(4)">Stage 4: Boiling (Flat)</button>
+            <button class="btn-secondary" style="flex: 1;" onclick="setHeatCurveStep(5)">Stage 5: Gas</button>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div id="heating-curve-info" style="background: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <div style="font-weight: 700; color: var(--accent-cyan); font-size: 1.1rem; margin-bottom: 0.25rem;">
+              Click any stage above to inspect
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">
+              Notice the two horizontal flat lines on the heating graph where temperature stays constant during melting and boiling.
+            </p>
+          </div>
+
+          <div class="high-yield-box" style="margin-top: 1rem;">
+            <div class="high-yield-icon">⭐</div>
+            <div class="high-yield-content">
+              <div class="high-yield-title">MDCAT TRAP #4</div>
+              During a phase change (Melting at 0°C or Boiling at 100°C), temperature remains constant under constant pressure while energy is absorbed as latent heat to overcome intermolecular forces.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Evaporation Lab & Boiling vs Evaporation Comparison -->
+    <section class="sim-container searchable-content" id="evaporation-boiling" data-topic-id="evaporation-boiling">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
+          5. Evaporation Lab &amp; Evaporation vs. Boiling
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('evaporation-boiling')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('evaporation-boiling')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <!-- Evaporation Simulator -->
+      <div class="grid-2" style="margin-bottom: 2rem;">
+        <div>
+          <div class="canvas-wrapper" style="height: 260px;">
+            <canvas id="evaporation-canvas" class="canvas-element"></canvas>
+            <div class="canvas-overlay-stats">Escaped Particles: <span id="evap-escaped-count">0</span></div>
+          </div>
+
+          <div class="control-bar">
+            <div class="control-item">
+              <span class="control-label">🌡️ Temperature:</span>
+              <input type="range" class="slider-input" min="10" max="95" value="30" oninput="updateEvapControls(this.value, undefined, undefined)">
+              <span id="evap-temp-val" class="slider-value">30°C</span>
+            </div>
+            <div class="control-item">
+              <span class="control-label">📐 Surface Area:</span>
+              <input type="range" class="slider-input" min="20" max="90" value="50" oninput="updateEvapControls(undefined, this.value, undefined)">
+              <span id="evap-area-val" class="slider-value">50%</span>
+            </div>
+            <div class="control-item">
+              <span class="control-label">💨 Wind Speed:</span>
+              <input type="range" class="slider-input" min="0" max="80" value="20" oninput="updateEvapControls(undefined, undefined, this.value)">
+              <span id="evap-wind-val" class="slider-value">20 km/h</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="background: var(--bg-input); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 1rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.5rem;">Why Evaporation Causes Cooling</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+              Particles with higher kinetic energy escape from the liquid surface. The average kinetic energy of the remaining particles drops, lowering the liquid's temperature!
+            </p>
+            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); padding: 0.6rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+              <span style="font-weight: 600; font-size: 0.85rem;">Evaporation Rate Meter:</span>
+              <span id="evap-rate-meter" style="font-weight: 800; font-size: 1.1rem; color: var(--accent-cyan);">35 Rate Units</span>
+            </div>
+          </div>
+
+          <div class="high-yield-box">
+            <div class="high-yield-icon">⭐</div>
+            <div class="high-yield-content">
+              <div class="high-yield-title">FACTORS INCREASING EVAPORATION</div>
+              ↑ Higher Temperature • ↑ Larger Surface Area • ↑ Higher Wind Speed • ↓ Lower Humidity • ↓ Weaker Intermolecular Forces
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side-by-Side Comparison: Boiling vs Evaporation -->
+      <div id="boil-evap-diff-card" style="background: var(--bg-card-solid); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem;">
+          <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary);">
+            ⚔️ Evaporation vs. Boiling Interactive Comparison
+          </h3>
+          <button class="btn-primary" onclick="pulseComparisonDiff()">
+            ✨ Highlight Core Differences
+          </button>
+        </div>
+
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>💧 Evaporation</th>
+                <th>🔥 Boiling</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Location</strong></td>
+                <td>Surface phenomenon only</td>
+                <td>Bulk phenomenon (throughout entire liquid)</td>
+              </tr>
+              <tr>
+                <td><strong>Temperature</strong></td>
+                <td>Occurs at all temperatures below boiling point</td>
+                <td>Occurs strictly at the exact boiling point</td>
+              </tr>
+              <tr>
+                <td><strong>Rate &amp; Speed</strong></td>
+                <td>Slow, gradual process</td>
+                <td>Rapid, vigorous process with bubbling</td>
+              </tr>
+              <tr>
+                <td><strong>Thermal Effect</strong></td>
+                <td>Causes cooling of remaining liquid</td>
+                <td>Requires continuous heat source supply</td>
+              </tr>
+              <tr>
+                <td><strong>Condition</strong></td>
+                <td>Surface molecules overcome surface tension</td>
+                <td>Vapour Pressure = Atmospheric Pressure</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Gas Laws Suite (Boyle's Law, Charles's Law, Pressure Law, Ideal Gas) -->
+    <section class="sim-container searchable-content" id="gas-laws" data-topic-id="gas-laws">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
+          6. Gas Laws Interactive Suite (Boyle • Charles • Gay-Lussac • Ideal Gas)
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('gas-laws')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('gas-laws')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <!-- Boyle's Law Lab -->
+      <div style="background: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--accent-cyan);">
+            📦 Boyle's Law Lab (Isothermal: Constant Temperature)
+          </h3>
+          <span class="badge badge-highyield">Pressure ↑ → Volume ↓</span>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <div class="canvas-wrapper" style="height: 240px;">
+              <canvas id="boyle-canvas" class="canvas-element"></canvas>
+            </div>
+            <div class="control-bar">
+              <div class="control-item">
+                <span class="control-label">Move Piston (Volume):</span>
+                <input type="range" class="slider-input" min="20" max="90" value="50" oninput="updateBoyleVol(this.value)">
+                <span id="boyle-vol-val" class="slider-value">50 L</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; justify-content: space-around;">
+            <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Calculated Pressure</div>
+              <div id="boyle-press-val" style="font-size: 2rem; font-weight: 800; color: var(--accent-cyan);">2.00 atm</div>
+              <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">$P_1 V_1 = P_2 V_2 = \text{Constant}$</div>
+            </div>
+
+            <div class="high-yield-box" style="margin-top: 0.5rem;">
+              <div class="high-yield-icon">💡</div>
+              <div class="high-yield-content">
+                <strong>Easy Memory Rule:</strong> More pressure → Less space. Less pressure → More space.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charles's Law & Pressure Law Split -->
+      <div class="grid-2">
+        <!-- Charles's Law -->
+        <div style="background: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.35rem;">
+            🌡️ Charles's Law (Constant Pressure)
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+            As temperature rises, gas particles move faster and push the piston upwards: <strong>Temperature ↑ → Volume ↑</strong>
+          </p>
+
+          <div style="background: var(--bg-card); height: 120px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); position: relative; overflow: hidden; margin-bottom: 1rem;">
+            <div id="charles-piston" style="position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(0deg, rgba(6, 182, 212, 0.4), rgba(59, 130, 246, 0.2)); border-top: 3px solid var(--accent-cyan); transition: height 0.2s ease;"></div>
+            <div style="position: absolute; top: 10px; right: 10px; font-family: monospace; font-size: 0.85rem; color: var(--accent-cyan);">
+              Volume: <span id="charles-vol-val">20.0 L</span>
+            </div>
+          </div>
+
+          <div class="control-item">
+            <span class="control-label">Temp:</span>
+            <input type="range" class="slider-input" min="150" max="600" value="300" oninput="updateCharlesTemp(this.value)">
+            <span id="charles-temp-val" class="slider-value">300 K (27°C)</span>
+          </div>
+
+          <div class="high-yield-box" style="margin-top: 0.75rem;">
+            <div class="high-yield-icon">⭐</div>
+            <div class="high-yield-content">
+              <strong>MDCAT Rule:</strong> Always convert Celsius to Kelvin ($K = ^\circ C + 273$).
+            </div>
+          </div>
+        </div>
+
+        <!-- Pressure Law (Gay-Lussac) -->
+        <div style="background: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.35rem;">
+            📈 Pressure Law (Constant Volume)
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+            In a rigid sealed tank, heating increases particle collision force against walls: <strong>Temperature ↑ → Pressure ↑</strong>
+          </p>
+
+          <div style="background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; margin-bottom: 1rem;">
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Chamber Gauge Pressure</div>
+            <div id="pressure-law-press-val" style="font-size: 2rem; font-weight: 800; color: #fb923c;">1.00 atm</div>
+          </div>
+
+          <div class="control-item">
+            <span class="control-label">Flame Heat:</span>
+            <input type="range" class="slider-input" min="150" max="600" value="300" oninput="updatePressureLawTemp(this.value)">
+            <span id="pressure-law-temp-val" class="slider-value">300 K</span>
+          </div>
+
+          <div class="high-yield-box" style="margin-top: 0.75rem;">
+            <div class="high-yield-icon">⚠️</div>
+            <div class="high-yield-content">
+              Never heat a sealed aerosol can because internal pressure can cause an explosion!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Diffusion & Graham's Law Visualizer -->
+    <section class="sim-container searchable-content" id="diffusion-graham" data-topic-id="diffusion-graham">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
+          7. Diffusion &amp; Graham's Law of Diffusion Lab
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('diffusion-graham')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('diffusion-graham')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <div class="canvas-wrapper" style="height: 240px;">
+            <canvas id="diffusion-canvas" class="canvas-element"></canvas>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: 0.75rem;">
+            <button class="btn-primary" style="flex: 1;" onclick="startDiffusionRace()">🏁 Start Diffusion Race</button>
+            <button class="btn-secondary" onclick="resetDiffusion()">🔄 Reset</button>
+          </div>
+        </div>
+
+        <div>
+          <div style="background: var(--bg-input); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.5rem;">Graham's Law Formula</h3>
+            <div style="background: var(--bg-card); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: monospace; font-size: 1.05rem; color: var(--accent-cyan); margin-bottom: 0.75rem; text-align: center;">
+              Rate₁ / Rate₂ = √(M₂ / M₁)
+            </div>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+              <strong>Simple takeaway:</strong> Lighter gas particles move faster at the same temperature, so they diffuse much faster than heavy gases.
+            </p>
+            <div class="high-yield-box">
+              <div class="high-yield-icon">⭐</div>
+              <div class="high-yield-content">
+                <strong>Classic MDCAT Question:</strong> Hydrogen ($H_2$, M=2) diffuses <strong>4 times faster</strong> than Oxygen ($O_2$, M=32) because $\sqrt{32/2} = \sqrt{16} = 4$.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Plasma & Bose-Einstein Condensate (Special States) -->
+    <section class="sim-container searchable-content" id="plasma-bec" data-topic-id="plasma-bec">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
+          8. Special States: Plasma &amp; Bose-Einstein Condensate (BEC)
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('plasma-bec')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('plasma-bec')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- Plasma Section -->
+        <div style="background: var(--bg-input); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--accent-plasma);">⚡ Plasma Chamber</h3>
+            <span class="badge badge-highyield">IONIZED GAS</span>
+          </div>
+
+          <div class="canvas-wrapper" style="height: 200px; margin-bottom: 0.75rem;">
+            <canvas id="plasma-canvas" class="canvas-element"></canvas>
+          </div>
+
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.5rem;">
+            Plasma is a highly energized state containing <strong>free electrons</strong> and <strong>positive ions</strong>.
+          </p>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">
+            <strong>Examples:</strong> Sun, Stars, Lightning, Neon signs, Auroras.
+          </div>
+        </div>
+
+        <!-- Bose-Einstein Condensate -->
+        <div style="background: var(--bg-input); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #38bdf8;">❄️ Bose-Einstein Condensate (BEC)</h3>
+              <span class="badge badge-mdcat">NEAR 0 KELVIN</span>
+            </div>
+
+            <div style="background: #060a14; height: 140px; border-radius: var(--radius-sm); border: 1px solid rgba(56, 189, 248, 0.3); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+              <span style="font-size: 2.5rem; animation: pulse-spin 6s ease-in-out infinite;">🌀</span>
+              <span style="font-size: 0.8rem; color: #38bdf8; font-weight: 700;">Super-Atom Quantum Wave</span>
+            </div>
+
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.5rem;">
+              Formed at temperatures extremely close to <strong>Absolute Zero (0 K / -273.15°C)</strong>. Individual atoms clump together to act as a single giant "super-atom".
+            </p>
+          </div>
+
+          <div class="high-yield-box">
+            <div class="high-yield-icon">⭐</div>
+            <div class="high-yield-content">
+              <strong>MDCAT takeaway:</strong> Ultra-cold quantum state where particles occupy the lowest possible energy state.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. "What Happens to Particles?" Interactive Decision Tool -->
+    <section class="sim-container searchable-content" id="particle-tool" data-topic-id="particle-decision-tool">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
+          9. "What Happens to Particles?" Interactive Explorer
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('particle-decision-tool')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('particle-decision-tool')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">
+        Click any physical trigger to instantly see how particle speed, spacing, and intermolecular forces respond:
+      </p>
+
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+        <button class="action-chip particle-tool-btn active" data-action="heating" onclick="showParticleAction('heating')">🔥 Heating</button>
+        <button class="action-chip particle-tool-btn" data-action="cooling" onclick="showParticleAction('cooling')">❄️ Cooling</button>
+        <button class="action-chip particle-tool-btn" data-action="compression" onclick="showParticleAction('compression')">🗜️ Compression</button>
+        <button class="action-chip particle-tool-btn" data-action="expansion" onclick="showParticleAction('expansion')">↔️ Expansion</button>
+        <button class="action-chip particle-tool-btn" data-action="melting" onclick="showParticleAction('melting')">🧊 Melting</button>
+        <button class="action-chip particle-tool-btn" data-action="boiling" onclick="showParticleAction('boiling')">♨️ Boiling</button>
+        <button class="action-chip particle-tool-btn" data-action="condensation" onclick="showParticleAction('condensation')">🌧️ Condensation</button>
+        <button class="action-chip particle-tool-btn" data-action="freezing" onclick="showParticleAction('freezing')">🥶 Freezing</button>
+      </div>
+
+      <div id="particle-action-result">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- 11. Simple Gas Law Calculator -->
+    <section class="sim-container searchable-content" id="calculator" data-topic-id="gas-calculator">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
+          10. Beginner-Friendly MDCAT Gas Law Calculator
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('gas-calculator')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('gas-calculator')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <div class="calc-tabs">
+        <button class="calc-tab-btn active" data-calc="boyle" onclick="selectCalcTab('boyle')">📦 Boyle's Law (P₁V₁ = P₂V₂)</button>
+        <button class="calc-tab-btn" data-calc="charles" onclick="selectCalcTab('charles')">🌡️ Charles's Law (V₁/T₁ = V₂/T₂)</button>
+        <button class="calc-tab-btn" data-calc="pressure" onclick="selectCalcTab('pressure')">📈 Pressure Law (P₁/T₁ = P₂/T₂)</button>
+        <button class="calc-tab-btn" data-calc="graham" onclick="selectCalcTab('graham')">⚡ Graham's Law (r₁/r₂ = √(M₂/M₁))</button>
+      </div>
+
+      <div id="calc-form-container">
+        <!-- Form injected by JS -->
+      </div>
+
+      <div id="calc-output-box" class="calc-output-box">
+        <!-- Calculation output injected by JS -->
+      </div>
+    </section>
+
+    <!-- 12. MDCAT Traps & Pitfalls (10 High-Yield Warning Cards) -->
+    <section class="sim-container searchable-content" id="mdcat-traps" data-topic-id="mdcat-traps">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: #f87171;">
+          🚨 10 Critical MDCAT Traps &amp; Common Pitfalls
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('mdcat-traps')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('mdcat-traps')">☆ Bookmark</button>
+        </div>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+        Click any card to reveal the exam trap breakdown and simple trick to remember it:
+      </p>
+
+      <div class="grid-2">
+        <div class="trap-card" onclick="toggleTrapCard(this)">
+          <div class="trap-header">
+            <span class="trap-tag">TRAP 1</span>
+            <span class="trap-title">Evaporation vs. Boiling are NOT the same</span>
+          </div>
+          <div class="trap-body">Students frequently confuse surface evaporation with bulk liquid boiling.</div>
+          <div class="trap-reveal">
+            <strong>Key Difference:</strong> Evaporation happens only at the liquid surface at any temperature below BP. Boiling occurs throughout the bulk liquid strictly at the boiling point.
+          </div>
+        </div>
+
+        <div class="trap-card" onclick="toggleTrapCard(this)">
+          <div class="trap-header">
+            <span class="trap-tag">TRAP 2</span>
+            <span class="trap-title">Solid Particles are NOT completely motionless</span>
+          </div>
+          <div class="trap-body">Do solid particles stand completely still?</div>
+          <div class="trap-reveal">
+            <strong>Correction:</strong> Solid particles continually vibrate around fixed lattice positions. They only theoretically stop moving at Absolute Zero (0 Kelvin).
+          </div>
+        </div>
+
+        <div class="trap-card" onclick="toggleTrapCard(this)">
+          <div class="trap-header">
+            <span class="trap-tag">TRAP 3</span>
+            <span class="trap-title">Phase Changes Occur at CONSTANT Temperature</span>
+          </div>
+          <div class="trap-body">Does water get hotter while boiling at 100°C?</div>
+          <div class="trap-reveal">
+            <strong>Key Fact:</strong> No! During melting and boiling, temperature remains constant because heat energy is used as latent heat to break intermolecular bonds.
+          </div>
+        </div>
+
+        <div class="trap-card" onclick="toggleTrapCard(this)">
+          <div class="trap-header">
+            <span class="trap-tag">TRAP 4</span>
+            <span class="trap-title">Gas Law Temperatures MUST be in Kelvin</span>
+          </div>
+          <div class="trap-body">Plugging Celsius directly into $V_1/T_1 = V_2/T_2$ yields wrong answers.</div>
+          <div class="trap-reveal">
+            <strong>Always Convert:</strong> $T(\text{K}) = T(^\circ\text{C}) + 273$. Example: $27^\circ\text{C} = 300\text{ K}$, $127^\circ\text{C} = 400\text{ K}$.
+          </div>
+        </div>
+
+        <div class="trap-card" onclick="toggleTrapCard(this)">
+          <div class="trap-header">
+            <span class="trap-tag">TRAP 5</span>
+            <span class="trap-title">Gas Pressure is Wall Collisions, NOT Particle-to-Particle</span>
+          </div>
+          <div class="trap-body">What physically causes gas pressure?</div>
+          <div class="trap-reveal">
+            <strong>Pressure Cause:</strong> Gas pressure is the force per unit area produced when particles collide with the walls of the container.
+          </div>
+        </div>
+
+        <div class="trap-card" onclick="toggleTrapCard(this)">
+          <div class="trap-header">
+            <span class="trap-tag">TRAP 6</span>
+            <span class="trap-title">Hydrogen Diffuses 4× Faster than Oxygen, NOT 16×</span>
+          </div>
+          <div class="trap-body">Remember Graham's square root relationship!</div>
+          <div class="trap-reveal">
+            <strong>Calculation:</strong> $M(O_2)/M(H_2) = 32/2 = 16$. The square root $\sqrt{16} = 4$. So $H_2$ diffuses 4 times faster.
+          </div>
+        </div>
+
+        <div class="trap-card" onclick="toggleTrapCard(this)">
+          <div class="trap-header">
+            <span class="trap-tag">TRAP 7</span>
+            <span class="trap-title">Dry Ice Sublimes Directly to Gas</span>
+          </div>
+          <div class="trap-body">Does dry ice melt into a liquid puddle?</div>
+          <div class="trap-reveal">
+            <strong>Fact:</strong> Dry Ice is solid Carbon Dioxide ($CO_2$). Under atmospheric pressure, it undergoes sublimation directly into gas without leaving any liquid residue.
+          </div>
+        </div>
+
+        <div class="trap-card" onclick="toggleTrapCard(this)">
+          <div class="trap-header">
+            <span class="trap-tag">TRAP 8</span>
+            <span class="trap-title">Gases are Highly Compressible; Liquids &amp; Solids are Not</span>
+          </div>
+          <div class="trap-body">Why can a massive volume of gas fit in a small cylinder?</div>
+          <div class="trap-reveal">
+            <strong>Reason:</strong> More than 99.9% of a gas's volume is empty space between widely separated particles.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. MDCAT Quick Revision (60-Second Flashcards) -->
+    <section class="sim-container searchable-content" id="quick-revision" data-topic-id="quick-revision">
+      <div class="topic-header-row">
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--accent-cyan);">
+          ⚡ States of Matter in 60 Seconds (Rapid Revision)
+        </h2>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('quick-revision')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('quick-revision')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div style="background: var(--bg-input); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+          <div style="color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.25rem;">🧊 Solid</div>
+          <div style="font-size: 0.875rem; color: var(--text-secondary);">Fixed shape &amp; volume • Strongest attraction • Low particle motion</div>
+        </div>
+        <div style="background: var(--bg-input); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+          <div style="color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.25rem;">💧 Liquid</div>
+          <div style="font-size: 0.875rem; color: var(--text-secondary);">Fixed volume, variable shape • Particles flow • Moderate attraction</div>
+        </div>
+        <div style="background: var(--bg-input); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+          <div style="color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.25rem;">💨 Gas</div>
+          <div style="font-size: 0.875rem; color: var(--text-secondary);">No fixed shape or volume • Highly compressible • Weakest attraction</div>
+        </div>
+        <div style="background: var(--bg-input); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+          <div style="color: #fb923c; font-weight: 700; margin-bottom: 0.25rem;">🔥 Heating Effect</div>
+          <div style="font-size: 0.875rem; color: var(--text-secondary);">Temperature ↑ → Particle kinetic energy ↑ → Particles move faster</div>
+        </div>
+        <div style="background: var(--bg-input); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+          <div style="color: #38bdf8; font-weight: 700; margin-bottom: 0.25rem;">💧 Evaporation</div>
+          <div style="font-size: 0.875rem; color: var(--text-secondary);">Surface phenomenon at all temps below BP • Causes cooling</div>
+        </div>
+        <div style="background: var(--bg-input); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+          <div style="color: #f87171; font-weight: 700; margin-bottom: 0.25rem;">♨️ Boiling</div>
+          <div style="font-size: 0.875rem; color: var(--text-secondary);">Bulk phenomenon throughout liquid at boiling point • Vapour P = Atmos P</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14. 25-Question MDCAT Practice Quiz -->
+    <section class="quiz-wrapper searchable-content" id="mdcat-quiz" data-topic-id="practice-quiz">
+      <div class="topic-header-row">
+        <div>
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">
+            📝 MDCAT Practice Quiz (25 Original High-Yield MCQs)
+          </h2>
+          <p style="font-size: 0.875rem; color: var(--text-secondary);">
+            Best Score: <span id="quiz-best-score" style="font-weight: 700; color: var(--accent-cyan);">0 / 25</span>
+          </p>
+        </div>
+        <div class="topic-actions">
+          <button class="action-chip btn-mark-complete" onclick="toggleTopicComplete('practice-quiz')">○ Mark Done</button>
+          <button class="action-chip btn-bookmark" onclick="toggleTopicBookmark('practice-quiz')">☆ Bookmark</button>
+        </div>
+      </div>
+
+      <div id="quiz-container">
+        <!-- Interactive Quiz UI injected by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lab Footer -->
+  <footer class="lab-footer">
+    <p><strong>States of Matter — MDCAT Chemistry Interactive Learning Lab</strong></p>
+    <p style="margin-top: 0.35rem; color: var(--text-muted);">
+      Created with HTML5, CSS3, and Vanilla JavaScript. Built strictly for MDCAT Chemistry Concept Mastery.
+    </p>
+    <div class="footer-links">
+      <a href="#top" class="footer-link">↑ Back to Top</a>
+      <a href="#three-states" class="footer-link">Three States Lab</a>
+      <a href="#gas-laws" class="footer-link">Gas Laws Suite</a>
+      <a href="#mdcat-quiz" class="footer-link">Practice Quiz</a>
+      <a href="#calculator" class="footer-link">Gas Law Calculator</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./states-of-matter.js"></script>
+</body>
+</html>

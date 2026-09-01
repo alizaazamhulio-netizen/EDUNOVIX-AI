@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrices & Determinants | Topic 12 / 15 - University Mathematics</title>
+  <meta name="description" content="Master matrices, determinants, operations, inverses, Cramer's rule, and speed shortcuts for university entrance and scholarship tests (FAST, NET, ECAT, IBA).">
+  <link rel="stylesheet" href="matrices.css">
+  <!-- KaTeX for crisp mathematical formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SITE HEADER
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      <div class="header-top-row">
+        <div class="breadcrumb-trail">
+          <a href="#intro">University Preparation</a>
+          <span>&rsaquo;</span>
+          <a href="#intro">Mathematics</a>
+          <span>&rsaquo;</span>
+          <span style="color: #34d399; font-weight: 600;">Matrices &amp; Determinants</span>
+        </div>
+        <div class="header-badge">
+          <span>●</span> University Mathematics &bull; Topic 12 / 15
+        </div>
+      </div>
+
+      <div class="header-title-block">
+        <div>
+          <h1>Matrices &amp; Determinants</h1>
+          <p>Master matrices, operations, determinants, inverses, systems of equations, and fast problem-solving techniques for university entrance and scholarship tests.</p>
+        </div>
+        <div class="header-actions">
+          <a href="#intro" class="btn btn-secondary btn-sm">&larr; Back to Mathematics</a>
+          <a href="#sec-formula-sheet" class="btn btn-secondary btn-sm">Formula Sheet</a>
+          <a href="#sec-quick-revision" class="btn btn-secondary btn-sm">Quick Revision</a>
+          <a href="#sec-practice-zone" class="btn btn-primary btn-sm">Practice Zone (120 MCQs)</a>
+          <a href="#sec-master-test" class="btn btn-primary btn-sm" style="background:#059669;">Master Test</a>
+        </div>
+      </div>
+
+      <div class="header-search-bar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="globalSearchInput" placeholder="Search notes, formulas, shortcuts, questions...">
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN WRAPPER WITH STICKY NAVIGATION
+       ========================================================================== -->
+  <div class="main-wrapper">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar-sticky" id="sidebarNav">
+      <div class="sidebar-header">
+        <span class="sidebar-title">Chapter Navigation</span>
+        <span style="font-size: 0.75rem; color: #64748b; font-weight: 700;">46 TOPICS</span>
+      </div>
+      <div class="nav-links-scroll" id="navLinksList">
+        <div class="nav-divider">1. Basics &amp; Types</div>
+        <a href="#sec-1" class="nav-item active"><span class="nav-num">01</span> Introduction to Matrices</a>
+        <a href="#sec-2" class="nav-item"><span class="nav-num">02</span> Matrix Notation</a>
+        <a href="#sec-3" class="nav-item"><span class="nav-num">03</span> Order of a Matrix</a>
+        <a href="#sec-4" class="nav-item"><span class="nav-num">04</span> Elements of a Matrix</a>
+        <a href="#sec-5" class="nav-item"><span class="nav-num">05</span> Types of Matrices</a>
+        <a href="#sec-6" class="nav-item"><span class="nav-num">06</span> Identity Matrix &amp; Properties</a>
+        <a href="#sec-7" class="nav-item"><span class="nav-num">07</span> Equal Matrices</a>
+
+        <div class="nav-divider">2. Matrix Operations</div>
+        <a href="#sec-8" class="nav-item"><span class="nav-num">08</span> Matrix Addition &amp; Subtraction</a>
+        <a href="#sec-9" class="nav-item"><span class="nav-num">09</span> Scalar Multiplication</a>
+        <a href="#sec-10" class="nav-item"><span class="nav-num">10</span> Matrix Multiplication Rules</a>
+        <a href="#sec-11" class="nav-item"><span class="nav-num">11</span> Multiplication Step-by-Step</a>
+        <a href="#sec-12" class="nav-item"><span class="nav-num">12</span> Multiplication Calculator</a>
+        <a href="#sec-13" class="nav-item"><span class="nav-num">13</span> Properties of Operations</a>
+        <a href="#sec-14" class="nav-item"><span class="nav-num">14</span> Transpose &amp; Properties</a>
+        <a href="#sec-15" class="nav-item"><span class="nav-num">15</span> Symmetric &amp; Skew-Symmetric</a>
+
+        <div class="nav-divider">3. Determinants &amp; Inverses</div>
+        <a href="#sec-16" class="nav-item"><span class="nav-num">16</span> Determinants Introduction</a>
+        <a href="#sec-17" class="nav-item"><span class="nav-num">17</span> 2&times;2 Determinant</a>
+        <a href="#sec-18" class="nav-item"><span class="nav-num">18</span> Determinant Calculator</a>
+        <a href="#sec-19" class="nav-item"><span class="nav-num">19</span> 3&times;3 Determinant &amp; Expansion</a>
+        <a href="#sec-20" class="nav-item"><span class="nav-num">20</span> Sarrus Diagonal Method</a>
+        <a href="#sec-21" class="nav-item"><span class="nav-num">21</span> Minors &amp; Cofactors</a>
+        <a href="#sec-22" class="nav-item"><span class="nav-num">22</span> Properties of Determinants</a>
+        <a href="#sec-23" class="nav-item"><span class="nav-num">23</span> Singular vs Non-Singular</a>
+        <a href="#sec-24" class="nav-item"><span class="nav-num">24</span> Adjoint of a Matrix</a>
+        <a href="#sec-25" class="nav-item"><span class="nav-num">25</span> Inverse of a Matrix</a>
+        <a href="#sec-26" class="nav-item"><span class="nav-num">26</span> Matrix Inverse Calculator</a>
+
+        <div class="nav-divider">4. Systems &amp; Visuals</div>
+        <a href="#sec-27" class="nav-item"><span class="nav-num">27</span> Matrix Inversion Method (AX=B)</a>
+        <a href="#sec-28" class="nav-item"><span class="nav-num">28</span> Cramer's Rule</a>
+        <a href="#sec-29" class="nav-item"><span class="nav-num">29</span> Method Comparison</a>
+        <a href="#sec-30" class="nav-item"><span class="nav-num">30</span> Real-World Applications</a>
+        <a href="#sec-31" class="nav-item"><span class="nav-num">31</span> 2D Transformation Visualizer</a>
+
+        <div class="nav-divider">5. Exam Prep &amp; Mastery</div>
+        <a href="#sec-32" class="nav-item"><span class="nav-num">32</span> University Test Strategy</a>
+        <a href="#sec-33" class="nav-item"><span class="nav-num">33</span> Speed Shortcuts (25+)</a>
+        <a href="#sec-34" class="nav-item"><span class="nav-num">34</span> Common Mistakes (30+)</a>
+        <a href="#sec-formula-sheet" class="nav-item"><span class="nav-num">35</span> Formula Sheet</a>
+        <a href="#sec-practice-zone" class="nav-item"><span class="nav-num">36</span> Practice Zone (120 MCQs)</a>
+        <a href="#sec-master-test" class="nav-item"><span class="nav-num">37</span> Master Test (45 MCQs)</a>
+        <a href="#sec-quick-revision" class="nav-item"><span class="nav-num">38</span> 10-Minute Quick Revision</a>
+        <a href="#sec-bookmarks" class="nav-item"><span class="nav-num">39</span> My Bookmarks</a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT BODY -->
+    <main class="content-area" id="mainContent">
+
+      <!-- ==========================================
+           SECTION 1: INTRODUCTION TO MATRICES
+           ========================================== -->
+      <section class="topic-card" id="sec-1">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 01 / 46</span>
+            <h2 class="topic-title">Introduction to Matrices</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-1', 'Introduction to Matrices')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          A <strong>matrix</strong> is an organized rectangular array or table of numbers, symbols, or expressions arranged in horizontal <strong>rows</strong> and vertical <strong>columns</strong> enclosed in brackets <code>[ ]</code> or parentheses <code>( )</code>.
+        </p>
+
+        <div class="callout-box callout-info">
+          <div class="callout-title">Why do we use Matrices?</div>
+          Matrices allow mathematicians and computer scientists to handle, transform, and solve massive systems of simultaneous equations and multidimensional datasets in a compact, single-variable notation ($AX = B$).
+        </div>
+
+        <h3 class="section-h3">Where are Matrices Used?</h3>
+        <ul style="margin-left: 24px; color: var(--text-muted); line-height: 1.8;">
+          <li><strong>Computer Graphics &amp; Gaming:</strong> Every 2D and 3D object translation, rotation, scaling, and camera projection is executed via matrix multiplication on GPU shaders.</li>
+          <li><strong>Machine Learning &amp; AI:</strong> Neural network layers pass signals via weight matrices ($W \cdot X + b$).</li>
+          <li><strong>Economics &amp; Cryptography:</strong> Input-output economic models (Leontief models) and Hill cipher encryption algorithms.</li>
+          <li><strong>Electrical Engineering &amp; Physics:</strong> Mesh and nodal analysis in circuits, quantum mechanical state vectors, and stress tensors in mechanics.</li>
+        </ul>
+
+        <div class="example-box">
+          <div class="example-header">Real-World Practical Example</div>
+          <div class="example-body">
+            <p style="margin-bottom: 8px;">A bookstore sells 3 items (Notebooks, Pens, Folders) across 2 days:</p>
+            <table class="math-matrix-table" style="background:#fff; margin: 8px auto;">
+              <tr><th></th><th>Notebooks</th><th>Pens</th><th>Folders</th></tr>
+              <tr><td><strong>Day 1</strong></td><td>20</td><td>50</td><td>15</td></tr>
+              <tr><td><strong>Day 2</strong></td><td>35</td><td>40</td><td>25</td></tr>
+            </table>
+            <p style="margin-top: 8px;">As a compact $2 \times 3$ matrix: $A = \begin{bmatrix} 20 & 50 & 15 \\ 35 & 40 & 25 \end{bmatrix}$.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 2 & 3 & 4: NOTATION, ORDER & ELEMENTS
+           ========================================== -->
+      <section class="topic-card" id="sec-2">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 02 &bull; 03 &bull; 04</span>
+            <h2 class="topic-title">Matrix Notation, Order &amp; Elements</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-2', 'Notation, Order & Elements')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          A general matrix $A$ having $m$ rows and $n$ columns is said to be of <strong>order (or dimension)</strong> $m \times n$ (read as <em>"m by n"</em>).
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-title">General Matrix Notation</div>
+          <div class="formula-expression">
+            A = [a_{ij}]_{m \times n} = 
+            \begin{bmatrix}
+            a_{11} & a_{12} & \cdots & a_{1n} \\
+            a_{21} & a_{22} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} & a_{m2} & \cdots & a_{mn}
+            \end{bmatrix}
+          </div>
+        </div>
+
+        <div class="callout-box callout-tip">
+          <div class="callout-title">Golden Indexing Rule for University Tests</div>
+          In the subscript $a_{ij}$, the <strong>first index $i$ is ALWAYS the Row number</strong>, and the <strong>second index $j$ is ALWAYS the Column number</strong>. <em>Remember: RC (Row first, Column second — like Remote Control or Roman Catholic).</em>
+        </div>
+
+        <h3 class="section-h3">Interactive Matrix Order &amp; Dimension Builder</h3>
+        <div class="interactive-tool-card" id="matrixOrderTool">
+          <div class="interactive-tool-header">Interactive Matrix Structure Generator</div>
+          <div class="tool-controls-row">
+            <label>Rows ($m$): <input type="number" id="orderRows" value="2" min="1" max="4" style="width: 50px; padding: 4px; border-radius: 4px; border: 1px solid #cbd5e1;"></label>
+            <label>Columns ($n$): <input type="number" id="orderCols" value="3" min="1" max="4" style="width: 50px; padding: 4px; border-radius: 4px; border: 1px solid #cbd5e1;"></label>
+            <button class="btn btn-primary btn-sm" onclick="renderMatrixOrderDemo()">Generate Matrix Layout</button>
+          </div>
+          <div id="matrixOrderOutput" class="tool-output-area" style="text-align: center;">
+            <!-- Output generated via JS -->
+          </div>
+        </div>
+
+        <h3 class="section-h3">Interactive Element Highlighter</h3>
+        <p class="section-prose">Click any cell in the $3 \times 3$ matrix below or use the input selectors to highlight and identify its exact notation ($a_{ij}$):</p>
+        
+        <div style="text-align: center; margin: 16px 0;">
+          <table class="interactive-element-table" style="margin: 0 auto;" id="interactiveElementMatrix">
+            <tr>
+              <td class="interactive-element-cell" data-row="1" data-col="1" onclick="highlightCell(1,1)">12</td>
+              <td class="interactive-element-cell" data-row="1" data-col="2" onclick="highlightCell(1,2)">-4</td>
+              <td class="interactive-element-cell" data-row="1" data-col="3" onclick="highlightCell(1,3)">7</td>
+            </tr>
+            <tr>
+              <td class="interactive-element-cell" data-row="2" data-col="1" onclick="highlightCell(2,1)">0</td>
+              <td class="interactive-element-cell" data-row="2" data-col="2" onclick="highlightCell(2,2)">9</td>
+              <td class="interactive-element-cell" data-row="2" data-col="3" onclick="highlightCell(2,3)">-15</td>
+            </tr>
+            <tr>
+              <td class="interactive-element-cell" data-row="3" data-col="1" onclick="highlightCell(3,1)">3</td>
+              <td class="interactive-element-cell" data-row="3" data-col="2" onclick="highlightCell(3,2)">8</td>
+              <td class="interactive-element-cell" data-row="3" data-col="3" onclick="highlightCell(3,3)">21</td>
+            </tr>
+          </table>
+          <div id="elementHighlightInfo" style="margin-top: 12px; font-weight: 700; color: var(--accent-green);">
+            Click any cell above to identify its position!
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 5: TYPES OF MATRICES
+           ========================================== -->
+      <section class="topic-card" id="sec-5">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 05 / 46</span>
+            <h2 class="topic-title">Types of Matrices (Comprehensive Guide)</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-5', 'Types of Matrices')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          Understanding the geometric and algebraic classifications of matrices is tested in every NET, FAST, and ECAT exam. Below is the complete catalog:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px;">
+          
+          <div class="example-box">
+            <div class="example-header">1. Row Matrix (Row Vector)</div>
+            <div class="example-body">
+              <p><strong>Order:</strong> $1 \times n$ (Only 1 row, any number of columns).</p>
+              <p><strong>Example:</strong> $\begin{bmatrix} 3 & -1 & 5 \end{bmatrix}_{1 \times 3}$</p>
+              <p class="mistake-tip"><strong>Trap:</strong> Confusing with column matrix when written horizontally.</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">2. Column Matrix (Column Vector)</div>
+            <div class="example-body">
+              <p><strong>Order:</strong> $m \times 1$ (Any number of rows, only 1 column).</p>
+              <p><strong>Example:</strong> $\begin{bmatrix} 7 \\ 0 \\ -2 \end{bmatrix}_{3 \times 1}$</p>
+              <p class="mistake-tip"><strong>Trap:</strong> $m \times 1$ has transpose $1 \times m$.</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">3. Square Matrix</div>
+            <div class="example-body">
+              <p><strong>Condition:</strong> Rows = Columns ($m = n$).</p>
+              <p><strong>Example:</strong> $\begin{bmatrix} 1 & 4 \\ 2 & 5 \end{bmatrix}_{2 \times 2}$</p>
+              <p class="mistake-tip"><strong>Note:</strong> Determinants &amp; Inverses exist ONLY for square matrices.</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">4. Rectangular Matrix</div>
+            <div class="example-body">
+              <p><strong>Condition:</strong> Rows &ne; Columns ($m \neq n$).</p>
+              <p><strong>Example:</strong> $\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}_{2 \times 3}$</p>
+              <p class="mistake-tip"><strong>Trap:</strong> Never attempt to find determinant of rectangular matrix!</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">5. Zero (Null) Matrix ($O$)</div>
+            <div class="example-body">
+              <p><strong>Condition:</strong> Every element $a_{ij} = 0$.</p>
+              <p><strong>Example:</strong> $O_{2 \times 2} = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$</p>
+              <p class="mistake-tip"><strong>Property:</strong> $A + O = A$, $A \cdot O = O$.</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">6. Diagonal Matrix</div>
+            <div class="example-body">
+              <p><strong>Condition:</strong> Square matrix where all non-diagonal entries are 0 ($a_{ij} = 0$ for $i \neq j$).</p>
+              <p><strong>Example:</strong> $\begin{bmatrix} 5 & 0 & 0 \\ 0 & -2 & 0 \\ 0 & 0 & 9 \end{bmatrix}$</p>
+              <p class="mistake-tip"><strong>Speed Tip:</strong> Determinant = Product of main diagonal entries!</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">7. Scalar Matrix</div>
+            <div class="example-body">
+              <p><strong>Condition:</strong> Diagonal matrix where all main diagonal entries are equal ($a_{ii} = k$).</p>
+              <p><strong>Example:</strong> $\begin{bmatrix} 4 & 0 \\ 0 & 4 \end{bmatrix} = 4 \cdot I_2$</p>
+              <p class="mistake-tip"><strong>Property:</strong> Commutes with all matrices of same order ($SA = AS$).</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">8. Upper Triangular Matrix</div>
+            <div class="example-body">
+              <p><strong>Condition:</strong> All elements below main diagonal are zero ($a_{ij} = 0$ for $i > j$).</p>
+              <p><strong>Example:</strong> $\begin{bmatrix} 2 & 3 & 7 \\ 0 & 5 & 1 \\ 0 & 0 & 4 \end{bmatrix}$</p>
+              <p class="mistake-tip"><strong>Determinant:</strong> Product of diagonal: $2 \times 5 \times 4 = 40$.</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">9. Lower Triangular Matrix</div>
+            <div class="example-body">
+              <p><strong>Condition:</strong> All elements above main diagonal are zero ($a_{ij} = 0$ for $i < j$).</p>
+              <p><strong>Example:</strong> $\begin{bmatrix} 3 & 0 & 0 \\ 1 & 4 & 0 \\ 6 & -2 & 8 \end{bmatrix}$</p>
+              <p class="mistake-tip"><strong>Determinant:</strong> Product of diagonal: $3 \times 4 \times 8 = 96$.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 6 & 7: IDENTITY & EQUAL MATRICES
+           ========================================== -->
+      <section class="topic-card" id="sec-6">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 06 &bull; 07</span>
+            <h2 class="topic-title">Identity Matrix &amp; Equal Matrices</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-6', 'Identity & Equal Matrices')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          The <strong>Identity Matrix ($I$ or $I_n$)</strong> is a square scalar matrix whose main diagonal elements are all $1$, and all off-diagonal elements are $0$.
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-title">Standard Identity Matrices</div>
+          <div class="formula-expression">
+            I_2 = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}, \quad 
+            I_3 = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+          </div>
+        </div>
+
+        <p class="section-prose">
+          The identity matrix acts as the <strong>multiplicative identity</strong> in matrix algebra, exactly like the number $1$ in real numbers:
+          $$A \cdot I = I \cdot A = A$$
+          $$I^k = I \quad \text{for any positive integer } k$$
+          $$\det(I) = 1, \quad I^{-1} = I, \quad I^T = I$$
+        </p>
+
+        <h3 class="section-h3">Equal Matrices Condition</h3>
+        <p class="section-prose">
+          Two matrices $A$ and $B$ are defined to be <strong>equal ($A = B$)</strong> if and ONLY if:
+        </p>
+        <ol style="margin-left: 24px; color: var(--text-muted); line-height: 1.8;">
+          <li>They have the exact same order ($m \times n$).</li>
+          <li>Every corresponding element is identical: $a_{ij} = b_{ij}$ for all $i, j$.</li>
+        </ol>
+
+        <div class="example-box">
+          <div class="example-header">Solved Entry-Test Problem (FAST / NET Style)</div>
+          <div class="example-body">
+            <p><strong>Problem:</strong> Given $\begin{bmatrix} 2x + y & 4 \\ 5 & x - 3y \end{bmatrix} = \begin{bmatrix} 7 & 4 \\ 5 & -7 \end{bmatrix}$, find $x$ and $y$.</p>
+            <div class="example-step">
+              <div class="example-step-title">Step 1: Equate corresponding elements</div>
+              $2x + y = 7 \quad \text{--- (Eq 1)}$<br>
+              $x - 3y = -7 \implies x = 3y - 7 \quad \text{--- (Eq 2)}$
+            </div>
+            <div class="example-step">
+              <div class="example-step-title">Step 2: Substitute Eq 2 into Eq 1</div>
+              $2(3y - 7) + y = 7 \implies 6y - 14 + y = 7 \implies 7y = 21 \implies \mathbf{y = 3}$
+            </div>
+            <div class="example-step">
+              <div class="example-step-title">Step 3: Solve for $x$</div>
+              $x = 3(3) - 7 = 9 - 7 = \mathbf{2}$.<br>
+              <strong>Result:</strong> $x = 2, y = 3$.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 8 & 9: ADDITION, SUBTRACTION, SCALAR
+           ========================================== -->
+      <section class="topic-card" id="sec-8">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 08 &bull; 09</span>
+            <h2 class="topic-title">Matrix Addition, Subtraction &amp; Scalar Multiplication</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-8', 'Addition, Subtraction & Scalar')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          <strong>Addition &amp; Subtraction:</strong> Two matrices can be added or subtracted <em>if and only if they have the EXACT same order</em>. We perform element-by-element operations:
+          $$(A \pm B)_{ij} = a_{ij} \pm b_{ij}$$
+        </p>
+
+        <p class="section-prose">
+          <strong>Scalar Multiplication:</strong> When a matrix $A$ is multiplied by a scalar scalar $k \in \mathbb{R}$, <em>EVERY single element</em> of $A$ is multiplied by $k$:
+          $$(kA)_{ij} = k \cdot a_{ij}$$
+        </p>
+
+        <div class="example-box">
+          <div class="example-header">Step-by-Step Solved Problem</div>
+          <div class="example-body">
+            <p>If $A = \begin{bmatrix} 2 & -1 \\ 4 & 0 \end{bmatrix}$ and $B = \begin{bmatrix} -3 & 5 \\ 1 & -2 \end{bmatrix}$, find $3A - 2B$.</p>
+            <div class="example-step">
+              <div class="example-step-title">Step 1: Compute $3A$</div>
+              $3A = \begin{bmatrix} 3(2) & 3(-1) \\ 3(4) & 3(0) \end{bmatrix} = \begin{bmatrix} 6 & -3 \\ 12 & 0 \end{bmatrix}$
+            </div>
+            <div class="example-step">
+              <div class="example-step-title">Step 2: Compute $2B$</div>
+              $2B = \begin{bmatrix} 2(-3) & 2(5) \\ 2(1) & 2(-2) \end{bmatrix} = \begin{bmatrix} -6 & 10 \\ 2 & -4 \end{bmatrix}$
+            </div>
+            <div class="example-step">
+              <div class="example-step-title">Step 3: Subtract element-by-element</div>
+              $3A - 2B = \begin{bmatrix} 6 - (-6) & -3 - 10 \\ 12 - 2 & 0 - (-4) \end{bmatrix} = \mathbf{\begin{bmatrix} 12 & -13 \\ 10 & 4 \end{bmatrix}}$
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 10 & 11: MATRIX MULTIPLICATION
+           ========================================== -->
+      <section class="topic-card" id="sec-10">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 10 &bull; 11</span>
+            <h2 class="topic-title">Matrix Multiplication (The Row &times; Column Method)</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-10', 'Matrix Multiplication')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          Matrix multiplication is the cornerstone of linear algebra. The product $AB$ is defined <strong>if and only if</strong> the number of columns in $A$ equals the number of rows in $B$.
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-title">The Compatibility &amp; Dimension Rule</div>
+          <div class="formula-expression" style="font-size: 1.25rem;">
+            A_{m \times \mathbf{k}} \times B_{\mathbf{k} \times p} = C_{m \times p}
+          </div>
+          <p style="margin-top: 8px; font-size: 0.95rem; color: #475569;">
+            &bull; Inner dimensions $(\mathbf{k}, \mathbf{k})$ <strong>MUST MATCH</strong> for multiplication to be possible.<br>
+            &bull; Outer dimensions $(m, p)$ give the <strong>ORDER OF THE RESULT</strong>.
+          </p>
+        </div>
+
+        <div class="callout-box callout-mistake">
+          <div class="callout-title">Critical Non-Commutative Trap</div>
+          In general, <strong>$AB \neq BA$</strong>. Matrix multiplication is NOT commutative! In fact, even if $AB$ is defined, $BA$ might not even be possible if dimensions do not match.
+        </div>
+
+        <div class="example-box">
+          <div class="example-header">Step-by-Step $2 \times 2$ Multiplication</div>
+          <div class="example-body">
+            <p>Calculate $AB$ for $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ and $B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}$:</p>
+            <div class="example-step">
+              <div class="example-step-title">Position $c_{11}$ (Row 1 of $A$ &times; Col 1 of $B$)</div>
+              $c_{11} = (1)(5) + (2)(7) = 5 + 14 = 19$
+            </div>
+            <div class="example-step">
+              <div class="example-step-title">Position $c_{12}$ (Row 1 of $A$ &times; Col 2 of $B$)</div>
+              $c_{12} = (1)(6) + (2)(8) = 6 + 16 = 22$
+            </div>
+            <div class="example-step">
+              <div class="example-step-title">Position $c_{21}$ (Row 2 of $A$ &times; Col 1 of $B$)</div>
+              $c_{21} = (3)(5) + (4)(7) = 15 + 28 = 43$
+            </div>
+            <div class="example-step">
+              <div class="example-step-title">Position $c_{22}$ (Row 2 of $A$ &times; Col 2 of $B$)</div>
+              $c_{22} = (3)(6) + (4)(8) = 18 + 32 = 50$
+            </div>
+            <p style="font-weight: 700; margin-top: 10px;">Final Product: $AB = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix}$</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 12: INTERACTIVE MULTIPLICATION CALCULATOR
+           ========================================== -->
+      <section class="topic-card" id="sec-12">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Interactive Tool 01 / 04</span>
+            <h2 class="topic-title">Matrix Multiplication Calculator</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-12', 'Multiplication Calculator')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">Configure the orders of Matrix $A$ and Matrix $B$, input your numbers, and see the real-time row &times; column computation:</p>
+
+        <div class="interactive-tool-card">
+          <div class="tool-controls-row">
+            <div>
+              <strong>Matrix A Size:</strong>
+              <select id="multSizeA" onchange="setupMultMatricesUI()" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #cbd5e1;">
+                <option value="2x2" selected>2 × 2</option>
+                <option value="2x3">2 × 3</option>
+                <option value="3x2">3 × 2</option>
+                <option value="3x3">3 × 3</option>
+              </select>
+            </div>
+            <div>
+              <strong>Matrix B Size:</strong>
+              <select id="multSizeB" onchange="setupMultMatricesUI()" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #cbd5e1;">
+                <option value="2x2" selected>2 × 2</option>
+                <option value="2x3">2 × 3</option>
+                <option value="3x2">3 × 2</option>
+                <option value="3x3">3 × 3</option>
+              </select>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="calculateMatrixProduct()">Multiply A &times; B</button>
+          </div>
+
+          <div style="display: flex; gap: 24px; align-items: center; justify-content: center; flex-wrap: wrap; margin: 20px 0;">
+            <div>
+              <div style="text-align: center; font-weight: 700; margin-bottom: 6px;">Matrix A</div>
+              <div id="multInputA"></div>
+            </div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-green);">&times;</div>
+            <div>
+              <div style="text-align: center; font-weight: 700; margin-bottom: 6px;">Matrix B</div>
+              <div id="multInputB"></div>
+            </div>
+          </div>
+
+          <div id="multResultBox" class="tool-output-area">
+            Click "Multiply A &times; B" to compute the result.
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 13 & 14 & 15: TRANSPOSE & SYMMETRY
+           ========================================== -->
+      <section class="topic-card" id="sec-14">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 13 &bull; 14 &bull; 15</span>
+            <h2 class="topic-title">Transpose, Symmetric &amp; Skew-Symmetric Matrices</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-14', 'Transpose & Symmetry')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          The <strong>transpose</strong> of a matrix $A$, denoted $A^T$ or $A'$, is formed by swapping rows into columns:
+          $$(A^T)_{ij} = a_{ji}$$
+          If $A$ has order $m \times n$, then $A^T$ has order $n \times m$.
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-title">Key Transpose Properties (Frequently Tested)</div>
+          <div class="formula-expression">
+            (A^T)^T = A, \quad (A + B)^T = A^T + B^T, \quad (kA)^T = kA^T, \quad \mathbf{(AB)^T = B^T A^T}
+          </div>
+          <p style="margin-top: 6px; font-size: 0.875rem; color: #64748b;">
+            Notice the reversal of order in $(AB)^T = B^T A^T$! (Shoes &amp; Socks property).
+          </p>
+        </div>
+
+        <h3 class="section-h3">Symmetric vs Skew-Symmetric Matrices</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;">
+          <div class="example-box">
+            <div class="example-header" style="color: var(--accent-green);">Symmetric Matrix ($A^T = A$)</div>
+            <div class="example-body">
+              <p>Square matrix symmetric across main diagonal: $a_{ij} = a_{ji}$.</p>
+              <p><strong>Example:</strong> $S = \begin{bmatrix} 1 & 2 & 4 \\ 2 & 5 & -3 \\ 4 & -3 & 8 \end{bmatrix}$</p>
+              <p style="font-size: 0.85rem; color: #047857; margin-top: 6px;">For any square matrix $A$, $(A + A^T)$ is always symmetric!</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header" style="color: #b91c1c;">Skew-Symmetric Matrix ($A^T = -A$)</div>
+            <div class="example-body">
+              <p>Square matrix where $a_{ij} = -a_{ji}$.</p>
+              <p><strong>Critical Rule:</strong> All main diagonal elements <em>MUST BE ZERO</em> ($a_{ii} = 0$).</p>
+              <p><strong>Example:</strong> $K = \begin{bmatrix} 0 & 3 & -5 \\ -3 & 0 & 2 \\ 5 & -2 & 0 \end{bmatrix}$</p>
+              <p style="font-size: 0.85rem; color: #b91c1c; margin-top: 6px;">For any square matrix $A$, $(A - A^T)$ is always skew-symmetric!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 16 & 17 & 18: DETERMINANTS
+           ========================================== -->
+      <section class="topic-card" id="sec-16">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 16 &bull; 17 &bull; 18</span>
+            <h2 class="topic-title">Determinants (2&times;2 &amp; Determinant Calculator)</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-16', 'Determinants')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          A <strong>determinant</strong> is a unique scalar value computed from a <em>square matrix</em>. It measures the scaling factor of the transformation, geometric area/volume, and determines whether an inverse exists.
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-title">2&times;2 Determinant Formula</div>
+          <div class="formula-expression">
+            \det(A) = |A| = \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc
+          </div>
+          <p style="margin-top: 4px; font-size: 0.9rem; color: #475569;">
+            (Main Diagonal Product) &minus; (Off-Diagonal Product)
+          </p>
+        </div>
+
+        <h3 class="section-h3">Interactive 2&times;2 &amp; 3&times;3 Determinant Calculator</h3>
+        <div class="interactive-tool-card">
+          <div class="tool-controls-row">
+            <label>Matrix Size:
+              <select id="detCalcSize" onchange="setupDetCalcUI()" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #cbd5e1;">
+                <option value="2">2 × 2 Matrix</option>
+                <option value="3">3 × 3 Matrix</option>
+              </select>
+            </label>
+            <button class="btn btn-primary btn-sm" onclick="calculateDeterminantLive()">Compute Determinant</button>
+          </div>
+          <div id="detCalcInputGrid" style="text-align: center; margin: 16px 0;"></div>
+          <div id="detCalcResult" class="tool-output-area"></div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 19 & 20: 3x3 DETERMINANT & SARRUS
+           ========================================== -->
+      <section class="topic-card" id="sec-19">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 19 &bull; 20</span>
+            <h2 class="topic-title">3&times;3 Determinant Expansion &amp; Sarrus Method</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-19', '3x3 Determinant & Sarrus')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          For a $3 \times 3$ matrix, expansion along the <strong>First Row</strong> uses the alternating signs $+ - +$:
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-title">3&times;3 Expansion by Row 1</div>
+          <div class="formula-expression">
+            \begin{vmatrix} a & b & c \\ d & e & f \\ g & h & i \end{vmatrix} = a(ei - fh) - b(di - fg) + c(dh - eg)
+          </div>
+        </div>
+
+        <h3 class="section-h3">The Sarrus Diagonal Rule (Fast 3&times;3 Shortcut)</h3>
+        <p class="section-prose">
+          Copy columns 1 and 2 to the right of the matrix. Sum the products of the 3 downward diagonals, then subtract the products of the 3 upward diagonals:
+        </p>
+        <div style="background: #f1f5f9; padding: 16px; border-radius: 8px; font-family: monospace; text-align: center; font-size: 1.1rem; line-height: 1.8;">
+          $\det = (\mathbf{aei + bfg + cdh}) - (\mathbf{ceg + afh + bdi})$
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 21 & 22: MINORS, COFACTORS & PROPERTIES
+           ========================================== -->
+      <section class="topic-card" id="sec-21">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 21 &bull; 22</span>
+            <h2 class="topic-title">Minors, Cofactors &amp; 8 Core Determinant Properties</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-21', 'Minors, Cofactors & Properties')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          <strong>Minor ($M_{ij}$):</strong> The determinant of the submatrix left after crossing out row $i$ and column $j$.<br>
+          <strong>Cofactor ($C_{ij}$):</strong> The minor with its position sign attached:
+          $$C_{ij} = (-1)^{i+j} M_{ij}$$
+        </p>
+
+        <div style="display: flex; gap: 20px; align-items: center; justify-content: center; margin: 16px 0;">
+          <div style="text-align: center;">
+            <div style="font-weight: 700; margin-bottom: 4px;">Cofactor Sign Matrix ($3 \times 3$)</div>
+            <table class="math-matrix-table" style="background:#fff;">
+              <tr><td>+</td><td>&minus;</td><td>+</td></tr>
+              <tr><td>&minus;</td><td>+</td><td>&minus;</td></tr>
+              <tr><td>+</td><td>&minus;</td><td>+</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <h3 class="section-h3">8 Golden Determinant Properties (Entry Test Must-Know)</h3>
+        <ol style="margin-left: 24px; color: var(--text-muted); line-height: 1.8;">
+          <li><strong>Zero Row/Column:</strong> If all entries of any row or column are $0$, then $\det(A) = 0$.</li>
+          <li><strong>Identical Rows/Columns:</strong> If two rows (or columns) are identical, then $\det(A) = 0$.</li>
+          <li><strong>Proportional Rows/Columns:</strong> If one row is a scalar multiple of another, $\det(A) = 0$.</li>
+          <li><strong>Row Interchanges:</strong> Swapping any two rows (or columns) multiplies the determinant by $-1$.</li>
+          <li><strong>Row Scaling:</strong> Multiplying a single row by scalar $k$ multiplies the determinant by $k$. Therefore, for an $n \times n$ matrix: $\mathbf{\det(kA) = k^n \det(A)}$.</li>
+          <li><strong>Row Addition Invariance:</strong> Adding a scalar multiple of one row to another ($R_i \to R_i + kR_j$) <em>does NOT change</em> the determinant.</li>
+          <li><strong>Multiplicative Property:</strong> $\mathbf{\det(AB) = \det(A) \cdot \det(B)}$. Also $\det(A^T) = \det(A)$.</li>
+          <li><strong>Inverse Determinant:</strong> $\mathbf{\det(A^{-1}) = \frac{1}{\det(A)}}$.</li>
+        </ol>
+      </section>
+
+      <!-- ==========================================
+           SECTION 23 & 24 & 25: ADJOINT & INVERSE
+           ========================================== -->
+      <section class="topic-card" id="sec-24">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 23 &bull; 24 &bull; 25</span>
+            <h2 class="topic-title">Singular Matrices, Adjoint &amp; Inverse of a Matrix</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-24', 'Adjoint & Inverse')">☆ Bookmark</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+          <div class="callout-box callout-tip" style="margin:0;">
+            <strong>Non-Singular Matrix:</strong> $\det(A) \neq 0$<br>
+            &bull; Inverse $A^{-1}$ <strong>EXISTS</strong>.<br>
+            &bull; System $AX = B$ has a unique solution.
+          </div>
+          <div class="callout-box callout-mistake" style="margin:0;">
+            <strong>Singular Matrix:</strong> $\det(A) = 0$<br>
+            &bull; Inverse $A^{-1}$ <strong>DOES NOT EXIST</strong>.<br>
+            &bull; Cannot be inverted!
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">The General Inverse Formula &amp; 2&times;2 Shortcut</div>
+          <div class="formula-expression">
+            A^{-1} = \frac{1}{\det(A)} \operatorname{adj}(A)
+          </div>
+          <p style="margin-top: 10px;">For $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, the inverse is:</p>
+          <div class="formula-expression" style="margin-top: 4px;">
+            A^{-1} = \frac{1}{ad - bc} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}
+          </div>
+          <p style="font-size: 0.875rem; color: #475569; margin-top: 4px;">
+            <strong>Quick 2&times;2 rule:</strong> Swap the main diagonal entries ($a \leftrightarrow d$), and change the signs of the off-diagonal entries ($-b, -c$).
+          </p>
+        </div>
+
+        <h3 class="section-h3">Interactive Matrix Inverse Calculator</h3>
+        <div class="interactive-tool-card">
+          <div class="interactive-tool-header">2&times;2 Matrix Inverter &amp; Verifier ($AA^{-1} = I$)</div>
+          <div style="text-align: center; margin: 12px 0;">
+            <table class="math-matrix-table" style="margin: 0 auto; background: #fff;">
+              <tr>
+                <td><input type="number" id="inv_a" value="4" class="matrix-input-cell"></td>
+                <td><input type="number" id="inv_b" value="7" class="matrix-input-cell"></td>
+              </tr>
+              <tr>
+                <td><input type="number" id="inv_c" value="2" class="matrix-input-cell"></td>
+                <td><input type="number" id="inv_d" value="6" class="matrix-input-cell"></td>
+              </tr>
+            </table>
+          </div>
+          <div style="text-align: center; margin: 12px 0;">
+            <button class="btn btn-primary btn-sm" onclick="calculateMatrixInverseLive()">Calculate Inverse &amp; Verify</button>
+          </div>
+          <div id="inverseResultArea" class="tool-output-area"></div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 27 & 28 & 29: LINEAR EQUATIONS & CRAMER'S RULE
+           ========================================== -->
+      <section class="topic-card" id="sec-27">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Concept 27 &bull; 28 &bull; 29</span>
+            <h2 class="topic-title">Solving Systems of Linear Equations &amp; Cramer's Rule</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-27', 'Linear Equations & Cramer')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          Consider a system of 2 linear equations in 2 variables:
+          $$\begin{cases} a_1 x + b_1 y = c_1 \\ a_2 x + b_2 y = c_2 \end{cases}$$
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;">
+          <div class="example-box">
+            <div class="example-header">Method 1: Matrix Inversion ($X = A^{-1}B$)</div>
+            <div class="example-body">
+              <p>Write as $AX = B$ where:</p>
+              $A = \begin{bmatrix} a_1 & b_1 \\ a_2 & b_2 \end{bmatrix}, X = \begin{bmatrix} x \\ y \end{bmatrix}, B = \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}$<br><br>
+              Then $X = A^{-1} B = \frac{1}{|A|} \operatorname{adj}(A) B$.
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">Method 2: Cramer's Rule (Fastest for Exams)</div>
+            <div class="example-body">
+              $D = \begin{vmatrix} a_1 & b_1 \\ a_2 & b_2 \end{vmatrix}, \quad D_x = \begin{vmatrix} c_1 & b_1 \\ c_2 & b_2 \end{vmatrix}, \quad D_y = \begin{vmatrix} a_1 & c_1 \\ a_2 & c_2 \end{vmatrix}$<br><br>
+              $$\mathbf{x = \frac{D_x}{D}}, \quad \mathbf{y = \frac{D_y}{D}} \quad (D \neq 0)$$
+            </div>
+          </div>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 0.95rem;">
+          <thead>
+            <tr style="background: var(--primary-navy); color: #fff;">
+              <th style="padding: 10px; text-align: left; border-radius: 6px 0 0 0;">Feature</th>
+              <th style="padding: 10px; text-align: left;">Matrix Inversion Method</th>
+              <th style="padding: 10px; text-align: left; border-radius: 0 6px 0 0;">Cramer's Rule</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #cbd5e1; background: #fff;">
+              <td style="padding: 10px; font-weight: 700;">When to use in Test</td>
+              <td style="padding: 10px;">When explicitly asked for $A^{-1}$ or finding $X$.</td>
+              <td style="padding: 10px; color: var(--accent-green); font-weight: 700;">Best for finding single variable ($x$ only or $y$ only).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #cbd5e1; background: #f8fafc;">
+              <td style="padding: 10px; font-weight: 700;">Condition</td>
+              <td style="padding: 10px;">Requires $\det(A) \neq 0$.</td>
+              <td style="padding: 10px;">Requires $D \neq 0$.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==========================================
+           SECTION 31: 2D MATRIX TRANSFORMATION VISUALIZER
+           ========================================== -->
+      <section class="topic-card" id="sec-31">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Interactive Visualizer</span>
+            <h2 class="topic-title">2D Matrix Linear Transformation Visualizer</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-31', 'Transformation Visualizer')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          Every $2 \times 2$ matrix defines a geometric transformation mapping every vector $\begin{bmatrix} x \\ y \end{bmatrix}$ to $\begin{bmatrix} x' \\ y' \end{bmatrix} = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}$. See the transformation applied live to a unit square:
+        </p>
+
+        <div class="canvas-container">
+          <canvas id="transformationCanvas" width="460" height="340"></canvas>
+          
+          <div class="canvas-controls">
+            <button class="btn btn-secondary btn-sm" onclick="applyPresetTransform(1, 0, 0, 1)">Identity [1 0; 0 1]</button>
+            <button class="btn btn-secondary btn-sm" onclick="applyPresetTransform(2, 0, 0, 2)">Scale 2x</button>
+            <button class="btn btn-secondary btn-sm" onclick="applyPresetTransform(-1, 0, 0, 1)">Reflect Y-axis</button>
+            <button class="btn btn-secondary btn-sm" onclick="applyPresetTransform(1, 0, 0, -1)">Reflect X-axis</button>
+            <button class="btn btn-secondary btn-sm" onclick="applyPresetTransform(0, -1, 1, 0)">Rotate 90&deg;</button>
+            <button class="btn btn-secondary btn-sm" onclick="applyPresetTransform(1, 1, 0, 1)">Shear X</button>
+          </div>
+
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <span>Custom Matrix:</span>
+            <input type="number" id="trans_a" value="1" step="0.5" class="matrix-input-cell">
+            <input type="number" id="trans_b" value="0" step="0.5" class="matrix-input-cell">
+            <input type="number" id="trans_c" value="0" step="0.5" class="matrix-input-cell">
+            <input type="number" id="trans_d" value="1" step="0.5" class="matrix-input-cell">
+            <button class="btn btn-primary btn-sm" onclick="applyCustomTransform()">Apply Custom</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 32: UNIVERSITY TEST STRATEGY
+           ========================================== -->
+      <section class="topic-card" id="sec-32">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Exam Strategy Guide</span>
+            <h2 class="topic-title">🎯 University &amp; Scholarship Test Strategy</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-32', 'Test Strategy')">☆ Bookmark</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          
+          <div class="example-box">
+            <div class="example-header" style="background:#fee2e2; color:#991b1b;">FAST-style Test Focus</div>
+            <div class="example-body">
+              <p>&bull; <strong>Multiplication Dimensions:</strong> Traps on order compatibility ($m \times k \times k \times p$).</p>
+              <p>&bull; <strong>Non-Commutative Properties:</strong> High focus on $(AB)^T = B^T A^T$ and $AB \neq BA$.</p>
+              <p>&bull; <strong>Singular matrices:</strong> Solving for unknown $k$ in $\det(A) = 0$.</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header" style="background:#e0e7ff; color:#3730a3;">NET / NUST-style Focus</div>
+            <div class="example-body">
+              <p>&bull; <strong>Determinant Properties:</strong> $\det(kA) = k^n \det(A)$ and row operation invariance.</p>
+              <p>&bull; <strong>Algebraic Identities:</strong> Inverses of diagonal &amp; scalar matrices.</p>
+              <p>&bull; <strong>Speed Elimination:</strong> Eliminate options by checking result dimension first.</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header" style="background:#fef3c7; color:#92400e;">ECAT / UET-style Focus</div>
+            <div class="example-body">
+              <p>&bull; <strong>Speed Inverses:</strong> 2&times;2 adjoint shortcut calculation under 20 seconds.</p>
+              <p>&bull; <strong>Cramer's Rule:</strong> Fast evaluation of $D_x / D$.</p>
+              <p>&bull; <strong>Symmetric / Skew:</strong> Zero diagonal checks for skew-symmetric matrices.</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header" style="background:#dcfce7; color:#166534;">IBA / Scholarship-style Focus</div>
+            <div class="example-body">
+              <p>&bull; <strong>Word Problems &amp; Models:</strong> Setting up $AX = B$ from practical situations.</p>
+              <p>&bull; <strong>Conceptual Rigor:</strong> Questions on linear independence and unique solutions.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 33: SPEED TECHNIQUES (25 SHORTCUTS)
+           ========================================== -->
+      <section class="topic-card" id="sec-33">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">High-Yield Shortcuts</span>
+            <h2 class="topic-title">&#9889; 25 Matrix &amp; Determinant Speed Techniques</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-33', 'Speed Shortcuts')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">Save critical minutes during entrance tests with these 25 tested mathematical shortcuts:</p>
+
+        <div class="speed-cards-grid">
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 1. Order Check Elimination</div>
+            <p>Always write orders first: $(m \times k) \times (k \times p) \to m \times p$. Immediately eliminate MCQs with incorrect resulting dimensions.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 2. Determinant of Scalar Matrix Multiple</div>
+            <p>For an $n \times n$ matrix: $\mathbf{\det(kA) = k^n \det(A)}$. If $A$ is $3 \times 3$ and $\det(A)=5$, then $\det(2A) = 2^3 \times 5 = 40$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 3. Triangular &amp; Diagonal Determinants</div>
+            <p>For upper triangular, lower triangular, or diagonal matrices, determinant is simply the <strong>product of main diagonal entries</strong>.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 4. 2&times;2 Inverse in 5 Seconds</div>
+            <p>Swap main diagonal elements, negate off-diagonal elements, divide by $ad - bc$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 5. Proportional Rows $\implies \det = 0$</div>
+            <p>If row 2 is $3 \times$ row 1, immediately write determinant as $0$ without doing any expansions.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 6. Transpose of Product Reversal</div>
+            <p>Always remember $(AB)^T = B^T A^T$ and $(ABC)^T = C^T B^T A^T$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 7. Inverse of Product Reversal</div>
+            <p>Always remember $(AB)^{-1} = B^{-1} A^{-1}$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 8. Determinant of Inverse</div>
+            <p>$\det(A^{-1}) = \frac{1}{\det(A)}$. If $\det(A) = 4$, then $\det(A^{-1}) = 1/4$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 9. Skew-Symmetric Odd Order Determinant</div>
+            <p>The determinant of any skew-symmetric matrix of <strong>odd order</strong> ($3 \times 3, 5 \times 5$) is <strong>ALWAYS ZERO</strong>!</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 10. Trace of a Matrix</div>
+            <p>$\operatorname{Tr}(A)$ is the sum of main diagonal elements. $\operatorname{Tr}(A+B) = \operatorname{Tr}(A) + \operatorname{Tr}(B)$ and $\operatorname{Tr}(AB) = \operatorname{Tr}(BA)$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 11. Orthogonal Matrix Property</div>
+            <p>If $A^T A = I$, then $A^{-1} = A^T$ and $\det(A) = \pm 1$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 12. Row Swap Sign Rule</div>
+            <p>Each single swap of two rows or columns multiplies the determinant by $-1$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 13. Idempotent Matrix</div>
+            <p>If $A^2 = A$, then eigenvalues/determinants are either $0$ or $1$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 14. Involutory Matrix</div>
+            <p>If $A^2 = I$, then $A^{-1} = A$ and $\det(A) = \pm 1$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 15. Nilpotent Matrix</div>
+            <p>If $A^k = O$ for some positive integer $k$, then $\det(A) = 0$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 16. Fast Single Variable Cramer</div>
+            <p>If a question only asks for $y$, only calculate $D$ and $D_y$, saving 50% time by skipping $D_x$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 17. Diagonal Matrix Powers</div>
+            <p>If $D = \operatorname{diag}(a, b, c)$, then $D^n = \operatorname{diag}(a^n, b^n, c^n)$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 18. Adjoint Determinant Rule</div>
+            <p>For an $n \times n$ matrix: $\det(\operatorname{adj} A) = (\det A)^{n-1}$. For $3 \times 3$, $\det(\operatorname{adj} A) = (\det A)^2$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 19. Symmetric Decomposition</div>
+            <p>Any square matrix can be uniquely written as $A = \frac{1}{2}(A + A^T) + \frac{1}{2}(A - A^T)$ (Symmetric + Skew-Symmetric).</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 20. Identity Power Invariance</div>
+            <p>$I^n = I$ for any integer $n \ge 1$.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 21. Row Expansion Choice</div>
+            <p>Always expand along the row or column that contains the maximum number of zeros.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 22. Zero Determinant Test for Singularity</div>
+            <p>To check if an inverse exists, always test $\det(A) \neq 0$ before spending time calculating cofactors or adjoint.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 23. Commutativity with Identity</div>
+            <p>$AI = IA = A$ holds for any compatible identity matrix.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 24. Determinant of Transpose</div>
+            <p>$\det(A^T) = \det(A)$ is always true.</p>
+          </div>
+
+          <div class="speed-card">
+            <div class="speed-card-title">&#9889; 25. Inverse of Diagonal Matrix</div>
+            <p>If $D = \operatorname{diag}(d_1, d_2, d_3)$ with $d_i \neq 0$, then $D^{-1} = \operatorname{diag}(1/d_1, 1/d_2, 1/d_3)$.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 34: 30+ COMMON MISTAKES
+           ========================================== -->
+      <section class="topic-card" id="sec-34">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Error Prevention Guide</span>
+            <h2 class="topic-title">❌ 30 Common Student Mistakes &amp; How to Avoid Them</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-34', 'Common Mistakes')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">Review these frequent test pitfalls before taking any university aptitude test:</p>
+
+        <div id="commonMistakesList">
+          <!-- Populated cleanly via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 35: FORMULA SHEET
+           ========================================== -->
+      <section class="topic-card" id="sec-formula-sheet">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Revision Resource</span>
+            <h2 class="topic-title">📘 Complete Formula Sheet</h2>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-outline-dark btn-sm" onclick="copyFormulaSheetText()">📋 Copy Formula Sheet</button>
+            <button class="btn btn-outline-dark btn-sm" onclick="window.print()">🖨️ Print Formula Sheet</button>
+          </div>
+        </div>
+
+        <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; font-size: 0.95rem; line-height: 2;">
+          <h3 style="color: var(--accent-green); margin-bottom: 8px;">1. Order &amp; Operations</h3>
+          &bull; <strong>Order:</strong> $m \text{ rows} \times n \text{ columns}$<br>
+          &bull; <strong>Addition/Subtraction:</strong> $(A \pm B)_{ij} = a_{ij} \pm b_{ij}$ (Order must match)<br>
+          &bull; <strong>Scalar Multiplication:</strong> $(kA)_{ij} = k \cdot a_{ij}$<br>
+          &bull; <strong>Multiplication Compatibility:</strong> $A_{m \times k} \times B_{k \times p} = C_{m \times p}$<br>
+          &bull; <strong>Non-Commutative:</strong> $AB \neq BA$ (in general)<br>
+          
+          <h3 style="color: var(--accent-green); margin: 16px 0 8px 0;">2. Transpose &amp; Symmetry</h3>
+          &bull; <strong>Transpose:</strong> $(A^T)_{ij} = a_{ji}$<br>
+          &bull; <strong>Product Transpose:</strong> $(AB)^T = B^T A^T$<br>
+          &bull; <strong>Symmetric:</strong> $A^T = A \implies a_{ij} = a_{ji}$<br>
+          &bull; <strong>Skew-Symmetric:</strong> $A^T = -A \implies a_{ii} = 0, a_{ij} = -a_{ji}$<br>
+
+          <h3 style="color: var(--accent-green); margin: 16px 0 8px 0;">3. Determinants</h3>
+          &bull; <strong>2&times;2 Determinant:</strong> $\det(A) = ad - bc$<br>
+          &bull; <strong>3&times;3 Expansion:</strong> $a(ei-fh) - b(di-fg) + c(dh-eg)$<br>
+          &bull; <strong>Scalar Property:</strong> $\det(kA) = k^n \det(A)$ ($n \times n$ matrix)<br>
+          &bull; <strong>Multiplication Property:</strong> $\det(AB) = \det(A)\det(B)$<br>
+          &bull; <strong>Transpose Determinant:</strong> $\det(A^T) = \det(A)$<br>
+          &bull; <strong>Inverse Determinant:</strong> $\det(A^{-1}) = \frac{1}{\det(A)}$<br>
+
+          <h3 style="color: var(--accent-green); margin: 16px 0 8px 0;">4. Minors, Cofactors, Adjoint &amp; Inverse</h3>
+          &bull; <strong>Cofactor:</strong> $C_{ij} = (-1)^{i+j} M_{ij}$<br>
+          &bull; <strong>Adjoint:</strong> $\operatorname{adj}(A) = [C_{ij}]^T$<br>
+          &bull; <strong>Inverse:</strong> $A^{-1} = \frac{1}{\det(A)} \operatorname{adj}(A) \quad (\det(A) \neq 0)$<br>
+          &bull; <strong>2&times;2 Inverse:</strong> $\frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$<br>
+
+          <h3 style="color: var(--accent-green); margin: 16px 0 8px 0;">5. Systems of Linear Equations</h3>
+          &bull; <strong>Matrix Form:</strong> $AX = B \implies X = A^{-1} B$<br>
+          &bull; <strong>Cramer's Rule:</strong> $x = \frac{D_x}{D}, \quad y = \frac{D_y}{D}, \quad z = \frac{D_z}{D} \quad (D \neq 0)$
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 36: PRACTICE ZONE (120 MCQs)
+           ========================================== -->
+      <section class="topic-card" id="sec-practice-zone">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Interactive Practice</span>
+            <h2 class="topic-title">📝 Practice Zone (120 Original MCQs)</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-practice-zone', 'Practice Zone')">☆ Bookmark</button>
+        </div>
+
+        <p class="section-prose">
+          Practice questions classified by preparation style and difficulty level. Click on any option to reveal instant feedback and detailed step-by-step mathematical explanations:
+        </p>
+
+        <div class="practice-controls-bar">
+          <button class="filter-chip active" onclick="filterPracticeMCQs('all', this)">All Questions (120)</button>
+          <button class="filter-chip" onclick="filterPracticeMCQs('foundation', this)">Foundation (30)</button>
+          <button class="filter-chip" onclick="filterPracticeMCQs('intermediate', this)">Intermediate (40)</button>
+          <button class="filter-chip" onclick="filterPracticeMCQs('entry-test', this)">University Entry / Scholarship (50)</button>
+          <button class="filter-chip" onclick="filterPracticeMCQs('fast', this)">FAST-style</button>
+          <button class="filter-chip" onclick="filterPracticeMCQs('net', this)">NET-style</button>
+          <button class="filter-chip" onclick="filterPracticeMCQs('ecat', this)">ECAT-style</button>
+          <button class="filter-chip" onclick="filterPracticeMCQs('iba', this)">IBA-style</button>
+        </div>
+
+        <div id="practiceQuestionsContainer">
+          <!-- Rendered dynamically via JavaScript -->
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <button class="btn btn-outline-dark" id="loadMorePracticeBtn" onclick="loadMorePracticeQuestions()">Load More Questions</button>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 37: MASTER TEST (45 MCQs)
+           ========================================== -->
+      <section class="topic-card" id="sec-master-test">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Timed Exam Simulator</span>
+            <h2 class="topic-title">🧠 Matrices &amp; Determinants Master Test</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-master-test', 'Master Test')">☆ Bookmark</button>
+        </div>
+
+        <div class="test-simulator-container">
+          <div class="test-header-bar">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--primary-navy);">Official Aptitude Simulation</h3>
+              <p style="font-size: 0.85rem; color: #64748b;">45 Questions &bull; 40 Minutes &bull; Timed Exam Environment</p>
+            </div>
+            <div id="testTimerDisplay" class="timer-badge">40:00</div>
+          </div>
+
+          <div id="testStartPrompt" style="text-align: center; padding: 30px 0;">
+            <p style="font-size: 1.05rem; margin-bottom: 16px; color: var(--text-muted);">
+              Test your full mastery across foundation, intermediate, and entrance-test difficulty levels.
+            </p>
+            <button class="btn btn-primary" style="padding: 12px 32px; font-size: 1rem;" onclick="startMasterTest()">Start Master Test</button>
+          </div>
+
+          <div id="testActiveContainer" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span id="testQuestionCounter" style="font-weight: 700; color: var(--accent-green);">Question 1 of 45</span>
+              <button class="btn btn-outline-dark btn-sm" id="testMarkReviewBtn" onclick="toggleMarkCurrentQuestion()">🏷️ Mark for Review</button>
+            </div>
+
+            <!-- Question Palette -->
+            <div class="test-question-palette" id="testPaletteContainer"></div>
+
+            <div class="mcq-card" style="margin-top: 16px; border: 2px solid #cbd5e1;">
+              <div id="testQuestionText" class="mcq-question"></div>
+              <div id="testOptionsContainer" class="mcq-options-grid"></div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
+              <button class="btn btn-outline-dark" onclick="navigateTestQuestion(-1)">← Previous</button>
+              <button class="btn btn-outline-dark" onclick="navigateTestQuestion(1)">Next →</button>
+              <button class="btn btn-primary" style="background:#dc2626; border-color:#dc2626;" onclick="confirmSubmitTest()">Submit Test</button>
+            </div>
+          </div>
+
+          <!-- Test Result Area -->
+          <div id="testResultCard" class="test-result-card">
+            <h3 style="color: var(--accent-green); font-size: 1.4rem; font-weight: 800; text-align: center;">Master Test Results &amp; Diagnostic Analysis</h3>
+            
+            <div class="stats-grid">
+              <div class="stat-box">
+                <div class="stat-val" id="resScore">--/45</div>
+                <div class="stat-label">Score</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-val" id="resPercentage">--%</div>
+                <div class="stat-label">Percentage</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-val" id="resCorrect" style="color: #15803d;">--</div>
+                <div class="stat-label">Correct</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-val" id="resIncorrect" style="color: #b91c1c;">--</div>
+                <div class="stat-label">Incorrect</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-val" id="resTime">--:--</div>
+                <div class="stat-label">Time Used</div>
+              </div>
+            </div>
+
+            <div id="diagnosticBreakdown" style="background: #fff; border: 1px solid var(--border-color); border-radius: 8px; padding: 18px; margin: 16px 0;">
+              <!-- Diagnostic weak topics -->
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+              <button class="btn btn-primary" onclick="restartMasterTest()">Retake Master Test</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 38: 10-MINUTE QUICK REVISION
+           ========================================== -->
+      <section class="topic-card" id="sec-quick-revision">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Quick Revision</span>
+            <h2 class="topic-title">⚡ 10-Minute Matrices &amp; Determinants Revision</h2>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark('sec-quick-revision', 'Quick Revision')">☆ Bookmark</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div class="example-box">
+            <div class="example-header">Orders &amp; Multiplication</div>
+            <div class="example-body">
+              &bull; $m \times k$ and $k \times p \to m \times p$.<br>
+              &bull; Generally $AB \neq BA$.<br>
+              &bull; $AI = IA = A$.
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">Transposes &amp; Inverses</div>
+            <div class="example-body">
+              &bull; $(AB)^T = B^T A^T$.<br>
+              &bull; $(AB)^{-1} = B^{-1} A^{-1}$.<br>
+              &bull; $A^{-1} = \frac{1}{|A|}\operatorname{adj}(A)$ (Requires $|A| \neq 0$).
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">Determinants Key Rules</div>
+            <div class="example-body">
+              &bull; $|kA| = k^n |A|$ ($n \times n$).<br>
+              &bull; $|AB| = |A||B|$.<br>
+              &bull; Swap 2 rows $\to$ Multiply by $-1$.
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-header">Equations &amp; Cramer</div>
+            <div class="example-body">
+              &bull; $AX = B \implies X = A^{-1}B$.<br>
+              &bull; $x = D_x / D, y = D_y / D$.<br>
+              &bull; $D = 0 \implies$ No unique solution.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 39: BOOKMARKED TOPICS
+           ========================================== -->
+      <section class="topic-card" id="sec-bookmarks">
+        <div class="topic-header">
+          <div class="topic-header-left">
+            <span class="topic-section-tag">Saved Highlights</span>
+            <h2 class="topic-title">⭐ My Bookmarked Topics</h2>
+          </div>
+        </div>
+        <div id="bookmarksContainer">
+          <p style="color: var(--text-muted);">No bookmarked topics yet. Click the "☆ Bookmark" button on any section to save it for quick reference.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div id="toastNotification" class="toast-notice">
+    <span id="toastMessage">Notification</span>
+  </div>
+
+  <script src="matrices.js"></script>
+</body>
+</html>

@@ -1,0 +1,2506 @@
+/* ==========================================================================
+   EduNexa AI - MDCAT Biology Chapter: Support & Movement
+   Design System & Styling
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Premium Medical Aesthetic */
+  --bg-main: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-mint-soft: #ecfdf5;
+  --bg-mint-subtle: #f0fdf4;
+  --bg-sky-soft: #f0f9ff;
+  --bg-slate-soft: #f1f5f9;
+  
+  /* Primary Accents */
+  --primary-emerald: #059669;
+  --primary-emerald-dark: #047857;
+  --primary-emerald-light: #10b981;
+  --primary-emerald-glow: rgba(16, 185, 129, 0.2);
+  
+  /* Scientific Sky Accents */
+  --accent-sky: #0284c7;
+  --accent-sky-light: #38bdf8;
+  --accent-sky-glow: rgba(56, 189, 248, 0.2);
+
+  /* Warning / Trap Accents */
+  --accent-amber: #d97706;
+  --accent-amber-soft: #fffbeb;
+  --accent-rose: #e11d48;
+  --accent-rose-soft: #fff1f2;
+  
+  /* Neutral Typography */
+  --text-navy-primary: #0f172a;
+  --text-navy-secondary: #334155;
+  --text-navy-muted: #64748b;
+  --text-navy-subtle: #94a3b8;
+  
+  /* Borders & Dividers */
+  --border-subtle: #e2e8f0;
+  --border-emerald: #a7f3d0;
+  --border-sky: #bae6fd;
+  --border-amber: #fde68a;
+  --border-rose: #fecdd3;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  --shadow-emerald: 0 10px 25px -5px rgba(16, 185, 129, 0.25);
+  
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Typography Scale */
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Base Reset & Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-main);
+  color: var(--text-navy-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Watermark Background System
+   ========================================================================== */
+.watermark-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.035;
+  background-image: 
+    radial-gradient(circle at 20% 15%, #059669 1px, transparent 1px),
+    radial-gradient(circle at 80% 85%, #0284c7 1px, transparent 1px);
+  background-size: 80px 80px, 120px 120px;
+}
+
+.watermark-svg-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-repeat: repeat;
+  animation: watermarkDrift 120s linear infinite;
+}
+
+@keyframes watermarkDrift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-30px, -20px); }
+  100% { transform: translate(0, 0); }
+}
+
+.app-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+}
+
+/* ==========================================================================
+   Header & Sticky Mini-Dashboard
+   ========================================================================== */
+.chapter-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.75rem 1.25rem;
+  margin: 0 -1.25rem 2rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.chapter-header.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--primary-emerald), var(--accent-sky));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.25rem;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+}
+
+.brand-text h1 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-navy-primary);
+  line-height: 1.2;
+}
+
+.brand-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-navy-muted);
+}
+
+.badge-vip {
+  background: var(--bg-mint-soft);
+  color: var(--primary-emerald);
+  border: 1px solid var(--border-emerald);
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Dashboard Metrics */
+.header-dashboard {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.metric-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-slate-soft);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.8rem;
+  color: var(--text-navy-secondary);
+}
+
+.metric-pill strong {
+  color: var(--text-navy-primary);
+  font-weight: 700;
+}
+
+.progress-track-mini {
+  width: 70px;
+  height: 6px;
+  background: #cbd5e1;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill-mini {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary-emerald), var(--primary-emerald-light));
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Action Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--primary-emerald);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+}
+
+.btn-primary:hover {
+  background: var(--primary-emerald-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+}
+
+.btn-sky {
+  background: var(--accent-sky);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+}
+
+.btn-sky:hover {
+  background: #0369a1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+}
+
+.btn-outline {
+  background: #ffffff;
+  border-color: var(--border-subtle);
+  color: var(--text-navy-secondary);
+}
+
+.btn-outline:hover {
+  background: var(--bg-slate-soft);
+  border-color: #cbd5e1;
+  color: var(--text-navy-primary);
+}
+
+.btn-sm {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Quick Sub-Navigation Menu */
+.quick-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.5rem 0 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  scrollbar-width: thin;
+}
+
+.quick-nav-link {
+  padding: 0.35rem 0.8rem;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-navy-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.quick-nav-link:hover, .quick-nav-link.active {
+  background: var(--bg-mint-soft);
+  border-color: var(--border-emerald);
+  color: var(--primary-emerald-dark);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Global Section & Card Layouts
+   ========================================================================== */
+.chapter-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 2.25rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chapter-section:hover {
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-md);
+}
+
+.section-header {
+  margin-bottom: 1.75rem;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary-emerald);
+  background: var(--bg-mint-soft);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.5rem;
+}
+
+.section-tag.sky {
+  color: var(--accent-sky);
+  background: var(--bg-sky-soft);
+}
+
+.section-tag.amber {
+  color: var(--accent-amber);
+  background: var(--accent-amber-soft);
+}
+
+.section-tag.rose {
+  color: var(--accent-rose);
+  background: var(--accent-rose-soft);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+  line-height: 1.3;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-navy-secondary);
+  margin-top: 0.35rem;
+}
+
+/* MDCAT Callout Badges & Boxes */
+.mdcat-point-box {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border: 1px solid var(--border-emerald);
+  border-left: 4px solid var(--primary-emerald);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.mdcat-point-box .box-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.mdcat-point-box h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary-emerald-dark);
+  margin-bottom: 0.2rem;
+}
+
+.mdcat-point-box p {
+  font-size: 0.88rem;
+  color: var(--text-navy-secondary);
+}
+
+.mdcat-trap-box {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1px solid var(--border-amber);
+  border-left: 4px solid var(--accent-amber);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.mdcat-trap-box .box-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.mdcat-trap-box h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #92400e;
+  margin-bottom: 0.2rem;
+}
+
+.mdcat-trap-box p {
+  font-size: 0.88rem;
+  color: #78350f;
+}
+
+/* ==========================================================================
+   VIP FEATURE 1: Hero Interactive Skeleton
+   ========================================================================== */
+.hero-skeleton-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.skeleton-viewport-card {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.skeleton-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.skeleton-toggle-group {
+  display: flex;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  padding: 3px;
+  border-radius: var(--radius-full);
+}
+
+.toggle-btn {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: var(--text-navy-muted);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.toggle-btn.active {
+  background: var(--primary-emerald);
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(5, 150, 105, 0.3);
+}
+
+.toggle-btn.active.sky {
+  background: var(--accent-sky);
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(2, 132, 199, 0.3);
+}
+
+/* Skeleton SVG Interactive Stage */
+.skeleton-svg-container {
+  width: 100%;
+  height: 520px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skeleton-svg {
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  filter: drop-shadow(0 4px 12px rgba(15, 23, 42, 0.08));
+}
+
+.bone-zone {
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  fill: #cbd5e1;
+  stroke: #94a3b8;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.bone-zone:hover {
+  fill: #6ee7b7;
+  stroke: var(--primary-emerald);
+  filter: drop-shadow(0 0 8px var(--primary-emerald-glow));
+}
+
+.bone-zone.selected {
+  fill: var(--primary-emerald);
+  stroke: var(--primary-emerald-dark);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 12px rgba(5, 150, 105, 0.5));
+}
+
+/* Axial / Appendicular Highlighting */
+.bone-zone.axial-highlight {
+  fill: #34d399 !important;
+  stroke: var(--primary-emerald-dark) !important;
+  filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.6));
+}
+
+.bone-zone.appendicular-highlight {
+  fill: #38bdf8 !important;
+  stroke: #0284c7 !important;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
+}
+
+.bone-zone.dimmed {
+  opacity: 0.3;
+}
+
+/* Interactive SVG Hotspots */
+.hotspot-dot {
+  cursor: pointer;
+  fill: #ffffff;
+  stroke: var(--primary-emerald);
+  stroke-width: 2.5;
+  transition: transform 0.2s ease, fill 0.2s ease;
+  animation: pulseHotspot 2.5s infinite;
+}
+
+@keyframes pulseHotspot {
+  0% { r: 5; opacity: 1; }
+  50% { r: 7.5; opacity: 0.8; }
+  100% { r: 5; opacity: 1; }
+}
+
+.hotspot-dot:hover {
+  fill: var(--primary-emerald);
+  stroke: #ffffff;
+  r: 8;
+}
+
+/* Skeleton Information Panel */
+.skeleton-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.skeleton-detail-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.region-header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.region-type-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-axial {
+  background: var(--bg-mint-soft);
+  color: var(--primary-emerald-dark);
+  border: 1px solid var(--border-emerald);
+}
+
+.badge-appendicular {
+  background: var(--bg-sky-soft);
+  color: var(--accent-sky);
+  border: 1px solid var(--border-sky);
+}
+
+.region-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bone-count-chip {
+  background: var(--bg-slate-soft);
+  color: var(--text-navy-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.region-description {
+  font-size: 0.9rem;
+  color: var(--text-navy-secondary);
+  margin: 0.75rem 0 1rem;
+  line-height: 1.55;
+}
+
+.region-sublist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.sublist-item {
+  background: var(--bg-slate-soft);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+}
+
+.sublist-item strong {
+  display: block;
+  color: var(--text-navy-primary);
+  font-weight: 700;
+}
+
+.sublist-item span {
+  color: var(--text-navy-muted);
+  font-size: 0.75rem;
+}
+
+/* Skeleton Quick Selector Pills */
+.skeleton-quick-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.region-select-pill {
+  background: var(--bg-slate-soft);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-navy-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.region-select-pill:hover, .region-select-pill.active {
+  background: var(--primary-emerald);
+  border-color: var(--primary-emerald);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Section 1 & 2: Axial vs Appendicular Layout
+   ========================================================================== */
+.axial-appendicular-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.skeleton-group-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skeleton-group-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.skeleton-group-card.axial {
+  border-top: 4px solid var(--primary-emerald);
+}
+
+.skeleton-group-card.appendicular {
+  border-top: 4px solid var(--accent-sky);
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.group-header h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+}
+
+.group-count-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.group-count-badge.axial {
+  background: var(--bg-mint-soft);
+  color: var(--primary-emerald-dark);
+}
+
+.group-count-badge.appendicular {
+  background: var(--bg-sky-soft);
+  color: var(--accent-sky);
+}
+
+.memory-tag-banner {
+  background: var(--bg-slate-soft);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.memory-tag-banner.axial {
+  color: var(--primary-emerald-dark);
+  background: #f0fdf4;
+  border: 1px dashed var(--border-emerald);
+}
+
+.memory-tag-banner.appendicular {
+  color: #0369a1;
+  background: #f0f9ff;
+  border: 1px dashed var(--border-sky);
+}
+
+.group-components-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.group-components-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.75rem;
+  background: var(--bg-slate-soft);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--text-navy-secondary);
+}
+
+.group-components-list li span.count {
+  font-weight: 700;
+  color: var(--text-navy-primary);
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   Section 3: Bone vs Cartilage Interactive Slider
+   ========================================================================== */
+.bone-cartilage-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.slider-container-card {
+  background: linear-gradient(135deg, var(--bg-mint-soft) 0%, var(--bg-sky-soft) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.slider-header-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-navy-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.custom-range-slider {
+  width: 100%;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: #cbd5e1;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.custom-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--primary-emerald);
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.custom-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.slider-state-banner {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-navy-primary);
+}
+
+.comparison-matrix-table-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.comparison-table th {
+  background: var(--bg-slate-soft);
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+  color: var(--text-navy-primary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.comparison-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-navy-secondary);
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table tr.active-row {
+  background: #f0fdf4;
+}
+
+/* ==========================================================================
+   Section 4: Types of Muscles Interactive Lab
+   ========================================================================== */
+.muscle-lab-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.muscle-type-card {
+  background: #ffffff;
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.muscle-type-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-emerald);
+}
+
+.muscle-type-card.active {
+  border-color: var(--primary-emerald);
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg-mint-soft) 100%);
+  box-shadow: 0 8px 20px rgba(5, 150, 105, 0.15);
+}
+
+.muscle-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.muscle-card-header h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+}
+
+.muscle-icon-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-slate-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+/* Microscopic Canvas/SVG Simulation Container */
+.microscope-viewport {
+  height: 120px;
+  background: #0f172a;
+  border-radius: var(--radius-sm);
+  margin: 0.75rem 0 1rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.microscope-label {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(15, 23, 42, 0.75);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Histology Animations */
+.skeletal-fiber-animation {
+  width: 90%;
+  height: 48px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f43f5e 0px,
+    #f43f5e 8px,
+    #fda4af 8px,
+    #fda4af 16px
+  );
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.muscle-type-card.active .skeletal-fiber-animation {
+  animation: skeletalContract 2s infinite ease-in-out;
+}
+
+@keyframes skeletalContract {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.78); }
+}
+
+.smooth-fiber-animation {
+  width: 85%;
+  height: 36px;
+  background: linear-gradient(90deg, #ec4899, #f472b6, #ec4899);
+  border-radius: 50% 50% 50% 50% / 100% 100% 0% 0%;
+  clip-path: polygon(0% 50%, 20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%);
+  transition: transform 0.3s ease;
+}
+
+.muscle-type-card.active .smooth-fiber-animation {
+  animation: smoothPeristalsis 3.5s infinite ease-in-out;
+}
+
+@keyframes smoothPeristalsis {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(0.85, 0.65); }
+}
+
+.cardiac-fiber-animation {
+  width: 88%;
+  height: 52px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ef4444 0px,
+    #ef4444 6px,
+    #f87171 6px,
+    #f87171 12px
+  );
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.intercalated-disc-line {
+  width: 3px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 0 0 6px #ffffff;
+}
+
+.muscle-type-card.active .cardiac-fiber-animation {
+  animation: cardiacBeat 1.2s infinite ease-in-out;
+}
+
+@keyframes cardiacBeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.08, 0.92); }
+  30% { transform: scale(0.92, 1.04); }
+  45% { transform: scale(1.02); }
+}
+
+.muscle-traits-list {
+  list-style: none;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.muscle-traits-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-navy-secondary);
+}
+
+.trait-check {
+  color: var(--primary-emerald);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Section 5: Skeletal Muscle Hierarchy (Zoom Pathway)
+   ========================================================================== */
+.hierarchy-flow-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+  scrollbar-width: thin;
+}
+
+.hierarchy-step-node {
+  flex: 1;
+  min-width: 170px;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.hierarchy-step-node:hover, .hierarchy-step-node.active {
+  border-color: var(--primary-emerald);
+  background: var(--bg-mint-soft);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.hierarchy-step-node.active .step-number {
+  background: var(--primary-emerald);
+  color: #ffffff;
+}
+
+.step-number {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-slate-soft);
+  color: var(--text-navy-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.4rem;
+}
+
+.step-name {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+  display: block;
+}
+
+.step-covering {
+  font-size: 0.72rem;
+  color: var(--primary-emerald-dark);
+  font-weight: 600;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.hierarchy-detail-display {
+  background: var(--bg-slate-soft);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hierarchy-detail-text h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+  margin-bottom: 0.3rem;
+}
+
+.hierarchy-detail-text p {
+  font-size: 0.88rem;
+  color: var(--text-navy-secondary);
+}
+
+/* ==========================================================================
+   VIP FEATURE 2: Sarcomere Architecture & Sliding Filament Theory Simulation
+   ========================================================================== */
+.sarcomere-sim-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+}
+
+.sim-controls-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sim-state-toggles {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sarcomere-stage-viewport {
+  background: linear-gradient(180deg, #090d16 0%, #0f172a 100%);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.5rem 1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Sarcomere SVG Diagram */
+.sarcomere-svg-stage {
+  width: 100%;
+  height: 220px;
+  display: block;
+}
+
+.z-disc-line {
+  stroke: #10b981;
+  stroke-width: 5;
+  stroke-dasharray: 6 3;
+  filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.7));
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.m-line {
+  stroke: #38bdf8;
+  stroke-width: 2.5;
+  stroke-dasharray: 4 2;
+  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.6));
+}
+
+.actin-filament {
+  stroke: #f43f5e;
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(244, 63, 94, 0.5));
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.myosin-filament {
+  stroke: #3b82f6;
+  stroke-width: 9;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.6));
+}
+
+.myosin-head {
+  fill: #60a5fa;
+  stroke: #93c5fd;
+  stroke-width: 1;
+  transition: transform 0.3s ease;
+}
+
+.band-annotation-text {
+  fill: #94a3b8;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  text-anchor: middle;
+  font-weight: 600;
+}
+
+.band-annotation-bracket {
+  stroke: #64748b;
+  stroke-width: 1.5;
+  fill: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Interactive Slider in Sarcomere Card */
+.sarcomere-slider-wrapper {
+  margin-top: 1.25rem;
+  background: var(--bg-slate-soft);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.sarcomere-slider-wrapper label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-navy-primary);
+  white-space: nowrap;
+}
+
+/* Band Status Indicator Badges */
+.band-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.band-status-pill {
+  background: var(--bg-slate-soft);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.85rem;
+  text-align: center;
+}
+
+.band-status-pill .band-label {
+  font-size: 0.72rem;
+  color: var(--text-navy-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+}
+
+.band-status-pill .band-value {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+  margin-top: 0.15rem;
+  display: block;
+}
+
+.band-status-pill.constant {
+  border-color: var(--border-emerald);
+  background: #f0fdf4;
+}
+
+.band-status-pill.constant .band-value {
+  color: var(--primary-emerald-dark);
+}
+
+.band-status-pill.shortens {
+  border-color: var(--border-rose);
+  background: #fff1f2;
+}
+
+.band-status-pill.shortens .band-value {
+  color: var(--accent-rose);
+}
+
+/* ==========================================================================
+   Section 6: Step-by-Step Muscle Contraction Molecular Sequence
+   ========================================================================== */
+.contraction-player-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-indicator-bar {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.step-dot {
+  flex: 1;
+  height: 6px;
+  background: #cbd5e1;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.step-dot.active {
+  background: var(--primary-emerald);
+  box-shadow: 0 0 8px var(--primary-emerald-glow);
+}
+
+.step-dot.completed {
+  background: var(--primary-emerald-light);
+}
+
+.stage-display-box {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.stage-badge-number {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--primary-emerald);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+}
+
+.stage-text-content h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+  margin-bottom: 0.35rem;
+}
+
+.stage-text-content p {
+  font-size: 0.9rem;
+  color: var(--text-navy-secondary);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Section 7: Calcium (Ca²⁺) & ATP Molecular Control Console
+   ========================================================================== */
+.molecular-control-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.molecular-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.molecular-card.calcium {
+  border-top: 4px solid var(--accent-sky);
+}
+
+.molecular-card.atp {
+  border-top: 4px solid var(--accent-amber);
+}
+
+.molecular-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.molecular-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+}
+
+.interactive-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-slate-soft);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  margin: 1rem 0;
+}
+
+.interactive-switch-row span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-navy-secondary);
+}
+
+/* Custom Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-switch {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #cbd5e1;
+  transition: .3s;
+  border-radius: 34px;
+}
+
+.slider-switch:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider-switch {
+  background-color: var(--primary-emerald);
+}
+
+input:checked + .slider-switch:before {
+  transform: translateX(22px);
+}
+
+.molecular-state-result {
+  background: #f0fdf4;
+  border: 1px solid var(--border-emerald);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--primary-emerald-dark);
+  font-weight: 600;
+}
+
+.molecular-state-result.alert {
+  background: #fffbeb;
+  border-color: var(--border-amber);
+  color: #92400e;
+}
+
+/* ==========================================================================
+   Section 8: Joint Explorer
+   ========================================================================== */
+.joint-explorer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.joint-list-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.joint-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-navy-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-family: inherit;
+}
+
+.joint-nav-btn:hover, .joint-nav-btn.active {
+  background: var(--bg-mint-soft);
+  border-color: var(--border-emerald);
+  color: var(--primary-emerald-dark);
+  transform: translateX(4px);
+}
+
+.joint-nav-btn span.category-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-navy-muted);
+  background: var(--bg-slate-soft);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.joint-detail-viewport {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.joint-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.joint-detail-header h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+}
+
+.joint-mobility-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-mint-soft);
+  color: var(--primary-emerald-dark);
+  border: 1px solid var(--border-emerald);
+}
+
+.joint-info-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.joint-matrix-item {
+  background: var(--bg-slate-soft);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+}
+
+.joint-matrix-item strong {
+  display: block;
+  color: var(--text-navy-primary);
+  margin-bottom: 0.15rem;
+}
+
+.joint-matrix-item span {
+  color: var(--text-navy-secondary);
+}
+
+/* ==========================================================================
+   Section 9: Ligament vs Tendon Arena
+   ========================================================================== */
+.ligament-tendon-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.connective-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.connective-card.ligament {
+  border-top: 4px solid var(--primary-emerald);
+}
+
+.connective-card.tendon {
+  border-top: 4px solid var(--accent-rose);
+}
+
+.connective-diagram-box {
+  background: var(--bg-slate-soft);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.diagram-block {
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.diagram-block.bone {
+  background: #cbd5e1;
+  color: var(--text-navy-primary);
+}
+
+.diagram-block.muscle {
+  background: #fda4af;
+  color: #9f1239;
+}
+
+.diagram-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.diagram-arrow.ligament {
+  color: var(--primary-emerald-dark);
+}
+
+.diagram-arrow.tendon {
+  color: var(--accent-rose);
+}
+
+.memory-action-btn {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px dashed;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.memory-action-btn.ligament {
+  background: var(--bg-mint-soft);
+  border-color: var(--border-emerald);
+  color: var(--primary-emerald-dark);
+}
+
+.memory-action-btn.tendon {
+  background: var(--accent-rose-soft);
+  border-color: var(--border-rose);
+  color: var(--accent-rose);
+}
+
+.memory-action-btn:hover {
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   Section 10: Synovial Joint Interactive Cross-Section
+   ========================================================================== */
+.synovial-wrapper-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.synovial-svg-card {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.synovial-interactive-svg {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+}
+
+.synovial-hotspot {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.synovial-hotspot:hover {
+  opacity: 0.85;
+  filter: drop-shadow(0 0 6px rgba(5, 150, 105, 0.4));
+}
+
+.synovial-structure-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.structure-item-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.structure-item-card:hover, .structure-item-card.active {
+  border-color: var(--primary-emerald);
+  background: var(--bg-mint-soft);
+  transform: translateX(4px);
+}
+
+.structure-item-card h4 {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.structure-item-card p {
+  font-size: 0.82rem;
+  color: var(--text-navy-secondary);
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   Section 11: Arthritis Educational Card
+   ========================================================================== */
+.arthritis-info-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.arthritis-symptoms-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.symptom-box {
+  background: var(--accent-rose-soft);
+  border: 1px solid var(--border-rose);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  text-align: center;
+}
+
+.symptom-box .symptom-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.symptom-box strong {
+  font-size: 0.88rem;
+  color: var(--accent-rose);
+  display: block;
+}
+
+.symptom-box span {
+  font-size: 0.75rem;
+  color: var(--text-navy-muted);
+}
+
+/* ==========================================================================
+   Section 12: VIP High-Yield Flashcard Vault (17 Cards)
+   ========================================================================== */
+.vault-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.vault-stats-counter {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-emerald-dark);
+  background: var(--bg-mint-soft);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+.vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+
+.flashcard-wrapper {
+  perspective: 1000px;
+  height: 180px;
+  cursor: pointer;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: var(--radius-md);
+}
+
+.flashcard-wrapper.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.flashcard-front {
+  background: #ffffff;
+}
+
+.flashcard-front .card-prompt-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-navy-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.flashcard-front .card-term {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+}
+
+.flashcard-front .tap-hint {
+  font-size: 0.7rem;
+  color: var(--primary-emerald);
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.flashcard-back {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  transform: rotateY(180deg);
+  border-color: #334155;
+}
+
+.flashcard-back .card-answer {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.flashcard-back .card-tag {
+  font-size: 0.68rem;
+  color: #34d399;
+  text-transform: uppercase;
+  margin-top: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   Section 13: MDCAT Trap Zone (Pitfalls)
+   ========================================================================== */
+.traps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.trap-card {
+  background: #ffffff;
+  border: 1px solid var(--border-amber);
+  border-left: 4px solid var(--accent-amber);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.trap-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.trap-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.trap-card-header h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #92400e;
+}
+
+.trap-card-content {
+  font-size: 0.88rem;
+  color: var(--text-navy-secondary);
+  line-height: 1.5;
+}
+
+.trap-card-content strong.vs-red {
+  color: var(--accent-rose);
+}
+
+.trap-card-content strong.vs-green {
+  color: var(--primary-emerald-dark);
+}
+
+/* ==========================================================================
+   Section 14: MDCAT Practice Exam — 15 High-Yield MCQs
+   ========================================================================== */
+.quiz-container-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.quiz-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.quiz-progress-tracker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quiz-progress-bar-wrap {
+  width: 140px;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.quiz-progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary-emerald), var(--primary-emerald-light));
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.question-card-block {
+  margin-bottom: 1.5rem;
+}
+
+.question-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary-emerald);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.question-stem-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-navy-primary);
+  line-height: 1.45;
+  margin-bottom: 1.25rem;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.option-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #ffffff;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-navy-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.option-btn:hover:not(:disabled) {
+  border-color: #cbd5e1;
+  background: var(--bg-slate-soft);
+  transform: translateX(4px);
+}
+
+.option-letter {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-slate-soft);
+  color: var(--text-navy-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+/* Option States */
+.option-btn.selected {
+  border-color: var(--accent-sky);
+  background: var(--bg-sky-soft);
+}
+
+.option-btn.correct {
+  border-color: var(--primary-emerald);
+  background: #ecfdf5 !important;
+  color: var(--primary-emerald-dark) !important;
+}
+
+.option-btn.correct .option-letter {
+  background: var(--primary-emerald);
+  color: #ffffff;
+}
+
+.option-btn.incorrect {
+  border-color: var(--accent-rose);
+  background: #fff1f2 !important;
+  color: var(--accent-rose) !important;
+}
+
+.option-btn.incorrect .option-letter {
+  background: var(--accent-rose);
+  color: #ffffff;
+}
+
+/* Explanation Box */
+.quiz-explanation-box {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
+  display: none;
+}
+
+.quiz-explanation-box.visible {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.explanation-header {
+  font-size: 0.88rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.explanation-header.correct {
+  color: var(--primary-emerald-dark);
+}
+
+.explanation-header.incorrect {
+  color: var(--accent-rose);
+}
+
+.explanation-body {
+  font-size: 0.88rem;
+  color: var(--text-navy-secondary);
+  line-height: 1.55;
+}
+
+.quiz-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Final Quiz Scoreboard */
+.quiz-results-card {
+  text-align: center;
+  padding: 2rem 1rem;
+  display: none;
+}
+
+.quiz-results-card.visible {
+  display: block;
+}
+
+.score-trophy-icon {
+  font-size: 3.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.score-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+  margin-bottom: 0.35rem;
+}
+
+.score-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 480px;
+  margin: 1.5rem auto;
+}
+
+.score-stat-box {
+  background: var(--bg-slate-soft);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.score-stat-box strong {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+  display: block;
+}
+
+.score-stat-box span {
+  font-size: 0.75rem;
+  color: var(--text-navy-muted);
+}
+
+/* ==========================================================================
+   Section 15: Rapid 60-Second Revision Modal
+   ========================================================================== */
+.revision-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.revision-modal-backdrop.active {
+  display: flex;
+}
+
+.revision-modal-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  max-width: 640px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  animation: modalPop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalPop {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-navy-muted);
+  cursor: pointer;
+}
+
+.revision-fact-display {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border: 2px solid var(--border-emerald);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.5rem;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.revision-fact-number {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--primary-emerald);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.revision-fact-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-navy-primary);
+  line-height: 1.4;
+}
+
+.revision-fact-text strong {
+  color: var(--primary-emerald-dark);
+}
+
+.revision-modal-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   Chapter Completion Banner
+   ========================================================================== */
+.chapter-complete-banner {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-emerald);
+  margin-top: 2rem;
+}
+
+.complete-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.complete-desc {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  max-width: 580px;
+  margin: 0 auto 1.25rem;
+}
+
+/* ==========================================================================
+   Responsive Utilities & Breakpoints
+   ========================================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .hero-skeleton-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skeleton-svg-container {
+    height: 440px;
+  }
+  
+  .muscle-lab-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .joint-explorer-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .synovial-wrapper-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .molecular-control-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-dashboard {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+  
+  .chapter-section {
+    padding: 1.25rem;
+  }
+  
+  .axial-appendicular-grid,
+  .ligament-tendon-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .band-status-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .arthritis-symptoms-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .watermark-svg-pattern {
+    animation: none;
+  }
+}

@@ -1,0 +1,368 @@
+<!-- fluid-dynamics.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fluid Dynamics — MDCAT Physics Chapter Notes &amp; Simulations</title>
+<meta name="description" content="Complete MDCAT Fluid Dynamics chapter: continuity equation, Bernoulli's principle, Venturi effect, Torricelli's law, viscosity, interactive simulations, numericals and a scored quiz." />
+<link rel="stylesheet" href="/fluid-dynamics.css" />
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">FD</div>
+      <div class="brand-text">
+        <strong>Fluid Dynamics</strong>
+        <span>MDCAT Physics · Chapter Notes</span>
+      </div>
+    </div>
+    <div class="header-tools">
+      <div class="search-box">
+        <input id="searchInput" type="search" placeholder="Search notes, formulas, terms…" autocomplete="off" aria-label="Search chapter" />
+        <div class="search-results" id="searchResults" role="listbox"></div>
+      </div>
+      <div class="progress-wrap" title="Sections marked as read">
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <span id="progressText">0%</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <nav class="toc" id="toc" aria-label="Chapter contents">
+    <h2>Chapter contents</h2>
+    <div id="tocLinks"></div>
+    <div class="toc-actions">
+      <button class="btn ghost" id="resetProgress" style="width:100%">Reset progress</button>
+    </div>
+  </nav>
+
+  <main class="content">
+
+    <div class="chapter-head">
+      <div class="eyebrow">Unit · Fluid Dynamics</div>
+      <h1>Fluids in Motion: Continuity, Bernoulli &amp; Applications</h1>
+      <p>A complete, exam-focused chapter with textbook definitions, real working physics simulations, solved numericals and a scored MDCAT quiz. Your reading progress, answers and quiz score are saved on this device.</p>
+      <div class="meta-row">
+        <div><b id="metaSections">13</b>Sections</div>
+        <div><b>4</b>Live simulations</div>
+        <div><b>6</b>Core formulas</div>
+        <div><b id="metaQuiz">10</b>Quiz MCQs</div>
+        <div><b id="metaBest">—</b>Best score</div>
+      </div>
+    </div>
+
+    <!-- 1 -->
+    <section class="chapter-section" id="s1" data-title="What is Fluid Dynamics?">
+      <div class="sec-head"><div class="sec-num">1</div><h2>What is Fluid Dynamics?</h2><button class="read-toggle" data-read="s1" aria-pressed="false">Mark as read</button></div>
+      <div class="definition">
+        <div class="label">Definition</div>
+        Fluid dynamics is the branch of physics that studies the motion of fluids and the forces associated with their motion.
+      </div>
+      <p>A <b>fluid</b> is a substance that can flow. Both <b>liquids and gases</b> are fluids.</p>
+      <h3>Where it is used</h3>
+      <ul>
+        <li>Flow of water through pipes</li>
+        <li>Movement of air</li>
+        <li>Blood flow through blood vessels</li>
+        <li>Flow through narrow tubes</li>
+        <li>Motion of fluids around objects</li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="chapter-section" id="s2" data-title="Ideal Fluid">
+      <div class="sec-head"><div class="sec-num">2</div><h2>Ideal Fluid</h2><button class="read-toggle" data-read="s2" aria-pressed="false">Mark as read</button></div>
+      <p>For many physics problems we use the idea of an <b>ideal fluid</b>. An ideal fluid is considered to be:</p>
+      <ul>
+        <li><b>Incompressible</b> — its density stays almost constant when pressure changes</li>
+        <li><b>Non-viscous</b> — no internal friction between layers</li>
+        <li><b>In steady flow</b> — velocity at a point does not change with time</li>
+      </ul>
+      <div class="definition">
+        <div class="label">Incompressible fluid</div>
+        An incompressible fluid is a fluid whose density remains approximately constant when pressure changes. For MDCAT problems, liquids are treated as incompressible.
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="chapter-section" id="s3" data-title="Streamline Flow">
+      <div class="sec-head"><div class="sec-num">3</div><h2>Streamline Flow</h2><button class="read-toggle" data-read="s3" aria-pressed="false">Mark as read</button></div>
+      <div class="definition">
+        <div class="label">Definition</div>
+        Streamline flow is a type of fluid motion in which every particle of the fluid follows a smooth path and the paths do not cross each other.
+      </div>
+      <p>The paths followed by the fluid particles are called <b>streamlines</b>. In steady flow, the velocity of the fluid at a particular point remains constant with time.</p>
+
+      <div class="sim">
+        <div class="sim-head"><h4>Streamline flow — animation</h4>
+          <button class="btn on-dark" data-play="stream">Pause</button>
+        </div>
+        <div class="sim-body">
+          <canvas id="cvStream" height="200" aria-label="Animated streamlines that never cross"></canvas>
+          <div class="controls">
+            <div class="control">
+              <label>Flow speed <b id="valStreamSpeed">1.0×</b></label>
+              <input type="range" id="rngStreamSpeed" min="0.2" max="3" step="0.1" value="1" />
+            </div>
+            <div class="control">
+              <label>Number of streamlines <b id="valStreamLines">7</b></label>
+              <input type="range" id="rngStreamLines" min="3" max="14" step="1" value="7" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="chapter-section" id="s4" data-title="Equation of Continuity">
+      <div class="sec-head"><div class="sec-num">4</div><h2>Equation of Continuity</h2><button class="read-toggle" data-read="s4" aria-pressed="false">Mark as read</button></div>
+      <p>The equation of continuity is based on the <b>law of conservation of mass</b>. For an incompressible fluid flowing through a pipe:</p>
+      <div class="formula">A₁v₁ = A₂v₂<small>A = cross-sectional area (m²), v = fluid speed (m/s)</small></div>
+      <h3>Important idea</h3>
+      <ul>
+        <li>Pipe becomes narrower → area decreases → <b>speed increases</b></li>
+        <li>Pipe becomes wider → area increases → <b>speed decreases</b></li>
+      </ul>
+      <h3>Worked example</h3>
+      <p>If the area becomes half, <span class="inline-f">A₂ = A₁/2</span>, then <span class="inline-f">A₁v₁ = (A₁/2)v₂</span>, so <span class="inline-f">v₂ = 2v₁</span> — the fluid moves twice as fast.</p>
+      <div class="note"><div class="label">MDCAT Trap</div>Narrow pipe → faster flow (never slower).</div>
+
+      <div class="sim">
+        <div class="sim-head"><h4>Simulation · Equation of continuity</h4>
+          <button class="btn on-dark" data-play="cont">Pause</button>
+        </div>
+        <div class="sim-body">
+          <canvas id="cvCont" height="230" aria-label="Pipe with a narrow section showing particles speeding up"></canvas>
+          <div class="controls">
+            <div class="control"><label>Inlet area A₁ <b id="valA1">0.040 m²</b></label><input type="range" id="rngA1" min="20" max="60" step="1" value="40" /></div>
+            <div class="control"><label>Outlet area A₂ <b id="valA2">0.016 m²</b></label><input type="range" id="rngA2" min="8" max="60" step="1" value="16" /></div>
+            <div class="control"><label>Inlet speed v₁ <b id="valV1">1.5 m/s</b></label><input type="range" id="rngV1" min="0.5" max="5" step="0.1" value="1.5" /></div>
+          </div>
+          <div class="readouts">
+            <div class="readout"><span>v₂ = A₁v₁/A₂</span><b id="outV2">3.75 m/s</b></div>
+            <div class="readout"><span>Flow rate Q</span><b id="outQ">0.060 m³/s</b></div>
+            <div class="readout"><span>Speed ratio v₂/v₁</span><b id="outRatio">2.50</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="chapter-section" id="s5" data-title="Volume Flow Rate">
+      <div class="sec-head"><div class="sec-num">5</div><h2>Volume Flow Rate</h2><button class="read-toggle" data-read="s5" aria-pressed="false">Mark as read</button></div>
+      <div class="definition"><div class="label">Definition</div>Volume flow rate <b>Q</b> is the volume of fluid passing through a cross-section of a pipe per unit time.</div>
+      <div class="formula">Q = A v<small>SI unit: m³/s</small></div>
+      <p>Therefore <span class="inline-f">A₁v₁ = A₂v₂</span> simply means the <b>volume flow rate stays constant</b> for an incompressible fluid in steady flow.</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="chapter-section" id="s6" data-title="Pressure in a Moving Fluid">
+      <div class="sec-head"><div class="sec-num">6</div><h2>Pressure in a Moving Fluid</h2><button class="read-toggle" data-read="s6" aria-pressed="false">Mark as read</button></div>
+      <div class="definition"><div class="label">Definition</div>Pressure is the normal force acting per unit area of a surface.</div>
+      <div class="formula">P = F / A<small>SI unit: pascal (Pa) = N/m²</small></div>
+      <p>A moving fluid can have different pressures at different points. The relationship between pressure, speed and height is described by <b>Bernoulli's equation</b>.</p>
+    </section>
+
+    <!-- 7 -->
+    <section class="chapter-section" id="s7" data-title="Bernoulli's Principle">
+      <div class="sec-head"><div class="sec-num">7</div><h2>Bernoulli's Principle</h2><button class="read-toggle" data-read="s7" aria-pressed="false">Mark as read</button></div>
+      <div class="definition"><div class="label">Definition</div>For steady flow of an ideal incompressible fluid, an increase in the speed of the fluid is associated with a decrease in its pressure.</div>
+      <ul><li>Speed ↑ → Pressure ↓</li><li>Speed ↓ → Pressure ↑</li></ul>
+    </section>
+
+    <!-- 8 -->
+    <section class="chapter-section" id="s8" data-title="Bernoulli's Equation">
+      <div class="sec-head"><div class="sec-num">8</div><h2>Bernoulli's Equation</h2><button class="read-toggle" data-read="s8" aria-pressed="false">Mark as read</button></div>
+      <div class="formula">P + ½ρv² + ρgh = constant</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Term</th><th>Meaning</th><th>Unit</th></tr></thead>
+          <tbody>
+            <tr><td>P</td><td>Pressure energy per unit volume</td><td>Pa</td></tr>
+            <tr><td>½ρv²</td><td>Kinetic energy per unit volume</td><td>Pa</td></tr>
+            <tr><td>ρgh</td><td>Gravitational potential energy per unit volume</td><td>Pa</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sim">
+        <div class="sim-head"><h4>Simulation · Bernoulli's equation</h4>
+          <button class="btn on-dark" id="bernReset">Reset</button>
+        </div>
+        <div class="sim-body">
+          <canvas id="cvBern" height="240" aria-label="Pipe at two heights showing pressure change"></canvas>
+          <div class="controls">
+            <div class="control"><label>Speed v₁ <b id="valBv1">2.0 m/s</b></label><input type="range" id="rngBv1" min="0.5" max="6" step="0.1" value="2" /></div>
+            <div class="control"><label>Area ratio A₂/A₁ <b id="valBar">0.50</b></label><input type="range" id="rngBar" min="0.2" max="1.5" step="0.05" value="0.5" /></div>
+            <div class="control"><label>Height change h₂ − h₁ <b id="valBh">0.0 m</b></label><input type="range" id="rngBh" min="-3" max="3" step="0.1" value="0" /></div>
+            <div class="control"><label>Inlet pressure P₁ <b id="valBp1">120 kPa</b></label><input type="range" id="rngBp1" min="101" max="300" step="1" value="120" /></div>
+          </div>
+          <div class="readouts">
+            <div class="readout"><span>v₂</span><b id="outBv2">4.00 m/s</b></div>
+            <div class="readout"><span>P₂</span><b id="outBp2">114.0 kPa</b></div>
+            <div class="readout"><span>ΔP = P₂ − P₁</span><b id="outBdp">−6.0 kPa</b></div>
+            <div class="readout"><span>Verdict</span><b id="outBverdict">Faster → lower P</b></div>
+          </div>
+          <div class="note"><div class="label">Water, ρ = 1000 kg/m³</div>P₂ = P₁ + ½ρ(v₁² − v₂²) + ρg(h₁ − h₂)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="chapter-section" id="s9" data-title="Bernoulli for a Horizontal Pipe">
+      <div class="sec-head"><div class="sec-num">9</div><h2>Bernoulli's Equation for a Horizontal Pipe</h2><button class="read-toggle" data-read="s9" aria-pressed="false">Mark as read</button></div>
+      <p>If the pipe is at the same height, <span class="inline-f">h₁ = h₂</span>, the ρgh terms cancel:</p>
+      <div class="formula">P₁ + ½ρv₁² = P₂ + ½ρv₂²</div>
+      <p>If <span class="inline-f">v₂ &gt; v₁</span> then <span class="inline-f">P₂ &lt; P₁</span>.</p>
+      <div class="note"><div class="label">MDCAT Golden Rule</div>Higher fluid speed → lower pressure, for ideal steady-flow conditions.</div>
+    </section>
+
+    <!-- 10 -->
+    <section class="chapter-section" id="s10" data-title="Applications of Bernoulli's Principle">
+      <div class="sec-head"><div class="sec-num">10</div><h2>Applications of Bernoulli's Principle</h2><button class="read-toggle" data-read="s10" aria-pressed="false">Mark as read</button></div>
+      <h3>Atomizer / spray</h3>
+      <p>When air moves rapidly across the opening of a tube, the pressure there decreases. The higher pressure elsewhere pushes the liquid upward, producing a spray.</p>
+      <h3>Perfume sprayer</h3>
+      <p>A perfume atomizer uses the pressure difference created by rapidly moving air to draw liquid upward and break it into small droplets.</p>
+      <h3>Airplane wings</h3>
+      <p>Air moving around an aerofoil creates a pressure distribution that contributes to lift. At MDCAT level: fluid motion → pressure difference → lift.</p>
+      <h3>Venturi effect</h3>
+      <div class="definition"><div class="label">Definition</div>The Venturi effect is the decrease in fluid pressure that occurs when a fluid flows through a narrower section of a pipe.</div>
+      <p>In the narrow region: Area ↓ → Speed ↑ → Pressure ↓. This is continuity + Bernoulli working together.</p>
+
+      <div class="sim">
+        <div class="sim-head"><h4>Simulation · Venturi meter</h4>
+          <button class="btn on-dark" data-play="ven">Pause</button>
+        </div>
+        <div class="sim-body">
+          <canvas id="cvVen" height="250" aria-label="Venturi tube with manometer columns"></canvas>
+          <div class="controls">
+            <div class="control"><label>Throat narrowing <b id="valVenN">50%</b></label><input type="range" id="rngVenN" min="20" max="95" step="1" value="50" /></div>
+            <div class="control"><label>Inlet speed v₁ <b id="valVenV">2.0 m/s</b></label><input type="range" id="rngVenV" min="0.5" max="5" step="0.1" value="2" /></div>
+          </div>
+          <div class="readouts">
+            <div class="readout"><span>Throat speed v₂</span><b id="outVenV2">4.00 m/s</b></div>
+            <div class="readout"><span>Pressure drop ΔP</span><b id="outVenDp">6.0 kPa</b></div>
+            <div class="readout"><span>Manometer difference</span><b id="outVenH">0.61 m</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="chapter-section" id="s11" data-title="Torricelli's Law">
+      <div class="sec-head"><div class="sec-num">11</div><h2>Torricelli's Law</h2><button class="read-toggle" data-read="s11" aria-pressed="false">Mark as read</button></div>
+      <p>For a liquid flowing out through a small opening in a tank:</p>
+      <div class="formula">v = √(2gh)<small>v = speed of efflux (m/s), h = height of liquid above the opening (m)</small></div>
+      <p>Greater liquid height → greater exit speed.</p>
+
+      <div class="sim">
+        <div class="sim-head"><h4>Simulation · Torricelli's law</h4>
+          <button class="btn on-dark" data-play="tor">Pause</button>
+        </div>
+        <div class="sim-body">
+          <canvas id="cvTor" height="260" aria-label="Tank with a hole producing a liquid jet"></canvas>
+          <div class="controls">
+            <div class="control"><label>Liquid level H <b id="valTorH">3.0 m</b></label><input type="range" id="rngTorH" min="0.5" max="5" step="0.1" value="3" /></div>
+            <div class="control"><label>Hole height above ground <b id="valTorY">1.0 m</b></label><input type="range" id="rngTorY" min="0.1" max="4" step="0.1" value="1" /></div>
+            <div class="control"><label>Gravity g <b id="valTorG">9.8 m/s²</b></label><input type="range" id="rngTorG" min="1.6" max="24" step="0.1" value="9.8" /></div>
+          </div>
+          <div class="readouts">
+            <div class="readout"><span>Depth h = H − y</span><b id="outTorh">2.00 m</b></div>
+            <div class="readout"><span>Efflux speed v</span><b id="outTorV">6.26 m/s</b></div>
+            <div class="readout"><span>Range x = 2√(hy)</span><b id="outTorX">2.83 m</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section class="chapter-section" id="s12" data-title="Viscosity">
+      <div class="sec-head"><div class="sec-num">12</div><h2>Viscosity</h2><button class="read-toggle" data-read="s12" aria-pressed="false">Mark as read</button></div>
+      <div class="definition"><div class="label">Definition</div>Viscosity is the internal resistance of a fluid to the relative motion of its layers.</div>
+      <p>In simple words: viscosity tells us how strongly a fluid resists flowing. Honey has high viscosity; water has lower viscosity. A highly viscous fluid flows more slowly than a less viscous fluid under similar conditions.</p>
+    </section>
+
+    <!-- 13 -->
+    <section class="chapter-section" id="s13" data-title="Pressure and Speed — Quick Comparison">
+      <div class="sec-head"><div class="sec-num">13</div><h2>Pressure and Speed — Quick Comparison</h2><button class="read-toggle" data-read="s13" aria-pressed="false">Mark as read</button></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Situation</th><th>Speed</th><th>Pressure</th></tr></thead>
+          <tbody>
+            <tr><td>Narrow pipe</td><td>Higher</td><td>Lower</td></tr>
+            <tr><td>Wide pipe</td><td>Lower</td><td>Higher</td></tr>
+            <tr><td>Fast-moving region</td><td>Higher</td><td>Lower</td></tr>
+            <tr><td>Slow-moving region</td><td>Lower</td><td>Higher</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>This relationship applies under the appropriate conditions of Bernoulli's principle.</p>
+    </section>
+
+    <!-- Formula sheet -->
+    <section class="chapter-section" id="s14" data-title="MDCAT Formula Sheet">
+      <div class="sec-head"><div class="sec-num">★</div><h2>MDCAT Formula Sheet</h2><button class="read-toggle" data-read="s14" aria-pressed="false">Mark as read</button></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Quantity</th><th>Formula</th><th>SI unit</th></tr></thead>
+          <tbody>
+            <tr><td>Pressure</td><td>P = F/A</td><td>Pa</td></tr>
+            <tr><td>Volume flow rate</td><td>Q = Av</td><td>m³/s</td></tr>
+            <tr><td>Continuity equation</td><td>A₁v₁ = A₂v₂</td><td>m³/s</td></tr>
+            <tr><td>Bernoulli equation</td><td>P + ½ρv² + ρgh = constant</td><td>Pa</td></tr>
+            <tr><td>Horizontal Bernoulli</td><td>P₁ + ½ρv₁² = P₂ + ½ρv₂²</td><td>Pa</td></tr>
+            <tr><td>Torricelli's law</td><td>v = √(2gh)</td><td>m/s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>High-yield traps</h3>
+      <ul>
+        <li>Fluid dynamics deals with fluids <b>in motion</b>; liquids and gases are both fluids.</li>
+        <li>Narrower pipe → greater speed; wider pipe → lower speed.</li>
+        <li>Continuity equation comes from <b>conservation of mass</b>.</li>
+        <li>Q = Av is volume flow rate; SI unit of pressure is the pascal.</li>
+        <li>Same height + greater speed → lower pressure.</li>
+        <li>Venturi effect occurs in the narrow section of a pipe.</li>
+        <li>Greater height above an opening → greater efflux speed.</li>
+        <li>Viscosity = resistance to relative motion of fluid layers.</li>
+      </ul>
+    </section>
+
+    <!-- Numericals -->
+    <section class="chapter-section" id="s15" data-title="Numerical Practice">
+      <div class="sec-head"><div class="sec-num">Σ</div><h2>Numerical Practice</h2><button class="read-toggle" data-read="s15" aria-pressed="false">Mark as read</button></div>
+      <p>Type your answer and press <b>Check</b>. Answers within 2% are accepted. Your work is saved automatically.</p>
+      <div id="numericals"></div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="chapter-section" id="s16" data-title="MDCAT Quiz">
+      <div class="sec-head"><div class="sec-num">?</div><h2>MDCAT Quiz</h2><button class="read-toggle" data-read="s16" aria-pressed="false">Mark as read</button></div>
+      <p>Ten MCQs on the whole chapter. <span class="badge" id="quizAnswered">0 of 10 answered</span></p>
+      <div id="quiz"></div>
+      <div class="quiz-actions">
+        <button class="btn" id="submitQuiz">Submit quiz</button>
+        <button class="btn ghost" id="retryQuiz">Retry</button>
+      </div>
+      <div class="score-card" id="scoreCard">
+        <div class="big" id="scoreBig">0 / 10</div>
+        <div id="scoreMsg"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">MDCAT Physics · Fluid Dynamics — progress and answers stored locally in your browser.</footer>
+
+<script src="/fluid-dynamics.js"></script>
+</body>
+</html>

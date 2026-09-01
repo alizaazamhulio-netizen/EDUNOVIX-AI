@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduNexa AI — Grade 5 Digital Classroom</title>
+  <meta name="description" content="Complete, premium, interactive Grade 5 Digital Classroom for Pakistani and international students. Detailed lessons, exercises, 12 games, 60-question master quiz, and parent analytics." />
+  <link rel="stylesheet" href="grade5.css" />
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Sticky Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#hero" class="logo-group">
+        <div class="logo-icon">🚀</div>
+        <div class="logo-text">
+          <div class="logo-title">STUDYMATE <span>AI</span></div>
+          <div class="logo-badge">GRADE 5 DIGITAL SCHOOL</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item"><a href="#hero" class="active">Home</a></li>
+          <li class="nav-item"><a href="javascript:void(0)" onclick="alert('Grade 3 & 4 classrooms available in multi-grade portal!')">Grade 3</a></li>
+          <li class="nav-item"><a href="javascript:void(0)" onclick="alert('Grade 4 classroom available in portal!')">Grade 4</a></li>
+          <li class="nav-item"><a href="#subjects" class="nav-grade-badge">Grade 5 ⭐</a></li>
+          <li class="nav-item"><a href="#subjects">Subjects</a></li>
+          <li class="nav-item"><a href="#study-materials">Study Material</a></li>
+          <li class="nav-item"><a href="#practice">Practice</a></li>
+          <li class="nav-item"><a href="#quiz">Quiz</a></li>
+          <li class="nav-item"><a href="#games">Games</a></li>
+          <li class="nav-item"><a href="#revision">Revision</a></li>
+          <li class="nav-item"><a href="#flashcards">Flashcards</a></li>
+          <li class="nav-item"><a href="#books">Books</a></li>
+          <li class="nav-item"><a href="#parent-report">Parent View</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions & User Stats -->
+      <div class="nav-actions">
+        <div class="nav-stats-pill" id="navStatsPill" title="Your Current Progress">
+          <div class="stat-chip stars">⭐ <span id="navStarsCount">0</span></div>
+          <div class="stat-chip xp">⚡ <span id="navXpCount">0</span> XP</div>
+          <div class="stat-chip streak">🔥 <span id="navStreakCount">1</span>d</div>
+        </div>
+
+        <button class="nav-search-btn" id="openSearchBtn" title="Search all lessons and topics">
+          🔍 Search <kbd>⌘K</kbd>
+        </button>
+
+        <button class="btn-icon" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+          🌓
+        </button>
+
+        <button class="btn-icon hamburger-btn" id="hamburgerBtn" title="Open Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge-row">
+          <div class="pill-badge primary">🌟 Upper-Primary Smart Explorer</div>
+          <div class="pill-badge secondary">🇵🇰 Pakistan & International Curriculum</div>
+        </div>
+        <h1 class="hero-title">
+          Welcome to <span class="gradient-text">Grade 5!</span> 🚀
+        </h1>
+        <div class="hero-subtitle">
+          Learn Deeper. Think Smarter. Achieve More.
+        </div>
+        <p class="hero-description">
+          Explore powerful ideas, master important concepts, build critical thinking, and prepare yourself thoroughly for school examinations and secondary school success.
+        </p>
+        <div class="hero-cta-group">
+          <button class="btn-primary" onclick="App.scrollToSection('subjects')">
+            🚀 Start Learning
+          </button>
+          <button class="btn-secondary" onclick="App.scrollToSection('study-materials')">
+            📖 Explore Study Material
+          </button>
+          <button class="btn-accent" onclick="App.scrollToSection('quiz')">
+            🏆 Take 60-Q Master Quiz
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Visual Art -->
+      <div class="hero-visual">
+        <div class="hero-art-box">
+          <!-- Floating Interactive badges -->
+          <div class="floating-elem elem-1">📚 200+ Interactive Lessons</div>
+          <div class="floating-elem elem-2">🔬 Virtual Science Lab</div>
+          <div class="floating-elem elem-3">🔢 Math Reasoning</div>
+          <div class="floating-elem elem-4">🎮 12 Learning Games</div>
+
+          <svg width="240" height="240" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="80" fill="url(#heroGrad)" opacity="0.15" />
+            <!-- Laptop & Screen -->
+            <rect x="50" y="60" width="100" height="65" rx="6" fill="#1E293B" />
+            <rect x="56" y="66" width="88" height="53" rx="4" fill="#0284C7" />
+            <path d="M40 130H160L150 142H50L40 130Z" fill="#CBD5E1" />
+            <!-- Rocket / Lightbulb / Atoms -->
+            <path d="M100 40L112 65H88L100 40Z" fill="#F59E0B" />
+            <circle cx="100" cy="55" r="5" fill="#EF4444" />
+            <!-- Math symbols & book on screen -->
+            <path d="M70 85H82M76 79V91" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M118 85H130" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M92 102L108 102M100 94L100 110" stroke="#FDE047" stroke-width="2" stroke-linecap="round" />
+            <defs>
+              <linearGradient id="heroGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#4F46E5" />
+                <stop offset="1" stop-color="#0284C7" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Container Body -->
+  <main class="container">
+
+    <!-- Student Dashboard (MY LEARNING DASHBOARD) -->
+    <section class="dashboard-section" id="dashboard" style="margin-top: 30px;">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Student Command Center</div>
+          <h2 class="section-heading">📊 My Learning Dashboard</h2>
+          <div class="section-subheading">Track your daily progress, streaks, test scores and earned achievements.</div>
+        </div>
+        <button class="btn-secondary" onclick="App.resetProgressPrompt()">🔄 Reset Progress</button>
+      </div>
+
+      <!-- XP & Level Bar Card -->
+      <div class="level-progress-card">
+        <div class="level-info-group">
+          <div class="level-badge-large">
+            <span>LVL</span>
+            <strong id="userLevelNum">1</strong>
+          </div>
+          <div class="level-title-group">
+            <h3 id="userLevelTitle">Junior Explorer</h3>
+            <p><span id="currentXpText">0</span> / <span id="nextLevelXpText">200</span> XP to Next Level</p>
+          </div>
+        </div>
+        <div class="level-bar-wrap">
+          <div class="level-bar-labels">
+            <span>Level Progress</span>
+            <span id="levelPercentText">0%</span>
+          </div>
+          <div class="level-bar-track">
+            <div class="level-bar-fill" id="levelProgressFill" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Stats Counter Grid -->
+      <div class="dashboard-grid">
+        <div class="dash-card">
+          <div class="dash-card-icon" style="background:#e0f2fe; color:#0284c7;">📖</div>
+          <div class="dash-card-value" id="statLessons">0</div>
+          <div class="dash-card-label">Lessons Completed</div>
+          <div class="dash-card-bar"><div class="dash-card-fill" id="barLessons" style="width:0%; background:#0284c7;"></div></div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-icon" style="background:#eef2ff; color:#4f46e5;">📚</div>
+          <div class="dash-card-value" id="statMaterials">0</div>
+          <div class="dash-card-label">Materials Read</div>
+          <div class="dash-card-bar"><div class="dash-card-fill" id="barMaterials" style="width:0%; background:#4f46e5;"></div></div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-icon" style="background:#d1fae5; color:#059669;">✍️</div>
+          <div class="dash-card-value" id="statQuestions">0</div>
+          <div class="dash-card-label">Questions Solved</div>
+          <div class="dash-card-bar"><div class="dash-card-fill" id="barQuestions" style="width:0%; background:#059669;"></div></div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-icon" style="background:#fef3c7; color:#d97706;">🎯</div>
+          <div class="dash-card-value" id="statQuizAvg">0%</div>
+          <div class="dash-card-label">Quiz Average</div>
+          <div class="dash-card-bar"><div class="dash-card-fill" id="barQuizAvg" style="width:0%; background:#d97706;"></div></div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-icon" style="background:#fef3c7; color:#b45309;">⭐</div>
+          <div class="dash-card-value" id="statStars">0</div>
+          <div class="dash-card-label">Learning Stars</div>
+          <div class="dash-card-bar"><div class="dash-card-fill" id="barStars" style="width:0%; background:#b45309;"></div></div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-icon" style="background:#fee2e2; color:#dc2626;">🔥</div>
+          <div class="dash-card-value" id="statStreak">1 Day</div>
+          <div class="dash-card-label">Current Streak</div>
+          <div class="dash-card-bar"><div class="dash-card-fill" style="width:100%; background:#dc2626;"></div></div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-icon" style="background:#f3e8ff; color:#7c3aed;">🏆</div>
+          <div class="dash-card-value" id="statBestScore">0%</div>
+          <div class="dash-card-label">Best Score</div>
+          <div class="dash-card-bar"><div class="dash-card-fill" id="barBestScore" style="width:0%; background:#7c3aed;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daily Study Plan & Weekly Challenge Section -->
+    <section class="planner-section" style="margin-bottom: 40px;">
+      <div class="planner-grid">
+        <!-- Daily Plan -->
+        <div class="plan-card">
+          <div class="section-title-group">
+            <div class="section-tag">📅 Smart Daily Routine</div>
+            <h3 style="font-size: 1.3rem;">Today's Study Plan</h3>
+            <p style="font-size: 0.88rem;">Structured 2-hour daily study balance for Grade 5 excellence.</p>
+          </div>
+          <div id="dailyPlanList" style="display:flex; flex-direction:column; gap:8px;">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Weekly Challenge -->
+        <div class="plan-card">
+          <div class="section-title-group">
+            <div class="section-tag">🎯 Weekly Mission</div>
+            <h3 style="font-size: 1.3rem;">Weekly Smart Challenge</h3>
+            <p style="font-size: 0.88rem;">Complete all 3 subject challenges this week to claim the Weekly Trophy!</p>
+          </div>
+          <div id="weeklyChallengeList" style="display:flex; flex-direction:column; gap:8px;">
+            <!-- Rendered by JS -->
+          </div>
+          <div id="weeklyTrophyBox" style="margin-top:10px; padding:12px; border-radius:12px; background:var(--brand-amber-light); text-align:center; font-weight:700; color:#92400e;">
+            🏆 Complete all 3 tasks to earn 200 Bonus XP & Trophy!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Subjects Section -->
+    <section class="subjects-section" id="subjects">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Grade 5 Curriculum</div>
+          <h2 class="section-heading">📚 Main Learning Subjects</h2>
+          <div class="section-subheading">Select any subject to launch interactive lessons, worked examples, and exercises.</div>
+        </div>
+      </div>
+
+      <!-- Subject Cards Grid -->
+      <div class="subjects-grid" id="subjectsGrid">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- English Reading Library Section -->
+    <section class="library-section" id="reading-library" style="border-radius: 24px; padding: 36px 28px; margin-bottom: 50px;">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">English Comprehension</div>
+          <h2 class="section-heading">📖 Grade 5 Reading Library</h2>
+          <div class="section-subheading">8 Original illustrated stories with vocabulary banks, inference questions and audio narration.</div>
+        </div>
+      </div>
+      <div class="story-grid" id="storyGrid">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Study Material Library -->
+    <section class="study-materials-section" id="study-materials">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Reference Bank</div>
+          <h2 class="section-heading">🧠 Study Material & Concept Notes</h2>
+          <div class="section-subheading">Quick notes, formulas, vocabulary banks, and exam tips organized by subject.</div>
+        </div>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="filter-bar" id="materialFilterBar">
+        <button class="filter-chip active" data-subject="all">All Subjects</button>
+        <button class="filter-chip" data-subject="English">English</button>
+        <button class="filter-chip" data-subject="Mathematics">Mathematics</button>
+        <button class="filter-chip" data-subject="General Science">General Science</button>
+        <button class="filter-chip" data-subject="Urdu">Urdu</button>
+        <button class="filter-chip" data-subject="Sindhi">Sindhi</button>
+        <button class="filter-chip" data-subject="Computer Studies">Computer</button>
+        <button class="filter-chip" data-subject="General Knowledge">General Knowledge</button>
+      </div>
+
+      <div class="materials-grid" id="materialsGrid">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- Exam Practice Center -->
+    <section class="practice-section" id="practice" style="padding: 40px 0;">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Interactive Drills</div>
+          <h2 class="section-heading">📝 Exam Practice Center</h2>
+          <div class="section-subheading">Choose your practice mode and test your subject mastery with step-by-step solutions.</div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:24px; padding:28px; box-shadow:var(--shadow-md);">
+        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:24px; align-items:center; justify-content:space-between;">
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="filter-chip active" onclick="App.setPracticeMode('quick')">⚡ Quick Practice (5 Qs)</button>
+            <button class="filter-chip" onclick="App.setPracticeMode('subject')">📚 Subject Focus (10 Qs)</button>
+            <button class="filter-chip" onclick="App.setPracticeMode('mixed')">🔀 Mixed Board Exam (15 Qs)</button>
+            <button class="filter-chip" onclick="App.setPracticeMode('challenge')">🧠 High-Thinking Challenge</button>
+          </div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span style="font-weight:700; font-size:0.85rem; color:var(--text-muted);">Subject:</span>
+            <select id="practiceSubjectSelect" onchange="App.loadPracticeQuestion()" style="padding:8px 14px; border-radius:10px; border:1px solid var(--border-strong); background:var(--bg-subtle);">
+              <option value="all">All Subjects</option>
+              <option value="English">English</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="General Science">General Science</option>
+              <option value="Urdu">Urdu</option>
+              <option value="Sindhi">Sindhi</option>
+              <option value="Computer Studies">Computer Studies</option>
+              <option value="General Knowledge">General Knowledge</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Practice Question Card Container -->
+        <div id="practiceCardContainer">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Center (12 Educational Games) -->
+    <section class="games-section" id="games">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Interactive Arcade</div>
+          <h2 class="section-heading">🎮 Grade 5 Game Center</h2>
+          <div class="section-subheading">12 custom educational games to strengthen mental math, vocabulary, science concepts and speed!</div>
+        </div>
+      </div>
+      <div class="games-grid" id="gamesGrid">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- Master Grade 5 Quiz (60 Questions) -->
+    <section class="master-quiz-section" id="quiz">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Comprehensive Examination</div>
+          <h2 class="section-heading">🏆 Master Grade 5 Grand Quiz</h2>
+          <div class="section-subheading">60 Curriculum-aligned questions (15 English, 15 Math, 12 Science, 5 Urdu, 5 Sindhi, 8 Computer/GK).</div>
+        </div>
+      </div>
+
+      <div class="quiz-wrapper-card" id="quizWrapperCard">
+        <!-- Pre-quiz start screen or active quiz container rendered by JS -->
+        <div id="quizStartScreen" style="padding: 40px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px;">
+          <div style="font-size: 3.5rem;">🏅</div>
+          <h3 style="font-size: 1.8rem; font-weight: 800;">Ready for the 60-Question Master Challenge?</h3>
+          <p style="max-width: 580px; color: var(--text-secondary);">
+            Test your comprehensive knowledge across all 7 subjects. Complete with real-time timer, review palette, instant scoring, and detailed pedagogical performance analysis.
+          </p>
+          <div style="display:flex; gap:16px; margin-top:10px;">
+            <button class="btn-primary" onclick="App.startMasterQuiz()">🚀 Begin 60-Question Quiz (30 Min)</button>
+            <button class="btn-secondary" onclick="App.startMasterQuiz(15)">⚡ Quick Sprint (15 Questions)</button>
+          </div>
+        </div>
+
+        <div id="quizActiveScreen" style="display:none;">
+          <!-- Top Bar with timer & question tracker -->
+          <div class="quiz-top-bar">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="font-weight:800; font-size:1.1rem;" id="quizQCounter">Question 1 of 60</span>
+              <span class="pill-badge primary" id="quizSubjectBadge">English</span>
+            </div>
+            <div class="quiz-timer-pill" id="quizTimerText">⏱️ 30:00</div>
+          </div>
+
+          <!-- Question palette buttons 1 to 60 -->
+          <div class="quiz-palette-grid" id="quizPaletteGrid">
+            <!-- Palette generated by JS -->
+          </div>
+
+          <!-- Question Stage -->
+          <div class="quiz-q-stage" id="quizQuestionStage">
+            <!-- Question & Options rendered by JS -->
+          </div>
+
+          <!-- Quiz Bottom Nav Controls -->
+          <div class="quiz-bottom-nav">
+            <button class="btn-secondary" id="quizPrevBtn" onclick="App.prevQuizQuestion()">⬅️ Previous</button>
+            <button class="btn-secondary" onclick="App.toggleReviewMark()">🚩 Mark for Review</button>
+            <div style="display:flex; gap:10px;">
+              <button class="btn-secondary" id="quizNextBtn" onclick="App.nextQuizQuestion()">Next ➡️</button>
+              <button class="btn-accent" onclick="App.confirmSubmitQuiz()">✓ Submit Quiz</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz Results Screen -->
+        <div id="quizResultScreen" style="display:none; padding:36px;">
+          <!-- Generated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Revision Center -->
+    <section class="revision-section" id="revision">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Exam Revision</div>
+          <h2 class="section-heading">🎯 Grade 5 Revision Center</h2>
+          <div class="section-subheading">High-yield revision summaries, memory aids, cheat sheets, and quick recall tests.</div>
+        </div>
+        <button class="btn-primary" onclick="App.reviseAllModal()">📋 Revise All Subjects Checklist</button>
+      </div>
+
+      <div class="filter-bar" id="revisionFilterBar">
+        <button class="filter-chip active" onclick="App.renderRevisionContent('English')">English</button>
+        <button class="filter-chip" onclick="App.renderRevisionContent('Mathematics')">Mathematics</button>
+        <button class="filter-chip" onclick="App.renderRevisionContent('General Science')">Science</button>
+        <button class="filter-chip" onclick="App.renderRevisionContent('Urdu')">Urdu</button>
+        <button class="filter-chip" onclick="App.renderRevisionContent('Sindhi')">Sindhi</button>
+        <button class="filter-chip" onclick="App.renderRevisionContent('Computer Studies')">Computer</button>
+        <button class="filter-chip" onclick="App.renderRevisionContent('General Knowledge')">General Knowledge</button>
+      </div>
+
+      <div id="revisionContentBox" style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:20px; padding:28px; box-shadow:var(--shadow-sm);">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Flash Review Cards -->
+    <section class="flashcards-section" id="flashcards" style="border-radius: 24px; padding: 36px 28px; margin-bottom: 50px;">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Active Recall</div>
+          <h2 class="section-heading">📖 Interactive Flash Review Cards</h2>
+          <div class="section-subheading">Tap or click card to flip between terms, definitions, formulas, and visual examples.</div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn-secondary" onclick="App.filterFlashcards('all')">All</button>
+          <button class="btn-secondary" onclick="App.filterFlashcards('favorites')">⭐ Favorites</button>
+          <button class="btn-secondary" onclick="App.shuffleFlashcards()">🔀 Shuffle</button>
+        </div>
+      </div>
+
+      <div class="flashcard-stage">
+        <div class="flashcard-3d-wrap" onclick="App.flipFlashcard()">
+          <div class="flashcard-inner" id="flashcardElement">
+            <div class="flashcard-front">
+              <span class="flashcard-badge" id="fcSubject">English Vocabulary</span>
+              <h3 class="flashcard-term" id="fcFrontTerm">Metaphor</h3>
+              <p class="flashcard-desc" id="fcFrontPrompt">Click to reveal definition & example</p>
+              <div class="flashcard-hint-click">🔄 Click card to flip</div>
+            </div>
+            <div class="flashcard-back">
+              <span class="flashcard-badge" id="fcBackCategory">Definition & Usage</span>
+              <h4 class="flashcard-term" id="fcBackAnswer">Direct Comparison</h4>
+              <p class="flashcard-desc" id="fcBackDetails">A figure of speech that compares two things by stating one IS the other (e.g. "The classroom was a zoo").</p>
+              <div class="flashcard-hint-click">🔄 Click to flip back</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard-controls">
+          <button class="btn-icon" onclick="App.prevFlashcard()" title="Previous Card">◀</button>
+          <button class="btn-secondary" onclick="App.toggleFavoriteFlashcard()" id="fcFavBtn">⭐ Favorite</button>
+          <span style="font-weight:700; font-size:0.9rem;" id="fcCounter">1 / 40</span>
+          <button class="btn-icon" onclick="App.nextFlashcard()" title="Next Card">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements & Badges -->
+    <section class="badges-section" style="margin-bottom: 50px;">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Rewards & Honors</div>
+          <h2 class="section-heading">⭐ 18 Unlockable Achievements</h2>
+          <div class="section-subheading">Earn badges by completing lessons, taking quizzes, maintaining streaks and solving drills!</div>
+        </div>
+      </div>
+      <div class="badges-grid" id="badgesGrid">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- Parent Learning Report (Parent View) -->
+    <section class="parent-view-section" id="parent-report">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Parent & Teacher Analytics</div>
+          <h2 class="section-heading">📊 Parent Learning Report</h2>
+          <div class="section-subheading">Comprehensive diagnostics, strong areas, recommendations, and printable performance audit.</div>
+        </div>
+        <button class="btn-secondary" onclick="window.print()">🖨️ Print / Save Report</button>
+      </div>
+
+      <div class="report-card-wrap">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-subtle); padding-bottom:16px; flex-wrap:wrap; gap:10px;">
+          <div>
+            <h3 style="font-size:1.4rem;">Student Grade 5 Academic Profile</h3>
+            <p style="font-size:0.9rem; color:var(--text-muted);">Session Data: Local Encrypted Storage</p>
+          </div>
+          <div class="pill-badge secondary" style="font-size:0.9rem;">Status: Active Upper-Primary Scholar</div>
+        </div>
+
+        <div class="parent-metrics-grid" id="parentMetricsGrid">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Subject breakdown table -->
+        <div>
+          <h4 style="font-size:1.15rem; margin-bottom:12px;">Subject-by-Subject Mastery</h4>
+          <div style="overflow-x:auto;">
+            <table class="subject-perf-table" id="parentSubjectTable">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Lessons Completed</th>
+                  <th>Practice Questions</th>
+                  <th>Estimated Mastery</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Pedagogical Insights -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px;">
+          <div style="background:var(--brand-emerald-light); padding:18px; border-radius:14px; border-left:4px solid var(--brand-emerald);">
+            <h4 style="color:#065f46; margin-bottom:6px;">🌟 Strong Areas</h4>
+            <p style="font-size:0.9rem; color:#047857;" id="parentStrongText">Consistently active in English Reading and General Science concepts.</p>
+          </div>
+          <div style="background:var(--brand-amber-light); padding:18px; border-radius:14px; border-left:4px solid var(--brand-amber);">
+            <h4 style="color:#92400e; margin-bottom:6px;">📈 Recommended Focus</h4>
+            <p style="font-size:0.9rem; color:#b45309;" id="parentFocusText">Recommended to practice Long Division and Geometry measurement units.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Books & Resources Section -->
+    <section class="books-section" id="books" style="padding: 40px 0 60px;">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-tag">Authorized Learning Portals</div>
+          <h2 class="section-heading">📚 Grade 5 Books & Official Resources</h2>
+          <div class="section-subheading">Verified educational reference portals, syllabus guides, and supplementary learning links.</div>
+        </div>
+      </div>
+      <div class="books-grid" id="booksGrid">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive Lesson Viewer Modal -->
+  <div class="lesson-viewer-modal" id="lessonViewerModal">
+    <div class="lesson-viewer-container">
+      <div class="lesson-viewer-header">
+        <div class="lesson-breadcrumbs">
+          <span id="lvSubjectBreadcrumb">English</span> / <span id="lvUnitBreadcrumb">Module 1</span> / <span id="lvLessonNumBreadcrumb">Lesson 1</span>
+        </div>
+        <div class="lesson-viewer-controls">
+          <button class="btn-icon" id="lvReadAloudBtn" onclick="App.toggleSpeechSynthesis()" title="Read Aloud Lesson">🔊</button>
+          <button class="btn-icon" onclick="App.closeLessonViewer()" title="Close Viewer">✖</button>
+        </div>
+      </div>
+
+      <div class="lesson-viewer-body" id="lessonViewerBody">
+        <!-- Dynamically injected with full educational content -->
+      </div>
+
+      <div class="lesson-viewer-footer">
+        <button class="btn-nav-lesson" id="lvPrevLessonBtn" onclick="App.navigateLesson(-1)">⬅️ Previous Lesson</button>
+        <button class="btn-complete-lesson" id="lvMarkCompleteBtn" onclick="App.markCurrentLessonComplete()">✓ Mark Lesson Complete (+50 XP)</button>
+        <button class="btn-nav-lesson" id="lvNextLessonBtn" onclick="App.navigateLesson(1)">Next Lesson ➡️</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story Viewer Modal -->
+  <div class="lesson-viewer-modal" id="storyViewerModal">
+    <div class="lesson-viewer-container" style="max-width:860px;">
+      <div class="lesson-viewer-header">
+        <div class="lesson-breadcrumbs">📖 Reading Library / <span id="svStoryTitleBreadcrumb">Story</span></div>
+        <div class="lesson-viewer-controls">
+          <button class="btn-icon" id="svReadAloudBtn" onclick="App.toggleStorySpeech()" title="Read Aloud Story">🔊</button>
+          <button class="btn-icon" onclick="App.closeStoryViewer()">✖</button>
+        </div>
+      </div>
+      <div class="lesson-viewer-body" id="storyViewerBody">
+        <!-- Story text & comprehension injected here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Modal -->
+  <div class="game-modal" id="gameModal">
+    <div class="game-container">
+      <div class="game-modal-header">
+        <h3 id="gameModalTitle" style="font-size:1.2rem; font-weight:800;">Math Speed Challenge</h3>
+        <div class="game-stats-bar">
+          <div>⭐ Score: <span id="gameScoreVal">0</span></div>
+          <div>⏱️ Time: <span id="gameTimerVal">30s</span></div>
+        </div>
+        <button class="btn-icon" onclick="App.closeGameModal()">✖</button>
+      </div>
+      <div class="game-canvas-wrap" id="gameCanvasWrap">
+        <!-- Interactive Game Stage injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Smart Search Modal -->
+  <div class="search-modal" id="searchModal">
+    <div class="search-modal-box">
+      <div class="search-input-wrap">
+        <span>🔍</span>
+        <input type="text" id="globalSearchInput" placeholder="Search lessons, topics, notes, stories, formulas and games..." autofocus />
+        <button class="btn-icon" onclick="App.closeSearchModal()">✖</button>
+      </div>
+      <div class="search-results-list" id="searchResultsList">
+        <div style="padding:20px; text-align:center; color:var(--text-muted); font-size:0.9rem;">
+          Type anything (e.g. "Photosynthesis", "Fractions", "Nouns", "Solar System", "Decimal")
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Toast Notifications Container -->
+  <div id="toast-container"></div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo-title" style="margin-bottom: 8px;">STUDYMATE <span>AI</span></div>
+          <p style="font-size:0.9rem; margin-bottom:12px;">
+            A premier digital learning environment engineered for Grade 5 students. Designed to foster conceptual mastery, mathematical reasoning, scientific curiosity, and linguistic excellence.
+          </p>
+          <div class="pill-badge primary">Grade 5 Edition • 2026 Academic Standard</div>
+        </div>
+        <div>
+          <h4 style="font-size:1rem; margin-bottom:12px;">Core Subjects</h4>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:6px; font-size:0.9rem; color:var(--text-secondary);">
+            <li><a href="#subjects" onclick="App.openSubjectLessons('English')">English Language</a></li>
+            <li><a href="#subjects" onclick="App.openSubjectLessons('Mathematics')">Mathematics</a></li>
+            <li><a href="#subjects" onclick="App.openSubjectLessons('General Science')">General Science</a></li>
+            <li><a href="#subjects" onclick="App.openSubjectLessons('Urdu')">Urdu Language</a></li>
+            <li><a href="#subjects" onclick="App.openSubjectLessons('Sindhi')">Sindhi Language</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:1rem; margin-bottom:12px;">Learning Features</h4>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:6px; font-size:0.9rem; color:var(--text-secondary);">
+            <li><a href="#reading-library">Reading Library (8 Stories)</a></li>
+            <li><a href="#games">12 Interactive Games</a></li>
+            <li><a href="#quiz">60-Question Master Quiz</a></li>
+            <li><a href="#flashcards">Active Recall Flashcards</a></li>
+            <li><a href="#parent-report">Parent Progress Report</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:1rem; margin-bottom:12px;">Curriculum Standard</h4>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:8px;">
+            Compatible with Sindh Textbook Board, Federal Curriculum, and Oxford-style private school frameworks.
+          </p>
+          <p style="font-size:0.8rem; color:var(--text-muted);">
+            All original study material & exercises strictly authored for EduNexa AI.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 EduNexa AI Educational Platform. All rights reserved.</div>
+        <div>Smart Explorer Upper-Primary System</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Single Master Script file -->
+  <script src="grade5.js"></script>
+</body>
+</html>

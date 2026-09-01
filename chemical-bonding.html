@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemical Bonding — MDCAT Chemistry Notes & Interactive Module</title>
+  <link rel="stylesheet" href="chemical-bonding.css">
+  <script src="chemical-bonding.js" defer></script>
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       TOP HEADER WITH PROGRESS BAR & CONTROLS
+       ========================================================================= -->
+  <header class="top-header" id="top-header" role="banner">
+    <div class="progress-track" aria-hidden="true">
+      <div class="progress-fill" id="reading-progress-fill"></div>
+    </div>
+    
+    <div class="container header-content">
+      <a href="#hero" class="brand-wrapper" id="brand-link" aria-label="Chemical Bonding Home">
+        <div class="brand-icon">⚛</div>
+        <div class="brand-text-block">
+          <span class="brand-title">MDCAT Chemistry</span>
+          <span class="brand-badge">Chapter 04 • Bonding</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search chapter..." aria-label="Search Chemical Bonding Notes">
+          <button id="search-clear-btn" class="search-clear-btn" aria-label="Clear search">✕</button>
+        </div>
+
+        <button id="btn-toggle-bookmarks" class="action-btn" aria-label="View Bookmarks">
+          <span>★</span>
+          <span class="action-btn-text-hide">Bookmarks</span>
+          <span class="bookmark-counter-badge" id="bookmark-count-badge">0</span>
+        </button>
+
+        <button id="btn-chapter-complete" class="action-btn action-btn-primary" aria-label="Toggle Chapter Completion">
+          Mark Completed
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       STICKY CHAPTER NAVIGATION
+       ========================================================================= -->
+  <nav class="chapter-nav-bar" id="chapter-nav" aria-label="Chapter Sub-Navigation">
+    <div class="container nav-scroll-container">
+      <a href="#sec-overview" class="nav-tab-link active">Overview</a>
+      <a href="#sec-ionic" class="nav-tab-link">Ionic Bond</a>
+      <a href="#sec-covalent" class="nav-tab-link">Covalent</a>
+      <a href="#sec-coordinate" class="nav-tab-link">Coordinate</a>
+      <a href="#sec-lewis" class="nav-tab-link">Lewis Builder</a>
+      <a href="#sec-electronegativity" class="nav-tab-link">Electronegativity</a>
+      <a href="#sec-polarity" class="nav-tab-link">Polarity</a>
+      <a href="#sec-vsepr" class="nav-tab-link">VSEPR & Shapes</a>
+      <a href="#sec-hybridization" class="nav-tab-link">Hybridization</a>
+      <a href="#sec-sigma-pi" class="nav-tab-link">σ & π Bonds</a>
+      <a href="#sec-imf" class="nav-tab-link">Intermolecular</a>
+      <a href="#sec-metallic" class="nav-tab-link">Metallic</a>
+      <a href="#sec-high-yield" class="nav-tab-link">High-Yield</a>
+      <a href="#sec-flashcards" class="nav-tab-link">Flashcards</a>
+      <a href="#sec-revision-tables" class="nav-tab-link">Tables</a>
+      <a href="#sec-quiz" class="nav-tab-link">Quiz (15 MCQs)</a>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       HERO SECTION
+       ========================================================================= -->
+  <section class="hero-section" id="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text-block">
+          <div class="hero-badges-row">
+            <span class="pill-badge pill-emerald">MDCAT Chemistry</span>
+            <span class="pill-badge pill-blue">Concept Builder</span>
+            <span class="pill-badge pill-violet">High-Yield 2026</span>
+          </div>
+
+          <h1 class="hero-title" id="hero-title">CHEMICAL BONDING</h1>
+          <p class="hero-subtitle">"How Atoms Connect, Share, and Transfer Electrons to Reach Minimum Energy Stability"</p>
+
+          <div class="stats-bar-grid">
+            <div class="stat-box">
+              <span class="stat-value">12</span>
+              <span class="stat-label">Core Concepts</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value">8</span>
+              <span class="stat-label">Bonding Visuals</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value">15</span>
+              <span class="stat-label">MDCAT MCQs</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value">12</span>
+              <span class="stat-label">Flashcards</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual-card" id="hero-visual-card" aria-label="Animated Molecular Model Visual">
+          <div class="molecule-canvas-wrapper">
+            <div class="molecule-stage">
+              <!-- Orbit Ring -->
+              <div class="orbital-ring">
+                <div class="orbiting-electron-dot"></div>
+              </div>
+              <!-- Bond Lines -->
+              <div class="bond-connector-line bond-1"></div>
+              <div class="bond-connector-line bond-2"></div>
+              <div class="bond-connector-line bond-3"></div>
+              <!-- Central Node -->
+              <div class="central-atom-node">
+                <span>C</span>
+                <small>sp³</small>
+              </div>
+              <!-- Satellites -->
+              <div class="satellite-atom sat-top">H</div>
+              <div class="satellite-atom sat-bottom-left">H</div>
+              <div class="satellite-atom sat-bottom-right">H</div>
+            </div>
+          </div>
+          <div class="visual-caption">Dynamic Multi-Atom Molecular Bonding Model</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       STUDY DASHBOARD PANEL
+       ========================================================================= -->
+  <div class="container">
+    <div class="study-dashboard-card" id="study-panel">
+      <div class="study-tip-block">
+        <div class="tip-icon-bubble">💡</div>
+        <div class="tip-content">
+          <strong>MDCAT Study Golden Rule:</strong>
+          <p>Always identify the total number of valence electrons first, determine the central atom's coordination number, and account for lone-pair repulsion before predicting geometry or polarity.</p>
+        </div>
+      </div>
+
+      <div class="study-metrics-group">
+        <div class="study-metric-item">
+          <div class="metric-num">~20m</div>
+          <div class="metric-txt">Read Time</div>
+        </div>
+        <div class="study-metric-item">
+          <div class="metric-num" id="progress-percentage">0%</div>
+          <div class="metric-txt">Progress</div>
+        </div>
+        <div class="study-metric-item">
+          <div class="metric-num">25+</div>
+          <div class="metric-txt">Yield Points</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================= -->
+  <main class="container main-content" id="main-content" role="main">
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 1: OVERVIEW, VALENCE ELECTRONS & OCTET RULE
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-overview" aria-labelledby="sec-title-overview">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">01–03</span>
+          <h2 class="section-title" id="sec-title-overview">Chemical Bonds, Valence Electrons & Octet Rule</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-overview" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <div class="grid-2col">
+        <div class="card-item">
+          <div class="card-item-header">
+            <span>1. What is a Chemical Bond?</span>
+            <span class="pill-badge pill-emerald">Core Law</span>
+          </div>
+          <p>A <strong>chemical bond</strong> is the attractive force that holds atoms or ions together in a chemical substance.</p>
+          <p><strong>Why do atoms form bonds?</strong> Isolated atoms have higher potential energy. By interacting and redistributing electrons, atoms achieve a <em>lower potential energy state</em> with maximum electrostatic stability.</p>
+        </div>
+
+        <div class="card-item">
+          <div class="card-item-header">
+            <span>2. Valence Electrons ⭐</span>
+            <span class="pill-badge pill-blue">Outer Shell</span>
+          </div>
+          <p>Valence electrons are the electrons present in the <strong>outermost occupied shell</strong> (highest principal quantum number <em>n</em>) of an atom.</p>
+          <p>They determine: <strong>Chemical valency</strong>, ion formation capability, coordination number, and reactivity.</p>
+          <div class="chem-eq-banner">
+            Sodium (Na: 2, 8, 1) &nbsp;⟶&nbsp; <span class="highlight-sub">Na⁺ (2, 8)</span> + 1e⁻ (Valence e⁻ lost)
+          </div>
+        </div>
+      </div>
+
+      <!-- Octet Rule Deep Dive -->
+      <div class="concept-note-box">
+        <div class="note-box-header">
+          <span>👑 3. The Octet Rule & Noble Gas Stability</span>
+        </div>
+        <p>Main-group atoms tend to lose, gain, or share electrons until they are surrounded by <strong>8 valence electrons</strong> (noble gas configuration, ns² np⁶, or helium duet 1s²).</p>
+      </div>
+
+      <div class="concept-note-box warning-box">
+        <div class="note-box-header">
+          <span>⚠️ Critical MDCAT Note: Exceptions to the Octet Rule</span>
+        </div>
+        <ul class="styled-list">
+          <li><strong>Incomplete Octet (Electron-Deficient molecules):</strong> BeCl₂ (4e⁻ on Be), BF₃ / BCl₃ (6e⁻ on B), AlCl₃ (monomer).</li>
+          <li><strong>Expanded Octet (Hypervalent molecules with empty d-orbitals):</strong> PCl₅ (10e⁻ on P), SF₆ (12e⁻ on S), IF₇ (14e⁻ on I), H₂SO₄.</li>
+          <li><strong>Odd-Electron Molecules:</strong> NO (11 valence e⁻), NO₂ (17 valence e⁻) — contain unpaired radical electrons.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 2: IONIC BONDING
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-ionic" aria-labelledby="sec-title-ionic">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">04</span>
+          <h2 class="section-title" id="sec-title-ionic">Ionic Bonding & Crystal Lattice Properties</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-ionic" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <p>An <strong>ionic bond</strong> is the non-directional electrostatic attraction between oppositely charged ions formed by the complete transfer of one or more valence electrons from an electropositive metal to an electronegative non-metal.</p>
+
+      <!-- Interactive Ionic Transfer Simulator -->
+      <div class="interactive-panel" id="ionic-simulator">
+        <div class="panel-top-bar">
+          <div class="panel-title">
+            <span>⚡ Interactive Simulator: Formation of Sodium Chloride (NaCl)</span>
+          </div>
+          <div class="simulator-controls">
+            <button class="sim-btn sim-btn-primary" id="btn-transfer-electron">Transfer Electron</button>
+            <button class="sim-btn sim-btn-secondary" id="btn-reset-ionic">Reset</button>
+          </div>
+        </div>
+
+        <div class="ionic-stage">
+          <!-- Sodium Atom -->
+          <div class="ionic-atom-box" id="atom-box-na">
+            <div class="atom-circle atom-na">
+              <span>Na</span>
+              <span class="atom-electron-badge">2, 8, 1</span>
+              <div class="ionic-charge-badge charge-pos" id="na-charge-badge">+</div>
+            </div>
+            <small>Sodium (Metal)</small>
+          </div>
+
+          <!-- Flying Electron Particle -->
+          <div class="transfer-electron-particle" id="ionic-electron-particle">e⁻</div>
+
+          <!-- Electrostatic Attraction Glow -->
+          <div class="attraction-force-field" id="attraction-field">
+            <div class="attraction-lightning">⚡⚡⚡</div>
+            <small style="color: #ea580c; font-weight: 700;">Electrostatic Attraction</small>
+          </div>
+
+          <!-- Chlorine Atom -->
+          <div class="ionic-atom-box" id="atom-box-cl">
+            <div class="atom-circle atom-cl">
+              <span>Cl</span>
+              <span class="atom-electron-badge">2, 8, 7</span>
+              <div class="ionic-charge-badge charge-neg" id="cl-charge-badge">−</div>
+            </div>
+            <small>Chlorine (Non-metal)</small>
+          </div>
+        </div>
+
+        <div class="sim-status-banner" id="ionic-status-banner">
+          Sodium (2,8,1) has 1 valence electron; Chlorine (2,8,7) has 7 valence electrons. Click "Transfer Electron" to observe ionic bonding.
+        </div>
+      </div>
+
+      <!-- Properties of Ionic Compounds -->
+      <div class="grid-3col">
+        <div class="card-item">
+          <div class="card-item-header">High MP & BP</div>
+          <p>Enormous energy is required to overcome the strong non-directional 3D electrostatic attractions throughout the giant crystal lattice.</p>
+        </div>
+        <div class="card-item">
+          <div class="card-item-header">Hardness & Brittleness</div>
+          <p>When mechanical shear stress is applied, layers of ions shift, bringing like charges into contact; repulsive forces immediately shatter the crystal.</p>
+        </div>
+        <div class="card-item">
+          <div class="card-item-header">Electrical Conductivity ⭐</div>
+          <p><strong>Solid state:</strong> Non-conductor because ions are rigidly fixed in lattice points.<br><strong>Molten/Aqueous:</strong> Good conductor because ions are free to migrate.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 3: COVALENT BONDING
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-covalent" aria-labelledby="sec-title-covalent">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">05</span>
+          <h2 class="section-title" id="sec-title-covalent">Covalent Bonding & Electron Sharing</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-covalent" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <p>A <strong>covalent bond</strong> is formed when two non-metal atoms mutually share one or more pairs of valence electrons to achieve stable noble-gas electron configurations.</p>
+
+      <!-- Interactive Covalent Sharing Visualizer -->
+      <div class="interactive-panel" id="covalent-simulator">
+        <div class="panel-top-bar">
+          <div class="panel-title">
+            <span>🔬 Interactive Covalent Bond Sharing Visualizer</span>
+          </div>
+          <div class="panel-selector-pills">
+            <button class="selector-pill-btn covalent-pill-btn active" data-mol="H2">H–H (Single)</button>
+            <button class="selector-pill-btn covalent-pill-btn" data-mol="Cl2">Cl–Cl (Single)</button>
+            <button class="selector-pill-btn covalent-pill-btn" data-mol="O2">O=O (Double)</button>
+            <button class="selector-pill-btn covalent-pill-btn" data-mol="N2">N≡N (Triple)</button>
+          </div>
+        </div>
+
+        <div class="covalent-stage" id="covalent-stage-container">
+          <div class="covalent-atom-bubble">H</div>
+          <div class="overlap-region">
+            <div style="display: flex; gap: 6px;">
+              <div class="shared-pair-dot"></div>
+              <div class="shared-pair-dot"></div>
+            </div>
+          </div>
+          <div class="covalent-atom-bubble">H</div>
+        </div>
+
+        <div class="sim-status-banner" id="covalent-status-text">
+          <strong>Single Covalent Bond (H–H):</strong> Each Hydrogen atom contributes 1 electron. Sharing 1 pair (2 electrons) completes the helium-like duet for both.
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 4: COORDINATE COVALENT (DATIVE) BOND
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-coordinate" aria-labelledby="sec-title-coordinate">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">06</span>
+          <h2 class="section-title" id="sec-title-coordinate">Coordinate Covalent (Dative) Bond</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-coordinate" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <p>A <strong>coordinate covalent bond</strong> (dative bond) is a type of covalent bond in which <em>both shared electrons</em> are supplied by one of the participating atoms (the <strong>donor / Lewis base</strong>) into the empty orbital of an electron-deficient species (the <strong>acceptor / Lewis acid</strong>).</p>
+
+      <div class="interactive-panel" id="coordinate-simulator">
+        <div class="panel-top-bar">
+          <div class="panel-title">
+            <span>🔄 Formation of Ammonium Ion [NH₄]⁺ Step-by-Step</span>
+          </div>
+          <div class="panel-selector-pills">
+            <button class="selector-pill-btn coord-step-pill active" data-step="0">1. Reactants</button>
+            <button class="selector-pill-btn coord-step-pill" data-step="1">2. Lone-Pair Donation</button>
+            <button class="selector-pill-btn coord-step-pill" data-step="2">3. Product [NH₄]⁺</button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; padding: 1.5rem 0;" id="coord-visual-container">
+          <svg viewBox="0 0 280 120" width="280" height="120">
+            <circle cx="80" cy="60" r="30" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.5" />
+            <text x="80" y="67" font-weight="bold" font-size="16" fill="#6d28d9" text-anchor="middle">NH₃</text>
+            <circle cx="118" cy="55" r="4" fill="#f59e0b" /><circle cx="118" cy="65" r="4" fill="#f59e0b" />
+            <text x="160" y="66" font-weight="bold" font-size="20" fill="#64748b" text-anchor="middle">+</text>
+            <circle cx="210" cy="60" r="22" fill="#fee2e2" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 3" />
+            <text x="210" y="66" font-weight="bold" font-size="16" fill="#b91c1c" text-anchor="middle">H⁺</text>
+          </svg>
+        </div>
+
+        <div class="sim-status-banner" id="coord-explanation-text">
+          <strong>Step 1: Isolated Reactants:</strong> NH₃ has an unshared lone pair of electrons on Nitrogen. H⁺ (proton) has an empty 1s orbital with zero electrons.
+        </div>
+      </div>
+
+      <div class="concept-note-box accent-box">
+        <div class="note-box-header">
+          <span>⭐ High-Yield MDCAT Rule: Coordinate Bond Behavior</span>
+        </div>
+        <p>Once formed, a coordinate covalent bond is <strong>completely indistinguishable from an ordinary covalent bond</strong> in terms of bond length, bond energy, and chemical reactivity.</p>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 5: LEWIS STRUCTURE BUILDER
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-lewis" aria-labelledby="sec-title-lewis">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">07–10</span>
+          <h2 class="section-title" id="sec-title-lewis">Interactive Lewis Structure Builder</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-lewis" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <div class="interactive-panel" id="lewis-builder">
+        <div class="panel-top-bar">
+          <div class="panel-title">
+            <span>🧠 Select Molecule to Construct Lewis Structure</span>
+          </div>
+          <div class="panel-selector-pills">
+            <button class="selector-pill-btn lewis-pill-btn active" data-lewis="H2O">H₂O</button>
+            <button class="selector-pill-btn lewis-pill-btn" data-lewis="NH3">NH₃</button>
+            <button class="selector-pill-btn lewis-pill-btn" data-lewis="CH4">CH₄</button>
+            <button class="selector-pill-btn lewis-pill-btn" data-lewis="CO2">CO₂</button>
+            <button class="selector-pill-btn lewis-pill-btn" data-lewis="BF3">BF₃</button>
+            <button class="selector-pill-btn lewis-pill-btn" data-lewis="NH4_pos">NH₄⁺</button>
+            <button class="selector-pill-btn lewis-pill-btn" data-lewis="H2">H₂</button>
+            <button class="selector-pill-btn lewis-pill-btn" data-lewis="Cl2">Cl₂</button>
+          </div>
+        </div>
+
+        <div class="lewis-builder-grid">
+          <!-- Molecule Specs Card -->
+          <div class="lewis-specs-card">
+            <div style="font-size: 1.15rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.75rem;" id="lewis-formula-name">
+              Water Molecule (H₂O)
+            </div>
+
+            <div class="lewis-spec-row">
+              <span class="spec-label">Total Valence Electrons:</span>
+              <span class="spec-val" id="lewis-valence-total">8 e⁻</span>
+            </div>
+            <div class="lewis-spec-row">
+              <span class="spec-label">Electron Math:</span>
+              <span class="spec-val" style="font-size: 0.8rem;" id="lewis-valence-breakdown">O (6e⁻) + 2 × H (1e⁻) = 8 e⁻</span>
+            </div>
+            <div class="lewis-spec-row">
+              <span class="spec-label">Central Atom:</span>
+              <span class="spec-val" id="lewis-central-atom">Oxygen (O)</span>
+            </div>
+            <div class="lewis-spec-row">
+              <span class="spec-label">Bonding Pairs (BP):</span>
+              <span class="spec-val" id="lewis-bp-count">2 pairs</span>
+            </div>
+            <div class="lewis-spec-row">
+              <span class="spec-label">Lone Pairs on Central:</span>
+              <span class="spec-val" id="lewis-lp-count">2 pairs</span>
+            </div>
+            <div class="lewis-spec-row">
+              <span class="spec-label">Geometry:</span>
+              <span class="spec-val" id="lewis-geometry">Bent / V-shaped (~104.5°)</span>
+            </div>
+            <div class="lewis-spec-row">
+              <span class="spec-label">Octet Status:</span>
+              <span class="spec-val" style="font-size: 0.8rem; color: var(--success);" id="lewis-octet-status">Oxygen Octet Complete</span>
+            </div>
+          </div>
+
+          <!-- Canvas & Interactive Step Guide -->
+          <div class="lewis-canvas-card">
+            <div class="lewis-svg-display" id="lewis-svg-wrapper">
+              <!-- SVG dynamically rendered by JS -->
+            </div>
+
+            <div class="lewis-step-indicator">
+              <div class="step-text" id="lewis-step-narration">Click "Show Step-by-Step" to construct H₂O from valence electron counting.</div>
+              <button class="sim-btn sim-btn-primary" id="btn-lewis-step" style="padding: 0.35rem 0.85rem; font-size: 0.8rem;">
+                Show Step-by-Step
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 6: ELECTRONEGATIVITY & PERIODIC TREND
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-electronegativity" aria-labelledby="sec-title-en">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">11</span>
+          <h2 class="section-title" id="sec-title-en">Electronegativity & Periodic Trends</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-electronegativity" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <p><strong>Electronegativity (EN)</strong> is the relative tendency of an atom in a covalent bond to attract the shared pair of electrons toward itself.</p>
+
+      <div class="trend-arrow-bar">
+        <span>Across a Period (Left ⟶ Right): <strong>EN Increases</strong> (Higher effective nuclear charge Z_eff, smaller atomic radius)</span>
+        <span>Down a Group (Top ⟶ Bottom): <strong>EN Decreases</strong> (Increased shielding & larger atomic radius)</span>
+      </div>
+
+      <!-- Interactive Periodic Table Tile Selector -->
+      <div class="interactive-panel" id="en-explorer">
+        <div class="panel-top-bar">
+          <div class="panel-title">
+            <span>⚡ Interactive Electronegativity Selector (Click any element)</span>
+          </div>
+        </div>
+
+        <div class="ptable-grid">
+          <div class="element-tile" data-elem="H"><div class="element-sym">H</div><div class="element-en">2.20</div><div class="element-name">Hydrogen</div></div>
+          <div class="element-tile" data-elem="Li"><div class="element-sym">Li</div><div class="element-en">0.98</div><div class="element-name">Lithium</div></div>
+          <div class="element-tile" data-elem="Be"><div class="element-sym">Be</div><div class="element-en">1.57</div><div class="element-name">Beryllium</div></div>
+          <div class="element-tile" data-elem="B"><div class="element-sym">B</div><div class="element-en">2.04</div><div class="element-name">Boron</div></div>
+          <div class="element-tile" data-elem="C"><div class="element-sym">C</div><div class="element-en">2.55</div><div class="element-name">Carbon</div></div>
+          <div class="element-tile" data-elem="N"><div class="element-sym">N</div><div class="element-en">3.04</div><div class="element-name">Nitrogen</div></div>
+          <div class="element-tile" data-elem="O"><div class="element-sym">O</div><div class="element-en">3.44</div><div class="element-name">Oxygen</div></div>
+          <div class="element-tile selected" data-elem="F"><div class="element-sym">F</div><div class="element-en">3.98</div><div class="element-name">Fluorine (Max)</div></div>
+          <div class="element-tile" data-elem="Na"><div class="element-sym">Na</div><div class="element-en">0.93</div><div class="element-name">Sodium</div></div>
+          <div class="element-tile" data-elem="Mg"><div class="element-sym">Mg</div><div class="element-en">1.31</div><div class="element-name">Magnesium</div></div>
+          <div class="element-tile" data-elem="Al"><div class="element-sym">Al</div><div class="element-en">1.61</div><div class="element-name">Aluminium</div></div>
+          <div class="element-tile" data-elem="Si"><div class="element-sym">Si</div><div class="element-en">1.90</div><div class="element-name">Silicon</div></div>
+          <div class="element-tile" data-elem="P"><div class="element-sym">P</div><div class="element-en">2.19</div><div class="element-name">Phosphorus</div></div>
+          <div class="element-tile" data-elem="S"><div class="element-sym">S</div><div class="element-en">2.58</div><div class="element-name">Sulfur</div></div>
+          <div class="element-tile" data-elem="Cl"><div class="element-sym">Cl</div><div class="element-en">3.16</div><div class="element-name">Chlorine</div></div>
+          <div class="element-tile" data-elem="K"><div class="element-sym">K</div><div class="element-en">0.82</div><div class="element-name">Potassium</div></div>
+          <div class="element-tile" data-elem="Br"><div class="element-sym">Br</div><div class="element-en">2.96</div><div class="element-name">Bromine</div></div>
+          <div class="element-tile" data-elem="I"><div class="element-sym">I</div><div class="element-en">2.66</div><div class="element-name">Iodine</div></div>
+        </div>
+
+        <div class="element-detail-card" id="element-detail-panel">
+          <div>
+            <span style="font-size: 2.2rem; font-weight: 800; color: var(--primary-dark);" id="en-detail-sym">F</span>
+            <div style="font-weight: 700; font-size: 1.1rem;" id="en-detail-name">Fluorine</div>
+            <div style="color: var(--accent-dark); font-weight: 700;" id="en-detail-value">Pauling EN: 3.98</div>
+          </div>
+          <div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+              <strong>Configuration:</strong> <span id="en-detail-config">[He] 2s² 2p⁵</span>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+              <strong>Periodic Position:</strong> <span id="en-detail-group">Period 2, Group VIIA (Halogen)</span>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              <strong>Bonding Role:</strong> <span id="en-detail-role">Most electronegative element in periodic table (4.0). Strongly attracts shared electrons.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 7: BOND POLARITY VS MOLECULAR POLARITY
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-polarity" aria-labelledby="sec-title-polarity">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">12–14</span>
+          <h2 class="section-title" id="sec-title-polarity">Bond Polarity vs. Molecular Polarity</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-polarity" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <!-- Bond Polarity Tool -->
+      <div class="interactive-panel" id="bond-polarity-tool">
+        <div class="panel-top-bar">
+          <div class="panel-title">
+            <span>🧲 Bond Polarity Calculator</span>
+          </div>
+          <div class="panel-selector-pills">
+            <button class="selector-pill-btn bond-pill-btn active" data-bond="H-Cl">H–Cl</button>
+            <button class="selector-pill-btn bond-pill-btn" data-bond="O-H">O–H</button>
+            <button class="selector-pill-btn bond-pill-btn" data-bond="C-O">C–O</button>
+            <button class="selector-pill-btn bond-pill-btn" data-bond="N-H">N–H</button>
+            <button class="selector-pill-btn bond-pill-btn" data-bond="H-H">H–H</button>
+            <button class="selector-pill-btn bond-pill-btn" data-bond="Cl-Cl">Cl–Cl</button>
+            <button class="selector-pill-btn bond-pill-btn" data-bond="C-H">C–H</button>
+          </div>
+        </div>
+
+        <div class="polarity-visual-box">
+          <div style="display: flex; gap: 1rem; margin-bottom: 0.75rem;">
+            <span class="pill-badge pill-emerald" id="bond-delta-en">ΔEN = 0.96</span>
+            <span class="pill-badge pill-blue" id="bond-type-classification">Polar Covalent</span>
+          </div>
+
+          <!-- Electron Density Asymmetric Cloud -->
+          <div class="electron-density-cloud" id="bond-cloud-container">
+            <div style="position: relative;">
+              <span class="partial-charge-tag" style="color: #ef4444;" id="bond-charge-a">δ⁺</span>
+              <span class="atom-label-node" id="bond-atom-a">H</span>
+            </div>
+            <div style="position: relative;">
+              <span class="partial-charge-tag" style="color: #3b82f6;" id="bond-charge-b">δ⁻</span>
+              <span class="atom-label-node" id="bond-atom-b">Cl</span>
+            </div>
+          </div>
+
+          <div class="dipole-vector-arrow" id="bond-vector-display">H (δ⁺) ───► Cl (δ⁻)</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;" id="bond-desc-text">
+            <strong>Electron Distribution:</strong> High density shifted strongly toward Cl.
+          </div>
+        </div>
+      </div>
+
+      <!-- Molecular Polarity vs Bond Polarity Comparison Tool -->
+      <div class="interactive-panel" id="molecular-polarity-tool">
+        <div class="panel-top-bar">
+          <div class="panel-title">
+            <span>🧬 Molecular Polarity Explorer (Dipole Cancellation)</span>
+          </div>
+          <div class="panel-selector-pills">
+            <button class="selector-pill-btn mol-pol-pill-btn active" data-mol-pol="CO2">CO₂ (Nonpolar)</button>
+            <button class="selector-pill-btn mol-pol-pill-btn" data-mol-pol="H2O">H₂O (Polar)</button>
+            <button class="selector-pill-btn mol-pol-pill-btn" data-mol-pol="NH3">NH₃ (Polar)</button>
+            <button class="selector-pill-btn mol-pol-pill-btn" data-mol-pol="CH4">CH₄ (Nonpolar)</button>
+            <button class="selector-pill-btn mol-pol-pill-btn" data-mol-pol="BF3">BF₃ (Nonpolar)</button>
+          </div>
+        </div>
+
+        <div class="card-item" style="border-color: var(--primary-border);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div style="font-size: 1.15rem; font-weight: 700; color: var(--text-main);" id="mol-pol-name">Carbon Dioxide (CO₂)</div>
+            <div class="pill-badge pill-violet" id="mol-pol-shape">Linear (180°)</div>
+          </div>
+
+          <ul class="styled-list">
+            <li><strong>Bond Polarity:</strong> <span id="mol-pol-bond">C=O bonds are strongly POLAR (ΔEN = 0.89)</span></li>
+            <li><strong>Dipole Vectors:</strong> <span id="mol-pol-vectors">Two equal bond dipole vectors point in exact opposite directions (180°)</span></li>
+            <li><strong>Vector Addition:</strong> <span id="mol-pol-cancel">Vectors cancel out completely (Vector sum = 0)</span></li>
+            <li><strong>Net Dipole Moment (μ):</strong> <span style="font-weight: 700; color: var(--primary-dark);" id="mol-pol-net-dipole">μ = 0 Debye (NONPOLAR MOLECULE)</span></li>
+          </ul>
+
+          <div class="concept-note-box" style="margin-top: 1rem;">
+            <div class="note-box-header">💡 Key Takeaway:</div>
+            <p id="mol-pol-explanation">Although individual C=O bonds are polar, the symmetrical linear geometry ensures total cancellation of bond dipoles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 8: VSEPR THEORY & MOLECULAR SHAPES
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-vsepr" aria-labelledby="sec-title-vsepr">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">15–16</span>
+          <h2 class="section-title" id="sec-title-vsepr">VSEPR Theory & Molecular Geometry Explorer</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-vsepr" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <p><strong>Valence Shell Electron Pair Repulsion (VSEPR) Theory:</strong> Electron pairs (both bonding pairs and lone pairs) surrounding the central atom repel one another electrostatically and position themselves as far apart in 3D space as possible to achieve minimum potential energy.</p>
+
+      <div class="concept-note-box accent-box">
+        <div class="note-box-header">⚡ Hierarchy of Repulsive Strengths:</div>
+        <p style="font-size: 1.1rem; font-family: var(--font-mono); font-weight: 700; text-align: center; color: var(--accent-dark);">
+          Lone Pair – Lone Pair (LP–LP) &nbsp;&gt;&nbsp; Lone Pair – Bond Pair (LP–BP) &nbsp;&gt;&nbsp; Bond Pair – Bond Pair (BP–BP)
+        </p>
+      </div>
+
+      <!-- 3D-Styled Molecular Shape Cards Grid -->
+      <div class="shapes-grid" id="shapes-explorer">
+        <!-- BeCl2 -->
+        <div class="shape-card">
+          <div class="shape-title">Beryllium Chloride</div>
+          <div class="shape-formula">BeCl₂</div>
+          <div class="shape-angle-tag">180°</div>
+          <div class="shape-svg-wrapper">
+            <svg viewBox="0 0 140 60" width="130" height="55">
+              <circle cx="20" cy="30" r="14" fill="#ecfdf5" stroke="#059669" stroke-width="2" /><text x="20" y="34" font-size="10" font-weight="bold" fill="#065f46" text-anchor="middle">Cl</text>
+              <line x1="34" y1="30" x2="56" y2="30" stroke="#0f172a" stroke-width="3" />
+              <circle cx="70" cy="30" r="14" fill="#fef3c7" stroke="#d97706" stroke-width="2" /><text x="70" y="34" font-size="10" font-weight="bold" fill="#b45309" text-anchor="middle">Be</text>
+              <line x1="84" y1="30" x2="106" y2="30" stroke="#0f172a" stroke-width="3" />
+              <circle cx="120" cy="30" r="14" fill="#ecfdf5" stroke="#059669" stroke-width="2" /><text x="120" y="34" font-size="10" font-weight="bold" fill="#065f46" text-anchor="middle">Cl</text>
+            </svg>
+          </div>
+          <div class="shape-meta-list">
+            <div class="shape-meta-row"><span>Domains / LP:</span><strong>2 / 0 LP</strong></div>
+            <div class="shape-meta-row"><span>Geometry:</span><strong>Linear</strong></div>
+            <div class="shape-meta-row"><span>Hybridization:</span><strong>sp</strong></div>
+          </div>
+        </div>
+
+        <!-- BF3 -->
+        <div class="shape-card">
+          <div class="shape-title">Boron Trifluoride</div>
+          <div class="shape-formula">BF₃</div>
+          <div class="shape-angle-tag">120°</div>
+          <div class="shape-svg-wrapper">
+            <svg viewBox="0 0 120 110" width="110" height="100">
+              <circle cx="60" cy="18" r="12" fill="#fdf2f8" stroke="#db2777" stroke-width="2" /><text x="60" y="22" font-size="9" font-weight="bold" fill="#be185d" text-anchor="middle">F</text>
+              <line x1="60" y1="30" x2="60" y2="50" stroke="#0f172a" stroke-width="2.5" />
+              <circle cx="60" cy="60" r="12" fill="#fef3c7" stroke="#d97706" stroke-width="2" /><text x="60" y="64" font-size="9" font-weight="bold" fill="#b45309" text-anchor="middle">B</text>
+              <line x1="50" y1="67" x2="30" y2="82" stroke="#0f172a" stroke-width="2.5" />
+              <circle cx="22" cy="88" r="12" fill="#fdf2f8" stroke="#db2777" stroke-width="2" /><text x="22" y="92" font-size="9" font-weight="bold" fill="#be185d" text-anchor="middle">F</text>
+              <line x1="70" y1="67" x2="90" y2="82" stroke="#0f172a" stroke-width="2.5" />
+              <circle cx="98" cy="88" r="12" fill="#fdf2f8" stroke="#db2777" stroke-width="2" /><text x="98" y="92" font-size="9" font-weight="bold" fill="#be185d" text-anchor="middle">F</text>
+            </svg>
+          </div>
+          <div class="shape-meta-list">
+            <div class="shape-meta-row"><span>Domains / LP:</span><strong>3 / 0 LP</strong></div>
+            <div class="shape-meta-row"><span>Geometry:</span><strong>Trigonal Planar</strong></div>
+            <div class="shape-meta-row"><span>Hybridization:</span><strong>sp²</strong></div>
+          </div>
+        </div>
+
+        <!-- CH4 -->
+        <div class="shape-card">
+          <div class="shape-title">Methane</div>
+          <div class="shape-formula">CH₄</div>
+          <div class="shape-angle-tag">109.5°</div>
+          <div class="shape-svg-wrapper">
+            <svg viewBox="0 0 120 110" width="110" height="100">
+              <circle cx="60" cy="55" r="14" fill="#f1f5f9" stroke="#334155" stroke-width="2" /><text x="60" y="59" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">C</text>
+              <line x1="60" y1="41" x2="60" y2="20" stroke="#0f172a" stroke-width="2.5" /><circle cx="60" cy="14" r="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" /><text x="60" y="17" font-size="7" font-weight="bold" fill="#0369a1" text-anchor="middle">H</text>
+              <line x1="46" y1="55" x2="22" y2="55" stroke="#0f172a" stroke-width="2.5" /><circle cx="15" cy="55" r="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" /><text x="15" y="58" font-size="7" font-weight="bold" fill="#0369a1" text-anchor="middle">H</text>
+              <line x1="74" y1="55" x2="98" y2="55" stroke="#0f172a" stroke-width="2.5" /><circle cx="105" cy="55" r="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" /><text x="105" y="58" font-size="7" font-weight="bold" fill="#0369a1" text-anchor="middle">H</text>
+              <line x1="60" y1="69" x2="60" y2="92" stroke="#0f172a" stroke-width="2.5" /><circle cx="60" cy="98" r="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" /><text x="60" y="101" font-size="7" font-weight="bold" fill="#0369a1" text-anchor="middle">H</text>
+            </svg>
+          </div>
+          <div class="shape-meta-list">
+            <div class="shape-meta-row"><span>Domains / LP:</span><strong>4 / 0 LP</strong></div>
+            <div class="shape-meta-row"><span>Geometry:</span><strong>Tetrahedral</strong></div>
+            <div class="shape-meta-row"><span>Hybridization:</span><strong>sp³</strong></div>
+          </div>
+        </div>
+
+        <!-- NH3 -->
+        <div class="shape-card">
+          <div class="shape-title">Ammonia</div>
+          <div class="shape-formula">NH₃</div>
+          <div class="shape-angle-tag">~107°</div>
+          <div class="shape-svg-wrapper">
+            <svg viewBox="0 0 120 110" width="110" height="100">
+              <circle cx="60" cy="45" r="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2" /><text x="60" y="49" font-size="10" font-weight="bold" fill="#6d28d9" text-anchor="middle">N</text>
+              <circle cx="56" cy="20" r="2.5" fill="#f59e0b" /><circle cx="64" cy="20" r="2.5" fill="#f59e0b" />
+              <line x1="48" y1="54" x2="26" y2="78" stroke="#0f172a" stroke-width="2.5" /><circle cx="20" cy="85" r="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" /><text x="20" y="88" font-size="7" font-weight="bold" fill="#0369a1" text-anchor="middle">H</text>
+              <line x1="60" y1="59" x2="60" y2="85" stroke="#0f172a" stroke-width="2.5" /><circle cx="60" cy="93" r="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" /><text x="60" y="96" font-size="7" font-weight="bold" fill="#0369a1" text-anchor="middle">H</text>
+              <line x1="72" y1="54" x2="94" y2="78" stroke="#0f172a" stroke-width="2.5" /><circle cx="100" cy="85" r="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" /><text x="100" y="88" font-size="7" font-weight="bold" fill="#0369a1" text-anchor="middle">H</text>
+            </svg>
+          </div>
+          <div class="shape-meta-list">
+            <div class="shape-meta-row"><span>Domains / LP:</span><strong>4 / 1 LP</strong></div>
+            <div class="shape-meta-row"><span>Geometry:</span><strong>Trigonal Pyramidal</strong></div>
+            <div class="shape-meta-row"><span>Hybridization:</span><strong>sp³</strong></div>
+          </div>
+        </div>
+
+        <!-- H2O -->
+        <div class="shape-card">
+          <div class="shape-title">Water</div>
+          <div class="shape-formula">H₂O</div>
+          <div class="shape-angle-tag">~104.5°</div>
+          <div class="shape-svg-wrapper">
+            <svg viewBox="0 0 120 110" width="110" height="100">
+              <circle cx="60" cy="40" r="14" fill="#ccfbf1" stroke="#0d9488" stroke-width="2" /><text x="60" y="44" font-size="10" font-weight="bold" fill="#0f766e" text-anchor="middle">O</text>
+              <circle cx="54" cy="18" r="2.5" fill="#f59e0b" /><circle cx="66" cy="18" r="2.5" fill="#f59e0b" />
+              <circle cx="36" cy="32" r="2.5" fill="#f59e0b" /><circle cx="34" cy="42" r="2.5" fill="#f59e0b" />
+              <line x1="49" y1="50" x2="30" y2="75" stroke="#0f172a" stroke-width="2.5" /><circle cx="24" cy="82" r="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" /><text x="24" y="85" font-size="7" font-weight="bold" fill="#0369a1" text-anchor="middle">H</text>
+              <line x1="71" y1="50" x2="90" y2="75" stroke="#0f172a" stroke-width="2.5" /><circle cx="96" cy="82" r="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" /><text x="96" y="85" font-size="7" font-weight="bold" fill="#0369a1" text-anchor="middle">H</text>
+            </svg>
+          </div>
+          <div class="shape-meta-list">
+            <div class="shape-meta-row"><span>Domains / LP:</span><strong>4 / 2 LP</strong></div>
+            <div class="shape-meta-row"><span>Geometry:</span><strong>Bent / V-shaped</strong></div>
+            <div class="shape-meta-row"><span>Hybridization:</span><strong>sp³</strong></div>
+          </div>
+        </div>
+
+        <!-- CO2 -->
+        <div class="shape-card">
+          <div class="shape-title">Carbon Dioxide</div>
+          <div class="shape-formula">CO₂</div>
+          <div class="shape-angle-tag">180°</div>
+          <div class="shape-svg-wrapper">
+            <svg viewBox="0 0 140 60" width="130" height="55">
+              <circle cx="20" cy="30" r="14" fill="#ccfbf1" stroke="#0d9488" stroke-width="2" /><text x="20" y="34" font-size="10" font-weight="bold" fill="#0f766e" text-anchor="middle">O</text>
+              <line x1="34" y1="27" x2="56" y2="27" stroke="#0f172a" stroke-width="2" />
+              <line x1="34" y1="33" x2="56" y2="33" stroke="#0f172a" stroke-width="2" />
+              <circle cx="70" cy="30" r="14" fill="#f1f5f9" stroke="#334155" stroke-width="2" /><text x="70" y="34" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">C</text>
+              <line x1="84" y1="27" x2="106" y2="27" stroke="#0f172a" stroke-width="2" />
+              <line x1="84" y1="33" x2="106" y2="33" stroke="#0f172a" stroke-width="2" />
+              <circle cx="120" cy="30" r="14" fill="#ccfbf1" stroke="#0d9488" stroke-width="2" /><text x="120" y="34" font-size="10" font-weight="bold" fill="#0f766e" text-anchor="middle">O</text>
+            </svg>
+          </div>
+          <div class="shape-meta-list">
+            <div class="shape-meta-row"><span>Domains / LP:</span><strong>2 (double) / 0 LP</strong></div>
+            <div class="shape-meta-row"><span>Geometry:</span><strong>Linear</strong></div>
+            <div class="shape-meta-row"><span>Hybridization:</span><strong>sp</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 9: HYBRIDIZATION
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-hybridization" aria-labelledby="sec-title-hybrid">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">18</span>
+          <h2 class="section-title" id="sec-title-hybrid">Hybridization Theory (sp, sp², sp³)</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-hybridization" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <p><strong>Hybridization</strong> is the theoretical mixing of non-equivalent atomic orbitals (such as s and p orbitals of similar energy in the same atom) to generate a new set of identical, degenerate hybrid orbitals having specific directional geometry suitable for stable chemical bonding.</p>
+
+      <div class="interactive-panel" id="hybridization-visualizer">
+        <div class="panel-top-bar">
+          <div class="panel-title">
+            <span>🧪 Select Hybridization State</span>
+          </div>
+          <div class="panel-selector-pills">
+            <button class="selector-pill-btn hybrid-pill-btn active" data-hybrid="sp">sp (Linear)</button>
+            <button class="selector-pill-btn hybrid-pill-btn" data-hybrid="sp2">sp² (Trigonal Planar)</button>
+            <button class="selector-pill-btn hybrid-pill-btn" data-hybrid="sp3">sp³ (Tetrahedral)</button>
+          </div>
+        </div>
+
+        <div class="hybrid-grid">
+          <div class="card-item">
+            <div style="font-size: 1.25rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem;" id="hybrid-title">sp Hybridization</div>
+            <ul class="styled-list">
+              <li><strong>Orbitals Mixed:</strong> <span id="hybrid-orbitals">1 s + 1 p orbital mix → 2 sp hybrid orbitals</span></li>
+              <li><strong>Spatial Geometry:</strong> <span id="hybrid-geometry">Linear</span></li>
+              <li><strong>Bond Angle:</strong> <span style="font-weight: 700; color: var(--accent-dark);" id="hybrid-angle">180°</span></li>
+              <li><strong>Character %:</strong> <span id="hybrid-percent">50% s, 50% p character</span></li>
+              <li><strong>Common Examples:</strong> <span id="hybrid-examples">BeCl₂, Ethyne (H–C≡C–H), CO₂, HgCl₂</span></li>
+            </ul>
+          </div>
+
+          <div class="hybrid-display-card">
+            <div class="concept-note-box" style="width: 100%; border-left-color: var(--primary);">
+              <div class="note-box-header">Directional & Bonding Mechanism</div>
+              <p id="hybrid-desc">The two sp hybrid orbitals orient in opposite directions along a straight line at 180° to minimize electrostatic repulsion.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 10: SIGMA AND PI BONDS
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-sigma-pi" aria-labelledby="sec-title-sigma-pi">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">17</span>
+          <h2 class="section-title" id="sec-title-sigma-pi">Sigma (σ) and Pi (π) Bonds</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-sigma-pi" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <div class="sigma-pi-grid">
+        <div class="overlap-card">
+          <div style="font-size: 1.15rem; font-weight: 700; color: var(--primary-dark);">Sigma (σ) Bond</div>
+          <span class="pill-badge pill-emerald" style="margin-top: 0.25rem;">Head-on / Coaxial Overlap</span>
+          <div class="overlap-visual">
+            <svg viewBox="0 0 160 60" width="150" height="55">
+              <ellipse cx="60" cy="30" rx="30" ry="18" fill="#ccfbf1" stroke="#0d9488" stroke-width="2" />
+              <ellipse cx="100" cy="30" rx="30" ry="18" fill="#ccfbf1" stroke="#0d9488" stroke-width="2" />
+              <ellipse cx="80" cy="30" rx="14" ry="18" fill="#0d9488" opacity="0.6" />
+            </svg>
+          </div>
+          <ul class="styled-list" style="text-align: left;">
+            <li>Formed by direct end-to-end overlap along the internuclear axis.</li>
+            <li><strong>Stronger bond</strong> with cylindrical charge symmetry.</li>
+            <li>Allows <em>free rotation</em> around the bond axis.</li>
+            <li>Present in <strong>every single bond</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="overlap-card">
+          <div style="font-size: 1.15rem; font-weight: 700; color: var(--accent-dark);">Pi (π) Bond</div>
+          <span class="pill-badge pill-violet" style="margin-top: 0.25rem;">Sideways / Lateral Overlap</span>
+          <div class="overlap-visual">
+            <svg viewBox="0 0 160 80" width="150" height="75">
+              <!-- Left dumbbell -->
+              <ellipse cx="55" cy="24" rx="12" ry="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5" />
+              <ellipse cx="55" cy="56" rx="12" ry="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5" />
+              <!-- Right dumbbell -->
+              <ellipse cx="105" cy="24" rx="12" ry="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5" />
+              <ellipse cx="105" cy="56" rx="12" ry="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5" />
+              <!-- Overlap clouds -->
+              <rect x="55" y="14" width="50" height="12" rx="6" fill="#7c3aed" opacity="0.4" />
+              <rect x="55" y="54" width="50" height="12" rx="6" fill="#7c3aed" opacity="0.4" />
+            </svg>
+          </div>
+          <ul class="styled-list" style="text-align: left;">
+            <li>Formed by parallel lateral overlap of unhybridized p-orbitals.</li>
+            <li><strong>Weaker bond</strong> (electron lobes lie above and below internuclear axis).</li>
+            <li><strong>Restricts rotation</strong> (creates cis-trans geometric isomerism).</li>
+            <li>Double = 1σ + 1π; Triple = 1σ + 2π.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Interactive Bond Counter Tool -->
+      <div class="bond-counter-box" id="sigma-pi-tool">
+        <div style="font-weight: 700; margin-bottom: 0.5rem;">🔬 Interactive Molecule σ & π Bond Counter</div>
+        <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Click any molecule to calculate exact σ and π bonds:</p>
+        <div class="molecule-bond-chips">
+          <button class="selector-pill-btn sigma-mol-pill active" data-sig-mol="ethene">Ethene (C₂H₄)</button>
+          <button class="selector-pill-btn sigma-mol-pill" data-sig-mol="ethyne">Ethyne (C₂H₂)</button>
+          <button class="selector-pill-btn sigma-mol-pill" data-sig-mol="nitrogen">Nitrogen (N₂)</button>
+          <button class="selector-pill-btn sigma-mol-pill" data-sig-mol="hcn">HCN</button>
+          <button class="selector-pill-btn sigma-mol-pill" data-sig-mol="co2">CO₂</button>
+          <button class="selector-pill-btn sigma-mol-pill" data-sig-mol="methane">Methane (CH₄)</button>
+        </div>
+
+        <div class="card-item" id="sigma-count-result" style="margin-top: 1rem; background: var(--bg-card);">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 11: INTERMOLECULAR FORCES
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-imf" aria-labelledby="sec-title-imf">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">19–22</span>
+          <h2 class="section-title" id="sec-title-imf">Intermolecular Forces & Hydrogen Bonding</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-imf" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <div class="concept-note-box secondary-box">
+        <div class="note-box-header">⚖️ Fundamental Distinction: Intramolecular Bonds vs. Intermolecular Forces</div>
+        <p><strong>Intramolecular Bonds:</strong> Ionic, covalent, and metallic bonds holding atoms/ions together <em>inside</em> a substance (~100 – 1000 kJ/mol).<br>
+        <strong>Intermolecular Forces (IMF):</strong> Non-covalent electrostatic attractions <em>between</em> separate molecules (~1 – 50 kJ/mol), controlling boiling points, melting points, and physical states.</p>
+      </div>
+
+      <div class="grid-3col">
+        <div class="card-item">
+          <div class="card-item-header">1. London Dispersion (LDF)</div>
+          <p>Present in <strong>all atoms and molecules</strong>. Caused by momentary fluctuations in electron distribution creating instantaneous and induced dipoles. Strength scales with <em>molar mass, polarizability, and surface area</em>.</p>
+        </div>
+
+        <div class="card-item">
+          <div class="card-item-header">2. Dipole-Dipole Forces</div>
+          <p>Electrostatic attractions between <strong>permanent dipoles</strong> of polar molecules (e.g., HCl···HCl). Stronger than LDF for molecules of comparable size.</p>
+        </div>
+
+        <div class="card-item">
+          <div class="card-item-header">3. Hydrogen Bonding ⭐</div>
+          <p>An extraordinarily strong dipole attraction occurring when Hydrogen is covalently bonded to small, highly electronegative atoms: <strong>Nitrogen (N), Oxygen (O), or Fluorine (F)</strong>.</p>
+        </div>
+      </div>
+
+      <!-- Interactive IMF Comparator -->
+      <div class="interactive-panel" id="imf-visualizer">
+        <div class="panel-top-bar">
+          <div class="panel-title">
+            <span>🌊 Compare Substances & Boiling Points</span>
+          </div>
+          <div class="panel-selector-pills">
+            <button class="selector-pill-btn imf-sub-pill active" data-imf="H2O">H₂O</button>
+            <button class="selector-pill-btn imf-sub-pill" data-imf="HF">HF</button>
+            <button class="selector-pill-btn imf-sub-pill" data-imf="NH3">NH₃</button>
+            <button class="selector-pill-btn imf-sub-pill" data-imf="HCl">HCl</button>
+            <button class="selector-pill-btn imf-sub-pill" data-imf="CH4">CH₄</button>
+            <button class="selector-pill-btn imf-sub-pill" data-imf="Cl2">Cl₂</button>
+            <button class="selector-pill-btn imf-sub-pill" data-imf="Br2">Br₂</button>
+            <button class="selector-pill-btn imf-sub-pill" data-imf="I2">I₂</button>
+          </div>
+        </div>
+
+        <div class="card-item" style="border-color: var(--primary-border);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div style="font-size: 1.15rem; font-weight: 700; color: var(--primary-dark);" id="imf-name">Water (H₂O)</div>
+            <span class="pill-badge pill-violet" id="imf-bp">Boiling Point: 100.0 °C</span>
+          </div>
+          <ul class="styled-list">
+            <li><strong>Predominant Intermolecular Force:</strong> <span id="imf-force" style="font-weight: 700; color: var(--text-main);">Hydrogen Bonding (Extensive 3D Network)</span></li>
+            <li><strong>Molecular Polarity:</strong> <span id="imf-polar">Highly Polar</span></li>
+            <li><strong>MDCAT Mechanism:</strong> <span id="imf-why">Each H₂O can form up to 4 hydrogen bonds; high enthalpy of vaporization.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 12: METALLIC BONDING
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-metallic" aria-labelledby="sec-title-metallic">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">23</span>
+          <h2 class="section-title" id="sec-title-metallic">Metallic Bonding & "Electron Sea" Model</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-metallic" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <p>A <strong>metallic bond</strong> is the strong electrostatic attraction between positive metal cations arrayed in a regular crystal lattice and the surrounding cloud of <em>delocalized, freely mobile valence electrons</em> (the "Electron Sea Model").</p>
+
+      <!-- Metallic Simulator -->
+      <div class="interactive-panel" id="metallic-simulator">
+        <div class="panel-top-bar">
+          <div class="panel-title">
+            <span>🔩 Interactive Metallic Lattice Simulator</span>
+          </div>
+          <div class="simulator-controls">
+            <button class="sim-btn sim-btn-secondary" id="btn-metallic-normal">Resting Lattice</button>
+            <button class="sim-btn sim-btn-primary" id="btn-metallic-voltage">Apply Voltage (Electric Drift)</button>
+            <button class="sim-btn sim-btn-secondary" id="btn-metallic-stress">Apply Stress (Malleability)</button>
+          </div>
+        </div>
+
+        <div class="metallic-grid-canvas" id="metallic-canvas-grid">
+          <div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div>
+          <div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div>
+          <div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div><div class="metal-cation">M⁺</div>
+        </div>
+
+        <div class="sim-status-banner" id="metallic-status-text">
+          <strong>Resting Lattice:</strong> Positively charged metal cations (M⁺) reside in fixed lattice sites immersed in a random delocalized electron cloud.
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 13: MDCAT HIGH-YIELD 25+ FLASH POINTS
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-high-yield" aria-labelledby="sec-title-high-yield">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">⭐</span>
+          <h2 class="section-title" id="sec-title-high-yield">MDCAT High-Yield 25+ Key Points</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-high-yield" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <div class="high-yield-grid">
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Ionic Bond:</strong> Electrostatic attraction between oppositely charged ions.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Covalent Bond:</strong> Mutual sharing of electron pairs between non-metals.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Coordinate Bond:</strong> Shared electron pair donated entirely by one atom.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Valence Electrons:</strong> Outermost electrons that control bonding & valency.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Electronegativity:</strong> Tendency to attract shared electrons in a bond.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Fluorine (F):</strong> Highest electronegativity (~4.0) in the periodic table.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>CH₄ Shape:</strong> Tetrahedral with 109.5° bond angle (0 lone pairs).</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>NH₃ Shape:</strong> Trigonal pyramidal with ~107° bond angle (1 lone pair).</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>H₂O Shape:</strong> Bent / V-shaped with ~104.5° bond angle (2 lone pairs).</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>CO₂ Polarity:</strong> Linear (180°) and overall nonpolar (μ = 0) with polar bonds.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>BF₃ Geometry:</strong> Trigonal planar (120°) with incomplete octet on Boron.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>BeCl₂ Shape:</strong> Linear geometry (180°) with sp hybridization.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Single Bond:</strong> Contains exactly 1 Sigma (1σ) bond.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Double Bond:</strong> Contains 1 Sigma + 1 Pi bond (1σ + 1π).</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Triple Bond:</strong> Contains 1 Sigma + 2 Pi bonds (1σ + 2π).</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>sp Hybridization:</strong> Linear geometry with 180° bond angles.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>sp² Hybridization:</strong> Trigonal planar geometry with 120° bond angles.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>sp³ Hybridization:</strong> Tetrahedral geometry with 109.5° bond angles.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Lone Pair Repulsion:</strong> LP-LP > LP-BP > BP-BP (compresses bond angles).</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Hydrogen Bonding:</strong> H covalently attached to N, O, or F.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>London Dispersion:</strong> Universal weak force, increases with molecular weight.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Dipole-Dipole:</strong> Electrostatic attraction between permanent polar dipoles.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Ionic Conduction:</strong> Insulator in solid, conductor when molten or aqueous.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Dative Equivalence:</strong> Coordinate bonds behave identically to normal covalent bonds.</div></div>
+        <div class="yield-card"><div class="yield-card-icon">🔥</div><div class="yield-card-content"><strong>Metallic Sea:</strong> Delocalized electrons enable conduction, malleability & lustre.</div></div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 14: INTERACTIVE 3D FLASHCARD SYSTEM
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-flashcards" aria-labelledby="sec-title-flashcards">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">🃏</span>
+          <h2 class="section-title" id="sec-title-flashcards">Interactive Flashcard Review (12 Cards)</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-flashcards" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <div class="flashcards-container">
+        <div class="flashcard-card" id="flashcard-element" role="button" tabindex="0" aria-label="Interactive Flashcard">
+          <!-- Front Face (Question) -->
+          <div class="card-face card-front">
+            <div class="flashcard-header">
+              <span class="pill-badge pill-emerald">MDCAT Question</span>
+              <span id="fc-counter-text">Card 1 of 12</span>
+            </div>
+            <div class="flashcard-body">
+              <div class="flashcard-question" id="fc-question">
+                What is an Ionic Bond and between which types of elements does it typically form?
+              </div>
+            </div>
+            <div class="flashcard-hint">👆 Click anywhere on card to flip for answer</div>
+          </div>
+
+          <!-- Back Face (Answer) -->
+          <div class="card-face card-back">
+            <div class="flashcard-header">
+              <span class="pill-badge pill-violet">Concept Answer</span>
+              <span>Explanation</span>
+            </div>
+            <div class="flashcard-body">
+              <div class="flashcard-answer" id="fc-answer">
+                An ionic bond is the strong electrostatic attraction between oppositely charged ions. It forms between a metal and a non-metal.
+              </div>
+            </div>
+            <div class="flashcard-hint">👆 Click to flip back</div>
+          </div>
+        </div>
+
+        <div class="flashcard-controls">
+          <button class="action-btn" id="btn-fc-prev">← Previous</button>
+          <button class="action-btn" id="btn-fc-mastered">☆ Mark as Mastered</button>
+          <button class="action-btn" id="btn-fc-shuffle">🔀 Shuffle</button>
+          <button class="action-btn action-btn-primary" id="btn-fc-next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 15: QUICK REVISION COMPARISON TABLES
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-revision-tables" aria-labelledby="sec-title-tables">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">📊</span>
+          <h2 class="section-title" id="sec-title-tables">Quick Revision Comparison Tables</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-revision-tables" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <!-- Table 1: Ionic vs Covalent -->
+      <h3>1. Ionic Compounds vs. Covalent Compounds</h3>
+      <div class="table-responsive-wrapper">
+        <table class="revision-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Ionic Compounds</th>
+              <th>Covalent Compounds</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Formation</strong></td>
+              <td>Complete transfer of valence electrons</td>
+              <td>Mutual sharing of valence electron pairs</td>
+            </tr>
+            <tr>
+              <td><strong>Bond Nature</strong></td>
+              <td>Non-directional electrostatic lattice forces</td>
+              <td>Directional orbital overlap</td>
+            </tr>
+            <tr>
+              <td><strong>Melting & Boiling Points</strong></td>
+              <td>Very High (strong 3D lattice)</td>
+              <td>Generally Low (weak intermolecular forces)</td>
+            </tr>
+            <tr>
+              <td><strong>Solid Conductivity</strong></td>
+              <td>Non-conducting (ions fixed in lattice)</td>
+              <td>Non-conducting (no free charged particles)</td>
+            </tr>
+            <tr>
+              <td><strong>Molten/Aqueous Conductivity</strong></td>
+              <td>High (mobile ions carry current)</td>
+              <td>Generally Non-conducting (except polar acids)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table 2: Sigma vs Pi -->
+      <h3>2. Sigma (σ) Bonds vs. Pi (π) Bonds</h3>
+      <div class="table-responsive-wrapper">
+        <table class="revision-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Sigma (σ) Bond</th>
+              <th>Pi (π) Bond</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Orbital Overlap Mode</strong></td>
+              <td>Head-on (axial / coaxial) overlap</td>
+              <td>Sideways (lateral / parallel) overlap</td>
+            </tr>
+            <tr>
+              <td><strong>Electron Density Location</strong></td>
+              <td>Concentrated along internuclear axis</td>
+              <td>Two lobes above and below internuclear axis</td>
+            </tr>
+            <tr>
+              <td><strong>Bond Strength</strong></td>
+              <td>Stronger (greater orbital overlap)</td>
+              <td>Weaker (less effective lateral overlap)</td>
+            </tr>
+            <tr>
+              <td><strong>Free Rotation</strong></td>
+              <td>Permitted around bond axis</td>
+              <td>Restricted (causes geometric isomerism)</td>
+            </tr>
+            <tr>
+              <td><strong>Independent Existence</strong></td>
+              <td>Can exist independently as a single bond</td>
+              <td>Cannot exist without a prior σ bond</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table 3: CH4 vs NH3 vs H2O Comparison -->
+      <h3>3. CH₄ vs. NH₃ vs. H₂O (VSEPR Lone Pair Compression)</h3>
+      <div class="table-responsive-wrapper">
+        <table class="revision-table">
+          <thead>
+            <tr>
+              <th>Molecule</th>
+              <th>Hybridization</th>
+              <th>Bond Pairs (BP)</th>
+              <th>Lone Pairs (LP)</th>
+              <th>Molecular Shape</th>
+              <th>Bond Angle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CH₄ (Methane)</strong></td>
+              <td>sp³</td>
+              <td>4</td>
+              <td>0</td>
+              <td>Tetrahedral</td>
+              <td>109.5°</td>
+            </tr>
+            <tr>
+              <td><strong>NH₃ (Ammonia)</strong></td>
+              <td>sp³</td>
+              <td>3</td>
+              <td>1</td>
+              <td>Trigonal Pyramidal</td>
+              <td>~107°</td>
+            </tr>
+            <tr>
+              <td><strong>H₂O (Water)</strong></td>
+              <td>sp³</td>
+              <td>2</td>
+              <td>2</td>
+              <td>Bent / V-shaped</td>
+              <td>~104.5°</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table 4: sp vs sp2 vs sp3 -->
+      <h3>4. sp vs. sp² vs. sp³ Hybridization Summary</h3>
+      <div class="table-responsive-wrapper">
+        <table class="revision-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Orbitals Mixed</th>
+              <th>Hybrid Orbitals Formed</th>
+              <th>Geometry</th>
+              <th>Angle</th>
+              <th>s / p Character</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>sp</strong></td>
+              <td>1 s + 1 p</td>
+              <td>2</td>
+              <td>Linear</td>
+              <td>180°</td>
+              <td>50% s, 50% p</td>
+              <td>BeCl₂, C₂H₂, CO₂</td>
+            </tr>
+            <tr>
+              <td><strong>sp²</strong></td>
+              <td>1 s + 2 p</td>
+              <td>3</td>
+              <td>Trigonal Planar</td>
+              <td>120°</td>
+              <td>33.3% s, 66.7% p</td>
+              <td>BF₃, C₂H₄, SO₃</td>
+            </tr>
+            <tr>
+              <td><strong>sp³</strong></td>
+              <td>1 s + 3 p</td>
+              <td>4</td>
+              <td>Tetrahedral</td>
+              <td>109.5°</td>
+              <td>25% s, 75% p</td>
+              <td>CH₄, C₂H₆, NH₄⁺</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         SECTION 16: MDCAT MINI QUIZ (15 ORIGINAL MCQS)
+         ----------------------------------------------------------------------- -->
+    <section class="chapter-section" id="sec-quiz" aria-labelledby="sec-title-quiz">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-number-tag">📝</span>
+          <h2 class="section-title" id="sec-title-quiz">MDCAT Mini Quiz (15 MCQs)</h2>
+        </div>
+        <button class="bookmark-toggle-btn" data-section="sec-quiz" aria-label="Bookmark Section">☆ Bookmark</button>
+      </div>
+
+      <div class="quiz-wrapper">
+        <div class="quiz-header-bar">
+          <div>
+            <div style="font-weight: 700; color: var(--text-main);">Comprehensive MDCAT Chemical Bonding Test</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Instant feedback with detailed rationales for every option.</div>
+          </div>
+          <span class="pill-badge pill-violet">15 Questions</span>
+        </div>
+
+        <!-- Questions Dynamic Container -->
+        <div id="quiz-questions-container">
+          <!-- Populated by chemical-bonding.js -->
+        </div>
+
+        <!-- Final Results Score Card -->
+        <div class="quiz-results-card" id="quiz-results-card">
+          <div class="results-score-circle">
+            <div class="results-score-num" id="quiz-score-number">0</div>
+            <div class="results-score-total">out of 15</div>
+          </div>
+          <h3 id="quiz-percentage-text">0% Mastery Score</h3>
+          <p id="quiz-feedback-message" style="margin: 1rem 0 1.5rem; color: var(--text-muted);"></p>
+          <button class="action-btn action-btn-primary" id="btn-retry-quiz">🔄 Retry Quiz</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       BOOKMARKS MODAL DRAWER
+       ========================================================================= -->
+  <div class="modal-backdrop" id="bookmarks-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="modal-title" style="margin: 0;">★ Bookmarked Sections</h3>
+        <button class="bookmark-remove-btn" id="btn-close-bookmarks" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body" id="bookmark-modal-list">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       FLOATING BACK TO TOP BUTTON
+       ========================================================================= -->
+  <button class="back-to-top-btn" id="btn-back-to-top" aria-label="Scroll back to top">↑</button>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="footer-section" role="contentinfo">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand-title">MDCAT Chemistry • Bonding Module</div>
+        <p style="color: #94a3b8; font-size: 0.875rem;">A comprehensive, scientifically crafted learning chapter designed for medical entrance examination candidates.</p>
+      </div>
+      <div>
+        <h4 style="color: white; margin-bottom: 0.75rem;">Interactive Explorers</h4>
+        <ul class="footer-links">
+          <li><a href="#sec-lewis">Lewis Structure Builder</a></li>
+          <li><a href="#sec-vsepr">VSEPR Geometry Explorer</a></li>
+          <li><a href="#sec-polarity">Polarity & Dipole Cancellation</a></li>
+          <li><a href="#sec-hybridization">Hybridization Engine</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: white; margin-bottom: 0.75rem;">Exam Practice</h4>
+        <ul class="footer-links">
+          <li><a href="#sec-high-yield">25+ High-Yield Notes</a></li>
+          <li><a href="#sec-flashcards">12 Flip Flashcards</a></li>
+          <li><a href="#sec-revision-tables">Quick Revision Tables</a></li>
+          <li><a href="#sec-quiz">15 MCQ Practice Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

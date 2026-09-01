@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quadratic Equations — FAST & Scholarship Mathematics</title>
+  <!-- KaTeX CSS for mathematical typography -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+  <!-- Custom Academic Stylesheet -->
+  <link rel="stylesheet" href="Quadratic-Equations.css" />
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Top App Header -->
+  <header class="app-header">
+    <div class="container">
+      <div class="header-top-bar">
+        <div class="label-badge">
+          <span>⚡</span> FAST MATHEMATICS • TOPIC 03 / 15
+        </div>
+        <div class="breadcrumb-nav">
+          <span>FAST Preparation</span>
+          <span class="sep">→</span>
+          <span>Mathematics</span>
+          <span class="sep">→</span>
+          <strong>Quadratic Equations</strong>
+        </div>
+        <div class="header-actions">
+          <button class="btn-nav-back" onclick="showToast('Navigating to FAST Mathematics Master Index', 'info')">
+            ← Back to FAST Mathematics
+          </button>
+        </div>
+      </div>
+
+      <div class="header-main">
+        <h1>Quadratic Equations</h1>
+        <p class="subtitle">
+          Master quadratic equations, roots, factorization, discriminants and problem-solving techniques for FAST-NUCES and competitive scholarship entry tests.
+        </p>
+      </div>
+
+      <div class="header-quick-links">
+        <button class="btn-header-action btn-header-primary" onclick="openModal('quickRevisionModal')">
+          ⚡ 5-Minute Quick Revision
+        </button>
+        <a href="#topic-18" class="btn-header-action btn-header-secondary">
+          🧮 Interactive Solver
+        </a>
+        <a href="#practice-zone" class="btn-header-action btn-header-secondary">
+          🎯 Practice Zone (60 MCQs)
+        </a>
+        <a href="#final-challenge" class="btn-header-action btn-header-secondary">
+          🧠 25-Min Timed Challenge
+        </a>
+        <button class="btn-header-action btn-header-secondary" onclick="openModal('bookmarksModal')">
+          ★ Bookmarks
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Learning Dashboard -->
+  <section class="dashboard-bar">
+    <div class="container">
+      <div class="dashboard-grid">
+        <div class="dash-card">
+          <div class="dash-label">
+            <span>Chapter Progress</span>
+            <span id="dashProgressVal">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="dashProgressBar"></div>
+          </div>
+        </div>
+
+        <div class="dash-card topics-card">
+          <div class="dash-label">Topics Completed</div>
+          <div class="dash-value" id="dashTopicsVal">0 / 18</div>
+        </div>
+
+        <div class="dash-card questions-card">
+          <div class="dash-label">Questions Attempted</div>
+          <div class="dash-value" id="dashQuestionsVal">0</div>
+        </div>
+
+        <div class="dash-card quiz-card">
+          <div class="dash-label">Best Quiz Score</div>
+          <div class="dash-value" id="dashQuizScoreVal">0%</div>
+        </div>
+
+        <div class="dash-card accuracy-card">
+          <div class="dash-label">Practice Accuracy</div>
+          <div class="dash-value" id="dashAccuracyVal">0%</div>
+        </div>
+
+        <div class="dash-controls">
+          <button class="btn-dash-icon" title="Reset All Progress" onclick="resetAllChapterProgress()">
+            🔄
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="container">
+    <main class="main-layout">
+
+      <!-- Sticky Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-title">
+            <span>📖</span> Chapter Index
+          </div>
+          <span style="font-size:0.75rem; color:var(--text-light); font-weight:700;">18 TOPICS</span>
+        </div>
+
+        <div class="sidebar-search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="globalSearchInput" placeholder="Search notes, formulas, tricks..." autocomplete="off" />
+          <div id="searchResultsContainer" style="display:none; position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid var(--border-medium); border-radius:var(--radius-md); box-shadow:var(--shadow-lg); z-index:50; max-height:260px; overflow-y:auto; margin-top:4px;"></div>
+        </div>
+
+        <ul class="topic-nav-list" id="topicNavList">
+          <!-- Dynamically populated by JS -->
+        </ul>
+      </aside>
+
+      <!-- Central Content Flow -->
+      <div class="content-area">
+
+        <!-- TOPIC 1 -->
+        <section class="content-section" id="topic-1">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 01 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Foundation</span>
+              </div>
+              <h2 class="section-title">1. What is a Quadratic Equation?</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-1" onclick="toggleBookmark('topic-1', '1. What is a Quadratic Equation?')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-1" onclick="toggleTopicCompletion('topic-1')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            A <strong>quadratic equation</strong> is a second-degree polynomial equation in a single variable where the highest exponent of the variable is exactly <strong>2</strong>.
+          </p>
+
+          <div class="math-block">
+            <div class="math-formula-title">General Standard Form</div>
+            ax² + bx + c = 0 &nbsp;&nbsp;&nbsp; (where a ≠ 0, and a, b, c ∈ ℝ)
+          </div>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div class="concept-card-title"><span>📌</span> What a, b, and c Represent</div>
+              <p>• <strong>a</strong> is the quadratic coefficient (multiplier of x²).<br>• <strong>b</strong> is the linear coefficient (multiplier of x).<br>• <strong>c</strong> is the constant term (independent of x).</p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title"><span>⚠️</span> Why a Cannot Be Zero (a ≠ 0)</div>
+              <p>If a = 0, the leading term 0·x² vanishes. The equation degrades into <strong>bx + c = 0</strong>, which is a <em>first-degree linear equation</em>, losing all quadratic properties.</p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title"><span>🎯</span> Linear vs Quadratic</div>
+              <p>A linear equation (degree 1) has at most <strong>1 root</strong> and graphs as a straight line. A quadratic equation (degree 2) has exactly <strong>2 roots</strong> (real or complex) and graphs as a smooth U-shaped curve called a <strong>parabola</strong>.</p>
+            </div>
+          </div>
+
+          <div class="academic-note fast-tip">
+            <div class="note-title">⚡ FAST Exam Diagnostic Check</div>
+            In FAST entry tests, you are often given disguised algebraic expressions. You must always simplify and expand before deciding if an equation is quadratic!
+          </div>
+
+          <h3 style="font-size:1.15rem; font-weight:700; margin:1.5rem 0 0.75rem;">Interactive Check: Is it Quadratic or Not? (8 Examples)</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem;">Click each equation to inspect its standard simplification and classification:</p>
+
+          <div class="interactive-check-list">
+            <div class="interactive-check-item" id="check-eq-1">
+              <div class="interactive-check-header" onclick="toggleInteractiveCheck('check-eq-1')">
+                <span class="check-equation">1. 3x² - 5x + 7 = 0</span>
+                <button class="btn-reveal-answer">Reveal Check</button>
+              </div>
+              <div class="interactive-check-content">
+                <strong>Verdict: ✅ YES, it is Quadratic.</strong><br>
+                Degree is 2, a = 3 (≠ 0), b = -5, c = 7. Standard form satisfied.
+              </div>
+            </div>
+
+            <div class="interactive-check-item" id="check-eq-2">
+              <div class="interactive-check-header" onclick="toggleInteractiveCheck('check-eq-2')">
+                <span class="check-equation">2. (x + 2)² = 2(x - 3)</span>
+                <button class="btn-reveal-answer">Reveal Check</button>
+              </div>
+              <div class="interactive-check-content">
+                <strong>Verdict: ✅ YES, it is Quadratic.</strong><br>
+                Expanding: x² + 4x + 4 = 2x - 6 ⇒ x² + 2x + 10 = 0. Highest power is 2.
+              </div>
+            </div>
+
+            <div class="interactive-check-item" id="check-eq-3">
+              <div class="interactive-check-header" onclick="toggleInteractiveCheck('check-eq-3')">
+                <span class="check-equation">3. x(x + 1) + 8 = (x + 2)(x - 2)</span>
+                <button class="btn-reveal-answer">Reveal Check</button>
+              </div>
+              <div class="interactive-check-content">
+                <strong>Verdict: ❌ NO, it is Linear.</strong><br>
+                Expanding: x² + x + 8 = x² - 4. Subtracting x² from both sides gives x + 12 = 0 (a = 0).
+              </div>
+            </div>
+
+            <div class="interactive-check-item" id="check-eq-4">
+              <div class="interactive-check-header" onclick="toggleInteractiveCheck('check-eq-4')">
+                <span class="check-equation">4. x + 1/x = 4 (for x ≠ 0)</span>
+                <button class="btn-reveal-answer">Reveal Check</button>
+              </div>
+              <div class="interactive-check-content">
+                <strong>Verdict: ✅ YES, it is Quadratic.</strong><br>
+                Multiplying entire equation by x: x² + 1 = 4x ⇒ x² - 4x + 1 = 0.
+              </div>
+            </div>
+
+            <div class="interactive-check-item" id="check-eq-5">
+              <div class="interactive-check-header" onclick="toggleInteractiveCheck('check-eq-5')">
+                <span class="check-equation">5. x³ - 4x² - x + 1 = (x - 2)³</span>
+                <button class="btn-reveal-answer">Reveal Check</button>
+              </div>
+              <div class="interactive-check-content">
+                <strong>Verdict: ✅ YES, it is Quadratic.</strong><br>
+                RHS = x³ - 6x² + 12x - 8. The x³ terms cancel out: 2x² - 13x + 9 = 0.
+              </div>
+            </div>
+
+            <div class="interactive-check-item" id="check-eq-6">
+              <div class="interactive-check-header" onclick="toggleInteractiveCheck('check-eq-6')">
+                <span class="check-equation">6. 2x² - √x + 3 = 0</span>
+                <button class="btn-reveal-answer">Reveal Check</button>
+              </div>
+              <div class="interactive-check-content">
+                <strong>Verdict: ❌ NO, not a Polynomial.</strong><br>
+                The term √x has exponent 1/2. Polynomial equations require whole number exponents.
+              </div>
+            </div>
+
+            <div class="interactive-check-item" id="check-eq-7">
+              <div class="interactive-check-header" onclick="toggleInteractiveCheck('check-eq-7')">
+                <span class="check-equation">7. 5x² = 0</span>
+                <button class="btn-reveal-answer">Reveal Check</button>
+              </div>
+              <div class="interactive-check-content">
+                <strong>Verdict: ✅ YES, Pure Quadratic.</strong><br>
+                a = 5, b = 0, c = 0. Both roots are equal to 0.
+              </div>
+            </div>
+
+            <div class="interactive-check-item" id="check-eq-8">
+              <div class="interactive-check-header" onclick="toggleInteractiveCheck('check-eq-8')">
+                <span class="check-equation">8. (x² + 1)² = x⁴ + 3x + 2</span>
+                <button class="btn-reveal-answer">Reveal Check</button>
+              </div>
+              <div class="interactive-check-content">
+                <strong>Verdict: ✅ YES, it is Quadratic.</strong><br>
+                LHS = x⁴ + 2x² + 1. The x⁴ terms cancel: 2x² - 3x - 1 = 0.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 2 -->
+        <section class="content-section" id="topic-2">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 02 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Foundation</span>
+              </div>
+              <h2 class="section-title">2. Standard Form: ax² + bx + c = 0</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-2" onclick="toggleBookmark('topic-2', '2. Standard Form')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-2" onclick="toggleTopicCompletion('topic-2')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Any quadratic equation must always be arranged in <strong>descending order of powers</strong> equal to zero before applying any method (Factorization, Completing the Square, or Quadratic Formula).
+          </p>
+
+          <div class="step-box">
+            <div class="step-box-header">
+              <span>Standard Form Transformation Algorithm</span>
+              <span class="step-box-badge">Essential Rule</span>
+            </div>
+            <div class="step-box-body">
+              <div class="step-list">
+                <div class="step-item">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <div class="step-title">Clear Fractions & Parentheses</div>
+                    <div class="step-desc">Multiply by common denominators and expand all binomial expansions like (x+p)(x+q) or (ax+b)².</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <div class="step-title">Shift All Terms to One Side</div>
+                    <div class="step-desc">Collect all quadratic, linear, and constant terms on one side leaving 0 on the other side.</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <div class="step-title">Combine Like Terms & Ensure a > 0</div>
+                    <div class="step-desc">Simplify terms. It is conventional and prevents sign mistakes to keep leading coefficient 'a' positive.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="academic-note formula-tip">
+            <div class="note-title">📝 Worked Example: Rearranging Disordered Form</div>
+            Given: <strong>4 - 3x + x² = 0</strong><br>
+            Rearranging in descending power order: <strong>x² - 3x + 4 = 0</strong> (a = 1, b = -3, c = 4).
+          </div>
+
+          <h3 style="font-size:1.1rem; font-weight:700; margin:1.5rem 0 0.75rem;">Standard Form Conversion Practice (10 Questions)</h3>
+          <div class="academic-table-wrap">
+            <table class="academic-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Given Equation</th>
+                  <th>Standard Form (ax² + bx + c = 0)</th>
+                  <th>Values of a, b, c</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>x² = 5x - 6</td><td>x² - 5x + 6 = 0</td><td>a = 1, b = -5, c = 6</td></tr>
+                <tr><td>2</td><td>2x² = 7x - 3</td><td>2x² - 7x + 3 = 0</td><td>a = 2, b = -7, c = 3</td></tr>
+                <tr><td>3</td><td>4x(x - 2) = 5</td><td>4x² - 8x - 5 = 0</td><td>a = 4, b = -8, c = -5</td></tr>
+                <tr><td>4</td><td>x + 6/x = 5</td><td>x² - 5x + 6 = 0</td><td>a = 1, b = -5, c = 6</td></tr>
+                <tr><td>5</td><td>(x - 3)² = 16</td><td>x² - 6x - 7 = 0</td><td>a = 1, b = -6, c = -7</td></tr>
+                <tr><td>6</td><td>3 - 2x² = 5x</td><td>2x² + 5x - 3 = 0</td><td>a = 2, b = 5, c = -3</td></tr>
+                <tr><td>7</td><td>x/2 + 2/x = 2</td><td>x² - 4x + 4 = 0</td><td>a = 1, b = -4, c = 4</td></tr>
+                <tr><td>8</td><td>(2x + 1)(x - 3) = 0</td><td>2x² - 5x - 3 = 0</td><td>a = 2, b = -5, c = -3</td></tr>
+                <tr><td>9</td><td>x² / 3 - x / 2 = 1</td><td>2x² - 3x - 6 = 0</td><td>a = 2, b = -3, c = -6</td></tr>
+                <tr><td>10</td><td>5x² = 20</td><td>5x² + 0x - 20 = 0 (or x² - 4 = 0)</td><td>a = 5, b = 0, c = -20</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- TOPIC 3 -->
+        <section class="content-section" id="topic-3">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 03 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Foundation</span>
+              </div>
+              <h2 class="section-title">3. Identifying a, b, and c & Sign Discipline</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-3" onclick="toggleBookmark('topic-3', '3. Identifying a, b, and c')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-3" onclick="toggleTopicCompletion('topic-3')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Identifying <strong>a, b, and c</strong> correctly is the single most critical foundation. Over 40% of student errors in entry tests arise simply from dropping negative signs or misidentifying zero coefficients.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div class="concept-card-title"><span>➕ / ➖</span> Rule 1: The Sign Travels with the Term</div>
+              <p>In <strong>3x² - 7x - 5 = 0</strong>:<br>• a = +3<br>• b = <strong>-7</strong> (not +7)<br>• c = <strong>-5</strong> (not +5)</p>
+            </div>
+            <div class="concept-card">
+              <div class="concept-card-title"><span>0️⃣</span> Rule 2: Missing Terms Have Coefficient 0</div>
+              <p>In <strong>4x² - 9 = 0</strong>, there is no linear x term. Thus <strong>b = 0</strong>.<br>In <strong>2x² + 5x = 0</strong>, there is no constant term. Thus <strong>c = 0</strong>.</p>
+            </div>
+            <div class="concept-card">
+              <div class="concept-card-title"><span>1️⃣</span> Rule 3: Invisible Coefficient is 1</div>
+              <p>In <strong>x² - x + 6 = 0</strong>:<br>• The coefficient of x² is <strong>1</strong> (not 0).<br>• The coefficient of x is <strong>-1</strong>.</p>
+            </div>
+          </div>
+
+          <h3 style="font-size:1.1rem; font-weight:700; margin:1.5rem 0 0.75rem;">12 Coefficient Identification Drills</h3>
+          <div class="academic-table-wrap">
+            <table class="academic-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Equation</th>
+                  <th>Quadratic (a)</th>
+                  <th>Linear (b)</th>
+                  <th>Constant (c)</th>
+                  <th>Key Caution</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>3x² + 7x - 5 = 0</td><td>3</td><td>7</td><td>-5</td><td>Negative constant</td></tr>
+                <tr><td>2</td><td>-x² + 4x - 9 = 0</td><td>-1</td><td>4</td><td>-9</td><td>Leading negative</td></tr>
+                <tr><td>3</td><td>5x² - 12x = 0</td><td>5</td><td>-12</td><td>0</td><td>c is 0 (passes through origin)</td></tr>
+                <tr><td>4</td><td>7x² - 28 = 0</td><td>7</td><td>0</td><td>-28</td><td>b is 0 (symmetric about y-axis)</td></tr>
+                <tr><td>5</td><td>x² - x - 1 = 0</td><td>1</td><td>-1</td><td>-1</td><td>Golden Ratio equation</td></tr>
+                <tr><td>6</td><td>2 - 3x + 4x² = 0</td><td>4</td><td>-3</td><td>2</td><td>Rearranged terms</td></tr>
+                <tr><td>7</td><td>-2x² = -8</td><td>-2 (or 2)</td><td>0</td><td>8 (or -8)</td><td>Both sides negative</td></tr>
+                <tr><td>8</td><td>x² / 4 - 3x / 2 + 1 = 0</td><td>1/4</td><td>-3/2</td><td>1</td><td>Fractional coefficients</td></tr>
+                <tr><td>9</td><td>√2 x² + 5x - 3√2 = 0</td><td>√2</td><td>5</td><td>-3√2</td><td>Radical coefficients</td></tr>
+                <tr><td>10</td><td>(k - 1)x² + 2kx + 3 = 0</td><td>k - 1</td><td>2k</td><td>3</td><td>Variable parameter a</td></tr>
+                <tr><td>11</td><td>6x² = 0</td><td>6</td><td>0</td><td>0</td><td>Both b and c are 0</td></tr>
+                <tr><td>12</td><td>(x + a)(x + b) = c</td><td>1</td><td>a + b</td><td>ab - c</td><td>Parametric standard expansion</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- TOPIC 4 -->
+        <section class="content-section" id="topic-4">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 04 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Foundation</span>
+              </div>
+              <h2 class="section-title">4. Roots, Solutions, and Zeroes</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-4" onclick="toggleBookmark('topic-4', '4. Roots and Solutions')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-4" onclick="toggleTopicCompletion('topic-4')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            A <strong>root</strong> (or solution) of a quadratic equation is a specific numerical value of x that makes the equation true (i.e. evaluates LHS = 0).
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div class="concept-card-title"><span>🔑</span> The Three Synonyms</div>
+              <p>• <strong>Root:</strong> Value of x satisfying the algebraic equation ax² + bx + c = 0.<br>• <strong>Solution:</strong> Member of the truth set of the equation.<br>• <strong>Zero:</strong> x-value where polynomial function P(x) = 0 (the x-intercept on the graph).</p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title"><span>🧪</span> The Substitution Verification Test</div>
+              <p>For <strong>x² - 5x + 6 = 0</strong>:<br>• Test x = 2: (2)² - 5(2) + 6 = 4 - 10 + 6 = <strong>0</strong> (Verified!)<br>• Test x = 3: (3)² - 5(3) + 6 = 9 - 15 + 6 = <strong>0</strong> (Verified!)<br>Hence, 2 and 3 are the roots.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 5 -->
+        <section class="content-section" id="topic-5">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 05 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Algebra</span>
+              </div>
+              <h2 class="section-title">5. Solving by Simple Factorization (x² + bx + c = 0)</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-5" onclick="toggleBookmark('topic-5', '5. Simple Factorization')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-5" onclick="toggleTopicCompletion('topic-5')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            When the leading coefficient <strong>a = 1</strong>, solving by factorization relies on finding two numbers <strong>p and q</strong> such that:
+          </p>
+
+          <div class="math-block">
+            <div class="math-formula-title">Product-Sum Rule</div>
+            p + q = b &nbsp;&nbsp;&nbsp; \text{and} &nbsp;&nbsp;&nbsp; p \cdot q = c<br>
+            \Rightarrow (x + p)(x + q) = 0 \Rightarrow x = -p &nbsp;\text{or}&nbsp; x = -q
+          </div>
+
+          <div class="academic-note formula-tip">
+            <div class="note-title">⚖️ The Zero-Product Property</div>
+            If <strong>A · B = 0</strong>, then either <strong>A = 0</strong>, or <strong>B = 0</strong>, or both. This fundamental algebraic property allows us to split a single quadratic into two linear equations!
+          </div>
+
+          <h3 style="font-size:1.1rem; font-weight:700; margin:1.5rem 0 0.75rem;">10 Detailed Simple Factorization Examples</h3>
+          <div class="academic-table-wrap">
+            <table class="academic-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Equation</th>
+                  <th>Find p, q (Product = c, Sum = b)</th>
+                  <th>Factored Form</th>
+                  <th>Final Roots</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>x² + 5x + 6 = 0</td><td>p = 2, q = 3 (Prod = 6, Sum = 5)</td><td>(x + 2)(x + 3) = 0</td><td>x = -2, -3</td></tr>
+                <tr><td>2</td><td>x² - 7x + 12 = 0</td><td>p = -3, q = -4 (Prod = 12, Sum = -7)</td><td>(x - 3)(x - 4) = 0</td><td>x = 3, 4</td></tr>
+                <tr><td>3</td><td>x² + 2x - 15 = 0</td><td>p = 5, q = -3 (Prod = -15, Sum = 2)</td><td>(x + 5)(x - 3) = 0</td><td>x = -5, 3</td></tr>
+                <tr><td>4</td><td>x² - 4x - 21 = 0</td><td>p = -7, q = 3 (Prod = -21, Sum = -4)</td><td>(x - 7)(x + 3) = 0</td><td>x = 7, -3</td></tr>
+                <tr><td>5</td><td>x² - 9x + 20 = 0</td><td>p = -4, q = -5 (Prod = 20, Sum = -9)</td><td>(x - 4)(x - 5) = 0</td><td>x = 4, 5</td></tr>
+                <tr><td>6</td><td>x² + 8x + 15 = 0</td><td>p = 3, q = 5 (Prod = 15, Sum = 8)</td><td>(x + 3)(x + 5) = 0</td><td>x = -3, -5</td></tr>
+                <tr><td>7</td><td>x² - x - 30 = 0</td><td>p = -6, q = 5 (Prod = -30, Sum = -1)</td><td>(x - 6)(x + 5) = 0</td><td>x = 6, -5</td></tr>
+                <tr><td>8</td><td>x² + 11x + 28 = 0</td><td>p = 4, q = 7 (Prod = 28, Sum = 11)</td><td>(x + 4)(x + 7) = 0</td><td>x = -4, -7</td></tr>
+                <tr><td>9</td><td>x² - 12x + 36 = 0</td><td>p = -6, q = -6 (Prod = 36, Sum = -12)</td><td>(x - 6)² = 0</td><td>x = 6 (repeated)</td></tr>
+                <tr><td>10</td><td>x² + x - 72 = 0</td><td>p = 9, q = -8 (Prod = -72, Sum = 1)</td><td>(x + 9)(x - 8) = 0</td><td>x = -9, 8</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- TOPIC 6 -->
+        <section class="content-section" id="topic-6">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 06 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Algebra</span>
+              </div>
+              <h2 class="section-title">6. Advanced Factorization (ax² + bx + c = 0)</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-6" onclick="toggleBookmark('topic-6', '6. Advanced Factorization')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-6" onclick="toggleTopicCompletion('topic-6')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            When <strong>a ≠ 1</strong>, we use the <strong>Splitting the Middle Term Method</strong> (ac-method).
+          </p>
+
+          <div class="step-box">
+            <div class="step-box-header">
+              <span>Middle Term Splitting Protocol: 2x² + 7x + 3 = 0</span>
+              <span class="step-box-badge">Full Working</span>
+            </div>
+            <div class="step-box-body">
+              <div class="step-list">
+                <div class="step-item">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <div class="step-title">Calculate Product P = a · c</div>
+                    <div class="step-desc">P = 2 · 3 = <strong>6</strong>. Sum required S = b = <strong>7</strong>.</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <div class="step-title">Find Factors of 6 that add to 7</div>
+                    <div class="step-desc">The two numbers are <strong>6 and 1</strong> (6 × 1 = 6, 6 + 1 = 7).</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <div class="step-title">Split the Middle Term & Group</div>
+                    <div class="step-desc">2x² + 6x + 1x + 3 = 0 ⇒ 2x(x + 3) + 1(x + 3) = 0.</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">4</div>
+                  <div class="step-content">
+                    <div class="step-title">Factor Common Binomial</div>
+                    <div class="step-desc">(2x + 1)(x + 3) = 0 ⇒ <strong>x = -1/2</strong> or <strong>x = -3</strong>.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="font-size:1.1rem; font-weight:700; margin:1.5rem 0 0.75rem;">15 Solved Advanced Factorization Drills</h3>
+          <div class="academic-table-wrap">
+            <table class="academic-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Equation</th>
+                  <th>Product (ac) & Sum (b)</th>
+                  <th>Middle Term Split</th>
+                  <th>Roots</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>2x² + 7x + 3 = 0</td><td>ac = 6, b = 7 (6, 1)</td><td>2x² + 6x + x + 3 = 0</td><td>x = -1/2, -3</td></tr>
+                <tr><td>2</td><td>3x² + 10x + 8 = 0</td><td>ac = 24, b = 10 (6, 4)</td><td>3x² + 6x + 4x + 8 = 0</td><td>x = -4/3, -2</td></tr>
+                <tr><td>3</td><td>6x² - x - 2 = 0</td><td>ac = -12, b = -1 (-4, 3)</td><td>6x² - 4x + 3x - 2 = 0</td><td>x = 2/3, -1/2</td></tr>
+                <tr><td>4</td><td>2x² - 5x + 2 = 0</td><td>ac = 4, b = -5 (-4, -1)</td><td>2x² - 4x - x + 2 = 0</td><td>x = 2, 1/2</td></tr>
+                <tr><td>5</td><td>4x² + 8x + 3 = 0</td><td>ac = 12, b = 8 (6, 2)</td><td>4x² + 6x + 2x + 3 = 0</td><td>x = -3/2, -1/2</td></tr>
+                <tr><td>6</td><td>5x² - 14x - 3 = 0</td><td>ac = -15, b = -14 (-15, 1)</td><td>5x² - 15x + x - 3 = 0</td><td>x = 3, -1/5</td></tr>
+                <tr><td>7</td><td>6x² - 7x - 3 = 0</td><td>ac = -18, b = -7 (-9, 2)</td><td>6x² - 9x + 2x - 3 = 0</td><td>x = 3/2, -1/3</td></tr>
+                <tr><td>8</td><td>8x² - 2x - 3 = 0</td><td>ac = -24, b = -2 (-6, 4)</td><td>8x² - 6x + 4x - 3 = 0</td><td>x = 3/4, -1/2</td></tr>
+                <tr><td>9</td><td>3x² - 11x + 6 = 0</td><td>ac = 18, b = -11 (-9, -2)</td><td>3x² - 9x - 2x + 6 = 0</td><td>x = 3, 2/3</td></tr>
+                <tr><td>10</td><td>4x² - 12x + 9 = 0</td><td>ac = 36, b = -12 (-6, -6)</td><td>(2x - 3)² = 0</td><td>x = 3/2 (double)</td></tr>
+                <tr><td>11</td><td>10x² + x - 3 = 0</td><td>ac = -30, b = 1 (6, -5)</td><td>10x² + 6x - 5x - 3 = 0</td><td>x = 1/2, -3/5</td></tr>
+                <tr><td>12</td><td>12x² - 5x - 2 = 0</td><td>ac = -24, b = -5 (-8, 3)</td><td>12x² - 8x + 3x - 2 = 0</td><td>x = 2/3, -1/4</td></tr>
+                <tr><td>13</td><td>2x² + 3x - 9 = 0</td><td>ac = -18, b = 3 (6, -3)</td><td>2x² + 6x - 3x - 9 = 0</td><td>x = 3/2, -3</td></tr>
+                <tr><td>14</td><td>9x² - 6x + 1 = 0</td><td>ac = 9, b = -6 (-3, -3)</td><td>(3x - 1)² = 0</td><td>x = 1/3 (double)</td></tr>
+                <tr><td>15</td><td>15x² - 2x - 1 = 0</td><td>ac = -15, b = -2 (-5, 3)</td><td>15x² - 5x + 3x - 1 = 0</td><td>x = 1/3, -1/5</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- TOPIC 7 -->
+        <section class="content-section" id="topic-7">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 07 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Algebra</span>
+              </div>
+              <h2 class="section-title">7. Completing the Square Method</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-7" onclick="toggleBookmark('topic-7', '7. Completing the Square')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-7" onclick="toggleTopicCompletion('topic-7')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Completing the square transforms any quadratic expression into the form <strong>(x + d)² = k</strong>, enabling direct extraction of square roots. This method is also used to derive the Quadratic Formula!
+          </p>
+
+          <div class="math-block">
+            <div class="math-formula-title">The Magic Term to Add</div>
+            x² + bx + \left(\frac{b}{2}\right)^2 = \left(x + \frac{b}{2}\right)^2
+          </div>
+
+          <div class="step-box">
+            <div class="step-box-header">
+              <span>Worked Example: x² + 6x + 5 = 0</span>
+              <span class="step-box-badge">Step-by-Step</span>
+            </div>
+            <div class="step-box-body">
+              <div class="step-list">
+                <div class="step-item">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <div class="step-title">Move Constant Term to RHS</div>
+                    <div class="step-desc">x² + 6x = -5</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <div class="step-title">Compute (b/2)² and Add to BOTH Sides</div>
+                    <div class="step-desc">b = 6 ⇒ (6/2)² = 3² = <strong>9</strong>. Adding 9: x² + 6x + 9 = -5 + 9 ⇒ (x + 3)² = 4.</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <div class="step-title">Take Square Roots of Both Sides</div>
+                    <div class="step-desc">x + 3 = ±√4 ⇒ x + 3 = ±2.</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">4</div>
+                  <div class="step-content">
+                    <div class="step-title">Solve for Both Roots</div>
+                    <div class="step-desc">x = -3 + 2 = <strong>-1</strong> or x = -3 - 2 = <strong>-5</strong>.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="academic-note warning-tip">
+            <div class="note-title">⚠️ Common Trap when Leading Coefficient a ≠ 1</div>
+            You MUST divide the entire equation by 'a' BEFORE calculating (b/2)². For example in 2x² + 8x - 10 = 0, first divide by 2 to get x² + 4x - 5 = 0, then add (4/2)² = 4.
+          </div>
+        </section>
+
+        <!-- TOPIC 8 -->
+        <section class="content-section" id="topic-8">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 08 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Core Formula</span>
+              </div>
+              <h2 class="section-title">8. The Quadratic Formula (⭐ Must Know)</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-8" onclick="toggleBookmark('topic-8', '8. Quadratic Formula')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-8" onclick="toggleTopicCompletion('topic-8')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            The Quadratic Formula is the universal tool that solves <strong>EVERY</strong> quadratic equation, whether factorable or non-factorable, rational or irrational, real or complex.
+          </p>
+
+          <div class="math-block">
+            <div class="math-formula-title">⭐ THE QUADRATIC FORMULA ⭐</div>
+            x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+          </div>
+
+          <div class="step-box">
+            <div class="step-box-header">
+              <span>Full Worked Example: 2x² + 5x - 3 = 0</span>
+              <span class="step-box-badge">5-Step Master Guide</span>
+            </div>
+            <div class="step-box-body">
+              <div class="step-list">
+                <div class="step-item">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <div class="step-title">Identify Coefficients with Signs</div>
+                    <div class="step-desc">a = 2, b = 5, c = -3.</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <div class="step-title">Calculate Discriminant D = b² - 4ac</div>
+                    <div class="step-desc">D = (5)² - 4(2)(-3) = 25 - (-24) = 25 + 24 = <strong>49</strong>.</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <div class="step-title">Substitute into Formula</div>
+                    <div class="step-desc">x = (-5 ± √49) / [2(2)] = (-5 ± 7) / 4.</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">4</div>
+                  <div class="step-content">
+                    <div class="step-title">Separate the ± and Simplify</div>
+                    <div class="step-desc">Root 1: x = (-5 + 7)/4 = 2/4 = <strong>1/2</strong>.<br>Root 2: x = (-5 - 7)/4 = -12/4 = <strong>-3</strong>.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 9 -->
+        <section class="content-section" id="topic-9">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 09 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Core Formula</span>
+              </div>
+              <h2 class="section-title">9. Discriminant (D = b² - 4ac)</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-9" onclick="toggleBookmark('topic-9', '9. Discriminant')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-9" onclick="toggleTopicCompletion('topic-9')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            The quantity under the square root in the quadratic formula, <strong>D = b² - 4ac</strong>, is called the <strong>discriminant</strong> because it "discriminates" (distinguishes) between the different types of roots without needing to solve the full equation.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card" style="border-top:4px solid #16a34a;">
+              <div class="concept-card-title"><span style="color:#16a34a;">●</span> Case 1: D > 0 (Positive)</div>
+              <p>• <strong>Two distinct real roots.</strong><br>• If D is a perfect square (e.g. 1, 4, 9, 25, 49), roots are <strong>Rational</strong>.<br>• If D is NOT a perfect square (e.g. 2, 3, 5, 8), roots are <strong>Irrational</strong> conjugate surds (p ± √q).</p>
+            </div>
+
+            <div class="concept-card" style="border-top:4px solid #d97706;">
+              <div class="concept-card-title"><span style="color:#d97706;">●</span> Case 2: D = 0 (Zero)</div>
+              <p>• <strong>Two equal real roots</strong> (repeated / double root).<br>• Roots are real, rational, and both equal to <strong>x = -b / (2a)</strong>.<br>• The parabola touches the x-axis at exactly 1 vertex point.</p>
+            </div>
+
+            <div class="concept-card" style="border-top:4px solid #dc2626;">
+              <div class="concept-card-title"><span style="color:#dc2626;">●</span> Case 3: D < 0 (Negative)</div>
+              <p>• <strong>No real roots.</strong><br>• The roots are two <strong>complex conjugate imaginary roots</strong> (u ± vi).<br>• The parabola does not intersect the x-axis at all.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 10 -->
+        <section class="content-section" id="topic-10">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 10 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Interactive Analysis</span>
+              </div>
+              <h2 class="section-title">10. Nature of Roots & Instant Analyzer</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-10" onclick="toggleBookmark('topic-10', '10. Nature of Roots')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-10" onclick="toggleTopicCompletion('topic-10')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Test any quadratic equation immediately using the Nature of Roots Analyzer tool:
+          </p>
+
+          <div class="solver-widget">
+            <h3 style="font-size:1.15rem; font-weight:800; color:var(--navy-900); margin-bottom:1rem;">⚡ Interactive Nature of Roots Analyzer</h3>
+            <div class="solver-grid">
+              <div class="input-group">
+                <label for="natureInputA">a (x² coefficient):</label>
+                <input type="number" id="natureInputA" value="1" step="any" />
+              </div>
+              <div class="input-group">
+                <label for="natureInputB">b (x coefficient):</label>
+                <input type="number" id="natureInputB" value="4" step="any" />
+              </div>
+              <div class="input-group">
+                <label for="natureInputC">c (constant term):</label>
+                <input type="number" id="natureInputC" value="4" step="any" />
+              </div>
+            </div>
+            <div class="solver-buttons">
+              <button class="btn-solve" onclick="analyzeNatureOfRoots()">
+                <span>🔍</span> Analyze Equation
+              </button>
+            </div>
+            <div id="natureOutputResult" style="margin-top:1.25rem; display:none;"></div>
+          </div>
+        </section>
+
+        <!-- TOPIC 11 -->
+        <section class="content-section" id="topic-11">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 11 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">FAST Focus</span>
+              </div>
+              <h2 class="section-title">11. Sum and Product of Roots (Vieta's Relations)</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-11" onclick="toggleBookmark('topic-11', '11. Sum and Product of Roots')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-11" onclick="toggleTopicCompletion('topic-11')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            For any quadratic equation <strong>ax² + bx + c = 0</strong> with roots <strong>α (alpha) and β (beta)</strong>:
+          </p>
+
+          <div class="math-block">
+            \alpha + \beta = -\frac{b}{a} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \alpha\beta = \frac{c}{a}
+          </div>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div class="concept-card-title"><span>🌟</span> Symmetric Expressions (High-Yield FAST Tricks)</div>
+              <p>
+                • <strong>α² + β²:</strong> (α + β)² - 2αβ = (-b/a)² - 2(c/a) = (b² - 2ac) / a²<br>
+                • <strong>1/α + 1/β:</strong> (α + β) / (αβ) = (-b/a) / (c/a) = <strong>-b / c</strong><br>
+                • <strong>|α - β|:</strong> √[(α + β)² - 4αβ] = √(D) / |a|<br>
+                • <strong>α³ + β³:</strong> (α + β)³ - 3αβ(α + β)
+              </p>
+            </div>
+            <div class="concept-card">
+              <div class="concept-card-title"><span>⚡</span> Entry Test Speed Example</div>
+              <p>
+                Given: <strong>2x² - 7x + 3 = 0</strong><br>
+                • Sum of roots: α + β = -(-7)/2 = <strong>7/2</strong><br>
+                • Product of roots: αβ = <strong>3/2</strong><br>
+                • Value of 1/α + 1/β = (7/2) / (3/2) = <strong>7/3</strong> (Solved in 4 seconds without finding α and β!)
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 12 -->
+        <section class="content-section" id="topic-12">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 12 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">FAST Focus</span>
+              </div>
+              <h2 class="section-title">12. Forming a Quadratic Equation from Given Roots</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-12" onclick="toggleBookmark('topic-12', '12. Forming Equations')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-12" onclick="toggleTopicCompletion('topic-12')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            If <strong>α and β</strong> are the roots of a quadratic equation, let <strong>S = α + β</strong> (Sum) and <strong>P = αβ</strong> (Product). The equation is given by:
+          </p>
+
+          <div class="math-block">
+            x^2 - S x + P = 0 &nbsp;&nbsp;\Rightarrow&nbsp;&nbsp; x^2 - (\alpha + \beta)x + \alpha\beta = 0
+          </div>
+
+          <div class="academic-table-wrap">
+            <table class="academic-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Given Roots (α, β)</th>
+                  <th>Sum S = α + β</th>
+                  <th>Product P = αβ</th>
+                  <th>Resulting Quadratic Equation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>2 and 5</td><td>7</td><td>10</td><td>x² - 7x + 10 = 0</td></tr>
+                <tr><td>2</td><td>-3 and 4</td><td>1</td><td>-12</td><td>x² - x - 12 = 0</td></tr>
+                <tr><td>3</td><td>-2 and -7</td><td>-9</td><td>14</td><td>x² + 9x + 14 = 0</td></tr>
+                <tr><td>4</td><td>1/2 and 3/4</td><td>5/4</td><td>3/8</td><td>8x² - 10x + 3 = 0</td></tr>
+                <tr><td>5</td><td>3 + √5 and 3 - √5</td><td>6</td><td>(3)² - (√5)² = 4</td><td>x² - 6x + 4 = 0</td></tr>
+                <tr><td>6</td><td>2 + 3i and 2 - 3i</td><td>4</td><td>2² + 3² = 13</td><td>x² - 4x + 13 = 0</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- TOPIC 13 -->
+        <section class="content-section" id="topic-13">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 13 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Application</span>
+              </div>
+              <h2 class="section-title">13. Real-World Word Problems (12 Solved Models)</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-13" onclick="toggleBookmark('topic-13', '13. Word Problems')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-13" onclick="toggleTopicCompletion('topic-13')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Word problems test your ability to translate verbal scenarios into algebraic models. Always follow the 5-step blueprint:
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div class="concept-card-title">1. Area & Rectangle Problem</div>
+              <p><strong>Problem:</strong> A rectangular garden has length 4m greater than its width. If area is 96 m², find width.<br><strong>Model:</strong> w(w + 4) = 96 ⇒ w² + 4w - 96 = 0 ⇒ (w + 12)(w - 8) = 0.<br><strong>Result:</strong> Reject negative dimension -12. <strong>Width = 8 m, Length = 12 m.</strong></p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title">2. Consecutive Positive Integers</div>
+              <p><strong>Problem:</strong> Product of two consecutive positive integers is 156. Find the numbers.<br><strong>Model:</strong> n(n + 1) = 156 ⇒ n² + n - 156 = 0 ⇒ (n + 13)(n - 12) = 0.<br><strong>Result:</strong> Since n > 0, <strong>n = 12</strong>, so integers are <strong>12 and 13.</strong></p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title">3. Right Triangle Hypotenuse</div>
+              <p><strong>Problem:</strong> Hypotenuse is 13 cm. One leg is 7 cm longer than the other.<br><strong>Model:</strong> x² + (x + 7)² = 13² ⇒ 2x² + 14x - 120 = 0 ⇒ x² + 7x - 60 = 0 ⇒ (x + 12)(x - 5) = 0.<br><strong>Result:</strong> <strong>Shorter leg = 5 cm, longer leg = 12 cm.</strong></p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title">4. Speed, Distance & Time</div>
+              <p><strong>Problem:</strong> Train travels 132 km. Express train is 11 km/h faster and takes 1 hr less.<br><strong>Model:</strong> 132/v - 132/(v+11) = 1 ⇒ v² + 11v - 1452 = 0 ⇒ (v + 44)(v - 33) = 0.<br><strong>Result:</strong> <strong>Passenger speed = 33 km/h, Express = 44 km/h.</strong></p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title">5. Number & Reciprocal Sum</div>
+              <p><strong>Problem:</strong> Sum of a number and its reciprocal is 10/3.<br><strong>Model:</strong> x + 1/x = 10/3 ⇒ 3x² - 10x + 3 = 0 ⇒ (3x - 1)(x - 3) = 0.<br><strong>Result:</strong> The number is <strong>3 or 1/3.</strong></p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title">6. Pipes and Cisterns</div>
+              <p><strong>Problem:</strong> Two pipes fill a tank in 100/9 min. One takes 5 min more than the other.<br><strong>Model:</strong> 1/t + 1/(t+5) = 9/100 ⇒ 9t² - 155t - 500 = 0 ⇒ (t - 20)(9t + 25) = 0.<br><strong>Result:</strong> <strong>Faster pipe takes 20 minutes.</strong></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 14 -->
+        <section class="content-section" id="topic-14">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 14 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Speed Prep</span>
+              </div>
+              <h2 class="section-title">14. 🚀 FAST & Scholarship Speed Shortcuts</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-14" onclick="toggleBookmark('topic-14', '14. Speed Shortcuts')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-14" onclick="toggleTopicCompletion('topic-14')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Entry tests like FAST give you ~50 seconds per question. Use these 8 elite mathematical shortcuts to solve questions in under 10 seconds without standard expansion:
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div class="concept-card-title">⚡ Shortcut 1: a + b + c = 0</div>
+              <p>If the sum of all coefficients equals zero, <strong>x = 1</strong> is ALWAYS a root, and the second root is <strong>c / a</strong>.<br><em>Example:</em> 17x² - 25x + 8 = 0 (17 - 25 + 8 = 0) ⇒ Roots are <strong>1 and 8/17</strong> immediately!</p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title">⚡ Shortcut 2: a - b + c = 0</div>
+              <p>If alternating sum is zero, <strong>x = -1</strong> is ALWAYS a root, and the second root is <strong>-c / a</strong>.<br><em>Example:</em> 7x² + 11x + 4 = 0 (7 - 11 + 4 = 0) ⇒ Roots are <strong>-1 and -4/7</strong>!</p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title">⚡ Shortcut 3: Reciprocal Roots Condition</div>
+              <p>If the roots are reciprocal to each other (α and 1/α), then product = 1 ⇒ <strong>c = a</strong>.<br><em>FAST Tip:</em> If a = c, roots are automatically multiplicative inverses!</p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title">⚡ Shortcut 4: Equal Magnitude Opposite Sign</div>
+              <p>If roots are α and -α (additive inverses), then sum = 0 ⇒ <strong>b = 0</strong>.<br><em>Equation simplifies to ax² + c = 0.</em></p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title">⚡ Shortcut 5: Options Elimination by Product</div>
+              <p>Check the product of roots c/a against the product of option pairs. 75% of distractors fail the constant term sign test instantly.</p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-title">⚡ Shortcut 6: Ratio of Roots r : 1</div>
+              <p>If roots are in ratio r : 1, use the master relation: <strong>r b² = ac (r + 1)²</strong>.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 15 -->
+        <section class="content-section" id="topic-15">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 15 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Exam Strategy</span>
+              </div>
+              <h2 class="section-title">15. 15 Common Mistakes to Avoid</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-15" onclick="toggleBookmark('topic-15', '15. Common Mistakes')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-15" onclick="toggleTopicCompletion('topic-15')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Analyze these 15 frequent pitfalls that cost students valuable negative marking points:
+          </p>
+
+          <div class="mistakes-grid">
+            <div class="mistake-card">
+              <div class="mistake-card-header">1. Negative Sign in -b Formula</div>
+              <div class="mistake-row wrong">❌ In x² - 6x + 8 = 0, using -b = -6</div>
+              <div class="mistake-row correct">✅ -b = -(-6) = +6</div>
+              <div class="mistake-row reason">💡 The formula has a built-in negative sign that flips the sign of b.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-card-header">2. Squaring Negative Coefficients</div>
+              <div class="mistake-row wrong">❌ Calculating (-5)² as -25 in discriminant</div>
+              <div class="mistake-row correct">✅ (-5)² = +25 always</div>
+              <div class="mistake-row reason">💡 Any real number squared is non-negative.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-card-header">3. Forgetting ± in Square Root</div>
+              <div class="mistake-row wrong">❌ x² = 25 ⇒ x = 5 only</div>
+              <div class="mistake-row correct">✅ x = ±5 (two roots: +5 and -5)</div>
+              <div class="mistake-row reason">💡 A quadratic equation must have two solutions.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-card-header">4. Dividing by Variable x</div>
+              <div class="mistake-row wrong">❌ Solving x² = 5x by dividing by x to get x = 5</div>
+              <div class="mistake-row correct">✅ x² - 5x = 0 ⇒ x(x - 5) = 0 ⇒ x = 0 or 5</div>
+              <div class="mistake-row reason">💡 Dividing by x eliminates the valid root x = 0.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-card-header">5. Forgetting 2a in Denominator</div>
+              <div class="mistake-row wrong">❌ Dividing only the square root by 2a: -b ± √(D)/2a</div>
+              <div class="mistake-row correct">✅ Entire numerator (-b ± √D) is divided by (2a)</div>
+              <div class="mistake-row reason">💡 Fraction bar extends under both -b and the radical.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-card-header">6. Non-zero Right Hand Side Factorization</div>
+              <div class="mistake-row wrong">❌ (x - 2)(x - 3) = 12 ⇒ x - 2 = 12 or x - 3 = 12</div>
+              <div class="mistake-row correct">✅ Expand: x² - 5x + 6 = 12 ⇒ x² - 5x - 6 = 0 ⇒ (x - 6)(x + 1) = 0</div>
+              <div class="mistake-row reason">💡 Zero-Product property only works when RHS is 0.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 16 -->
+        <section class="content-section" id="topic-16">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 16 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Reference</span>
+              </div>
+              <h2 class="section-title">16. 📘 Quadratic Equations Formula Sheet</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-header-action btn-header-primary" onclick="printFormulaSheet()">🖨️ Print Sheet</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-16" onclick="toggleTopicCompletion('topic-16')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <div class="academic-table-wrap">
+            <table class="academic-table">
+              <thead>
+                <tr>
+                  <th>Concept</th>
+                  <th>Master Formula</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Standard Form</strong></td>
+                  <td><code>ax² + bx + c = 0 (a ≠ 0)</code></td>
+                  <td><button class="btn-reveal-answer" onclick="copyFormulaText('ax² + bx + c = 0', 'Standard Form')">Copy</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Quadratic Formula</strong></td>
+                  <td><code>x = (-b ± √(b² - 4ac)) / (2a)</code></td>
+                  <td><button class="btn-reveal-answer" onclick="copyFormulaText('x = (-b ± √(b² - 4ac)) / (2a)', 'Quadratic Formula')">Copy</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Discriminant</strong></td>
+                  <td><code>D = b² - 4ac</code></td>
+                  <td><button class="btn-reveal-answer" onclick="copyFormulaText('D = b² - 4ac', 'Discriminant')">Copy</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Sum of Roots</strong></td>
+                  <td><code>α + β = -b / a</code></td>
+                  <td><button class="btn-reveal-answer" onclick="copyFormulaText('α + β = -b / a', 'Sum of Roots')">Copy</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Product of Roots</strong></td>
+                  <td><code>αβ = c / a</code></td>
+                  <td><button class="btn-reveal-answer" onclick="copyFormulaText('αβ = c / a', 'Product of Roots')">Copy</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Equation from Roots</strong></td>
+                  <td><code>x² - (α + β)x + αβ = 0</code></td>
+                  <td><button class="btn-reveal-answer" onclick="copyFormulaText('x² - (α + β)x + αβ = 0', 'Equation from Roots')">Copy</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Difference of Roots</strong></td>
+                  <td><code>|α - β| = √(D) / |a|</code></td>
+                  <td><button class="btn-reveal-answer" onclick="copyFormulaText('|α - β| = √(b² - 4ac) / |a|', 'Difference of Roots')">Copy</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- TOPIC 17 -->
+        <section class="content-section" id="topic-17">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 17 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Geometry Visualizer</span>
+              </div>
+              <h2 class="section-title">17. Interactive Parabola Visualizer</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-17" onclick="toggleBookmark('topic-17', '17. Parabola Visualizer')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-17" onclick="toggleTopicCompletion('topic-17')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Adjust the sliders below to see how coefficients <strong>a, b, and c</strong> transform the graph of the parabola <strong>y = ax² + bx + c</strong> in real time:
+          </p>
+
+          <div class="parabola-container">
+            <div class="canvas-wrapper">
+              <canvas id="parabolaCanvas"></canvas>
+            </div>
+
+            <div class="parabola-controls">
+              <div class="slider-control">
+                <label><span>a (Leading Coefficient):</span> <strong id="valSliderA">1</strong></label>
+                <input type="range" id="sliderA" min="-3" max="3" step="0.5" value="1" />
+              </div>
+              <div class="slider-control">
+                <label><span>b (Linear Coefficient):</span> <strong id="valSliderB">-2</strong></label>
+                <input type="range" id="sliderB" min="-6" max="6" step="1" value="-2" />
+              </div>
+              <div class="slider-control">
+                <label><span>c (Constant y-intercept):</span> <strong id="valSliderC">-3</strong></label>
+                <input type="range" id="sliderC" min="-8" max="8" step="1" value="-3" />
+              </div>
+
+              <div style="background:var(--navy-50); padding:0.85rem; border-radius:var(--radius-md); font-size:0.85rem; line-height:1.6; border:1px solid var(--border-light);">
+                <div><strong>Vertex:</strong> <span id="parabVertex" style="color:var(--primary-700); font-weight:700;">(1, -4)</span></div>
+                <div><strong>Axis of Symmetry:</strong> <span id="parabAxis">x = 1</span></div>
+                <div><strong>Y-Intercept:</strong> <span id="parabYIntercept">(0, -3)</span></div>
+                <div><strong>Roots (x-intercepts):</strong> <span id="parabRoots" style="font-weight:700;">x = 3, x = -1</span></div>
+                <div><strong>Orientation:</strong> <span id="parabDirection">Upward</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 18 -->
+        <section class="content-section" id="topic-18">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag">Topic 18 / 18</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Interactive Tool</span>
+              </div>
+              <h2 class="section-title">18. 🧮 Interactive Quadratic Equation Solver</h2>
+            </div>
+            <div class="section-actions">
+              <button class="btn-bookmark" id="btn-bookmark-topic-18" onclick="toggleBookmark('topic-18', '18. Quadratic Solver')">☆ Bookmark</button>
+              <button class="btn-complete-topic" id="btn-complete-topic-18" onclick="toggleTopicCompletion('topic-18')"><span>✓</span> Mark as Completed</button>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Enter any coefficients to calculate step-by-step solutions, exact roots, and discriminant analysis:
+          </p>
+
+          <div class="solver-widget">
+            <div class="solver-grid">
+              <div class="input-group">
+                <label for="solverInputA">Coefficient a:</label>
+                <input type="number" id="solverInputA" value="1" step="any" />
+              </div>
+              <div class="input-group">
+                <label for="solverInputB">Coefficient b:</label>
+                <input type="number" id="solverInputB" value="-5" step="any" />
+              </div>
+              <div class="input-group">
+                <label for="solverInputC">Coefficient c:</label>
+                <input type="number" id="solverInputC" value="6" step="any" />
+              </div>
+            </div>
+
+            <div class="solver-buttons">
+              <button class="btn-solve" onclick="solveQuadraticEquation()">
+                <span>⚡</span> Solve Equation
+              </button>
+              <button class="btn-reset-solver" onclick="resetQuadraticSolver()">
+                Reset
+              </button>
+            </div>
+
+            <div class="solver-output-box" id="solverOutputBox">
+              <div style="font-size:0.8rem; text-transform:uppercase; color:#94a3b8; letter-spacing:0.05em;">Step-by-Step Mathematical Output</div>
+              <div style="font-size:1.35rem; font-weight:800; color:#ffffff; margin:0.4rem 0;" id="solvStandardEq">x² - 5x + 6 = 0</div>
+
+              <div class="solver-output-grid">
+                <div class="solver-metric-card">
+                  <div class="solver-metric-title">Discriminant (D)</div>
+                  <div class="solver-metric-val" id="solvDiscriminant">D = 1</div>
+                </div>
+                <div class="solver-metric-card">
+                  <div class="solver-metric-title">Nature of Roots</div>
+                  <div class="solver-metric-val" style="font-size:0.95rem;" id="solvNature">Two Distinct Real Roots</div>
+                </div>
+                <div class="solver-metric-card">
+                  <div class="solver-metric-title">Root 1 (x₁)</div>
+                  <div class="solver-metric-val" id="solvRoot1">x₁ = 3</div>
+                </div>
+                <div class="solver-metric-card">
+                  <div class="solver-metric-title">Root 2 (x₂)</div>
+                  <div class="solver-metric-val" id="solvRoot2">x₂ = 2</div>
+                </div>
+              </div>
+
+              <div id="solverStepByStep" style="margin-top:1rem; padding-top:0.75rem; border-top:1px solid rgba(255,255,255,0.15);"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PRACTICE ZONE (60 MCQs) -->
+        <section class="content-section" id="practice-zone">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag" style="background:var(--accent-purple-light); color:var(--accent-purple);">Practice Zone</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">60 Original Questions</span>
+              </div>
+              <h2 class="section-title">🎯 Topic Practice Zone (60 High-Yield MCQs)</h2>
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Test your knowledge with 60 comprehensive, original questions covering every topic. Receive instant step-by-step explanations for each option.
+          </p>
+
+          <div class="practice-filter-bar">
+            <button class="btn-filter active" id="filter-btn-all" onclick="setPracticeFilter('all')">All Questions (60)</button>
+            <button class="btn-filter" id="filter-btn-easy" onclick="setPracticeFilter('easy')">Easy / Foundation (20)</button>
+            <button class="btn-filter" id="filter-btn-medium" onclick="setPracticeFilter('medium')">Medium / Intermediate (25)</button>
+            <button class="btn-filter" id="filter-btn-hard" onclick="setPracticeFilter('hard')">FAST / Scholarship Level (15)</button>
+          </div>
+
+          <div class="practice-list" id="practiceList">
+            <!-- Dynamically injected by Quadratic Equations.js -->
+          </div>
+        </section>
+
+        <!-- FINAL TIMED CHALLENGE -->
+        <section class="content-section" id="final-challenge">
+          <div class="section-header">
+            <div>
+              <div class="section-badge-group">
+                <span class="topic-tag" style="background:var(--accent-amber-light); color:var(--accent-amber);">Timed Exam</span>
+                <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">30 MCQs • 25 Minutes</span>
+              </div>
+              <h2 class="section-title">🧠 Quadratic Mastery Test (FAST Simulation)</h2>
+            </div>
+          </div>
+
+          <div class="challenge-box">
+            <!-- Start Screen -->
+            <div id="challengeStartScreen" style="padding:2.5rem; text-align:center;">
+              <div style="font-size:3rem; margin-bottom:0.5rem;">⏱️</div>
+              <h3 style="font-size:1.75rem; font-weight:800; color:var(--navy-900); margin-bottom:0.5rem;">Quadratic Mastery Speed Challenge</h3>
+              <p style="color:var(--navy-700); max-width:600px; margin:0 auto 1.5rem; font-size:1rem; line-height:1.5;">
+                Simulates real FAST-NUCES and scholarship examination conditions. <strong>30 questions</strong> timed for exactly <strong>25 minutes</strong> (50 seconds per question).
+              </p>
+              <div style="display:flex; justify-content:center; gap:2rem; margin-bottom:2rem; flex-wrap:wrap;">
+                <div style="background:var(--navy-50); padding:0.75rem 1.25rem; border-radius:var(--radius-md); border:1px solid var(--border-light);">
+                  <div style="font-size:0.75rem; font-weight:700; color:var(--navy-600); text-transform:uppercase;">Questions</div>
+                  <div style="font-size:1.25rem; font-weight:800; color:var(--navy-900);">30 MCQs</div>
+                </div>
+                <div style="background:var(--navy-50); padding:0.75rem 1.25rem; border-radius:var(--radius-md); border:1px solid var(--border-light);">
+                  <div style="font-size:0.75rem; font-weight:700; color:var(--navy-600); text-transform:uppercase;">Time Limit</div>
+                  <div style="font-size:1.25rem; font-weight:800; color:var(--navy-900);">25:00 Mins</div>
+                </div>
+                <div style="background:var(--navy-50); padding:0.75rem 1.25rem; border-radius:var(--radius-md); border:1px solid var(--border-light);">
+                  <div style="font-size:0.75rem; font-weight:700; color:var(--navy-600); text-transform:uppercase;">Target Score</div>
+                  <div style="font-size:1.25rem; font-weight:800; color:var(--primary-600);">≥ 80%</div>
+                </div>
+              </div>
+              <button class="btn-header-action btn-header-primary" style="padding:0.85rem 2.25rem; font-size:1.05rem;" onclick="startMasteryQuiz()">
+                🚀 Start Timed Challenge
+              </button>
+            </div>
+
+            <!-- Active Test Screen -->
+            <div id="challengeActiveScreen" style="display:none;">
+              <div class="challenge-header">
+                <div>
+                  <span id="quizTopicTag" class="topic-tag" style="background:rgba(255,255,255,0.2); color:#fff; font-size:0.75rem;">Algebra</span>
+                  <span id="quizCurrentNum" style="font-weight:700; font-size:0.95rem; margin-left:0.5rem;">Question 1 of 30</span>
+                </div>
+                <div class="challenge-timer" id="quizTimerDisplay">
+                  ⏱️ 25:00
+                </div>
+              </div>
+
+              <div class="challenge-body">
+                <!-- Question Palette -->
+                <div class="test-palette-wrap">
+                  <div style="font-size:0.75rem; font-weight:700; color:var(--navy-600); text-transform:uppercase; display:flex; justify-content:space-between;">
+                    <span>Question Navigation Palette:</span>
+                    <span><span style="color:var(--primary-600);">●</span> Answered &nbsp; <span style="color:var(--accent-amber);">●</span> Review</span>
+                  </div>
+                  <div class="test-palette-grid" id="testPaletteGrid">
+                    <!-- Palette numbers injected by JS -->
+                  </div>
+                </div>
+
+                <!-- Current Question Card -->
+                <div class="mcq-question" id="quizQuestionText" style="font-size:1.15rem; margin-bottom:1.25rem;">
+                  Loading question...
+                </div>
+
+                <div class="mcq-options-grid" id="quizOptionsGrid">
+                  <!-- Injected by JS -->
+                </div>
+
+                <div class="test-controls">
+                  <div style="display:flex; gap:0.5rem;">
+                    <button class="btn-test btn-test-nav" id="btnPrevQuiz" onclick="quizPrev()">← Previous</button>
+                    <button class="btn-test btn-test-nav" id="btnNextQuiz" onclick="quizNext()">Next →</button>
+                  </div>
+                  <div style="display:flex; gap:0.5rem;">
+                    <button class="btn-test btn-test-mark" id="btnMarkReview" onclick="toggleQuizMarkReview()">☆ Mark for Review</button>
+                    <button class="btn-test btn-test-nav" onclick="clearCurrentAnswer()">Clear</button>
+                    <button class="btn-test btn-test-submit" onclick="promptSubmitQuiz()">Submit Test</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Result Screen & Automated Performance Analysis -->
+            <div id="challengeResultScreen" class="result-card">
+              <span id="quizResultBadge" class="result-badge passed">🏆 Scholarship Ready</span>
+              <div class="score-display" id="resultScoreDisplay">26 / 30</div>
+              <div style="font-size:1.1rem; color:var(--navy-600); font-weight:600;" id="resultPercentage">87%</div>
+
+              <div class="result-breakdown-grid">
+                <div class="breakdown-box">
+                  <div class="breakdown-label">Correct</div>
+                  <div class="breakdown-val" id="resultCorrect" style="color:var(--primary-600);">26</div>
+                </div>
+                <div class="breakdown-box">
+                  <div class="breakdown-label">Incorrect</div>
+                  <div class="breakdown-val" id="resultIncorrect" style="color:var(--accent-rose);">4</div>
+                </div>
+                <div class="breakdown-box">
+                  <div class="breakdown-label">Unattempted</div>
+                  <div class="breakdown-val" id="resultUnattempted" style="color:var(--text-light);">0</div>
+                </div>
+                <div class="breakdown-box">
+                  <div class="breakdown-label">Time Used</div>
+                  <div class="breakdown-val" id="resultTimeUsed">18m 42s</div>
+                </div>
+                <div class="breakdown-box">
+                  <div class="breakdown-label">Accuracy</div>
+                  <div class="breakdown-val" id="resultAccuracy">87%</div>
+                </div>
+              </div>
+
+              <!-- Automated Performance Diagnostics -->
+              <div class="analysis-container">
+                <div class="analysis-title">📊 Automated Strength & Weakness Analysis</div>
+                <div id="resultAnalysisContent">
+                  <!-- Rendered dynamically by JS -->
+                </div>
+              </div>
+
+              <div style="margin:2rem 0 1rem; display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+                <button class="btn-header-action btn-header-primary" onclick="resetQuizToStart()">🔄 Retake Challenge</button>
+                <a href="#practice-zone" class="btn-header-action btn-header-secondary" style="background:var(--navy-900); color:#fff;">Target Weak Areas</a>
+              </div>
+
+              <div style="margin-top:2.5rem; text-align:left;">
+                <h4 style="font-size:1.15rem; font-weight:800; margin-bottom:1rem; color:var(--navy-900);">Detailed Question by Question Review:</h4>
+                <div id="quizReviewQuestionsList">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Quick Revision Modal -->
+  <div class="modal-overlay" id="quickRevisionModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>⚡ 5-Minute Quadratic Revision Sheet</h3>
+        <button class="btn-close-modal" onclick="closeModal('quickRevisionModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">1. Standard Form</div>
+            <p><code>ax² + bx + c = 0</code> (a ≠ 0). Highest power of x is 2.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">2. Quadratic Formula</div>
+            <p><code>x = (-b ± √(b² - 4ac)) / (2a)</code></p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">3. Discriminant (D)</div>
+            <p><code>D = b² - 4ac</code><br>• D > 0: Two distinct real roots<br>• D = 0: Equal real roots<br>• D < 0: Complex conjugate roots</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">4. Sum & Product of Roots</div>
+            <p>• Sum: <code>α + β = -b / a</code><br>• Product: <code>αβ = c / a</code></p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">5. Equation from Roots</div>
+            <p><code>x² - (α + β)x + αβ = 0</code></p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">6. FAST Speed Shortcut</div>
+            <p>If <code>a + b + c = 0</code>, roots are unconditionally <strong>1 and c/a</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bookmarks Modal -->
+  <div class="modal-overlay" id="bookmarksModal">
+    <div class="modal-card" style="max-width:550px;">
+      <div class="modal-header">
+        <h3>★ My Bookmarked Topics</h3>
+        <button class="btn-close-modal" onclick="closeModal('bookmarksModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="bookmarksList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Floating Menu Toggle -->
+  <button class="mobile-nav-toggle" onclick="toggleMobileSidebar()">
+    <span>☰</span> Topics Menu
+  </button>
+
+  <!-- KaTeX JavaScript for Formula Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <!-- Main Application Logic -->
+  <script src="Quadratic-Equations.js"></script>
+</body>
+</html>

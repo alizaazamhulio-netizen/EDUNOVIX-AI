@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sequences & Series — FAST & Scholarship Mathematics</title>
+  <meta name="description" content="Complete FAST-NUCES and scholarship entry test module for Sequences & Series. Learn formulas, patterns, solve 70+ MCQs and take the 30-MCQ timed mastery test.">
+  <link rel="stylesheet" href="./Sequences-Series.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- 1. PROFESSIONAL APP HEADER -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="header-top-bar">
+        <div class="breadcrumb-label">
+          <span>FAST MATHEMATICS • TOPIC 05 / 15</span>
+          <span style="color: rgba(255,255,255,0.3);">|</span>
+          <span class="breadcrumb-path">FAST Preparation → Mathematics → Sequences & Series</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <button class="back-btn" onclick="showToast('📌 Topic 05/15 — Part of FAST-NUCES Entry Test Series')">
+            ← Back to FAST Mathematics
+          </button>
+          <button class="back-btn" onclick="openModal('quick-revision-modal')">
+            ⚡ 5-Min Revision
+          </button>
+          <button class="back-btn" onclick="openModal('bookmarks-modal')">
+            ★ Bookmarks
+          </button>
+        </div>
+      </div>
+
+      <div class="header-title-row">
+        <div>
+          <h1 class="header-main-title">Sequences & Series</h1>
+          <p class="header-subtitle">
+            Master number patterns, sequences, series, nth terms and summation techniques for FAST and scholarship entry tests.
+          </p>
+          <div class="header-badges">
+            <span class="badge badge-high-priority">🔥 High Priority Topic</span>
+            <span class="badge badge-pattern">🧩 Pattern Recognition</span>
+            <span class="badge badge-test-focused">🎯 Entry-Test Focused</span>
+            <span class="badge" style="background: rgba(255,255,255,0.15); color: #ffffff;">⏱️ 70 Practice MCQs + 30-MCQ Timed Test</span>
+          </div>
+        </div>
+
+        <div class="header-action-tools">
+          <a href="#topic-mastery-test" class="btn-header-action" style="text-decoration:none;">
+            <span>🧠 Take Timed Test</span>
+          </a>
+          <button class="btn-header-action" style="background: var(--navy-800);" onclick="printFormulaSheet()">
+            <span>🖨️ Print Formulas</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. REAL-TIME LEARNING DASHBOARD -->
+  <section class="dashboard-section" id="learning-dashboard">
+    <div class="dashboard-card-grid">
+      <!-- Chapter Progress -->
+      <div class="stat-card">
+        <div>
+          <div class="stat-card-header">
+            <span>Chapter Progress</span>
+            <span class="stat-icon">📊</span>
+          </div>
+          <div class="stat-value" id="dash-progress-pct">0%</div>
+        </div>
+        <div class="stat-progress-bar-bg">
+          <div class="stat-progress-bar-fill" id="dash-progress-bar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Topics Completed -->
+      <div class="stat-card">
+        <div>
+          <div class="stat-card-header">
+            <span>Topics Completed</span>
+            <span class="stat-icon">📚</span>
+          </div>
+          <div class="stat-value" id="dash-topics-count">0 / 23</div>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--slate-400); margin-top: 0.75rem;">Mark topics as you learn</div>
+      </div>
+
+      <!-- Questions Attempted -->
+      <div class="stat-card">
+        <div>
+          <div class="stat-card-header">
+            <span>Questions Attempted</span>
+            <span class="stat-icon">✏️</span>
+          </div>
+          <div class="stat-value" id="dash-questions-attempted">0</div>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--slate-400); margin-top: 0.75rem;">From Practice Zone</div>
+      </div>
+
+      <!-- Best Quiz Score -->
+      <div class="stat-card">
+        <div>
+          <div class="stat-card-header">
+            <span>Best Quiz Score</span>
+            <span class="stat-icon">🏆</span>
+          </div>
+          <div class="stat-value" id="dash-best-score">0%</div>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--slate-400); margin-top: 0.75rem;">Timed Mastery Exam</div>
+      </div>
+
+      <!-- Accuracy -->
+      <div class="stat-card">
+        <div>
+          <div class="stat-card-header">
+            <span>Accuracy</span>
+            <span class="stat-icon">🎯</span>
+          </div>
+          <div class="stat-value" id="dash-accuracy">0%</div>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--slate-400); margin-top: 0.75rem;">Overall Success Rate</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SEARCH & QUICK FILTER BAR -->
+  <section class="search-filter-bar">
+    <div style="position: relative;">
+      <div class="search-container">
+        <span style="color: var(--slate-400); font-size: 1.1rem;">🔍</span>
+        <input type="text" id="global-search-input" class="search-input" placeholder="Search this chapter (e.g., 'common difference', 'infinite GP formula', 'sum of AP', 'shortcuts')...">
+        <button style="background: none; border: none; color: var(--slate-400); cursor: pointer; font-size: 0.8rem;" onclick="resetAllProgress()">↺ Reset Stats</button>
+      </div>
+      <div id="search-results-dropdown" class="search-results-dropdown"></div>
+    </div>
+  </section>
+
+  <!-- 4. MAIN APP LAYOUT (STICKY SIDEBAR + RICH CONTENT) -->
+  <div class="app-layout">
+    
+    <!-- Sticky Navigation Sidebar -->
+    <aside class="sidebar-nav">
+      <div class="sidebar-header">
+        <span class="sidebar-title">Topic Navigator</span>
+        <span class="sidebar-progress-badge" id="sidebar-completion-pct">0/23</span>
+      </div>
+      <div class="sidebar-content">
+        <a href="#topic-intro" class="nav-item active">
+          <div class="nav-item-left"><span class="nav-item-num">01</span><span>Intro & Distinction</span></div>
+          <span class="nav-check" data-topic-id="intro">○</span>
+        </a>
+        <a href="#topic-notation" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">02</span><span>Terms & Notation</span></div>
+          <span class="nav-check" data-topic-id="notation">○</span>
+        </a>
+        <a href="#topic-patterns" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">03</span><span>Finding Patterns</span></div>
+          <span class="nav-check" data-topic-id="patterns">○</span>
+        </a>
+        <a href="#topic-ap" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">04</span><span>Arithmetic Sequence</span></div>
+          <span class="nav-check" data-topic-id="ap">○</span>
+        </a>
+        <a href="#topic-common-diff" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">05</span><span>Common Difference</span></div>
+          <span class="nav-check" data-topic-id="common-diff">○</span>
+        </a>
+        <a href="#topic-nth-ap" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">06</span><span>nth Term of AP</span></div>
+          <span class="nav-check" data-topic-id="nth-ap">○</span>
+        </a>
+        <a href="#topic-missing-term" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">07</span><span>Missing Terms in AP</span></div>
+          <span class="nav-check" data-topic-id="missing-term">○</span>
+        </a>
+        <a href="#topic-term-position" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">08</span><span>Finding Position (n)</span></div>
+          <span class="nav-check" data-topic-id="term-position">○</span>
+        </a>
+        <a href="#topic-arithmetic-mean" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">09</span><span>Arithmetic Mean (AM)</span></div>
+          <span class="nav-check" data-topic-id="arithmetic-mean">○</span>
+        </a>
+        <a href="#topic-arithmetic-series" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">10</span><span>Arithmetic Series (Sn)</span></div>
+          <span class="nav-check" data-topic-id="arithmetic-series">○</span>
+        </a>
+        <a href="#topic-gp" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">11</span><span>Geometric Sequence</span></div>
+          <span class="nav-check" data-topic-id="gp">○</span>
+        </a>
+        <a href="#topic-common-ratio" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">12</span><span>Common Ratio (r)</span></div>
+          <span class="nav-check" data-topic-id="common-ratio">○</span>
+        </a>
+        <a href="#topic-nth-gp" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">13</span><span>nth Term of GP</span></div>
+          <span class="nav-check" data-topic-id="nth-gp">○</span>
+        </a>
+        <a href="#topic-geometric-series" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">14</span><span>Geometric Series (Sn)</span></div>
+          <span class="nav-check" data-topic-id="geometric-series">○</span>
+        </a>
+        <a href="#topic-infinite-gp" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">15</span><span>Infinite Geometric Series</span></div>
+          <span class="nav-check" data-topic-id="infinite-gp">○</span>
+        </a>
+        <a href="#topic-special-patterns" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">16</span><span>Special Number Patterns</span></div>
+          <span class="nav-check" data-topic-id="special-patterns">○</span>
+        </a>
+        <a href="#topic-mixed-patterns" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">17</span><span>Mixed Operations</span></div>
+          <span class="nav-check" data-topic-id="mixed-patterns">○</span>
+        </a>
+        <a href="#topic-word-problems" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">18</span><span>Word Problems</span></div>
+          <span class="nav-check" data-topic-id="word-problems">○</span>
+        </a>
+        <a href="#topic-shortcuts" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">19</span><span>FAST Speed Shortcuts</span></div>
+          <span class="nav-check" data-topic-id="shortcuts">○</span>
+        </a>
+        <a href="#topic-mistakes" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">20</span><span>Common Mistakes</span></div>
+          <span class="nav-check" data-topic-id="mistakes">○</span>
+        </a>
+        <a href="#topic-formula-sheet" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">21</span><span>Formula Sheet</span></div>
+          <span class="nav-check" data-topic-id="formula-sheet">○</span>
+        </a>
+        <a href="#topic-calculators" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">22</span><span>Interactive Calculators</span></div>
+          <span class="nav-check" data-topic-id="calculators">○</span>
+        </a>
+        <a href="#topic-practice-zone" class="nav-item">
+          <div class="nav-item-left"><span class="nav-item-num">23</span><span>Practice Zone (70 MCQs)</span></div>
+          <span class="nav-check" data-topic-id="practice-zone">○</span>
+        </a>
+        <a href="#topic-mastery-test" class="nav-item" style="color: var(--primary-700); font-weight: 700;">
+          <div class="nav-item-left"><span class="nav-item-num">★</span><span>Timed Mastery Test</span></div>
+          <span class="nav-check" data-topic-id="mastery-test">○</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+
+      <!-- TOPIC 01: INTRODUCTION TO SEQUENCES & SERIES -->
+      <section class="topic-card" id="topic-intro">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 01 / 23</span>
+            <h2 class="topic-title">Introduction to Sequences & Series</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-intro" onclick="toggleBookmark('topic-intro', 'Introduction to Sequences & Series')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="intro" onclick="toggleTopicCompletion('intro')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            In mathematics, understanding the distinction between ordered lists of numbers and the accumulation of numbers is fundamental to solving university admission test questions.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+            <div style="background: var(--primary-50); border: 1.5px solid var(--primary-200); border-radius: var(--radius-lg); padding: 1.25rem;">
+              <h3 style="color: var(--primary-800); margin-top: 0;">📜 What is a Sequence?</h3>
+              <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">
+                A <strong>sequence</strong> is an ordered list of numbers or elements generated by a specific mathematical rule. Each individual member is called a <strong>term</strong>.
+              </p>
+              <div class="math-block">Example: 2, 4, 6, 8, 10, ...</div>
+              <p style="font-size: 0.85rem; color: var(--slate-600);">Terms are separated by <em>commas</em>.</p>
+            </div>
+
+            <div style="background: var(--blue-50); border: 1.5px solid var(--blue-100); border-radius: var(--radius-lg); padding: 1.25rem;">
+              <h3 style="color: var(--blue-600); margin-top: 0;">➕ What is a Series?</h3>
+              <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">
+                A <strong>series</strong> is the indicated summation of the terms of a sequence.
+              </p>
+              <div class="math-block" style="border-left-color: var(--blue-600);">Example: 2 + 4 + 6 + 8 + 10 + ...</div>
+              <p style="font-size: 0.85rem; color: var(--slate-600);">Terms are connected by <em>addition or subtraction signs</em>.</p>
+            </div>
+          </div>
+
+          <div class="formula-callout">
+            <div class="formula-callout-title">🔑 Critical Distinction for Admission Tests</div>
+            <div class="formula-display">Sequence = List of terms &nbsp;|&nbsp; Series = Sum of terms</div>
+            <div class="formula-legend">Never confuse the nth term formula <span class="math-inline">aₙ</span> with the sum formula <span class="math-inline">Sₙ</span>!</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 02: TERMS, POSITION & NOTATION -->
+      <section class="topic-card" id="topic-notation">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 02 / 23</span>
+            <h2 class="topic-title">Terms, Position & Standard Notation</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-notation" onclick="toggleBookmark('topic-notation', 'Terms & Notation')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="notation" onclick="toggleTopicCompletion('notation')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            To work systematically with sequences, mathematicians use standardized subscript notation:
+          </p>
+          <ul>
+            <li><span class="math-inline">a₁</span> (or <span class="math-inline">a</span>) represents the <strong>First Term</strong>.</li>
+            <li><span class="math-inline">a₂</span> represents the <strong>Second Term</strong>.</li>
+            <li><span class="math-inline">a₃</span> represents the <strong>Third Term</strong>.</li>
+            <li><span class="math-inline">aₙ</span> represents the <strong>nth Term</strong> (also called the <em>general term</em>).</li>
+            <li><span class="math-inline">n</span> represents the <strong>Position or Index</strong> (<span class="math-inline">n ∈ {1, 2, 3, 4, ...}</span>, strictly a positive integer).</li>
+          </ul>
+
+          <h3>Finite vs. Infinite Sequences</h3>
+          <p>
+            • <strong>Finite Sequence:</strong> Has a definite end term. Example: <span class="math-inline">3, 6, 9, 12, 15</span> (contains exactly 5 terms).<br>
+            • <strong>Infinite Sequence:</strong> Continues indefinitely, denoted by ellipsis. Example: <span class="math-inline">3, 6, 9, 12, ...</span>
+          </p>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Worked Example: Identifying Sequence Components</span>
+              <span class="example-level level-basic">Basic</span>
+            </div>
+            <div class="example-box-body">
+              <p>Consider the sequence: <span class="math-inline">5, 12, 19, 26, 33, ...</span></p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span>First Term: <span class="math-inline">a₁ = 5</span></span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span>Second Term: <span class="math-inline">a₂ = 12</span></span></div>
+                <div class="step-row"><span class="step-badge">Step 3</span><span>Third Term: <span class="math-inline">a₃ = 19</span></span></div>
+                <div class="step-row"><span class="step-badge">Step 4</span><span>Position of 33: <span class="math-inline">n = 5</span> (since 33 is the 5th number in the sequence).</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 03: FINDING PATTERNS -->
+      <section class="topic-card" id="topic-patterns">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 03 / 23</span>
+            <h2 class="topic-title">Systematic Pattern Recognition</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-patterns" onclick="toggleBookmark('topic-patterns', 'Finding Patterns')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="patterns" onclick="toggleTopicCompletion('patterns')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            FAST and scholarship aptitude exams test your ability to spot numerical rules in seconds. Use this structured decision tree rather than guessing randomly:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
+            <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--navy-900);">1. Constant Addition (+d)</strong>
+              <div class="math-block">3, 7, 11, 15, 19 (+4 each step)</div>
+            </div>
+            <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--navy-900);">2. Constant Subtraction (-d)</strong>
+              <div class="math-block">20, 16, 12, 8, 4 (-4 each step)</div>
+            </div>
+            <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--navy-900);">3. Constant Multiplication (×r)</strong>
+              <div class="math-block">2, 6, 18, 54, 162 (×3 each step)</div>
+            </div>
+            <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--navy-900);">4. Constant Division (÷k)</strong>
+              <div class="math-block">81, 27, 9, 3, 1 (÷3 each step)</div>
+            </div>
+            <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--navy-900);">5. Square Numbers (n²)</strong>
+              <div class="math-block">1, 4, 9, 16, 25, 36, 49</div>
+            </div>
+            <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--navy-900);">6. Cube Numbers (n³)</strong>
+              <div class="math-block">1, 8, 27, 64, 125, 216</div>
+            </div>
+          </div>
+
+          <div class="exam-tip-box">
+            <span>💡</span>
+            <div><strong>FAST Aptitude Secret:</strong> Always write down the difference between consecutive terms first. If the first differences are not constant, take the difference of those differences (second difference). A constant 2nd difference indicates a quadratic sequence!</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 04: ARITHMETIC SEQUENCE (AP) -->
+      <section class="topic-card" id="topic-ap">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 04 / 23</span>
+            <h2 class="topic-title">Arithmetic Progression (AP)</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-ap" onclick="toggleBookmark('topic-ap', 'Arithmetic Progression')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="ap" onclick="toggleTopicCompletion('ap')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            An <strong>Arithmetic Progression (AP)</strong> or <strong>Arithmetic Sequence</strong> is a sequence of numbers in which the difference between any two successive members is a constant quantity.
+          </p>
+
+          <div class="formula-callout">
+            <div class="formula-callout-title">Mathematical Definition</div>
+            <div class="formula-display">aₙ₊₁ - aₙ = d &nbsp; (constant for all n ≥ 1)</div>
+            <div class="formula-legend">Where <span class="math-inline">d</span> is the common difference.</div>
+          </div>
+
+          <h3>Positive vs. Negative Common Differences</h3>
+          <p>
+            • <strong>Increasing AP:</strong> When <span class="math-inline">d &gt; 0</span>. Example: <span class="math-inline">5, 8, 11, 14, 17, ...</span> (here <span class="math-inline">d = +3</span>).<br>
+            • <strong>Decreasing AP:</strong> When <span class="math-inline">d &lt; 0</span>. Example: <span class="math-inline">10, 7, 4, 1, -2, ...</span> (here <span class="math-inline">d = -3</span>).
+          </p>
+        </div>
+      </section>
+
+      <!-- TOPIC 05: COMMON DIFFERENCE & INTERACTIVE CHECKER -->
+      <section class="topic-card" id="topic-common-diff">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 05 / 23</span>
+            <h2 class="topic-title">Common Difference & Verification Tool</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-common-diff" onclick="toggleBookmark('topic-common-diff', 'Common Difference')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="common-diff" onclick="toggleTopicCompletion('common-diff')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            To verify whether any given sequence is an arithmetic progression, verify that:
+          </p>
+          <div class="math-block">d = a₂ - a₁ = a₃ - a₂ = a₄ - a₃</div>
+
+          <!-- Interactive Tool for Finding Common Difference -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">⚡</div>
+              <div>
+                <h3 style="margin: 0; font-size: 1.15rem; color: var(--navy-900);">Interactive AP Checker</h3>
+                <p style="margin: 0; font-size: 0.825rem; color: var(--slate-500);">Enter 4 consecutive terms to test for constant arithmetic difference</p>
+              </div>
+            </div>
+
+            <div class="tool-grid-inputs">
+              <div class="input-group">
+                <label class="input-label">Term 1 (a₁)</label>
+                <input type="number" id="cd-t1" class="tool-input" placeholder="e.g. 5" value="5">
+              </div>
+              <div class="input-group">
+                <label class="input-label">Term 2 (a₂)</label>
+                <input type="number" id="cd-t2" class="tool-input" placeholder="e.g. 8" value="8">
+              </div>
+              <div class="input-group">
+                <label class="input-label">Term 3 (a₃)</label>
+                <input type="number" id="cd-t3" class="tool-input" placeholder="e.g. 11" value="11">
+              </div>
+              <div class="input-group">
+                <label class="input-label">Term 4 (a₄)</label>
+                <input type="number" id="cd-t4" class="tool-input" placeholder="e.g. 14" value="14">
+              </div>
+            </div>
+
+            <button id="btn-check-diff" class="btn-tool-calculate">Check Sequence</button>
+            <div id="cd-result" class="tool-result-box" style="margin-top: 1rem;">
+              <p style="color: var(--slate-500); font-size: 0.9rem;">Click 'Check Sequence' to compute common differences.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 06: NTH TERM OF ARITHMETIC SEQUENCE -->
+      <section class="topic-card" id="topic-nth-ap">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 06 / 23</span>
+            <h2 class="topic-title">The General (nth) Term Formula of an AP</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-nth-ap" onclick="toggleBookmark('topic-nth-ap', 'nth Term of AP')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="nth-ap" onclick="toggleTopicCompletion('nth-ap')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            The general formula allows finding any distant term without writing out intermediate terms:
+          </p>
+
+          <div class="formula-callout">
+            <div class="formula-callout-title">General Term Formula</div>
+            <div class="formula-display">
+              aₙ = a₁ + (n - 1)d
+              <button class="btn-bookmark btn-copy-formula" data-formula="aₙ = a₁ + (n - 1)d" style="margin-left: auto;">📋 Copy</button>
+            </div>
+            <div class="formula-legend">
+              • <span class="math-inline">aₙ</span> = value of the nth term<br>
+              • <span class="math-inline">a₁</span> = first term<br>
+              • <span class="math-inline">n</span> = term position (number of terms)<br>
+              • <span class="math-inline">d</span> = common difference
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Solved Entry-Test Example</span>
+              <span class="example-level level-med">Medium</span>
+            </div>
+            <div class="example-box-body">
+              <p><strong>Question:</strong> Find the 20th term of the arithmetic sequence: <span class="math-inline">4, 7, 10, 13, ...</span></p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span>Identify known variables: <span class="math-inline">a₁ = 4</span>, <span class="math-inline">d = 7 - 4 = 3</span>, <span class="math-inline">n = 20</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span>Substitute into formula: <span class="math-inline">a₂₀ = 4 + (20 - 1) × 3</span></span></div>
+                <div class="step-row"><span class="step-badge">Step 3</span><span>Simplify arithmetic: <span class="math-inline">a₂₀ = 4 + 19(3) = 4 + 57 = 61</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Answer</span><span><strong>a₂₀ = 61</strong></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 07: FINDING A MISSING TERM -->
+      <section class="topic-card" id="topic-missing-term">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 07 / 23</span>
+            <h2 class="topic-title">Finding Missing Terms in an AP</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-missing-term" onclick="toggleBookmark('topic-missing-term', 'Missing Terms')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="missing-term" onclick="toggleTopicCompletion('missing-term')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            Entry test questions frequently feature sequences with blanks:
+          </p>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Example 1: Single Missing Term</span>
+              <span class="example-level level-basic">Basic</span>
+            </div>
+            <div class="example-box-body">
+              <p>Find the missing term in: <span class="math-inline">3, 7, __, 15, 19</span></p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span>Calculate common difference: <span class="math-inline">d = 7 - 3 = 4</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span>Add difference to 2nd term: <span class="math-inline">a₃ = 7 + 4 = 11</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Check</span><span>Verify with 4th term: <span class="math-inline">11 + 4 = 15</span> ✓</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Example 2: Multiple Consecutive Blanks</span>
+              <span class="example-level level-med">Medium</span>
+            </div>
+            <div class="example-box-body">
+              <p>Find the blanks in: <span class="math-inline">5, __, __, 20</span></p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span>Here <span class="math-inline">a₁ = 5</span> and the 4th term <span class="math-inline">a₄ = 20</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span>Use <span class="math-inline">a₄ = a₁ + 3d</span> &nbsp;⇒&nbsp; <span class="math-inline">20 = 5 + 3d</span> &nbsp;⇒&nbsp; <span class="math-inline">3d = 15</span> &nbsp;⇒&nbsp; <span class="math-inline">d = 5</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 3</span><span>Missing terms are <span class="math-inline">5 + 5 = 10</span> and <span class="math-inline">10 + 5 = 15</span>. Sequence: <span class="math-inline">5, 10, 15, 20</span>.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 08: FINDING THE POSITION OF A TERM (SOLVING FOR n) -->
+      <section class="topic-card" id="topic-term-position">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 08 / 23</span>
+            <h2 class="topic-title">Finding the Position (n) of a Term</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-term-position" onclick="toggleBookmark('topic-term-position', 'Finding Position (n)')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="term-position" onclick="toggleTopicCompletion('term-position')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            When a problem gives a numerical value and asks <em>"Which term is equal to X?"</em>, solve for <span class="math-inline">n</span> using algebra:
+          </p>
+
+          <div class="formula-callout">
+            <div class="formula-callout-title">Position Formula Shortcut</div>
+            <div class="formula-display">n = [(aₙ - a₁) / d] + 1</div>
+            <div class="formula-legend">Always verify that <span class="math-inline">n</span> evaluates to a positive whole integer. If <span class="math-inline">n</span> is a fraction, the number is NOT in the sequence!</div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Solved Entry-Test Problem</span>
+              <span class="example-level level-fast">FAST Level</span>
+            </div>
+            <div class="example-box-body">
+              <p><strong>Question:</strong> In the sequence <span class="math-inline">5, 9, 13, 17, ...</span> which term is equal to 81?</p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span>Identify values: <span class="math-inline">a₁ = 5</span>, <span class="math-inline">d = 9 - 5 = 4</span>, <span class="math-inline">aₙ = 81</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span>Apply shortcut: <span class="math-inline">n = [(81 - 5) / 4] + 1 = [76 / 4] + 1 = 19 + 1 = 20</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Result</span><span><strong>81 is the 20th term (a₂₀).</strong></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 09: ARITHMETIC MEAN (AM) -->
+      <section class="topic-card" id="topic-arithmetic-mean">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 09 / 23</span>
+            <h2 class="topic-title">Arithmetic Mean (AM) & Inserting Means</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-arithmetic-mean" onclick="toggleBookmark('topic-arithmetic-mean', 'Arithmetic Mean')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="arithmetic-mean" onclick="toggleTopicCompletion('arithmetic-mean')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            The <strong>Arithmetic Mean (AM)</strong> between two numbers <span class="math-inline">a</span> and <span class="math-inline">b</span> is the number <span class="math-inline">A</span> such that <span class="math-inline">a, A, b</span> forms an arithmetic progression.
+          </p>
+
+          <div class="formula-callout">
+            <div class="formula-callout-title">Arithmetic Mean Formulas</div>
+            <div class="formula-display">AM = (a + b) / 2</div>
+            <div class="formula-legend">
+              • For inserting <span class="math-inline">k</span> arithmetic means between <span class="math-inline">a</span> and <span class="math-inline">b</span>:
+              <div class="math-block" style="margin-top: 0.5rem;">d = (b - a) / (k + 1)</div>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Inserting 3 Arithmetic Means</span>
+              <span class="example-level level-med">Medium</span>
+            </div>
+            <div class="example-box-body">
+              <p>Insert 3 arithmetic means between 8 and 24.</p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span><span class="math-inline">a = 8</span>, <span class="math-inline">b = 24</span>, <span class="math-inline">k = 3</span> means.</span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span>Calculate <span class="math-inline">d = (24 - 8) / (3 + 1) = 16 / 4 = 4</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 3</span><span>Means are: <span class="math-inline">A₁ = 8 + 4 = 12</span>, <span class="math-inline">A₂ = 12 + 4 = 16</span>, <span class="math-inline">A₃ = 16 + 4 = 20</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Result</span><span>The sequence is: <span class="math-inline">8, 12, 16, 20, 24</span>.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 10: ARITHMETIC SERIES & SUM OF FIRST n TERMS -->
+      <section class="topic-card" id="topic-arithmetic-series">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 10 / 23</span>
+            <h2 class="topic-title">Arithmetic Series & Sum of First n Terms (Sₙ)</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-arithmetic-series" onclick="toggleBookmark('topic-arithmetic-series', 'Arithmetic Series')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="arithmetic-series" onclick="toggleTopicCompletion('arithmetic-series')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            An <strong>Arithmetic Series</strong> is the sum of terms in an AP. Two standard formulas exist depending on what information is given:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
+            <div class="formula-callout" style="margin: 0;">
+              <div class="formula-callout-title">Formula 1 (When d is known)</div>
+              <div class="formula-display">Sₙ = (n/2)[2a₁ + (n - 1)d]</div>
+              <div class="formula-legend">Use when you know first term, difference, and number of terms.</div>
+            </div>
+
+            <div class="formula-callout" style="margin: 0; border-left-color: var(--blue-600);">
+              <div class="formula-callout-title" style="color: var(--blue-600);">Formula 2 (When Last Term l is known)</div>
+              <div class="formula-display">Sₙ = (n/2)(a₁ + l)</div>
+              <div class="formula-legend">Faster when the first and final terms are given directly!</div>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Example: Sum of 30 Terms</span>
+              <span class="example-level level-med">Medium</span>
+            </div>
+            <div class="example-box-body">
+              <p>Find the sum of the first 30 terms of the series: <span class="math-inline">2 + 5 + 8 + 11 + ...</span></p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span><span class="math-inline">a = 2</span>, <span class="math-inline">d = 3</span>, <span class="math-inline">n = 30</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span><span class="math-inline">S₃₀ = (30/2)[2(2) + (30 - 1)3] = 15[4 + 29(3)] = 15[4 + 87] = 15[91]</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 3</span><span><span class="math-inline">15 × 91 = 1365</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Answer</span><span><strong>S₃₀ = 1365</strong></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 11: GEOMETRIC SEQUENCE (GP) -->
+      <section class="topic-card" id="topic-gp">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 11 / 23</span>
+            <h2 class="topic-title">Geometric Progression (GP)</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-gp" onclick="toggleBookmark('topic-gp', 'Geometric Progression')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="gp" onclick="toggleTopicCompletion('gp')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            A <strong>Geometric Progression (GP)</strong> is a sequence where each term after the first is obtained by multiplying the previous term by a non-zero constant called the <strong>common ratio (r)</strong>.
+          </p>
+
+          <div class="formula-callout">
+            <div class="formula-callout-title">Geometric Rule</div>
+            <div class="formula-display">aₙ₊₁ / aₙ = r &nbsp; (constant for all n ≥ 1)</div>
+            <div class="formula-legend">General form: <span class="math-inline">a, ar, ar², ar³, ..., arⁿ⁻¹</span></div>
+          </div>
+
+          <h3>Types of Common Ratios</h3>
+          <ul>
+            <li><strong>Integer Ratio (r &gt; 1):</strong> <span class="math-inline">2, 6, 18, 54, ...</span> (<span class="math-inline">r = 3</span>, rapid growth).</li>
+            <li><strong>Fractional Ratio (0 &lt; r &lt; 1):</strong> <span class="math-inline">64, 32, 16, 8, ...</span> (<span class="math-inline">r = 1/2</span>, decay).</li>
+            <li><strong>Alternating Negative Ratio (r &lt; 0):</strong> <span class="math-inline">3, -6, 12, -24, 48, ...</span> (<span class="math-inline">r = -2</span>, oscillating signs).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TOPIC 12: COMMON RATIO -->
+      <section class="topic-card" id="topic-common-ratio">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 12 / 23</span>
+            <h2 class="topic-title">Calculating & Verifying Common Ratio (r)</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-common-ratio" onclick="toggleBookmark('topic-common-ratio', 'Common Ratio')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="common-ratio" onclick="toggleTopicCompletion('common-ratio')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            To find the common ratio:
+          </p>
+          <div class="math-block">r = a₂ / a₁ = a₃ / a₂</div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Checking GP Ratio</span>
+              <span class="example-level level-basic">Basic</span>
+            </div>
+            <div class="example-box-body">
+              <p>Find <span class="math-inline">r</span> for: <span class="math-inline">81, -27, 9, -3, ...</span></p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span><span class="math-inline">r = a₂ / a₁ = -27 / 81 = -1/3</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span>Check next ratio: <span class="math-inline">r = 9 / -27 = -1/3</span> ✓</span></div>
+                <div class="step-row"><span class="step-badge">Result</span><span>Common Ratio: <strong>r = -1/3</strong></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 13: NTH TERM OF GEOMETRIC SEQUENCE -->
+      <section class="topic-card" id="topic-nth-gp">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 13 / 23</span>
+            <h2 class="topic-title">nth Term of Geometric Sequence</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-nth-gp" onclick="toggleBookmark('topic-nth-gp', 'nth Term of GP')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="nth-gp" onclick="toggleTopicCompletion('nth-gp')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <div class="formula-callout">
+            <div class="formula-callout-title">GP General Term Formula</div>
+            <div class="formula-display">
+              aₙ = a₁ · rⁿ⁻¹
+              <button class="btn-bookmark btn-copy-formula" data-formula="aₙ = a₁ · rⁿ⁻¹" style="margin-left: auto;">📋 Copy</button>
+            </div>
+            <div class="formula-legend">Note that the exponent is strictly <span class="math-inline">n - 1</span>, not <span class="math-inline">n</span>!</div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Worked Example: Finding 8th Term</span>
+              <span class="example-level level-med">Medium</span>
+            </div>
+            <div class="example-box-body">
+              <p>Find the 8th term of the geometric sequence: <span class="math-inline">3, 6, 12, 24, ...</span></p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span><span class="math-inline">a₁ = 3</span>, <span class="math-inline">r = 6 / 3 = 2</span>, <span class="math-inline">n = 8</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span>Substitute: <span class="math-inline">a₈ = 3 × 2⁸⁻¹ = 3 × 2⁷</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 3</span><span>Since <span class="math-inline">2⁷ = 128</span>, <span class="math-inline">a₈ = 3 × 128 = 384</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Answer</span><span><strong>a₈ = 384</strong></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 14: GEOMETRIC SERIES (FINITE) -->
+      <section class="topic-card" id="topic-geometric-series">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 14 / 23</span>
+            <h2 class="topic-title">Sum of Finite Geometric Series (Sₙ)</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-geometric-series" onclick="toggleBookmark('topic-geometric-series', 'Geometric Series')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="geometric-series" onclick="toggleTopicCompletion('geometric-series')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            The sum of the first <span class="math-inline">n</span> terms of a geometric progression is calculated by:
+          </p>
+
+          <div class="formula-callout">
+            <div class="formula-callout-title">Finite Geometric Series Sum</div>
+            <div class="formula-display">Sₙ = a(rⁿ - 1) / (r - 1) &nbsp; [for r &gt; 1]</div>
+            <div class="formula-display" style="margin-top: 0.5rem;">Sₙ = a(1 - rⁿ) / (1 - r) &nbsp; [for r &lt; 1]</div>
+            <div class="formula-legend">Both forms are algebraically identical, but choosing the right one avoids negative denominators.</div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Example: Sum of 6 Terms</span>
+              <span class="example-level level-med">Medium</span>
+            </div>
+            <div class="example-box-body">
+              <p>Find the sum of the first 6 terms of: <span class="math-inline">2 + 6 + 18 + 54 + ...</span></p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span><span class="math-inline">a = 2</span>, <span class="math-inline">r = 3</span>, <span class="math-inline">n = 6</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span><span class="math-inline">S₆ = 2(3⁶ - 1) / (3 - 1) = 2(729 - 1) / 2 = 728</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Answer</span><span><strong>S₆ = 728</strong></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 15: INFINITE GEOMETRIC SERIES -->
+      <section class="topic-card" id="topic-infinite-gp">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 15 / 23</span>
+            <h2 class="topic-title">Sum of Infinite Geometric Series (S∞)</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-infinite-gp" onclick="toggleBookmark('topic-infinite-gp', 'Infinite Geometric Series')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="infinite-gp" onclick="toggleTopicCompletion('infinite-gp')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            An infinite geometric series has a finite sum <strong>if and only if</strong> each successive term becomes progressively smaller in magnitude.
+          </p>
+
+          <div class="formula-callout">
+            <div class="formula-callout-title">Infinite Sum Formula & Convergence Condition</div>
+            <div class="formula-display">
+              S∞ = a / (1 - r) &nbsp; [STRICT CONDITION: |r| &lt; 1]
+              <button class="btn-bookmark btn-copy-formula" data-formula="S∞ = a / (1 - r)" style="margin-left: auto;">📋 Copy</button>
+            </div>
+            <div class="formula-legend">
+              • If <span class="math-inline">|r| ≥ 1</span>, the infinite series diverges and has NO finite sum!
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Example 1: Classic Halving Series</span>
+              <span class="example-level level-basic">Basic</span>
+            </div>
+            <div class="example-box-body">
+              <p>Find the sum of: <span class="math-inline">1 + 1/2 + 1/4 + 1/8 + ...</span></p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span><span class="math-inline">a = 1</span>, <span class="math-inline">r = 1/2</span>. Check condition: <span class="math-inline">|1/2| &lt; 1</span> ✓</span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span><span class="math-inline">S∞ = 1 / (1 - 1/2) = 1 / 0.5 = 2</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Result</span><span><strong>Sum = 2</strong></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Example 2: Recurring Decimal Conversion</span>
+              <span class="example-level level-fast">FAST High Frequency</span>
+            </div>
+            <div class="example-box-body">
+              <p>Express <span class="math-inline">0.454545...</span> as a common fraction using infinite series.</p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Step 1</span><span>Write as series: <span class="math-inline">45/100 + 45/10000 + 45/1000000 + ...</span></span></div>
+                <div class="step-row"><span class="step-badge">Step 2</span><span>First term <span class="math-inline">a = 45/100</span>, common ratio <span class="math-inline">r = 1/100</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Step 3</span><span><span class="math-inline">S∞ = (45/100) / [1 - 1/100] = (45/100) / (99/100) = 45/99 = 5/11</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Result</span><span><strong>Fraction = 5/11</strong></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 16: SPECIAL NUMBER PATTERNS -->
+      <section class="topic-card" id="topic-special-patterns">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 16 / 23</span>
+            <h2 class="topic-title">Special Number Patterns Frequently Tested</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-special-patterns" onclick="toggleBookmark('topic-special-patterns', 'Special Patterns')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="special-patterns" onclick="toggleTopicCompletion('special-patterns')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            Entry test aptitude questions frequently use sequences that are neither pure AP nor pure GP. Memorize these fundamental sequences:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
+            <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong>Triangular Numbers:</strong>
+              <div class="math-block" style="margin: 0.5rem 0;">1, 3, 6, 10, 15, 21, 28...</div>
+              <p style="font-size: 0.825rem; color: var(--slate-500); margin: 0;">Formula: <span class="math-inline">Tₙ = n(n+1)/2</span></p>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong>Fibonacci Sequence:</strong>
+              <div class="math-block" style="margin: 0.5rem 0;">1, 1, 2, 3, 5, 8, 13, 21, 34...</div>
+              <p style="font-size: 0.825rem; color: var(--slate-500); margin: 0;">Rule: <span class="math-inline">aₙ = aₙ₋₁ + aₙ₋₂</span></p>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong>Factorial Sequence:</strong>
+              <div class="math-block" style="margin: 0.5rem 0;">1, 2, 6, 24, 120, 720, 5040...</div>
+              <p style="font-size: 0.825rem; color: var(--slate-500); margin: 0;">Rule: <span class="math-inline">n! = n × (n - 1)!</span></p>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong>n² - 1 Sequence:</strong>
+              <div class="math-block" style="margin: 0.5rem 0;">0, 3, 8, 15, 24, 35, 48...</div>
+              <p style="font-size: 0.825rem; color: var(--slate-500); margin: 0;">Notice they are all 1 less than perfect squares!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 17: MIXED PATTERNS & CHALLENGING SEQUENCES -->
+      <section class="topic-card" id="topic-mixed-patterns">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 17 / 23</span>
+            <h2 class="topic-title">Mixed & Alternating Patterns</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-mixed-patterns" onclick="toggleBookmark('topic-mixed-patterns', 'Mixed Patterns')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="mixed-patterns" onclick="toggleTopicCompletion('mixed-patterns')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            In advanced aptitude tests, two distinct sequences are often interlaced into a single sequence:
+          </p>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Interleaved Two-Sequence Pattern</span>
+              <span class="example-level level-fast">FAST Aptitude</span>
+            </div>
+            <div class="example-box-body">
+              <p>Find the next two terms: <span class="math-inline">2, 30, 4, 25, 8, 20, 16, 15, __, __</span></p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Odd Pos</span><span>Look at positions 1, 3, 5, 7, 9: <span class="math-inline">2, 4, 8, 16, 32</span> (Doubling GP, next is 32).</span></div>
+                <div class="step-row"><span class="step-badge">Even Pos</span><span>Look at positions 2, 4, 6, 8, 10: <span class="math-inline">30, 25, 20, 15, 10</span> (Subtracting 5 AP, next is 10).</span></div>
+                <div class="step-row"><span class="step-badge">Result</span><span>Next two terms are <strong>32, 10</strong>.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 18: WORD PROBLEMS -->
+      <section class="topic-card" id="topic-word-problems">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 18 / 23</span>
+            <h2 class="topic-title">Real-World Word Problems & Mathematical Models</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-word-problems" onclick="toggleBookmark('topic-word-problems', 'Word Problems')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="word-problems" onclick="toggleTopicCompletion('word-problems')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            University admission tests test your ability to convert English descriptions into arithmetic or geometric equations:
+          </p>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Problem 1: Bouncing Ball Total Distance</span>
+              <span class="example-level level-fast">Physics / Math Model</span>
+            </div>
+            <div class="example-box-body">
+              <p>A ball is dropped from a height of 100 meters. Each time it strikes the ground, it rebounds to 1/2 of its previous height. Find the total vertical distance traveled before it comes to rest.</p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Understand</span><span>Initial drop is 100m. Every rebound travels UP and DOWN (multiplied by 2).</span></div>
+                <div class="step-row"><span class="step-badge">Formula</span><span><span class="math-inline">Total = Initial + 2 × [Sum of Rebounds]</span></span></div>
+                <div class="step-row"><span class="step-badge">Rebound GP</span><span>First rebound = 50m. <span class="math-inline">S∞ = 50 / (1 - 1/2) = 100m</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Total</span><span><span class="math-inline">Total Distance = 100 + 2(100) = 300 meters</span>.</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <div class="example-box-header">
+              <span class="example-title">Problem 2: Theater Seating Arrangement</span>
+              <span class="example-level level-med">Medium</span>
+            </div>
+            <div class="example-box-body">
+              <p>A concert hall has 25 rows of seats. Row 1 has 20 seats, Row 2 has 24 seats, Row 3 has 28 seats, and so on. What is the total seating capacity?</p>
+              <div class="solution-steps">
+                <div class="step-row"><span class="step-badge">Model</span><span>AP with <span class="math-inline">a = 20</span>, <span class="math-inline">d = 4</span>, <span class="math-inline">n = 25</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Calculation</span><span><span class="math-inline">S₂₅ = (25/2)[2(20) + (24)(4)] = 12.5[40 + 96] = 12.5 × 136 = 1700</span>.</span></div>
+                <div class="step-row"><span class="step-badge">Answer</span><span>Total capacity = <strong>1,700 seats</strong>.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 19: FAST SPEED TECHNIQUES & SHORTCUTS -->
+      <section class="topic-card" id="topic-shortcuts">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 19 / 23</span>
+            <h2 class="topic-title">🚀 8 FAST & Scholarship Speed Shortcuts</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-shortcuts" onclick="toggleBookmark('topic-shortcuts', 'Speed Shortcuts')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="shortcuts" onclick="toggleTopicCompletion('shortcuts')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+            <div style="background: var(--primary-50); border: 1px solid var(--primary-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--primary-900);">Shortcut 1: Sum of Two AP Ratios to Term Ratio</strong>
+              <p style="margin: 0.25rem 0; font-size: 0.9rem;">If the ratio of sums of <span class="math-inline">n</span> terms of two APs is given as <span class="math-inline">f(n) / g(n)</span>, replace <span class="math-inline">n</span> with <span class="math-inline">2k - 1</span> to immediately obtain the ratio of their kth terms!</p>
+            </div>
+
+            <div style="background: var(--primary-50); border: 1px solid var(--primary-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--primary-900);">Shortcut 2: Common Difference from Sₙ = An² + Bn</strong>
+              <p style="margin: 0.25rem 0; font-size: 0.9rem;">Whenever the sum of an AP is a quadratic expression <span class="math-inline">Sₙ = An² + Bn</span>, the common difference is ALWAYS <span class="math-inline">d = 2A</span> and first term is <span class="math-inline">a₁ = A + B</span>.</p>
+            </div>
+
+            <div style="background: var(--primary-50); border: 1px solid var(--primary-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--primary-900);">Shortcut 3: Sum of First n Natural Numbers</strong>
+              <p style="margin: 0.25rem 0; font-size: 0.9rem;"><span class="math-inline">1 + 2 + 3 + ... + n = n(n + 1) / 2</span>.</p>
+            </div>
+
+            <div style="background: var(--primary-50); border: 1px solid var(--primary-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--primary-900);">Shortcut 4: Sum of First n Odd Numbers</strong>
+              <p style="margin: 0.25rem 0; font-size: 0.9rem;"><span class="math-inline">1 + 3 + 5 + ... + (2n - 1) = n²</span> (Always a perfect square!).</p>
+            </div>
+
+            <div style="background: var(--primary-50); border: 1px solid var(--primary-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--primary-900);">Shortcut 5: Sum of First n Even Numbers</strong>
+              <p style="margin: 0.25rem 0; font-size: 0.9rem;"><span class="math-inline">2 + 4 + 6 + ... + 2n = n(n + 1) = n² + n</span>.</p>
+            </div>
+
+            <div style="background: var(--primary-50); border: 1px solid var(--primary-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--primary-900);">Shortcut 6: Product of Terms in a GP</strong>
+              <p style="margin: 0.25rem 0; font-size: 0.9rem;">The product of <span class="math-inline">n</span> terms in a GP is equal to <span class="math-inline">(Middle Term)ⁿ</span> (when n is odd).</p>
+            </div>
+
+            <div style="background: var(--primary-50); border: 1px solid var(--primary-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--primary-900);">Shortcut 7: Telescoping Differences</strong>
+              <p style="margin: 0.25rem 0; font-size: 0.9rem;">For series like <span class="math-inline">1/(1·2) + 1/(2·3) + ... + 1/(n(n+1)) = n / (n + 1)</span>.</p>
+            </div>
+
+            <div style="background: var(--primary-50); border: 1px solid var(--primary-200); border-radius: var(--radius-md); padding: 1rem;">
+              <strong style="color: var(--primary-900);">Shortcut 8: Working Backwards & Option Elimination</strong>
+              <p style="margin: 0.25rem 0; font-size: 0.9rem;">When quadratic equations result in tough factoring under timed pressure, substitute middle options (B and C) directly into the given relation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 20: COMMON MISTAKES TO AVOID -->
+      <section class="topic-card" id="topic-mistakes">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 20 / 23</span>
+            <h2 class="topic-title">15 Common Admission Test Mistakes</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-mistakes" onclick="toggleBookmark('topic-mistakes', 'Common Mistakes')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="mistakes" onclick="toggleTopicCompletion('mistakes')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <div class="mistake-grid">
+            <div class="mistake-card">
+              <div class="mistake-row"><span class="mistake-label-wrong">❌ WRONG:</span><span>Using <span class="math-inline">aₙ = arⁿ</span> for GP nth term.</span></div>
+              <div class="mistake-row"><span class="mistake-label-correct">✅ CORRECT:</span><span>The power must be <span class="math-inline">n - 1</span>: <span class="math-inline">aₙ = arⁿ⁻¹</span>.</span></div>
+              <div class="mistake-row"><span class="mistake-label-reason">💡 REASON:</span><span>The 1st term has <span class="math-inline">r⁰ = 1</span>, so the nth term only multiplies by <span class="math-inline">r</span> <span class="math-inline">(n - 1)</span> times.</span></div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-row"><span class="mistake-label-wrong">❌ WRONG:</span><span>Applying <span class="math-inline">S∞ = a / (1 - r)</span> when <span class="math-inline">r = 2</span> or <span class="math-inline">r = -1.5</span>.</span></div>
+              <div class="mistake-row"><span class="mistake-label-correct">✅ CORRECT:</span><span>The formula is ONLY valid when <span class="math-inline">|r| &lt; 1</span>. Otherwise it diverges!</span></div>
+              <div class="mistake-row"><span class="mistake-label-reason">💡 REASON:</span><span>If <span class="math-inline">|r| ≥ 1</span>, the terms grow without bound and do not converge to a finite number.</span></div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-row"><span class="mistake-label-wrong">❌ WRONG:</span><span>Calculating <span class="math-inline">d = a₁ - a₂</span> instead of <span class="math-inline">a₂ - a₁</span>.</span></div>
+              <div class="mistake-row"><span class="mistake-label-correct">✅ CORRECT:</span><span>Always subtract the earlier term from the later term: <span class="math-inline">d = a₂ - a₁</span>.</span></div>
+              <div class="mistake-row"><span class="mistake-label-reason">💡 REASON:</span><span>Getting the sign backwards flips increasing sequences to decreasing.</span></div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-row"><span class="mistake-label-wrong">❌ WRONG:</span><span>Confusing the value of a term <span class="math-inline">aₙ</span> with its position index <span class="math-inline">n</span>.</span></div>
+              <div class="mistake-row"><span class="mistake-label-correct">✅ CORRECT:</span><span><span class="math-inline">n</span> is which number in line it is (1st, 2nd, 10th); <span class="math-inline">aₙ</span> is what the number actually is.</span></div>
+              <div class="mistake-row"><span class="mistake-label-reason">💡 REASON:</span><span>In <span class="math-inline">5, 10, 15, 20</span>, the 4th term has <span class="math-inline">n = 4</span> and <span class="math-inline">a₄ = 20</span>.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 21: FORMULA SHEET -->
+      <section class="topic-card" id="topic-formula-sheet">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 21 / 23</span>
+            <h2 class="topic-title">📘 Sequences & Series Formula Cheat Sheet</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-tool-calculate" onclick="printFormulaSheet()" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">🖨️ Print Sheet</button>
+            <button class="btn-complete-topic" data-topic-id="formula-sheet" onclick="toggleTopicCompletion('formula-sheet')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div class="formula-callout" style="margin: 0;">
+              <div class="formula-callout-title">AP nth Term</div>
+              <div class="formula-display">aₙ = a₁ + (n - 1)d</div>
+            </div>
+            <div class="formula-callout" style="margin: 0;">
+              <div class="formula-callout-title">AP Sum (with d)</div>
+              <div class="formula-display">Sₙ = (n/2)[2a + (n-1)d]</div>
+            </div>
+            <div class="formula-callout" style="margin: 0;">
+              <div class="formula-callout-title">AP Sum (with last term l)</div>
+              <div class="formula-display">Sₙ = (n/2)(a + l)</div>
+            </div>
+            <div class="formula-callout" style="margin: 0;">
+              <div class="formula-callout-title">Arithmetic Mean</div>
+              <div class="formula-display">AM = (a + b) / 2</div>
+            </div>
+            <div class="formula-callout" style="margin: 0;">
+              <div class="formula-callout-title">GP nth Term</div>
+              <div class="formula-display">aₙ = a₁ · rⁿ⁻¹</div>
+            </div>
+            <div class="formula-callout" style="margin: 0;">
+              <div class="formula-callout-title">GP Finite Sum</div>
+              <div class="formula-display">Sₙ = a(1 - rⁿ) / (1 - r)</div>
+            </div>
+            <div class="formula-callout" style="margin: 0;">
+              <div class="formula-callout-title">Infinite GP Sum (|r| &lt; 1)</div>
+              <div class="formula-display">S∞ = a / (1 - r)</div>
+            </div>
+            <div class="formula-callout" style="margin: 0;">
+              <div class="formula-callout-title">Sum of Natural Numbers</div>
+              <div class="formula-display">Σn = n(n + 1) / 2</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 22: INTERACTIVE CALCULATORS & SEQUENCE ANALYZER -->
+      <section class="topic-card" id="topic-calculators">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 22 / 23</span>
+            <h2 class="topic-title">🔎 Interactive Sequence Analyzer & Multi-Calculator</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-bookmark" data-topic-id="topic-calculators" onclick="toggleBookmark('topic-calculators', 'Interactive Calculators')">☆ Bookmark</button>
+            <button class="btn-complete-topic" data-topic-id="calculators" onclick="toggleTopicCompletion('calculators')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <!-- 1. Universal Sequence Analyzer -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">🔎</div>
+              <div>
+                <h3 style="margin: 0; font-size: 1.15rem; color: var(--navy-900);">Sequence Pattern Analyzer</h3>
+                <p style="margin: 0; font-size: 0.825rem; color: var(--slate-500);">Enter numbers separated by commas or spaces to classify AP, GP, quadratic or Fibonacci</p>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <input type="text" id="analyzer-input" class="tool-input" style="width: 100%;" placeholder="e.g. 3, 7, 11, 15, 19 or 2, 6, 18, 54 or 1, 1, 2, 3, 5, 8" value="2, 5, 8, 11, 14">
+            </div>
+            <button id="btn-analyze-seq" class="btn-tool-calculate">Analyze Sequence</button>
+            <div id="analyzer-result" class="tool-result-box">
+              <p style="color: var(--slate-500); font-size: 0.9rem;">Click 'Analyze Sequence' to identify pattern, common difference/ratio, and next terms.</p>
+            </div>
+          </div>
+
+          <!-- 2. nth Term Calculator -->
+          <div class="tool-card" style="margin-top: 1.5rem;">
+            <div class="tool-card-header">
+              <div class="tool-icon">🧮</div>
+              <div>
+                <h3 style="margin: 0; font-size: 1.15rem; color: var(--navy-900);">Find the nth Term Calculator</h3>
+                <p style="margin: 0; font-size: 0.825rem; color: var(--slate-500);">Computes exact step-by-step substitution for AP and GP</p>
+              </div>
+            </div>
+
+            <div class="tool-grid-inputs">
+              <div class="input-group">
+                <label class="input-label">Progression Type</label>
+                <select id="nth-seq-type" class="tool-input">
+                  <option value="AP">Arithmetic (AP)</option>
+                  <option value="GP">Geometric (GP)</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="input-label">First Term (a₁)</label>
+                <input type="number" id="nth-first-term" class="tool-input" value="4">
+              </div>
+              <div class="input-group">
+                <label class="input-label">Common Diff (d) / Ratio (r)</label>
+                <input type="number" id="nth-param" class="tool-input" value="3">
+              </div>
+              <div class="input-group">
+                <label class="input-label">Term Position (n)</label>
+                <input type="number" id="nth-position" class="tool-input" value="20">
+              </div>
+            </div>
+            <button id="btn-calc-nth" class="btn-tool-calculate">Calculate nth Term</button>
+            <div id="nth-calc-result" class="tool-result-box"></div>
+          </div>
+
+          <!-- 3. Series Sum Calculator -->
+          <div class="tool-card" style="margin-top: 1.5rem;">
+            <div class="tool-card-header">
+              <div class="tool-icon">Σ</div>
+              <div>
+                <h3 style="margin: 0; font-size: 1.15rem; color: var(--navy-900);">Series Summation Calculator</h3>
+                <p style="margin: 0; font-size: 0.825rem; color: var(--slate-500);">Computes sum for AP, finite GP, or infinite GP series</p>
+              </div>
+            </div>
+
+            <div class="tool-grid-inputs">
+              <div class="input-group">
+                <label class="input-label">Series Type</label>
+                <select id="sum-series-type" class="tool-input">
+                  <option value="AP">Arithmetic Series (AP)</option>
+                  <option value="GP_FINITE">Finite Geometric Series (GP)</option>
+                  <option value="GP_INFINITE">Infinite Geometric Series (S∞)</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="input-label">First Term (a₁)</label>
+                <input type="number" id="sum-first-term" class="tool-input" value="2">
+              </div>
+              <div class="input-group">
+                <label class="input-label">Diff (d) or Ratio (r)</label>
+                <input type="number" id="sum-param" class="tool-input" value="3">
+              </div>
+              <div class="input-group">
+                <label class="input-label">Number of Terms (n)</label>
+                <input type="number" id="sum-terms-n" class="tool-input" value="10">
+              </div>
+            </div>
+            <button id="btn-calc-sum" class="btn-tool-calculate">Calculate Sum</button>
+            <div id="sum-calc-result" class="tool-result-box"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC 23: PRACTICE ZONE (70 MCQS) -->
+      <section class="topic-card" id="topic-practice-zone">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag">Topic 23 / 23</span>
+            <h2 class="topic-title">📝 Practice Zone: 70 Original Entrance MCQs</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-complete-topic" data-topic-id="practice-zone" onclick="toggleTopicCompletion('practice-zone')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p style="margin-bottom: 1.5rem;">
+            Test your knowledge with 70 original questions covering Easy (20), Medium (30), and FAST/Scholarship (20) level concepts with instant solutions:
+          </p>
+
+          <div class="practice-header">
+            <div class="practice-filters">
+              <button class="filter-btn practice-filter-btn active" data-level="all">All 70 Questions</button>
+              <button class="filter-btn practice-filter-btn" data-level="easy">Easy (20 MCQs)</button>
+              <button class="filter-btn practice-filter-btn" data-level="medium">Medium (30 MCQs)</button>
+              <button class="filter-btn practice-filter-btn" data-level="fast">FAST / Scholarship (20 MCQs)</button>
+            </div>
+          </div>
+
+          <div id="practice-mcqs-container">
+            <!-- Dynamic MCQ cards injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL TIMED TEST (30 MCQS, 25 MINS) -->
+      <section class="topic-card" id="topic-mastery-test">
+        <div class="topic-header">
+          <div>
+            <span class="topic-number-tag" style="background: var(--red-50); color: var(--red-600); border-color: var(--red-100);">Final Challenge</span>
+            <h2 class="topic-title">🧠 Sequences & Series Timed Mastery Exam</h2>
+          </div>
+          <div class="topic-actions">
+            <button class="btn-complete-topic" data-topic-id="mastery-test" onclick="toggleTopicCompletion('mastery-test')">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <!-- Timed Test Intro View -->
+          <div id="timed-test-intro" class="timed-test-hero">
+            <h2>Mastery Entrance Examination</h2>
+            <p style="color: var(--slate-300); max-width: 650px; margin: 0 auto;">
+              Simulate actual FAST-NUCES and scholarship examination conditions. 30 original MCQs with a strict 25-minute countdown and diagnostic weakness analysis.
+            </p>
+            <div class="timed-test-info-grid">
+              <div class="test-info-pill">⏱️ Time Limit: <strong>25 Minutes</strong></div>
+              <div class="test-info-pill">📋 Total Questions: <strong>30 MCQs</strong></div>
+              <div class="test-info-pill">⚖️ Difficulty: <strong>8 Easy • 12 Medium • 10 Hard</strong></div>
+            </div>
+            <button id="btn-start-timed-test" class="btn-start-test">▶ Start Timed Exam Now</button>
+          </div>
+
+          <!-- Active Test View (Hidden initially) -->
+          <div id="timed-test-active" class="active-test-container">
+            <div class="test-header-bar">
+              <div>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--slate-400); text-transform: uppercase;">FAST Mathematics Mock Test</span>
+                <div id="active-test-qnum" style="font-size: 1.25rem; font-weight: 800; color: var(--navy-900);">Question 1 of 30</div>
+              </div>
+              <div class="timer-box">
+                <span>⏱️</span>
+                <span id="test-timer-display">25:00</span>
+              </div>
+            </div>
+
+            <!-- Question Navigation Grid -->
+            <div style="margin-bottom: 0.75rem; font-size: 0.8rem; font-weight: 700; color: var(--slate-500);">Question Palette:</div>
+            <div id="test-nav-pills-container" class="test-question-nav-grid"></div>
+
+            <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-lg); padding: 1.5rem; margin-top: 1.25rem;">
+              <div id="active-test-qtext" style="font-size: 1.1rem; font-weight: 700; color: var(--navy-900); margin-bottom: 1.25rem;">
+                Question text loading...
+              </div>
+              <div id="active-test-options" class="mcq-options-grid" style="grid-template-columns: 1fr;">
+                <!-- Option buttons injected by JS -->
+              </div>
+            </div>
+
+            <div class="test-controls-row">
+              <div style="display: flex; gap: 0.5rem;">
+                <button id="btn-test-prev" class="btn-bookmark">← Previous</button>
+                <button id="btn-test-next" class="btn-bookmark">Next →</button>
+                <button id="btn-test-flag" class="btn-bookmark">☆ Flag for Review</button>
+              </div>
+              <button id="btn-test-submit" class="btn-tool-calculate" style="background: var(--red-600);">Finish & Submit Test</button>
+            </div>
+          </div>
+
+          <!-- Test Results View (Hidden initially) -->
+          <div id="timed-test-results" class="test-results-view"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- BOOKMARKS MODAL -->
+  <div id="bookmarks-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--navy-900);">★ My Saved Bookmarks</h3>
+        <button class="modal-close-btn" onclick="closeModal('bookmarks-modal')">×</button>
+      </div>
+      <div id="bookmarks-modal-list">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 5-MINUTE QUICK REVISION MODAL -->
+  <div id="quick-revision-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 750px;">
+      <div class="modal-header">
+        <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--navy-900);">⚡ 5-Minute Quick Revision Summary</h3>
+        <button class="modal-close-btn" onclick="closeModal('quick-revision-modal')">×</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 1rem; padding: 0.5rem 0;">
+        <div style="background: var(--slate-50); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200);">
+          <strong style="color: var(--primary-800);">1. Arithmetic Progression (AP)</strong>
+          <p style="margin: 0.25rem 0 0; font-size: 0.875rem;">
+            • Common Difference: <span class="math-inline">d = a₂ - a₁</span><br>
+            • nth Term: <span class="math-inline">aₙ = a₁ + (n - 1)d</span><br>
+            • Sum: <span class="math-inline">Sₙ = (n/2)[2a + (n-1)d] = (n/2)(a + l)</span><br>
+            • Arithmetic Mean: <span class="math-inline">AM = (a + b) / 2</span>
+          </p>
+        </div>
+
+        <div style="background: var(--slate-50); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200);">
+          <strong style="color: var(--primary-800);">2. Geometric Progression (GP)</strong>
+          <p style="margin: 0.25rem 0 0; font-size: 0.875rem;">
+            • Common Ratio: <span class="math-inline">r = a₂ / a₁</span><br>
+            • nth Term: <span class="math-inline">aₙ = a₁ · rⁿ⁻¹</span><br>
+            • Finite Sum: <span class="math-inline">Sₙ = a(1 - rⁿ) / (1 - r)</span><br>
+            • Infinite Sum: <span class="math-inline">S∞ = a / (1 - r)</span> (strictly when <span class="math-inline">|r| &lt; 1</span>)
+          </p>
+        </div>
+
+        <div style="background: var(--slate-50); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200);">
+          <strong style="color: var(--primary-800);">3. Key Entrance Shortcuts</strong>
+          <p style="margin: 0.25rem 0 0; font-size: 0.875rem;">
+            • Sum of first n odd integers = <span class="math-inline">n²</span><br>
+            • Sum of first n even integers = <span class="math-inline">n(n + 1)</span><br>
+            • If <span class="math-inline">Sₙ = An² + Bn</span>, then <span class="math-inline">d = 2A</span> and <span class="math-inline">a₁ = A + B</span>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./Sequences-Series.js"></script>
+</body>
+</html>

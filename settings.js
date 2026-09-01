@@ -405,7 +405,7 @@ function initDataManagement() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `StudyMate_AI_Backup_${new Date().toISOString().slice(0,10)}.json`;
+    a.download = `EduNexa_AI_Backup_${new Date().toISOString().slice(0,10)}.json`;
     a.click();
 
     showToast("Exported Study Data JSON archive");
@@ -512,10 +512,12 @@ function initLogoutModal() {
   cancelBtn?.addEventListener("click", closeModal);
 
   confirmBtn?.addEventListener("click", () => {
-    showToast("Signing out of NOVIX...", "info");
-    setTimeout(() => {
-      window.location.href = "dashboard.html";
-    }, 1200);
+    if (window.EduNexaAuth?.logout) {
+      confirmBtn.disabled = true;
+      window.EduNexaAuth.logout();
+      return;
+    }
+    showToast("Your authentication session is not ready. Please try again.", "warning");
   });
 }
 

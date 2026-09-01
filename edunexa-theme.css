@@ -1,0 +1,99 @@
+/* EduNexa design system: calm light surfaces, readable dark type, one blue action. */
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary: #4f46e5;
+  --accent: #14b8a6;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-soft: #eff6ff;
+  --indigo-soft: #eef2ff;
+  --accent-soft: #f0fdfa;
+  --text-primary: #111827;
+  --text-body: #1f2937;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --shadow-sm: 0 1px 2px rgba(17, 24, 39, .04);
+  --shadow-md: 0 5px 16px rgba(17, 24, 39, .07);
+  --shadow-lg: 0 12px 30px rgba(17, 24, 39, .09);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --font-main: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Legacy aliases keep individual learning modules in the same palette. */
+  --color-primary: var(--primary); --color-primary-hover: var(--primary-hover); --color-primary-light: var(--surface-soft);
+  --color-secondary: var(--text-primary); --bg-page: var(--background); --bg-surface: var(--surface); --bg-muted: var(--indigo-soft);
+  --border-subtle: var(--border); --border-medium: var(--border); --edu-primary: var(--primary); --edu-primary-strong: var(--primary-hover);
+  --edu-primary-soft: var(--surface-soft); --edu-secondary: var(--text-primary); --edu-secondary-soft: var(--background);
+  --edu-accent: var(--accent); --edu-accent-soft: var(--accent-soft); --edu-violet: var(--secondary); --edu-violet-soft: var(--indigo-soft);
+  --edu-emerald: var(--success); --edu-emerald-soft: #f0fdf4; --edu-amber: var(--warning); --edu-amber-soft: #fff7ed;
+}
+
+* { box-sizing: border-box; }
+html, body { background: var(--background) !important; color: var(--text-body) !important; font-family: var(--font-main); }
+body { min-height: 100vh; line-height: 1.55; }
+h1, h2, h3, h4, h5, h6, .title, .heading, .section-title { color: var(--text-primary) !important; text-shadow: none !important; }
+p, li, label, td, th, small, .description, .subtitle, .text-secondary, .muted, .text-muted { color: var(--text-secondary) !important; }
+a { color: var(--primary); } a:hover { color: var(--primary-hover); }
+
+/* Navigation is deliberately neutral and never relies on low-contrast text. */
+header, .navbar, .site-header, .main-header, .top-nav, .navigation, .app-header { background: var(--surface) !important; border-color: var(--border) !important; box-shadow: 0 1px 0 rgba(17,24,39,.04) !important; }
+.nav-link, .nav-links a, .navbar a, .sidebar-nav a, .top-nav a, .nav-item { color: var(--text-secondary) !important; }
+.nav-link:hover, .nav-link.active, .nav-links a:hover, .navbar a:hover, .sidebar-nav a:hover, .sidebar-nav .active, .nav-item.active { color: var(--primary) !important; }
+
+/* Shared surfaces replace legacy dark, glass, and subject-specific card fills. */
+.card, .subject-card, .topic-card, .quiz-card, .lesson-card, .feature-card, .stat-card, .dashboard-card, .course-card, .chapter-card, .content-card, .module-card, .progress-card, .setting-card, .profile-card, .info-card, .class-card, .univ-test-card, .mdcat-subject-card, .glass-card, .modal-card, .modal-content, .panel, .widget, .ai-chat-card {
+  background: var(--surface) !important; color: var(--text-body) !important; border: 1px solid var(--border) !important; border-radius: var(--radius-md); box-shadow: var(--shadow-sm) !important;
+}
+.card:hover, .subject-card:hover, .topic-card:hover, .quiz-card:hover, .lesson-card:hover, .feature-card:hover, .stat-card:hover, .dashboard-card:hover, .course-card:hover, .chapter-card:hover, .content-card:hover, .module-card:hover, .progress-card:hover, .class-card:hover { border-color: #bfdbfe !important; box-shadow: var(--shadow-md) !important; transform: translateY(-2px); }
+
+/* A single, high-contrast button system. White type is confined to solid actions. */
+button, input, textarea, select { font: inherit; }
+.btn-primary, .primary-btn, .btn-main, .btn-submit, .hero-btn, .btn-send, button[type="submit"] { background: var(--primary) !important; color: #fff !important; border: 1px solid var(--primary) !important; box-shadow: none !important; }
+.btn-primary *, .primary-btn *, .btn-main *, .btn-submit *, .hero-btn *, .btn-send *, button[type="submit"] * { color: #fff !important; }
+.btn-primary:hover, .primary-btn:hover, .btn-main:hover, .btn-submit:hover, .hero-btn:hover, .btn-send:hover, button[type="submit"]:hover { background: var(--primary-hover) !important; border-color: var(--primary-hover) !important; box-shadow: var(--shadow-sm) !important; }
+.btn-secondary, .secondary-btn, .btn-outline, .outline-btn, .btn-ghost { background: var(--surface) !important; color: var(--text-primary) !important; border: 1px solid var(--border-strong) !important; box-shadow: none !important; }
+.btn-secondary:hover, .secondary-btn:hover, .btn-outline:hover, .outline-btn:hover, .btn-ghost:hover { background: #f3f4f6 !important; color: var(--text-primary) !important; }
+input:not([type="checkbox"]):not([type="radio"]), textarea, select { background: var(--surface) !important; color: var(--text-primary) !important; border: 1px solid var(--border-strong) !important; border-radius: var(--radius-sm); }
+input::placeholder, textarea::placeholder { color: var(--text-muted) !important; opacity: 1; }
+input:focus, textarea:focus, select:focus { border-color: var(--primary) !important; box-shadow: 0 0 0 3px rgba(37,99,235,.16) !important; outline: none; }
+
+/* Legacy full-page and dashboard dark panels. */
+.sidebar, .app-sidebar, .left-sidebar, .right-sidebar, .dashboard-sidebar, .main-content, .content-area, .app-container, .login-container, .glass-login-card, .right-section, .chat-viewport { background-color: var(--background) !important; color: var(--text-body) !important; }
+.sidebar, .app-sidebar, .left-sidebar, .dashboard-sidebar { background: var(--surface) !important; border-color: var(--border) !important; }
+.sidebar :is(span, p, small, .user-name, .nav-group-label), .app-sidebar :is(span, p, small), .dashboard-sidebar :is(span, p, small) { color: var(--text-secondary) !important; }
+.hero, .hero-section, .page-hero, .subject-hero, .banner, .intro-section, .welcome-screen { background: var(--surface-soft) !important; color: var(--text-body) !important; }
+.glow-bg, .bg-canvas, .gradient-overlay, .grid-pattern, .orb, .particle-container { display: none !important; }
+
+/* Authentication pages keep their information architecture without the old dark SaaS/cyber treatment. */
+.login-wrapper, .left-section, .right-section, #signupForm { background: var(--surface) !important; color: var(--text-body) !important; border-color: var(--border) !important; }
+.left-section, #signupForm { border: 1px solid var(--border) !important; border-radius: var(--radius-lg); box-shadow: var(--shadow-md) !important; }
+.logo-text, .hero-title, .card-title, .card-subtitle, .form-label, .footer-text, .feature-info h3, .feature-info p { color: var(--text-primary) !important; }
+.feature-card, .ai-illustration-card, .floating-chip, .social-buttons .btn-social { background: var(--surface) !important; border-color: var(--border) !important; box-shadow: var(--shadow-sm) !important; }
+.social-buttons .btn-social, .social-buttons .btn-social * { color: var(--text-secondary) !important; }
+
+/* Several legacy modules use utility classes that explicitly set white text. On the
+   unified light canvas, normal copy always resolves to a dark neutral. */
+.app-container :is(p, span, small, label, li, td, th, dt, dd, figcaption, .description, .subtitle, .text-slate-100, .text-slate-200, .text-slate-300, .text-slate-400) { color: var(--text-secondary) !important; }
+.app-container :is(h1, h2, h3, h4, h5, h6, .font-bold, .font-semibold) { color: var(--text-primary) !important; }
+.app-container :is(button, .btn, .btn-primary, .primary-btn, .btn-main, .btn-submit, .hero-btn, .btn-send, button[type="submit"]) :is(p, span, small, i, svg) { color: inherit !important; }
+
+/* Assistant-specific readability: blue tint for user, white for AI, no dark code-like bubbles. */
+.chat-form, .search-box, .model-status-pill, .suggestion-card, .msg-bubble, .attachment-preview, .toast, .modal-card { background: var(--surface) !important; border-color: var(--border-strong) !important; color: var(--text-body) !important; box-shadow: var(--shadow-sm) !important; }
+.message-row.user .msg-bubble { background: var(--surface-soft) !important; border-color: #bfdbfe !important; }
+.msg-bubble, .msg-bubble *, .suggestion-card, .suggestion-card *, .chat-form textarea { color: var(--text-primary) !important; }
+.brand-icon, .msg-avatar.assistant, .status-dot { background: var(--primary) !important; color: #fff !important; box-shadow: none !important; }
+
+/* No dark footer blocks: end pages with the same calm product surface. */
+footer, .footer, .site-footer { background: var(--surface) !important; border-top: 1px solid var(--border) !important; }
+footer *, .footer *, .site-footer * { color: var(--text-secondary) !important; }
+footer a, .footer a, .site-footer a { color: var(--primary) !important; }
+
+@media (max-width: 768px) { body { overflow-x: hidden; } .card, .subject-card, .topic-card, .quiz-card, .lesson-card, .feature-card { border-radius: var(--radius-md); } }
+.auth-feedback { min-height: 1.35rem; margin: .75rem 0 0; font-size: .875rem; font-weight: 600; color: var(--text-secondary); }
+.auth-feedback.error { color: var(--danger) !important; }.auth-feedback.success { color: var(--success) !important; }.auth-feedback.info { color: var(--primary) !important; }

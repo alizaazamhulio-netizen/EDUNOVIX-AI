@@ -1,0 +1,1594 @@
+/* ==========================================================================
+   CHEMICAL EQUILIBRIUM — MDCAT PREMIUM CHAPTER STYLESHEET
+   Professional Textbook Typography & Intelligent Color Harmony
+   ========================================================================== */
+
+:root {
+  /* Core Color Palette: Intelligent Academic Chem Theme */
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-input: #ffffff;
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+
+  --border-subtle: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-strong: #94a3b8;
+
+  /* Functional Semantic Colors (Intelligent Categorization) */
+  --c-def: #2563EB;        /* Blue - Definitions & Core Concepts */
+  --c-def-bg: #f0f9ff;
+  --c-def-border: #bae6fd;
+
+  --c-formula: #7c3aed;    /* Purple - Formulas & Mathematical Relations */
+  --c-formula-bg: #f5f3ff;
+  --c-formula-border: #ddd6fe;
+
+  --c-solved: #059669;     /* Green - Solved Numericals & Correct Answers */
+  --c-solved-bg: #ecfdf5;
+  --c-solved-border: #a7f3d0;
+
+  --c-tip: #d97706;        /* Amber/Orange - MDCAT High Yield Tips & Traps */
+  --c-tip-bg: #fffbeb;
+  --c-tip-border: #fde68a;
+
+  --c-danger: #dc2626;     /* Red - Common Mistakes & Pitfalls */
+  --c-danger-bg: #fef2f2;
+  --c-danger-border: #fecaca;
+
+  --c-accent: #0f766e;     /* Deep Teal - Chapter Accents */
+  --c-accent-light: #ccfbf1;
+  
+  --primary-navy: #0f172a;
+  --primary-royal: #1e40af;
+  --primary-cyan: #06b6d4;
+
+  /* Typography Scale */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-chem: 'Cambria Math', 'Times New Roman', serif;
+
+  /* Elevation Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --bg-primary: #090d16;
+  --bg-surface: #111827;
+  --bg-surface-elevated: #1e293b;
+  --bg-subtle: #172033;
+  --bg-input: #1e293b;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-inverse: #0f172a;
+
+  --border-subtle: #1e293b;
+  --border-medium: #334155;
+  --border-strong: #475569;
+
+  --c-def: #38bdf8;
+  --c-def-bg: rgba(56, 189, 248, 0.08);
+  --c-def-border: rgba(56, 189, 248, 0.25);
+
+  --c-formula: #a78bfa;
+  --c-formula-bg: rgba(167, 139, 250, 0.08);
+  --c-formula-border: rgba(167, 139, 250, 0.25);
+
+  --c-solved: #34d399;
+  --c-solved-bg: rgba(52, 211, 153, 0.08);
+  --c-solved-border: rgba(52, 211, 153, 0.25);
+
+  --c-tip: #fbbf24;
+  --c-tip-bg: rgba(251, 191, 36, 0.08);
+  --c-tip-border: rgba(251, 191, 36, 0.25);
+
+  --c-danger: #f87171;
+  --c-danger-bg: rgba(248, 113, 113, 0.08);
+  --c-danger-border: rgba(248, 113, 113, 0.25);
+
+  --c-accent: #2dd4bf;
+  --c-accent-light: rgba(45, 212, 191, 0.12);
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+}
+
+/* CSS Reset & Baseline */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Progress bar at the very top */
+#scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(90deg, #0284c7, #7c3aed, #06b6d4);
+  z-index: 1000;
+  transition: width 0.1s ease-out;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+[data-theme="dark"] .site-header {
+  background-color: rgba(17, 24, 39, 0.92);
+}
+
+.header-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-badge {
+  background: linear-gradient(135deg, #0f766e, #0284c7);
+  color: white;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 2px 4px rgba(2, 132, 199, 0.25);
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.search-box-wrapper {
+  position: relative;
+  width: 320px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.55rem 1rem 0.55rem 2.4rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  background-color: var(--bg-surface);
+  border-color: var(--c-def);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.search-results-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  max-height: 380px;
+  overflow-y: auto;
+  z-index: 950;
+  display: none;
+  padding: 0.5rem;
+}
+
+.search-results-dropdown.active {
+  display: block;
+}
+
+.search-result-item {
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  transition: background-color var(--transition-fast);
+}
+
+.search-result-item:hover {
+  background-color: var(--bg-subtle);
+}
+
+.search-result-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--c-def);
+}
+
+.search-result-snippet {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-btn {
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all var(--transition-fast);
+}
+
+.header-btn:hover {
+  background-color: var(--bg-subtle);
+  border-color: var(--border-strong);
+}
+
+.theme-toggle-btn {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  justify-content: center;
+  border-radius: var(--radius-full);
+}
+
+.progress-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--c-solved-bg);
+  border: 1px solid var(--c-solved-border);
+  color: var(--c-solved);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Main App Layout: Sidebar + Content Canvas
+   ========================================================================== */
+.app-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Sidebar / Table of Contents */
+.sidebar-toc {
+  position: sticky;
+  top: 5rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-toc::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar-toc::-webkit-scrollbar-thumb {
+  background-color: var(--border-medium);
+  border-radius: 4px;
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.toc-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toc-counter {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--c-def);
+  background-color: var(--c-def-bg);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.toc-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.toc-group-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  padding: 0.75rem 0.5rem 0.25rem;
+}
+
+.toc-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.toc-nav-link:hover {
+  background-color: var(--bg-subtle);
+  color: var(--c-def);
+  transform: translateX(3px);
+}
+
+.toc-nav-link.active {
+  background-color: var(--c-def-bg);
+  color: var(--c-def);
+  font-weight: 600;
+  border-left: 3px solid var(--c-def);
+}
+
+.toc-check {
+  font-size: 0.8rem;
+  color: var(--border-strong);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.toc-check.completed {
+  color: var(--c-solved);
+}
+
+/* ==========================================================================
+   Chapter Content Area
+   ========================================================================== */
+.chapter-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  min-width: 0; /* Prevents flex overflow */
+}
+
+/* Chapter Hero Banner */
+.chapter-hero {
+  background: linear-gradient(135deg, #091e3a 0%, #1e3a8a 50%, #0f766e 100%);
+  color: white;
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-hero::after {
+  content: "⇌";
+  position: absolute;
+  right: -1.5rem;
+  bottom: -2.5rem;
+  font-size: 16rem;
+  font-family: var(--font-chem);
+  color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-tag {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.775rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chapter-hero-title {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.02em;
+}
+
+.chapter-hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 780px;
+  color: #e2e8f0;
+  margin-bottom: 1.75rem;
+}
+
+.hero-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hero-stat-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-stat-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: #38bdf8;
+}
+
+.hero-stat-label {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Section Structures & Headers
+   ========================================================================== */
+.topic-section {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: border-color var(--transition-normal);
+}
+
+.topic-section:hover {
+  border-color: var(--border-medium);
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.topic-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topic-number-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c-def);
+  background-color: var(--c-def-bg);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.topic-heading {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.subtopic-heading {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   Definition Cards & Content Pedagogy
+   ========================================================================== */
+.definition-card {
+  background-color: var(--c-def-bg);
+  border: 1px solid var(--c-def-border);
+  border-left: 5px solid var(--c-def);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.definition-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-def);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.definition-quote {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.explanation-block {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* MDCAT Callout Boxes */
+.mdcat-tip-box {
+  background-color: var(--c-tip-bg);
+  border: 1px solid var(--c-tip-border);
+  border-left: 5px solid var(--c-tip);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.tip-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--c-tip);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.common-mistake-box {
+  background-color: var(--c-danger-bg);
+  border: 1px solid var(--c-danger-border);
+  border-left: 5px solid var(--c-danger);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.mistake-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--c-danger);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.key-point-box {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.key-point-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Textbook-Grade Mathematical & Chemical Equations (Zero Raw LaTeX!)
+   ========================================================================== */
+.eq-card {
+  background-color: var(--c-formula-bg);
+  border: 1px solid var(--c-formula-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0;
+}
+
+.eq-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--c-formula);
+  align-self: flex-start;
+}
+
+.eq-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-family: var(--font-chem);
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  padding: 0.5rem 0;
+  user-select: all;
+}
+
+.eq-fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  padding: 0 0.35rem;
+}
+
+.eq-num {
+  border-bottom: 1.8px solid var(--text-primary);
+  padding-bottom: 0.15rem;
+  text-align: center;
+  width: 100%;
+}
+
+.eq-den {
+  padding-top: 0.15rem;
+  text-align: center;
+  width: 100%;
+}
+
+.eq-var {
+  font-style: italic;
+  font-weight: 600;
+}
+
+.chem-eq {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-chem);
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  background-color: var(--bg-subtle);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  margin: 0.35rem 0;
+}
+
+.chem-arrow {
+  color: var(--c-def);
+  font-weight: 700;
+  padding: 0 0.25rem;
+  font-size: 1.4rem;
+}
+
+.eq-symbols-breakdown {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--c-formula-border);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.symbol-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.symbol-name {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--c-formula);
+  background-color: rgba(124, 58, 237, 0.08);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+/* Copy Button for Formulas */
+.copy-eq-btn {
+  align-self: flex-end;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--c-formula-border);
+  color: var(--c-formula);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all var(--transition-fast);
+}
+
+.copy-eq-btn:hover {
+  background-color: var(--c-formula);
+  color: white;
+}
+
+/* ==========================================================================
+   Interactive Chemical Equilibrium Simulators & Visuals
+   ========================================================================== */
+.sim-container {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sim-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sim-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--c-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sim-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  background-color: var(--bg-subtle);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+}
+
+.sim-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sim-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sim-select, .sim-slider {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+.sim-visual-stage {
+  min-height: 240px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Canvas Graph Styles */
+.chart-canvas {
+  width: 100%;
+  max-width: 700px;
+  height: 220px;
+  display: block;
+}
+
+/* Equilibrium Balance Visualizer */
+.balance-fulcrum-wrapper {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.balance-beam {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399);
+  border-radius: 4px;
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center center;
+}
+
+.balance-pan {
+  position: absolute;
+  top: 8px;
+  width: 130px;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.balance-pan-left {
+  left: 10px;
+  color: var(--c-def);
+}
+
+.balance-pan-right {
+  right: 10px;
+  color: var(--c-solved);
+}
+
+.balance-pivot {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 30px solid var(--border-strong);
+  margin-top: -2px;
+}
+
+.sim-output-box {
+  background-color: var(--c-def-bg);
+  border: 1px solid var(--c-def-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.15rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Haber Process & Industrial Diagram
+   ========================================================================== */
+.haber-diagram-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.haber-step-card {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.haber-step-number {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--c-accent);
+  text-transform: uppercase;
+}
+
+.haber-step-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Comparison Tables
+   ========================================================================== */
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  margin: 0.75rem 0;
+}
+
+.academic-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.885rem;
+  text-align: left;
+}
+
+.academic-table th {
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+  font-weight: 700;
+  padding: 0.85rem 1rem;
+  border-bottom: 2px solid var(--border-medium);
+  font-family: var(--font-heading);
+}
+
+.academic-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+
+.academic-table tr:last-child td {
+  border-bottom: none;
+}
+
+.academic-table tr:hover td {
+  background-color: var(--bg-subtle);
+}
+
+/* ==========================================================================
+   Solved Numericals (Expandable Steps)
+   ========================================================================== */
+.numerical-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.numerical-header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: var(--bg-surface);
+  cursor: pointer;
+}
+
+.numerical-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.numerical-badge {
+  font-size: 0.725rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--c-solved);
+  background-color: var(--c-solved-bg);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+}
+
+.numerical-question-text {
+  font-size: 0.975rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.toggle-solution-btn {
+  background-color: var(--c-solved-bg);
+  color: var(--c-solved);
+  border: 1px solid var(--c-solved-border);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.toggle-solution-btn:hover {
+  background-color: var(--c-solved);
+  color: white;
+}
+
+.numerical-body {
+  padding: 1.5rem;
+  background-color: var(--bg-subtle);
+  border-top: 1px solid var(--border-subtle);
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.numerical-body.active {
+  display: flex;
+}
+
+.num-step {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.num-step-label {
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.num-step-content {
+  color: var(--text-primary);
+}
+
+.num-final-ans-box {
+  background-color: var(--c-solved-bg);
+  border: 1px solid var(--c-solved-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+  color: var(--c-solved);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   Conceptual Questions Accordion
+   ========================================================================== */
+.concept-item {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--bg-surface);
+}
+
+.concept-question-btn {
+  width: 100%;
+  text-align: left;
+  padding: 1.1rem 1.35rem;
+  background-color: var(--bg-surface);
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 0.975rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  transition: background-color var(--transition-fast);
+}
+
+.concept-question-btn:hover {
+  background-color: var(--bg-subtle);
+}
+
+.concept-answer {
+  padding: 1.25rem 1.35rem;
+  background-color: var(--bg-subtle);
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.925rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  display: none;
+}
+
+.concept-answer.active {
+  display: block;
+}
+
+/* ==========================================================================
+   MDCAT Interactive MCQ Quiz Engine
+   ========================================================================== */
+.quiz-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.quiz-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.quiz-progress-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quiz-score-badge {
+  background-color: var(--c-solved-bg);
+  color: var(--c-solved);
+  border: 1px solid var(--c-solved-border);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.quiz-progress-track {
+  width: 100%;
+  height: 6px;
+  background-color: var(--bg-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #0284c7, #059669);
+  transition: width 0.3s ease;
+}
+
+.mcq-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.mcq-question-statement {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.55;
+}
+
+.mcq-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mcq-option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.9rem 1.15rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-medium);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.925rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all var(--transition-fast);
+}
+
+.mcq-option-btn:hover:not(:disabled) {
+  border-color: var(--c-def);
+  background-color: var(--c-def-bg);
+}
+
+.mcq-option-btn.correct {
+  background-color: var(--c-solved-bg) !important;
+  border-color: var(--c-solved) !important;
+  color: var(--c-solved) !important;
+  font-weight: 600;
+}
+
+.mcq-option-btn.wrong {
+  background-color: var(--c-danger-bg) !important;
+  border-color: var(--c-danger) !important;
+  color: var(--c-danger) !important;
+}
+
+.option-prefix {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.mcq-explanation-card {
+  padding: 1.15rem 1.35rem;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-subtle);
+  border-left: 4px solid var(--c-def);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  display: none;
+}
+
+.mcq-explanation-card.active {
+  display: block;
+}
+
+.quiz-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   MDCAT Traps & Warning Cards
+   ========================================================================== */
+.traps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.trap-card {
+  background-color: var(--c-danger-bg);
+  border: 1px solid var(--c-danger-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.trap-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--c-danger);
+}
+
+.trap-wrong {
+  font-size: 0.85rem;
+  color: var(--c-danger);
+  text-decoration: line-through;
+  opacity: 0.85;
+}
+
+.trap-correct {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Formula Vault
+   ========================================================================== */
+.vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.vault-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.vault-card:hover {
+  border-color: var(--c-formula);
+}
+
+/* ==========================================================================
+   Quick Revision Section
+   ========================================================================== */
+.revision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.revision-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.revision-card-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-def);
+}
+
+.revision-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.revision-list li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.revision-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--c-def);
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   Footer & Back to Top
+   ========================================================================== */
+.site-footer {
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  padding: 2.5rem 1.5rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.back-to-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--c-def);
+  color: white;
+  border: none;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+  z-index: 800;
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top-btn:hover {
+  transform: translateY(-4px);
+  background-color: var(--primary-royal);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .app-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar-toc {
+    display: none; /* Accessible via mobile drawer or scroll navigation */
+  }
+  
+  .search-box-wrapper {
+    width: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-container {
+    flex-wrap: wrap;
+  }
+  
+  .search-box-wrapper {
+    order: 3;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  .chapter-hero {
+    padding: 1.5rem;
+  }
+  
+  .chapter-hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .topic-section {
+    padding: 1.25rem;
+  }
+  
+  .num-step {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}

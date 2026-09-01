@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOMEOSTASIS — MDCAT Biology Master Notes & Interactive Learning</title>
+  <meta name="description" content="Comprehensive, high-yield MDCAT Biology notes on Homeostasis, Thermoregulation, Osmoregulation, Excretion, Kidney Nephron physiology, and Blood Glucose regulation with interactive simulators and quizzes.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans for body, Outfit for headings, JetBrains Mono for formulas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Connected External Stylesheet -->
+  <link rel="stylesheet" href="homeostasis.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body id="top">
+
+  <!-- Top Study Utility Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="header-brand">
+        <div class="brand-badge">MDCAT BIOLOGY</div>
+        <div class="brand-title">Homeostasis <span>• Chapter Notes</span></div>
+      </div>
+
+      <div class="header-meta">
+        <div class="meta-item" title="Estimated Reading Time">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span id="readingTime">14 min read</span>
+        </div>
+
+        <div class="meta-item progress-meta" title="Scroll Progress">
+          <div class="progress-pill">
+            <span id="progressText">0% Complete</span>
+            <div class="progress-track">
+              <div class="progress-fill" id="progressBar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button type="button" class="header-btn" id="searchToggleBtn" title="Search Notes (Ctrl + K)" aria-label="Search Notes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span class="btn-label">Search</span>
+          </button>
+
+          <button type="button" class="header-btn" id="bookmarksBtn" title="View Saved Bookmarks" aria-label="Bookmarks">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+            <span class="btn-label">Bookmarks</span>
+            <span class="badge-count" id="bookmarkCount">0</span>
+          </button>
+
+          <button type="button" class="header-btn complete-btn" id="chapterCompleteBtn" title="Mark Chapter as Completed">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span id="completeBtnText">Mark Complete</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Reading Progress Bar at very top of viewport -->
+    <div class="global-progress-bar" id="globalScrollIndicator"></div>
+
+    <!-- Search Overlay Bar -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search Homeostasis Notes (e.g., ADH, Nephron, Insulin, Hypothalamus, PCT)..." autocomplete="off" spellcheck="false">
+        <button type="button" id="clearSearchBtn" class="clear-search-btn" title="Clear Search" aria-label="Clear Search">✕</button>
+        <span class="search-status" id="searchStatus"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Chapter Navigation Bar -->
+  <nav class="sticky-nav" id="stickyNav" aria-label="Chapter Navigation">
+    <div class="nav-container">
+      <ul class="nav-pills" id="navPills">
+        <li><a href="#sec-overview" class="nav-link active" data-sec="sec-overview">1. Overview</a></li>
+        <li><a href="#sec-control-system" class="nav-link" data-sec="sec-control-system">2. Control System</a></li>
+        <li><a href="#sec-negative-feedback" class="nav-link" data-sec="sec-negative-feedback">3. Negative Feedback</a></li>
+        <li><a href="#sec-positive-feedback" class="nav-link" data-sec="sec-positive-feedback">4. Positive Feedback</a></li>
+        <li><a href="#sec-thermoregulation" class="nav-link" data-sec="sec-thermoregulation">5. Thermoregulation</a></li>
+        <li><a href="#sec-osmoregulation" class="nav-link" data-sec="sec-osmoregulation">6. Osmoregulation</a></li>
+        <li><a href="#sec-excretion" class="nav-link" data-sec="sec-excretion">7. Excretion</a></li>
+        <li><a href="#sec-kidney" class="nav-link" data-sec="sec-kidney">8. Kidney & Nephron</a></li>
+        <li><a href="#sec-glucose" class="nav-link" data-sec="sec-glucose">9. Blood Glucose</a></li>
+        <li><a href="#sec-ph" class="nav-link" data-sec="sec-ph">10. Blood pH</a></li>
+        <li><a href="#sec-control-types" class="nav-link" data-sec="sec-control-types">11. Nervous vs Endocrine</a></li>
+        <li><a href="#sec-high-yield" class="nav-link highlight-pill" data-sec="sec-high-yield">⭐ High-Yield Facts</a></li>
+        <li><a href="#sec-flashcards" class="nav-link highlight-pill" data-sec="sec-flashcards">🃏 Flashcards</a></li>
+        <li><a href="#sec-quiz" class="nav-link quiz-pill" data-sec="sec-quiz">📝 MDCAT Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="page-main" id="mainContent">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <div class="hero-badges">
+          <span class="pill-badge pill-teal">MDCAT Biology Syllabus</span>
+          <span class="pill-badge pill-blue">High-Yield Concept Builder</span>
+          <span class="pill-badge pill-purple">Medical Board Verified</span>
+        </div>
+
+        <h1 class="hero-title">HOMEOSTASIS</h1>
+        <p class="hero-subtitle">Maintaining the Internal Balance & Dynamic Equilibrium of Life</p>
+
+        <p class="hero-lead">
+          Master the fundamental physiological mechanisms that keep the human body alive. From hypothalamic thermoregulation and renal osmoregulation to pancreatic glucose cascades and acid-base buffers—structured specifically for high scores in MDCAT Biology.
+        </p>
+
+        <!-- Stats Bar -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <span class="stat-num">11</span>
+            <span class="stat-label">Core Modules</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">16</span>
+            <span class="stat-label">High-Yield Facts</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">12</span>
+            <span class="stat-label">Interactive Flashcards</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">15</span>
+            <span class="stat-label">MDCAT Practice MCQs</span>
+          </div>
+        </div>
+
+        <!-- Interactive Homeostatic Balance Scale Teaser -->
+        <div class="hero-scale-card">
+          <div class="scale-header">
+            <span class="scale-title">🔬 Dynamic Equilibrium Balancer</span>
+            <span class="scale-status" id="scaleStatusText">System Status: Balanced at Normal Set Point (37°C / 90 mg/dL / pH 7.40)</span>
+          </div>
+
+          <div class="scale-visual">
+            <div class="scale-fulcrum"></div>
+            <div class="scale-beam" id="scaleBeam">
+              <div class="scale-pan pan-left">
+                <span class="pan-label">External Disturbance</span>
+                <span class="pan-val" id="panLeftVal">0</span>
+              </div>
+              <div class="scale-pointer"></div>
+              <div class="scale-pan pan-right">
+                <span class="pan-label">Homeostatic Counter-Response</span>
+                <span class="pan-val" id="panRightVal">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="scale-controls">
+            <button type="button" class="sim-btn outline" id="disturbColdBtn">❄️ Apply Cold Stress</button>
+            <button type="button" class="sim-btn outline" id="disturbSugarBtn">🍬 High Sugar Spike</button>
+            <button type="button" class="sim-btn outline" id="disturbDehydrateBtn">💧 Induce Dehydration</button>
+            <button type="button" class="sim-btn primary" id="restoreScaleBtn">🔄 Trigger Negative Feedback (Restore)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: WHAT IS HOMEOSTASIS? -->
+    <section class="content-section" id="sec-overview">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">01</span>
+          <h2 class="section-title">What is Homeostasis?</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-overview" title="Bookmark Section" aria-label="Bookmark Section 1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="lead-box">
+          <p>
+            <strong>Homeostasis</strong> (from Greek: <em>homoios</em> = similar, <em>stasis</em> = standing still) is the maintenance of a relatively constant and stable internal environment of the body despite continuous variations in the external surroundings.
+          </p>
+        </div>
+
+        <div class="two-col-grid">
+          <div class="info-card">
+            <h3 class="card-heading">🎯 Historical & Conceptual Foundation</h3>
+            <p>The concept was first formulated by the French physiologist <strong>Claude Bernard</strong> (1854), who introduced the concept of the <em>"milieu intérieur"</em> (internal environment—mainly the interstitial fluid surrounding living cells). The term <strong>Homeostasis</strong> was later coined by American physiologist <strong>Walter Cannon</strong> (1926).</p>
+            <div class="callout-box">
+              <span class="callout-badge">MDCAT Concept</span>
+              <p>Homeostasis does <strong>NOT</strong> mean a static, unchangeable state. It represents a <strong>dynamic equilibrium</strong>—a condition that oscillates within narrow, safe physiological limits around an optimal <strong>set point</strong>.</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3 class="card-heading">⚖️ Key Regulated Parameters in Humans</h3>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Parameter</th>
+                    <th>Normal Set Point / Range</th>
+                    <th>Primary Regulatory Organ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Core Body Temp</strong></td>
+                    <td>36.5°C – 37.5°C (37°C optimum)</td>
+                    <td>Hypothalamus & Skin</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Blood Glucose</strong></td>
+                    <td>70 – 110 mg/dL (fasting)</td>
+                    <td>Pancreas (Insulin / Glucagon)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Blood Plasma pH</strong></td>
+                    <td>7.35 – 7.45 (Optimal 7.40)</td>
+                    <td>Lungs, Kidneys & Buffers</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Osmolarity</strong></td>
+                    <td>280 – 300 mOsm/kg H₂O</td>
+                    <td>Kidneys & Hypothalamus (ADH)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Blood Pressure</strong></td>
+                    <td>120/80 mmHg</td>
+                    <td>Heart, Blood Vessels & Kidneys</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why Homeostasis is Vital -->
+        <div class="card-container mt-4">
+          <h3 class="card-heading">🌟 Why is Homeostasis Essential for Survival?</h3>
+          <div class="feature-grid-3">
+            <div class="mini-feature-card">
+              <div class="feature-icon-box">🌡️</div>
+              <h4>Enzyme Conformation</h4>
+              <p>Cellular enzymes operate strictly within narrow temperature and pH limits. Deviation causes protein denaturation or reduced kinetic collision rates.</p>
+            </div>
+            <div class="mini-feature-card">
+              <div class="feature-icon-box">💧</div>
+              <h4>Cellular Osmotic Integrity</h4>
+              <p>Maintaining solute concentration prevents cells from undergoing crenation (in hypertonic fluids) or cytolysis / bursting (in hypotonic fluids).</p>
+            </div>
+            <div class="mini-feature-card">
+              <div class="feature-icon-box">⚡</div>
+              <h4>Neuromuscular Excitability</h4>
+              <p>Precise electrolyte balances (Na⁺, K⁺, Ca²⁺, H⁺) are required for resting membrane potentials and action potential generation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: COMPONENTS OF HOMEOSTATIC CONTROL SYSTEM -->
+    <section class="content-section" id="sec-control-system">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">02</span>
+          <h2 class="section-title">Components of Homeostatic Control</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-control-system" title="Bookmark Section" aria-label="Bookmark Section 2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <p class="section-intro">
+          Every physiological homeostatic mechanism operates through a coordinated 5-component regulatory loop.
+        </p>
+
+        <!-- Interactive Flow Diagram -->
+        <div class="control-flow-container">
+          <div class="flow-header">
+            <h3>⚡ The Universal Homeostatic Reflex Arc</h3>
+            <p class="subtext">Click on any component node below to view its specific physiological function and clinical MDCAT examples:</p>
+          </div>
+
+          <div class="flow-nodes-wrapper">
+            <div class="flow-node active" data-flow="stimulus">
+              <div class="node-badge">Step 1</div>
+              <div class="node-icon">🚨</div>
+              <div class="node-title">Stimulus</div>
+              <div class="node-desc">Change in variable</div>
+            </div>
+            <div class="flow-arrow">➔</div>
+
+            <div class="flow-node" data-flow="receptor">
+              <div class="node-badge">Step 2</div>
+              <div class="node-icon">📡</div>
+              <div class="node-title">Receptor (Sensor)</div>
+              <div class="node-desc">Detects deviation</div>
+            </div>
+            <div class="flow-arrow">➔</div>
+
+            <div class="flow-node" data-flow="control-center">
+              <div class="node-badge">Step 3</div>
+              <div class="node-icon">🧠</div>
+              <div class="node-title">Control Center</div>
+              <div class="node-desc">Processes & integrates</div>
+            </div>
+            <div class="flow-arrow">➔</div>
+
+            <div class="flow-node" data-flow="effector">
+              <div class="node-badge">Step 4</div>
+              <div class="node-icon">⚙️</div>
+              <div class="node-title">Effector</div>
+              <div class="node-desc">Executes response</div>
+            </div>
+            <div class="flow-arrow">➔</div>
+
+            <div class="flow-node" data-flow="response">
+              <div class="node-badge">Step 5</div>
+              <div class="node-icon">🎯</div>
+              <div class="node-title">Response</div>
+              <div class="node-desc">Balance restored</div>
+            </div>
+          </div>
+
+          <!-- Dynamic Flow Detail Card -->
+          <div class="flow-detail-box" id="flowDetailBox">
+            <div class="flow-detail-header">
+              <span class="detail-tag" id="flowDetailTag">Step 1: Stimulus</span>
+              <h4 id="flowDetailTitle">Stimulus (The Environmental Disturbance)</h4>
+            </div>
+            <p id="flowDetailDescription">
+              A physical or chemical change in the internal or external environment that produces a measurable deviation from the physiological set point (e.g., sudden drop in ambient temperature, meal-induced spike in blood glucose, or loss of body water during strenuous exertion).
+            </p>
+            <div class="flow-detail-examples">
+              <strong>MDCAT Examples:</strong>
+              <ul id="flowDetailExamplesList">
+                <li>Elevated body temperature above 37°C during vigorous exercise.</li>
+                <li>Drop in blood glucose below 70 mg/dL after fasting.</li>
+                <li>Increased blood osmolarity due to profuse sweating.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Easy Memory Formula -->
+        <div class="formula-banner">
+          <div class="formula-title">💡 Easy MDCAT Memory Formula:</div>
+          <div class="formula-chain">
+            <span class="formula-item">Stimulus</span>
+            <span class="formula-sep">➔</span>
+            <span class="formula-item">Receptor</span>
+            <span class="formula-sep">➔</span>
+            <span class="formula-item">Control Center</span>
+            <span class="formula-sep">➔</span>
+            <span class="formula-item">Effector</span>
+            <span class="formula-sep">➔</span>
+            <span class="formula-item">Response</span>
+          </div>
+          <p class="formula-note">Mnemonic: <strong>S</strong>mart <strong>R</strong>esearchers <strong>C</strong>an <strong>E</strong>xplain <strong>R</strong>eactions (S-R-CC-E-R)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: NEGATIVE FEEDBACK -->
+    <section class="content-section" id="sec-negative-feedback">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">03</span>
+          <h2 class="section-title">Negative Feedback Mechanism</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-negative-feedback" title="Bookmark Section" aria-label="Bookmark Section 3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="definition-card">
+          <div class="def-icon">🔄</div>
+          <div class="def-content">
+            <h3>Definition of Negative Feedback</h3>
+            <p>
+              A regulatory mechanism in which the physiological response produced by the effector <strong>reverses, reduces, or counteracts</strong> the original stimulus, bringing the variable back toward its normal set point.
+            </p>
+          </div>
+        </div>
+
+        <div class="two-col-grid mt-4">
+          <div class="card-box">
+            <h3 class="card-heading">🎯 Core Mechanism & Characteristics</h3>
+            <ul class="styled-list">
+              <li><strong>Self-Limiting:</strong> As the variable returns toward normal, the stimulus for the effector is progressively decreased and shut off.</li>
+              <li><strong>Dynamic Stability:</strong> Prevents extreme physiological deviations and maintains variables around a narrow set point.</li>
+              <li><strong>Predominance:</strong> Over 99% of homeostatic control loops in living organisms are negative feedback loops.</li>
+            </ul>
+
+            <div class="mdcat-highlight-pill">
+              ⭐ <strong>MDCAT Point:</strong> Negative feedback stabilizes a biological system and promotes dynamic equilibrium.
+            </div>
+          </div>
+
+          <div class="card-box">
+            <h3 class="card-heading">🔁 Step-by-Step Negative Feedback Loop (Temperature)</h3>
+            <div class="feedback-steps-visual">
+              <div class="fb-step step-up">
+                <span class="step-badge">1</span>
+                <span>Body Temperature Rises (>37°C)</span>
+              </div>
+              <div class="fb-step step-mid">
+                <span class="step-badge">2</span>
+                <span>Thermoreceptors detect & signal Hypothalamus</span>
+              </div>
+              <div class="fb-step step-act">
+                <span class="step-badge">3</span>
+                <span>Vasodilation + Sweat Glands Activated</span>
+              </div>
+              <div class="fb-step step-down">
+                <span class="step-badge">4</span>
+                <span>Evaporative cooling & heat dissipation</span>
+              </div>
+              <div class="fb-step step-res">
+                <span class="step-badge">5</span>
+                <span>Temperature returns to normal 37°C ➔ Inhibits response</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: POSITIVE FEEDBACK -->
+    <section class="content-section" id="sec-positive-feedback">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">04</span>
+          <h2 class="section-title">Positive Feedback Mechanism</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-positive-feedback" title="Bookmark Section" aria-label="Bookmark Section 4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="definition-card alert-card">
+          <div class="def-icon">🔁</div>
+          <div class="def-content">
+            <h3>Definition of Positive Feedback</h3>
+            <p>
+              A control mechanism in which the physiological response <strong>amplifies, reinforces, or accelerates</strong> the initial stimulus in the same direction, driving the system further away from the baseline until a specific culminating event is achieved.
+            </p>
+          </div>
+        </div>
+
+        <div class="two-col-grid mt-4">
+          <div class="card-box">
+            <h3 class="card-heading">⭐ MDCAT Distinction: Negative vs Positive Feedback</h3>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Negative Feedback</th>
+                    <th>Positive Feedback</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Direction of Response</strong></td>
+                    <td>Opposes / Reverses stimulus</td>
+                    <td>Amplifies / Reinforces stimulus</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Effect on Stability</strong></td>
+                    <td>Stabilizes system (Homeostasis)</td>
+                    <td>Destabilizes until event finishes</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Frequency in Body</strong></td>
+                    <td>Extremely common (>99%)</td>
+                    <td>Rare, restricted to special events</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Outcome</strong></td>
+                    <td>Dynamic equilibrium / Set point</td>
+                    <td>Decisive endpoint (clot, birth)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-box">
+            <h3 class="card-heading">🩸 Classic High-Yield Positive Feedback Examples</h3>
+            <div class="accordion-item active">
+              <div class="acc-title">1. Parturition / Childbirth (Ferguson Reflex)</div>
+              <div class="acc-content">
+                <p>Uterine contractions push fetus against cervix ➔ Cervical stretch receptors fire ➔ Hypothalamus stimulates posterior pituitary to release <strong>Oxytocin</strong> ➔ Stronger uterine contractions ➔ More stretch ➔ Continues until child is delivered.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="acc-title">2. Blood Clotting Cascade (Hemostasis)</div>
+              <div class="acc-content">
+                <p>Vessel injury exposes subendothelial collagen ➔ Platelets adhere and become activated ➔ Activated platelets release ADP and Thromboxane A₂ ➔ Recruits more platelets to seal the leak until a platelet plug is formed.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="acc-title">3. Voltage-Gated Action Potential (Hodgkin Cycle)</div>
+              <div class="acc-content">
+                <p>Membrane depolarization to -55mV threshold ➔ Opens voltage-gated Na⁺ channels ➔ Na⁺ influx ➔ Further membrane depolarization ➔ Opens more Na⁺ channels until peak (+30mV) is reached.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: THERMOREGULATION -->
+    <section class="content-section" id="sec-thermoregulation">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">05</span>
+          <h2 class="section-title">Thermoregulation (Body Temperature Control)</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-thermoregulation" title="Bookmark Section" aria-label="Bookmark Section 5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <p class="section-intro">
+          <strong>Thermoregulation</strong> is the physiological process of maintaining core internal body temperature within an optimal range (36.5°C – 37.5°C). The master thermostat is the <strong>Hypothalamus</strong>.
+        </p>
+
+        <!-- Interactive Thermoregulation Simulator -->
+        <div class="sim-card">
+          <div class="sim-header">
+            <div class="sim-title-group">
+              <h3>🌡️ Interactive Thermoregulation Simulator</h3>
+              <p>Select a thermal stress state to simulate the nervous & vascular response in real-time:</p>
+            </div>
+            <div class="sim-mode-toggle">
+              <button type="button" class="mode-btn hot active" id="simHotBtn">🔥 Body Too Hot (>37.5°C)</button>
+              <button type="button" class="mode-btn cold" id="simColdBtn">❄️ Body Too Cold (&lt;36.5°C)</button>
+            </div>
+          </div>
+
+          <div class="sim-display-grid">
+            <!-- Left: Physiological Visual & Gauge -->
+            <div class="sim-visual-pane">
+              <div class="temp-gauge-container">
+                <div class="gauge-dial">
+                  <div class="gauge-indicator" id="tempIndicator" style="transform: rotate(45deg);"></div>
+                  <div class="gauge-center">
+                    <span class="gauge-val" id="tempDisplayVal">39.0°C</span>
+                    <span class="gauge-status" id="tempDisplayLabel">Heat Stress</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skin-cross-section" id="skinVisual">
+                <div class="skin-surface">
+                  <div class="sweat-drops" id="sweatDrops">
+                    <span class="drop">💧</span><span class="drop">💧</span><span class="drop">💧</span>
+                  </div>
+                  <div class="hair-follicles" id="hairFollicles">
+                    <div class="hair flat"></div>
+                    <div class="hair flat"></div>
+                    <div class="hair flat"></div>
+                  </div>
+                </div>
+                <div class="skin-dermis">
+                  <div class="capillary-loop dilated" id="capillaryLoop">
+                    <span class="cap-label" id="capillaryLabel">Vasodilation (Wide vessels, high blood flow to skin)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Animated Pathway Steps -->
+            <div class="sim-steps-pane">
+              <h4 id="simPathwayTitle">🔥 Heat Loss Pathway (Hyperthermia Response)</h4>
+              <div class="sim-pathway-steps" id="simPathwayList">
+                <div class="path-step active">
+                  <span class="p-num">1</span>
+                  <div class="p-text">
+                    <strong>Stimulus:</strong> Core body temperature rises above 37.5°C.
+                  </div>
+                </div>
+                <div class="path-step active">
+                  <span class="p-num">2</span>
+                  <div class="p-text">
+                    <strong>Detection:</strong> Central thermoreceptors in Preoptic / Anterior Hypothalamus detect blood temperature increase.
+                  </div>
+                </div>
+                <div class="path-step active">
+                  <span class="p-num">3</span>
+                  <div class="p-text">
+                    <strong>Vasodilation:</strong> Precapillary sphincters relax; dermal arterioles dilate, directing blood flow to skin surface for heat loss via radiation and convection.
+                  </div>
+                </div>
+                <div class="path-step active">
+                  <span class="p-num">4</span>
+                  <div class="p-text">
+                    <strong>Sweating:</strong> Sympathetic cholinergic stimulation activates eccrine sweat glands. Evaporative cooling dissipates large amounts of latent heat of vaporization.
+                  </div>
+                </div>
+                <div class="path-step active">
+                  <span class="p-num">5</span>
+                  <div class="p-text">
+                    <strong>Metabolic Shift:</strong> Reduction in thyroid hormones & epinephrine lowers basal heat production.
+                  </div>
+                </div>
+                <div class="path-step active final">
+                  <span class="p-num">✓</span>
+                  <div class="p-text">
+                    <strong>Result:</strong> Core temperature returns toward 37°C set point.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- High-Yield Comparison Table -->
+        <div class="card-box mt-4">
+          <h3 class="card-heading">📊 Summary Table: Heat Loss vs Heat Gain Responses</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Effector / Tissue</th>
+                  <th>When Body is Too Hot (Heat Loss)</th>
+                  <th>When Body is Too Cold (Heat Conservation/Gain)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Cutaneous Blood Vessels</strong></td>
+                  <td><strong>Vasodilation:</strong> Arterioles widen ➔ More blood to skin surface ➔ Heat radiates out</td>
+                  <td><strong>Vasoconstriction:</strong> Arterioles constrict ➔ Blood diverted to deep core ➔ Heat conserved</td>
+                </tr>
+                <tr>
+                  <td><strong>Sweat Glands</strong></td>
+                  <td><strong>Active:</strong> Copious watery sweat secreted ➔ Evaporative cooling</td>
+                  <td><strong>Inactive:</strong> Sweating stopped ➔ Prevents evaporative heat loss</td>
+                </tr>
+                <tr>
+                  <td><strong>Skeletal Muscles</strong></td>
+                  <td>Relaxed; no involuntary contractions</td>
+                  <td><strong>Shivering:</strong> Rapid involuntary muscle twitches generate metabolic heat (ATP hydrolysis)</td>
+                </tr>
+                <tr>
+                  <td><strong>Arrector Pili (Hair)</strong></td>
+                  <td>Relaxed ➔ Hairs lie flat, allowing heat to escape freely</td>
+                  <td><strong>Contracted (Goosebumps / Piloerection):</strong> Traps an insulating layer of still air</td>
+                </tr>
+                <tr>
+                  <td><strong>Metabolic Rate</strong></td>
+                  <td>Decreased thyroxine & adrenaline production</td>
+                  <td>Increased thyroxine & adrenaline ➔ Stimulates cellular respiration & brown fat thermogenesis</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: OSMOREGULATION -->
+    <section class="content-section" id="sec-osmoregulation">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">06</span>
+          <h2 class="section-title">Osmoregulation & ADH Mechanism</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-osmoregulation" title="Bookmark Section" aria-label="Bookmark Section 6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="lead-box">
+          <p>
+            <strong>Osmoregulation</strong> is the active regulation of the osmotic pressure of body fluids, maintaining water balance and dissolved solute (ions, salts) concentrations within precise physiological limits (~300 mOsm/L).
+          </p>
+        </div>
+
+        <!-- ADH Interactive Simulator -->
+        <div class="sim-card mt-4">
+          <div class="sim-header">
+            <div class="sim-title-group">
+              <h3>💧 Interactive ADH & Water Balance Simulator</h3>
+              <p>Simulate how plasma osmolarity dictates Antidiuretic Hormone (ADH) release and urine concentration:</p>
+            </div>
+            <div class="sim-mode-toggle">
+              <button type="button" class="mode-btn cold active" id="adhLowWaterBtn">🏜️ Low Body Water (Dehydrated / Salty)</button>
+              <button type="button" class="mode-btn hot" id="adhHighWaterBtn">🥤 High Body Water (Overhydrated)</button>
+            </div>
+          </div>
+
+          <div class="sim-display-grid">
+            <!-- Left: Dynamic Beaker & Hormone Gauge -->
+            <div class="sim-visual-pane">
+              <div class="adh-visual-grid">
+                <div class="adh-gauge-card">
+                  <span class="adh-card-label">Plasma ADH Concentration</span>
+                  <div class="adh-level-bar">
+                    <div class="adh-level-fill high" id="adhLevelFill" style="width: 90%;"></div>
+                  </div>
+                  <span class="adh-level-text" id="adhLevelText">HIGH ADH (Vasopressin Active)</span>
+                </div>
+
+                <div class="urine-beaker-box">
+                  <span class="adh-card-label">Excreted Urine Output</span>
+                  <div class="beaker-graphic">
+                    <div class="beaker-fluid conc" id="beakerFluid" style="height: 35%;">
+                      <span class="beaker-val" id="beakerVal">0.5 L/day</span>
+                    </div>
+                  </div>
+                  <div class="beaker-meta">
+                    <div><strong>Urine Osmolarity:</strong> <span id="beakerOsm">1,200 mOsm/L (Hypertonic)</span></div>
+                    <div><strong>Urine Color:</strong> <span id="beakerColor">Dark Amber / Concentrated</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Dynamic Step Flow -->
+            <div class="sim-steps-pane">
+              <h4 id="adhPathwayTitle">🏜️ Dehydration Response (High ADH Pathway)</h4>
+              <div class="sim-pathway-steps" id="adhPathwayList">
+                <div class="path-step active">
+                  <span class="p-num">1</span>
+                  <div class="p-text">
+                    <strong>Osmotic Stimulus:</strong> Body loses water or gains salt ➔ Blood plasma osmolarity rises above 300 mOsm/L.
+                  </div>
+                </div>
+                <div class="path-step active">
+                  <span class="p-num">2</span>
+                  <div class="p-text">
+                    <strong>Osmoreceptors:</strong> Specialized osmoreceptors in the <strong>Hypothalamus</strong> shrink and fire action potentials.
+                  </div>
+                </div>
+                <div class="path-step active">
+                  <span class="p-num">3</span>
+                  <div class="p-text">
+                    <strong>ADH Release:</strong> Hypothalamus stimulates the <strong>Posterior Pituitary Gland</strong> to secrete ADH (Antidiuretic Hormone / Vasopressin) into bloodstream.
+                  </div>
+                </div>
+                <div class="path-step active">
+                  <span class="p-num">4</span>
+                  <div class="p-text">
+                    <strong>Kidney Response:</strong> ADH binds V₂ receptors on <strong>Collecting Ducts & DCT</strong> ➔ Aquaporin-2 water channels insert into apical membranes ➔ Massive water reabsorption back into blood.
+                  </div>
+                </div>
+                <div class="path-step active final">
+                  <span class="p-num">✓</span>
+                  <div class="p-text">
+                    <strong>Homeostatic Result:</strong> Small volume of concentrated, hypertonic urine excreted. Blood osmolarity drops back to normal 300 mOsm/L.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdcat-highlight-pill mt-4">
+          ⭐ <strong>MDCAT Key Takeaway:</strong> ADH (Vasopressin) <strong>increases water reabsorption</strong> in distal nephron segments, producing concentrated urine. Alcohol and cold suppress ADH, resulting in large volumes of dilute urine (diuresis).
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: EXCRETION VS EGESTION -->
+    <section class="content-section" id="sec-excretion">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">07</span>
+          <h2 class="section-title">Excretion vs Egestion</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-excretion" title="Bookmark Section" aria-label="Bookmark Section 7">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="comparison-cards-grid">
+          <div class="card-box card-excretion">
+            <div class="card-badge-header">
+              <span class="pill-badge pill-teal">TRUE EXCRETION</span>
+            </div>
+            <h3>🧪 What is Excretion?</h3>
+            <p>
+              Excretion is the elimination of <strong>toxic metabolic waste products</strong> produced during cellular biochemical reactions inside body cells.
+            </p>
+            <ul class="styled-list">
+              <li><strong>Source:</strong> Cellular metabolism (e.g., protein deamination, cellular respiration, purine breakdown).</li>
+              <li><strong>Substances:</strong> Urea, Uric acid, Creatinine, CO₂, Excess salts, Water.</li>
+              <li><strong>Must cross:</strong> Plasma membranes into blood.</li>
+              <li><strong>Organs:</strong> Kidneys, Lungs, Skin, Liver.</li>
+            </ul>
+          </div>
+
+          <div class="card-box card-egestion">
+            <div class="card-badge-header">
+              <span class="pill-badge pill-purple">NOT EXCRETION</span>
+            </div>
+            <h3>💩 What is Egestion (Defecation)?</h3>
+            <p>
+              Egestion is the discharge of <strong>undigested, unabsorbed food residues</strong> (feces) from the alimentary canal.
+            </p>
+            <ul class="styled-list">
+              <li><strong>Source:</strong> Dietary matter that was never absorbed into body tissues.</li>
+              <li><strong>Substances:</strong> Cellulose, unabsorbed fibers, bacteria, desquamated gut cells.</li>
+              <li><strong>Path:</strong> Traverses gastrointestinal lumen without crossing cell membranes into internal fluids.</li>
+              <li><strong>Organ:</strong> Anus / Large Intestine.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Major Excretory Wastes & Pathways -->
+        <div class="card-container mt-4">
+          <h3 class="card-heading">📋 Major Metabolic Wastes in Humans</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Metabolic Waste</th>
+                  <th>Metabolic Origin</th>
+                  <th>Primary Excretory Route</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Urea (NH₂-CO-NH₂)</strong></td>
+                  <td>Deamination of excess amino acids (synthesized via Ornithine Cycle in Liver)</td>
+                  <td><strong>Kidneys</strong> (Urine) & Minor amounts in Sweat</td>
+                </tr>
+                <tr>
+                  <td><strong>Carbon Dioxide (CO₂)</strong></td>
+                  <td>Decarboxylation in Link reaction & Krebs cycle of cellular respiration</td>
+                  <td><strong>Lungs</strong> (Expired alveolar air)</td>
+                </tr>
+                <tr>
+                  <td><strong>Uric Acid</strong></td>
+                  <td>Breakdown of purine nitrogenous bases (Adenine & Guanine)</td>
+                  <td><strong>Kidneys</strong> (Urine)</td>
+                </tr>
+                <tr>
+                  <td><strong>Creatinine</strong></td>
+                  <td>Spontaneous breakdown of muscle Phosphocreatine</td>
+                  <td><strong>Kidneys</strong> (Exclusively filtered; key clinical marker for GFR)</td>
+                </tr>
+                <tr>
+                  <td><strong>Bile Pigments (Bilirubin)</strong></td>
+                  <td>Degradation of hemoglobin from old erythrocytes in spleen/liver</td>
+                  <td><strong>Liver ➔ Bile ➔ Feces</strong> (Stercobilin gives brown color)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: KIDNEY AND NEPHRON PHYSIOLOGY -->
+    <section class="content-section" id="sec-kidney">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">08</span>
+          <h2 class="section-title">The Human Kidney & Nephron Physiology</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-kidney" title="Bookmark Section" aria-label="Bookmark Section 8">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <p class="section-intro">
+          The <strong>Kidney</strong> is the primary organ of excretion and osmoregulation in humans. Each human kidney contains approximately <strong>1.0 to 1.2 million functional units called Nephrons</strong>.
+        </p>
+
+        <!-- Interactive Nephron Segment Explorer -->
+        <div class="nephron-explorer-card">
+          <div class="explorer-header">
+            <h3>🫘 Interactive Nephron Functional Map</h3>
+            <p>Click on any anatomical segment of the nephron to reveal its filtration, reabsorption, and secretion mechanics:</p>
+          </div>
+
+          <div class="nephron-interactive-diagram">
+            <div class="nephron-nav-chips">
+              <button type="button" class="chip-btn active" data-nephron="glomerulus">1. Glomerulus & Bowman's Capsule</button>
+              <button type="button" class="chip-btn" data-nephron="pct">2. Proximal Convoluted Tubule (PCT)</button>
+              <button type="button" class="chip-btn" data-nephron="descending">3. Descending Loop of Henle</button>
+              <button type="button" class="chip-btn" data-nephron="ascending">4. Ascending Loop of Henle</button>
+              <button type="button" class="chip-btn" data-nephron="dct">5. Distal Convoluted Tubule (DCT)</button>
+              <button type="button" class="chip-btn" data-nephron="collecting">6. Collecting Duct</button>
+            </div>
+
+            <!-- Dynamic Nephron Info Panel -->
+            <div class="nephron-detail-display" id="nephronDetailDisplay">
+              <div class="nephron-info-header">
+                <span class="segment-tag" id="nephronTag">Malpighian Corpuscle (Renal Cortex)</span>
+                <h4 id="nephronTitle">Glomerulus & Bowman's Capsule (Ultrafiltration)</h4>
+              </div>
+
+              <div class="nephron-metrics-row">
+                <div class="n-metric">
+                  <span class="m-label">Filtrate Osmolarity:</span>
+                  <span class="m-val" id="nephronOsm">300 mOsm/L (Isotonic to plasma)</span>
+                </div>
+                <div class="n-metric">
+                  <span class="m-label">Primary Process:</span>
+                  <span class="m-val" id="nephronProcess">Non-selective Ultrafiltration (Net Pressure ~10 mmHg)</span>
+                </div>
+              </div>
+
+              <p class="nephron-desc" id="nephronDesc">
+                Afferent arteriole enters glomerulus; high hydrostatic pressure forces water, glucose, amino acids, urea, and electrolytes across the 3-layer filtration barrier (fenestrated endothelium, basement membrane, podocyte slit diaphragms). Blood cells and large plasma proteins (albumin) are retained.
+              </p>
+
+              <div class="nephron-flux-grid">
+                <div class="flux-box reabsorb">
+                  <span class="flux-title">✅ Reabsorbed into Peritubular Capillaries:</span>
+                  <span class="flux-content" id="nephronReabsorb">None in this capsule stage.</span>
+                </div>
+                <div class="flux-box secret">
+                  <span class="flux-title">🧪 Filtered into Bowman's Space:</span>
+                  <span class="flux-content" id="nephronSecret">Water, glucose, amino acids, ions (Na⁺, Cl⁻, HCO₃⁻), urea, creatinine (Normal GFR = 125 mL/min = 180 L/day).</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Fundamental Steps of Urine Formation -->
+        <div class="card-container mt-4">
+          <h3 class="card-heading">⚙️ The 3 Fundamental Steps of Urine Formation</h3>
+          <div class="feature-grid-3">
+            <div class="step-card">
+              <div class="step-num-pill">1</div>
+              <h4>Glomerular Ultrafiltration</h4>
+              <p>Non-selective filtration of blood plasma under high hydrostatic pressure (55 mmHg). Forms ~180 L of glomerular filtrate per day.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num-pill">2</div>
+              <h4>Selective Tubular Reabsorption</h4>
+              <p>Reclaiming 99% of filtered volume. 100% of glucose & amino acids, and 65-70% of water and Na⁺ are reabsorbed actively in the <strong>PCT</strong>.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num-pill">3</div>
+              <h4>Tubular Secretion</h4>
+              <p>Active transport of selected wastes (H⁺, K⁺, NH₄⁺, drugs like penicillin) from peritubular capillaries into the tubular lumen to regulate pH and electrolyte balance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: BLOOD GLUCOSE REGULATION -->
+    <section class="content-section" id="sec-glucose">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">09</span>
+          <h2 class="section-title">Blood Glucose Regulation (Pancreatic Hormones)</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-glucose" title="Bookmark Section" aria-label="Bookmark Section 9">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <p class="section-intro">
+          Normal fasting blood glucose is maintained between <strong>70 – 110 mg/dL</strong> (3.9 – 6.1 mmol/L). The <strong>Islets of Langerhans</strong> in the endocrine pancreas secrete two antagonistic hormones: <strong>Insulin</strong> and <strong>Glucagon</strong>.
+        </p>
+
+        <!-- Glucose Interactive Simulator -->
+        <div class="sim-card mt-4">
+          <div class="sim-header">
+            <div class="sim-title-group">
+              <h3>🍬 Blood Glucose & Pancreas Feedback Simulator</h3>
+              <p>Simulate how feeding (hyperglycemia) and fasting (hypoglycemia) trigger counter-regulatory hormones:</p>
+            </div>
+            <div class="sim-mode-toggle">
+              <button type="button" class="mode-btn hot active" id="glucoseHighBtn">🍰 High Glucose (Post-Meal Spike >140 mg/dL)</button>
+              <button type="button" class="mode-btn cold" id="glucoseLowBtn">🏃 Low Glucose (Fasting / Exercise &lt;65 mg/dL)</button>
+            </div>
+          </div>
+
+          <div class="sim-display-grid">
+            <!-- Left: Dynamic Meter & Organ States -->
+            <div class="sim-visual-pane">
+              <div class="glucose-dial-box">
+                <span class="adh-card-label">Blood Glucose Level</span>
+                <div class="glucose-meter">
+                  <div class="meter-bar" id="glucoseMeterBar" style="width: 85%; background-color: #ef4444;"></div>
+                </div>
+                <div class="meter-labels">
+                  <span>50 mg/dL (Hypo)</span>
+                  <span class="meter-normal">90 mg/dL (Normal)</span>
+                  <span>180 mg/dL (Hyper)</span>
+                </div>
+                <div class="current-glucose-reading" id="glucoseValText">160 mg/dL (Hyperglycemia)</div>
+              </div>
+
+              <div class="pancreas-status-card">
+                <div class="pancreas-cell active" id="betaCellCard">
+                  <div class="cell-icon">🔵</div>
+                  <div class="cell-info">
+                    <strong>Beta (β) Cells Active</strong>
+                    <span>Secreting INSULIN</span>
+                  </div>
+                </div>
+                <div class="pancreas-cell inactive" id="alphaCellCard">
+                  <div class="cell-icon">⚪</div>
+                  <div class="cell-info">
+                    <strong>Alpha (α) Cells Inactive</strong>
+                    <span>Glucagon suppressed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Dynamic Hormone Action Pathway -->
+            <div class="sim-steps-pane">
+              <h4 id="glucosePathwayTitle">🍰 Insulin Action Pathway (Hyperglycemia Response)</h4>
+              <div class="sim-pathway-steps" id="glucosePathwayList">
+                <div class="path-step active">
+                  <span class="p-num">1</span>
+                  <div class="p-text">
+                    <strong>Stimulus:</strong> Carbohydrate intake elevates blood glucose above 110 mg/dL.
+                  </div>
+                </div>
+                <div class="path-step active">
+                  <span class="p-num">2</span>
+                  <div class="p-text">
+                    <strong>Pancreatic Sensor:</strong> Beta (β) cells of Islets of Langerhans detect high glucose and release <strong>Insulin</strong>.
+                  </div>
+                </div>
+                <div class="path-step active">
+                  <span class="p-num">3</span>
+                  <div class="p-text">
+                    <strong>Cellular Uptake:</strong> Insulin binds tyrosine kinase receptors ➔ Translocates <strong>GLUT4</strong> transporters to membranes of skeletal muscle and adipocytes.
+                  </div>
+                </div>
+                <div class="path-step active">
+                  <span class="p-num">4</span>
+                  <div class="p-text">
+                    <strong>Glycogenesis:</strong> Liver and muscle convert excess glucose into <strong>Glycogen</strong> for storage; inhibits gluconeogenesis.
+                  </div>
+                </div>
+                <div class="path-step active final">
+                  <span class="p-num">✓</span>
+                  <div class="p-text">
+                    <strong>Result:</strong> Blood glucose falls back to normal range (70–110 mg/dL).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- High-Yield Memory Trick -->
+        <div class="memory-trick-grid mt-4">
+          <div class="trick-card insulin-trick">
+            <div class="trick-badge">INSULIN</div>
+            <h4>Glucose goes <span class="highlight-in">IN</span> to cells & storage</h4>
+            <p>Lowers blood glucose via: (1) GLUT4 translocation, (2) Glycogenesis in liver & muscle, (3) Lipogenesis in adipose tissue.</p>
+          </div>
+          <div class="trick-card glucagon-trick">
+            <div class="trick-badge">GLUCAGON</div>
+            <h4>Glucose <span class="highlight-up">GOES UP</span> in blood</h4>
+            <p>Raises blood glucose via: (1) Glycogenolysis (glycogen breakdown), (2) Gluconeogenesis (glucose from amino acids/glycerol in liver).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: BLOOD PH REGULATION -->
+    <section class="content-section" id="sec-ph">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">10</span>
+          <h2 class="section-title">Blood pH Regulation (Acid-Base Balance)</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-ph" title="Bookmark Section" aria-label="Bookmark Section 10">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="lead-box">
+          <p>
+            Arterial blood pH must be strictly maintained within the narrow homeostatic range of <strong>7.35 to 7.45</strong> (optimal pH = 7.40). Deviation below 7.35 produces <strong>Acidosis</strong> (causes central nervous system depression), while pH above 7.45 produces <strong>Alkalosis</strong> (causes neuromuscular hyperexcitability and tetany).
+          </p>
+        </div>
+
+        <!-- The 3 Lines of Defense -->
+        <div class="card-container mt-4">
+          <h3 class="card-heading">🛡️ The Three Sequential Lines of Acid-Base Defense</h3>
+          <div class="defense-lines-grid">
+            <div class="defense-card">
+              <div class="def-header">
+                <span class="line-badge">1st Line • Immediate (Seconds)</span>
+                <h4>Chemical Buffer Systems</h4>
+              </div>
+              <p>Instantly bind or release H⁺ ions to prevent dramatic shifts in pH:</p>
+              <ul class="styled-list">
+                <li><strong>Bicarbonate Buffer:</strong> <code>CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻</code></li>
+                <li><strong>Phosphate Buffer:</strong> <code>H⁺ + HPO₄²⁻ ⇌ H₂PO₄⁻</code> (intracellular & renal tubular fluid)</li>
+                <li><strong>Protein & Hemoglobin Buffers:</strong> Histidine residues bind free H⁺.</li>
+              </ul>
+            </div>
+
+            <div class="defense-card">
+              <div class="def-header">
+                <span class="line-badge">2nd Line • Rapid (1–3 Minutes)</span>
+                <h4>Respiratory Mechanism (Lungs)</h4>
+              </div>
+              <p>Controls the elimination or retention of volatile acid (Carbon Dioxide):</p>
+              <ul class="styled-list">
+                <li><strong>When blood pH drops (Acidosis):</strong> Medullary chemoreceptors stimulate <strong>Hyperventilation</strong> ➔ Blows off CO₂ ➔ Shifts equilibrium left ➔ Raises pH.</li>
+                <li><strong>When blood pH rises (Alkalosis):</strong> Breathing slows (Hypoventilation) ➔ Retains CO₂ ➔ Lowers pH.</li>
+              </ul>
+            </div>
+
+            <div class="defense-card">
+              <div class="def-header">
+                <span class="line-badge">3rd Line • Ultimate (Hours to Days)</span>
+                <h4>Renal Mechanism (Kidneys)</h4>
+              </div>
+              <p>The most potent and permanent regulator of non-volatile metabolic acids:</p>
+              <ul class="styled-list">
+                <li><strong>H⁺ Secretion:</strong> Active excretion of excess H⁺ ions into tubular fluid.</li>
+                <li><strong>HCO₃⁻ Reabsorption:</strong> 100% reclamation of filtered bicarbonate.</li>
+                <li><strong>New HCO₃⁻ Generation:</strong> Synthesized from glutamine deamination (NH₄⁺ excretion).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: NERVOUS VS ENDOCRINE CONTROL -->
+    <section class="content-section" id="sec-control-types">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">11</span>
+          <h2 class="section-title">Nervous vs Endocrine Homeostatic Control</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-control-types" title="Bookmark Section" aria-label="Bookmark Section 11">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <p class="section-intro">
+          The body relies on two complementary communication systems to maintain homeostatic equilibrium.
+        </p>
+
+        <div class="table-responsive mt-4">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Characteristic</th>
+                <th>Nervous System</th>
+                <th>Endocrine System</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Signal Nature</strong></td>
+                <td>Electrical impulses (Action Potentials) + Neurotransmitters</td>
+                <td>Chemical messengers (Hormones)</td>
+              </tr>
+              <tr>
+                <td><strong>Transmission Pathway</strong></td>
+                <td>Dedicated nerve fibers / axons to specific synapses</td>
+                <td>Circulated universally through the Bloodstream</td>
+              </tr>
+              <tr>
+                <td><strong>Speed of Response</strong></td>
+                <td><strong>Rapid / Milliseconds</strong> (Instantaneous reflexes)</td>
+                <td><strong>Slower</strong> (Minutes to hours / days)</td>
+              </tr>
+              <tr>
+                <td><strong>Duration of Effect</strong></td>
+                <td><strong>Short-lived / Transient</strong> (Ceases immediately)</td>
+                <td><strong>Prolonged / Long-lasting</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Target Specificity</strong></td>
+                <td>Highly localized to specific post-synaptic cells</td>
+                <td>Widespread (affects any cell with matching target receptors)</td>
+              </tr>
+              <tr>
+                <td><strong>Classic Homeostatic Example</strong></td>
+                <td>Thermoregulatory shivering reflex; Baroreceptor BP reflex</td>
+                <td>ADH osmoregulation; Insulin/Glucagon blood glucose balance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout-box mt-4">
+          <span class="callout-badge">Neuroendocrine Bridge</span>
+          <p>
+            The <strong>Hypothalamus</strong> acts as the vital neuroendocrine interface, converting electrical signals from the brain into hormonal outputs via the pituitary gland (e.g., releasing factors and neurohormones ADH & Oxytocin).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12: ⭐ MDCAT HIGH-YIELD FACTS -->
+    <section class="content-section highlight-section" id="sec-high-yield">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">⭐</span>
+          <h2 class="section-title">MDCAT High-Yield Facts Deck</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-high-yield" title="Bookmark Section" aria-label="Bookmark Section 12">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <p class="section-intro">
+          16 must-memorize facts frequently tested in medical college entrance exams. Filter by category to test your rapid recall:
+        </p>
+
+        <!-- Category Filter Buttons -->
+        <div class="facts-filter-pills" id="factsFilterPills">
+          <button type="button" class="filter-pill active" data-cat="all">All Facts (16)</button>
+          <button type="button" class="filter-pill" data-cat="thermo">Thermoregulation</button>
+          <button type="button" class="filter-pill" data-cat="osmo">Osmoregulation & Kidney</button>
+          <button type="button" class="filter-pill" data-cat="glucose">Glucose & Hormones</button>
+          <button type="button" class="filter-pill" data-cat="feedback">Feedback Loops</button>
+        </div>
+
+        <!-- Facts Grid -->
+        <div class="facts-grid" id="factsGrid">
+          <!-- Populated by JavaScript with rich cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 13: 🧠 INTERACTIVE FLASHCARDS -->
+    <section class="content-section" id="sec-flashcards">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">🃏</span>
+          <h2 class="section-title">Homeostasis Interactive Flashcards</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-flashcards" title="Bookmark Section" aria-label="Bookmark Section 13">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <p class="section-intro">
+          Click the card to flip between Question and Answer. Use arrow controls or keyboard shortcuts to navigate through the deck:
+        </p>
+
+        <div class="flashcard-deck-wrapper">
+          <!-- Card Meta Toolbar -->
+          <div class="flashcard-toolbar">
+            <span class="deck-counter" id="deckCounter">Card 1 of 12</span>
+            <div class="mastery-tracker">
+              <span>Mastered: <strong id="masteredCount">0</strong>/12</span>
+            </div>
+            <button type="button" class="tool-btn" id="shuffleDeckBtn" title="Shuffle Flashcards">🔀 Shuffle Deck</button>
+          </div>
+
+          <!-- 3D Flippable Flashcard -->
+          <div class="flashcard-scene" id="flashcardScene" tabindex="0" role="button" aria-label="Click to flip flashcard">
+            <div class="flashcard-inner" id="flashcardInner">
+              <!-- Front Side: Question -->
+              <div class="flashcard-face flashcard-front">
+                <div class="card-face-header">
+                  <span class="face-badge">QUESTION</span>
+                  <span class="hint-tag">Tap to reveal answer ↻</span>
+                </div>
+                <div class="card-question-text" id="cardQuestionText">
+                  What hormone increases water reabsorption in the collecting ducts of the kidney?
+                </div>
+                <div class="card-category-tag" id="cardCategoryTag">Osmoregulation</div>
+              </div>
+
+              <!-- Back Side: Answer -->
+              <div class="flashcard-face flashcard-back">
+                <div class="card-face-header">
+                  <span class="face-badge answer-badge">CORRECT ANSWER</span>
+                  <span class="hint-tag">Tap to flip back ↺</span>
+                </div>
+                <div class="card-answer-text" id="cardAnswerText">
+                  ADH (Antidiuretic Hormone / Vasopressin)
+                </div>
+                <div class="card-explanation-text" id="cardExplanationText">
+                  Secreted by the posterior pituitary in response to high plasma osmolarity; inserts Aquaporin-2 water channels into the collecting duct.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Controls -->
+          <div class="flashcard-controls">
+            <button type="button" class="nav-control-btn" id="prevCardBtn">❮ Previous</button>
+            <button type="button" class="flip-control-btn" id="flipCardBtn">🔄 Flip Card (Space)</button>
+            <button type="button" class="master-control-btn" id="toggleMasterBtn">⭐ Mark as Mastered</button>
+            <button type="button" class="nav-control-btn" id="nextCardBtn">Next ❯</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 14: 📝 MDCAT MINI QUIZ -->
+    <section class="content-section quiz-section" id="sec-quiz">
+      <div class="section-header">
+        <div class="section-meta">
+          <span class="section-num">📝</span>
+          <h2 class="section-title">MDCAT Homeostasis Practice Quiz</h2>
+        </div>
+        <button type="button" class="bookmark-btn" data-target="sec-quiz" title="Bookmark Section" aria-label="Bookmark Section 14">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <p class="section-intro">
+          Test your mastery with <strong>15 authentic, conceptual MDCAT-style MCQs</strong>. Each question includes four options, instant scoring, and detailed physiological explanations.
+        </p>
+
+        <!-- Quiz Container -->
+        <div class="quiz-container-box">
+          <div class="quiz-status-header">
+            <div class="quiz-meta-left">
+              <span class="quiz-q-count" id="quizCounterText">Question 1 of 15</span>
+              <div class="quiz-progress-line">
+                <div class="quiz-progress-fill" id="quizProgressFill" style="width: 6.66%;"></div>
+              </div>
+            </div>
+            <div class="quiz-meta-right">
+              <span class="quiz-score-badge">Score: <strong id="liveScore">0</strong>/15</span>
+            </div>
+          </div>
+
+          <!-- Active Question Card -->
+          <div class="quiz-question-card" id="quizQuestionCard">
+            <div class="question-header">
+              <span class="question-topic" id="qTopic">Topic: Feedback Loops</span>
+              <h3 class="question-title" id="qTitle">Which of the following is the primary role of a negative feedback mechanism in homeostasis?</h3>
+            </div>
+
+            <div class="quiz-options-list" id="qOptionsList">
+              <!-- Options rendered by JS -->
+            </div>
+
+            <!-- Explanation Box (Appears after answer) -->
+            <div class="quiz-explanation-box" id="qExplanationBox" style="display: none;">
+              <div class="exp-header">
+                <span class="exp-icon" id="expIcon">✓</span>
+                <h4 id="expStatusTitle">Correct Answer!</h4>
+              </div>
+              <p id="expDetailText">Negative feedback counteracts the original deviation, returning the physiological parameter back toward the normal set point.</p>
+            </div>
+
+            <div class="quiz-action-bar">
+              <button type="button" class="quiz-nav-btn secondary" id="quizPrevBtn" disabled>❮ Previous Question</button>
+              <button type="button" class="quiz-nav-btn primary" id="quizNextBtn">Next Question ❯</button>
+              <button type="button" class="quiz-nav-btn success" id="quizFinishBtn" style="display: none;">Submit Quiz & View Results</button>
+            </div>
+          </div>
+
+          <!-- Final Results Dashboard (Hidden until finished) -->
+          <div class="quiz-results-card" id="quizResultsCard" style="display: none;">
+            <div class="results-badge-header">
+              <span class="res-icon">🏆</span>
+              <h3>MDCAT Quiz Performance Report</h3>
+            </div>
+
+            <div class="results-score-circle">
+              <div class="score-number" id="resPercent">0%</div>
+              <span class="score-subtext" id="resScoreFraction">0 / 15 Correct</span>
+            </div>
+
+            <p class="results-message" id="resMessage">Great attempt! Review the detailed explanations below to refine your preparation.</p>
+
+            <div class="results-breakdown-grid">
+              <div class="res-stat correct">
+                <span class="s-val" id="resCorrectCount">0</span>
+                <span class="s-lbl">Correct Answers</span>
+              </div>
+              <div class="res-stat incorrect">
+                <span class="s-val" id="resIncorrectCount">0</span>
+                <span class="s-lbl">Incorrect Answers</span>
+              </div>
+              <div class="res-stat unattempted">
+                <span class="s-val" id="resUnattemptedCount">0</span>
+                <span class="s-lbl">Unattempted</span>
+              </div>
+            </div>
+
+            <div class="results-actions">
+              <button type="button" class="sim-btn primary" id="retakeQuizBtn">🔄 Retake Entire Quiz</button>
+              <button type="button" class="sim-btn outline" id="reviewMistakesBtn">🔍 Review Incorrect Questions</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER COMPLETION BANNER -->
+    <section class="completion-banner" id="completionBanner">
+      <div class="completion-content">
+        <div class="completion-icon">🎓</div>
+        <div class="completion-text">
+          <h3>Ready to Complete Chapter 15: Homeostasis?</h3>
+          <p>Mark this chapter as completed to update your MDCAT revision tracker and save your study progress.</p>
+        </div>
+        <button type="button" class="complete-action-btn" id="footerCompleteBtn">✓ Mark Chapter as Completed</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals & Drawers -->
+
+  <!-- Bookmarks Modal -->
+  <div class="modal-backdrop" id="bookmarksModal" role="dialog" aria-modal="true" aria-labelledby="bmModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="bmModalTitle">📑 Bookmarked Sections (<span id="modalBmCount">0</span>)</h3>
+        <button type="button" class="modal-close-btn" id="closeBmModalBtn" aria-label="Close Bookmarks">✕</button>
+      </div>
+      <div class="modal-body" id="bookmarksList">
+        <p class="empty-state">No sections bookmarked yet. Click the bookmark icon on any chapter section to save it for rapid revision.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toastNotification" role="alert" aria-live="assertive"></div>
+
+  <!-- Floating Back to Top Button -->
+  <button type="button" class="back-to-top" id="backToTopBtn" title="Back to top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <strong>MDCAT Biology Master Notes</strong>
+        <p>A focused, interactive medical entrance preparation platform designed for pre-medical students.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#hero">Back to Top</a>
+        <a href="#sec-high-yield">High-Yield Facts</a>
+        <a href="#sec-flashcards">Flashcards</a>
+        <a href="#sec-quiz">Practice Quiz</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Connected External JavaScript -->
+  <script src="homeostasis.js"></script>
+</body>
+</html>

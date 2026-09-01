@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDCAT Nuclear Physics — Interactive Revision Lab & Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="nuclear-physics.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- TOP HEADER / NAV BAR -->
+  <header class="app-header" id="app-header">
+    <div class="header-inner">
+      <div class="brand-section">
+        <div class="atom-icon-badge" id="atom-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-spin">
+            <circle cx="12" cy="12" r="3" fill="#3b82f6"></circle>
+            <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"></ellipse>
+            <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(90 12 12)"></ellipse>
+            <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(150 12 12)"></ellipse>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">MDCAT Physics <span class="badge-tag">High-Yield</span></div>
+          <div class="brand-subtitle">Chapter: Nuclear Physics — Interactive Study Lab</div>
+        </div>
+      </div>
+
+      <!-- SEARCH & QUICK ACTIONS -->
+      <div class="header-controls">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="topic-search-input" placeholder="Search notes, formulas, traps (e.g. half-life, alpha, Bq)..." autocomplete="off">
+          <button id="clear-search-btn" class="clear-btn hidden" title="Clear search">&times;</button>
+        </div>
+
+        <div class="progress-pill" id="global-progress-pill" title="MDCAT Topics Mastery Progress">
+          <div class="progress-info">
+            <span class="progress-label">Mastery:</span>
+            <span class="progress-val" id="progress-val-text">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar-fill" id="global-progress-bar" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <button id="reset-progress-btn" class="btn-secondary-sm" title="Reset all saved checklist and quiz progress">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+          <span>Reset</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="nav-tabs" id="nav-tabs">
+      <button class="nav-tab-btn active" data-tab="tab-notes" id="tab-btn-notes">
+        <span class="tab-icon">📖</span> 16 Chapter Notes
+      </button>
+      <button class="nav-tab-btn" data-tab="tab-labs" id="tab-btn-labs">
+        <span class="tab-icon">🔬</span> Interactive Visual Labs
+      </button>
+      <button class="nav-tab-btn" data-tab="tab-calculator" id="tab-btn-calculator">
+        <span class="tab-icon">🧮</span> Half-Life & Decay Solver
+      </button>
+      <button class="nav-tab-btn" data-tab="tab-flashcards" id="tab-btn-flashcards">
+        <span class="tab-icon">⚡</span> Rapid Flashcards
+      </button>
+      <button class="nav-tab-btn" data-tab="tab-quiz" id="tab-btn-quiz">
+        <span class="tab-icon">📝</span> MDCAT Practice Test (<span id="quiz-badge-count">15</span> MCQs)
+      </button>
+      <button class="nav-tab-btn" data-tab="tab-formulas" id="tab-btn-formulas">
+        <span class="tab-icon">📐</span> Formula Cheat Sheet
+      </button>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="main-layout" id="main-content">
+
+    <!-- ============================================================== -->
+    <!-- TAB 1: 16 COMPLETE MDCAT NOTES WITH TRAPS & CHECKLIST -->
+    <!-- ============================================================== -->
+    <section class="tab-pane active" id="tab-notes">
+      <div class="notes-container">
+        
+        <!-- Sidebar Navigation for 16 Topics -->
+        <aside class="notes-sidebar" id="notes-sidebar">
+          <div class="sidebar-header">
+            <span class="sidebar-title">Topic Index</span>
+            <span class="sidebar-count" id="completed-topics-count">0 / 16 Done</span>
+          </div>
+          <ul class="topic-nav-list" id="topic-nav-list">
+            <li><a href="#topic-1" class="topic-link active" data-topic="1"><span class="topic-num">1</span> Atom & Nucleus <span class="check-status" id="chk-icon-1">⚪</span></a></li>
+            <li><a href="#topic-2" class="topic-link" data-topic="2"><span class="topic-num">2</span> Atomic Number Z <span class="check-status" id="chk-icon-2">⚪</span></a></li>
+            <li><a href="#topic-3" class="topic-link" data-topic="3"><span class="topic-num">3</span> Mass Number A <span class="check-status" id="chk-icon-3">⚪</span></a></li>
+            <li><a href="#topic-4" class="topic-link" data-topic="4"><span class="topic-num">4</span> Isotopes <span class="check-status" id="chk-icon-4">⚪</span></a></li>
+            <li><a href="#topic-5" class="topic-link" data-topic="5"><span class="topic-num">5</span> Nuclear Stability <span class="check-status" id="chk-icon-5">⚪</span></a></li>
+            <li><a href="#topic-6" class="topic-link" data-topic="6"><span class="topic-num">6</span> Radioactivity (α, β, γ) <span class="check-status" id="chk-icon-6">⚪</span></a></li>
+            <li><a href="#topic-7" class="topic-link" data-topic="7"><span class="topic-num">7</span> Spontaneous & Random <span class="check-status" id="chk-icon-7">⚪</span></a></li>
+            <li><a href="#topic-8" class="topic-link" data-topic="8"><span class="topic-num">8</span> Activity (A = λN) <span class="check-status" id="chk-icon-8">⚪</span></a></li>
+            <li><a href="#topic-9" class="topic-link" data-topic="9"><span class="topic-num">9</span> Decay Constant λ <span class="check-status" id="chk-icon-9">⚪</span></a></li>
+            <li><a href="#topic-10" class="topic-link" data-topic="10"><span class="topic-num">10</span> Half-Life Concept <span class="check-status" id="chk-icon-10">⚪</span></a></li>
+            <li><a href="#topic-11" class="topic-link" data-topic="11"><span class="topic-num">11</span> Half-Life Numerical <span class="check-status" id="chk-icon-11">⚪</span></a></li>
+            <li><a href="#topic-12" class="topic-link" data-topic="12"><span class="topic-num">12</span> Exponential Decay Law <span class="check-status" id="chk-icon-12">⚪</span></a></li>
+            <li><a href="#topic-13" class="topic-link" data-topic="13"><span class="topic-num">13</span> Nuclear Equations <span class="check-status" id="chk-icon-13">⚪</span></a></li>
+            <li><a href="#topic-14" class="topic-link" data-topic="14"><span class="topic-num">14</span> Biological Effects <span class="check-status" id="chk-icon-14">⚪</span></a></li>
+            <li><a href="#topic-15" class="topic-link" data-topic="15"><span class="topic-num">15</span> Medical Uses <span class="check-status" id="chk-icon-15">⚪</span></a></li>
+            <li><a href="#topic-16" class="topic-link" data-topic="16"><span class="topic-num">16</span> Formula Sheet & Rapid <span class="check-status" id="chk-icon-16">⚪</span></a></li>
+          </ul>
+        </aside>
+
+        <!-- Main Notes Content Feed -->
+        <div class="notes-feed" id="notes-feed">
+          
+          <!-- TOPIC 1 -->
+          <article class="note-card" id="topic-1" data-topic-id="1">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 01</span> Atomic Structure</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="1" id="topic-chk-1">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">1. Atom and Atomic Nucleus</h2>
+            <p class="card-lead">An <strong>atom</strong> is the smallest unit of an element that retains its chemical properties.</p>
+            
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Particle</th>
+                    <th>Symbol / Charge</th>
+                    <th>Location</th>
+                    <th>Approx. Mass</th>
+                    <th>MDCAT Key Note</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Proton</strong></td>
+                    <td><span class="badge-charge positive">+1e (+1.6 × 10⁻¹⁹ C)</span></td>
+                    <td>Inside Nucleus</td>
+                    <td>1 u (1.673 × 10⁻²⁷ kg)</td>
+                    <td>Determines element identity ($Z$)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Neutron</strong></td>
+                    <td><span class="badge-charge neutral">0 (Neutral)</span></td>
+                    <td>Inside Nucleus</td>
+                    <td>1 u (1.675 × 10⁻²⁷ kg)</td>
+                    <td>Slightly heavier than proton; acts as nuclear glue</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Electron</strong></td>
+                    <td><span class="badge-charge negative">−1e (−1.6 × 10⁻¹⁹ C)</span></td>
+                    <td>Outside Nucleus (Orbitals)</td>
+                    <td>1/1836 u (9.11 × 10⁻³¹ kg)</td>
+                    <td>Equal to protons in a neutral atom</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="sub-block">
+              <h3 class="sub-title">The Nucleus</h3>
+              <p>The <strong>nucleus</strong> is the tiny, extremely dense, positively charged central core of the atom. It contains protons and neutrons, collectively termed <strong>nucleons</strong>.</p>
+              <div class="alert-box trap">
+                <div class="alert-icon">⭐</div>
+                <div class="alert-content">
+                  <strong>MDCAT Trap Alert:</strong> Electrons are <em>NOT</em> present inside the nucleus under normal conditions! In $\beta^-$ decay, the emitted electron is produced at the moment of decay by neutron disintegration ($n \rightarrow p + e^- + \bar{\nu}$), not ejected from a nuclear orbital.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- TOPIC 2 -->
+          <article class="note-card" id="topic-2" data-topic-id="2">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 02</span> Nuclear Constants</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="2" id="topic-chk-2">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">2. Atomic Number $Z$</h2>
+            <p class="card-lead">The <strong>atomic number ($Z$)</strong> is the total number of protons present in the nucleus.</p>
+            <div class="formula-banner">
+              $$Z = \text{Number of Protons}$$
+            </div>
+            <p>For any <strong>neutral atom</strong>:</p>
+            <div class="formula-banner sub">
+              $$\text{Number of Protons} = \text{Number of Electrons} = Z$$
+            </div>
+            <div class="example-box">
+              <div class="example-title">💡 Concrete Example: Carbon ($Z = 6$)</div>
+              <p>Carbon has $Z = 6$. Therefore, in a neutral carbon atom: <strong>6 Protons</strong> in nucleus and <strong>6 Electrons</strong> revolving around the nucleus.</p>
+            </div>
+            <div class="alert-box trap">
+              <div class="alert-icon">⭐</div>
+              <div class="alert-content">
+                <strong>MDCAT Trap:</strong> The atomic number $Z$ is the unique fingerprint that <em>identifies the chemical element</em>. If $Z$ changes, the element transforms into a different element (transmutation).
+              </div>
+            </div>
+          </article>
+
+          <!-- TOPIC 3 -->
+          <article class="note-card" id="topic-3" data-topic-id="3">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 03</span> Mass Calculations</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="3" id="topic-chk-3">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">3. Mass Number $A$</h2>
+            <p class="card-lead">The <strong>mass number ($A$)</strong> is the total sum of protons and neutrons (nucleons) in the nucleus.</p>
+            <div class="formula-banner">
+              $$A = Z + N \implies N = A - Z$$
+            </div>
+            <div class="math-legend">
+              <span><strong>$A$</strong> = Mass Number (Nucleons)</span>
+              <span><strong>$Z$</strong> = Proton Number</span>
+              <span><strong>$N$</strong> = Neutron Number</span>
+            </div>
+
+            <div class="example-box">
+              <div class="example-title">💡 MDCAT Calculation Example: Sodium Nucleus $_{11}^{23}\text{Na}$</div>
+              <div class="calc-steps">
+                <div class="step-line">• Protons: $Z = 11$</div>
+                <div class="step-line">• Mass number: $A = 23$</div>
+                <div class="step-line">• Neutrons: $N = A - Z = 23 - 11 = \mathbf{12\text{ neutrons}}$</div>
+                <div class="step-line">• Electrons in neutral sodium atom: $\mathbf{11\text{ electrons}}$</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- TOPIC 4 -->
+          <article class="note-card" id="topic-4" data-topic-id="4">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 04</span> Isotopes</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="4" id="topic-chk-4">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">4. Isotopes</h2>
+            <p class="card-lead"><strong>Isotopes</strong> are atoms of the <em>same element</em> having the <strong>same atomic number ($Z$)</strong> but <strong>different mass numbers ($A$)</strong> due to differing numbers of neutrons ($N$).</p>
+            
+            <div class="grid-3-col">
+              <div class="mini-card isotope-card">
+                <div class="iso-badge">Protium ($^1\text{H}$)</div>
+                <div class="iso-spec">1 Proton, 0 Neutrons</div>
+                <div class="iso-note">Ordinary Hydrogen ($A=1, Z=1$)</div>
+              </div>
+              <div class="mini-card isotope-card">
+                <div class="iso-badge">Deuterium ($^2\text{H}$)</div>
+                <div class="iso-spec">1 Proton, 1 Neutron</div>
+                <div class="iso-note">Heavy Hydrogen ($A=2, Z=1$)</div>
+              </div>
+              <div class="mini-card isotope-card">
+                <div class="iso-badge">Tritium ($^3\text{H}$)</div>
+                <div class="iso-spec">1 Proton, 2 Neutrons</div>
+                <div class="iso-note">Radioactive Hydrogen ($A=3, Z=1$)</div>
+              </div>
+            </div>
+
+            <div class="alert-box info">
+              <div class="alert-icon">📌</div>
+              <div class="alert-content">
+                <strong>Remember:</strong> Isotopes have identical chemical properties (same electron configuration / $Z$) but different physical and nuclear properties (different masses, different nuclear stability).
+              </div>
+            </div>
+          </article>
+
+          <!-- TOPIC 5 -->
+          <article class="note-card" id="topic-5" data-topic-id="5">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 05</span> Forces in Nucleus</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="5" id="topic-chk-5">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">5. Nuclear Stability</h2>
+            <p class="card-lead">A nucleus is stable when internal binding forces overcome destabilizing electrostatic repulsion.</p>
+            
+            <div class="force-comparison-grid">
+              <div class="force-box strong-force">
+                <div class="force-title">1. Strong Nuclear Force (Attractive)</div>
+                <p>Extremely strong, attractive force operating at short range ($\approx 10^{-15}\text{ m}$). Acts equally between $p-p$, $n-n$, and $p-n$. Holds nucleons tightly together.</p>
+              </div>
+              <div class="force-box repulsion-force">
+                <div class="force-title">2. Electrostatic Repulsion (Disruptive)</div>
+                <p>Coulomb repulsive force between positively charged protons ($+1e$). Long-range force that grows rapidly with larger $Z$ ($F \propto Z^2$).</p>
+              </div>
+            </div>
+
+            <p class="mt-3">For heavy nuclei ($Z > 82$, e.g. Lead, Bismuth, Uranium), electrostatic repulsion overpowers the strong nuclear force, leading to spontaneous decay (radioactivity).</p>
+          </article>
+
+          <!-- TOPIC 6 -->
+          <article class="note-card" id="topic-6" data-topic-id="6">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 06</span> Emitted Radiations</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="6" id="topic-chk-6">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">6. Radioactivity ($\alpha$, $\beta$, $\gamma$)</h2>
+            <p class="card-lead"><strong>Radioactivity</strong> is the spontaneous and random emission of high-energy radiation or particles from an unstable atomic nucleus to reach stability.</p>
+            
+            <div class="table-responsive">
+              <table class="data-table highlight-table">
+                <thead>
+                  <tr>
+                    <th>Property</th>
+                    <th>Alpha ($\alpha$) Particle</th>
+                    <th>Beta ($\beta^-$) Particle</th>
+                    <th>Gamma ($\gamma$) Ray</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nature</strong></td>
+                    <td>Helium nucleus ($_{2}^{4}\text{He}^{2+}$)</td>
+                    <td>Fast-moving electron ($_{-1}^{0}e$)</td>
+                    <td>High-energy EM Photon</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Composition</strong></td>
+                    <td>2 protons + 2 neutrons</td>
+                    <td>1 electron</td>
+                    <td>Pure energy (no mass)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Electric Charge</strong></td>
+                    <td><span class="badge-charge positive">+2e</span></td>
+                    <td><span class="badge-charge negative">−1e</span></td>
+                    <td><span class="badge-charge neutral">0 (Neutral)</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ionizing Power</strong></td>
+                    <td><strong class="text-danger">Highest</strong> (~10,000×)</td>
+                    <td><strong>Moderate</strong> (~100×)</td>
+                    <td><strong>Lowest</strong> (1×)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Penetrating Power</strong></td>
+                    <td><strong>Low</strong> (Stopped by paper/skin)</td>
+                    <td><strong>Medium</strong> (Stopped by 3-5mm Al)</td>
+                    <td><strong class="text-primary">High</strong> (Stopped by thick lead/concrete)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Deflection in E/B field</strong></td>
+                    <td>Deflects slightly toward (-) plate</td>
+                    <td>Deflects sharply toward (+) plate</td>
+                    <td><strong>Undeflected</strong> (No charge)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <!-- TOPIC 7 -->
+          <article class="note-card" id="topic-7" data-topic-id="7">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 07</span> Nature of Decay</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="7" id="topic-chk-7">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">7. Spontaneous and Random Decay</h2>
+            <div class="dual-concept-grid">
+              <div class="concept-card">
+                <h3 class="concept-head">⚡ Spontaneous</h3>
+                <p>Radioactive decay occurs purely by internal nuclear instability. It is <strong>completely independent of external conditions</strong> such as temperature, pressure, chemical state, or electric/magnetic fields.</p>
+              </div>
+              <div class="concept-card">
+                <h3 class="concept-head">🎲 Random</h3>
+                <p>We cannot predict the exact moment when any individual nucleus will disintegrate. However, for a <strong>large population of nuclei ($N$)</strong>, the statistical rate of decay is strictly predictable.</p>
+              </div>
+            </div>
+            <div class="alert-box tip">
+              <div class="alert-icon">💡</div>
+              <div class="alert-content">
+                <strong>Key MDCAT Distinction:</strong> An individual radioactive nucleus has a constant probability of decaying per unit time, regardless of how long it has already existed (it does not "age").
+              </div>
+            </div>
+          </article>
+
+          <!-- TOPIC 8 -->
+          <article class="note-card" id="topic-8" data-topic-id="8">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 08</span> Decay Rate</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="8" id="topic-chk-8">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">8. Activity / Rate of Decay ($A$)</h2>
+            <p class="card-lead">The <strong>activity ($A$)</strong> of a sample is the number of radioactive disintegrations occurring per unit time.</p>
+            <div class="formula-banner">
+              $$A = -\frac{\Delta N}{\Delta t} = \lambda N$$
+            </div>
+            <div class="math-legend">
+              <span><strong>$A$</strong> = Activity</span>
+              <span><strong>$\lambda$</strong> = Decay Constant</span>
+              <span><strong>$N$</strong> = Number of Undecayed Nuclei</span>
+            </div>
+            <div class="sub-block mt-3">
+              <h3 class="sub-title">SI Unit of Activity</h3>
+              <p>The SI unit is the <strong>Becquerel ($\text{Bq}$)</strong>.</p>
+              <div class="formula-banner sub">
+                $$1\text{ Bq} = 1\text{ disintegration (decay) per second}$$
+              </div>
+              <p class="small-text">Historic Unit: $1\text{ Curie (Ci)} = 3.7 \times 10^{10}\text{ Bq}$.</p>
+            </div>
+          </article>
+
+          <!-- TOPIC 9 -->
+          <article class="note-card" id="topic-9" data-topic-id="9">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 09</span> Decay Constant</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="9" id="topic-chk-9">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">9. Decay Constant ($\lambda$)</h2>
+            <p class="card-lead">The <strong>decay constant ($\lambda$)</strong> is the constant fraction or probability per unit time for a nucleus to decay. Unit: $\text{s}^{-1}$ or $\text{day}^{-1}$ or $\text{yr}^{-1}$.</p>
+            <div class="formula-banner">
+              $$\lambda = \frac{0.693}{T_{1/2}} \iff T_{1/2} = \frac{0.693}{\lambda} = \frac{\ln(2)}{\lambda}$$
+            </div>
+            <div class="alert-box trap">
+              <div class="alert-icon">⭐</div>
+              <div class="alert-content">
+                <strong>High-Yield MDCAT Trap:</strong> $\lambda$ and $T_{1/2}$ are <em>inversely proportional</em>!
+                <ul class="inline-list mt-1">
+                  <li>• <strong>Large $\lambda$</strong> $\implies$ rapid decay $\implies$ <strong>Short Half-Life ($T_{1/2}$)</strong></li>
+                  <li>• <strong>Small $\lambda$</strong> $\implies$ slow decay $\implies$ <strong>Long Half-Life ($T_{1/2}$)</strong></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- TOPIC 10 -->
+          <article class="note-card" id="topic-10" data-topic-id="10">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 10</span> Half-Life Concept</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="10" id="topic-chk-10">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">10. Half-Life ($T_{1/2}$)</h2>
+            <p class="card-lead">The <strong>half-life</strong> is the time required for exactly <strong>half ($50\%$)</strong> of the radioactive nuclei present in a sample to disintegrate.</p>
+            <div class="formula-banner">
+              $$N = N_0 \left(\frac{1}{2}\right)^n \quad \text{where } n = \frac{t}{T_{1/2}}$$
+            </div>
+            
+            <div class="table-responsive mt-3">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Elapsed Half-Lives ($n$)</th>
+                    <th>Fraction Remaining</th>
+                    <th>Percentage Undecayed</th>
+                    <th>Percentage Decayed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>0</strong> (Initial $t=0$)</td>
+                    <td>$N_0$</td>
+                    <td><span class="pct-badge full">100%</span></td>
+                    <td>0%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>1</strong> ($t = T_{1/2}$)</td>
+                    <td>$\frac{1}{2} N_0$</td>
+                    <td><span class="pct-badge">50%</span></td>
+                    <td>50%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2</strong> ($t = 2T_{1/2}$)</td>
+                    <td>$\frac{1}{4} N_0$</td>
+                    <td><span class="pct-badge">25%</span></td>
+                    <td>75%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3</strong> ($t = 3T_{1/2}$)</td>
+                    <td>$\frac{1}{8} N_0$</td>
+                    <td><span class="pct-badge">12.5%</span></td>
+                    <td>87.5%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4</strong> ($t = 4T_{1/2}$)</td>
+                    <td>$\frac{1}{16} N_0$</td>
+                    <td><span class="pct-badge">6.25%</span></td>
+                    <td>93.75%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>5</strong> ($t = 5T_{1/2}$)</td>
+                    <td>$\frac{1}{32} N_0$</td>
+                    <td><span class="pct-badge">3.125%</span></td>
+                    <td>96.875%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <!-- TOPIC 11 -->
+          <article class="note-card" id="topic-11" data-topic-id="11">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 11</span> Standard Problem</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="11" id="topic-chk-11">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">11. Half-Life Numerical Walkthrough</h2>
+            <div class="problem-box">
+              <div class="prob-title">📌 MDCAT Past Pattern Question</div>
+              <p>A radioactive isotope has a half-life of <strong>4 hours</strong>. If the initial count is <strong>800 nuclei</strong>, how many nuclei remain undecayed after <strong>12 hours</strong>?</p>
+              
+              <div class="solution-steps">
+                <div class="step-item">
+                  <span class="step-badge">Step 1</span>
+                  <span>Calculate number of elapsed half-lives: $$n = \frac{t}{T_{1/2}} = \frac{12\text{ hours}}{4\text{ hours}} = 3\text{ half-lives}$$</span>
+                </div>
+                <div class="step-item">
+                  <span class="step-badge">Step 2</span>
+                  <span>Apply fraction formula: $$N = N_0 \left(\frac{1}{2}\right)^3 = 800 \times \frac{1}{8} = 100\text{ nuclei}$$</span>
+                </div>
+                <div class="step-item result">
+                  <span class="step-badge success">Answer</span>
+                  <span><strong>Remaining Nuclei ($N$) = 100</strong> (Decayed = $800 - 100 = 700$ nuclei)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- TOPIC 12 -->
+          <article class="note-card" id="topic-12" data-topic-id="12">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 12</span> Exponential Law</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="12" id="topic-chk-12">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">12. Radioactive Decay Law</h2>
+            <p class="card-lead">Radioactive nuclei and overall activity decrease strictly according to an <strong>exponential decay curve</strong>.</p>
+            <div class="formula-banner">
+              $$N(t) = N_0 \, e^{-\lambda t} \quad \text{and} \quad A(t) = A_0 \, e^{-\lambda t}$$
+            </div>
+            <div class="math-legend">
+              <span><strong>$N_0, A_0$</strong> = Initial nuclei and activity at $t = 0$</span>
+              <span><strong>$N, A$</strong> = Value after time $t$</span>
+              <span><strong>$\lambda$</strong> = Decay constant</span>
+            </div>
+            <p class="mt-2 text-muted">Because the curve is asymptotic, the sample theoretically takes infinite time to reach zero atoms ($N \to 0$ as $t \to \infty$).</p>
+          </article>
+
+          <!-- TOPIC 13 -->
+          <article class="note-card" id="topic-13" data-topic-id="13">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 13</span> Balancing Equations</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="13" id="topic-chk-13">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">13. Nuclear Equations & Transformation Rules</h2>
+            <p class="card-lead">In every nuclear reaction, both <strong>Mass Number ($A$)</strong> and <strong>Atomic Number (Charge $Z$)</strong> must be conserved.</p>
+
+            <div class="decay-types-list">
+              <div class="decay-rule-card alpha">
+                <div class="decay-rule-header">
+                  <span class="decay-name">1. Alpha ($\alpha$) Decay</span>
+                  <span class="decay-rule-summary">$A \rightarrow A - 4, \quad Z \rightarrow Z - 2$</span>
+                </div>
+                <div class="equation-box">
+                  $$_{Z}^{A}\text{X} \longrightarrow _{Z-2}^{A-4}\text{Y} + _{2}^{4}\text{He}$$
+                </div>
+                <p class="example-eq">Example: $_{92}^{238}\text{U} \longrightarrow _{90}^{234}\text{Th} + _{2}^{4}\text{He}$</p>
+              </div>
+
+              <div class="decay-rule-card beta">
+                <div class="decay-rule-header">
+                  <span class="decay-name">2. Beta-Minus ($\beta^-$) Decay</span>
+                  <span class="decay-rule-summary">$A \rightarrow \text{Same}, \quad Z \rightarrow Z + 1$</span>
+                </div>
+                <div class="equation-box">
+                  $$_{Z}^{A}\text{X} \longrightarrow _{Z+1}^{A}\text{Y} + _{-1}^{0}e + \bar{\nu}$$
+                </div>
+                <p class="example-eq">Example: $_{6}^{14}\text{C} \longrightarrow _{7}^{14}\text{N} + _{-1}^{0}e + \bar{\nu}$ (Antineutrino)</p>
+              </div>
+
+              <div class="decay-rule-card gamma">
+                <div class="decay-rule-header">
+                  <span class="decay-name">3. Gamma ($\gamma$) Emission</span>
+                  <span class="decay-rule-summary">$A \rightarrow \text{Same}, \quad Z \rightarrow \text{Same}$</span>
+                </div>
+                <div class="equation-box">
+                  $$_{Z}^{A}\text{X}^* \longrightarrow _{Z}^{A}\text{X} + \gamma$$
+                </div>
+                <p class="example-eq">Example: Excited $^{60m}_{27}\text{Co} \longrightarrow _{27}^{60}\text{Co} + \gamma$ (De-excitation)</p>
+              </div>
+            </div>
+
+            <div class="alert-box trap mt-3">
+              <div class="alert-icon">⭐</div>
+              <div class="alert-content">
+                <strong>SUPER MDCAT TRAP SUMMARY:</strong>
+                <div class="trap-summary-chips">
+                  <span class="chip red">Alpha: $A-4$, $Z-2$</span>
+                  <span class="chip blue">Beta-minus: $A$ same, $Z+1$</span>
+                  <span class="chip green">Gamma: $A$ same, $Z$ same</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- TOPIC 14 -->
+          <article class="note-card" id="topic-14" data-topic-id="14">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 14</span> Biological Effects</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="14" id="topic-chk-14">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">14. Biological Effects of Radiation</h2>
+            <p class="card-lead">Ionizing radiation strips electrons from atoms, creating free radicals and damaging biological tissue and nucleic acids.</p>
+            <div class="grid-2-col">
+              <div class="mini-card effect-card">
+                <h4 class="mini-card-head">Cellular Damage</h4>
+                <p>Breaks DNA chemical bonds, leading to cell death or faulty gene mutations causing cancer or genetic hereditary abnormalities.</p>
+              </div>
+              <div class="mini-card effect-card">
+                <h4 class="mini-card-head">Determinants of Severity</h4>
+                <ul class="bullet-list">
+                  <li><strong>Radiation Type:</strong> High ionizing ($\alpha$) is dangerous internally.</li>
+                  <li><strong>Absorbed Dose:</strong> Measured in Gray (Gy) and Sievert (Sv).</li>
+                  <li><strong>Exposure Duration & Tissue Sensitivity:</strong> Rapidly dividing cells (bone marrow, GI tract) are most vulnerable.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- TOPIC 15 -->
+          <article class="note-card" id="topic-15" data-topic-id="15">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 15</span> Medical Physics</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="15" id="topic-chk-15">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">15. Medical Uses of Radiation</h2>
+            <p class="card-lead">Controlled radiation is one of the most powerful diagnostic and therapeutic tools in modern medicine.</p>
+            
+            <div class="grid-2-col">
+              <div class="mini-card med-card">
+                <div class="med-tag">Diagnostic Imaging</div>
+                <h4 class="mini-card-head">X-Rays & CT Scans</h4>
+                <p>Differential absorption through bone vs soft tissue produces sharp skeletal and internal organ imaging.</p>
+              </div>
+              <div class="mini-card med-card">
+                <div class="med-tag">Oncology</div>
+                <h4 class="mini-card-head">Radiotherapy (Cobalt-60)</h4>
+                <p>Targeted beams of high-energy gamma rays or protons destroy cancerous tumor cells while sparing healthy tissue.</p>
+              </div>
+              <div class="mini-card med-card">
+                <div class="med-tag">Radioisotope Tracers</div>
+                <h4 class="mini-card-head">Technetium-99m & Iodine-131</h4>
+                <p>Tc-99m ($T_{1/2} = 6\text{h}$) is used for organ scans; I-131 is used for thyroid imaging and treating hyperthyroidism/thyroid cancer.</p>
+              </div>
+              <div class="mini-card med-card">
+                <div class="med-tag">Sterilization</div>
+                <h4 class="mini-card-head">Medical Equipment Sterilization</h4>
+                <p>Gamma irradiation destroys bacteria, viruses, and spores on pre-packaged surgical tools and syringes without heat.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- TOPIC 16 -->
+          <article class="note-card" id="topic-16" data-topic-id="16">
+            <div class="card-top-bar">
+              <div class="topic-tag"><span class="tag-badge">Section 16</span> Rapid Revision</div>
+              <label class="mastery-checkbox-label">
+                <input type="checkbox" class="topic-done-toggle" data-topic-id="16" id="topic-chk-16">
+                <span>Mark Mastered</span>
+              </label>
+            </div>
+            <h2 class="card-title">16. MUST-KNOW Formula Sheet & Rapid Summary</h2>
+            
+            <div class="formula-grid">
+              <div class="formula-card">
+                <span class="f-name">Mass Number</span>
+                <span class="f-eq">$$A = Z + N$$</span>
+              </div>
+              <div class="formula-card">
+                <span class="f-name">Neutrons</span>
+                <span class="f-eq">$$N = A - Z$$</span>
+              </div>
+              <div class="formula-card">
+                <span class="f-name">Activity</span>
+                <span class="f-eq">$$A = \lambda N$$</span>
+              </div>
+              <div class="formula-card">
+                <span class="f-name">Decay Constant</span>
+                <span class="f-eq">$$\lambda = \frac{0.693}{T_{1/2}}$$</span>
+              </div>
+              <div class="formula-card">
+                <span class="f-name">Half-Life</span>
+                <span class="f-eq">$$T_{1/2} = \frac{0.693}{\lambda}$$</span>
+              </div>
+              <div class="formula-card">
+                <span class="f-name">Half-Life Decay</span>
+                <span class="f-eq">$$N = N_0 \left(\frac{1}{2}\right)^{t/T_{1/2}}$$</span>
+              </div>
+              <div class="formula-card full-span">
+                <span class="f-name">Exponential Decay Law</span>
+                <span class="f-eq">$$N(t) = N_0 \, e^{-\lambda t} \quad \text{and} \quad A(t) = A_0 \, e^{-\lambda t}$$</span>
+              </div>
+            </div>
+
+            <div class="rapid-bullets-box">
+              <h4 class="bullets-title">🎯 MDCAT 60-Second Flash Recall</h4>
+              <div class="bullets-grid">
+                <div class="bullet-chip"><strong>Nucleus</strong> = Protons + Neutrons</div>
+                <div class="bullet-chip"><strong>Nucleons</strong> = Protons + Neutrons ($A$)</div>
+                <div class="bullet-chip"><strong>Atomic Number</strong> = Protons ($Z$)</div>
+                <div class="bullet-chip"><strong>Isotopes</strong> = Same $Z$, Different $A$</div>
+                <div class="bullet-chip"><strong>Decay Nature</strong> = Spontaneous + Random</div>
+                <div class="bullet-chip"><strong>Becquerel (Bq)</strong> = 1 decay / second</div>
+                <div class="bullet-chip"><strong>Alpha Charge</strong> = $+2e$ ($_{2}^{4}\text{He}$)</div>
+                <div class="bullet-chip"><strong>Beta-Minus Charge</strong> = $-1e$ ($_{-1}^{0}e$)</div>
+                <div class="bullet-chip"><strong>Gamma Charge</strong> = 0 (Photon)</div>
+                <div class="bullet-chip highlight"><strong>Alpha:</strong> $A-4, Z-2$</div>
+                <div class="bullet-chip highlight"><strong>Beta-Minus:</strong> $A$ same, $Z+1$</div>
+                <div class="bullet-chip highlight"><strong>Gamma:</strong> $A$ same, $Z$ same</div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 2: INTERACTIVE VISUAL LABS (SIMULATIONS) -->
+    <!-- ============================================================== -->
+    <section class="tab-pane" id="tab-labs">
+      <div class="labs-container">
+        
+        <!-- LAB 1: INTERACTIVE ATOM & NUCLEUS BUILDER -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <div class="lab-title-row">
+              <span class="lab-badge">Sim 01</span>
+              <h3 class="lab-title">Interactive Atomic Nucleus & Orbital Visualizer</h3>
+            </div>
+            <p class="lab-desc">Adjust the proton ($Z$) and neutron ($N$) counts or select sample elements to inspect nucleons, stability curve, and live electron orbits.</p>
+          </div>
+
+          <div class="lab-split-view">
+            <!-- Left: Canvas Sim -->
+            <div class="canvas-panel">
+              <canvas id="atom-canvas" width="460" height="380"></canvas>
+              <div class="canvas-legend">
+                <span class="leg-item"><span class="dot proton-dot"></span> Proton ($+1$)</span>
+                <span class="leg-item"><span class="dot neutron-dot"></span> Neutron ($0$)</span>
+                <span class="leg-item"><span class="dot electron-dot"></span> Electron (Orbiting)</span>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Controls & Metrics -->
+            <div class="lab-controls-panel">
+              <div class="preset-selector">
+                <label class="control-label">Quick Preset Elements:</label>
+                <div class="preset-btn-group" id="atom-presets">
+                  <button class="preset-btn active" data-z="1" data-n="0">¹H (Protium)</button>
+                  <button class="preset-btn" data-z="1" data-n="1">²H (Deuterium)</button>
+                  <button class="preset-btn" data-z="1" data-n="2">³H (Tritium)</button>
+                  <button class="preset-btn" data-z="2" data-n="2">⁴He (Alpha)</button>
+                  <button class="preset-btn" data-z="6" data-n="6">¹²C (Carbon)</button>
+                  <button class="preset-btn" data-z="11" data-n="12">²³Na (Sodium)</button>
+                  <button class="preset-btn" data-z="8" data-n="8">¹⁶O (Oxygen)</button>
+                </div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span>Protons ($Z$): <strong id="val-protons">1</strong></span>
+                  <span class="slider-sub">Charge: <span id="val-charge">+1e</span></span>
+                </div>
+                <input type="range" id="slider-protons" min="1" max="16" value="1" class="custom-range">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span>Neutrons ($N$): <strong id="val-neutrons">0</strong></span>
+                  <span class="slider-sub">Nuclear Glue</span>
+                </div>
+                <input type="range" id="slider-neutrons" min="0" max="20" value="0" class="custom-range">
+              </div>
+
+              <!-- Computed Real-time Stats -->
+              <div class="computed-stats-grid">
+                <div class="stat-box">
+                  <div class="stat-lbl">Mass Number ($A = Z+N$)</div>
+                  <div class="stat-val" id="stat-mass-num">1</div>
+                </div>
+                <div class="stat-box">
+                  <div class="stat-lbl">Notation</div>
+                  <div class="stat-val notation" id="stat-notation">
+                    <span class="sub-sup"><span class="sup">1</span><span class="sub">1</span></span>H
+                  </div>
+                </div>
+                <div class="stat-box">
+                  <div class="stat-lbl">Electrons (Neutral)</div>
+                  <div class="stat-val" id="stat-electrons">1 e⁻</div>
+                </div>
+                <div class="stat-box">
+                  <div class="stat-lbl">Stability Status</div>
+                  <div class="stat-val" id="stat-stability"><span class="badge-status stable">Stable</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAB 2: RADIOACTIVE DECAY & EQUATION BALANCER SIMULATOR -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <div class="lab-title-row">
+              <span class="lab-badge">Sim 02</span>
+              <h3 class="lab-title">Nuclear Decay Emitter & Equation Balancer</h3>
+            </div>
+            <p class="lab-desc">Trigger real-time radioactive transformations ($\alpha$, $\beta^-$, $\gamma$). Observe particle ejection trajectories, parent transmutation into daughter nuclei, and conservation of nucleons and charge.</p>
+          </div>
+
+          <div class="decay-lab-layout">
+            <div class="decay-sim-stage">
+              <canvas id="decay-canvas" width="560" height="280"></canvas>
+              <div class="decay-overlay-controls">
+                <button class="btn-fire-decay" id="btn-fire-decay">
+                  <span class="btn-fire-icon">💥</span> Trigger Radioactive Decay
+                </button>
+                <button class="btn-secondary-sm" id="btn-reset-decay">Reset Nucleus</button>
+              </div>
+            </div>
+
+            <div class="decay-config-panel">
+              <div class="config-section">
+                <label class="control-label">1. Choose Decay Mode:</label>
+                <div class="decay-mode-toggles">
+                  <label class="radio-label active" id="lbl-mode-alpha">
+                    <input type="radio" name="decay-mode" value="alpha" checked>
+                    <span class="radio-custom"></span>
+                    <div>
+                      <strong>Alpha ($\alpha$)</strong>
+                      <span class="radio-sub">Emits $_{2}^{4}\text{He}^{2+}$</span>
+                    </div>
+                  </label>
+                  <label class="radio-label" id="lbl-mode-beta">
+                    <input type="radio" name="decay-mode" value="beta">
+                    <span class="radio-custom"></span>
+                    <div>
+                      <strong>Beta-Minus ($\beta^-$)</strong>
+                      <span class="radio-sub">Emits $e^- + \bar{\nu}$</span>
+                    </div>
+                  </label>
+                  <label class="radio-label" id="lbl-mode-gamma">
+                    <input type="radio" name="decay-mode" value="gamma">
+                    <span class="radio-custom"></span>
+                    <div>
+                      <strong>Gamma ($\gamma$)</strong>
+                      <span class="radio-sub">Emits High-Energy Photon</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Live Equation Display -->
+              <div class="equation-display-box">
+                <div class="eq-tag">Live Nuclear Equation ($A$ & $Z$ Balanced)</div>
+                <div class="live-equation" id="live-equation-text">
+                  <span class="parent-nuc">$$_{92}^{238}\text{U}$$</span>
+                  <span class="arrow-sym">&rarr;</span>
+                  <span class="daughter-nuc">$$_{90}^{234}\text{Th}$$</span>
+                  <span class="plus-sym">+</span>
+                  <span class="emitted-nuc">$$_{2}^{4}\text{He}$$</span>
+                </div>
+                <div class="equation-delta-bar" id="eq-delta-desc">
+                  Rule Applied: Mass Number decreases by 4 ($238 \to 234$), Proton Number decreases by 2 ($92 \to 90$).
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAB 3: PENETRATING POWER & ABSORPTION CHAMBER -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <div class="lab-title-row">
+              <span class="lab-badge">Sim 03</span>
+              <h3 class="lab-title">Radiation Penetrating & Ionizing Power Chamber</h3>
+            </div>
+            <p class="lab-desc">Test how Alpha, Beta, and Gamma rays interact with different material barriers (Paper, 3mm Aluminum, and Thick Lead Block).</p>
+          </div>
+
+          <div class="chamber-box">
+            <canvas id="chamber-canvas" width="680" height="260"></canvas>
+            <div class="chamber-controls">
+              <div class="source-selectors">
+                <span class="control-label">Activate Ray Stream:</span>
+                <button class="ray-btn active" data-ray="alpha" id="btn-ray-alpha">🔴 Alpha ($\alpha$)</button>
+                <button class="ray-btn active" data-ray="beta" id="btn-ray-beta">🔵 Beta ($\beta^-$)</button>
+                <button class="ray-btn active" data-ray="gamma" id="btn-ray-gamma">🟣 Gamma ($\gamma$)</button>
+                <button class="btn-secondary-sm" id="btn-toggle-all-rays">Toggle All</button>
+              </div>
+              <div class="chamber-info-card" id="chamber-info-card">
+                <strong>Current Active Rays:</strong>
+                Alpha is blocked by Paper/Skin. Beta penetrates Paper but is stopped by Aluminum. Gamma penetrates Paper & Aluminum and is only attenuated by Lead!
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 3: HALF-LIFE & DECAY CALCULATOR + LIVE GRAPH -->
+    <!-- ============================================================== -->
+    <section class="tab-pane" id="tab-calculator">
+      <div class="calc-view-container">
+        
+        <div class="calc-sidebar-card">
+          <div class="card-header-clean">
+            <h3 class="box-title">🧮 MDCAT Half-Life Solver</h3>
+            <p class="box-subtitle">Instant step-by-step solutions with exact MDCAT formula derivations.</p>
+          </div>
+
+          <div class="calc-form">
+            <!-- Mode selection -->
+            <div class="form-group">
+              <label class="form-label">Calculation Mode:</label>
+              <select id="calc-mode-select" class="custom-select">
+                <option value="remaining">1. Find Remaining Nuclei / Activity ($N$ or $A$)</option>
+                <option value="time">2. Find Elapsed Time ($t$)</option>
+                <option value="halflife">3. Find Half-Life ($T_{1/2}$) from Decay Constant ($\lambda$)</option>
+                <option value="lambda">4. Find Decay Constant ($\lambda$) from Half-Life ($T_{1/2}$)</option>
+              </select>
+            </div>
+
+            <!-- Input fields -->
+            <div class="form-group" id="grp-initial-n">
+              <label class="form-label">Initial Amount / Nuclei ($N_0$):</label>
+              <div class="input-with-unit">
+                <input type="number" id="input-n0" value="800" min="1" step="any" class="custom-input">
+                <span class="unit-tag">nuclei / Bq</span>
+              </div>
+            </div>
+
+            <div class="form-group" id="grp-half-life">
+              <label class="form-label">Half-Life ($T_{1/2}$):</label>
+              <div class="input-with-unit">
+                <input type="number" id="input-thalf" value="4" min="0.0001" step="any" class="custom-input">
+                <select id="select-thalf-unit" class="unit-select">
+                  <option value="hours" selected>hours</option>
+                  <option value="seconds">seconds</option>
+                  <option value="minutes">minutes</option>
+                  <option value="days">days</option>
+                  <option value="years">years</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" id="grp-time">
+              <label class="form-label">Total Elapsed Time ($t$):</label>
+              <div class="input-with-unit">
+                <input type="number" id="input-time" value="12" min="0" step="any" class="custom-input">
+                <select id="select-time-unit" class="unit-select">
+                  <option value="hours" selected>hours</option>
+                  <option value="seconds">seconds</option>
+                  <option value="minutes">minutes</option>
+                  <option value="days">days</option>
+                  <option value="years">years</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group hidden" id="grp-lambda">
+              <label class="form-label">Decay Constant ($\lambda$):</label>
+              <div class="input-with-unit">
+                <input type="number" id="input-lambda" value="0.17325" min="0.000001" step="any" class="custom-input">
+                <span class="unit-tag">s⁻¹</span>
+              </div>
+            </div>
+
+            <div class="form-group hidden" id="grp-final-n">
+              <label class="form-label">Target Remaining Nuclei ($N$):</label>
+              <div class="input-with-unit">
+                <input type="number" id="input-target-n" value="100" min="0.001" step="any" class="custom-input">
+                <span class="unit-tag">nuclei</span>
+              </div>
+            </div>
+
+            <!-- Quick Example Presets -->
+            <div class="calc-presets">
+              <span class="preset-label">MDCAT Test Examples:</span>
+              <div class="preset-chips">
+                <button type="button" class="chip-btn" id="btn-example-1">Ex 1: 800 &rarr; 4h, 12h</button>
+                <button type="button" class="chip-btn" id="btn-example-2">Ex 2: Carbon-14 (5730y)</button>
+                <button type="button" class="chip-btn" id="btn-example-3">Ex 3: Iodine-131 (8d)</button>
+              </div>
+            </div>
+
+            <button type="button" class="btn-primary-block" id="btn-calculate">
+              Calculate & Solve Steps
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Real-time Interactive Graph & Step-by-Step Walkthrough -->
+        <div class="calc-results-card">
+          <!-- Real-time Plot -->
+          <div class="graph-box">
+            <div class="graph-header">
+              <h4 class="graph-title">Exponential Decay Curve $N(t) = N_0(1/2)^n$</h4>
+              <div class="graph-stats" id="graph-quick-stats">
+                <span>$n = 3.0$ half-lives</span> | <span>Remaining = <strong>12.5%</strong></span>
+              </div>
+            </div>
+            <div class="canvas-container">
+              <canvas id="decay-graph-canvas" width="600" height="260"></canvas>
+            </div>
+          </div>
+
+          <!-- Step-by-step Solution Card -->
+          <div class="step-solution-box" id="step-solution-box">
+            <div class="solution-header">
+              <span class="sol-badge">Step-by-Step MDCAT Derivation</span>
+              <span class="sol-time" id="sol-timestamp">Real-time Solver</span>
+            </div>
+            <div class="solution-content" id="solution-content">
+              <!-- Dynamically populated by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 4: RAPID FLASHCARDS -->
+    <!-- ============================================================== -->
+    <section class="tab-pane" id="tab-flashcards">
+      <div class="flashcards-layout">
+        
+        <div class="flashcard-header-bar">
+          <div>
+            <h2 class="section-title">⚡ Rapid Revision Flashcards</h2>
+            <p class="section-desc">Click or press Spacebar to flip the card and test your active recall on high-yield MDCAT facts.</p>
+          </div>
+          <div class="fc-stats">
+            <span class="fc-badge" id="fc-counter">Card 1 / 14</span>
+            <span class="fc-badge green" id="fc-mastered-count">0 Mastered</span>
+          </div>
+        </div>
+
+        <!-- The 3D Flip Card -->
+        <div class="flashcard-stage">
+          <div class="flashcard-wrapper" id="flashcard-wrapper" tabindex="0" role="button" aria-label="Flashcard: Click to flip">
+            <div class="flashcard-inner" id="flashcard-inner">
+              
+              <!-- Front -->
+              <div class="flashcard-face flashcard-front">
+                <div class="card-corner-tag">QUESTION / PROMPT</div>
+                <div class="fc-question-text" id="fc-front-text">
+                  What is the charge, mass, and composition of an Alpha ($\alpha$) particle?
+                </div>
+                <div class="fc-hint-tag">Tap to reveal answer 🔄</div>
+              </div>
+
+              <!-- Back -->
+              <div class="flashcard-face flashcard-back">
+                <div class="card-corner-tag answer">MDCAT ANSWER & TRAP</div>
+                <div class="fc-answer-text" id="fc-back-text">
+                  • <strong>Composition:</strong> Helium nucleus ($_{2}^{4}\text{He}^{2+}$) with 2 protons + 2 neutrons.<br>
+                  • <strong>Charge:</strong> $+2e$ ($+3.2 \times 10^{-19}\text{ C}$).<br>
+                  • <strong>Mass:</strong> $4\text{ u}$.<br>
+                  • <strong>Rule:</strong> In alpha decay, $A$ decreases by 4 and $Z$ decreases by 2.
+                </div>
+                <div class="fc-hint-tag back">Tap to flip back 🔄</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="flashcard-controls">
+          <button class="btn-fc-nav" id="btn-fc-prev">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            Previous
+          </button>
+          
+          <button class="btn-fc-flip" id="btn-fc-flip">
+            Flip Card (Space)
+          </button>
+
+          <button class="btn-fc-master" id="btn-fc-master">
+            ⭐ Mark Mastered
+          </button>
+
+          <button class="btn-fc-nav" id="btn-fc-next">
+            Next
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <!-- Quick Jump Dots -->
+        <div class="fc-dots-container" id="fc-dots-container">
+          <!-- Injected via JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 5: MDCAT PRACTICE TEST (15 MCQS WITH EXPLANATIONS) -->
+    <!-- ============================================================== -->
+    <section class="tab-pane" id="tab-quiz">
+      <div class="quiz-container">
+        
+        <!-- Quiz Top Dashboard -->
+        <div class="quiz-header-card">
+          <div class="quiz-header-left">
+            <h2 class="quiz-title">📝 MDCAT Nuclear Physics Mock Test</h2>
+            <p class="quiz-subtitle">15 Authentic MDCAT-standard questions with instant scoring, trap explanations, and formula derivations.</p>
+          </div>
+
+          <div class="quiz-scoreboard">
+            <div class="quiz-score-item">
+              <span class="score-lbl">Score:</span>
+              <span class="score-val" id="quiz-score-display">0 / 15</span>
+            </div>
+            <div class="quiz-score-item">
+              <span class="score-lbl">Accuracy:</span>
+              <span class="score-val" id="quiz-accuracy-display">0%</span>
+            </div>
+            <button class="btn-secondary-sm" id="btn-reset-quiz">
+              Restart Test
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Progress Bar -->
+        <div class="quiz-progress-wrapper">
+          <div class="quiz-progress-track">
+            <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 0%;"></div>
+          </div>
+          <div class="quiz-progress-info">
+            <span id="quiz-answered-count">0 of 15 Answered</span>
+            <span id="quiz-mode-tag">Practice Mode with Instant Explanations</span>
+          </div>
+        </div>
+
+        <!-- Questions Feed -->
+        <div class="quiz-questions-list" id="quiz-questions-list">
+          <!-- Injected dynamically by JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 6: FORMULA CHEAT SHEET & QUICK TABLES -->
+    <!-- ============================================================== -->
+    <section class="tab-pane" id="tab-formulas">
+      <div class="formulas-view-container">
+        
+        <div class="formulas-header-banner">
+          <h2 class="section-title">📐 Nuclear Physics MDCAT Formula Vault</h2>
+          <p class="section-desc">Every formula, conversion factor, constant, and rule required for 100% accuracy in MDCAT physics numericals.</p>
+        </div>
+
+        <div class="formula-masonry">
+          
+          <!-- Box 1 -->
+          <div class="f-box">
+            <div class="f-box-header">1. Mass & Nucleon Formulas</div>
+            <div class="f-row">
+              <span class="f-lbl">Mass Number ($A$):</span>
+              <span class="f-code">$$A = Z + N$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Neutron Number ($N$):</span>
+              <span class="f-code">$$N = A - Z$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Nucleon Fraction:</span>
+              <span class="f-code">$$\text{Protons} = Z, \quad \text{Electrons} = Z \text{ (neutral)}$$</span>
+            </div>
+            <div class="f-note">⭐ Note: Mass number $A$ is an integer; atomic mass $m$ has units in atomic mass units ($\text{u}$).</div>
+          </div>
+
+          <!-- Box 2 -->
+          <div class="f-box">
+            <div class="f-box-header">2. Activity & Decay Constant</div>
+            <div class="f-row">
+              <span class="f-lbl">Rate of Decay (Activity):</span>
+              <span class="f-code">$$A = \left|-\frac{\Delta N}{\Delta t}\right| = \lambda N$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Decay Constant ($\lambda$):</span>
+              <span class="f-code">$$\lambda = \frac{0.693}{T_{1/2}} = \frac{\ln(2)}{T_{1/2}}$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Half-Life ($T_{1/2}$):</span>
+              <span class="f-code">$$T_{1/2} = \frac{0.693}{\lambda}$$</span>
+            </div>
+            <div class="f-note">⭐ SI Unit: $1\text{ Becquerel (Bq)} = 1\text{ decay/s}$. $1\text{ Curie (Ci)} = 3.7 \times 10^{10}\text{ Bq}$.</div>
+          </div>
+
+          <!-- Box 3 -->
+          <div class="f-box">
+            <div class="f-box-header">3. Half-Life & Fractional Decay</div>
+            <div class="f-row">
+              <span class="f-lbl">Number of Half-Lives ($n$):</span>
+              <span class="f-code">$$n = \frac{t}{T_{1/2}}$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Remaining Nuclei ($N$):</span>
+              <span class="f-code">$$N = N_0 \left(\frac{1}{2}\right)^n = \frac{N_0}{2^n}$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Decayed Fraction ($\Delta N$):</span>
+              <span class="f-code">$$\Delta N = N_0 - N = N_0 \left[1 - \left(\frac{1}{2}\right)^n\right]$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Exponential Law:</span>
+              <span class="f-code">$$N = N_0 \, e^{-\lambda t}, \quad A = A_0 \, e^{-\lambda t}$$</span>
+            </div>
+          </div>
+
+          <!-- Box 4 -->
+          <div class="f-box">
+            <div class="f-box-header">4. Nuclear Decay Shift Rules</div>
+            <div class="f-row">
+              <span class="f-lbl">Alpha ($\alpha$) Decay:</span>
+              <span class="f-code">$$_{Z}^{A}\text{X} \longrightarrow _{Z-2}^{A-4}\text{Y} + _{2}^{4}\text{He}$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Beta-Minus ($\beta^-$) Decay:</span>
+              <span class="f-code">$$_{Z}^{A}\text{X} \longrightarrow _{Z+1}^{A}\text{Y} + _{-1}^{0}e + \bar{\nu}$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Gamma ($\gamma$) De-excitation:</span>
+              <span class="f-code">$$_{Z}^{A}\text{X}^* \longrightarrow _{Z}^{A}\text{X} + \gamma$$</span>
+            </div>
+            <div class="f-note">⭐ Alpha reduces $A$ by 4, $Z$ by 2. Beta preserves $A$, increments $Z$ by 1. Gamma leaves both unchanged.</div>
+          </div>
+
+          <!-- Box 5 -->
+          <div class="f-box">
+            <div class="f-box-header">5. Physical & Fundamental Constants</div>
+            <div class="f-row">
+              <span class="f-lbl">Elementary Charge ($e$):</span>
+              <span class="f-code">$$1.602 \times 10^{-19}\text{ C}$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Atomic Mass Unit ($1\text{ u}$):</span>
+              <span class="f-code">$$1.6605 \times 10^{-27}\text{ kg} \approx 931.5\text{ MeV}$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Proton Rest Mass ($m_p$):</span>
+              <span class="f-code">$$1.6726 \times 10^{-27}\text{ kg} \approx 1.007276\text{ u}$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Neutron Rest Mass ($m_n$):</span>
+              <span class="f-code">$$1.6749 \times 10^{-27}\text{ kg} \approx 1.008665\text{ u}$$</span>
+            </div>
+            <div class="f-row">
+              <span class="f-lbl">Electron Rest Mass ($m_e$):</span>
+              <span class="f-code">$$9.109 \times 10^{-31}\text{ kg} \approx 0.000548\text{ u}$$</span>
+            </div>
+          </div>
+
+          <!-- Box 6 -->
+          <div class="f-box">
+            <div class="f-box-header">6. Half-Life Percentage Fast-Lookup</div>
+            <div class="pct-lookup-table">
+              <div class="pct-lookup-row"><span>$0\text{ Half-Lives}$</span><strong>100% remaining</strong> (0% decayed)</div>
+              <div class="pct-lookup-row"><span>$1\text{ Half-Life}$</span><strong>50% remaining</strong> (50% decayed)</div>
+              <div class="pct-lookup-row"><span>$2\text{ Half-Lives}$</span><strong>25% remaining</strong> (75% decayed)</div>
+              <div class="pct-lookup-row"><span>$3\text{ Half-Lives}$</span><strong>12.5% remaining</strong> (87.5% decayed)</div>
+              <div class="pct-lookup-row"><span>$4\text{ Half-Lives}$</span><strong>6.25% remaining</strong> (93.75% decayed)</div>
+              <div class="pct-lookup-row"><span>$5\text{ Half-Lives}$</span><strong>3.125% remaining</strong> (96.875% decayed)</div>
+              <div class="pct-lookup-row"><span>$6\text{ Half-Lives}$</span><strong>1.5625% remaining</strong> (98.4375% decayed)</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TOAST NOTIFICATION POPUP -->
+  <div class="toast-notification hidden" id="app-toast">
+    <span class="toast-icon">✨</span>
+    <span class="toast-message" id="toast-message">Topic marked as mastered!</span>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="nuclear-physics.js"></script>
+</body>
+</html>

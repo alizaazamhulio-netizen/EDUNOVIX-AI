@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work &amp; Energy — MDCAT Physics</title>
+  <link rel="stylesheet" href="work-energy.css" />
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+<!-- ===== TOP NAV ===== -->
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="#" class="nav-logo">⚛ PhysicsHub</a>
+    <span class="nav-breadcrumb">/ MDCAT Physics / Work &amp; Energy</span>
+  </div>
+  <div class="nav-right">
+    <button class="btn-nav" onclick="window.history.back()">← Back</button>
+    <button class="btn-nav" id="themeToggle">🌙 Dark</button>
+    <div class="progress-badge" id="navProgress">0%</div>
+  </div>
+</nav>
+
+<!-- ===== SIDEBAR ===== -->
+<button class="sidebar-toggle" id="sidebarToggle">☰ Sections</button>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span>Learning Map</span>
+    <button class="sidebar-close" id="sidebarClose">✕</button>
+  </div>
+  <div class="progress-ring-container">
+    <svg class="progress-ring" width="80" height="80">
+      <circle class="progress-ring-bg" cx="40" cy="40" r="34"/>
+      <circle class="progress-ring-fill" id="progressRing" cx="40" cy="40" r="34"/>
+    </svg>
+    <span class="progress-ring-text" id="progressText">0%</span>
+  </div>
+  <ul class="sidebar-nav">
+    <li><a href="#hero" class="sidebar-link active">🏠 Introduction</a></li>
+    <li><a href="#section-work" class="sidebar-link">01 What is Work?</a></li>
+    <li><a href="#section-work-lab" class="sidebar-link">02 Work Lab</a></li>
+    <li><a href="#section-work-types" class="sidebar-link">03 Types of Work</a></li>
+    <li><a href="#section-energy" class="sidebar-link">04 Energy</a></li>
+    <li><a href="#section-ke" class="sidebar-link">05 Kinetic Energy</a></li>
+    <li><a href="#section-pe" class="sidebar-link">06 Potential Energy</a></li>
+    <li><a href="#section-transformation" class="sidebar-link">07 Energy Transformation</a></li>
+    <li><a href="#section-conservation" class="sidebar-link">08 Conservation of Energy</a></li>
+    <li><a href="#section-wet" class="sidebar-link">09 Work-Energy Theorem</a></li>
+    <li><a href="#section-power" class="sidebar-link">10 Power</a></li>
+    <li><a href="#section-efficiency" class="sidebar-link">11 Efficiency</a></li>
+    <li><a href="#section-elastic" class="sidebar-link">12 Elastic Energy</a></li>
+    <li><a href="#section-hooke" class="sidebar-link">13 Hooke's Law</a></li>
+    <li><a href="#section-formula-lab" class="sidebar-link">📐 Formula Lab</a></li>
+    <li><a href="#section-traps" class="sidebar-link">⚠ MDCAT Traps</a></li>
+    <li><a href="#section-numericals" class="sidebar-link">🔢 Solved Numericals</a></li>
+    <li><a href="#section-challenges" class="sidebar-link">🧠 Concept Challenges</a></li>
+    <li><a href="#section-mcq" class="sidebar-link">🏆 MCQ Arena</a></li>
+    <li><a href="#section-flashcards" class="sidebar-link">🃏 Flashcards</a></li>
+    <li><a href="#section-revision" class="sidebar-link">⚡ 2-Min Revision</a></li>
+  </ul>
+  <button class="btn-complete" id="markComplete">✓ Mark Chapter Complete</button>
+</aside>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main-content" id="mainContent">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-anim"></div>
+    <div class="hero-content">
+      <div class="hero-tags">
+        <span class="tag tag-mdcat">MDCAT Physics</span>
+        <span class="tag tag-diff">Moderate</span>
+        <span class="tag tag-time">⏱ ~90 min</span>
+      </div>
+      <h1 class="hero-title">WORK &amp; ENERGY</h1>
+      <p class="hero-subtitle">See how force transfers energy, how motion stores energy, and how energy transforms from one form to another.</p>
+
+      <div class="hero-flow">
+        <div class="flow-step">
+          <div class="flow-icon">⚡</div>
+          <span>FORCE</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-icon">💼</div>
+          <span>WORK</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-icon">🔋</div>
+          <span>ENERGY</span>
+        </div>
+      </div>
+
+      <!-- Animated box scene -->
+      <div class="hero-scene">
+        <div class="scene-track">
+          <div class="scene-person" id="heroPerson">🧑</div>
+          <div class="scene-box" id="heroBox">📦</div>
+          <div class="scene-arrow force-arrow" id="heroForceArrow">F →</div>
+          <div class="scene-displacement" id="heroDisp"></div>
+        </div>
+        <div class="scene-labels">
+          <span class="lbl-force">Force (F)</span>
+          <span class="lbl-disp">Displacement (d)</span>
+          <span class="lbl-work" id="heroWork">Work = F × d</span>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#section-work" class="btn-primary">Start Learning</a>
+        <a href="#section-energy" class="btn-secondary">Explore Energy</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 1: WHAT IS WORK ===== -->
+  <section class="content-section" id="section-work" data-section="work">
+    <div class="section-number">01</div>
+    <h2 class="section-title">What Does "Work" Really Mean?</h2>
+
+    <div class="story-card">
+      <div class="story-scene">
+        <div class="story-student">🧑‍🎓</div>
+        <div class="story-box-container">
+          <div class="story-box" id="storyBox">📦</div>
+          <div class="story-force-arrow">→</div>
+        </div>
+        <div class="story-floor">
+          <div class="floor-marks" id="floorMarks"></div>
+        </div>
+      </div>
+      <p class="story-text">A student pushes a box across the floor. The box moves in the direction of the push.</p>
+      <button class="btn-reveal" id="workRevealBtn">Is Physics Work Being Done? Show Me!</button>
+      <div class="reveal-content" id="workReveal">
+        <div class="concept-highlight">
+          <p>YES! Physics work IS being done because:</p>
+          <ul>
+            <li>A <strong>force</strong> is applied to the box</li>
+            <li>The box has a <strong>displacement</strong> in the direction of force</li>
+            <li>Work = Force × Displacement × cos θ</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-intro">
+      <h3>The Work Formula</h3>
+      <div class="formula-display">
+        <span class="formula-big">W = F · d · cos θ</span>
+      </div>
+      <div class="formula-vars">
+        <div class="var-card">
+          <span class="var-sym">W</span>
+          <span class="var-name">Work</span>
+          <span class="var-unit">Joules (J)</span>
+        </div>
+        <div class="var-card">
+          <span class="var-sym">F</span>
+          <span class="var-name">Applied Force</span>
+          <span class="var-unit">Newtons (N)</span>
+        </div>
+        <div class="var-card">
+          <span class="var-sym">d</span>
+          <span class="var-name">Displacement</span>
+          <span class="var-unit">Metres (m)</span>
+        </div>
+        <div class="var-card highlight-var">
+          <span class="var-sym">θ</span>
+          <span class="var-name">Angle between F and d</span>
+          <span class="var-unit">Degrees (°)</span>
+        </div>
+      </div>
+
+      <div class="angle-diagram">
+        <canvas id="angleDiagram" width="400" height="200"></canvas>
+        <p class="diagram-caption">θ is the angle between the force direction and the displacement direction</p>
+      </div>
+    </div>
+
+    <div class="key-insight">
+      <span class="insight-icon">💡</span>
+      <div>
+        <strong>Key Insight:</strong> Only the component of force <em>parallel</em> to displacement does work. That's why we multiply by cos θ — it extracts only the useful component.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 2: WORK LAB ===== -->
+  <section class="content-section lab-section" id="section-work-lab" data-section="worklab">
+    <div class="section-number">02</div>
+    <h2 class="section-title">Interactive Work Lab</h2>
+    <p class="section-intro">Drag the sliders and watch how work changes. Pay close attention at 90° and 180°.</p>
+
+    <div class="lab-container">
+      <div class="lab-canvas-area">
+        <canvas id="workLabCanvas" width="500" height="280"></canvas>
+        <div class="work-result-display" id="workResultDisplay">
+          <div class="wr-label">Work Done</div>
+          <div class="wr-value" id="workValue">0 J</div>
+          <div class="wr-type" id="workType">—</div>
+        </div>
+      </div>
+
+      <div class="lab-controls">
+        <div class="control-group">
+          <label>Force (F): <span id="forceVal">10</span> N</label>
+          <input type="range" id="forceSlider" min="1" max="50" value="10" class="slider" />
+        </div>
+        <div class="control-group">
+          <label>Displacement (d): <span id="dispVal">5</span> m</label>
+          <input type="range" id="dispSlider" min="1" max="20" value="5" class="slider" />
+        </div>
+        <div class="control-group">
+          <label>Angle (θ): <span id="angleVal">0</span>°</label>
+          <input type="range" id="angleSlider" min="0" max="180" value="0" class="slider angle-slider" />
+          <div class="angle-presets">
+            <button class="preset-btn" data-angle="0">0°</button>
+            <button class="preset-btn" data-angle="30">30°</button>
+            <button class="preset-btn" data-angle="60">60°</button>
+            <button class="preset-btn" data-angle="90">90°</button>
+            <button class="preset-btn" data-angle="120">120°</button>
+            <button class="preset-btn" data-angle="180">180°</button>
+          </div>
+        </div>
+        <div class="lab-equation">
+          <span id="labEqDisplay">W = 10 × 5 × cos(0°) = <strong>50 J</strong></span>
+        </div>
+        <button class="btn-reset" id="workLabReset">↺ Reset</button>
+      </div>
+    </div>
+
+    <div class="angle-insight-box" id="angleInsightBox">
+      <span class="insight-icon">💡</span>
+      <span id="angleInsightText">Force is parallel to displacement. Work is maximum.</span>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3: TYPES OF WORK ===== -->
+  <section class="content-section" id="section-work-types" data-section="worktypes">
+    <div class="section-number">03</div>
+    <h2 class="section-title">Three Types of Work</h2>
+
+    <div class="work-types-grid">
+      <!-- Positive Work -->
+      <div class="work-type-card positive">
+        <div class="wt-header">
+          <span class="wt-icon">✅</span>
+          <h3>Positive Work</h3>
+        </div>
+        <canvas class="wt-canvas" id="posWorkCanvas" width="280" height="140"></canvas>
+        <div class="wt-body">
+          <p>Force and displacement point in the <strong>same general direction</strong> (0° ≤ θ &lt; 90°)</p>
+          <div class="wt-formula">W = Fd cos θ → <strong class="positive-color">W &gt; 0</strong></div>
+          <p class="wt-example">Example: Pushing a box forward; it accelerates and gains kinetic energy.</p>
+        </div>
+      </div>
+
+      <!-- Zero Work -->
+      <div class="work-type-card zero">
+        <div class="wt-header">
+          <span class="wt-icon">⭕</span>
+          <h3>Zero Work</h3>
+        </div>
+        <canvas class="wt-canvas" id="zeroWorkCanvas" width="280" height="140"></canvas>
+        <div class="wt-body">
+          <p>Force is <strong>perpendicular</strong> to displacement (θ = 90°)</p>
+          <div class="wt-formula">cos 90° = 0 → <strong class="zero-color">W = 0</strong></div>
+          <p class="wt-example">Example: Carrying a bag horizontally; you exert upward force but move sideways.</p>
+        </div>
+      </div>
+
+      <!-- Negative Work -->
+      <div class="work-type-card negative">
+        <div class="wt-header">
+          <span class="wt-icon">❌</span>
+          <h3>Negative Work</h3>
+        </div>
+        <canvas class="wt-canvas" id="negWorkCanvas" width="280" height="140"></canvas>
+        <div class="wt-body">
+          <p>Force opposes displacement (90° &lt; θ ≤ 180°)</p>
+          <div class="wt-formula">cos 180° = −1 → <strong class="negative-color">W &lt; 0</strong></div>
+          <p class="wt-example">Example: Friction acts backward on a sliding box, removing kinetic energy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 4: ENERGY ===== -->
+  <section class="content-section" id="section-energy" data-section="energy">
+    <div class="section-number">04</div>
+    <h2 class="section-title">Energy — The Capacity to Do Work</h2>
+
+    <div class="energy-intro-grid">
+      <div class="energy-def">
+        <div class="big-quote">"Energy is the capacity of a system to do work."</div>
+        <p>Energy is not a substance you can see or touch. It is a <em>measure of ability</em> — the ability to cause change, move objects, or produce heat.</p>
+        <div class="energy-unit-box">
+          <span>SI Unit: <strong>Joule (J)</strong></span>
+          <span>1 J = 1 N·m = 1 kg·m²/s²</span>
+        </div>
+      </div>
+
+      <div class="energy-flow-diagram">
+        <h3>Work as Energy Transfer</h3>
+        <div class="energy-flow">
+          <div class="ef-node chemical">
+            <span class="ef-icon">🍎</span>
+            Chemical Energy<br/>(in muscles)
+          </div>
+          <div class="ef-arrow-down">↓ Work done by muscles</div>
+          <div class="ef-node mechanical">
+            <span class="ef-icon">💪</span>
+            Mechanical Work<br/>(pushing box)
+          </div>
+          <div class="ef-arrow-down">↓ Energy transferred</div>
+          <div class="ef-node kinetic">
+            <span class="ef-icon">🏃</span>
+            Kinetic Energy<br/>(box moving)
+          </div>
+        </div>
+        <p class="ef-caption">Work is the <em>bridge</em> that transfers energy from one object or form to another.</p>
+      </div>
+    </div>
+
+    <div class="forms-of-energy">
+      <h3>Forms of Energy</h3>
+      <div class="forms-grid">
+        <div class="form-chip kinetic-chip">🏃 Kinetic</div>
+        <div class="form-chip potential-chip">⬆ Potential</div>
+        <div class="form-chip thermal-chip">🔥 Thermal</div>
+        <div class="form-chip chemical-chip">⚗ Chemical</div>
+        <div class="form-chip electrical-chip">⚡ Electrical</div>
+        <div class="form-chip nuclear-chip">☢ Nuclear</div>
+        <div class="form-chip sound-chip">🔊 Sound</div>
+        <div class="form-chip light-chip">💡 Light</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 5: KINETIC ENERGY ===== -->
+  <section class="content-section" id="section-ke" data-section="ke">
+    <div class="section-number">05</div>
+    <h2 class="section-title">Kinetic Energy</h2>
+    <p class="section-intro">Energy an object possesses <strong>because it is moving</strong>. Change the mass and velocity below — watch what happens to KE!</p>
+
+    <div class="ke-lab">
+      <div class="ke-track-container">
+        <canvas id="keCanvas" width="520" height="200"></canvas>
+        <div class="ke-meters">
+          <div class="ke-meter-row">
+            <span class="ke-m-label">Mass (m)</span>
+            <div class="ke-bar-wrap"><div class="ke-bar mass-bar" id="keBarMass"></div></div>
+            <span class="ke-m-val" id="keMassDisplay">5 kg</span>
+          </div>
+          <div class="ke-meter-row">
+            <span class="ke-m-label">Velocity (v)</span>
+            <div class="ke-bar-wrap"><div class="ke-bar vel-bar" id="keBarVel"></div></div>
+            <span class="ke-m-val" id="keVelDisplay">4 m/s</span>
+          </div>
+          <div class="ke-meter-row highlight-row">
+            <span class="ke-m-label">KE</span>
+            <div class="ke-bar-wrap"><div class="ke-bar ke-bar-color" id="keBarKE"></div></div>
+            <span class="ke-m-val ke-result" id="keDisplay">40 J</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ke-controls">
+        <div class="control-group">
+          <label>Mass (m): <span id="keMassVal">5</span> kg</label>
+          <input type="range" id="keMassSlider" min="1" max="20" value="5" class="slider" />
+        </div>
+        <div class="control-group">
+          <label>Velocity (v): <span id="keVelVal">4</span> m/s</label>
+          <input type="range" id="keVelSlider" min="0" max="20" value="4" class="slider" />
+        </div>
+        <div class="ke-formula-live">
+          KE = ½ × <span id="keM">5</span> × <span id="keV">4</span>² = <strong id="keAnswer">40 J</strong>
+        </div>
+        <div class="ke-insight-panel" id="keInsightPanel">
+          <div class="ki-row">
+            <span>KE ∝ m</span>
+            <span id="kiMassNote">Double mass → KE doubles</span>
+          </div>
+          <div class="ki-row highlight-ki">
+            <span>KE ∝ v²</span>
+            <span id="kiVelNote">Double v → KE × 4</span>
+          </div>
+        </div>
+        <div class="ke-challenge">
+          <button class="btn-challenge" id="keChallenge">🎯 Try This Challenge</button>
+          <div class="challenge-box" id="keChallengeBox">
+            <p id="keChallengeQ"></p>
+            <button class="btn-reveal" id="keChallengeSolve">Show Answer</button>
+            <div class="reveal-content" id="keChallengeAns"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-reveal-card">
+      <div class="formula-display"><span class="formula-big">KE = ½mv²</span></div>
+      <p>The squared relationship with velocity is why speed matters so much in road accidents — doubling speed quadruples the kinetic energy!</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 6: POTENTIAL ENERGY ===== -->
+  <section class="content-section" id="section-pe" data-section="pe">
+    <div class="section-number">06</div>
+    <h2 class="section-title">Potential Energy</h2>
+    <p class="section-intro">Energy stored because of an object's <strong>position</strong>. Raise the object higher — it stores more energy, ready to release.</p>
+
+    <div class="pe-lab">
+      <div class="pe-visual">
+        <canvas id="peCanvas" width="320" height="360"></canvas>
+      </div>
+      <div class="pe-controls">
+        <div class="control-group">
+          <label>Mass (m): <span id="peMassVal">3</span> kg</label>
+          <input type="range" id="peMassSlider" min="1" max="20" value="3" class="slider" />
+        </div>
+        <div class="control-group">
+          <label>Height (h): <span id="peHeightVal">5</span> m</label>
+          <input type="range" id="peHeightSlider" min="0" max="20" value="5" class="slider" />
+        </div>
+        <div class="pe-result">
+          <div class="pe-formula-live">
+            PE = <span id="peM">3</span> × 9.8 × <span id="peH">5</span> = <strong id="peAnswer">147 J</strong>
+          </div>
+        </div>
+        <div class="pe-insight">
+          <p>As height increases, PE increases <strong>linearly</strong> — because PE = mgh.</p>
+          <p>When the object <em>falls</em>, PE converts to KE. At the bottom, all PE has become KE (ignoring air resistance).</p>
+        </div>
+        <div class="formula-reveal-card mini">
+          <span class="formula-big-sm">PE = mgh</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 7: ENERGY TRANSFORMATION ===== -->
+  <section class="content-section" id="section-transformation" data-section="transform">
+    <div class="section-number">07</div>
+    <h2 class="section-title">Energy Transformation — The Roller Coaster</h2>
+    <p class="section-intro">Watch how PE and KE exchange as the ball rolls. Total mechanical energy stays constant (no friction).</p>
+
+    <div class="ramp-lab">
+      <canvas id="rampCanvas" width="600" height="320"></canvas>
+      <div class="ramp-meters">
+        <div class="ramp-meter pe-meter">
+          <div class="ramp-meter-bar" id="rampPEBar"></div>
+          <span class="ramp-meter-label">PE</span>
+          <span class="ramp-meter-val" id="rampPEVal">0 J</span>
+        </div>
+        <div class="ramp-meter ke-meter-ramp">
+          <div class="ramp-meter-bar" id="rampKEBar"></div>
+          <span class="ramp-meter-label">KE</span>
+          <span class="ramp-meter-val" id="rampKEVal">0 J</span>
+        </div>
+        <div class="ramp-meter total-meter">
+          <div class="ramp-meter-bar total-bar" id="rampTotalBar"></div>
+          <span class="ramp-meter-label">Total</span>
+          <span class="ramp-meter-val" id="rampTotalVal">0 J</span>
+        </div>
+      </div>
+      <div class="ramp-controls">
+        <div class="control-group">
+          <label>Starting Height: <span id="rampHeightVal">6</span> m</label>
+          <input type="range" id="rampHeightSlider" min="2" max="10" value="6" class="slider" />
+        </div>
+        <div class="control-group">
+          <label>Ball Mass: <span id="rampMassVal">1</span> kg</label>
+          <input type="range" id="rampMassSlider" min="1" max="5" value="1" class="slider" />
+        </div>
+        <button class="btn-primary" id="rampPlay">▶ Drop Ball</button>
+        <button class="btn-reset" id="rampReset">↺ Reset</button>
+      </div>
+    </div>
+
+    <div class="conservation-equation">
+      <div class="ce-box">KE<sub>i</sub> + PE<sub>i</sub> = KE<sub>f</sub> + PE<sub>f</sub></div>
+      <p>Total mechanical energy is conserved when only conservative forces act.</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 8: CONSERVATION ===== -->
+  <section class="content-section" id="section-conservation" data-section="conservation">
+    <div class="section-number">08</div>
+    <h2 class="section-title">Conservation of Energy — Real Life Examples</h2>
+
+    <div class="conservation-examples">
+      <div class="cons-card">
+        <div class="cons-icon">🪨</div>
+        <h3>Falling Object</h3>
+        <div class="cons-flow">
+          <span class="cf-start">Top: PE = max, KE = 0</span>
+          <div class="cf-arrow">↓</div>
+          <span class="cf-mid">Falling: PE↓ KE↑</span>
+          <div class="cf-arrow">↓</div>
+          <span class="cf-end">Bottom: PE = 0, KE = max</span>
+        </div>
+      </div>
+      <div class="cons-card">
+        <div class="cons-icon">🎢</div>
+        <h3>Roller Coaster</h3>
+        <div class="cons-flow">
+          <span class="cf-start">Peak: PE high, KE low</span>
+          <div class="cf-arrow">↓</div>
+          <span class="cf-mid">Descent: PE → KE</span>
+          <div class="cf-arrow">↓</div>
+          <span class="cf-end">Trough: KE maximum</span>
+        </div>
+      </div>
+      <div class="cons-card">
+        <div class="cons-icon">🌊</div>
+        <h3>Hydroelectric Dam</h3>
+        <div class="cons-flow">
+          <span class="cf-start">Water: PE (height)</span>
+          <div class="cf-arrow">↓</div>
+          <span class="cf-mid">Flowing: PE → KE</span>
+          <div class="cf-arrow">↓</div>
+          <span class="cf-end">Turbine: KE → Electrical</span>
+        </div>
+      </div>
+      <div class="cons-card">
+        <div class="cons-icon">🕰</div>
+        <h3>Pendulum</h3>
+        <div class="cons-flow">
+          <span class="cf-start">End: PE max, KE = 0</span>
+          <div class="cf-arrow">↓</div>
+          <span class="cf-mid">Swinging: PE ↔ KE</span>
+          <div class="cf-arrow">↓</div>
+          <span class="cf-end">Centre: KE max</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cannot-disappear-card">
+      <div class="cd-icon">∞</div>
+      <div class="cd-content">
+        <h3>Energy Cannot Disappear</h3>
+        <p>The <strong>Law of Conservation of Energy</strong> is one of the most fundamental laws in physics. Energy may change form — mechanical to thermal, chemical to electrical — but the total amount in a closed system <strong>never changes</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 9: WORK-ENERGY THEOREM ===== -->
+  <section class="content-section" id="section-wet" data-section="wet">
+    <div class="section-number">09</div>
+    <h2 class="section-title">Work-Energy Theorem</h2>
+
+    <div class="wet-intro">
+      <div class="wet-equation-display">
+        <span class="formula-big">W<sub>net</sub> = ΔKE = KE<sub>f</sub> − KE<sub>i</sub></span>
+      </div>
+      <p>The net work done on an object equals its change in kinetic energy. Work and KE are two sides of the same coin.</p>
+    </div>
+
+    <div class="wet-simulation">
+      <canvas id="wetCanvas" width="560" height="180"></canvas>
+      <div class="wet-controls">
+        <div class="control-group">
+          <label>Initial Velocity: <span id="wetV0Val">2</span> m/s</label>
+          <input type="range" id="wetV0Slider" min="0" max="10" value="2" class="slider" />
+        </div>
+        <div class="control-group">
+          <label>Net Force: <span id="wetFVal">10</span> N</label>
+          <input type="range" id="wetFSlider" min="0" max="40" value="10" class="slider" />
+        </div>
+        <div class="control-group">
+          <label>Mass: <span id="wetMVal">2</span> kg</label>
+          <input type="range" id="wetMSlider" min="1" max="10" value="2" class="slider" />
+        </div>
+        <button class="btn-primary" id="wetPlay">▶ Apply Force</button>
+        <button class="btn-reset" id="wetReset">↺ Reset</button>
+      </div>
+      <div class="wet-readouts">
+        <div class="readout">Work Done: <strong id="wetWork">0 J</strong></div>
+        <div class="readout">ΔKE: <strong id="wetDKE">0 J</strong></div>
+        <div class="readout">Final Velocity: <strong id="wetVF">0 m/s</strong></div>
+      </div>
+    </div>
+
+    <!-- MDCAT Solved Numericals for WET -->
+    <div class="numericals-mini">
+      <h3>Worked Examples</h3>
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Example 1: Find KE after work is done</span>
+          <span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> m = 5 kg, initial v = 2 m/s, Work done = 100 J</div>
+          <div class="num-req"><strong>Required:</strong> Final velocity</div>
+          <div class="num-formula"><strong>Formula:</strong> W<sub>net</sub> = ½mv<sub>f</sub>² − ½mv<sub>i</sub>²</div>
+          <div class="num-sub"><strong>Substitution:</strong> 100 = ½(5)v<sub>f</sub>² − ½(5)(4)</div>
+          <div class="num-calc"><strong>Calculation:</strong> 100 = 2.5v<sub>f</sub>² − 10 → v<sub>f</sub>² = 44 → v<sub>f</sub> ≈ 6.63 m/s</div>
+          <div class="num-answer"><strong>Answer:</strong> 6.63 m/s</div>
+        </div>
+      </div>
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Example 2: Work done against friction</span>
+          <span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> m = 10 kg, v<sub>i</sub> = 8 m/s, v<sub>f</sub> = 0, friction stops the object</div>
+          <div class="num-req"><strong>Required:</strong> Work done by friction</div>
+          <div class="num-formula"><strong>Formula:</strong> W = ΔKE = KE<sub>f</sub> − KE<sub>i</sub></div>
+          <div class="num-sub"><strong>Substitution:</strong> W = 0 − ½(10)(8²)</div>
+          <div class="num-calc"><strong>Calculation:</strong> W = −320 J</div>
+          <div class="num-answer"><strong>Answer:</strong> −320 J (negative because friction opposes motion)</div>
+        </div>
+      </div>
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Example 3: Net work with multiple forces</span>
+          <span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> Push force = 50 N, friction = 10 N, d = 4 m, m = 8 kg, v<sub>i</sub> = 0</div>
+          <div class="num-req"><strong>Required:</strong> Final KE and velocity</div>
+          <div class="num-formula"><strong>Formula:</strong> W<sub>net</sub> = F<sub>net</sub> × d = ΔKE</div>
+          <div class="num-sub"><strong>Substitution:</strong> W<sub>net</sub> = (50−10) × 4 = 160 J</div>
+          <div class="num-calc"><strong>Calculation:</strong> ½(8)v<sub>f</sub>² = 160 → v<sub>f</sub>² = 40 → v<sub>f</sub> ≈ 6.32 m/s</div>
+          <div class="num-answer"><strong>Answer:</strong> KE = 160 J, v<sub>f</sub> ≈ 6.32 m/s</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 10: POWER ===== -->
+  <section class="content-section" id="section-power" data-section="power">
+    <div class="section-number">10</div>
+    <h2 class="section-title">Power — How Fast Is Work Done?</h2>
+
+    <div class="power-race">
+      <h3>The Machine Race</h3>
+      <p>Both machines do <strong>the same amount of work</strong>. Watch the difference!</p>
+      <div class="race-track-container">
+        <canvas id="powerRaceCanvas" width="560" height="180"></canvas>
+      </div>
+      <div class="race-controls">
+        <button class="btn-primary" id="raceStart">▶ Start Race</button>
+        <button class="btn-reset" id="raceReset">↺ Reset</button>
+      </div>
+      <div class="race-results" id="raceResults">
+        <div class="race-card">
+          <span class="rm-label">Machine A (Slow)</span>
+          <span class="rm-val" id="raceATime">—</span>
+          <span class="rm-power" id="raceAPower">—</span>
+        </div>
+        <div class="race-card winner">
+          <span class="rm-label">Machine B (Fast)</span>
+          <span class="rm-val" id="raceBTime">—</span>
+          <span class="rm-power" id="raceBPower">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="power-formulas">
+      <div class="pf-card">
+        <span class="pf-formula">P = W / t</span>
+        <p>General formula: Power = Work ÷ Time</p>
+      </div>
+      <div class="pf-card">
+        <span class="pf-formula">P = Fv</span>
+        <p>For constant force and velocity in same direction</p>
+      </div>
+    </div>
+
+    <div class="power-calculator">
+      <h3>Power Calculator</h3>
+      <div class="calc-grid">
+        <div class="calc-input">
+          <label>Work (J)</label>
+          <input type="number" id="calcWork" value="100" class="calc-field" />
+        </div>
+        <div class="calc-input">
+          <label>Time (s)</label>
+          <input type="number" id="calcTime" value="5" class="calc-field" />
+        </div>
+        <div class="calc-result">
+          <label>Power</label>
+          <div class="calc-output" id="calcPower">20 W</div>
+        </div>
+      </div>
+      <div class="power-unit-note">
+        <strong>SI Unit of Power: Watt (W)</strong> &nbsp;|&nbsp; 1 W = 1 J/s
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 11: EFFICIENCY ===== -->
+  <section class="content-section" id="section-efficiency" data-section="efficiency">
+    <div class="section-number">11</div>
+    <h2 class="section-title">Efficiency</h2>
+    <p class="section-intro">Real machines always waste some energy. Efficiency tells us how much of the input energy is actually useful.</p>
+
+    <div class="efficiency-lab">
+      <div class="sankey-container">
+        <canvas id="sankeyCanvas" width="500" height="280"></canvas>
+      </div>
+      <div class="efficiency-controls">
+        <div class="control-group">
+          <label>Efficiency: <span id="effVal">70</span>%</label>
+          <input type="range" id="effSlider" min="1" max="99" value="70" class="slider" />
+        </div>
+        <div class="control-group">
+          <label>Input Energy: <span id="effInputVal">100</span> J</label>
+          <input type="range" id="effInputSlider" min="10" max="500" value="100" class="slider" />
+        </div>
+        <div class="eff-readouts">
+          <div class="eff-readout useful">
+            <span>Useful Output</span>
+            <strong id="effUseful">70 J</strong>
+          </div>
+          <div class="eff-readout wasted">
+            <span>Wasted Energy</span>
+            <strong id="effWasted">30 J</strong>
+          </div>
+        </div>
+        <div class="eff-formula-live">
+          η = <span id="effU2">70</span> / <span id="effI2">100</span> × 100 = <strong id="effPct">70%</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="efficiency-formula-card">
+      <span class="formula-big-sm">η = (Useful Output / Input Energy) × 100%</span>
+      <p>For real machines, η &lt; 100% because energy is lost to friction, heat, and sound.</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 12: ELASTIC ENERGY ===== -->
+  <section class="content-section" id="section-elastic" data-section="elastic">
+    <div class="section-number">12</div>
+    <h2 class="section-title">Elastic Potential Energy</h2>
+    <p class="section-intro">A spring stores energy when stretched or compressed. Drag the spring below to feel the relationship.</p>
+
+    <div class="spring-lab">
+      <div class="spring-visual">
+        <canvas id="springCanvas" width="480" height="260"></canvas>
+      </div>
+      <div class="spring-controls">
+        <div class="control-group">
+          <label>Spring Constant (k): <span id="springKVal">200</span> N/m</label>
+          <input type="range" id="springKSlider" min="50" max="500" value="200" class="slider" />
+        </div>
+        <div class="control-group">
+          <label>Extension (x): <span id="springXVal">0.10</span> m</label>
+          <input type="range" id="springXSlider" min="0" max="50" value="10" class="slider" />
+        </div>
+        <div class="spring-readouts">
+          <div class="sr-row">
+            <span>Spring Force (F = kx)</span>
+            <strong id="springForce">20 N</strong>
+          </div>
+          <div class="sr-row highlight-sr">
+            <span>Elastic PE (½kx²)</span>
+            <strong id="springEPE">1.0 J</strong>
+          </div>
+        </div>
+        <div class="spring-formula-card">
+          <div>F = kx</div>
+          <div>EPE = ½kx²</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 13: HOOKE'S LAW ===== -->
+  <section class="content-section" id="section-hooke" data-section="hooke">
+    <div class="section-number">13</div>
+    <h2 class="section-title">Hooke's Law — The Spring Experiment</h2>
+    <p class="section-intro">Change the extension and watch the live Force vs Extension graph. The straight line IS Hooke's Law.</p>
+
+    <div class="hooke-lab">
+      <div class="hooke-canvas-area">
+        <canvas id="hookeCanvas" width="460" height="300"></canvas>
+      </div>
+      <div class="hooke-controls">
+        <div class="control-group">
+          <label>Spring Constant (k): <span id="hookeKVal">150</span> N/m</label>
+          <input type="range" id="hookeKSlider" min="50" max="400" value="150" class="slider" />
+        </div>
+        <div class="control-group">
+          <label>Extension (x): <span id="hookeXVal">0.00</span> m</label>
+          <input type="range" id="hookeXSlider" min="0" max="60" value="0" class="slider" />
+        </div>
+        <div class="hooke-readout">
+          <div class="hr-row">Force: F = <span id="hookeK2">150</span> × <span id="hookeX2">0.00</span> = <strong id="hookeF">0 N</strong></div>
+          <div class="hr-row">Within elastic limit: <span id="hookeElastic" class="elastic-ok">✓ Yes</span></div>
+        </div>
+        <div class="elastic-limit-marker" id="elasticLimitNote">
+          <span class="el-icon">⚠</span> Elastic limit is approximately at x = 0.40 m for this spring. Beyond this, Hooke's Law no longer applies.
+        </div>
+      </div>
+    </div>
+
+    <div class="hookes-key-card">
+      <h3>What Does the Spring Constant (k) Mean?</h3>
+      <p>k measures the <strong>stiffness</strong> of a spring. A large k means the spring is stiff — it takes more force to stretch it by the same amount. A small k means the spring is flexible.</p>
+      <div class="k-comparison">
+        <div class="k-ex stiff">High k: Stiff Spring 🔩<br/>e.g. k = 1000 N/m</div>
+        <div class="k-ex soft">Low k: Soft Spring 🌀<br/>e.g. k = 50 N/m</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FORMULA LAB ===== -->
+  <section class="content-section formula-lab-section" id="section-formula-lab" data-section="formulalab">
+    <div class="section-number">📐</div>
+    <h2 class="section-title">Formula Lab — Quick Reference</h2>
+
+    <div class="formula-lab-grid">
+      <div class="fl-card" data-formula="W = Fd·cosθ">
+        <div class="fl-formula">W = Fd·cos θ</div>
+        <div class="fl-meaning">Work done by a constant force</div>
+        <div class="fl-when">Use when force acts at an angle to displacement</div>
+        <div class="fl-units">W: J &nbsp;|&nbsp; F: N &nbsp;|&nbsp; d: m &nbsp;|&nbsp; θ: degrees</div>
+        <button class="btn-copy" onclick="copyFormula('W = Fd·cosθ', this)">Copy</button>
+      </div>
+      <div class="fl-card" data-formula="KE = ½mv²">
+        <div class="fl-formula">KE = ½mv²</div>
+        <div class="fl-meaning">Kinetic energy of a moving object</div>
+        <div class="fl-when">Use when object has mass m and speed v</div>
+        <div class="fl-units">KE: J &nbsp;|&nbsp; m: kg &nbsp;|&nbsp; v: m/s</div>
+        <button class="btn-copy" onclick="copyFormula('KE = ½mv²', this)">Copy</button>
+      </div>
+      <div class="fl-card" data-formula="PE = mgh">
+        <div class="fl-formula">PE = mgh</div>
+        <div class="fl-meaning">Gravitational potential energy</div>
+        <div class="fl-when">Use when object is at height h above reference</div>
+        <div class="fl-units">PE: J &nbsp;|&nbsp; m: kg &nbsp;|&nbsp; g: m/s² &nbsp;|&nbsp; h: m</div>
+        <button class="btn-copy" onclick="copyFormula('PE = mgh', this)">Copy</button>
+      </div>
+      <div class="fl-card" data-formula="E = KE + PE">
+        <div class="fl-formula">E = KE + PE</div>
+        <div class="fl-meaning">Total mechanical energy</div>
+        <div class="fl-when">Constant when only conservative forces act</div>
+        <div class="fl-units">All in Joules (J)</div>
+        <button class="btn-copy" onclick="copyFormula('E = KE + PE', this)">Copy</button>
+      </div>
+      <div class="fl-card" data-formula="Wnet = ΔKE">
+        <div class="fl-formula">W<sub>net</sub> = ΔKE</div>
+        <div class="fl-meaning">Work-Energy Theorem</div>
+        <div class="fl-when">Use to find velocity change from net work</div>
+        <div class="fl-units">W: J &nbsp;|&nbsp; KE: J</div>
+        <button class="btn-copy" onclick="copyFormula('Wnet = ΔKE', this)">Copy</button>
+      </div>
+      <div class="fl-card" data-formula="P = W/t">
+        <div class="fl-formula">P = W / t</div>
+        <div class="fl-meaning">Power: rate of doing work</div>
+        <div class="fl-when">Use when work and time are known</div>
+        <div class="fl-units">P: W (watts) &nbsp;|&nbsp; W: J &nbsp;|&nbsp; t: s</div>
+        <button class="btn-copy" onclick="copyFormula('P = W/t', this)">Copy</button>
+      </div>
+      <div class="fl-card" data-formula="P = Fv">
+        <div class="fl-formula">P = Fv</div>
+        <div class="fl-meaning">Power for constant force and velocity</div>
+        <div class="fl-when">Use when force and velocity are known</div>
+        <div class="fl-units">P: W &nbsp;|&nbsp; F: N &nbsp;|&nbsp; v: m/s</div>
+        <button class="btn-copy" onclick="copyFormula('P = Fv', this)">Copy</button>
+      </div>
+      <div class="fl-card" data-formula="η = (Useful Output / Input) × 100%">
+        <div class="fl-formula">η = (E<sub>useful</sub> / E<sub>input</sub>) × 100%</div>
+        <div class="fl-meaning">Efficiency of a machine</div>
+        <div class="fl-when">Use to find what % of input is actually useful</div>
+        <div class="fl-units">η: % &nbsp;|&nbsp; E: J or W</div>
+        <button class="btn-copy" onclick="copyFormula('η = (Useful/Input)×100%', this)">Copy</button>
+      </div>
+      <div class="fl-card" data-formula="F = kx">
+        <div class="fl-formula">F = kx</div>
+        <div class="fl-meaning">Hooke's Law — spring force</div>
+        <div class="fl-when">Within elastic limit only</div>
+        <div class="fl-units">F: N &nbsp;|&nbsp; k: N/m &nbsp;|&nbsp; x: m</div>
+        <button class="btn-copy" onclick="copyFormula('F = kx', this)">Copy</button>
+      </div>
+      <div class="fl-card" data-formula="EPE = ½kx²">
+        <div class="fl-formula">EPE = ½kx²</div>
+        <div class="fl-meaning">Elastic potential energy stored in a spring</div>
+        <div class="fl-when">For ideal spring within elastic limit</div>
+        <div class="fl-units">EPE: J &nbsp;|&nbsp; k: N/m &nbsp;|&nbsp; x: m</div>
+        <button class="btn-copy" onclick="copyFormula('EPE = ½kx²', this)">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MDCAT TRAPS ===== -->
+  <section class="content-section" id="section-traps" data-section="traps">
+    <div class="section-number">⚠</div>
+    <h2 class="section-title traps-title">MDCAT Concept Traps</h2>
+    <p class="section-intro traps-intro">These are the most common mistakes students make. Read each one carefully.</p>
+
+    <div class="traps-grid">
+      <div class="trap-card">
+        <div class="trap-num">01</div>
+        <div class="trap-icon">🚫</div>
+        <h4>Force ≠ Work (alone)</h4>
+        <p>Force alone does not guarantee work. If there is no displacement (d = 0), work is zero — even if you push with all your strength.</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-num">02</div>
+        <div class="trap-icon">⊥</div>
+        <h4>Force can act, Work can be zero</h4>
+        <p>If force is perpendicular to displacement (θ = 90°), cos 90° = 0, so W = 0. Example: centripetal force in circular motion.</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-num">03</div>
+        <div class="trap-icon">v²</div>
+        <h4>KE depends on v², not v</h4>
+        <p>If velocity doubles, KE becomes <strong>four times</strong> (not twice). This is why car crash severity increases dramatically with speed.</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-num">04</div>
+        <div class="trap-icon">⏱</div>
+        <h4>Greater Power ≠ More Work</h4>
+        <p>Power is the <em>rate</em> of doing work. A machine doing the same work faster has greater power, not more total work.</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-num">05</div>
+        <div class="trap-icon">≠</div>
+        <h4>Energy ≠ Power</h4>
+        <p>Energy is measured in Joules; Power is measured in Watts. They are fundamentally different quantities with different units.</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-num">06</div>
+        <div class="trap-icon">↓</div>
+        <h4>Negative Work Reduces KE</h4>
+        <p>Negative work removes kinetic energy from an object. Friction does negative work and slows objects down.</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-num">07</div>
+        <div class="trap-icon">≤100</div>
+        <h4>Efficiency ≤ 100% Always</h4>
+        <p>No real machine can have efficiency above 100%. Any claim otherwise violates the law of conservation of energy.</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-num">08</div>
+        <div class="trap-icon">⚠</div>
+        <h4>Mechanical Energy is Not Always Conserved</h4>
+        <p>Mechanical energy is conserved only when non-conservative forces (like friction or air drag) are absent or neglected.</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-num">09</div>
+        <div class="trap-icon">J</div>
+        <h4>Work is in Joules</h4>
+        <p>The SI unit of work is Joule (J), not Newton. 1 J = 1 N·m. Mixing up units in MDCAT MCQs costs marks.</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-num">10</div>
+        <div class="trap-icon">W</div>
+        <h4>Power is in Watts</h4>
+        <p>The SI unit of power is Watt (W), not Joule. 1 W = 1 J/s. Do not confuse work (J) with power (W).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOLVED NUMERICALS ===== -->
+  <section class="content-section" id="section-numericals" data-section="numericals">
+    <div class="section-number">🔢</div>
+    <h2 class="section-title">Solved MDCAT Numericals</h2>
+
+    <div class="numericals-list" id="numericalsList">
+
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Q1. Work done at an angle</span><span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> F = 40 N, d = 8 m, θ = 60°</div>
+          <div class="num-req"><strong>Required:</strong> Work done (W)</div>
+          <div class="num-formula"><strong>Formula:</strong> W = Fd cos θ</div>
+          <div class="num-sub"><strong>Substitution:</strong> W = 40 × 8 × cos 60°</div>
+          <div class="num-calc"><strong>Calculation:</strong> W = 320 × 0.5 = 160 J</div>
+          <div class="num-answer"><strong>Answer:</strong> W = 160 J</div>
+        </div>
+      </div>
+
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Q2. Kinetic energy of a moving car</span><span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> m = 800 kg, v = 20 m/s</div>
+          <div class="num-req"><strong>Required:</strong> KE</div>
+          <div class="num-formula"><strong>Formula:</strong> KE = ½mv²</div>
+          <div class="num-sub"><strong>Substitution:</strong> KE = ½ × 800 × 20²</div>
+          <div class="num-calc"><strong>Calculation:</strong> KE = 400 × 400 = 160,000 J</div>
+          <div class="num-answer"><strong>Answer:</strong> KE = 1.6 × 10⁵ J</div>
+        </div>
+      </div>
+
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Q3. Potential energy of an object at height</span><span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> m = 5 kg, h = 12 m, g = 9.8 m/s²</div>
+          <div class="num-req"><strong>Required:</strong> PE</div>
+          <div class="num-formula"><strong>Formula:</strong> PE = mgh</div>
+          <div class="num-sub"><strong>Substitution:</strong> PE = 5 × 9.8 × 12</div>
+          <div class="num-calc"><strong>Calculation:</strong> PE = 588 J</div>
+          <div class="num-answer"><strong>Answer:</strong> PE = 588 J</div>
+        </div>
+      </div>
+
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Q4. Conservation of energy — find velocity at bottom</span><span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> m = 2 kg, h = 10 m, starts from rest, no friction</div>
+          <div class="num-req"><strong>Required:</strong> Velocity at the bottom</div>
+          <div class="num-formula"><strong>Formula:</strong> mgh = ½mv² → v = √(2gh)</div>
+          <div class="num-sub"><strong>Substitution:</strong> v = √(2 × 9.8 × 10)</div>
+          <div class="num-calc"><strong>Calculation:</strong> v = √196 = 14 m/s</div>
+          <div class="num-answer"><strong>Answer:</strong> v = 14 m/s</div>
+        </div>
+      </div>
+
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Q5. Power of an engine</span><span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> W = 12,000 J, t = 40 s</div>
+          <div class="num-req"><strong>Required:</strong> Power (P)</div>
+          <div class="num-formula"><strong>Formula:</strong> P = W/t</div>
+          <div class="num-sub"><strong>Substitution:</strong> P = 12000 / 40</div>
+          <div class="num-calc"><strong>Calculation:</strong> P = 300 W</div>
+          <div class="num-answer"><strong>Answer:</strong> P = 300 W</div>
+        </div>
+      </div>
+
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Q6. Efficiency of a pump</span><span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> Input power = 500 W, Useful output = 375 W</div>
+          <div class="num-req"><strong>Required:</strong> Efficiency</div>
+          <div class="num-formula"><strong>Formula:</strong> η = (Useful output / Input) × 100</div>
+          <div class="num-sub"><strong>Substitution:</strong> η = (375 / 500) × 100</div>
+          <div class="num-calc"><strong>Calculation:</strong> η = 0.75 × 100 = 75%</div>
+          <div class="num-answer"><strong>Answer:</strong> η = 75%</div>
+        </div>
+      </div>
+
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Q7. Work-Energy Theorem — find final velocity</span><span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> m = 3 kg, v<sub>i</sub> = 4 m/s, W<sub>net</sub> = 54 J</div>
+          <div class="num-req"><strong>Required:</strong> Final velocity</div>
+          <div class="num-formula"><strong>Formula:</strong> W<sub>net</sub> = ½mv<sub>f</sub>² − ½mv<sub>i</sub>²</div>
+          <div class="num-sub"><strong>Substitution:</strong> 54 = ½(3)v<sub>f</sub>² − ½(3)(16)</div>
+          <div class="num-calc"><strong>Calculation:</strong> 54 = 1.5v<sub>f</sub>² − 24 → v<sub>f</sub>² = 52 → v<sub>f</sub> ≈ 7.2 m/s</div>
+          <div class="num-answer"><strong>Answer:</strong> v<sub>f</sub> ≈ 7.2 m/s</div>
+        </div>
+      </div>
+
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Q8. Elastic PE stored in a spring</span><span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> k = 400 N/m, x = 0.15 m</div>
+          <div class="num-req"><strong>Required:</strong> EPE</div>
+          <div class="num-formula"><strong>Formula:</strong> EPE = ½kx²</div>
+          <div class="num-sub"><strong>Substitution:</strong> EPE = ½ × 400 × (0.15)²</div>
+          <div class="num-calc"><strong>Calculation:</strong> EPE = 200 × 0.0225 = 4.5 J</div>
+          <div class="num-answer"><strong>Answer:</strong> EPE = 4.5 J</div>
+        </div>
+      </div>
+
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Q9. Hooke's Law — find spring constant</span><span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> F = 60 N, x = 0.3 m</div>
+          <div class="num-req"><strong>Required:</strong> Spring constant (k)</div>
+          <div class="num-formula"><strong>Formula:</strong> F = kx → k = F/x</div>
+          <div class="num-sub"><strong>Substitution:</strong> k = 60 / 0.3</div>
+          <div class="num-calc"><strong>Calculation:</strong> k = 200 N/m</div>
+          <div class="num-answer"><strong>Answer:</strong> k = 200 N/m</div>
+        </div>
+      </div>
+
+      <div class="numerical-item">
+        <div class="num-header" onclick="toggleNumerical(this)">
+          <span>Q10. Power at constant velocity</span><span class="num-toggle">+ Show Solution</span>
+        </div>
+        <div class="num-body">
+          <div class="num-given"><strong>Given:</strong> F = 800 N (driving force), v = 25 m/s (constant)</div>
+          <div class="num-req"><strong>Required:</strong> Power output</div>
+          <div class="num-formula"><strong>Formula:</strong> P = Fv</div>
+          <div class="num-sub"><strong>Substitution:</strong> P = 800 × 25</div>
+          <div class="num-calc"><strong>Calculation:</strong> P = 20,000 W</div>
+          <div class="num-answer"><strong>Answer:</strong> P = 20 kW</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CONCEPT CHALLENGES ===== -->
+  <section class="content-section" id="section-challenges" data-section="challenges">
+    <div class="section-number">🧠</div>
+    <h2 class="section-title">Think Before You Calculate</h2>
+    <p class="section-intro">These are conceptual questions. Think first, then reveal the answer.</p>
+
+    <div class="challenges-grid" id="challengesGrid">
+      <!-- Generated by JS -->
+    </div>
+  </section>
+
+  <!-- ===== MCQ ARENA ===== -->
+  <section class="content-section mcq-section" id="section-mcq" data-section="mcq">
+    <div class="section-number">🏆</div>
+    <h2 class="section-title">MCQ Arena</h2>
+
+    <div class="mcq-header-bar">
+      <div class="mcq-score-display">
+        Score: <span id="mcqScore">0</span> / <span id="mcqTotal">30</span>
+        &nbsp;|&nbsp; Best: <span id="mcqBest">—</span>
+      </div>
+      <div class="mcq-controls-top">
+        <button class="btn-primary" id="mcqStart">Start Quiz</button>
+        <button class="btn-reset" id="mcqReset">↺ Reset</button>
+      </div>
+    </div>
+
+    <div id="mcqContainer">
+      <div class="mcq-start-screen" id="mcqStartScreen">
+        <div class="mcq-start-icon">🏆</div>
+        <h3>30 MDCAT-Style MCQs</h3>
+        <p>Conceptual, numerical, formula-based, and real-life questions covering the full chapter.</p>
+        <button class="btn-primary large-btn" id="mcqBegin">Begin MCQ Arena</button>
+      </div>
+      <div id="mcqQuestions" style="display:none;"></div>
+      <div id="mcqResults" style="display:none;" class="mcq-results"></div>
+    </div>
+  </section>
+
+  <!-- ===== FLASHCARDS ===== -->
+  <section class="content-section" id="section-flashcards" data-section="flashcards">
+    <div class="section-number">🃏</div>
+    <h2 class="section-title">Flashcards</h2>
+    <p class="section-intro">Click any card to flip it and reveal the answer. Test yourself!</p>
+
+    <div class="flashcards-nav">
+      <button class="btn-nav-fc" id="fcPrev">← Prev</button>
+      <span id="fcCounter">1 / 15</span>
+      <button class="btn-nav-fc" id="fcNext">Next →</button>
+    </div>
+
+    <div class="flashcard-area">
+      <div class="flashcard" id="flashcard" onclick="flipCard()">
+        <div class="fc-front" id="fcFront"></div>
+        <div class="fc-back" id="fcBack"></div>
+      </div>
+    </div>
+
+    <div class="fc-grid-view" id="fcGrid">
+      <!-- Generated by JS -->
+    </div>
+  </section>
+
+  <!-- ===== 2 MINUTE REVISION ===== -->
+  <section class="content-section revision-section" id="section-revision" data-section="revision">
+    <div class="section-number">⚡</div>
+    <h2 class="section-title">Work &amp; Energy — 2 Minute Revision</h2>
+
+    <div class="revision-grid">
+      <div class="revision-column">
+        <h3 class="rev-col-title">⚡ Key Formulas</h3>
+        <ul class="rev-list">
+          <li><code>W = Fd cos θ</code> — Work</li>
+          <li><code>KE = ½mv²</code> — Kinetic Energy</li>
+          <li><code>PE = mgh</code> — Gravitational PE</li>
+          <li><code>E = KE + PE</code> — Mechanical Energy</li>
+          <li><code>W<sub>net</sub> = ΔKE</code> — Work-Energy Theorem</li>
+          <li><code>P = W/t</code> — Power</li>
+          <li><code>P = Fv</code> — Power (constant v)</li>
+          <li><code>η = (Output/Input) × 100%</code></li>
+          <li><code>F = kx</code> — Hooke's Law</li>
+          <li><code>EPE = ½kx²</code> — Elastic PE</li>
+        </ul>
+      </div>
+      <div class="revision-column">
+        <h3 class="rev-col-title">🔥 15 Things You Must Remember</h3>
+        <ol class="rev-list numbered">
+          <li>Work = 0 if d = 0 (no displacement)</li>
+          <li>Work = 0 if θ = 90° (perpendicular force)</li>
+          <li>SI unit of Work and Energy = Joule (J)</li>
+          <li>SI unit of Power = Watt (W)</li>
+          <li>KE ∝ v² (velocity has squared effect)</li>
+          <li>PE ∝ h (height has linear effect)</li>
+          <li>KE + PE = constant (no friction)</li>
+          <li>Work is a scalar quantity</li>
+          <li>Energy is a scalar quantity</li>
+          <li>Negative work → KE decreases</li>
+          <li>Friction does negative work</li>
+          <li>Efficiency &lt; 100% in real machines</li>
+          <li>1 W = 1 J/s</li>
+          <li>k = spring constant (N/m)</li>
+          <li>Hooke's Law only valid within elastic limit</li>
+        </ol>
+      </div>
+      <div class="revision-column">
+        <h3 class="rev-col-title">💡 Quick Comparisons</h3>
+        <div class="quick-compare">
+          <div class="qc-row"><span class="qc-a">Work (J)</span><span class="qc-vs">vs</span><span class="qc-b">Power (W)</span></div>
+          <div class="qc-row"><span class="qc-a">KE = ½mv²</span><span class="qc-vs">vs</span><span class="qc-b">PE = mgh</span></div>
+          <div class="qc-row"><span class="qc-a">Elastic: F=kx</span><span class="qc-vs">vs</span><span class="qc-b">Gravity: F=mg</span></div>
+          <div class="qc-row"><span class="qc-a">P = W/t</span><span class="qc-vs">vs</span><span class="qc-b">P = Fv</span></div>
+          <div class="qc-row"><span class="qc-a">W&gt;0: gains KE</span><span class="qc-vs">vs</span><span class="qc-b">W&lt;0: loses KE</span></div>
+        </div>
+        <div class="mark-complete-area">
+          <div class="completion-status" id="completionStatus">Chapter not yet completed</div>
+          <button class="btn-complete large" id="markComplete2">✓ Mark Chapter Complete</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-nav">
+    <a href="#" class="footer-link">← Back to Physics</a>
+    <a href="#" class="footer-link">← Previous Chapter</a>
+    <a href="#" class="footer-link">Next Chapter →</a>
+    <a href="#" class="footer-link">🏠 Home</a>
+  </div>
+  <p class="footer-copy">MDCAT Physics — Work &amp; Energy &nbsp;|&nbsp; PhysicsHub</p>
+</footer>
+
+<script src="work-energy.js"></script>
+</body>
+</html>

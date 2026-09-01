@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amines — MDCAT Nitrogen & Diazonium Chemistry Lab</title>
+  <link rel="stylesheet" href="amines.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- TOP LAB STATUS BAR -->
+  <header class="lab-header" id="labHeader">
+    <div class="header-inner">
+      <div class="brand-group">
+        <div class="lab-logo-icon">
+          <svg viewBox="0 0 36 36" fill="none" class="brand-svg">
+            <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="2" stroke-dasharray="4 2" class="orbit-ring"/>
+            <circle cx="18" cy="18" r="7" fill="#0284c7"/>
+            <circle cx="18" cy="8" r="2.5" fill="#38bdf8"/>
+            <circle cx="18" cy="5" r="1.5" fill="#f43f5e" class="lone-pair-dot-1"/>
+            <circle cx="21" cy="5" r="1.5" fill="#f43f5e" class="lone-pair-dot-2"/>
+            <circle cx="9" cy="24" r="2.5" fill="#38bdf8"/>
+            <circle cx="27" cy="24" r="2.5" fill="#38bdf8"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">NITROGEN LAB <span class="brand-badge">MDCAT PRO</span></div>
+          <div class="brand-subtitle">Organic Chemistry • Amines & Diazonium Salts</div>
+        </div>
+      </div>
+
+      <!-- Quick Global Search -->
+      <div class="header-search-box">
+        <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+        </svg>
+        <input type="text" id="globalSearchInput" placeholder="Search keywords: basicity, diazotization, Hinsberg..." aria-label="Search chemistry chapter">
+        <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display:none;">&times;</button>
+        <div id="searchDropdown" class="search-dropdown" style="display:none;"></div>
+      </div>
+
+      <!-- Progress & Action Badges -->
+      <div class="header-actions">
+        <div class="progress-pill" title="Overall Chapter Mastery Progress">
+          <div class="progress-info">
+            <span class="progress-label">Mastery</span>
+            <span id="headerProgressPercent" class="progress-val">0%</span>
+          </div>
+          <div class="progress-track-mini">
+            <div id="headerProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <button id="bookmarksToggleBtn" class="action-btn" title="View Saved Topics">
+          <svg viewBox="0 0 20 20" fill="currentColor" class="btn-icon">
+            <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"/>
+          </svg>
+          <span class="btn-text">Bookmarks</span>
+          <span id="bookmarkCountBadge" class="count-badge">0</span>
+        </button>
+
+        <button id="headerMasteryBtn" class="mastery-badge-btn" title="Chapter Completion Status">
+          <span id="masteryStatusText">In Progress</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Reading Progress Bar at very top -->
+    <div class="scroll-progress-line" id="scrollProgressLine"></div>
+  </header>
+
+  <!-- STICKY TOPIC NAVIGATION -->
+  <nav class="topic-nav-sticky" id="topicNav" aria-label="Chapter Topics Navigation">
+    <div class="topic-nav-container">
+      <button class="nav-scroll-btn left" id="navScrollLeft" aria-label="Scroll left">&lsaquo;</button>
+      <div class="topic-nav-scroll" id="topicNavScroll">
+        <a href="#hero" class="nav-chip active" data-target="hero">00. Nitrogen Lab</a>
+        <a href="#sec-what-are-amines" class="nav-chip" data-target="sec-what-are-amines">01. What Are Amines</a>
+        <a href="#sec-classification" class="nav-chip" data-target="sec-classification">02. Classification Lab</a>
+        <a href="#sec-structure" class="nav-chip" data-target="sec-structure">03. 3D Structure</a>
+        <a href="#sec-lone-pair" class="nav-chip" data-target="sec-lone-pair">04. Lone Pair & Lewis Base</a>
+        <a href="#sec-basicity" class="nav-chip" data-target="sec-basicity">05. Basicity Lab</a>
+        <a href="#sec-aniline" class="nav-chip" data-target="sec-aniline">06. Aniline Resonance</a>
+        <a href="#sec-properties" class="nav-chip" data-target="sec-properties">07. Physical Properties</a>
+        <a href="#sec-preparation" class="nav-chip" data-target="sec-preparation">08. Preparation Lab</a>
+        <a href="#sec-reactions-acid" class="nav-chip" data-target="sec-reactions-acid">09. Acid & Nucleophile</a>
+        <a href="#sec-nitrous-acid" class="nav-chip" data-target="sec-nitrous-acid">10. Nitrous Acid Tree</a>
+        <a href="#sec-diazotization" class="nav-chip" data-target="sec-diazotization">11. Diazotization (0-5°C)</a>
+        <a href="#sec-sandmeyer" class="nav-chip" data-target="sec-sandmeyer">12. Sandmeyer Map</a>
+        <a href="#sec-azo-coupling" class="nav-chip" data-target="sec-azo-coupling">13. Azo Coupling (Dyes)</a>
+        <a href="#sec-hinsberg" class="nav-chip" data-target="sec-hinsberg">14. Hinsberg Test</a>
+        <a href="#sec-comparison" class="nav-chip" data-target="sec-comparison">15. 1° vs 2° vs 3° Matrix</a>
+        <a href="#sec-master-reaction-map" class="nav-chip" data-target="sec-master-reaction-map">16. Master Reaction Map</a>
+        <a href="#sec-golden-wall" class="nav-chip" data-target="sec-golden-wall">17. MDCAT Golden Wall</a>
+        <a href="#sec-flashcards" class="nav-chip" data-target="sec-flashcards">18. Flashcards (30+)</a>
+        <a href="#sec-quiz" class="nav-chip" data-target="sec-quiz">19. MDCAT Quiz (30 MCQs)</a>
+        <a href="#sec-calculator" class="nav-chip" data-target="sec-calculator">20. Chemistry Calculator</a>
+      </div>
+      <button class="nav-scroll-btn right" id="navScrollRight" aria-label="Scroll right">&rsaquo;</button>
+    </div>
+  </nav>
+
+  <!-- SAVED TOPICS DRAWER (MODAL/OFFCANVAS) -->
+  <div id="bookmarksDrawer" class="bookmarks-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <svg viewBox="0 0 20 20" fill="currentColor" class="drawer-icon">
+          <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"/>
+        </svg>
+        <h3>My Saved Amine Topics</h3>
+      </div>
+      <button id="closeBookmarksBtn" class="close-btn" aria-label="Close bookmarks">&times;</button>
+    </div>
+    <div class="drawer-body" id="bookmarksList">
+      <!-- Populated dynamically -->
+      <div class="empty-bookmarks">No bookmarked topics yet. Click the <span class="star-icon">☆</span> on any section to save key concepts for quick revision!</div>
+    </div>
+  </div>
+  <div id="drawerBackdrop" class="drawer-backdrop"></div>
+
+  <!-- MAIN WRAPPER -->
+  <main class="main-container">
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badges">
+            <span class="badge badge-emerald">MDCAT ORGANIC CHEMISTRY</span>
+            <span class="badge badge-cyan">HIGH-YIELD CHAPTER</span>
+            <span class="badge badge-purple">NITROGEN LAB</span>
+          </div>
+          <h1 class="hero-title">AMINES</h1>
+          <p class="hero-subtitle">Master Nitrogen Chemistry, Basicity, Resonance Delocalization, Syntheses & Diazonium Chemistry with Interactive Lab Simulations.</p>
+
+          <div class="hero-features-strip">
+            <div class="feature-item">
+              <span class="feature-dot bg-cyan"></span>
+              <span>Derivative of $NH_3$</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-dot bg-purple"></span>
+              <span>Active $:N$ Lone Pair</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-dot bg-amber"></span>
+              <span>Lewis & Brønsted Base</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-dot bg-emerald"></span>
+              <span>Diazotization (0–5°C)</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#sec-classification" class="btn btn-primary">
+              <svg viewBox="0 0 20 20" fill="currentColor" class="btn-svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+              Launch Virtual Lab
+            </a>
+            <a href="#sec-golden-wall" class="btn btn-secondary">
+              <svg viewBox="0 0 20 20" fill="currentColor" class="btn-svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              5-Min Golden Points
+            </a>
+            <a href="#sec-quiz" class="btn btn-outline">
+              <svg viewBox="0 0 20 20" fill="currentColor" class="btn-svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+              Take 30 MCQs Quiz
+            </a>
+          </div>
+        </div>
+
+        <!-- HERO MOLECULAR SIMULATOR STAGE -->
+        <div class="hero-visual-card">
+          <div class="visual-card-header">
+            <div class="live-indicator"><span class="pulse-dot"></span> LIVE NITROGEN ATOM SIMULATOR</div>
+            <div class="molecule-switcher" id="heroMoleculeSwitcher">
+              <button class="mol-btn active" data-mol="methylamine">CH₃NH₂ (1°)</button>
+              <button class="mol-btn" data-mol="dimethylamine">(CH₃)₂NH (2°)</button>
+              <button class="mol-btn" data-mol="trimethylamine">(CH₃)₃N (3°)</button>
+              <button class="mol-btn" data-mol="aniline">C₆H₅NH₂ (Ar)</button>
+            </div>
+          </div>
+
+          <div class="canvas-molecular-stage" id="heroMolecularStage">
+            <!-- Animated SVG Chemistry Visualization -->
+            <svg id="heroAmineSvg" viewBox="0 0 420 300" class="hero-svg-canvas">
+              <!-- Grid background -->
+              <defs>
+                <pattern id="labGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(2,132,199,0.06)" stroke-width="1"/>
+                </pattern>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <radialGradient id="nitrogenGrad" cx="30%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="#38bdf8"/>
+                  <stop offset="100%" stop-color="#0284c7"/>
+                </radialGradient>
+                <radialGradient id="carbonGrad" cx="30%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="#94a3b8"/>
+                  <stop offset="100%" stop-color="#475569"/>
+                </radialGradient>
+                <radialGradient id="hydrogenGrad" cx="30%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#cbd5e1"/>
+                </radialGradient>
+              </defs>
+
+              <rect width="100%" height="100%" fill="url(#labGrid)"/>
+
+              <!-- Dynamic Interactive Molecule Group (Rendered by JS) -->
+              <g id="heroMoleculeDynamicGroup"></g>
+            </svg>
+
+            <!-- Floating Interactive Hotspots -->
+            <div class="hotspot-badge hotspot-lone-pair" id="heroHotspotLonePair">
+              <span class="hotspot-ping"></span>
+              <strong>: LONE PAIR</strong>
+              <span class="hotspot-desc">Lewis Base / Nucleophile Site</span>
+            </div>
+            <div class="hotspot-badge hotspot-nitrogen" id="heroHotspotNitrogen">
+              <span class="hotspot-ping"></span>
+              <strong>NITROGEN ATOM</strong>
+              <span class="hotspot-desc">sp³ Hybridized (~107°)</span>
+            </div>
+            <div class="hotspot-badge hotspot-nh" id="heroHotspotNH">
+              <span class="hotspot-ping"></span>
+              <strong>POLAR N-H BOND</strong>
+              <span class="hotspot-desc">Enables H-Bonding</span>
+            </div>
+          </div>
+
+          <div class="visual-card-footer">
+            <div class="mol-data-pill" id="heroMolDataPill">
+              <span class="data-label">Selected Compound:</span>
+              <strong id="heroMolName">Methylamine (Methanamine)</strong>
+              <span class="data-badge" id="heroMolType">Primary (1°) Aliphatic</span>
+            </div>
+            <div class="mol-props-mini" id="heroMolPropsMini">
+              <span>Formula: <code>CH₃NH₂</code></span>
+              <span>Molar Mass: <code>31.06 g/mol</code></span>
+              <span>pK<sub>b</sub>: <code>3.36</code></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 1: WHAT ARE AMINES? ==================== -->
+    <section class="lab-section" id="sec-what-are-amines" data-section-title="What Are Amines?">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">01</span>
+          <div>
+            <h2 class="section-title">What Are Amines?</h2>
+            <p class="section-subtitle">Organic derivatives of Ammonia ($NH_3$) with Nitrogen-centered chemistry</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-what-are-amines" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass content-grid-2">
+        <div class="theory-block">
+          <h3 class="block-heading">Core Definition & Principles</h3>
+          <p class="lead-text">
+            <strong>Amines</strong> are organic derivatives of ammonia ($NH_3$) in which one, two, or all three hydrogen atoms have been replaced by alkyl (aliphatic) or aryl (aromatic) hydrocarbon groups.
+          </p>
+          <div class="formula-banner">
+            <div class="banner-item">
+              <span class="lbl">Ammonia:</span>
+              <span class="val">$NH_3$</span>
+            </div>
+            <div class="banner-arrow">&rarr;</div>
+            <div class="banner-item">
+              <span class="lbl">Primary (1°):</span>
+              <span class="val">$R-NH_2$</span>
+            </div>
+            <div class="banner-arrow">&rarr;</div>
+            <div class="banner-item">
+              <span class="lbl">Secondary (2°):</span>
+              <span class="val">$R_2-NH$</span>
+            </div>
+            <div class="banner-arrow">&rarr;</div>
+            <div class="banner-item">
+              <span class="lbl">Tertiary (3°):</span>
+              <span class="val">$R_3-N$</span>
+            </div>
+          </div>
+
+          <div class="key-takeaway-box">
+            <div class="box-icon">⭐</div>
+            <div class="box-text">
+              <strong>The Nitrogen Lone Pair Rule:</strong> In all amines, the nitrogen atom contains <strong>three covalent sigma bonds</strong> and <strong>one unshared lone pair of electrons ($:N$)</strong>. This unshared pair governs nearly all chemical properties: <em>Lewis basicity, nucleophilic attacks, proton acceptance, and coordination.</em>
+            </div>
+          </div>
+
+          <div class="functional-groups-table">
+            <h4 class="subheading">Characteristic Functional Groups</h4>
+            <div class="table-responsive">
+              <table class="lab-table">
+                <thead>
+                  <tr>
+                    <th>Class</th>
+                    <th>Functional Group</th>
+                    <th>Common Suffix</th>
+                    <th>Example</th>
+                    <th>IUPAC Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badge badge-cyan">Primary (1°)</span></td>
+                    <td><code>-NH₂</code> (Amino group)</td>
+                    <td><code>-amine</code></td>
+                    <td>$CH_3-NH_2$</td>
+                    <td>Methanamine</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge-emerald">Secondary (2°)</span></td>
+                    <td><code>-NH-</code> (Imino group)</td>
+                    <td><code>N-alkyl-</code></td>
+                    <td>$(CH_3)_2NH$</td>
+                    <td>N-Methylmethanamine</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge-purple">Tertiary (3°)</span></td>
+                    <td><code>-N&lt;</code> (Tertiary nitrogen)</td>
+                    <td><code>N,N-dialkyl-</code></td>
+                    <td>$(CH_3)_3N$</td>
+                    <td>N,N-Dimethylmethanamine</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge-amber">Aromatic (Ar)</span></td>
+                    <td><code>Ar-NH₂</code> (Aryl amine)</td>
+                    <td><code>-aniline / -benzenamine</code></td>
+                    <td>$C_6H_5NH_2$</td>
+                    <td>Benzenamine (Aniline)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Ammonia Derivative Morph Stage -->
+        <div class="lab-interactive-card">
+          <div class="interactive-header">
+            <h4>Interactive Derivative Morph Machine</h4>
+            <span class="tag">Click to Replace Hydrogen Atoms</span>
+          </div>
+          <div class="morph-stage" id="ammoniaMorphStage">
+            <div class="morph-controls">
+              <button class="morph-btn active" data-step="0">0. Ammonia ($NH_3$)</button>
+              <button class="morph-btn" data-step="1">1. Primary ($RNH_2$)</button>
+              <button class="morph-btn" data-step="2">2. Secondary ($R_2NH$)</button>
+              <button class="morph-btn" data-step="3">3. Tertiary ($R_3N$)</button>
+            </div>
+            <div class="morph-visual" id="morphVisualArea">
+              <!-- SVG diagram dynamically injected by JS -->
+            </div>
+            <div class="morph-explanation" id="morphExplanation">
+              <strong>Ammonia ($NH_3$):</strong> Base molecule with 3 Hydrogens and 1 active lone pair on Nitrogen.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: CLASSIFICATION LAB ==================== -->
+    <section class="lab-section" id="sec-classification" data-section-title="Amine Classification Lab">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">02</span>
+          <div>
+            <h2 class="section-title">Amine Classification Lab ⭐⭐⭐</h2>
+            <p class="section-subtitle">Differentiate 1°, 2°, 3° & Aromatic Amines with the MDCAT Golden Rule</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-classification" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <!-- MDCAT Trick Alert Callout -->
+      <div class="alert-box alert-mdcat">
+        <div class="alert-icon">🧠</div>
+        <div class="alert-content">
+          <strong>CRITICAL MDCAT TRICK & RULE:</strong>
+          <p>
+            In Alcohols and Alkyl Halides, you classify by looking at the carbon attached to $-OH$ or $-X$ (e.g. is the carbon 1°, 2°, or 3°?).<br>
+            <strong>FOR AMINES, THIS IS DIFFERENT!</strong> You do <em>NOT</em> count total carbons in the molecule. You count <strong>the number of carbon groups DIRECTLY ATTACHED to the NITROGEN atom itself</strong>!
+          </p>
+          <div class="trick-examples">
+            <div class="trick-chip valid">
+              <span>$(CH_3)_3C-NH_2$ (tert-Butylamine)</span>
+              <strong>&rarr; PRIMARY (1°) AMINE</strong>
+              <small>(Because only 1 carbon is attached directly to N!)</small>
+            </div>
+            <div class="trick-chip valid">
+              <span>$C_6H_5-CH_2-NH_2$ (Benzylamine)</span>
+              <strong>&rarr; PRIMARY (1°) ALIPHATIC AMINE</strong>
+              <small>(Nitrogen is bonded to $CH_2$ carbon, NOT directly to aromatic ring!)</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Classification Practice Machine -->
+      <div class="card-glass mt-4">
+        <div class="trainer-header">
+          <div>
+            <h3 class="block-heading">Interactive Amine Classifier Machine</h3>
+            <p class="text-muted">Test your classification speed. Identify whether the generated molecule is Primary (1°), Secondary (2°), Tertiary (3°), or Aromatic.</p>
+          </div>
+          <div class="trainer-score-badge">
+            <span>Score: <strong id="classifierScore">0</strong> / <strong id="classifierTotal">0</strong></span>
+            <span class="streak-badge" id="classifierStreak">Streak: 0 🔥</span>
+          </div>
+        </div>
+
+        <div class="classifier-workspace">
+          <div class="molecule-display-box" id="classifierMoleculeCard">
+            <div class="mol-question-label">Analyze this molecule:</div>
+            <div class="mol-large-formula" id="classifierFormula">CH₃-NH₂</div>
+            <div class="mol-iupac-hint" id="classifierName">Methanamine</div>
+            <div class="mol-svg-preview" id="classifierSvgPreview">
+              <!-- SVG preview of molecule -->
+            </div>
+          </div>
+
+          <div class="classifier-controls">
+            <div class="option-buttons-grid">
+              <button class="class-choice-btn" data-choice="1">
+                <span class="choice-tag">1°</span>
+                <span class="choice-title">Primary Amine</span>
+                <span class="choice-sub">R-NH₂ (1 Carbon attached to N)</span>
+              </button>
+              <button class="class-choice-btn" data-choice="2">
+                <span class="choice-tag">2°</span>
+                <span class="choice-title">Secondary Amine</span>
+                <span class="choice-sub">R₂-NH (2 Carbons attached to N)</span>
+              </button>
+              <button class="class-choice-btn" data-choice="3">
+                <span class="choice-tag">3°</span>
+                <span class="choice-title">Tertiary Amine</span>
+                <span class="choice-sub">R₃-N (3 Carbons attached to N)</span>
+              </button>
+              <button class="class-choice-btn" data-choice="ar">
+                <span class="choice-tag">Ar</span>
+                <span class="choice-title">Primary Aromatic</span>
+                <span class="choice-sub">Ar-NH₂ (Direct Benzene Ring on N)</span>
+              </button>
+            </div>
+
+            <!-- Feedback Result Container -->
+            <div class="classifier-feedback" id="classifierFeedback" style="display: none;">
+              <div class="feedback-status" id="feedbackStatus">✓ Correct!</div>
+              <div class="feedback-reason" id="feedbackReason"></div>
+              <button class="btn btn-primary btn-sm next-mol-btn" id="nextMoleculeBtn">Next Molecule &rarr;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: MOLECULAR STRUCTURE ==================== -->
+    <section class="lab-section" id="sec-structure" data-section-title="Molecular Structure & Geometry">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">03</span>
+          <div>
+            <h2 class="section-title">Molecular Structure & Geometry</h2>
+            <p class="section-subtitle">Hybridization, Trigonal Pyramidal Shape & Bond Angle Deviations</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-structure" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass content-grid-2">
+        <div class="theory-block">
+          <h3 class="block-heading">Orbital Hybridization in Amines</h3>
+          <ul class="scientific-list">
+            <li>
+              <strong>Hybridization of Nitrogen:</strong> In amines, the central nitrogen atom has 4 electron pairs (3 bond pairs + 1 lone pair). Hence, Nitrogen is <strong>$sp^3$ hybridized</strong>.
+            </li>
+            <li>
+              <strong>Electronic vs Molecular Geometry:</strong> The electronic geometry is <em>tetrahedral</em>, but because one position is occupied by a non-bonding lone pair, the observed molecular geometry is <strong>trigonal pyramidal</strong>.
+            </li>
+            <li>
+              <strong>Bond Angle ($C-N-H$ or $C-N-C$):</strong> In ideal tetrahedral methane ($CH_4$), the angle is $109.5^\circ$. In ammonia ($NH_3$), lone pair–bond pair repulsion contracts it to $107^\circ$. In trimethylamine $(CH_3)_3N$, steric repulsion of bulky methyl groups opens the angle to approximately <strong>$108^\circ$</strong>.
+            </li>
+            <li>
+              <strong>Pyramidal Inversion (Umbrella Flipping):</strong> At room temperature, simple tertiary amines undergo rapid nitrogen inversion like an umbrella turning inside out in the wind ($\Delta G^\ddagger \sim 25\text{ kJ/mol}$), making enantiomers of chiral trivalent nitrogen amines non-resolvable at room temperature.
+            </li>
+          </ul>
+
+          <div class="structure-metrics-grid">
+            <div class="metric-card">
+              <span class="m-val">$sp^3$</span>
+              <span class="m-lbl">N Hybridization</span>
+            </div>
+            <div class="metric-card">
+              <span class="m-val">Trigonal Pyramidal</span>
+              <span class="m-lbl">Molecular Geometry</span>
+            </div>
+            <div class="metric-card">
+              <span class="m-val">107° – 108°</span>
+              <span class="m-lbl">Typical Bond Angle</span>
+            </div>
+            <div class="metric-card">
+              <span class="m-val">1 Lone Pair</span>
+              <span class="m-lbl">Non-Bonding Orbital</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive 3D/2D Geometry Visualizer -->
+        <div class="lab-interactive-card">
+          <div class="interactive-header">
+            <h4>Interactive Structural Explorer</h4>
+            <div class="view-toggles">
+              <button class="view-tab active" data-view="1deg">1° Amine</button>
+              <button class="view-tab" data-view="2deg">2° Amine</button>
+              <button class="view-tab" data-view="3deg">3° Amine</button>
+              <button class="view-tab" data-view="quat">4° Ammonium Salt</button>
+            </div>
+          </div>
+          <div class="structure-visual-canvas" id="structureVisualCanvas">
+            <!-- Rendered by JS -->
+          </div>
+          <div class="structure-details-box" id="structureDetailsBox">
+            <h5 id="structNameTitle">Primary Amine Structure ($CH_3NH_2$)</h5>
+            <p id="structDescText">Nitrogen has 3 $\sigma$-bonds (1 C-N, 2 N-H) and 1 non-bonding lone pair lobe pointing upward.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: LONE PAIR VISUALIZER ==================== -->
+    <section class="lab-section" id="sec-lone-pair" data-section-title="Lone Pair & Lewis Base Engine">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">04</span>
+          <div>
+            <h2 class="section-title">The Nitrogen Lone Pair & Lewis Basicity ⭐⭐⭐</h2>
+            <p class="section-subtitle">Electron donation mechanics, coordinate bonding, and nucleophilic centers</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-lone-pair" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass content-grid-2">
+        <div class="theory-block">
+          <h3 class="block-heading">Why Is the Lone Pair So Reactive?</h3>
+          <p class="lead-text">
+            According to Lewis Acid-Base Theory:
+          </p>
+          <div class="definition-card">
+            <div class="def-title">Lewis Base Definition</div>
+            <p>A <strong>Lewis Base</strong> is any chemical species that possesses a non-bonding pair of electrons which it can <strong>donate</strong> to form a coordinate covalent (dative) bond with an electron-deficient species (Lewis acid).</p>
+          </div>
+          <p>
+            Because nitrogen has an unshared electron pair in an $sp^3$ orbital and relatively moderate electronegativity (3.0 vs Oxygen 3.5), it readily donates this electron pair to:
+          </p>
+          <ul class="bullet-list-styled">
+            <li><strong>Protons ($H^+$):</strong> Acting as a Brønsted-Lowry & Lewis Base $\rightarrow RNH_2 + H^+ \rightarrow RNH_3^+$</li>
+            <li><strong>Electrophiles (Alkyl halides, Carbonyls):</strong> Acting as a <strong>Nucleophile</strong> $\rightarrow RNH_2 + R'-X \rightarrow R-NH(R') + HX$</li>
+            <li><strong>Transition Metal Cations:</strong> Acting as a ligand (e.g. $[Cu(NH_3)_4]^{2+}$ or amine coordination complexes).</li>
+          </ul>
+        </div>
+
+        <!-- Interactive Lone Pair Protonation Engine -->
+        <div class="lab-interactive-card">
+          <div class="interactive-header">
+            <h4>Proton Capture Simulation Engine</h4>
+            <span class="tag">Click "Inject Proton (H⁺)"</span>
+          </div>
+          <div class="lone-pair-sim-stage" id="lonePairSimStage">
+            <div class="sim-actions-bar">
+              <button class="btn btn-emerald btn-sm" id="injectProtonBtn">
+                <span class="btn-icon">+</span> Inject $H^+$ (Acid Attack)
+              </button>
+              <button class="btn btn-secondary btn-sm" id="resetProtonBtn">
+                Reset to Free Amine
+              </button>
+            </div>
+
+            <div class="sim-display-area" id="protonSimDisplay">
+              <!-- Animated SVG Coordinate Bond Forming Stage -->
+              <svg viewBox="0 0 380 220" class="sim-svg-canvas" id="protonSimSvg">
+                <!-- SVG dynamically drawn in JS -->
+              </svg>
+            </div>
+
+            <div class="sim-status-banner" id="protonSimStatus">
+              <span class="status-indicator-dot"></span>
+              <span id="protonStatusMsg">Neutral Amine ($R-NH_2$) with unshared $:N$ electron pair ready for donation.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: BASICITY LAB ==================== -->
+    <section class="lab-section" id="sec-basicity" data-section-title="Basicity Lab & Factors">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">05</span>
+          <div>
+            <h2 class="section-title">Basicity of Aliphatic Amines ⭐⭐⭐</h2>
+            <p class="section-subtitle">Inductive effect (+I), Solvation energy, Steric hindrance, and Medium dependence</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-basicity" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass">
+        <div class="content-grid-2">
+          <div class="theory-block">
+            <h3 class="block-heading">Aqueous Dissociation & $pK_b$</h3>
+            <p>
+              When an amine dissolves in water, it abstracts a proton from $H_2O$, generating hydroxide ions ($OH^-$):
+            </p>
+            <div class="equation-box">
+              $$R-NH_2 + H_2O \rightleftharpoons R-NH_3^+ + OH^-$$
+              <div class="eq-subtext">Base dissociation constant: $K_b = \frac{[RNH_3^+][OH^-]}{[RNH_2]}$ &bull; Higher $K_b$ = Lower $pK_b$ = <strong>Stronger Base</strong></div>
+            </div>
+
+            <h4 class="subheading mt-3">The Three Competing Factors</h4>
+            <div class="factors-grid">
+              <div class="factor-card">
+                <div class="f-num">1</div>
+                <div class="f-body">
+                  <strong>Inductive Effect (+I):</strong> Alkyl groups release electron density toward nitrogen, increasing electron density on $:N$ and stabilizing the positive charge on $RNH_3^+$.<br>
+                  <em>Order favored:</em> $3^\circ > 2^\circ > 1^\circ > NH_3$
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="f-num">2</div>
+                <div class="f-body">
+                  <strong>Solvation (Hydration):</strong> The substituted ammonium cation is stabilized in water through hydrogen bonding ($RNH_3^+$ has 3 H's, $R_2NH_2^+$ has 2 H's, $R_3NH^+$ has only 1 H).<br>
+                  <em>Order favored:</em> $1^\circ > 2^\circ > 3^\circ$
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="f-num">3</div>
+                <div class="f-body">
+                  <strong>Steric Hindrance:</strong> Bulky alkyl groups crowd the nitrogen atom, hindering incoming proton attack and hydration shells.<br>
+                  <em>Order favored:</em> $1^\circ > 2^\circ > 3^\circ$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Basicity Order Matrix & Simulator -->
+          <div class="lab-interactive-card">
+            <div class="interactive-header">
+              <h4>MDCAT Basicity Comparison Matrix</h4>
+              <span class="tag">Select Solvent Medium</span>
+            </div>
+
+            <div class="medium-tabs">
+              <button class="medium-btn active" data-medium="aqueous-methyl">Aqueous Solution (Methyl Series)</button>
+              <button class="medium-btn" data-medium="aqueous-ethyl">Aqueous Solution (Ethyl Series)</button>
+              <button class="medium-btn" data-medium="gas-phase">Gas Phase / Non-polar Solvent</button>
+            </div>
+
+            <div class="basicity-ladder-stage" id="basicityLadderStage">
+              <!-- Dynamically populated ladder in JS -->
+            </div>
+
+            <div class="basicity-summary-box" id="basicitySummaryBox">
+              <!-- Explanation updated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 6: ANILINE BASICITY & RESONANCE ==================== -->
+    <section class="lab-section" id="sec-aniline" data-section-title="Aniline Basicity & Resonance">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">06</span>
+          <div>
+            <h2 class="section-title">Aniline & Resonance Delocalization ⭐⭐⭐</h2>
+            <p class="section-subtitle">Why aromatic amines are dramatically weaker bases than aliphatic amines</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-aniline" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass content-grid-2">
+        <div class="theory-block">
+          <h3 class="block-heading">Resonance Effect in Benzenamine ($C_6H_5NH_2$)</h3>
+          <p class="lead-text">
+            <strong>Aniline ($pK_b \approx 9.4$)</strong> is millions of times weaker as a base than methylamine ($pK_b \approx 3.36$) and ammonia ($pK_b \approx 4.75$).
+          </p>
+          <div class="chain-box">
+            <span class="chain-step">Nitrogen $:N$ Lone Pair</span>
+            <span class="chain-arr">&rarr;</span>
+            <span class="chain-step">Delocalized into Benzene $\pi$-system</span>
+            <span class="chain-arr">&rarr;</span>
+            <span class="chain-step">Less Available for Proton ($H^+$)</span>
+            <span class="chain-arr">&rarr;</span>
+            <span class="chain-step highlight">Dramatically Lower Basicity</span>
+          </div>
+
+          <p class="mt-3">
+            <strong>Anilinium Ion Instability:</strong> If aniline accepts a proton, it forms the <em>anilinium cation</em> ($C_6H_5NH_3^+$), which has only <strong>2 resonance contributors</strong> (Kekulé structures of the ring), while neutral aniline has <strong>5 resonance contributors</strong>. Therefore, protonation is thermodynamically disfavored!
+          </p>
+
+          <div class="comparison-pill-row">
+            <div class="comp-pill pill-strong">
+              <span class="cp-title">Aliphatic ($CH_3NH_2$)</span>
+              <span class="cp-val">$pK_b = 3.36$</span>
+              <small>+I effect, lone pair localized on N</small>
+            </div>
+            <div class="comp-arr">&gt;</div>
+            <div class="comp-pill pill-med">
+              <span class="cp-title">Ammonia ($NH_3$)</span>
+              <span class="cp-val">$pK_b = 4.75$</span>
+              <small>No alkyl, lone pair localized</small>
+            </div>
+            <div class="comp-arr">&gt;</div>
+            <div class="comp-pill pill-weak">
+              <span class="cp-title">Aniline ($C_6H_5NH_2$)</span>
+              <span class="cp-val">$pK_b = 9.40$</span>
+              <small>Resonance delocalized into ring</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Resonance Stepper -->
+        <div class="lab-interactive-card">
+          <div class="interactive-header">
+            <h4>Aniline 5-Resonance Contributor Stepper</h4>
+            <div class="stepper-controls">
+              <button class="step-nav-btn" id="prevResStep">&larr; Prev</button>
+              <span class="step-counter" id="resStepCounter">Structure 1 of 5</span>
+              <button class="step-nav-btn" id="nextResStep">Next &rarr;</button>
+            </div>
+          </div>
+
+          <div class="resonance-stage" id="resonanceStage">
+            <svg viewBox="0 0 380 240" class="resonance-svg" id="resonanceSvg">
+              <!-- Dynamically rendered resonance structures with curved electron arrows -->
+            </svg>
+          </div>
+
+          <div class="resonance-desc-banner" id="resonanceDescBanner">
+            <strong>Structure I (Neutral Aniline):</strong> Unshared lone pair resides on Nitrogen atom attached to the benzene ring.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 7: PHYSICAL PROPERTIES ==================== -->
+    <section class="lab-section" id="sec-properties" data-section-title="Physical Properties">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">07</span>
+          <div>
+            <h2 class="section-title">Physical Properties of Amines</h2>
+            <p class="section-subtitle">Intermolecular Hydrogen Bonding, Boiling Points, and Water Solubility</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-properties" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass content-grid-3">
+        <div class="prop-feature-card">
+          <div class="pfc-icon">💧</div>
+          <h4>Hydrogen Bonding</h4>
+          <p>
+            <strong>Primary (1°) and Secondary (2°)</strong> amines possess polar $N-H$ bonds ($N^{\delta-}-H^{\delta+}$) and form intermolecular hydrogen bonds.
+          </p>
+          <div class="pfc-metric">
+            <span>H-Bond Capacity:</span>
+            <strong>1° (2 donors) &gt; 2° (1 donor) &gt; 3° (0 donors)</strong>
+          </div>
+          <small class="text-muted">Tertiary amines have no $N-H$ bond, so they cannot form H-bonds with themselves!</small>
+        </div>
+
+        <div class="prop-feature-card">
+          <div class="pfc-icon">🔥</div>
+          <h4>Boiling Points</h4>
+          <p>
+            For isomeric amines of the same molecular formula ($C_4H_{11}N$):
+          </p>
+          <div class="bp-ladder">
+            <div class="bp-bar-row">
+              <span>1° Butylamine:</span>
+              <div class="bp-bar"><div class="bp-fill" style="width: 85%;"></div></div>
+              <strong>77.8°C</strong>
+            </div>
+            <div class="bp-bar-row">
+              <span>2° Diethylamine:</span>
+              <div class="bp-bar"><div class="bp-fill" style="width: 60%;"></div></div>
+              <strong>56.3°C</strong>
+            </div>
+            <div class="bp-bar-row">
+              <span>3° Dimethylethylamine:</span>
+              <div class="bp-bar"><div class="bp-fill" style="width: 40%;"></div></div>
+              <strong>37.5°C</strong>
+            </div>
+          </div>
+          <small class="text-muted">Amines have lower B.P. than comparable Alcohols because $N-H$ is less polar than $O-H$.</small>
+        </div>
+
+        <div class="prop-feature-card">
+          <div class="pfc-icon">🧪</div>
+          <h4>Water Solubility</h4>
+          <p>
+            Lower aliphatic amines ($C_1-C_3$) are completely miscible with water because nitrogen accepts and donates H-bonds with $H_2O$.
+          </p>
+          <div class="pfc-metric">
+            <span>Solubility Trend:</span>
+            <strong>Decreases as Alkyl chain grows ($C_6+$ insoluble)</strong>
+          </div>
+          <small class="text-muted">Amine salts ($RNH_3^+Cl^-$) are highly water-soluble ionic solids!</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 8: PREPARATION LAB ==================== -->
+    <section class="lab-section" id="sec-preparation" data-section-title="Preparation Laboratory">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">08</span>
+          <div>
+            <h2 class="section-title">Preparation of Amines Laboratory ⭐⭐⭐</h2>
+            <p class="section-subtitle">4 Master Synthetic Routes Tested in MDCAT</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-preparation" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="prep-tabs-wrapper">
+        <div class="prep-tabs-nav" id="prepTabsNav">
+          <button class="prep-tab-btn active" data-prep="nitro">1. Reduction of Nitro Compounds</button>
+          <button class="prep-tab-btn" data-prep="nitrile">2. Reduction of Nitriles (Mendius)</button>
+          <button class="prep-tab-btn" data-prep="ammonolysis">3. Hoffmann Ammonolysis</button>
+          <button class="prep-tab-btn" data-prep="gabriel">4. Gabriel Phthalimide Synthesis</button>
+        </div>
+
+        <div class="prep-tab-content-card card-glass" id="prepTabContent">
+          <!-- Dynamically populated content per tab -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 9: REACTIONS WITH ACID & NUCLEOPHILE ==================== -->
+    <section class="lab-section" id="sec-reactions-acid" data-section-title="Reactions with Acids & Nucleophilicity">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">09</span>
+          <div>
+            <h2 class="section-title">Reactions with Acids & Nucleophilicity</h2>
+            <p class="section-subtitle">Salt Formation, Acylation, Alkylation & Amide Synthesis</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-reactions-acid" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass content-grid-2">
+        <div class="theory-block">
+          <h3 class="block-heading">1. Reaction with Mineral Acids (Ammonium Salts)</h3>
+          <p>
+            Being bases, amines react exothermically with mineral acids ($HCl, H_2SO_4, HNO_3$) to form crystalline, water-soluble <strong>alkylammonium salts</strong>:
+          </p>
+          <div class="equation-box">
+            $$CH_3NH_2 + HCl \rightarrow \underset{\text{Methylammonium chloride (Ionic Salt)}}{CH_3NH_3^+ Cl^-}$$
+          </div>
+          <p class="sub-note">
+            <strong>Acid-Base Extraction Application:</strong> Insoluble organic amines can be extracted into an aqueous acid layer as $RNH_3^+Cl^-$, and regenerated by adding strong base ($NaOH$):
+            $$RNH_3^+Cl^- + NaOH \rightarrow RNH_2\downarrow + NaCl + H_2O$$
+          </p>
+
+          <h3 class="block-heading mt-4">2. Acylation (Reaction with Acyl Chlorides)</h3>
+          <p>
+            1° and 2° amines attack acid chlorides or anhydrides via nucleophilic acyl substitution to form <strong>N-substituted amides</strong>:
+          </p>
+          <div class="equation-box">
+            $$CH_3COCl + C_6H_5NH_2 \xrightarrow{\text{Base}} \underset{\text{Acetanilide (Amide)}}{C_6H_5NHCOCH_3} + HCl$$
+          </div>
+          <div class="tip-box">
+            <strong>MDCAT Protection Strategy:</strong> Aniline's $-NH_2$ group is strongly activating and undergoes polyhalogenation. Acetylation to acetanilide tempers activating power, allowing monobromination at the para position!
+          </div>
+        </div>
+
+        <!-- Interactive Acylation & Salt Simulation -->
+        <div class="lab-interactive-card">
+          <div class="interactive-header">
+            <h4>Reaction Selector & Visualizer</h4>
+            <div class="reaction-sub-tabs">
+              <button class="rx-tab active" data-rx="acid-salt">Amine + HCl</button>
+              <button class="rx-tab" data-rx="acylation">Amine + Acetyl Chloride</button>
+              <button class="rx-tab" data-rx="carbylamine">Carbylamine Test ($CHCl_3$)</button>
+            </div>
+          </div>
+          <div class="rx-visual-stage" id="rxVisualStage">
+            <!-- Dynamic reaction diagram and animations -->
+          </div>
+          <div class="rx-info-box" id="rxInfoBox">
+            <!-- Reaction summary text -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 10: NITROUS ACID LAB ==================== -->
+    <section class="lab-section" id="sec-nitrous-acid" data-section-title="Nitrous Acid Reaction Tree">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">10</span>
+          <div>
+            <h2 class="section-title">Nitrous Acid ($HNO_2$) Differential Lab ⭐⭐⭐</h2>
+            <p class="section-subtitle">How 1° Aliphatic, 1° Aromatic, 2°, and 3° Amines behave with in-situ $HNO_2$</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-nitrous-acid" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass">
+        <div class="alert-box alert-info">
+          <div class="alert-icon">💡</div>
+          <div class="alert-content">
+            <strong>IN SITU REAGENT GENERATION:</strong> Nitrous acid is unstable and prepared in situ by reacting Sodium Nitrite with Hydrochloric Acid:
+            <code>NaNO₂ + HCl &rarr; HNO₂ + NaCl</code>
+          </div>
+        </div>
+
+        <!-- Interactive 4-Way Reaction Tree -->
+        <div class="nitrous-tree-container mt-4">
+          <div class="tree-root-card">
+            <div class="root-badge">STARTING REAGENT</div>
+            <h3>Amine Class + $NaNO_2 / HCl$</h3>
+            <p>Click any amine class below to observe the distinct chemical behavior and gas evolution:</p>
+          </div>
+
+          <div class="tree-branches-grid">
+            <!-- Branch 1: 1° Aliphatic -->
+            <div class="branch-card" id="branch1Aliphatic">
+              <div class="branch-header bg-cyan-light">
+                <span class="class-tag">1° Aliphatic Amine</span>
+                <h4>$R-NH_2$ (e.g. $CH_3CH_2NH_2$)</h4>
+              </div>
+              <div class="branch-body">
+                <div class="outcome-badge alert-danger">Rapid Decomposition</div>
+                <p>Forms an unstable diazonium intermediate that decomposes immediately at room temperature:</p>
+                <div class="code-equation">
+                  $R-NH_2 + HNO_2 \rightarrow [R-N_2^+] \rightarrow R-OH + \mathbf{N_2\uparrow} + H_2O$
+                </div>
+                <div class="obs-tag">
+                  <strong>Observation:</strong> Brisk effervescence of odorless, colorless $N_2$ gas + Alcohol formed.
+                </div>
+              </div>
+            </div>
+
+            <!-- Branch 2: 1° Aromatic -->
+            <div class="branch-card highlight-branch" id="branch1Aromatic">
+              <div class="branch-header bg-purple-light">
+                <span class="class-tag">1° Aromatic Amine</span>
+                <h4>$Ar-NH_2$ (Aniline, $C_6H_5NH_2$)</h4>
+              </div>
+              <div class="branch-body">
+                <div class="outcome-badge alert-success">Stable Diazotization (0–5°C)</div>
+                <p>Forms a resonance-stabilized <strong>Arenediazonium Salt</strong>:</p>
+                <div class="code-equation">
+                  $C_6H_5NH_2 + NaNO_2 + 2HCl \xrightarrow{0-5^\circ C} \mathbf{C_6H_5N_2^+ Cl^-} + NaCl + 2H_2O$
+                </div>
+                <div class="obs-tag">
+                  <strong>Observation:</strong> Clear cold solution of Benzenediazonium chloride.
+                </div>
+              </div>
+            </div>
+
+            <!-- Branch 3: 2° Amines -->
+            <div class="branch-card" id="branch2Secondary">
+              <div class="branch-header bg-amber-light">
+                <span class="class-tag">2° Amines (Aliph / Arom)</span>
+                <h4>$R_2NH$ (e.g. $(CH_3)_2NH$)</h4>
+              </div>
+              <div class="branch-body">
+                <div class="outcome-badge alert-warning">Yellow Oily Layer</div>
+                <p>Undergoes N-nitrosation to form insoluble, yellow, carcinogenic <strong>N-Nitrosoamines</strong>:</p>
+                <div class="code-equation">
+                  $R_2NH + HONO \rightarrow \mathbf{R_2N-N=O} \text{ (yellow oil)} + H_2O$
+                </div>
+                <div class="obs-tag">
+                  <strong>Observation:</strong> Yellow oily liquid separates (no $N_2$ gas evolved!).
+                </div>
+              </div>
+            </div>
+
+            <!-- Branch 4: 3° Amines -->
+            <div class="branch-card" id="branch3Tertiary">
+              <div class="branch-header bg-emerald-light">
+                <span class="class-tag">3° Amines (Aliphatic)</span>
+                <h4>$R_3N$ (e.g. $(CH_3)_3N$)</h4>
+              </div>
+              <div class="branch-body">
+                <div class="outcome-badge alert-info">Soluble Nitrite Salt</div>
+                <p>No H on nitrogen to lose; simply acts as base to form water-soluble <strong>trialkylammonium nitrite</strong>:</p>
+                <div class="code-equation">
+                  $R_3N + HNO_2 \rightleftharpoons \mathbf{[R_3NH]^+ NO_2^-} \text{ (soluble)}$
+                </div>
+                <div class="obs-tag">
+                  <strong>Observation:</strong> Dissolves into a clear solution; upon warming, decomposes into nitrosoamine + alcohol.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 11: DIAZOTIZATION LAB ==================== -->
+    <section class="lab-section" id="sec-diazotization" data-section-title="Diazotization Lab (0–5°C)">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">11</span>
+          <div>
+            <h2 class="section-title">Diazotization Lab (0–5°C) ⭐⭐⭐</h2>
+            <p class="section-subtitle">The Crown Jewel of Nitrogen Organic Chemistry for MDCAT</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-diazotization" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass content-grid-2">
+        <div class="theory-block">
+          <h3 class="block-heading">What is Diazotization?</h3>
+          <p class="lead-text">
+            <strong>Diazotization</strong> is the process of converting a primary aromatic amine ($Ar-NH_2$) into an arenediazonium salt ($Ar-N_2^+ X^-$) by reaction with cold nitrous acid ($NaNO_2 + HCl$) at <strong>0°C to 5°C</strong>.
+          </p>
+
+          <div class="reaction-highlight-card">
+            <div class="rh-equation">
+              $$C_6H_5NH_2 + NaNO_2 + 2HCl \xrightarrow{\mathbf{0-5^\circ C \text{ (Ice Bath)}}} C_6H_5N_2^+ Cl^- + NaCl + 2H_2O$$
+            </div>
+            <div class="rh-labels">
+              <span>Aniline (Base)</span>
+              <span>+</span>
+              <span>Sodium Nitrite + HCl</span>
+              <span>&rarr;</span>
+              <span><strong>Benzenediazonium Chloride</strong></span>
+            </div>
+          </div>
+
+          <h4 class="subheading mt-3">Why Is Strict Ice-Cold Temperature (0–5°C) Mandatory?</h4>
+          <ul class="bullet-list-styled">
+            <li>
+              <strong>Aryl Diazonium Salts are Thermally Labile:</strong> Above $5^\circ C$ or $10^\circ C$, the diazonium group $-N_2^+$ rapidly hydrolyzes with water, releasing nitrogen gas and producing <strong>Phenol</strong> and gummy brown resinous tars:
+              $$C_6H_5N_2^+Cl^- + H_2O \xrightarrow{> 10^\circ C} C_6H_5OH + N_2\uparrow + HCl$$
+            </li>
+            <li>
+              <strong>Preserving the Intermediate:</strong> Diazonium salts are rarely isolated dry because solid diazonium salts are explosive shock-sensitive powders! They are always kept in cold aqueous solution and used immediately.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Interactive Reaction Flask & Temperature Controller Simulator -->
+        <div class="lab-interactive-card">
+          <div class="interactive-header">
+            <h4>Diazotization Temperature Chamber</h4>
+            <span class="tag">Simulate Ice Bath Control</span>
+          </div>
+
+          <div class="diazotization-sim-stage">
+            <div class="temp-slider-control">
+              <div class="slider-labels">
+                <span>Reaction Flask Temp:</span>
+                <strong id="tempDisplayVal" class="temp-val-tag">0°C (Ice Cold)</strong>
+              </div>
+              <input type="range" id="tempSlider" min="0" max="30" value="2" step="1" class="temp-range-input">
+              <div class="temp-ticks">
+                <span class="tick optimal">0°C (Ice)</span>
+                <span class="tick optimal">5°C (Upper Limit)</span>
+                <span class="tick warning">15°C (Warm)</span>
+                <span class="tick danger">30°C (Room Temp)</span>
+              </div>
+            </div>
+
+            <!-- Animated Flask SVG -->
+            <div class="flask-visual-container" id="flaskVisualContainer">
+              <svg viewBox="0 0 340 220" class="flask-svg" id="flaskSvg">
+                <!-- SVG dynamically drawn in JS -->
+              </svg>
+            </div>
+
+            <div class="flask-status-card" id="flaskStatusCard">
+              <div class="status-badge status-good" id="flaskStatusBadge">✓ OPTIMAL DIAZOTIZATION (0–5°C)</div>
+              <p id="flaskStatusText">Benzenediazonium chloride is stable in aqueous solution. Ready for Sandmeyer or Azo coupling reactions!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 12: SANDMEYER REACTION MAP ==================== -->
+    <section class="lab-section" id="sec-sandmeyer" data-section-title="Sandmeyer & Diazonium Replacement">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">12</span>
+          <div>
+            <h2 class="section-title">Sandmeyer & Diazonium Replacement Map ⭐⭐⭐</h2>
+            <p class="section-subtitle">Synthetic Gateway: Replacing $-N_2^+$ with $-Cl, -Br, -CN, -I, -F, -OH, -H$</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-sandmeyer" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass">
+        <div class="lead-text mb-3">
+          The Arenediazonium ion ($Ar-N_2^+$) is the most versatile intermediate in organic synthesis because nitrogen gas ($N_2$) is one of the best leaving groups in chemistry.
+        </div>
+
+        <!-- Interactive Sandmeyer Branching Node Map -->
+        <div class="sandmeyer-map-workspace">
+          <div class="sandmeyer-hub-card">
+            <div class="hub-badge">CENTRAL HUB</div>
+            <h3>$[C_6H_5N_2^+ Cl^-]$</h3>
+            <p>Benzenediazonium Chloride</p>
+            <span class="hub-hint">Click any synthetic branch below:</span>
+          </div>
+
+          <div class="sandmeyer-branches-grid" id="sandmeyerBranchesGrid">
+            <!-- Branch 1: CuCl / HCl -->
+            <button class="sm-branch-btn active" data-branch="cucl">
+              <div class="sm-tag">Sandmeyer</div>
+              <div class="sm-reagent">$Cu_2Cl_2 / HCl$</div>
+              <div class="sm-arrow">&darr;</div>
+              <div class="sm-product">Chlorobenzene ($C_6H_5Cl$)</div>
+            </button>
+
+            <!-- Branch 2: CuBr / HBr -->
+            <button class="sm-branch-btn" data-branch="cubr">
+              <div class="sm-tag">Sandmeyer</div>
+              <div class="sm-reagent">$Cu_2Br_2 / HBr$</div>
+              <div class="sm-arrow">&darr;</div>
+              <div class="sm-product">Bromobenzene ($C_6H_5Br$)</div>
+            </button>
+
+            <!-- Branch 3: CuCN / KCN -->
+            <button class="sm-branch-btn" data-branch="cucn">
+              <div class="sm-tag">Sandmeyer</div>
+              <div class="sm-reagent">$Cu_2(CN)_2 / KCN$</div>
+              <div class="sm-arrow">&darr;</div>
+              <div class="sm-product">Benzonitrile ($C_6H_5CN$)</div>
+            </button>
+
+            <!-- Branch 4: KI (No Copper needed!) -->
+            <button class="sm-branch-btn" data-branch="ki">
+              <div class="sm-tag">Direct Substitution</div>
+              <div class="sm-reagent">$KI \text{ (Warm)}$</div>
+              <div class="sm-arrow">&darr;</div>
+              <div class="sm-product">Iodobenzene ($C_6H_5I$)</div>
+            </button>
+
+            <!-- Branch 5: HBF4 / Heat (Schiemann) -->
+            <button class="sm-branch-btn" data-branch="hbf4">
+              <div class="sm-tag">Schiemann</div>
+              <div class="sm-reagent">$HBF_4 \xrightarrow{\Delta}$</div>
+              <div class="sm-arrow">&darr;</div>
+              <div class="sm-product">Fluorobenzene ($C_6H_5F$)</div>
+            </button>
+
+            <!-- Branch 6: H2O / Heat (Hydrolysis) -->
+            <button class="sm-branch-btn" data-branch="h2o">
+              <div class="sm-tag">Hydrolysis</div>
+              <div class="sm-reagent">$H_2O \xrightarrow{\Delta \text{ Warm}}$</div>
+              <div class="sm-arrow">&darr;</div>
+              <div class="sm-product">Phenol ($C_6H_5OH$)</div>
+            </button>
+
+            <!-- Branch 7: H3PO2 or CH3CH2OH (Deamination) -->
+            <button class="sm-branch-btn" data-branch="h3po2">
+              <div class="sm-tag">Deamination (Reduction)</div>
+              <div class="sm-reagent">$H_3PO_2 + H_2O \text{ or } EtOH$</div>
+              <div class="sm-arrow">&darr;</div>
+              <div class="sm-product">Benzene ($C_6H_6$)</div>
+            </button>
+          </div>
+
+          <!-- Dynamic Branch Detail Panel -->
+          <div class="sm-detail-panel" id="smDetailPanel">
+            <!-- Dynamically populated in JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 13: AZO COUPLING LAB ==================== -->
+    <section class="lab-section" id="sec-azo-coupling" data-section-title="Azo Coupling Lab (Dyes)">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">13</span>
+          <div>
+            <h2 class="section-title">Azo Coupling Lab (Dye Synthesis) ⭐⭐</h2>
+            <p class="section-subtitle">Electrophilic Aromatic Substitution yielding vibrant $-N=N-$ Azo Chromophores</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-azo-coupling" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass content-grid-2">
+        <div class="theory-block">
+          <h3 class="block-heading">What is Azo Coupling?</h3>
+          <p class="lead-text">
+            Arenediazonium cations act as relatively weak <strong>electrophiles</strong> and attack electron-rich activated aromatic rings (such as <strong>Phenols</strong> and <strong>Aromatic Amines</strong>) at the <em>para</em>-position (or <em>ortho</em> if para is blocked) to form intensely colored <strong>Azo Compounds</strong> ($Ar-N=N-Ar'$).
+          </p>
+
+          <div class="chromophore-card">
+            <div class="cc-title">The Azo Chromophore Group</div>
+            <div class="cc-formula">$-N=N-$</div>
+            <p>The extended conjugation between both aromatic rings through the $-N=N-$ bridge lowers the HOMO-LUMO $\pi \rightarrow \pi^*$ gap, allowing absorption of visible light and reflecting brilliant orange, yellow, and red colors!</p>
+          </div>
+
+          <div class="ph-rules-table mt-3">
+            <h4 class="subheading">Crucial pH Conditions for Coupling</h4>
+            <div class="table-responsive">
+              <table class="lab-table">
+                <thead>
+                  <tr>
+                    <th>Coupling Partner</th>
+                    <th>Medium Required</th>
+                    <th>Optimal pH</th>
+                    <th>Why This pH?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Phenol ($C_6H_5OH$)</strong></td>
+                    <td>Mildly Alkaline</td>
+                    <td>$pH \approx 9 - 10$</td>
+                    <td>Generates strongly activated phenoxide ion ($C_6H_5O^-$).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Aniline ($C_6H_5NH_2$)</strong></td>
+                    <td>Mildly Acidic</td>
+                    <td>$pH \approx 4 - 5$</td>
+                    <td>Prevents protonation to deactivating anilinium while activating coupling.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Azo Dye Synthesis Simulator -->
+        <div class="lab-interactive-card">
+          <div class="interactive-header">
+            <h4>Azo Dye Coupling Simulator</h4>
+            <span class="tag">Select Coupling Partner</span>
+          </div>
+
+          <div class="azo-sim-controls">
+            <button class="azo-partner-btn active" data-partner="phenol">
+              Phenol &rarr; <strong>p-Hydroxyazobenzene (Orange Dye)</strong>
+            </button>
+            <button class="azo-partner-btn" data-partner="aniline">
+              Aniline &rarr; <strong>p-Aminoazobenzene (Yellow Dye)</strong>
+            </button>
+            <button class="azo-partner-btn" data-partner="naphthol">
+              2-Naphthol &rarr; <strong>Sudan I (Scarlet Red Dye)</strong>
+            </button>
+          </div>
+
+          <div class="azo-vessel-stage" id="azoVesselStage">
+            <!-- Animated Dye Color Change Flask rendered by JS -->
+          </div>
+
+          <div class="azo-rx-description" id="azoRxDesc">
+            <!-- Dynamically populated equation & explanation -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 14: HINSBERG TEST LAB ==================== -->
+    <section class="lab-section" id="sec-hinsberg" data-section-title="Hinsberg Test Lab">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">14</span>
+          <div>
+            <h2 class="section-title">The Hinsberg Test Lab ⭐⭐⭐</h2>
+            <p class="section-subtitle">Distinguish 1°, 2°, and 3° Amines using Benzenesulfonyl Chloride</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-hinsberg" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass">
+        <div class="reagent-info-banner">
+          <div class="rib-icon">🧪</div>
+          <div>
+            <strong>Hinsberg Reagent:</strong> Benzenesulfonyl chloride ($C_6H_5SO_2Cl$) + Aqueous $KOH / NaOH$.
+            <p class="mb-0">This test relies on whether the resulting sulfonamide contains an <strong>acidic hydrogen atom attached to the sulfonamide nitrogen</strong>.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Hinsberg Test Bench with 3 Test Tubes -->
+        <div class="hinsberg-workbench mt-4">
+          <div class="hinsberg-step-actions">
+            <span>Step 1: Choose Amine Class to Test:</span>
+            <div class="hinsberg-tube-select">
+              <button class="htube-btn active" data-tube="1deg">Test Tube A: Primary (1°) Amine ($CH_3CH_2NH_2$)</button>
+              <button class="htube-btn" data-tube="2deg">Test Tube B: Secondary (2°) Amine ($(CH_3)_2NH$)</button>
+              <button class="htube-btn" data-tube="3deg">Test Tube C: Tertiary (3°) Amine ($(CH_3)_3N$)</button>
+            </div>
+          </div>
+
+          <div class="hinsberg-stage-grid">
+            <div class="test-tube-visual" id="hinsbergTubeVisual">
+              <!-- Animated Test Tube SVG in JS -->
+            </div>
+
+            <div class="hinsberg-reagents-panel">
+              <div class="action-buttons-group">
+                <button class="btn btn-primary btn-sm" id="btnHinsbergReagent">1. Add $C_6H_5SO_2Cl + KOH$</button>
+                <button class="btn btn-amber btn-sm" id="btnHinsbergAcid">2. Add Concentrated $HCl$ (Acidify)</button>
+                <button class="btn btn-secondary btn-sm" id="btnHinsbergReset">Reset Test</button>
+              </div>
+
+              <div class="hinsberg-outcome-box" id="hinsbergOutcomeBox">
+                <!-- Dynamically populated chemical explanation -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 15: 1° vs 2° vs 3° MATRIX ==================== -->
+    <section class="lab-section" id="sec-comparison" data-section-title="1° vs 2° vs 3° Master Comparison">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">15</span>
+          <div>
+            <h2 class="section-title">Master Comparison Matrix ⭐⭐⭐</h2>
+            <p class="section-subtitle">Comprehensive side-by-side diagnostic parameters for 1°, 2°, 3° & Aromatic Amines</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-comparison" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass">
+        <div class="table-responsive">
+          <table class="lab-table comparison-matrix-table">
+            <thead>
+              <tr>
+                <th>Property / Test</th>
+                <th>Primary (1°) Amine</th>
+                <th>Secondary (2°) Amine</th>
+                <th>Tertiary (3°) Amine</th>
+                <th>Aromatic (Aniline)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>General Formula</strong></td>
+                <td><code>R-NH₂</code></td>
+                <td><code>R₂-NH</code></td>
+                <td><code>R₃-N</code></td>
+                <td><code>Ar-NH₂ (C₆H₅NH₂)</code></td>
+              </tr>
+              <tr>
+                <td><strong>Carbons on Nitrogen</strong></td>
+                <td><span class="badge badge-cyan">1 Carbon Group</span></td>
+                <td><span class="badge badge-emerald">2 Carbon Groups</span></td>
+                <td><span class="badge badge-purple">3 Carbon Groups</span></td>
+                <td><span class="badge badge-amber">1 Aryl Group</span></td>
+              </tr>
+              <tr>
+                <td><strong>N-H Bonds Present</strong></td>
+                <td>2 $N-H$ bonds</td>
+                <td>1 $N-H$ bond</td>
+                <td><strong>0 $N-H$ bonds</strong></td>
+                <td>2 $N-H$ bonds</td>
+              </tr>
+              <tr>
+                <td><strong>Intermolecular H-Bonding</strong></td>
+                <td>Strong (2 donors)</td>
+                <td>Moderate (1 donor)</td>
+                <td><strong>None</strong> (no donor H)</td>
+                <td>Moderate</td>
+              </tr>
+              <tr>
+                <td><strong>Boiling Point Trend</strong></td>
+                <td>Highest among isomers</td>
+                <td>Intermediate</td>
+                <td>Lowest among isomers</td>
+                <td>High (184°C due to ring)</td>
+              </tr>
+              <tr>
+                <td><strong>Reaction with $HNO_2$</strong></td>
+                <td>$N_2\uparrow$ effervescence + Alcohol</td>
+                <td>Yellow oily nitrosoamine ($R_2N-NO$)</td>
+                <td>Water-soluble nitrite salt</td>
+                <td><strong>Diazonium Salt ($0-5^\circ C$)</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Hinsberg Test ($C_6H_5SO_2Cl$)</strong></td>
+                <td>Soluble in $KOH$; precipitates with $HCl$</td>
+                <td>Insoluble in $KOH$; unchanged with $HCl$</td>
+                <td>No reaction with reagent; dissolves in $HCl$</td>
+                <td>Soluble in $KOH$; precipitates with $HCl$</td>
+              </tr>
+              <tr>
+                <td><strong>Carbylamine Test ($CHCl_3 + KOH$)</strong></td>
+                <td><span class="badge badge-emerald">Positive</span> (Extremely foul isocyanide $R-NC$)</td>
+                <td><span class="badge badge-danger">Negative</span> (No reaction)</td>
+                <td><span class="badge badge-danger">Negative</span> (No reaction)</td>
+                <td><span class="badge badge-emerald">Positive</span> (Phenyl isocyanide $C_6H_5NC$)</td>
+              </tr>
+              <tr>
+                <td><strong>Basicity ($pK_b$)</strong></td>
+                <td>Strong base ($pK_b \sim 3.3$)</td>
+                <td><strong>Strongest in aqueous</strong> ($pK_b \sim 3.2$)</td>
+                <td>Moderate ($pK_b \sim 4.2$)</td>
+                <td><strong>Very Weak</strong> ($pK_b \approx 9.4$)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 16: MASTER REACTION MAP ==================== -->
+    <section class="lab-section" id="sec-master-reaction-map" data-section-title="Master Reaction Flowchart">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">16</span>
+          <div>
+            <h2 class="section-title">Master Interactive Reaction Map ⭐⭐⭐</h2>
+            <p class="section-subtitle">Complete Nitrogen Synthetic Network. Click any reaction node for full mechanism & tips.</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-master-reaction-map" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass">
+        <div class="reaction-map-container" id="reactionMapContainer">
+          <!-- Flowchart SVG Canvas -->
+          <svg viewBox="0 0 880 540" class="master-flow-svg" id="masterFlowSvg">
+            <!-- Rendered by JS -->
+          </svg>
+        </div>
+
+        <!-- Flowchart Node Modal / Drawer -->
+        <div class="node-details-drawer" id="nodeDetailsDrawer" style="display: none;">
+          <div class="nd-header">
+            <h4 id="ndTitle">Reaction Title</h4>
+            <button class="close-btn" id="closeNodeDrawerBtn">&times;</button>
+          </div>
+          <div class="nd-body" id="ndBody">
+            <!-- Dynamic Details -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 17: MDCAT GOLDEN WALL ==================== -->
+    <section class="lab-section" id="sec-golden-wall" data-section-title="MDCAT Golden Points Wall">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">17</span>
+          <div>
+            <h2 class="section-title">MDCAT Golden Points Wall ⭐⭐⭐</h2>
+            <p class="section-subtitle">The "Last 5 Minutes Before the Exam" High-Yield Revision Matrix</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-golden-wall" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="golden-wall-grid">
+        <div class="golden-card gc-emerald">
+          <div class="gc-num">01</div>
+          <h4>Classification Criterion</h4>
+          <p>Count alkyl/aryl groups attached <strong>directly to Nitrogen</strong>, NOT total carbon count in the molecule!</p>
+          <div class="gc-badge">tert-Butylamine = 1° Amine!</div>
+        </div>
+
+        <div class="golden-card gc-cyan">
+          <div class="gc-num">02</div>
+          <h4>Basicity Origin</h4>
+          <p>Amines are Lewis & Brønsted bases due to the <strong>unshared lone pair of electrons ($:N$)</strong> on Nitrogen.</p>
+          <div class="gc-badge">Donates $e^-$ pair to $H^+$</div>
+        </div>
+
+        <div class="golden-card gc-purple">
+          <div class="gc-num">03</div>
+          <h4>Aniline Weak Basicity</h4>
+          <p>Aniline is $\approx 10^6\times$ weaker than aliphatic amines due to <strong>resonance delocalization of lone pair</strong> into benzene ring.</p>
+          <div class="gc-badge">$pK_b \approx 9.40$</div>
+        </div>
+
+        <div class="golden-card gc-amber">
+          <div class="gc-num">04</div>
+          <h4>Diazotization Temperature</h4>
+          <p>Must be strictly carried out at <strong>0°C to 5°C (Ice Bath)</strong> with $NaNO_2 + HCl$. Above 10°C, it decomposes to Phenol + $N_2\uparrow$.</p>
+          <div class="gc-badge">0–5°C Mandatory</div>
+        </div>
+
+        <div class="golden-card gc-rose">
+          <div class="gc-num">05</div>
+          <h4>Sandmeyer vs Direct Reagents</h4>
+          <p>$-Cl, -Br, -CN$ require cuprous salts ($Cu_2X_2$), whereas <strong>$-I$ requires only warm aqueous $KI$ (no catalyst!)</strong>.</p>
+          <div class="gc-badge">$KI$ needs no Copper</div>
+        </div>
+
+        <div class="golden-card gc-blue">
+          <div class="gc-num">06</div>
+          <h4>Azo Chromophore</h4>
+          <p>Azo dyes contain the <strong>$-N=N-$ azo linkage</strong> linking two aromatic systems, providing vivid colored pigments.</p>
+          <div class="gc-badge">Phenol &rarr; Orange | Aniline &rarr; Yellow</div>
+        </div>
+
+        <div class="golden-card gc-indigo">
+          <div class="gc-num">07</div>
+          <h4>Hinsberg Test Differentiation</h4>
+          <p>1° sulfonamide = Soluble in alkali ($KOH$).<br>2° sulfonamide = Insoluble in alkali.<br>3° amine = Does NOT react with reagent!</p>
+          <div class="gc-badge">Acidic N-H is the key</div>
+        </div>
+
+        <div class="golden-card gc-teal">
+          <div class="gc-num">08</div>
+          <h4>Carbylamine Test</h4>
+          <p>Only <strong>1° amines (aliphatic & aromatic)</strong> react with $CHCl_3 + alcoholic\ KOH$ to form offensive smelling <strong>Isocyanide ($R-NC$)</strong>.</p>
+          <div class="gc-badge">2° & 3° give negative test</div>
+        </div>
+
+        <div class="golden-card gc-orange">
+          <div class="gc-num">09</div>
+          <h4>Gabriel Phthalimide Limitation</h4>
+          <p>Gabriel synthesis is exclusively used for <strong>1° Aliphatic Amines</strong>. Aryl halides cannot be used (no $S_NAr$).</p>
+          <div class="gc-badge">No Aniline via Gabriel</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 18: FLASHCARDS ==================== -->
+    <section class="lab-section" id="sec-flashcards" data-section-title="Interactive Flashcards (30+ Cards)">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">18</span>
+          <div>
+            <h2 class="section-title">Interactive Flashcards Deck (30+ Cards)</h2>
+            <p class="section-subtitle">Active Recall with Spaced Repetition & Flip Mechanics</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-flashcards" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass">
+        <div class="flashcards-top-bar">
+          <div class="fc-filter-group" id="fcFilterGroup">
+            <button class="fc-filter-btn active" data-category="all">All (30)</button>
+            <button class="fc-filter-btn" data-category="basics">Basics & Structure</button>
+            <button class="fc-filter-btn" data-category="basicity">Basicity & Aniline</button>
+            <button class="fc-filter-btn" data-category="preparation">Preparations</button>
+            <button class="fc-filter-btn" data-category="diazonium">Diazonium & Sandmeyer</button>
+            <button class="fc-filter-btn" data-category="tests">Tests & Reactions</button>
+          </div>
+          <div class="fc-stats">
+            <span>Card <strong id="fcCurrentIndex">1</strong> of <strong id="fcTotalCount">30</strong></span>
+            <span class="fc-mastered-tag">Mastered: <strong id="fcMasteredCount">0</strong></span>
+          </div>
+        </div>
+
+        <!-- 3D Flipping Card Stage -->
+        <div class="flashcard-stage-container">
+          <div class="flashcard-3d-wrapper" id="flashcardElement" tabindex="0" role="button" aria-label="Flashcard - click to flip">
+            <div class="flashcard-inner" id="flashcardInner">
+              <!-- FRONT -->
+              <div class="flashcard-face flashcard-front">
+                <div class="fc-card-header">
+                  <span class="fc-tag" id="fcCategoryTag">Basics & Structure</span>
+                  <span class="fc-flip-hint">Click / Press Space to Flip 🔄</span>
+                </div>
+                <div class="fc-body">
+                  <div class="fc-q-label">QUESTION:</div>
+                  <h3 class="fc-question-text" id="fcQuestionText">What is the functional group and structural definition of an Amine?</h3>
+                </div>
+                <div class="fc-card-footer">
+                  <span class="fc-difficulty" id="fcDifficulty">High-Yield MDCAT</span>
+                </div>
+              </div>
+
+              <!-- BACK -->
+              <div class="flashcard-face flashcard-back">
+                <div class="fc-card-header">
+                  <span class="fc-tag back-tag">ANSWER EXPLANATION</span>
+                  <span class="fc-flip-hint">Click to Flip Back 🔄</span>
+                </div>
+                <div class="fc-body">
+                  <div class="fc-a-label">ANSWER:</div>
+                  <div class="fc-answer-text" id="fcAnswerText">
+                    Amines are organic derivatives of ammonia ($NH_3$) where 1, 2, or 3 H atoms are replaced by alkyl or aryl groups. Functional groups: $-NH_2$ (1°), $-NH-$ (2°), $-N<$ (3°), each containing an active lone pair of electrons on nitrogen.
+                  </div>
+                </div>
+                <div class="fc-card-footer">
+                  <span class="fc-tip-label">💡 MDCAT Tip: Count carbons on N!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard Nav Controls -->
+        <div class="fc-bottom-controls">
+          <button class="btn btn-secondary" id="fcPrevBtn">&larr; Previous</button>
+          <div class="fc-mastery-actions">
+            <button class="btn btn-danger btn-sm" id="fcNeedsReviewBtn">Needs Review ❌</button>
+            <button class="btn btn-emerald btn-sm" id="fcGotItBtn">Got It! Mastered ✓</button>
+          </div>
+          <button class="btn btn-secondary" id="fcNextBtn">Next &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 19: MDCAT QUIZ ==================== -->
+    <section class="lab-section" id="sec-quiz" data-section-title="MDCAT 30 MCQs Quiz">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">19</span>
+          <div>
+            <h2 class="section-title">MDCAT Full Chapter Quiz (30 MCQs)</h2>
+            <p class="section-subtitle">Real exam format with timer, instant explanation, score analysis & wrong answer review</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-quiz" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass">
+        <!-- Quiz Intro / Dashboard Bar -->
+        <div class="quiz-top-bar">
+          <div class="quiz-progress-track">
+            <div class="quiz-progress-fill" id="quizProgressFill" style="width: 3.33%;"></div>
+          </div>
+          <div class="quiz-meta-row">
+            <span>Question <strong id="quizCurrentNum">1</strong> of <strong id="quizTotalNum">30</strong></span>
+            <div class="quiz-timer-pill" id="quizTimerPill">
+              <svg viewBox="0 0 20 20" fill="currentColor" class="timer-icon"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+              <span id="quizTimerText">00:00</span>
+            </div>
+            <span>Current Score: <strong id="quizLiveScore">0</strong></span>
+          </div>
+        </div>
+
+        <!-- Quiz Question Container -->
+        <div class="quiz-question-card" id="quizQuestionCard">
+          <div class="quiz-topic-badge" id="quizTopicBadge">Classification & Structure</div>
+          <h3 class="quiz-question-text" id="quizQuestionText">Which of the following compounds is classified as a primary (1°) amine?</h3>
+
+          <div class="quiz-options-list" id="quizOptionsList">
+            <!-- Dynamically populated in JS -->
+          </div>
+
+          <!-- Explanation Panel (Shown after answer) -->
+          <div class="quiz-explanation-box" id="quizExplanationBox" style="display: none;">
+            <div class="expl-header" id="quizExplHeader">✓ Correct!</div>
+            <div class="expl-body" id="quizExplBody"></div>
+            <button class="btn btn-primary btn-sm mt-3" id="quizNextQuestionBtn">Next Question &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Quiz Final Summary Screen (Hidden by default) -->
+        <div class="quiz-summary-screen" id="quizSummaryScreen" style="display: none;">
+          <div class="summary-hero">
+            <div class="summary-trophy-icon" id="summaryTrophy">🏆</div>
+            <h2 id="summaryPerformanceTitle">Mastery Achieved!</h2>
+            <p id="summaryScoreSub">You scored <strong id="finalScoreVal">28</strong> out of <strong>30</strong> (<span id="finalPercentVal">93.3%</span>)</p>
+          </div>
+
+          <div class="summary-stats-grid">
+            <div class="stat-card stat-correct">
+              <span class="sc-val" id="sumCorrectCount">28</span>
+              <span class="sc-lbl">Correct</span>
+            </div>
+            <div class="stat-card stat-wrong">
+              <span class="sc-val" id="sumWrongCount">2</span>
+              <span class="sc-lbl">Incorrect</span>
+            </div>
+            <div class="stat-card stat-time">
+              <span class="sc-val" id="sumTimeTaken">04:12</span>
+              <span class="sc-lbl">Time Taken</span>
+            </div>
+            <div class="stat-card stat-rank">
+              <span class="sc-val" id="sumRankGrade">A+ (MDCAT Ready)</span>
+              <span class="sc-lbl">Evaluation</span>
+            </div>
+          </div>
+
+          <div class="summary-actions-bar">
+            <button class="btn btn-primary" id="quizRetryBtn">Retry Quiz</button>
+            <button class="btn btn-secondary" id="quizReviewWrongBtn">Review Wrong Answers (<span id="wrongCountReview">0</span>)</button>
+          </div>
+
+          <!-- Wrong Answers Review Accordion Container -->
+          <div class="wrong-review-container" id="wrongReviewContainer" style="display: none;">
+            <h4>Wrong Answers Review</h4>
+            <div id="wrongReviewList" class="wrong-review-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 20: CALCULATOR & CHECKER ==================== -->
+    <section class="lab-section" id="sec-calculator" data-section-title="Chemistry Calculator & Checker">
+      <div class="section-header-row">
+        <div class="section-title-wrap">
+          <span class="section-num-tag">20</span>
+          <div>
+            <h2 class="section-title">Mini Chemistry Calculator & Diazotization Checker</h2>
+            <p class="section-subtitle">Real-time Molar Mass, % Composition, and Reaction Condition Diagnostic</p>
+          </div>
+        </div>
+        <button class="bookmark-btn" data-section-id="sec-calculator" title="Bookmark this section">
+          <span class="star">☆</span> Bookmark
+        </button>
+      </div>
+
+      <div class="card-glass content-grid-2">
+        <!-- Tool 1: Molar Mass Calculator -->
+        <div class="calc-card">
+          <div class="calc-header">
+            <span class="calc-icon">🧮</span>
+            <div>
+              <h4>Amine Molar Mass & Composition Calculator</h4>
+              <small>Select an amine or calculate atomic percentage</small>
+            </div>
+          </div>
+
+          <div class="calc-body">
+            <div class="form-group">
+              <label for="calcAmineSelect">Choose Sample Amine:</label>
+              <select id="calcAmineSelect" class="form-select">
+                <option value="methylamine">Methylamine (CH₃NH₂)</option>
+                <option value="ethylamine">Ethylamine (C₂H₅NH₂)</option>
+                <option value="dimethylamine">Dimethylamine ((CH₃)₂NH)</option>
+                <option value="trimethylamine">Trimethylamine ((CH₃)₃N)</option>
+                <option value="aniline">Aniline (C₆H₅NH₂)</option>
+                <option value="diethylamine">Diethylamine ((C₂H₅)₂NH)</option>
+                <option value="propylamine">Propylamine (C₃H₇NH₂)</option>
+              </select>
+            </div>
+
+            <div class="calc-results-panel" id="calcResultsPanel">
+              <div class="molar-mass-badge">
+                <span>Molar Mass:</span>
+                <strong id="calcMolarMassVal">31.06 g/mol</strong>
+              </div>
+              <div class="element-breakdown-table">
+                <div class="elem-row">
+                  <span>Carbon (C):</span>
+                  <strong id="calcCarbonPct">38.67% (12.01 g)</strong>
+                </div>
+                <div class="elem-row">
+                  <span>Hydrogen (H):</span>
+                  <strong id="calcHydrogenPct">16.24% (5.04 g)</strong>
+                </div>
+                <div class="elem-row">
+                  <span>Nitrogen (N):</span>
+                  <strong id="calcNitrogenPct">45.09% (14.01 g)</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 2: Diazotization Condition Diagnostic Engine -->
+        <div class="calc-card">
+          <div class="calc-header">
+            <span class="calc-icon">🔬</span>
+            <div>
+              <h4>Diazotization Condition Diagnostic Checker</h4>
+              <small>Validate your laboratory synthetic parameters</small>
+            </div>
+          </div>
+
+          <div class="calc-body">
+            <div class="form-group">
+              <label for="diagAmineType">Starting Amine Compound:</label>
+              <select id="diagAmineType" class="form-select">
+                <option value="aniline">Aniline (Primary Aromatic Amine)</option>
+                <option value="methylamine">Methylamine (Primary Aliphatic Amine)</option>
+                <option value="dimethylamine">Dimethylamine (Secondary Amine)</option>
+                <option value="trimethylamine">Trimethylamine (Tertiary Amine)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="diagReagents">Reagent Combination:</label>
+              <select id="diagReagents" class="form-select">
+                <option value="nano2_hcl">NaNO₂ + Excess HCl (Standard)</option>
+                <option value="hno3">Concentrated HNO₃ (Nitrating Acid)</option>
+                <option value="none">Water only</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="diagTemp">Temperature Setting:</label>
+              <select id="diagTemp" class="form-select">
+                <option value="cold">0°C – 5°C (Ice Bath)</option>
+                <option value="warm">15°C – 25°C (Room Temp)</option>
+                <option value="hot">&gt; 50°C (Boiling/Hot)</option>
+              </select>
+            </div>
+
+            <button class="btn btn-emerald w-100" id="btnRunDiagnostic">Run Chemical Diagnostic</button>
+
+            <div class="diag-output-box" id="diagOutputBox" style="display:none;">
+              <div class="diag-status" id="diagStatusTitle">✓ SUCCESSFUL DIAZOTIZATION</div>
+              <p id="diagStatusDesc" class="mb-0"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CHAPTER COMPLETION CELEBRATION ==================== -->
+    <section class="completion-section">
+      <div class="completion-card">
+        <div class="comp-icon">🎉</div>
+        <h2>Ready to Master MDCAT Amines?</h2>
+        <p>Review your progress, verify your flashcard deck, and finish the 30-MCQ test to claim full chapter completion.</p>
+        <div class="comp-btn-wrap">
+          <button class="btn btn-primary btn-lg" id="btnCompleteChapter">
+            <svg viewBox="0 0 20 20" fill="currentColor" class="btn-svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Mark Amines Chapter Complete
+          </button>
+          <button class="btn btn-secondary btn-lg" id="btnResetProgress">Reset Chapter Progress</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="backToTopBtn" class="back-to-top-btn" title="Back to Top" aria-label="Back to top">
+    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
+  </button>
+
+  <!-- CHAPTER COMPLETION MODAL -->
+  <div id="completionModal" class="modal-backdrop" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-confetti" id="modalConfetti"></div>
+      <div class="modal-trophy">🎓</div>
+      <h2>CONGRATULATIONS!</h2>
+      <h3>AMINES CHAPTER MASTERED</h3>
+      <p>You have comprehensively completed the MDCAT Nitrogen & Diazonium Chemistry Laboratory curriculum.</p>
+      <div class="modal-stats-row">
+        <div><span>Flashcards:</span> <strong>30/30</strong></div>
+        <div><span>Quiz Status:</span> <strong id="modalQuizStatus">Completed</strong></div>
+        <div><span>MDCAT Readiness:</span> <strong class="text-emerald">100%</strong></div>
+      </div>
+      <button class="btn btn-primary w-100 mt-4" id="closeModalBtn">Return to Laboratory</button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script type="module" src="/amines.js"></script>
+</body>
+</html>

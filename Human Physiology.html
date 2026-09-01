@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Physiology — MDCAT Biology Companion</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit for modern medical typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main External Stylesheet -->
+  <link rel="stylesheet" href="human physiology.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body id="top">
+
+  <!-- TOP READING PROGRESS BAR -->
+  <div class="reading-progress-container" id="readingProgressContainer">
+    <div class="reading-progress-bar" id="readingProgressBar"></div>
+  </div>
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="brand-group">
+        <a href="#top" class="brand-link" id="brandLink">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">EduNexa <span class="badge-mdcat">MDCAT</span></span>
+            <span class="brand-subtitle">Human Physiology Chapter</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Quick Search Bar -->
+      <div class="header-search-wrap" id="headerSearchWrap">
+        <div class="search-input-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="globalSearchInput" placeholder="Search Physiology (e.g. nephron, alveoli, insulin)..." aria-label="Search chapter content">
+          <button type="button" id="clearSearchBtn" class="clear-search-btn" title="Clear search" aria-label="Clear search">&times;</button>
+        </div>
+        <div id="searchResultsDropdown" class="search-dropdown hidden"></div>
+      </div>
+
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+        <button type="button" id="bookmarkDrawerBtn" class="action-btn" title="View Saved Bookmarks" aria-label="View Saved Bookmarks">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="action-label">Bookmarks</span>
+          <span id="bookmarkBadge" class="counter-badge">0</span>
+        </button>
+
+        <button type="button" id="completeChapterBtn" class="action-btn btn-completion" title="Mark Chapter Completed" aria-label="Mark Chapter as Completed">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span id="completeChapterText">Mark Complete</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- STICKY TOPIC NAVIGATION -->
+    <nav class="subnav" id="subnav" aria-label="Chapter Topics Navigation">
+      <div class="subnav-scroll-container">
+        <a href="#hero" class="subnav-item active" data-target="hero">Overview</a>
+        <a href="#intro" class="subnav-item" data-target="intro">1. Intro</a>
+        <a href="#nervous" class="subnav-item" data-target="nervous">2. Nervous</a>
+        <a href="#circulatory" class="subnav-item" data-target="circulatory">3. Circulatory</a>
+        <a href="#respiratory" class="subnav-item" data-target="respiratory">4. Respiratory</a>
+        <a href="#digestive" class="subnav-item" data-target="digestive">5. Digestive</a>
+        <a href="#urinary" class="subnav-item" data-target="urinary">6. Urinary</a>
+        <a href="#endocrine" class="subnav-item" data-target="endocrine">7. Endocrine</a>
+        <a href="#musculoskeletal" class="subnav-item" data-target="musculoskeletal">8. Musculoskeletal</a>
+        <a href="#immune" class="subnav-item" data-target="immune">9. Immune</a>
+        <a href="#high-yield" class="subnav-item highlight-tab" data-target="high-yield">🔥 High-Yield</a>
+        <a href="#revision-tables" class="subnav-item" data-target="revision-tables">📊 Tables</a>
+        <a href="#flashcards" class="subnav-item" data-target="flashcards">🃏 Flashcards</a>
+        <a href="#mini-quiz" class="subnav-item quiz-tab" data-target="mini-quiz">📝 Quiz (15)</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BOOKMARK DRAWER MODAL -->
+  <aside id="bookmarkDrawer" class="bookmark-drawer hidden" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="drawer-icon">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <h3 class="drawer-title">Bookmarked Sections</h3>
+      </div>
+      <button type="button" id="closeBookmarkDrawer" class="drawer-close-btn" aria-label="Close bookmarks">&times;</button>
+    </div>
+    <div id="bookmarkList" class="bookmark-list">
+      <!-- Populated via JS -->
+      <p class="empty-bookmark-msg">No bookmarks saved yet. Click the bookmark icon on any section to save key concepts for quick revision!</p>
+    </div>
+  </aside>
+  <div id="drawerOverlay" class="drawer-overlay hidden"></div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="page-container">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badges">
+          <span class="hero-badge badge-primary">MDCAT Biology</span>
+          <span class="hero-badge badge-teal">Concept Builder</span>
+          <span class="hero-badge badge-amber">High-Yield Essential</span>
+        </div>
+        <h1 class="hero-title">HUMAN PHYSIOLOGY</h1>
+        <p class="hero-subtitle">Understanding How the Human Body Works — Comprehensive high-yield notes, interactive anatomical simulators, revision tables, and self-assessment MCQs for medical entrance tests.</p>
+        
+        <!-- Hero Meta Stats Grid -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <span class="stat-num">9</span>
+            <span class="stat-label">Organ Systems</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">20+</span>
+            <span class="stat-label">Key Concepts</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">12</span>
+            <span class="stat-label">Interactive Flashcards</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">15</span>
+            <span class="stat-label">Practice MCQs</span>
+          </div>
+        </div>
+
+        <!-- Quick Jump Buttons -->
+        <div class="hero-cta-group">
+          <a href="#intro" class="btn btn-primary">Start Chapter Notes</a>
+          <a href="#high-yield" class="btn btn-secondary">🔥 High-Yield Facts</a>
+          <a href="#mini-quiz" class="btn btn-accent">Take Practice Quiz</a>
+        </div>
+      </div>
+
+      <!-- Human Body CSS Visual & Interactive Systems Hub -->
+      <div class="hero-visual-card">
+        <div class="visual-card-header">
+          <span class="visual-title">Body Systems Hub</span>
+          <span class="pulse-live">Interactive Model</span>
+        </div>
+        
+        <div class="human-body-canvas">
+          <!-- CSS Anatomical Silhouette & Interactive System Nodes -->
+          <div class="body-silhouette">
+            <div class="silhouette-head"></div>
+            <div class="silhouette-chest"></div>
+            <div class="silhouette-abdomen"></div>
+            <div class="silhouette-limbs"></div>
+          </div>
+
+          <!-- Pulsing Interactive System Nodes -->
+          <button type="button" class="system-node node-brain" data-target="nervous" title="Nervous System (Brain & Nerves)">
+            <span class="node-pulse"></span>
+            <span class="node-tag">🧠 Nervous</span>
+          </button>
+          <button type="button" class="system-node node-heart" data-target="circulatory" title="Circulatory System (Heart & Vessels)">
+            <span class="node-pulse"></span>
+            <span class="node-tag">❤️ Circulatory</span>
+          </button>
+          <button type="button" class="system-node node-lungs" data-target="respiratory" title="Respiratory System (Lungs & Alveoli)">
+            <span class="node-pulse"></span>
+            <span class="node-tag">🫁 Respiratory</span>
+          </button>
+          <button type="button" class="system-node node-digestive" data-target="digestive" title="Digestive System (GI Tract)">
+            <span class="node-pulse"></span>
+            <span class="node-tag">🍎 Digestive</span>
+          </button>
+          <button type="button" class="system-node node-kidneys" data-target="urinary" title="Urinary System (Kidneys & Nephrons)">
+            <span class="node-pulse"></span>
+            <span class="node-tag">🫘 Urinary</span>
+          </button>
+          <button type="button" class="system-node node-endocrine" data-target="endocrine" title="Endocrine System (Glands & Hormones)">
+            <span class="node-pulse"></span>
+            <span class="node-tag">🧪 Endocrine</span>
+          </button>
+          <button type="button" class="system-node node-muscles" data-target="musculoskeletal" title="Musculoskeletal System">
+            <span class="node-pulse"></span>
+            <span class="node-tag">🦴 Musculoskeletal</span>
+          </button>
+          <button type="button" class="system-node node-immune" data-target="immune" title="Immune System (WBCs & Antibodies)">
+            <span class="node-pulse"></span>
+            <span class="node-tag">🛡️ Immune</span>
+          </button>
+        </div>
+        <p class="body-canvas-caption">Click any organ node above to jump straight to its physiological notes and interactive simulations.</p>
+      </div>
+    </section>
+
+    <!-- STUDY TIPS & CHAPTER PROGRESS STRIP -->
+    <div class="study-meta-strip" id="studyMetaStrip">
+      <div class="meta-item">
+        <span class="meta-icon">⏱️</span>
+        <div>
+          <span class="meta-label">Est. Reading Time</span>
+          <span class="meta-value">18 - 22 mins</span>
+        </div>
+      </div>
+      <div class="meta-item">
+        <span class="meta-icon">📈</span>
+        <div>
+          <span class="meta-label">Scroll Progress</span>
+          <span class="meta-value" id="scrollProgressText">0% Complete</span>
+        </div>
+      </div>
+      <div class="meta-item meta-tip">
+        <span class="meta-icon">💡</span>
+        <div>
+          <span class="meta-label">MDCAT Study Golden Rule</span>
+          <span class="meta-value">"Understand the physiological mechanism first, then memorize the quantitative facts."</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 1. INTRODUCTION TO HUMAN PHYSIOLOGY -->
+    <section id="intro" class="chapter-section searchable-section" data-section-name="1. Introduction to Human Physiology">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">01</span>
+          <div>
+            <h2 class="section-title">Human Physiology kya hai? (Overview & Organization)</h2>
+            <p class="section-subtitle">Foundations of physiological function, homeostatic coordination, and biological hierarchy.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="intro" data-bookmark-title="1. Introduction to Physiology" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="callout-card definition-callout">
+          <div class="callout-icon">📖</div>
+          <div class="callout-content">
+            <h3 class="callout-heading">Definition of Human Physiology</h3>
+            <p><strong>Human Physiology</strong> is the branch of biological science that deals with the study of mechanical, physical, and biochemical functions of humans, their organs, tissues, and the cells of which they are composed.</p>
+            <p class="urdu-note">Human physiology body ke organs, tissues aur cells ke normal functioning aur apas ke coordination ka study hai jo life aur homeostasis ko sustain karta hai.</p>
+          </div>
+        </div>
+
+        <!-- Levels of Biological Organization -->
+        <h3 class="subsection-title">Levels of Structural Organization</h3>
+        <p class="subsection-intro">The human body is structured in a hierarchy of increasing structural complexity:</p>
+        
+        <div class="organization-flow">
+          <div class="org-step">
+            <div class="org-step-num">1</div>
+            <div class="org-step-title">Chemical Level</div>
+            <p class="org-step-desc">Atoms (C, H, O, N, Ca, P) combine to form biological macromolecules (Proteins, Lipids, Carbohydrates, DNA/RNA).</p>
+          </div>
+          <div class="org-arrow">→</div>
+          <div class="org-step">
+            <div class="org-step-num">2</div>
+            <div class="org-step-title">Cellular Level</div>
+            <p class="org-step-desc">The basic structural & functional unit of life (e.g. Neurons, Erythrocytes, Myocytes, Nephrons).</p>
+          </div>
+          <div class="org-arrow">→</div>
+          <div class="org-step">
+            <div class="org-step-num">3</div>
+            <div class="org-step-title">Tissue Level</div>
+            <p class="org-step-desc">Group of similar cells performing a specialized function: Epithelial, Connective, Muscle, Nervous tissues.</p>
+          </div>
+          <div class="org-arrow">→</div>
+          <div class="org-step">
+            <div class="org-step-num">4</div>
+            <div class="org-step-title">Organ Level</div>
+            <p class="org-step-desc">Two or more primary tissues joined together to perform specific functions (Heart, Lungs, Kidneys, Stomach).</p>
+          </div>
+          <div class="org-arrow">→</div>
+          <div class="org-step">
+            <div class="org-step-num">5</div>
+            <div class="org-step-title">Organ System</div>
+            <p class="org-step-desc">A group of organs working in synchronized harmony to maintain vital systemic balance.</p>
+          </div>
+        </div>
+
+        <!-- 9 Major Systems Grid Summary -->
+        <h3 class="subsection-title mt-6">Overview of the 9 Major Human Physiological Systems</h3>
+        <div class="systems-grid">
+          <div class="system-summary-card">
+            <span class="system-emoji">🧠</span>
+            <h4>Nervous System</h4>
+            <p>Receives, processes, and transmits electrical impulses; coordinates sensory and motor actions.</p>
+          </div>
+          <div class="system-summary-card">
+            <span class="system-emoji">🩸</span>
+            <h4>Circulatory System</h4>
+            <p>Transports oxygen, nutrients, hormones, and metabolic wastes throughout the body.</p>
+          </div>
+          <div class="system-summary-card">
+            <span class="system-emoji">🫁</span>
+            <h4>Respiratory System</h4>
+            <p>Facilitates gas exchange (O₂ uptake and CO₂ release) across thin alveolar membranes.</p>
+          </div>
+          <div class="system-summary-card">
+            <span class="system-emoji">🍎</span>
+            <h4>Digestive System</h4>
+            <p>Breaks down macronutrients into absorbable units and absorbs water and essential minerals.</p>
+          </div>
+          <div class="system-summary-card">
+            <span class="system-emoji">🫘</span>
+            <h4>Urinary System</h4>
+            <p>Excretes nitrogenous waste, regulates water volume, electrolytes, and acid-base balance.</p>
+          </div>
+          <div class="system-summary-card">
+            <span class="system-emoji">🦴</span>
+            <h4>Musculoskeletal</h4>
+            <p>Provides structural framework, organ protection, locomotion, and mineral storage.</p>
+          </div>
+          <div class="system-summary-card">
+            <span class="system-emoji">🛡️</span>
+            <h4>Immune System</h4>
+            <p>Protects the host organism against pathogenic viruses, bacteria, parasites, and toxins.</p>
+          </div>
+          <div class="system-summary-card">
+            <span class="system-emoji">🧪</span>
+            <h4>Endocrine System</h4>
+            <p>Produces hormones that circulate via blood to regulate metabolism, growth, and homeostasis.</p>
+          </div>
+          <div class="system-summary-card">
+            <span class="system-emoji">❤️</span>
+            <h4>Reproductive System</h4>
+            <p>Produces gametes and sex hormones ensuring species propagation and genetic continuity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 2. NERVOUS SYSTEM -->
+    <section id="nervous" class="chapter-section searchable-section" data-section-name="2. Nervous System">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">02</span>
+          <div>
+            <h2 class="section-title">Nervous System (Nerve Impulse & Reflex Arc)</h2>
+            <p class="section-subtitle">Information processing, neuron anatomy, synapse transmission, and rapid reflex pathways.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="nervous" data-bookmark-title="2. Nervous System" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <!-- Divisions of Nervous System -->
+        <div class="grid-2-cols">
+          <div class="info-card">
+            <div class="card-tag">Divisions</div>
+            <h3 class="card-title">1. Central Nervous System (CNS)</h3>
+            <p>The processing and control center of the entire body.</p>
+            <ul class="styled-list">
+              <li><strong>Brain:</strong> Forebrain (Cerebrum, Thalamus, Hypothalamus), Midbrain, Hindbrain (Cerebellum, Pons, Medulla Oblongata).</li>
+              <li><strong>Spinal Cord:</strong> Conducts 2-way impulses between brain and PNS; centers simple spinal reflexes.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <div class="card-tag">Divisions</div>
+            <h3 class="card-title">2. Peripheral Nervous System (PNS)</h3>
+            <p>All neural tissue outside the brain and spinal cord.</p>
+            <ul class="styled-list">
+              <li><strong>Somatic Nervous System:</strong> Controls voluntary skeletal muscle contractions.</li>
+              <li><strong>Autonomic Nervous System:</strong> Involuntary regulation of smooth muscle, cardiac muscle, and glands (Sympathetic "Fight or Flight" & Parasympathetic "Rest and Digest").</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE NEURON SIMULATOR -->
+        <div class="simulator-card" id="neuronSimulator">
+          <div class="simulator-header">
+            <div>
+              <span class="sim-badge">Interactive Anatomy</span>
+              <h3 class="sim-title">The Neuron — Structural & Functional Unit</h3>
+              <p class="sim-sub">Click on different anatomical parts of the neuron or trigger an electric action potential impulse.</p>
+            </div>
+            <button type="button" id="fireImpulseBtn" class="btn btn-sim">⚡ Trigger Action Potential</button>
+          </div>
+
+          <!-- Neuron Visual Container -->
+          <div class="neuron-visual-box">
+            <div class="neuron-diagram-stage">
+              <!-- Dendrites Region -->
+              <div class="neuron-part-interactive dendrites-zone" data-part="dendrite" id="partDendrite">
+                <div class="dendrite-branch db-1"></div>
+                <div class="dendrite-branch db-2"></div>
+                <div class="dendrite-branch db-3"></div>
+                <span class="part-pill">Dendrites</span>
+              </div>
+
+              <!-- Cell Body / Soma -->
+              <div class="neuron-part-interactive soma-zone" data-part="soma" id="partSoma">
+                <div class="nucleus-dot"></div>
+                <span class="part-pill">Cell Body (Soma)</span>
+              </div>
+
+              <!-- Axon with Myelin Sheath -->
+              <div class="neuron-part-interactive axon-zone" data-part="axon" id="partAxon">
+                <div class="axon-fiber">
+                  <div class="myelin-block mb-1"></div>
+                  <div class="node-ranvier nr-1"></div>
+                  <div class="myelin-block mb-2"></div>
+                  <div class="node-ranvier nr-2"></div>
+                  <div class="myelin-block mb-3"></div>
+                </div>
+                <span class="part-pill">Axon (Myelinated)</span>
+                <!-- Action potential particle -->
+                <div class="action-potential-spark" id="actionPotentialSpark"></div>
+              </div>
+
+              <!-- Axon Terminals -->
+              <div class="neuron-part-interactive terminals-zone" data-part="terminal" id="partTerminal">
+                <div class="terminal-branch tb-1"></div>
+                <div class="terminal-branch tb-2"></div>
+                <div class="synaptic-knob sk-1"></div>
+                <div class="synaptic-knob sk-2"></div>
+                <span class="part-pill">Axon Terminals & Synapse</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Explainer Box -->
+            <div class="neuron-explainer-panel" id="neuronExplainer">
+              <h4 id="neuronPartTitle">Select a neuron structure above</h4>
+              <p id="neuronPartDesc">Click any region (Dendrites, Cell Body, Axon, or Terminals) or fire an impulse to see how electrical signals travel in a one-way unidirectional flow.</p>
+              <div class="mdcat-tip-box" id="neuronPartMDCAT">
+                <strong>⭐ MDCAT High-Yield Point:</strong> Nerve impulse direction is strictly <em>Dendrite → Cell Body → Axon → Axon Terminal</em>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reflex Action & Reflex Arc Pathway -->
+        <h3 class="subsection-title mt-6">Reflex Action & Reflex Arc</h3>
+        <p class="subsection-intro">A <strong>Reflex Action</strong> is a rapid, involuntary, automatic motor response to a specific sensory stimulus without conscious intervention by higher brain centers.</p>
+        
+        <div class="pathway-diagram">
+          <div class="pathway-step">
+            <span class="step-badge">1</span>
+            <strong>Receptor</strong>
+            <span class="step-sub">Detects stimulus (e.g. pain/heat in skin)</span>
+          </div>
+          <div class="pathway-connector">➔</div>
+          <div class="pathway-step">
+            <span class="step-badge">2</span>
+            <strong>Sensory Neuron</strong>
+            <span class="step-sub">Carries afferent impulse to spinal cord dorsal horn</span>
+          </div>
+          <div class="pathway-connector">➔</div>
+          <div class="pathway-step">
+            <span class="step-badge">3</span>
+            <strong>Interneuron (Relay)</strong>
+            <span class="step-sub">Processes in spinal grey matter & relays to motor</span>
+          </div>
+          <div class="pathway-connector">➔</div>
+          <div class="pathway-step">
+            <span class="step-badge">4</span>
+            <strong>Motor Neuron</strong>
+            <span class="step-sub">Transmits efferent signal via ventral root</span>
+          </div>
+          <div class="pathway-connector">➔</div>
+          <div class="pathway-step">
+            <span class="step-badge">5</span>
+            <strong>Effector</strong>
+            <span class="step-sub">Muscle contracts / Gland secretes response</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 3. CIRCULATORY SYSTEM -->
+    <section id="circulatory" class="chapter-section searchable-section" data-section-name="3. Circulatory System">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">03</span>
+          <div>
+            <h2 class="section-title">Circulatory System (Heart, Blood & Double Circulation)</h2>
+            <p class="section-subtitle">Heart chambers, cardiac cycle, vascular circuits, and blood plasma formed elements.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="circulatory" data-bookmark-title="3. Circulatory System" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="grid-2-cols">
+          <!-- Heart Anatomy & Valves -->
+          <div class="info-card">
+            <div class="card-tag">Anatomy</div>
+            <h3 class="card-title">The Four Chambers & Valves</h3>
+            <ul class="styled-list">
+              <li><strong>Right Atrium:</strong> Receives deoxygenated blood from body via Superior & Inferior Vena Cava.</li>
+              <li><strong>Right Ventricle:</strong> Pumps deoxygenated blood to lungs via Pulmonary Trunk/Arteries (low pressure).</li>
+              <li><strong>Left Atrium:</strong> Receives oxygenated blood from lungs via 4 Pulmonary Veins.</li>
+              <li><strong>Left Ventricle:</strong> <span class="highlight-txt">⭐ Has the thickest muscular myocardium</span>; generates high pressure to pump oxygenated blood to the entire systemic body via the Aorta.</li>
+              <li><strong>Tricuspid Valve:</strong> Between Right Atrium & Right Ventricle.</li>
+              <li><strong>Bicuspid (Mitral) Valve:</strong> Between Left Atrium & Left Ventricle.</li>
+              <li><strong>Semilunar Valves:</strong> Aortic & Pulmonary semilunar valves prevent backflow into ventricles during diastole.</li>
+            </ul>
+          </div>
+
+          <!-- Blood Composition -->
+          <div class="info-card">
+            <div class="card-tag">Hematology</div>
+            <h3 class="card-title">Blood Components (Plasma & Cells)</h3>
+            <ul class="styled-list">
+              <li><strong>Plasma (55% of blood):</strong> 90-92% water, 7-8% plasma proteins (Albumin for osmotic balance, Globulins for antibodies, Fibrinogen for clotting), hormones, urea, glucose.</li>
+              <li><strong>Red Blood Cells (RBCs / Erythrocytes):</strong> Biconcave discs, <em>no nucleus or mitochondria at maturity</em>, lifespan ~120 days. Packed with <strong>Haemoglobin</strong> for O₂ & CO₂ transport.</li>
+              <li><strong>White Blood Cells (WBCs / Leucocytes):</strong> Nucleated defense cells. Phagocytes (Neutrophils, Monocytes) and Lymphocytes (B & T cells).</li>
+              <li><strong>Platelets (Thrombocytes):</strong> Non-nucleated cytoplasmic fragments of megakaryocytes; essential for blood clotting and hemostasis.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE BLOOD FLOW SIMULATOR -->
+        <div class="simulator-card" id="bloodFlowSimulator">
+          <div class="simulator-header">
+            <div>
+              <span class="sim-badge">Interactive Pathway</span>
+              <h3 class="sim-title">Double Circulation Simulator</h3>
+              <p class="sim-sub">Trace the path of deoxygenated blood (blue) and oxygenated blood (red) through the pulmonary and systemic loops.</p>
+            </div>
+            <div class="sim-control-group">
+              <button type="button" id="startBloodFlowBtn" class="btn btn-sim">▶ Start Blood Flow</button>
+              <button type="button" id="resetBloodFlowBtn" class="btn btn-secondary btn-sm">Reset</button>
+            </div>
+          </div>
+
+          <!-- Animated Pathway Display -->
+          <div class="blood-flow-stage">
+            <div class="flow-track">
+              
+              <!-- Step 1: Body Tissues (Deoxygenated) -->
+              <div class="flow-node node-deox" id="nodeBody1" data-step="1">
+                <span class="node-icon">👤</span>
+                <span class="node-title">Body Tissues</span>
+                <span class="node-sub">O₂ consumed, CO₂ added</span>
+              </div>
+              <div class="flow-arrow fa-1">➜</div>
+
+              <!-- Step 2: Right Atrium -->
+              <div class="flow-node node-deox" id="nodeRA" data-step="2">
+                <span class="node-icon">💙</span>
+                <span class="node-title">Right Atrium</span>
+                <span class="node-sub">Via Vena Cava</span>
+              </div>
+              <div class="flow-arrow fa-2">➜</div>
+
+              <!-- Step 3: Right Ventricle -->
+              <div class="flow-node node-deox" id="nodeRV" data-step="3">
+                <span class="node-icon">💙</span>
+                <span class="node-title">Right Ventricle</span>
+                <span class="node-sub">Tricuspid open</span>
+              </div>
+              <div class="flow-arrow fa-3">➜</div>
+
+              <!-- Step 4: Lungs (Oxygenation) -->
+              <div class="flow-node node-lungs-flow" id="nodeLungs" data-step="4">
+                <span class="node-icon">🫁</span>
+                <span class="node-title">Lungs (Alveoli)</span>
+                <span class="node-sub">CO₂ out ➔ O₂ in (Red!)</span>
+              </div>
+              <div class="flow-arrow fa-4">➜</div>
+
+              <!-- Step 5: Left Atrium -->
+              <div class="flow-node node-ox" id="nodeLA" data-step="5">
+                <span class="node-icon">❤️</span>
+                <span class="node-title">Left Atrium</span>
+                <span class="node-sub">Via Pulmonary Veins</span>
+              </div>
+              <div class="flow-arrow fa-5">➜</div>
+
+              <!-- Step 6: Left Ventricle -->
+              <div class="flow-node node-ox" id="nodeLV" data-step="6">
+                <span class="node-icon">❤️</span>
+                <span class="node-title">Left Ventricle</span>
+                <span class="node-sub">Thickest wall</span>
+              </div>
+              <div class="flow-arrow fa-6">➜</div>
+
+              <!-- Step 7: Systemic Aorta to Body -->
+              <div class="flow-node node-ox" id="nodeAorta" data-step="7">
+                <span class="node-icon">🚀</span>
+                <span class="node-title">Aorta ➔ Whole Body</span>
+                <span class="node-sub">Systemic supply</span>
+              </div>
+
+            </div>
+
+            <!-- Live Status Output Box -->
+            <div class="flow-status-box" id="flowStatusBox">
+              <span class="status-indicator">Ready</span>
+              <p id="flowStatusText">Click <strong>"Start Blood Flow"</strong> to animate erythrocytes moving through the double circulatory loop.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 4. RESPIRATORY SYSTEM -->
+    <section id="respiratory" class="chapter-section searchable-section" data-section-name="4. Respiratory System">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">04</span>
+          <div>
+            <h2 class="section-title">Respiratory System (Tract, Gas Exchange & Ventilation)</h2>
+            <p class="section-subtitle">Airway anatomy, alveolar structural adaptations, and the mechanics of inspiration and expiration.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="respiratory" data-bookmark-title="4. Respiratory System" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <!-- Air Pathway Sequence -->
+        <h3 class="subsection-title">Anatomical Air Pathway</h3>
+        <div class="linear-pathway">
+          <span class="path-chip">Nose / Nasal Cavity</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip">Pharynx</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip">Larynx (Epiglottis)</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip">Trachea</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip">Bronchi</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip">Bronchioles</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip highlight-chip">Alveoli (Exchange Site)</span>
+        </div>
+
+        <div class="grid-2-cols mt-4">
+          <!-- Alveoli Adaptations -->
+          <div class="info-card">
+            <div class="card-tag">Adaptations</div>
+            <h3 class="card-title">Why Alveoli are Optimal for Gas Exchange</h3>
+            <ul class="styled-list">
+              <li><strong>Huge Surface Area:</strong> Over 300 million alveoli provide ~70–100 m² of surface area.</li>
+              <li><strong>Extremely Thin Diffusion Barrier:</strong> Single layer of simple squamous epithelial cells (&lt; 1 µm thick).</li>
+              <li><strong>Dense Capillary Meshwork:</strong> Red blood cells flow in single file maximizing O₂ saturation.</li>
+              <li><strong>Moist Surface with Surfactant:</strong> Phospholipid surfactant reduces surface tension and prevents alveolar collapse during expiration.</li>
+            </ul>
+          </div>
+
+          <!-- Ventilation Mechanics Summary -->
+          <div class="info-card">
+            <div class="card-tag">Mechanics</div>
+            <h3 class="card-title">Inspiration vs Expiration Summary</h3>
+            <ul class="styled-list">
+              <li><strong>Inspiration (Active):</strong> Diaphragm contracts (moves downwards/flattens), External intercostals contract (ribs move up & out) ➔ Thoracic volume increases ➔ Intra-pulmonary pressure decreases below atmosphere ➔ Air rushes IN.</li>
+              <li><strong>Expiration (Passive at rest):</strong> Diaphragm relaxes (domes upward), External intercostals relax (ribs move down & in) ➔ Thoracic volume decreases ➔ Intra-pulmonary pressure rises above atmosphere ➔ Air forced OUT.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE BREATHING SIMULATOR -->
+        <div class="simulator-card" id="breathingSimulator">
+          <div class="simulator-header">
+            <div>
+              <span class="sim-badge">Mechanics Simulator</span>
+              <h3 class="sim-title">Interactive Pulmonary Ventilation Simulator</h3>
+              <p class="sim-sub">Toggle Inhale and Exhale to visualize thoracic volume, diaphragm position, and alveolar pressure changes.</p>
+            </div>
+            <div class="sim-btn-group">
+              <button type="button" id="inhaleBtn" class="btn btn-inhale">💨 INHALE (Inspiration)</button>
+              <button type="button" id="exhaleBtn" class="btn btn-exhale">💨 EXHALE (Expiration)</button>
+            </div>
+          </div>
+
+          <div class="breathing-stage">
+            <!-- Lung Visual Representation -->
+            <div class="thoracic-chest-model" id="thoracicModel">
+              <div class="trachea-tube"></div>
+              <div class="lungs-pair">
+                <div class="lung-sac lung-left" id="lungLeft">
+                  <div class="alveolar-cluster"></div>
+                </div>
+                <div class="lung-sac lung-right" id="lungRight">
+                  <div class="alveolar-cluster"></div>
+                </div>
+              </div>
+              <div class="diaphragm-muscle" id="diaphragmMuscle">
+                <span class="diaphragm-label">Diaphragm Muscle</span>
+              </div>
+            </div>
+
+            <!-- Ventilation Physics Metrics Readout -->
+            <div class="ventilation-metrics" id="ventilationMetrics">
+              <div class="metric-row">
+                <span class="metric-name">Action:</span>
+                <span class="metric-val" id="metricAction">Normal Resting Baseline</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-name">Diaphragm State:</span>
+                <span class="metric-val" id="metricDiaphragm">Relaxed (Dome-shaped upward)</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-name">Thoracic Volume:</span>
+                <span class="metric-val" id="metricVolume">Normal Baseline (~500 mL Tidal Volume)</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-name">Alveolar Pressure:</span>
+                <span class="metric-val" id="metricPressure">760 mmHg (Equal to atmospheric)</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-name">Airflow Direction:</span>
+                <span class="metric-val" id="metricAirflow">Static / No net movement</span>
+              </div>
+              <div class="mdcat-tip-box mt-3">
+                <strong>⭐ MDCAT Rule:</strong> Boyle's Law applies: Volume increases ➔ Pressure decreases ➔ Air enters spontaneously.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 5. DIGESTIVE SYSTEM -->
+    <section id="digestive" class="chapter-section searchable-section" data-section-name="5. Digestive System">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">05</span>
+          <div>
+            <h2 class="section-title">Digestive System (GI Tract, Enzymes & Villi Absorption)</h2>
+            <p class="section-subtitle">Mechanical breakdown, gastric acid secretions, pancreatic enzymes, and small intestinal villi.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="digestive" data-bookmark-title="5. Digestive System" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <!-- Digestive Pathway Sequence -->
+        <h3 class="subsection-title">Alimentary Canal Sequence</h3>
+        <div class="linear-pathway">
+          <span class="path-chip">Mouth (Oral Cavity)</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip">Oesophagus</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip">Stomach</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip highlight-chip">Small Intestine (Duodenum, Jejunum, Ileum)</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip">Large Intestine</span>
+          <span class="path-arrow">➔</span>
+          <span class="path-chip">Rectum & Anus</span>
+        </div>
+
+        <div class="grid-3-cols mt-4">
+          <div class="info-card">
+            <div class="card-tag">Stomach</div>
+            <h4 class="card-title">Gastric Digestion</h4>
+            <p><strong>HCl (pH 1.5–2.0):</strong> Kills ingested bacteria & converts inactive Pepsinogen into active <strong>Pepsin</strong>.</p>
+            <p class="mt-2"><strong>Pepsin:</strong> Initiates protein digestion into peptones and polypeptides.</p>
+            <p class="mt-2"><strong>Mucus:</strong> Protects gastric epithelium from autodigestion by acid.</p>
+          </div>
+
+          <div class="info-card">
+            <div class="card-tag">Small Intestine</div>
+            <h4 class="card-title">Villi & Maximum Absorption</h4>
+            <p><strong>Duodenum:</strong> Receives Bile (from liver; emulsifies fats) and Pancreatic juice (Lipase, Trypsin, Amylase).</p>
+            <p class="mt-2"><strong>Villi & Microvilli:</strong> <span class="highlight-txt">⭐ Increase absorption surface area ~600 times</span>.</p>
+            <p class="mt-2"><strong>Lacteals:</strong> Central lymph vessels absorbing fatty acids & glycerol.</p>
+          </div>
+
+          <div class="info-card">
+            <div class="card-tag">Large Intestine</div>
+            <h4 class="card-title">Water & Faeces</h4>
+            <p><strong>Primary Function:</strong> Absorption of water, electrolytes, and specific vitamins.</p>
+            <p class="mt-2"><strong>Microbiota:</strong> Symbiotic colonic bacteria synthesize Vitamin K and certain B vitamins.</p>
+            <p class="mt-2"><strong>Rectum:</strong> Stores semi-solid faeces until defecation.</p>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE FOOD JOURNEY SIMULATOR -->
+        <div class="simulator-card" id="digestiveSimulator">
+          <div class="simulator-header">
+            <div>
+              <span class="sim-badge">Journey Simulator</span>
+              <h3 class="sim-title">Interactive Food Digestion Journey</h3>
+              <p class="sim-sub">Click "Start Food Journey" or select a digestive organ to observe enzymatic actions and transit stages.</p>
+            </div>
+            <button type="button" id="startFoodJourneyBtn" class="btn btn-sim">🍎 Start Food Journey</button>
+          </div>
+
+          <!-- Animated Food Pipeline -->
+          <div class="food-journey-stage">
+            <div class="gi-stages-wrapper">
+              <button type="button" class="gi-stage-card active" data-stage="1" id="giStage1">
+                <span class="gi-stage-num">Stage 1</span>
+                <span class="gi-stage-title">👄 Mouth & Saliva</span>
+                <span class="gi-stage-sub">Mastication + Amylase</span>
+              </button>
+              <div class="gi-arrow">➔</div>
+              <button type="button" class="gi-stage-card" data-stage="2" id="giStage2">
+                <span class="gi-stage-num">Stage 2</span>
+                <span class="gi-stage-title">🧪 Oesophagus</span>
+                <span class="gi-stage-sub">Peristaltic Bolus Push</span>
+              </button>
+              <div class="gi-arrow">➔</div>
+              <button type="button" class="gi-stage-card" data-stage="3" id="giStage3">
+                <span class="gi-stage-num">Stage 3</span>
+                <span class="gi-stage-title">🥣 Stomach</span>
+                <span class="gi-stage-sub">HCl & Pepsin (Acid Chyme)</span>
+              </button>
+              <div class="gi-arrow">➔</div>
+              <button type="button" class="gi-stage-card" data-stage="4" id="giStage4">
+                <span class="gi-stage-num">Stage 4</span>
+                <span class="gi-stage-title">🌾 Small Intestine</span>
+                <span class="gi-stage-sub">Bile + Enzymes + Villi</span>
+              </button>
+              <div class="gi-arrow">➔</div>
+              <button type="button" class="gi-stage-card" data-stage="5" id="giStage5">
+                <span class="gi-stage-num">Stage 5</span>
+                <span class="gi-stage-title">🧻 Large Intestine</span>
+                <span class="gi-stage-sub">H₂O Recovery & Faeces</span>
+              </button>
+            </div>
+
+            <!-- Stage Details Box -->
+            <div class="gi-details-panel" id="giDetailsPanel">
+              <h4 id="giStageHeading">Stage 1: Oral Cavity & Salivary Digestion</h4>
+              <p id="giStageBody">Teeth mechanically grind food (mastication). Salivary glands secrete saliva containing <strong>Salivary Amylase (Ptyalin)</strong>, which initiates carbohydrate digestion by hydrolyzing starch into maltose at optimal neutral/slightly acidic pH ~6.8.</p>
+              <div class="mdcat-tip-box mt-2" id="giStageTip">
+                <strong>⭐ MDCAT High-Yield:</strong> Carbohydrate digestion begins in the mouth, but protein digestion begins in the stomach!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 6. URINARY SYSTEM -->
+    <section id="urinary" class="chapter-section searchable-section" data-section-name="6. Urinary System">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">06</span>
+          <div>
+            <h2 class="section-title">Urinary System (Kidneys, Nephron & Osmoregulation)</h2>
+            <p class="section-subtitle">Ultrafiltration, selective reabsorption, tubular secretion, and countercurrent multiplication.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="urinary" data-bookmark-title="6. Urinary System" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="grid-2-cols">
+          <div class="info-card">
+            <div class="card-tag">Organs</div>
+            <h3 class="card-title">Main Organs & Kidney Functions</h3>
+            <ul class="styled-list">
+              <li><strong>Two Kidneys:</strong> Bean-shaped retroperitoneal organs receiving 20-25% of cardiac output via Renal Arteries.</li>
+              <li><strong>Two Ureters:</strong> Muscular tubes transporting urine from renal pelvis to bladder via peristalsis.</li>
+              <li><strong>Urinary Bladder:</strong> Expandable reservoir lined with transitional epithelium.</li>
+              <li><strong>Urethra:</strong> Canal for urine excretion to exterior.</li>
+              <li><strong>Functions:</strong> Excretion of nitrogenous urea, uric acid, creatinine; osmoregulation of body fluid volume; electrolyte balance (Na+, K+, Cl-); maintenance of arterial blood pH (7.35–7.45).</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <div class="card-tag">Processes</div>
+            <h3 class="card-title">The Three Steps of Urine Formation</h3>
+            <ul class="styled-list">
+              <li><strong>1. Ultrafiltration:</strong> Blood filtered under high hydrostatic pressure in Glomerulus into Bowman's Capsule. Cells and plasma proteins remain in blood.</li>
+              <li><strong>2. Selective Reabsorption:</strong> ~99% of filtrate reabsorbed back into peritubular capillaries (100% of glucose & amino acids in PCT; Na+, water throughout).</li>
+              <li><strong>3. Tubular Secretion:</strong> Active transport of excess H+, K+, creatinine, and drug metabolites from blood into renal tubule.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE NEPHRON SIMULATOR -->
+        <div class="simulator-card" id="nephronSimulator">
+          <div class="simulator-header">
+            <div>
+              <span class="sim-badge">Nephron Explorer</span>
+              <h3 class="sim-title">The Nephron — Functional Kidney Unit (~1.2 Million per Kidney)</h3>
+              <p class="sim-sub">Click each nephron segment below to inspect physiological functions and MDCAT test traps.</p>
+            </div>
+          </div>
+
+          <div class="nephron-interactive-wrapper">
+            <!-- Clickable Nephron Segments -->
+            <div class="nephron-pipeline">
+              <button type="button" class="nephron-btn active" data-part="glomerulus" id="nephPartGlom">
+                <span class="np-tag">Step 1</span>
+                <span class="np-title">Glomerulus & Bowman's</span>
+                <span class="np-sub">Ultrafiltration</span>
+              </button>
+
+              <button type="button" class="nephron-btn" data-part="pct" id="nephPartPct">
+                <span class="np-tag">Step 2</span>
+                <span class="np-title">Proximal Tubule (PCT)</span>
+                <span class="np-sub">65-70% Reabsorption</span>
+              </button>
+
+              <button type="button" class="nephron-btn" data-part="loop" id="nephPartLoop">
+                <span class="np-tag">Step 3</span>
+                <span class="np-title">Loop of Henle</span>
+                <span class="np-sub">Countercurrent Osmotic</span>
+              </button>
+
+              <button type="button" class="nephron-btn" data-part="dct" id="nephPartDct">
+                <span class="np-tag">Step 4</span>
+                <span class="np-title">Distal Tubule (DCT)</span>
+                <span class="np-sub">Aldosterone & Secretion</span>
+              </button>
+
+              <button type="button" class="nephron-btn" data-part="collecting" id="nephPartCd">
+                <span class="np-tag">Step 5</span>
+                <span class="np-title">Collecting Duct</span>
+                <span class="np-sub">ADH Water Recovery</span>
+              </button>
+            </div>
+
+            <!-- Dynamic Nephron Details Display -->
+            <div class="nephron-details-card" id="nephronDetails">
+              <div class="nd-header">
+                <h4 id="ndTitle">Glomerulus & Bowman's Capsule (Malpighian Body)</h4>
+                <span class="nd-location-badge" id="ndLocation">Renal Cortex</span>
+              </div>
+              <div class="nd-grid">
+                <div class="nd-item">
+                  <span class="nd-lbl">Primary Mechanism:</span>
+                  <p id="ndMechanism">Ultrafiltration under high glomerular capillary blood pressure (~55 mmHg) through fenestrated endothelium, basement membrane, and podocytes.</p>
+                </div>
+                <div class="nd-item">
+                  <span class="nd-lbl">Filtrate Composition:</span>
+                  <p id="ndSubstances">Water, glucose, amino acids, urea, ions, vitamins (virtually protein-free and cell-free).</p>
+                </div>
+              </div>
+              <div class="mdcat-tip-box mt-3" id="ndMDCAT">
+                <strong>⭐ MDCAT High-Yield Point:</strong> Normal GFR (Glomerular Filtration Rate) is ~125 mL/min (~180 Liters/day), but only ~1.5 Liters of urine is actually excreted due to 99% reabsorption!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 7. ENDOCRINE SYSTEM -->
+    <section id="endocrine" class="chapter-section searchable-section" data-section-name="7. Endocrine System">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">07</span>
+          <div>
+            <h2 class="section-title">Endocrine System (Glands, Hormones & Glucose Balance)</h2>
+            <p class="section-subtitle">Ductless gland regulation, feedback loops, insulin/glucagon antagonism, and emergency hormones.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="endocrine" data-bookmark-title="7. Endocrine System" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="callout-card definition-callout">
+          <div class="callout-icon">🧪</div>
+          <div class="callout-content">
+            <h3 class="callout-heading">What are Hormones?</h3>
+            <p><strong>Hormones</strong> are organic chemical messengers synthesized by specialized ductless (endocrine) glands, secreted directly into blood circulation, and acting upon specific distant <em>target cells</em> equipped with complementary receptors.</p>
+          </div>
+        </div>
+
+        <!-- Hormone Interactive Filter System -->
+        <h3 class="subsection-title mt-6">High-Yield Hormone Comparison Cards</h3>
+        <p class="subsection-intro">Filter by functional physiological role or examine individual endocrine parameters:</p>
+        
+        <div class="hormone-filter-bar" id="hormoneFilterBar">
+          <button type="button" class="filter-chip active" data-filter="all">All Hormones</button>
+          <button type="button" class="filter-chip" data-filter="glucose">Blood Glucose</button>
+          <button type="button" class="filter-chip" data-filter="metabolism">Metabolism</button>
+          <button type="button" class="filter-chip" data-filter="water">Water & Salt</button>
+          <button type="button" class="filter-chip" data-filter="emergency">Emergency / Stress</button>
+        </div>
+
+        <div class="hormone-cards-grid" id="hormoneCardsGrid">
+          <!-- 1. Insulin -->
+          <div class="hormone-card" data-category="glucose">
+            <div class="hc-header">
+              <div>
+                <span class="hc-tag">Pancreas (β-cells)</span>
+                <h4 class="hc-name">Insulin</h4>
+              </div>
+              <span class="hc-icon">📉</span>
+            </div>
+            <div class="hc-body">
+              <div class="hc-row"><span class="hc-lbl">Target Organs:</span> <span>Liver, Skeletal Muscle, Adipose tissue</span></div>
+              <div class="hc-row"><span class="hc-lbl">Main Action:</span> <span><strong>Lowers Blood Glucose (Hypoglycemic)</strong></span></div>
+              <div class="hc-row"><span class="hc-lbl">Mechanism:</span> <span>Stimulates cellular glucose uptake, Glycogenesis (glucose ➔ glycogen), and lipogenesis.</span></div>
+            </div>
+            <div class="hc-footer">
+              <span class="hc-mdcat">⭐ Deficiency causes Diabetes Mellitus (Hyperglycemia & Glucosuria)</span>
+            </div>
+          </div>
+
+          <!-- 2. Glucagon -->
+          <div class="hormone-card" data-category="glucose">
+            <div class="hc-header">
+              <div>
+                <span class="hc-tag">Pancreas (α-cells)</span>
+                <h4 class="hc-name">Glucagon</h4>
+              </div>
+              <span class="hc-icon">📈</span>
+            </div>
+            <div class="hc-body">
+              <div class="hc-row"><span class="hc-lbl">Target Organs:</span> <span>Primarily Liver</span></div>
+              <div class="hc-row"><span class="hc-lbl">Main Action:</span> <span><strong>Raises Blood Glucose (Hyperglycemic)</strong></span></div>
+              <div class="hc-row"><span class="hc-lbl">Mechanism:</span> <span>Promotes Glycogenolysis (glycogen ➔ glucose) and Gluconeogenesis in fasting states.</span></div>
+            </div>
+            <div class="hc-footer">
+              <span class="hc-mdcat">⭐ Direct antagonist to Insulin</span>
+            </div>
+          </div>
+
+          <!-- 3. ADH / Vasopressin -->
+          <div class="hormone-card" data-category="water">
+            <div class="hc-header">
+              <div>
+                <span class="hc-tag">Hypothalamus (stored in Post. Pituitary)</span>
+                <h4 class="hc-name">ADH (Vasopressin)</h4>
+              </div>
+              <span class="hc-icon">💧</span>
+            </div>
+            <div class="hc-body">
+              <div class="hc-row"><span class="hc-lbl">Target Organs:</span> <span>Nephron Collecting Ducts & DCT</span></div>
+              <div class="hc-row"><span class="hc-lbl">Main Action:</span> <span><strong>Conserves Water & Concentrates Urine</strong></span></div>
+              <div class="hc-row"><span class="hc-lbl">Mechanism:</span> <span>Inserts Aquaporin-2 water channels, drastically increasing water reabsorption.</span></div>
+            </div>
+            <div class="hc-footer">
+              <span class="hc-mdcat">⭐ Deficiency leads to Diabetes Insipidus (large volumes of dilute urine)</span>
+            </div>
+          </div>
+
+          <!-- 4. Thyroxine (T4) -->
+          <div class="hormone-card" data-category="metabolism">
+            <div class="hc-header">
+              <div>
+                <span class="hc-tag">Thyroid Gland (Follicles)</span>
+                <h4 class="hc-name">Thyroxine (T₄ / T₃)</h4>
+              </div>
+              <span class="hc-icon">🔥</span>
+            </div>
+            <div class="hc-body">
+              <div class="hc-row"><span class="hc-lbl">Target Organs:</span> <span>Almost all somatic body cells</span></div>
+              <div class="hc-row"><span class="hc-lbl">Main Action:</span> <span><strong>Controls Basal Metabolic Rate (BMR)</strong></span></div>
+              <div class="hc-row"><span class="hc-lbl">Mechanism:</span> <span>Increases cellular respiration, ATP turnover, body heat generation & growth.</span></div>
+            </div>
+            <div class="hc-footer">
+              <span class="hc-mdcat">⭐ Requires Iodine; deficiency in infancy causes Cretinism</span>
+            </div>
+          </div>
+
+          <!-- 5. Adrenaline (Epinephrine) -->
+          <div class="hormone-card" data-category="emergency">
+            <div class="hc-header">
+              <div>
+                <span class="hc-tag">Adrenal Medulla</span>
+                <h4 class="hc-name">Adrenaline (Epinephrine)</h4>
+              </div>
+              <span class="hc-icon">⚡</span>
+            </div>
+            <div class="hc-body">
+              <div class="hc-row"><span class="hc-lbl">Target Organs:</span> <span>Heart, Blood vessels, Bronchioles, Liver</span></div>
+              <div class="hc-row"><span class="hc-lbl">Main Action:</span> <span><strong>"Fight or Flight" Emergency Response</strong></span></div>
+              <div class="hc-row"><span class="hc-lbl">Mechanism:</span> <span>Increases heart rate, cardiac output, pupil dilation, and diverts blood to skeletal muscles.</span></div>
+            </div>
+            <div class="hc-footer">
+              <span class="hc-mdcat">⭐ Rapidly secreted under sympathetic stimulation</span>
+            </div>
+          </div>
+
+          <!-- 6. Aldosterone -->
+          <div class="hormone-card" data-category="water">
+            <div class="hc-header">
+              <div>
+                <span class="hc-tag">Adrenal Cortex (Mineralocorticoid)</span>
+                <h4 class="hc-name">Aldosterone</h4>
+              </div>
+              <span class="hc-icon">🧂</span>
+            </div>
+            <div class="hc-body">
+              <div class="hc-row"><span class="hc-lbl">Target Organs:</span> <span>Nephron Distal Convoluted Tubules</span></div>
+              <div class="hc-row"><span class="hc-lbl">Main Action:</span> <span><strong>Na⁺ Retention & K⁺ Excretion</strong></span></div>
+              <div class="hc-row"><span class="hc-lbl">Mechanism:</span> <span>Increases Na+ reabsorption and secondary water retention, raising blood pressure.</span></div>
+            </div>
+            <div class="hc-footer">
+              <span class="hc-mdcat">⭐ Key regulator of Renin-Angiotensin-Aldosterone System (RAAS)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 8. MUSCULOSKELETAL SYSTEM -->
+    <section id="musculoskeletal" class="chapter-section searchable-section" data-section-name="8. Musculoskeletal System">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">08</span>
+          <div>
+            <h2 class="section-title">Musculoskeletal System (Bones, Joints & Antagonistic Muscles)</h2>
+            <p class="section-subtitle">Skeletal divisions, muscle tissue classification, and the biomechanics of antagonistic muscle pairs.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="musculoskeletal" data-bookmark-title="8. Musculoskeletal System" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="grid-2-cols">
+          <div class="info-card">
+            <div class="card-tag">Skeleton</div>
+            <h3 class="card-title">Human Skeletal Divisions (206 Bones)</h3>
+            <ul class="styled-list">
+              <li><strong>Axial Skeleton (80 bones):</strong> Skull/Cranium (28), Vertebral Column (26), Ribs (12 pairs = 24), Sternum (1), Hyoid bone (1).</li>
+              <li><strong>Appendicular Skeleton (126 bones):</strong> Pectoral Girdle & Upper Limbs (64), Pelvic Girdle & Lower Limbs (62).</li>
+              <li><strong>Functions:</strong> Support, delicate organ protection (brain, heart, lungs), mineral calcium storage, and blood cell formation (hematopoiesis) in red bone marrow.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <div class="card-tag">Muscles</div>
+            <h3 class="card-title">Antagonistic Muscle Action (Biceps & Triceps)</h3>
+            <ul class="styled-list">
+              <li>Muscles can only <strong>pull (contract)</strong>; they cannot actively push. Therefore, they work in antagonistic pairs.</li>
+              <li><strong>Flexion of Arm:</strong> <span class="highlight-txt">Biceps contracts (Flexor)</span> while Triceps relaxes.</li>
+              <li><strong>Extension of Arm:</strong> <span class="highlight-txt">Triceps contracts (Extensor)</span> while Biceps relaxes.</li>
+              <li>Origin = immovable bone attachment; Insertion = movable bone attachment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Muscle Types Visual Comparison -->
+        <h3 class="subsection-title mt-6">The Three Muscle Types Comparison</h3>
+        <div class="grid-3-cols">
+          <div class="muscle-type-card">
+            <div class="mt-badge">Voluntary</div>
+            <h4 class="mt-title">Skeletal Muscle</h4>
+            <div class="mt-drawing skeletal-drawing">
+              <div class="striation-strip"></div>
+              <div class="striation-strip"></div>
+              <div class="striation-strip"></div>
+            </div>
+            <ul class="styled-list mt-3">
+              <li><strong>Striations:</strong> Yes (Clear A & I bands)</li>
+              <li><strong>Nuclei:</strong> Multiple, Peripheral</li>
+              <li><strong>Control:</strong> Voluntary (Somatic)</li>
+              <li><strong>Location:</strong> Attached to skeleton</li>
+            </ul>
+          </div>
+
+          <div class="muscle-type-card">
+            <div class="mt-badge">Involuntary</div>
+            <h4 class="mt-title">Smooth Muscle</h4>
+            <div class="mt-drawing smooth-drawing">
+              <div class="spindle-shape"></div>
+            </div>
+            <ul class="styled-list mt-3">
+              <li><strong>Striations:</strong> No (Unstriated)</li>
+              <li><strong>Nuclei:</strong> Single, Centrally located</li>
+              <li><strong>Control:</strong> Involuntary (Autonomic)</li>
+              <li><strong>Location:</strong> Visceral walls (GI, vessels)</li>
+            </ul>
+          </div>
+
+          <div class="muscle-type-card">
+            <div class="mt-badge">Involuntary / Heart</div>
+            <h4 class="mt-title">Cardiac Muscle</h4>
+            <div class="mt-drawing cardiac-drawing">
+              <div class="intercalated-disc"></div>
+            </div>
+            <ul class="styled-list mt-3">
+              <li><strong>Striations:</strong> Yes + <em>Intercalated discs</em></li>
+              <li><strong>Nuclei:</strong> 1–2, Central</li>
+              <li><strong>Control:</strong> Involuntary / Autorhythmic</li>
+              <li><strong>Location:</strong> Heart myocardium exclusively</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 9. IMMUNE SYSTEM -->
+    <section id="immune" class="chapter-section searchable-section" data-section-name="9. Immune System">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">09</span>
+          <div>
+            <h2 class="section-title">Immune System (Innate Defense, Adaptive Immunity & Antibodies)</h2>
+            <p class="section-subtitle">Lines of host defense, phagocytosis, B and T lymphocytes, antibodies, and antigen specificity.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="immune" data-bookmark-title="9. Immune System" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <!-- 3 Lines of Defense Visual Card Grid -->
+        <h3 class="subsection-title">The Three Lines of Host Defense</h3>
+        <div class="grid-3-cols">
+          <div class="defense-card">
+            <div class="def-badge def-1">1st Line: External Innate</div>
+            <h4 class="def-title">Physical & Chemical Barriers</h4>
+            <ul class="styled-list">
+              <li><strong>Skin:</strong> Stratified keratinized dry barrier and acidic sebum (pH 3–5).</li>
+              <li><strong>Mucous Membranes:</strong> Traps microbes in respiratory and digestive tracts.</li>
+              <li><strong>Cilia:</strong> Mucociliary escalator in trachea sweeps trapped pathogens out.</li>
+              <li><strong>Lysozyme:</strong> Enzyme in tears and saliva that hydrolyzes bacterial cell walls.</li>
+              <li><strong>Gastric Acid:</strong> HCl in stomach kills swallowed pathogens.</li>
+            </ul>
+          </div>
+
+          <div class="defense-card">
+            <div class="def-badge def-2">2nd Line: Internal Innate</div>
+            <h4 class="def-title">Cellular & Chemical Internal</h4>
+            <ul class="styled-list">
+              <li><strong>Phagocytes:</strong> <span class="highlight-txt">Neutrophils & Macrophages</span> engulf pathogens via endocytosis.</li>
+              <li><strong>Natural Killer (NK) Cells:</strong> Induce apoptosis in virus-infected and tumor cells.</li>
+              <li><strong>Inflammatory Response:</strong> Histamine release causes vasodilation and increased capillary permeability.</li>
+              <li><strong>Complement System:</strong> Plasma proteins that form Membrane Attack Complexes (MAC) to lyse microbes.</li>
+            </ul>
+          </div>
+
+          <div class="defense-card">
+            <div class="def-badge def-3">3rd Line: Adaptive (Specific)</div>
+            <h4 class="def-title">Lymphocytes & Antibodies</h4>
+            <ul class="styled-list">
+              <li><strong>Humoral Immunity (B-Cells):</strong> Differentiate into <em>Plasma cells</em> that secrete specific <strong>Antibodies</strong>, and long-lived <em>Memory B cells</em>.</li>
+              <li><strong>Cell-Mediated (T-Cells):</strong> <em>Helper T-cells (CD4+)</em> stimulate B/T cells; <em>Cytotoxic T-cells (CD8+)</em> directly lyse infected host cells.</li>
+              <li><strong>Immunological Memory:</strong> Secondary exposure produces a drastically faster, stronger response.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Antigens vs Antibodies Breakdown -->
+        <div class="grid-2-cols mt-6">
+          <div class="info-card">
+            <div class="card-tag">Antigen</div>
+            <h3 class="card-title">Antigens (Immunogens)</h3>
+            <p>An <strong>Antigen</strong> is any foreign macromolecule (surface glycoprotein, capsid protein, toxin) capable of specifically binding to an antibody receptor and triggering an adaptive immune response.</p>
+          </div>
+
+          <div class="info-card">
+            <div class="card-tag">Antibody</div>
+            <h3 class="card-title">Antibodies (Immunoglobulins)</h3>
+            <p><strong>Antibodies</strong> are Y-shaped glycoproteins consisting of 4 polypeptide chains (2 Heavy and 2 Light chains joined by disulfide bridges), containing variable antigen-binding sites (Fab fragment) providing lock-and-key specificity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ⭐ 10. MDCAT HIGH-YIELD SECTION -->
+    <section id="high-yield" class="chapter-section highlight-section searchable-section" data-section-name="10. High-Yield Facts">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge badge-fire">⭐ 10</span>
+          <div>
+            <h2 class="section-title">MDCAT High-Yield Facts (Quick Recall Cards)</h2>
+            <p class="section-subtitle">Essential one-liners, high-frequency examiner favorites, and critical facts for last-minute revision.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="high-yield" data-bookmark-title="10. High-Yield Facts" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="high-yield-grid">
+          
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Neuron</strong>
+              <p>Structural and functional unit of the nervous system responsible for conducting electrical action potentials.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>CNS vs PNS</strong>
+              <p>CNS comprises the Brain + Spinal Cord; PNS consists of 12 pairs of cranial nerves and 31 pairs of spinal nerves.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Left Ventricle</strong>
+              <p>Has the thickest muscular myocardium of all 4 chambers to pump oxygenated blood to the entire systemic body.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Red Blood Cells (RBCs)</strong>
+              <p>Lack a nucleus, mitochondria, and ER at maturity; lifespan ~120 days; packed with Haemoglobin for oxygen transport.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Platelets (Thrombocytes)</strong>
+              <p>Non-nucleated cell fragments derived from bone marrow megakaryocytes; essential for initiating the blood clotting cascade.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Alveoli</strong>
+              <p>Primary site of respiratory gas exchange with single-cell squamous walls and ~100 m² total surface area.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Intestinal Villi</strong>
+              <p>Finger-like projections in the small intestine that increase mucosal surface area for absorption over 600-fold.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Nephron</strong>
+              <p>Functional microscopic unit of the kidney (~1.2 million per kidney) executing filtration, reabsorption, and secretion.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Insulin</strong>
+              <p>Produced by pancreatic β-cells; decreases blood glucose by accelerating cellular uptake and glycogenesis in liver.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Glucagon</strong>
+              <p>Produced by pancreatic α-cells; increases blood glucose by stimulating hepatic glycogenolysis during fasting.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Hormones</strong>
+              <p>Ductless chemical messengers secreted directly into blood capillaries to act upon specific distant target receptors.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Skeletal Muscle</strong>
+              <p>Striated, multinucleated with peripheral nuclei, voluntary, attached to bones for locomotion.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Cardiac Muscle</strong>
+              <p>Striated, branched, involuntary, with unique <em>intercalated discs</em> enabling synchronized myocardial contractions.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Phagocytes</strong>
+              <p>Neutrophils and Macrophages that engulf, digest, and destroy foreign pathogens via phagocytosis in innate defense.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>ADH (Vasopressin)</strong>
+              <p>Increases water permeability in collecting ducts; prevents dehydration and concentrates excreted urine.</p>
+            </div>
+          </div>
+
+          <div class="hy-card">
+            <span class="hy-icon">🔥</span>
+            <div class="hy-content">
+              <strong>Biceps & Triceps</strong>
+              <p>Antagonistic muscle pair: Biceps is the flexor (bends the elbow joint); Triceps is the extensor (straightens it).</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 📊 11. QUICK REVISION COMPARISON TABLES -->
+    <section id="revision-tables" class="chapter-section searchable-section" data-section-name="11. Quick Revision Tables">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">11</span>
+          <div>
+            <h2 class="section-title">Quick Revision Comparison Tables</h2>
+            <p class="section-subtitle">Side-by-side high-yield comparative tables to master frequently tested distinctions.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="revision-tables" data-bookmark-title="11. Revision Tables" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <!-- Table 1: Arteries vs Veins vs Capillaries -->
+        <h3 class="table-title">1. Arteries vs. Veins vs. Capillaries</h3>
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Arteries</th>
+                <th>Veins</th>
+                <th>Capillaries</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Direction of Flow</strong></td>
+                <td>Away from Heart (➔ Tissues)</td>
+                <td>Towards Heart (➔ Atria)</td>
+                <td>Connects Arterioles to Venules</td>
+              </tr>
+              <tr>
+                <td><strong>Blood Oxygenation</strong></td>
+                <td>Oxygenated (Except Pulmonary Artery)</td>
+                <td>Deoxygenated (Except Pulmonary Veins)</td>
+                <td>Gas & nutrient exchange zone</td>
+              </tr>
+              <tr>
+                <td><strong>Vessel Wall Thickness</strong></td>
+                <td>Thick, muscular & elastic</td>
+                <td>Thin, less muscular</td>
+                <td>Microscopic single-cell endothelium</td>
+              </tr>
+              <tr>
+                <td><strong>Internal Lumen</strong></td>
+                <td>Narrow lumen</td>
+                <td>Wide lumen</td>
+                <td>Microscopic (fits 1 RBC)</td>
+              </tr>
+              <tr>
+                <td><strong>Internal Valves</strong></td>
+                <td>Absent (High pressure prevents backflow)</td>
+                <td>Present (Prevents backflow in low pressure)</td>
+                <td>Absent</td>
+              </tr>
+              <tr>
+                <td><strong>Internal Blood Pressure</strong></td>
+                <td>High & Pulsatile (120/80 mmHg)</td>
+                <td>Low (~5–10 mmHg)</td>
+                <td>Intermediate (~35 ➔ 15 mmHg)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table 2: RBC vs WBC vs Platelets -->
+        <h3 class="table-title mt-6">2. RBCs vs. WBCs vs. Platelets</h3>
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>RBCs (Erythrocytes)</th>
+                <th>WBCs (Leucocytes)</th>
+                <th>Platelets (Thrombocytes)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Primary Function</strong></td>
+                <td>O₂ & CO₂ Gas Transport</td>
+                <td>Immune defense & phagocytosis</td>
+                <td>Blood clotting & hemostasis</td>
+              </tr>
+              <tr>
+                <td><strong>Nucleus</strong></td>
+                <td>Absent at maturity</td>
+                <td>Present (often lobed)</td>
+                <td>Absent (cytoplasmic fragments)</td>
+              </tr>
+              <tr>
+                <td><strong>Normal Count</strong></td>
+                <td>4.5 – 5.5 Million / mm³</td>
+                <td>4,000 – 11,000 / mm³</td>
+                <td>150,000 – 400,000 / mm³</td>
+              </tr>
+              <tr>
+                <td><strong>Average Lifespan</strong></td>
+                <td>~120 Days</td>
+                <td>Hours to years (Memory cells)</td>
+                <td>7 – 10 Days</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table 3: Skeletal vs Smooth vs Cardiac Muscle -->
+        <h3 class="table-title mt-6">3. Skeletal vs. Smooth vs. Cardiac Muscle</h3>
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Characteristic</th>
+                <th>Skeletal Muscle</th>
+                <th>Smooth Muscle</th>
+                <th>Cardiac Muscle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Microscopic Appearance</strong></td>
+                <td>Striated, cylindrical fibers</td>
+                <td>Unstriated, spindle-shaped</td>
+                <td>Striated, branched fibers</td>
+              </tr>
+              <tr>
+                <td><strong>Nuclei per Cell</strong></td>
+                <td>Multinucleated, Peripheral</td>
+                <td>Uninucleated, Central</td>
+                <td>1–2 Nuclei, Central</td>
+              </tr>
+              <tr>
+                <td><strong>Intercalated Discs</strong></td>
+                <td>Absent</td>
+                <td>Absent</td>
+                <td><strong>Present (⭐ MDCAT classic)</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Contraction Control</strong></td>
+                <td>Voluntary (Somatic control)</td>
+                <td>Involuntary (Autonomic control)</td>
+                <td>Involuntary (Autorhythmic pacemaker)</td>
+              </tr>
+              <tr>
+                <td><strong>Speed of Contraction</strong></td>
+                <td>Rapid & fatigues easily</td>
+                <td>Slow, rhythmic & sustained</td>
+                <td>Rhythmic & fatigue-resistant</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table 4: Insulin vs Glucagon -->
+        <h3 class="table-title mt-6">4. Insulin vs. Glucagon (Pancreatic Antagonism)</h3>
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Insulin</th>
+                <th>Glucagon</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Secretory Cell Source</strong></td>
+                <td>Beta (β) cells of Islets of Langerhans</td>
+                <td>Alpha (α) cells of Islets of Langerhans</td>
+              </tr>
+              <tr>
+                <td><strong>Trigger for Release</strong></td>
+                <td>High blood glucose levels (Hyperglycemia)</td>
+                <td>Low blood glucose levels (Hypoglycemia)</td>
+              </tr>
+              <tr>
+                <td><strong>Overall Net Effect</strong></td>
+                <td><strong>Lowers blood glucose (Hypoglycemic)</strong></td>
+                <td><strong>Raises blood glucose (Hyperglycemic)</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Key Biochemical Actions</strong></td>
+                <td>Glycogenesis, cellular uptake, lipogenesis</td>
+                <td>Glycogenolysis, gluconeogenesis, lipolysis</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table 5: CNS vs PNS -->
+        <h3 class="table-title mt-6">5. Central Nervous System (CNS) vs. Peripheral Nervous System (PNS)</h3>
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Central Nervous System (CNS)</th>
+                <th>Peripheral Nervous System (PNS)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Structural Components</strong></td>
+                <td>Brain and Spinal Cord</td>
+                <td>12 Cranial nerves + 31 Spinal nerves</td>
+              </tr>
+              <tr>
+                <td><strong>Bony Protection</strong></td>
+                <td>Protected by Cranium & Vertebral column</td>
+                <td>No enclosing bone protection</td>
+              </tr>
+              <tr>
+                <td><strong>Myelinating Glial Cell</strong></td>
+                <td>Oligodendrocytes</td>
+                <td>Schwann Cells</td>
+              </tr>
+              <tr>
+                <td><strong>Main Role</strong></td>
+                <td>Integration, processing, command center</td>
+                <td>Conducts sensory & motor inputs to/from CNS</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 🃏 12. INTERACTIVE FLASHCARDS -->
+    <section id="flashcards" class="chapter-section searchable-section" data-section-name="12. Flashcards">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge">12</span>
+          <div>
+            <h2 class="section-title">Interactive Flashcards (Active Recall)</h2>
+            <p class="section-subtitle">Click any flashcard to flip between question and answer. Mark your mastery status!</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="flashcards" data-bookmark-title="12. Flashcards" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <div class="flashcards-toolbar">
+          <span class="fc-counter">Mastery: <span id="fcMasteredCount">0</span> / 12 Mastered</span>
+          <div class="fc-actions">
+            <button type="button" id="flipAllCardsBtn" class="btn btn-secondary btn-sm">Flip All Cards</button>
+            <button type="button" id="resetFlashcardsBtn" class="btn btn-secondary btn-sm">Reset Progress</button>
+          </div>
+        </div>
+
+        <div class="flashcards-grid" id="flashcardsGrid">
+          
+          <!-- Card 1 -->
+          <div class="flashcard" tabindex="0" data-card-id="1">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 1 • Urinary</span>
+                <p class="fc-question">What is the functional microscopic unit of the human kidney?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">The Nephron</h4>
+                <p class="fc-detail">Each human kidney contains approximately 1.2 million nephrons consisting of renal corpuscle and tubules.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="flashcard" tabindex="0" data-card-id="2">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 2 • Circulatory</span>
+                <p class="fc-question">Which heart chamber pumps oxygenated blood to the entire systemic body?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">Left Ventricle</h4>
+                <p class="fc-detail">Possesses the thickest myocardial wall to overcome high systemic peripheral resistance.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="flashcard" tabindex="0" data-card-id="3">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 3 • Respiratory</span>
+                <p class="fc-question">Where does primary gas exchange occur in the human respiratory system?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">Alveoli</h4>
+                <p class="fc-detail">Single layer squamous epithelial sacs offering ~100 m² surface area and ultra-thin diffusion distance.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="flashcard" tabindex="0" data-card-id="4">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 4 • Endocrine</span>
+                <p class="fc-question">Which pancreatic hormone acts to lower blood glucose concentration?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">Insulin</h4>
+                <p class="fc-detail">Secreted by Beta (β) cells of the Islets of Langerhans; promotes cellular uptake and glycogenesis.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="flashcard" tabindex="0" data-card-id="5">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 5 • Nervous</span>
+                <p class="fc-question">What is the basic functional cell of the human nervous system?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">The Neuron</h4>
+                <p class="fc-detail">Comprises dendrites, cell body (soma), myelinated axon, and axon terminals for impulse transmission.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="flashcard" tabindex="0" data-card-id="6">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 6 • Digestive</span>
+                <p class="fc-question">What anatomical structures in the small intestine increase the surface area for nutrient absorption?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">Villi & Microvilli</h4>
+                <p class="fc-detail">Villi with central lacteals and microvilli brush borders amplify surface area by over 600 times.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="flashcard" tabindex="0" data-card-id="7">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 7 • Circulatory</span>
+                <p class="fc-question">Which blood cells lack a nucleus at maturity and transport respiratory gases?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">Red Blood Cells (Erythrocytes)</h4>
+                <p class="fc-detail">Biconcave discs packed with haemoglobin, optimizing diffusion and flexibility in narrow capillaries.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="flashcard" tabindex="0" data-card-id="8">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 8 • Musculoskeletal</span>
+                <p class="fc-question">Which muscle type is involuntary, striated, and uniquely features intercalated discs?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">Cardiac Muscle (Myocardium)</h4>
+                <p class="fc-detail">Intercalated discs contain gap junctions allowing rapid electrical coupling for synchronized heartbeats.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="flashcard" tabindex="0" data-card-id="9">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 9 • Endocrine</span>
+                <p class="fc-question">Which hormone promotes water reabsorption in nephron collecting ducts to prevent dehydration?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">ADH (Antidiuretic Hormone / Vasopressin)</h4>
+                <p class="fc-detail">Synthesized in hypothalamus and released from posterior pituitary; incorporates aquaporins.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 10 -->
+          <div class="flashcard" tabindex="0" data-card-id="10">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 10 • Digestive</span>
+                <p class="fc-question">Which enzyme in saliva initiates the digestion of dietary starch into maltose?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">Salivary Amylase (Ptyalin)</h4>
+                <p class="fc-detail">Active at neutral/slightly acidic pH 6.8; gets inactivated once it reaches acidic stomach gastric juice.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 11 -->
+          <div class="flashcard" tabindex="0" data-card-id="11">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 11 • Immune</span>
+                <p class="fc-question">Which specific lymphocytes differentiate into plasma cells that secrete protective antibodies?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">B-Lymphocytes (B-Cells)</h4>
+                <p class="fc-detail">Responsible for humoral adaptive immunity; also generate long-lived memory B cells.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 12 -->
+          <div class="flashcard" tabindex="0" data-card-id="12">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="fc-badge">Card 12 • Nervous</span>
+                <p class="fc-question">What is the correct sequential pathway of a basic reflex arc?</p>
+                <span class="fc-hint">Click or press Space to reveal answer ↻</span>
+              </div>
+              <div class="flashcard-back">
+                <span class="fc-badge">Answer</span>
+                <h4 class="fc-answer">Receptor ➔ Sensory ➔ Relay ➔ Motor ➔ Effector</h4>
+                <p class="fc-detail">Afferent sensory impulse traverses dorsal root, synapses in spinal cord, and exits via ventral motor root.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 📝 13. MDCAT MINI QUIZ -->
+    <section id="mini-quiz" class="chapter-section quiz-section searchable-section" data-section-name="13. MDCAT Mini Quiz">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num-badge badge-quiz">13</span>
+          <div>
+            <h2 class="section-title">MDCAT Mini Quiz (15 Conceptual Practice MCQs)</h2>
+            <p class="section-subtitle">Test your physiological understanding with high-yield entrance exam style multiple choice questions.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-bookmark" data-bookmark-id="mini-quiz" data-bookmark-title="13. MDCAT Quiz" title="Bookmark Section" aria-label="Bookmark Section">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+      </div>
+
+      <div class="section-body">
+        <!-- Quiz Control Bar -->
+        <div class="quiz-status-bar" id="quizStatusBar">
+          <div class="quiz-progress-info">
+            <span>Answered: <strong id="quizAnsweredCount">0</strong> / 15</span>
+            <span>Current Score: <strong id="quizLiveScore">0</strong></span>
+          </div>
+          <button type="button" id="resetQuizBtn" class="btn btn-secondary btn-sm">↺ Reset Quiz</button>
+        </div>
+
+        <!-- Quiz Container (Questions rendered by JS) -->
+        <div class="quiz-questions-list" id="quizQuestionsContainer">
+          <!-- Populated dynamically via human-physiology.js for robust scoring -->
+        </div>
+
+        <!-- Final Quiz Scoreboard (Shown upon completion or trigger) -->
+        <div class="quiz-result-card hidden" id="quizResultCard">
+          <div class="result-header">
+            <span class="result-trophy">🏆</span>
+            <h3 class="result-title">Quiz Performance Summary</h3>
+            <p class="result-feedback" id="resultFeedbackText">Great job on testing your physiology fundamentals!</p>
+          </div>
+
+          <div class="result-metrics-grid">
+            <div class="res-stat-card">
+              <span class="res-stat-val" id="resScoreVal">0 / 15</span>
+              <span class="res-stat-lbl">Final Score</span>
+            </div>
+            <div class="res-stat-card">
+              <span class="res-stat-val" id="resPercentageVal">0%</span>
+              <span class="res-stat-lbl">Percentage</span>
+            </div>
+            <div class="res-stat-card">
+              <span class="res-stat-val text-green" id="resCorrectVal">0</span>
+              <span class="res-stat-lbl">Correct</span>
+            </div>
+            <div class="res-stat-card">
+              <span class="res-stat-val text-red" id="resWrongVal">0</span>
+              <span class="res-stat-lbl">Incorrect</span>
+            </div>
+          </div>
+
+          <div class="result-actions">
+            <button type="button" id="retryQuizBtn" class="btn btn-primary">↺ Retry Full Quiz</button>
+            <a href="#high-yield" class="btn btn-secondary">Review High-Yield Notes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER COMPLETION FOOTER BANNER -->
+    <div class="completion-banner" id="completionBanner">
+      <div class="banner-content">
+        <span class="banner-icon">🎓</span>
+        <div>
+          <h3 class="banner-title">MDCAT Human Physiology Chapter</h3>
+          <p class="banner-desc">You have reviewed all 9 systems, simulations, high-yield points, tables, flashcards, and quiz MCQs.</p>
+        </div>
+      </div>
+      <button type="button" id="footerCompleteBtn" class="btn btn-completion">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="footerCompleteText">Mark Chapter as Completed</span>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>EduNexa MDCAT Biology</strong>
+        <p>Comprehensive medical entrance examination study modules designed for conceptual mastery and retention.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#top">Back to Top ↑</a>
+        <a href="#high-yield">High-Yield Facts</a>
+        <a href="#mini-quiz">Practice Quiz</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BACK TO TOP BUTTON -->
+  <button type="button" id="backToTopBtn" class="back-to-top hidden" title="Scroll back to top" aria-label="Scroll back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+
+  <!-- MAIN SCRIPT -->
+  <script src="human physiology.js" defer></script>
+</body>
+</html>

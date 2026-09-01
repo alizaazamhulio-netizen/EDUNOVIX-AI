@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduNexa AI — Grade 2 Learning Hub (Sindh Board)</title>
+  <meta name="description" content="A fun, colorful, and interactive Grade 2 digital classroom aligned with the Sindh Board primary curriculum. Learn English, Sindhi, Mathematics, General Science, and General Knowledge!">
+  
+  <!-- Google Fonts: Fredoka for friendly playful headings, Plus Jakarta Sans for clean reading, Noto Nastaliq Urdu / Noto Sans Arabic for crisp Sindhi text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="grade2.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+  <!-- Canvas Confetti Container -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <!-- Top Notification & Mascot Motivation Bar -->
+  <div class="top-motivate-bar" id="topMotivateBar">
+    <div class="container motivate-content">
+      <span class="mascot-emoji bounce-anim">🌟</span>
+      <p id="dailyMotivationText" class="motivate-text">"Welcome, superstar learner! Every question makes you smarter today! 🚀"</p>
+      <div class="motivate-badges">
+        <span class="pill streak-pill" title="Your Daily Learning Streak"><span class="icon">🔥</span> <strong id="streakCount">1</strong> Day Streak</span>
+        <span class="pill star-pill" title="Total Stars Collected"><span class="icon">⭐</span> <strong id="totalStarsCount">12</strong> Stars</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="mainHeader">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" id="brandLogo">
+        <div class="brand-icon-wrapper">
+          <span class="brand-icon">🚀</span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">STUDYMATE <span class="ai-badge">AI</span></span>
+          <span class="brand-sub">Sindh Board Primary Hub</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="main-nav" id="desktopNav">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#grade1-info" class="nav-link" id="navGrade1Link">Grade 1</a></li>
+          <li><a href="#subjects" class="nav-link highlight-grade">Grade 2 🎒</a></li>
+          <li><a href="#daily-adventure" class="nav-link">Daily Plan</a></li>
+          <li><a href="#activities" class="nav-link">Activities</a></li>
+          <li><a href="#games" class="nav-link">Games 🎮</a></li>
+          <li><a href="#math-tables" class="nav-link">Tables 🧮</a></li>
+          <li><a href="#reading-corner" class="nav-link">Reading 📖</a></li>
+          <li><a href="#grade2-quiz" class="nav-link">Quiz 🧩</a></li>
+          <li><a href="#books-resources" class="nav-link">Books 📚</a></li>
+          <li><a href="#parent-panel" class="nav-link parent-link">Parent View 👨‍👩‍👧</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions (Search, Sound, Mobile Menu) -->
+      <div class="nav-actions">
+        <div class="search-box-header">
+          <input type="text" id="globalSearchInput" placeholder="What to learn today? 🔍" aria-label="Search learning topics">
+          <button id="clearSearchBtn" class="search-clear-btn" style="display:none;" title="Clear search">✕</button>
+        </div>
+        
+        <button id="soundToggleBtn" class="action-icon-btn" title="Toggle Sound Effects" aria-label="Sound Toggle">
+          <span id="soundIcon">🔊</span>
+        </button>
+
+        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Open Navigation Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-header">
+        <span class="drawer-title">Navigation Menu</span>
+        <button id="closeMobileDrawerBtn" class="close-drawer-btn">&times;</button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="#hero" class="mobile-nav-link">🏠 Home</a></li>
+        <li><a href="#subjects" class="mobile-nav-link">🎒 Grade 2 Subjects</a></li>
+        <li><a href="#daily-adventure" class="mobile-nav-link">🚀 Daily Plan</a></li>
+        <li><a href="#activities" class="mobile-nav-link">🎨 Learning Activities</a></li>
+        <li><a href="#games" class="mobile-nav-link">🎮 Fun Mini-Games</a></li>
+        <li><a href="#math-tables" class="mobile-nav-link">🧮 Times Tables (2-10)</a></li>
+        <li><a href="#reading-corner" class="mobile-nav-link">📖 Reading Corner</a></li>
+        <li><a href="#grade2-quiz" class="mobile-nav-link">🧩 Grade 2 Mega Quiz</a></li>
+        <li><a href="#rewards-vault" class="mobile-nav-link">⭐ Badges & Rewards</a></li>
+        <li><a href="#books-resources" class="mobile-nav-link">📚 Books & Syllabus</a></li>
+        <li><a href="#parent-panel" class="mobile-nav-link highlight-parent">👨‍👩‍👧 Parent's Dashboard</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Live Global Search Overlay Filter Modal (Appears when user searches) -->
+  <section id="searchResultsSection" class="search-results-section" style="display:none;">
+    <div class="container">
+      <div class="search-results-card">
+        <div class="search-header">
+          <h3>Search Results for: "<span id="searchQueryDisplay"></span>"</h3>
+          <button id="closeSearchResultsBtn" class="btn-close-search">Close Search ✕</button>
+        </div>
+        <div id="searchResultsList" class="search-results-grid"></div>
+        <div id="noResultsMsg" class="no-results-box" style="display:none;">
+          <span class="no-results-icon">🔎</span>
+          <h4>No matching learning adventure found!</h4>
+          <p>Try searching for: <strong>Math</strong>, <strong>Sindhi</strong>, <strong>Sentence</strong>, <strong>Animals</strong>, <strong>Tables</strong>, <strong>Quiz</strong>, or <strong>Plants</strong>!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-shapes">
+        <span class="floating-shape shape-1">⭐</span>
+        <span class="floating-shape shape-2">☁️</span>
+        <span class="floating-shape shape-3">✏️</span>
+        <span class="floating-shape shape-4">🔢</span>
+        <span class="floating-shape shape-5">📖</span>
+        <span class="floating-shape shape-6">🎨</span>
+        <span class="floating-shape shape-7">🌿</span>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-text-col">
+          <div class="hero-curriculum-badge">
+            <span class="badge-dot"></span>
+            <span>Sindh Textbook Board (STBB) • Grade 2 Curriculum</span>
+          </div>
+          
+          <h1 class="hero-title">
+            Welcome to <span class="gradient-text">Grade 2!</span> 🚀
+          </h1>
+          
+          <p class="hero-subtitle">
+            Learn more, discover more, and become a smarter learner every day! Explore English stories, Sindhi letters, Math adventures, Science wonders, and exciting games!
+          </p>
+
+          <div class="hero-adventure-quote">
+            <span class="quote-avatar">🎓</span>
+            <div class="quote-content">
+              <strong>EduNexa Buddy says:</strong>
+              <p>"Ready for today's learning adventure? Let's collect stars and level up!"</p>
+            </div>
+          </div>
+
+          <div class="hero-btn-group">
+            <a href="#subjects" class="hero-btn btn-primary" id="btnHeroLearn">
+              <span>📚 Start Learning</span>
+            </a>
+            <a href="#games" class="hero-btn btn-secondary" id="btnHeroGames">
+              <span>🎮 Explore Activities</span>
+            </a>
+            <a href="#parent-panel" class="hero-btn btn-tertiary" id="btnHeroProgress">
+              <span>📊 My Progress</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual-col">
+          <div class="hero-illustration-card">
+            <!-- Animated SVG / Visual Composition -->
+            <div class="hero-avatar-showcase">
+              <div class="hero-center-badge">
+                <span class="hero-star-burst">🌟</span>
+                <div class="hero-mascot-img">🎒</div>
+                <div class="hero-floating-bubble bubble-left">
+                  <span>ABC & 123</span>
+                </div>
+                <div class="hero-floating-bubble bubble-right">
+                  <span>سنڌي سکيا</span>
+                </div>
+                <div class="hero-floating-bubble bubble-bottom">
+                  <span>Science 🔬</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-quick-status-bar">
+              <div class="status-item">
+                <span class="status-icon">🏆</span>
+                <div>
+                  <small>Grade Level</small>
+                  <strong>Class 2 (Primary)</strong>
+                </div>
+              </div>
+              <div class="status-item">
+                <span class="status-icon">⭐</span>
+                <div>
+                  <small>Your Rank</small>
+                  <strong id="userRankTitle">Explorer ⭐</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK STATISTICS CARDS -->
+    <section class="stats-section" id="statsSection">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card card-blue" id="statCardSubjects">
+            <div class="stat-icon">📚</div>
+            <div class="stat-info">
+              <h3 class="stat-number" data-target="5">5+</h3>
+              <p class="stat-label">Learning Areas</p>
+            </div>
+          </div>
+
+          <div class="stat-card card-green" id="statCardActivities">
+            <div class="stat-icon">🎨</div>
+            <div class="stat-info">
+              <h3 class="stat-number" data-target="20">20+</h3>
+              <p class="stat-label">Interactive Activities</p>
+            </div>
+          </div>
+
+          <div class="stat-card card-purple" id="statCardQuiz">
+            <div class="stat-icon">🧩</div>
+            <div class="stat-info">
+              <h3 class="stat-number" data-target="25">25+</h3>
+              <p class="stat-label">Quiz Challenge Questions</p>
+            </div>
+          </div>
+
+          <div class="stat-card card-orange" id="statCardProgress">
+            <div class="stat-icon">📈</div>
+            <div class="stat-info">
+              <h3 class="stat-number" id="overallProgressDisplay">0%</h3>
+              <p class="stat-label">Your Learning Progress</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAILY LEARNING ADVENTURE (Today's Plan) -->
+    <section class="daily-plan-section" id="daily-adventure">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">📅 Daily Routine</div>
+          <h2 class="section-title">Today's Learning Adventure 🚀</h2>
+          <p class="section-desc">Complete your 5 daily learning steps to maintain your learning streak and earn bonus gold stars!</p>
+        </div>
+
+        <div class="daily-plan-box">
+          <div class="daily-plan-header">
+            <div class="daily-date-info">
+              <span class="calendar-icon">🗓️</span>
+              <div>
+                <h4 id="currentDateString">Today's Quest</h4>
+                <p id="planCompletionStatus">0 of 5 Activities Completed</p>
+              </div>
+            </div>
+            <div class="daily-progress-meter">
+              <div class="daily-progress-bar-bg">
+                <div class="daily-progress-bar-fill" id="dailyProgressFill" style="width: 0%;"></div>
+              </div>
+              <span id="dailyProgressPct">0%</span>
+            </div>
+          </div>
+
+          <div class="daily-tasks-list" id="dailyTasksContainer">
+            <!-- Task 1: English -->
+            <div class="daily-task-item" data-task-id="task_english">
+              <div class="task-subject-tag tag-english">📖 English</div>
+              <div class="task-details">
+                <h5>Sentence Builder & Grammar Check</h5>
+                <span class="task-time">⏱️ 15 minutes</span>
+              </div>
+              <div class="task-actions">
+                <a href="#english-lab" class="task-btn-start">Start</a>
+                <button class="task-btn-complete" onclick="toggleDailyTask('task_english')">✓ Complete</button>
+              </div>
+            </div>
+
+            <!-- Task 2: Math -->
+            <div class="daily-task-item" data-task-id="task_math">
+              <div class="task-subject-tag tag-math">🔢 Mathematics</div>
+              <div class="task-details">
+                <h5>Place Value & Times Tables Practice</h5>
+                <span class="task-time">⏱️ 20 minutes</span>
+              </div>
+              <div class="task-actions">
+                <a href="#math-lab" class="task-btn-start">Start</a>
+                <button class="task-btn-complete" onclick="toggleDailyTask('task_math')">✓ Complete</button>
+              </div>
+            </div>
+
+            <!-- Task 3: Sindhi -->
+            <div class="daily-task-item" data-task-id="task_sindhi">
+              <div class="task-subject-tag tag-sindhi">🪶 Sindhi</div>
+              <div class="task-details">
+                <h5>سنڌي اکر ۽ تصويرن جو ميلاپ (Vocabulary & Letters)</h5>
+                <span class="task-time">⏱️ 15 minutes</span>
+              </div>
+              <div class="task-actions">
+                <a href="#sindhi-lab" class="task-btn-start">Start</a>
+                <button class="task-btn-complete" onclick="toggleDailyTask('task_sindhi')">✓ Complete</button>
+              </div>
+            </div>
+
+            <!-- Task 4: Science -->
+            <div class="daily-task-item" data-task-id="task_science">
+              <div class="task-subject-tag tag-science">🔬 Science</div>
+              <div class="task-details">
+                <h5>Parts of a Plant & 5 Human Senses</h5>
+                <span class="task-time">⏱️ 15 minutes</span>
+              </div>
+              <div class="task-actions">
+                <a href="#science-lab" class="task-btn-start">Start</a>
+                <button class="task-btn-complete" onclick="toggleDailyTask('task_science')">✓ Complete</button>
+              </div>
+            </div>
+
+            <!-- Task 5: Practice Game -->
+            <div class="daily-task-item" data-task-id="task_game">
+              <div class="task-subject-tag tag-game">🎮 Practice Game</div>
+              <div class="task-details">
+                <h5>Play Shape Detective or Math Sprint</h5>
+                <span class="task-time">⏱️ 10 minutes</span>
+              </div>
+              <div class="task-actions">
+                <a href="#games" class="task-btn-start">Start</a>
+                <button class="task-btn-complete" onclick="toggleDailyTask('task_game')">✓ Complete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEARNING LEVELS JOURNEY -->
+    <section class="levels-journey-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">🎯 Growth Pathway</div>
+          <h2 class="section-title">Your Learning Journey 🌟</h2>
+          <p class="section-desc">Progress through four exciting stages in every Grade 2 topic!</p>
+        </div>
+
+        <div class="journey-steps-grid">
+          <div class="journey-step-card step-starter active-step">
+            <div class="step-num">1</div>
+            <div class="step-icon">🌱</div>
+            <h4>Starter</h4>
+            <p>Learn the fundamental concept through visual cards & audio explanations.</p>
+          </div>
+
+          <div class="journey-step-arrow">➔</div>
+
+          <div class="journey-step-card step-explorer">
+            <div class="step-num">2</div>
+            <div class="step-icon">⭐</div>
+            <h4>Explorer</h4>
+            <p>Practice guided exercises, match pictures, and solve step-by-step puzzles.</p>
+          </div>
+
+          <div class="journey-step-arrow">➔</div>
+
+          <div class="journey-step-card step-challenger">
+            <div class="step-num">3</div>
+            <div class="step-icon">🚀</div>
+            <h4>Challenger</h4>
+            <p>Solve word problems, test your speed in mini-games, and beat the timer.</p>
+          </div>
+
+          <div class="journey-step-arrow">➔</div>
+
+          <div class="journey-step-card step-master">
+            <div class="step-num">4</div>
+            <div class="step-icon">🏆</div>
+            <h4>Master</h4>
+            <p>Ace the Grade 2 Mega Quiz, collect golden badges, and show your parents!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRADE 2 SUBJECTS CARDS -->
+    <section class="subjects-section" id="subjects">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">📚 Core Curriculum</div>
+          <h2 class="section-title">What Are We Learning Today? 🌟</h2>
+          <p class="section-desc">Designed specifically for Grade 2 learners according to Sindh Textbook Board syllabus guidelines.</p>
+        </div>
+
+        <div class="subjects-grid">
+          <!-- SUBJECT 1: ENGLISH -->
+          <div class="subject-card card-theme-english" id="cardSubjectEnglish">
+            <div class="subject-card-top">
+              <span class="subject-badge">📖 English</span>
+              <span class="subject-activity-count">5 Activities</span>
+            </div>
+            <div class="subject-visual">
+              <div class="subject-emoji-banner">🅰️ 📚 ✏️</div>
+            </div>
+            <div class="subject-content">
+              <h3>English Language & Literacy</h3>
+              <p>"Discover exciting words, build sentences, practice grammar, and read cheerful stories!"</p>
+              
+              <div class="subject-skills-list">
+                <span class="skill-tag">Nouns & Verbs</span>
+                <span class="skill-tag">Sentence Order</span>
+                <span class="skill-tag">Comprehension</span>
+                <span class="skill-tag">Spelling</span>
+              </div>
+
+              <div class="subject-progress-container">
+                <div class="subject-progress-labels">
+                  <small>Subject Mastery</small>
+                  <strong id="progTxtEnglish">20%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill fill-english" id="progBarEnglish" style="width: 20%;"></div>
+                </div>
+              </div>
+
+              <div class="subject-actions">
+                <a href="#english-lab" class="btn-subject-action btn-learn">Learn 📘</a>
+                <a href="#english-lab" class="btn-subject-action btn-practice">Practice ✍️</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBJECT 2: SINDHI -->
+          <div class="subject-card card-theme-sindhi" id="cardSubjectSindhi">
+            <div class="subject-card-top">
+              <span class="subject-badge">🪶 سنڌي (Sindhi)</span>
+              <span class="subject-activity-count">5 Activities</span>
+            </div>
+            <div class="subject-visual">
+              <div class="subject-emoji-banner">🪶 📜 🌸</div>
+            </div>
+            <div class="subject-content">
+              <h3>سنڌي ٻولي (Sindhi Language)</h3>
+              <p>"سنڌي اکر، سادا لفظ، تصويرن جو ميلاپ، سٺا جملا ۽ سنڌ جي خوبصورت ڪهاڻيون سکو!"</p>
+              
+              <div class="subject-skills-list">
+                <span class="skill-tag">سنڌي اکر</span>
+                <span class="skill-tag">اکرن جي ڳولا</span>
+                <span class="skill-tag">تصويري لغت</span>
+                <span class="skill-tag">سادا جملا</span>
+              </div>
+
+              <div class="subject-progress-container">
+                <div class="subject-progress-labels">
+                  <small>Subject Mastery</small>
+                  <strong id="progTxtSindhi">15%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill fill-sindhi" id="progBarSindhi" style="width: 15%;"></div>
+                </div>
+              </div>
+
+              <div class="subject-actions">
+                <a href="#sindhi-lab" class="btn-subject-action btn-learn">Learn 📖</a>
+                <a href="#sindhi-lab" class="btn-subject-action btn-practice">سکو ۽ مشق ✍️</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBJECT 3: MATHEMATICS -->
+          <div class="subject-card card-theme-math" id="cardSubjectMath">
+            <div class="subject-card-top">
+              <span class="subject-badge">🔢 Mathematics</span>
+              <span class="subject-activity-count">7 Activities</span>
+            </div>
+            <div class="subject-visual">
+              <div class="subject-emoji-banner">➕ ✖️ 📐</div>
+            </div>
+            <div class="subject-content">
+              <h3>Mathematics & Logic</h3>
+              <p>"Let's discover numbers, master place values, solve addition, subtraction, and become a Math Star!"</p>
+              
+              <div class="subject-skills-list">
+                <span class="skill-tag">Place Value (H-T-O)</span>
+                <span class="skill-tag">2-Digit Add/Sub</span>
+                <span class="skill-tag">Times Tables</span>
+                <span class="skill-tag">PKR Money</span>
+                <span class="skill-tag">Fractions 1/2, 1/4</span>
+              </div>
+
+              <div class="subject-progress-container">
+                <div class="subject-progress-labels">
+                  <small>Subject Mastery</small>
+                  <strong id="progTxtMath">25%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill fill-math" id="progBarMath" style="width: 25%;"></div>
+                </div>
+              </div>
+
+              <div class="subject-actions">
+                <a href="#math-lab" class="btn-subject-action btn-learn">Learn 🧮</a>
+                <a href="#math-lab" class="btn-subject-action btn-practice">Practice 🔢</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBJECT 4: GENERAL SCIENCE -->
+          <div class="subject-card card-theme-science" id="cardSubjectScience">
+            <div class="subject-card-top">
+              <span class="subject-badge">🔬 General Science</span>
+              <span class="subject-activity-count">6 Activities</span>
+            </div>
+            <div class="subject-visual">
+              <div class="subject-emoji-banner">🌱 🐶 💧</div>
+            </div>
+            <div class="subject-content">
+              <h3>General Science</h3>
+              <p>"Explore plant parts, wild and domestic animals, our 5 senses, weather changes, and healthy habits!"</p>
+              
+              <div class="subject-skills-list">
+                <span class="skill-tag">Parts of Plant</span>
+                <span class="skill-tag">Animal Habitats</span>
+                <span class="skill-tag">5 Human Senses</span>
+                <span class="skill-tag">Healthy Food</span>
+                <span class="skill-tag">Weather & Water</span>
+              </div>
+
+              <div class="subject-progress-container">
+                <div class="subject-progress-labels">
+                  <small>Subject Mastery</small>
+                  <strong id="progTxtScience">10%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill fill-science" id="progBarScience" style="width: 10%;"></div>
+                </div>
+              </div>
+
+              <div class="subject-actions">
+                <a href="#science-lab" class="btn-subject-action btn-learn">Explore 🔬</a>
+                <a href="#science-lab" class="btn-subject-action btn-practice">Lab Test 🧪</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBJECT 5: GENERAL KNOWLEDGE -->
+          <div class="subject-card card-theme-gk" id="cardSubjectGK">
+            <div class="subject-card-top">
+              <span class="subject-badge">🌍 General Knowledge</span>
+              <span class="subject-activity-count">5 Activities</span>
+            </div>
+            <div class="subject-visual">
+              <div class="subject-emoji-banner">🇵🇰 🏛️ 🚦</div>
+            </div>
+            <div class="subject-content">
+              <h3>General Knowledge & Sindh Heritage</h3>
+              <p>"Learn about Pakistan's national symbols, Sindh heritage like Mohenjo-daro, community helpers & safety!"</p>
+              
+              <div class="subject-skills-list">
+                <span class="skill-tag">Pakistan Symbols</span>
+                <span class="skill-tag">Sindh Culture</span>
+                <span class="skill-tag">Community Helpers</span>
+                <span class="skill-tag">Traffic Signs</span>
+                <span class="skill-tag">Seasons & Months</span>
+              </div>
+
+              <div class="subject-progress-container">
+                <div class="subject-progress-labels">
+                  <small>Subject Mastery</small>
+                  <strong id="progTxtGK">30%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill fill-gk" id="progBarGK" style="width: 30%;"></div>
+                </div>
+              </div>
+
+              <div class="subject-actions">
+                <a href="#gk-lab" class="btn-subject-action btn-learn">Discover 🌍</a>
+                <a href="#gk-lab" class="btn-subject-action btn-practice">Challenge 🏛️</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SUBJECT LABS SECTION -->
+    <section class="activities-container-section" id="activities">
+      <div class="container">
+        
+        <!-- ==================== 1. ENGLISH LAB ==================== -->
+        <div class="lab-card lab-english" id="english-lab">
+          <div class="lab-header">
+            <div class="lab-title-group">
+              <span class="lab-icon">📖</span>
+              <div>
+                <h2>Grade 2 English Learning Activities</h2>
+                <p>Master sentence building, grammar categories, vocabulary matching, and spelling!</p>
+              </div>
+            </div>
+            <div class="lab-nav-pills">
+              <button class="lab-pill-btn active" onclick="switchEnglishTab('sentence')">Sentence Builder</button>
+              <button class="lab-pill-btn" onclick="switchEnglishTab('grammar')">Grammar Practice</button>
+              <button class="lab-pill-btn" onclick="switchEnglishTab('vocab')">Vocab Match</button>
+              <button class="lab-pill-btn" onclick="switchEnglishTab('spelling')">Spelling Bee</button>
+            </div>
+          </div>
+
+          <div class="lab-body">
+            <!-- TAB 1: SENTENCE BUILDER -->
+            <div id="engTabSentence" class="lab-tab-panel active">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">💡</span>
+                <p><strong>Sentence Builder Challenge:</strong> Click or tap the words in the correct order to make a proper, complete Grade 2 sentence. Don't forget capital letters and full stops!</p>
+              </div>
+
+              <div class="sentence-game-box">
+                <div class="sentence-prompt-header">
+                  <span class="prompt-badge">Puzzle <span id="engSentenceIndex">1</span> of 4</span>
+                  <button class="sound-speak-btn" onclick="speakCurrentSentencePrompt()">🔊 Read Prompt</button>
+                </div>
+
+                <div class="sentence-drop-zone" id="sentenceDropZone">
+                  <span class="placeholder-text" id="sentenceDropPlaceholder">Click the word tiles below in the right order...</span>
+                </div>
+
+                <div class="sentence-word-bank" id="sentenceWordBank">
+                  <!-- Word chips generated dynamically -->
+                </div>
+
+                <div class="sentence-feedback" id="sentenceFeedback"></div>
+
+                <div class="sentence-controls">
+                  <button class="btn-action-sm btn-clear" onclick="resetCurrentSentence()">🔄 Reset Words</button>
+                  <button class="btn-action-sm btn-check" onclick="checkCurrentSentence()">✓ Check Sentence</button>
+                  <button class="btn-action-sm btn-next" id="btnNextSentence" style="display:none;" onclick="nextSentencePuzzle()">Next Sentence ➔</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 2: GRAMMAR PRACTICE -->
+            <div id="engTabGrammar" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">🔎</span>
+                <p><strong>Grammar Detective:</strong> Read the highlighted word in the sentence. Is it a <em>Noun (Naming word)</em>, <em>Verb (Action word)</em>, <em>Adjective (Describing word)</em>, or <em>Pronoun</em>?</p>
+              </div>
+
+              <div class="grammar-quiz-box" id="grammarQuizBox">
+                <div class="grammar-question-card">
+                  <div class="grammar-sentence-display" id="grammarSentenceDisplay">
+                    The <span class="highlight-grammar-word">clever</span> parrot ate a juicy mango.
+                  </div>
+                  <p class="grammar-question-prompt">What kind of word is "<strong><span id="grammarTargetWord">clever</span></strong>"?</p>
+
+                  <div class="grammar-options-grid" id="grammarOptionsGrid">
+                    <button class="grammar-opt-btn" onclick="checkGrammarAnswer('Adjective')">🎨 Adjective (Describing word)</button>
+                    <button class="grammar-opt-btn" onclick="checkGrammarAnswer('Noun')">🏷️ Noun (Naming word)</button>
+                    <button class="grammar-opt-btn" onclick="checkGrammarAnswer('Verb')">🏃 Verb (Action word)</button>
+                    <button class="grammar-opt-btn" onclick="checkGrammarAnswer('Pronoun')">👤 Pronoun (Replaces noun)</button>
+                  </div>
+
+                  <div class="grammar-feedback" id="grammarFeedback"></div>
+                  <button class="btn-action-sm btn-next" id="btnNextGrammar" style="display:none;" onclick="nextGrammarQuestion()">Next Question ➔</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: VOCABULARY MATCH -->
+            <div id="engTabVocab" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">🎯</span>
+                <p><strong>Vocabulary & Picture Match:</strong> Click a word on the left, then click its matching picture on the right!</p>
+              </div>
+
+              <div class="matching-game-grid" id="vocabMatchingGrid">
+                <div class="matching-col words-col" id="vocabWordsCol"></div>
+                <div class="matching-col pics-col" id="vocabPicsCol"></div>
+              </div>
+              <div class="vocab-match-feedback" id="vocabMatchFeedback"></div>
+            </div>
+
+            <!-- TAB 4: SPELLING BEE -->
+            <div id="engTabSpelling" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">🐝</span>
+                <p><strong>Spelling Challenge:</strong> Look at the picture and hear the word. Arrange the scrambled letters to spell it correctly!</p>
+              </div>
+
+              <div class="spelling-bee-box" id="spellingBeeBox">
+                <div class="spelling-pic-display" id="spellingPicDisplay">🦋</div>
+                <h4 id="spellingWordHint">"A colorful flying insect with beautiful wings"</h4>
+                <button class="sound-speak-btn" onclick="speakCurrentSpellingWord()">🔊 Hear Word</button>
+
+                <div class="spelling-letters-target" id="spellingTargetSlots"></div>
+                <div class="spelling-letter-tiles" id="spellingLetterTiles"></div>
+
+                <div class="spelling-feedback" id="spellingFeedback"></div>
+                <div class="spelling-controls">
+                  <button class="btn-action-sm btn-clear" onclick="resetSpelling()">🔄 Clear</button>
+                  <button class="btn-action-sm btn-check" onclick="checkSpelling()">✓ Check Spelling</button>
+                  <button class="btn-action-sm btn-next" id="btnNextSpelling" style="display:none;" onclick="nextSpellingWord()">Next Word ➔</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== 2. SINDHI LAB ==================== -->
+        <div class="lab-card lab-sindhi" id="sindhi-lab">
+          <div class="lab-header">
+            <div class="lab-title-group">
+              <span class="lab-icon">🪶</span>
+              <div>
+                <h2>سنڌي سکيا جو مرڪز (Grade 2 Sindhi Learning Hub)</h2>
+                <p>سنڌي اکرن جي سڃاڻپ، تصويرن ۽ لفظن جو ميلاپ، کٽل اکر، ۽ سادا جملا!</p>
+              </div>
+            </div>
+            <div class="lab-nav-pills">
+              <button class="lab-pill-btn active" onclick="switchSindhiTab('letters')">اکرن جي سڃاڻپ</button>
+              <button class="lab-pill-btn" onclick="switchSindhiTab('words')">تصوير ۽ لفظ</button>
+              <button class="lab-pill-btn" onclick="switchSindhiTab('missing')">کٽل اکر</button>
+              <button class="lab-pill-btn" onclick="switchSindhiTab('sentences')">سادا جملا</button>
+            </div>
+          </div>
+
+          <div class="lab-body rtl-body">
+            <!-- SINDHI TAB 1: SINDHI LETTERS -->
+            <div id="sindhiTabLetters" class="lab-tab-panel active">
+              <div class="activity-instruction-box rtl-text">
+                <span class="instruction-icon">💡</span>
+                <p><strong>سنڌي اکرن جي سڃاڻپ:</strong> هيٺ ڏنل سنڌي اکر تي ڪلڪ ڪريو ۽ ان سان شروع ٿيندڙ لفظ ۽ تصوير ڏسو!</p>
+              </div>
+
+              <div class="sindhi-letter-explorer">
+                <div class="sindhi-alphabet-bar" id="sindhiAlphabetGrid">
+                  <!-- Generated dynamically in JS: ا، ب، ٻ، ڀ، ت، ٿ، ٽ، پ، ج، ڄ، ڃ، ڇ، د، ڌ، ڏ، ڊ، ر، ڙ، ز، س، ش، ڪ، ک، گ، ڳ، ڱ، ل، م، ن، ڻ، و، ه، ي -->
+                </div>
+
+                <div class="sindhi-letter-card-display" id="sindhiLetterCard">
+                  <div class="sindhi-big-letter" id="sindhiBigLetter">ٻ</div>
+                  <div class="sindhi-letter-details">
+                    <h3 id="sindhiWordName">ٻلي (Cat)</h3>
+                    <p id="sindhiWordSentence">ٻلي کير پيئي ٿي.</p>
+                    <button class="sound-speak-btn" onclick="speakSindhiWord()">🔊 اکر ٻڌو (Pronounce)</button>
+                  </div>
+                  <div class="sindhi-letter-emoji" id="sindhiWordEmoji">🐱</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SINDHI TAB 2: PICTURE TO WORD MATCH -->
+            <div id="sindhiTabWords" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box rtl-text">
+                <span class="instruction-icon">🌸</span>
+                <p><strong>تصوير ۽ لفظ جو ميلاپ:</strong> صحيح تصوير ڏسي ان جو سنڌي نالو چونڊيو!</p>
+              </div>
+
+              <div class="sindhi-quiz-box" id="sindhiWordQuizBox">
+                <div class="sindhi-quiz-card">
+                  <div class="sindhi-prompt-emoji" id="sindhiQuizEmoji">🌸</div>
+                  <h3 class="rtl-text" id="sindhiQuizQuestion">هن تصوير جو سنڌي نالو ڇا آهي؟</h3>
+
+                  <div class="sindhi-options-grid rtl-text" id="sindhiWordOptions">
+                    <!-- Dynamic Sindhi choices -->
+                  </div>
+
+                  <div class="sindhi-feedback" id="sindhiWordFeedback"></div>
+                  <button class="btn-action-sm btn-next" id="btnNextSindhiWord" style="display:none;" onclick="nextSindhiWordQuestion()">اڳيون سوال ➔</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- SINDHI TAB 3: MISSING LETTER -->
+            <div id="sindhiTabMissing" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box rtl-text">
+                <span class="instruction-icon">✏️</span>
+                <p><strong>کٽل اکر ڀريو:</strong> لفظ مڪمل ڪرڻ لاءِ صحيح سنڌي اکر تي ڪلڪ ڪريو!</p>
+              </div>
+
+              <div class="sindhi-missing-letter-card">
+                <div class="missing-prompt-visual" id="missingPromptVisual">🏡</div>
+                <div class="missing-word-display rtl-text" id="missingWordDisplay">
+                  گـ <span class="missing-slot-highlight">؟</span> ر (گهر)
+                </div>
+                <p class="rtl-text">خالي جاءِ تي ڪهڙو اکر ايندو؟</p>
+
+                <div class="missing-letters-bank rtl-text" id="missingLettersBank">
+                  <!-- Letter buttons -->
+                </div>
+
+                <div class="sindhi-feedback" id="sindhiMissingFeedback"></div>
+                <button class="btn-action-sm btn-next" id="btnNextSindhiMissing" style="display:none;" onclick="nextSindhiMissingQuestion()">اڳيون سوال ➔</button>
+              </div>
+            </div>
+
+            <!-- SINDHI TAB 4: SIMPLE SENTENCES -->
+            <div id="sindhiTabSentences" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box rtl-text">
+                <span class="instruction-icon">📖</span>
+                <p><strong>سادا سنڌي جملا:</strong> جملو پڙهو ۽ ان جو جواب چونڊيو!</p>
+              </div>
+
+              <div class="sindhi-sentence-reader">
+                <div class="sindhi-sentence-card rtl-text">
+                  <div class="sindhi-sentence-quote" id="sindhiSentenceQuote">
+                    "سنڌ اسان جو پيارو صوبو آهي. ڪراچي سنڌ جو وڏو شهر آهي."
+                  </div>
+                  <h4 id="sindhiSentenceQuestion">سنڌ جو سڀ کان وڏو شهر ڪهڙو آهي؟</h4>
+
+                  <div class="sindhi-sentence-choices" id="sindhiSentenceChoices">
+                    <button class="sindhi-choice-btn" onclick="checkSindhiSentenceAns('ڪراچي', true)">ڪراچي</button>
+                    <button class="sindhi-choice-btn" onclick="checkSindhiSentenceAns('حيدرآباد', false)">حيدرآباد</button>
+                    <button class="sindhi-choice-btn" onclick="checkSindhiSentenceAns('سکر', false)">سکر</button>
+                  </div>
+
+                  <div class="sindhi-feedback" id="sindhiSentenceFeedback"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== 3. MATHEMATICS LAB ==================== -->
+        <div class="lab-card lab-math" id="math-lab">
+          <div class="lab-header">
+            <div class="lab-title-group">
+              <span class="lab-icon">🔢</span>
+              <div>
+                <h2>Grade 2 Mathematics Interactive Lab</h2>
+                <p>Hundreds-Tens-Ones place value, 2-digit addition & subtraction, visual fractions, Pakistani money, and clocks!</p>
+              </div>
+            </div>
+            <div class="lab-nav-pills">
+              <button class="lab-pill-btn active" onclick="switchMathTab('placevalue')">Place Value (H-T-O)</button>
+              <button class="lab-pill-btn" onclick="switchMathTab('addsub')">Addition & Subtraction</button>
+              <button class="lab-pill-btn" onclick="switchMathTab('fractions')">Visual Fractions</button>
+              <button class="lab-pill-btn" onclick="switchMathTab('clock')">Time & Clock</button>
+              <button class="lab-pill-btn" onclick="switchMathTab('money')">Pakistani Money ₨</button>
+            </div>
+          </div>
+
+          <div class="lab-body">
+            <!-- MATH TAB 1: PLACE VALUE EXPLORER -->
+            <div id="mathTabPlaceValue" class="lab-tab-panel active">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">💡</span>
+                <p><strong>Place Value Explorer (3-Digit Numbers):</strong> Every 3-digit number has Hundreds, Tens, and Ones. Look at the number below and see how it breaks down!</p>
+              </div>
+
+              <div class="place-value-interactive">
+                <div class="number-generator-header">
+                  <span class="pv-number-badge" id="pvTargetNumber">245</span>
+                  <div class="pv-actions">
+                    <button class="btn-action-sm" onclick="generateNewPlaceValueNum()">🎲 Random Number</button>
+                  </div>
+                </div>
+
+                <div class="place-value-blocks-grid">
+                  <!-- Hundreds Column -->
+                  <div class="pv-column col-hundreds">
+                    <div class="pv-col-header">
+                      <h4>Hundreds (100s)</h4>
+                      <span class="pv-digit" id="pvDigitHundreds">2</span>
+                    </div>
+                    <div class="pv-blocks-container" id="pvBlocksHundreds">
+                      <!-- Render 100-flats -->
+                      <div class="block-hundred">100</div>
+                      <div class="block-hundred">100</div>
+                    </div>
+                    <span class="pv-value-label" id="pvValHundreds">= 200</span>
+                  </div>
+
+                  <!-- Tens Column -->
+                  <div class="pv-column col-tens">
+                    <div class="pv-col-header">
+                      <h4>Tens (10s)</h4>
+                      <span class="pv-digit" id="pvDigitTens">4</span>
+                    </div>
+                    <div class="pv-blocks-container" id="pvBlocksTens">
+                      <!-- Render 10-rods -->
+                      <div class="block-ten">10</div>
+                      <div class="block-ten">10</div>
+                      <div class="block-ten">10</div>
+                      <div class="block-ten">10</div>
+                    </div>
+                    <span class="pv-value-label" id="pvValTens">= 40</span>
+                  </div>
+
+                  <!-- Ones Column -->
+                  <div class="pv-column col-ones">
+                    <div class="pv-col-header">
+                      <h4>Ones (1s)</h4>
+                      <span class="pv-digit" id="pvDigitOnes">5</span>
+                    </div>
+                    <div class="pv-blocks-container" id="pvBlocksOnes">
+                      <!-- Render 1-units -->
+                      <div class="block-one">1</div>
+                      <div class="block-one">1</div>
+                      <div class="block-one">1</div>
+                      <div class="block-one">1</div>
+                      <div class="block-one">1</div>
+                    </div>
+                    <span class="pv-value-label" id="pvValOnes">= 5</span>
+                  </div>
+                </div>
+
+                <div class="place-value-expanded-form">
+                  <p>Expanded Form: <strong id="pvExpandedEquation">200 + 40 + 5 = 245</strong></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- MATH TAB 2: ADDITION & SUBTRACTION -->
+            <div id="mathTabAddSub" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">➕</span>
+                <p><strong>Grade 2 Column Addition & Subtraction:</strong> Solve the 2-digit & 3-digit problems step-by-step.</p>
+              </div>
+
+              <div class="column-math-workbench">
+                <div class="math-problem-card">
+                  <div class="problem-type-selector">
+                    <button class="pill-mini active" id="btnModeAdd" onclick="setMathProblemMode('add')">➕ Addition</button>
+                    <button class="pill-mini" id="btnModeSub" onclick="setMathProblemMode('sub')">➖ Subtraction</button>
+                    <button class="btn-action-sm" onclick="generateNewColumnProblem()">New Problem 🎲</button>
+                  </div>
+
+                  <div class="column-math-display">
+                    <div class="math-row row-top" id="mathRowTop">45</div>
+                    <div class="math-row row-bottom"><span class="math-sign" id="mathOpSign">+</span> <span id="mathRowBottom">23</span></div>
+                    <div class="math-divider"></div>
+                    <div class="math-row row-answer">
+                      <input type="number" id="mathAnswerInput" class="math-input-box" placeholder="?" aria-label="Enter math answer">
+                    </div>
+                  </div>
+
+                  <div class="math-feedback" id="mathColumnFeedback"></div>
+                  <div class="math-actions-group">
+                    <button class="btn-action-sm btn-check" onclick="checkColumnMathAnswer()">✓ Submit Answer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MATH TAB 3: VISUAL FRACTIONS -->
+            <div id="mathTabFractions" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">🍕</span>
+                <p><strong>Visual Fractions (Halves & Quarters):</strong> In Grade 2, we learn that fractions mean equal parts of a whole! Click slices to see fractions in action.</p>
+              </div>
+
+              <div class="fractions-interactive-grid">
+                <div class="fraction-card">
+                  <h4>1 Whole (1)</h4>
+                  <div class="fraction-visual-circle circle-whole">
+                    <div class="slice active">1</div>
+                  </div>
+                  <p>All parts together = 1 Whole</p>
+                </div>
+
+                <div class="fraction-card">
+                  <h4>One Half (1/2)</h4>
+                  <div class="fraction-visual-circle circle-half">
+                    <div class="slice active">1/2</div>
+                    <div class="slice">1/2</div>
+                  </div>
+                  <p>1 of 2 equal parts = 1/2</p>
+                </div>
+
+                <div class="fraction-card">
+                  <h4>One Quarter (1/4)</h4>
+                  <div class="fraction-visual-circle circle-quarter">
+                    <div class="slice active">1/4</div>
+                    <div class="slice">1/4</div>
+                    <div class="slice">1/4</div>
+                    <div class="slice">1/4</div>
+                  </div>
+                  <p>1 of 4 equal parts = 1/4</p>
+                </div>
+
+                <div class="fraction-card">
+                  <h4>Three Quarters (3/4)</h4>
+                  <div class="fraction-visual-circle circle-three-quarter">
+                    <div class="slice active">1/4</div>
+                    <div class="slice active">1/4</div>
+                    <div class="slice active">1/4</div>
+                    <div class="slice">1/4</div>
+                  </div>
+                  <p>3 of 4 equal parts = 3/4</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- MATH TAB 4: TIME & CLOCK -->
+            <div id="mathTabClock" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">⏰</span>
+                <p><strong>Clock & Time Master:</strong> Look at the clock face. The short hand shows <strong>Hours</strong> and the long hand shows <strong>Minutes</strong>!</p>
+              </div>
+
+              <div class="clock-quiz-workbench">
+                <div class="analog-clock-container">
+                  <div class="analog-clock-face" id="analogClockFace">
+                    <div class="clock-center-dot"></div>
+                    <div class="clock-hand hand-hour" id="clockHourHand" style="transform: rotate(90deg);"></div>
+                    <div class="clock-hand hand-minute" id="clockMinuteHand" style="transform: rotate(0deg);"></div>
+                    <!-- Clock Numbers -->
+                    <span class="clock-num num-12">12</span>
+                    <span class="clock-num num-3">3</span>
+                    <span class="clock-num num-6">6</span>
+                    <span class="clock-num num-9">9</span>
+                  </div>
+                </div>
+
+                <div class="clock-question-side">
+                  <h3>What time is shown on this clock?</h3>
+                  <div class="clock-time-options" id="clockTimeOptions">
+                    <!-- Dynamic Time Options -->
+                  </div>
+                  <div class="math-feedback" id="clockFeedback"></div>
+                  <button class="btn-action-sm btn-next" id="btnNextClock" style="display:none;" onclick="nextClockQuestion()">Next Clock ➔</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- MATH TAB 5: PAKISTANI MONEY -->
+            <div id="mathTabMoney" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">💵</span>
+                <p><strong>Pakistani Currency Shop (₨ Rupees):</strong> Practice buying items and calculating total money using Pakistani currency notes!</p>
+              </div>
+
+              <div class="money-shop-grid">
+                <div class="money-shelf">
+                  <h4>Fruit & Stationery Stall</h4>
+                  <div class="shop-items-grid">
+                    <div class="shop-item-card" onclick="addShopItem('Pencil', 20)">
+                      <span class="item-icon">✏️</span>
+                      <span class="item-name">Pencil</span>
+                      <strong class="item-price">₨ 20</strong>
+                      <button class="btn-add-item">+ Add</button>
+                    </div>
+                    <div class="shop-item-card" onclick="addShopItem('Notebook', 50)">
+                      <span class="item-icon">📒</span>
+                      <span class="item-name">Notebook</span>
+                      <strong class="item-price">₨ 50</strong>
+                      <button class="btn-add-item">+ Add</button>
+                    </div>
+                    <div class="shop-item-card" onclick="addShopItem('Apple', 30)">
+                      <span class="item-icon">🍎</span>
+                      <span class="item-name">Apple</span>
+                      <strong class="item-price">₨ 30</strong>
+                      <button class="btn-add-item">+ Add</button>
+                    </div>
+                    <div class="shop-item-card" onclick="addShopItem('Juice Box', 60)">
+                      <span class="item-icon">🧃</span>
+                      <span class="item-name">Juice</span>
+                      <strong class="item-price">₨ 60</strong>
+                      <button class="btn-add-item">+ Add</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="money-cart-card">
+                  <h4>Your Shopping Cart 🛒</h4>
+                  <ul class="cart-list" id="shopCartList">
+                    <li class="empty-cart-text">Your basket is empty! Add items above.</li>
+                  </ul>
+                  <div class="cart-total-bar">
+                    <span>Total Amount:</span>
+                    <strong id="shopCartTotal">₨ 0</strong>
+                  </div>
+                  <div class="cart-actions">
+                    <button class="btn-action-sm btn-clear" onclick="clearShopCart()">Empty Basket</button>
+                    <button class="btn-action-sm btn-check" onclick="checkoutShopCart()">Pay with PKR Notes 💵</button>
+                  </div>
+                  <div class="math-feedback" id="shopFeedback"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== 4. GENERAL SCIENCE LAB ==================== -->
+        <div class="lab-card lab-science" id="science-lab">
+          <div class="lab-header">
+            <div class="lab-title-group">
+              <span class="lab-icon">🔬</span>
+              <div>
+                <h2>Grade 2 General Science Explorer</h2>
+                <p>Discover plant biology, animal groups, the human body & 5 senses, healthy foods, and weather!</p>
+              </div>
+            </div>
+            <div class="lab-nav-pills">
+              <button class="lab-pill-btn active" onclick="switchScienceTab('plants')">Parts of a Plant 🌱</button>
+              <button class="lab-pill-btn" onclick="switchScienceTab('animals')">Animals (Wild & Domestic) 🦁</button>
+              <button class="lab-pill-btn" onclick="switchScienceTab('senses')">5 Human Senses 👁️</button>
+              <button class="lab-pill-btn" onclick="switchScienceTab('facts')">Did You Know? 💡</button>
+            </div>
+          </div>
+
+          <div class="lab-body">
+            <!-- SCIENCE TAB 1: PLANT ANATOMY -->
+            <div id="sciTabPlants" class="lab-tab-panel active">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">🌱</span>
+                <p><strong>Interactive Plant Explorer:</strong> Click on each part of the plant to learn its vital job in helping the plant grow!</p>
+              </div>
+
+              <div class="plant-diagram-workbench">
+                <div class="plant-interactive-visual">
+                  <div class="plant-part-hotspot hotspot-flower" onclick="showPlantPartInfo('flower')">
+                    <span class="hotspot-badge">🌸 Flower</span>
+                  </div>
+                  <div class="plant-part-hotspot hotspot-leaf" onclick="showPlantPartInfo('leaf')">
+                    <span class="hotspot-badge">🍃 Leaf</span>
+                  </div>
+                  <div class="plant-part-hotspot hotspot-stem" onclick="showPlantPartInfo('stem')">
+                    <span class="hotspot-badge">🎋 Stem</span>
+                  </div>
+                  <div class="plant-part-hotspot hotspot-fruit" onclick="showPlantPartInfo('fruit')">
+                    <span class="hotspot-badge">🍎 Fruit</span>
+                  </div>
+                  <div class="plant-part-hotspot hotspot-roots" onclick="showPlantPartInfo('roots')">
+                    <span class="hotspot-badge">🌱 Roots</span>
+                  </div>
+
+                  <!-- Visual SVG Tree/Plant Representation -->
+                  <div class="plant-art-container">
+                    <div class="plant-sun">☀️</div>
+                    <div class="plant-art-stem"></div>
+                    <div class="plant-art-soil"></div>
+                  </div>
+                </div>
+
+                <div class="plant-info-display-card" id="plantPartCard">
+                  <div class="part-info-header">
+                    <span class="part-icon" id="plantPartIcon">🌸</span>
+                    <h3 id="plantPartTitle">Flower</h3>
+                  </div>
+                  <p id="plantPartDescription">Flowers are the most colorful part of a plant. They attract bees and butterflies and make seeds so new plants can grow!</p>
+                  <div class="fun-fact-chip">
+                    <span>🌟 Fun Fact:</span> <span id="plantPartFact">Sunflowers turn their faces toward the sun all day long!</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SCIENCE TAB 2: ANIMALS -->
+            <div id="sciTabAnimals" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">🐾</span>
+                <p><strong>Domestic vs Wild Animals:</strong> Domestic animals live on farms or in homes with humans. Wild animals live freely in forests, jungles, and deserts!</p>
+              </div>
+
+              <div class="animal-sort-challenge">
+                <div class="animal-bins-container">
+                  <div class="animal-bin bin-domestic">
+                    <h4>🏡 Domestic / Farm Animals</h4>
+                    <div class="bin-drop-area" id="binDomesticArea">
+                      <span class="bin-tag">Cow 🐄</span>
+                      <span class="bin-tag">Goat 🐐</span>
+                      <span class="bin-tag">Cat 🐱</span>
+                    </div>
+                  </div>
+
+                  <div class="animal-bin bin-wild">
+                    <h4>🌲 Wild Jungle Animals</h4>
+                    <div class="bin-drop-area" id="binWildArea">
+                      <span class="bin-tag">Lion 🦁</span>
+                      <span class="bin-tag">Markhor 🐐</span>
+                      <span class="bin-tag">Elephant 🐘</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="animal-quiz-card">
+                  <div class="animal-prompt-display">
+                    <span class="big-animal-emoji" id="currentAnimalEmoji">🐪</span>
+                    <h4 id="currentAnimalPrompt">Where does the Camel live?</h4>
+                  </div>
+                  <div class="animal-choice-buttons">
+                    <button class="btn-action-sm" onclick="checkAnimalClassification('Domestic')">🏡 Domestic (Lives with humans)</button>
+                    <button class="btn-action-sm" onclick="checkAnimalClassification('Wild')">🏜️ Wild (Lives freely in nature)</button>
+                  </div>
+                  <div class="science-feedback" id="animalFeedback"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SCIENCE TAB 3: 5 SENSES -->
+            <div id="sciTabSenses" class="lab-tab-panel" style="display:none;">
+              <div class="activity-instruction-box">
+                <span class="instruction-icon">👁️</span>
+                <p><strong>The 5 Human Senses:</strong> Click each sense organ to discover how our body experiences the wonderful world around us!</p>
+              </div>
+
+              <div class="senses-grid">
+                <div class="sense-card">
+                  <span class="sense-icon">👀</span>
+                  <h4>Eyes (Sight)</h4>
+                  <p>We see bright colors, beautiful shapes, and read books.</p>
+                </div>
+                <div class="sense-card">
+                  <span class="sense-icon">👂</span>
+                  <h4>Ears (Hearing)</h4>
+                  <p>We hear birds chirping, school bells, and our teacher's voice.</p>
+                </div>
+                <div class="sense-card">
+                  <span class="sense-icon">👃</span>
+                  <h4>Nose (Smell)</h4>
+                  <p>We smell sweet roses, delicious biryani, and fresh rain.</p>
+                </div>
+                <div class="sense-card">
+                  <span class="sense-icon">👅</span>
+                  <h4>Tongue (Taste)</h4>
+                  <p>We taste sweet mangoes, salty crisps, and sour lemons.</p>
+                </div>
+                <div class="sense-card">
+                  <span class="sense-icon">✋</span>
+                  <h4>Skin (Touch)</h4>
+                  <p>We feel soft bunny fur, warm sunlight, and cold ice cubes.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- SCIENCE TAB 4: DID YOU KNOW FACTS -->
+            <div id="sciTabFacts" class="lab-tab-panel" style="display:none;">
+              <div class="facts-cards-grid">
+                <div class="science-fact-card">
+                  <span class="fact-icon">🐬</span>
+                  <h4>Indus River Blind Dolphin</h4>
+                  <p>The Indus Dolphin is a rare freshwater dolphin living in Sindh's Indus River. It uses echolocation sounds to navigate!</p>
+                </div>
+                <div class="science-fact-card">
+                  <span class="fact-icon">🫀</span>
+                  <h4>The Human Heart</h4>
+                  <p>Your heart beats about 100 times every single minute to pump healthy blood and oxygen to all parts of your body!</p>
+                </div>
+                <div class="science-fact-card">
+                  <span class="fact-icon">🌳</span>
+                  <h4>Oxygen Makers</h4>
+                  <p>Trees take in carbon dioxide and give us clean, fresh oxygen to breathe. Planting trees keeps Sindh green!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== 5. GENERAL KNOWLEDGE LAB ==================== -->
+        <div class="lab-card lab-gk" id="gk-lab">
+          <div class="lab-header">
+            <div class="lab-title-group">
+              <span class="lab-icon">🌍</span>
+              <div>
+                <h2>Grade 2 General Knowledge & Sindh Heritage</h2>
+                <p>Discover Pakistan's national symbols, Sindh's historical landmarks, community helpers, and road safety!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lab-body">
+            <div class="gk-interactive-grid">
+              <!-- Card 1: Pakistan National Symbols -->
+              <div class="gk-topic-card">
+                <div class="gk-topic-icon">🇵🇰</div>
+                <h3>National Symbols of Pakistan</h3>
+                <ul class="gk-list">
+                  <li><strong>Founder:</strong> Quaid-e-Azam Muhammad Ali Jinnah</li>
+                  <li><strong>National Poet:</strong> Allama Muhammad Iqbal</li>
+                  <li><strong>National Animal:</strong> Markhor 🐐</li>
+                  <li><strong>National Flower:</strong> Jasmine (چمبيلي) 🌸</li>
+                  <li><strong>National Fruit:</strong> Mango (آم) 🥭</li>
+                  <li><strong>National Game:</strong> Field Hockey 🏑</li>
+                </ul>
+              </div>
+
+              <!-- Card 2: Sindh Wonders -->
+              <div class="gk-topic-card">
+                <div class="gk-topic-icon">🏛️</div>
+                <h3>Wonders of Sindh</h3>
+                <ul class="gk-list">
+                  <li><strong>Mohenjo-daro:</strong> Ancient 5000-year-old Indus Valley city near Larkana!</li>
+                  <li><strong>Keenjhar Lake:</strong> Beautiful freshwater lake in Thatta.</li>
+                  <li><strong>Ajrak & Sindhi Topi:</strong> Traditional cultural symbols of honor & pride.</li>
+                  <li><strong>Mazar-e-Quaid:</strong> Peaceful mausoleum of Quaid-e-Azam in Karachi.</li>
+                </ul>
+              </div>
+
+              <!-- Card 3: Community Helpers -->
+              <div class="gk-topic-card">
+                <div class="gk-topic-icon">👨‍🚒</div>
+                <h3>Our Community Helpers</h3>
+                <ul class="gk-list">
+                  <li><strong>Teacher:</strong> Helps us read, write, and grow wise 📚</li>
+                  <li><strong>Doctor & Nurse:</strong> Care for us when we are sick 🩺</li>
+                  <li><strong>Farmer:</strong> Grows delicious wheat, rice, and vegetables 🌾</li>
+                  <li><strong>Police Officer:</strong> Keeps our city safe and peaceful 👮</li>
+                </ul>
+              </div>
+
+              <!-- Card 4: Traffic Signs & Safety -->
+              <div class="gk-topic-card">
+                <div class="gk-topic-icon">🚦</div>
+                <h3>Traffic Light Rules</h3>
+                <ul class="gk-list">
+                  <li>🔴 <strong>Red Light:</strong> STOP immediately!</li>
+                  <li>🟡 <strong>Yellow Light:</strong> GET READY and slow down!</li>
+                  <li>🟢 <strong>Green Light:</strong> GO safely!</li>
+                  <li>🦓 <strong>Zebra Crossing:</strong> Always cross the road here holding hands with an adult.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MATH TIMES TABLE CHALLENGE (Tables 2 to 10) -->
+    <section class="tables-section" id="math-tables">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">🧮 Multiplication Fun</div>
+          <h2 class="section-title">Times Table Challenge (2 to 10) ⭐</h2>
+          <p class="section-desc">Select a multiplication table, practice flashcards, and test your speed with instant star rewards!</p>
+        </div>
+
+        <div class="tables-workbench">
+          <!-- Table selector buttons -->
+          <div class="table-selector-bar" id="tableSelectorBar">
+            <button class="table-select-btn active" onclick="selectTable(2)">Table 2</button>
+            <button class="table-select-btn" onclick="selectTable(3)">Table 3</button>
+            <button class="table-select-btn" onclick="selectTable(4)">Table 4</button>
+            <button class="table-select-btn" onclick="selectTable(5)">Table 5</button>
+            <button class="table-select-btn" onclick="selectTable(6)">Table 6</button>
+            <button class="table-select-btn" onclick="selectTable(7)">Table 7</button>
+            <button class="table-select-btn" onclick="selectTable(8)">Table 8</button>
+            <button class="table-select-btn" onclick="selectTable(9)">Table 9</button>
+            <button class="table-select-btn" onclick="selectTable(10)">Table 10</button>
+          </div>
+
+          <div class="tables-interactive-display">
+            <!-- Left: Table Chart -->
+            <div class="table-chart-card">
+              <h3 id="tableChartHeading">Multiplication Table of 2</h3>
+              <div class="table-multiplication-grid" id="tableGridContainer">
+                <!-- Generated in JS: 2 x 1 = 2 ... 2 x 10 = 20 -->
+              </div>
+            </div>
+
+            <!-- Right: Interactive Table Quiz -->
+            <div class="table-quiz-card">
+              <div class="table-quiz-header">
+                <span class="quiz-badge">⚡ Quick Practice</span>
+                <span class="table-score-tag">Score: <strong id="tableQuizScore">0</strong> ⭐</span>
+              </div>
+
+              <div class="table-quiz-body">
+                <div class="table-math-question" id="tableQuestionText">
+                  2 × 4 = ?
+                </div>
+
+                <div class="table-quiz-options" id="tableQuizOptions">
+                  <!-- Dynamic Multiple Choice Buttons -->
+                </div>
+
+                <div class="table-feedback" id="tableFeedback"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUN MINI-GAMES ARCADE (6 Interactive Games) -->
+    <section class="games-arcade-section" id="games">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">🎮 Mini-Games Arcade</div>
+          <h2 class="section-title">6 Fun Learning Games 🕹️</h2>
+          <p class="section-desc">Play mini-games to sharpen your Grade 2 skills, earn high scores, and unlock champion badges!</p>
+        </div>
+
+        <!-- Game Selector Tabs -->
+        <div class="game-nav-bar">
+          <button class="game-tab-btn active" onclick="loadGame(1)">Game 1: Math Speed Challenge ⚡</button>
+          <button class="game-tab-btn" onclick="loadGame(2)">Game 2: Word Builder 📝</button>
+          <button class="game-tab-btn" onclick="loadGame(3)">Game 3: Memory Picture Match 🃏</button>
+          <button class="game-tab-btn" onclick="loadGame(4)">Game 4: Shape Detective 🔍</button>
+          <button class="game-tab-btn" onclick="loadGame(5)">Game 5: Number Detective 🔢</button>
+          <button class="game-tab-btn" onclick="loadGame(6)">Game 6: Science Sort Safari 🦁</button>
+        </div>
+
+        <!-- Game Container Box -->
+        <div class="game-stage-card" id="gameStageCard">
+          <div class="game-stage-header">
+            <div class="game-title-info">
+              <h3 id="activeGameTitle">Game 1: Math Speed Challenge</h3>
+              <p id="activeGameDesc">Solve addition, subtraction & multiplication before the timer runs out!</p>
+            </div>
+            <div class="game-stats-bar">
+              <span class="game-stat-pill">⭐ Game Stars: <strong id="activeGameStars">0</strong></span>
+              <span class="game-stat-pill">🎯 Score: <strong id="activeGameScore">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-stage-screen" id="gameScreenContainer">
+            <!-- Game Canvas / UI injected here by grade2.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- READING CORNER (Stories with Read Aloud TTS & Comprehension) -->
+    <section class="reading-corner-section" id="reading-corner">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">📖 Story Time</div>
+          <h2 class="section-title">Grade 2 Reading Corner 📚</h2>
+          <p class="section-desc">Listen to captivating stories with Read Aloud audio, read independently, and answer comprehension questions!</p>
+        </div>
+
+        <div class="reading-stories-grid">
+          <!-- Story 1: Sami's Little Garden -->
+          <div class="story-card" id="story1Card">
+            <div class="story-card-top">
+              <span class="story-category">🌱 Nature Story</span>
+              <button class="btn-read-aloud" onclick="readAloudStory('story1')">🔊 Read Aloud</button>
+            </div>
+            <div class="story-illustration">🌻 🏡 🦋</div>
+            <h3>Sami's Little Garden</h3>
+            <div class="story-text" id="story1Text">
+              Sami loved spending mornings in his grandmother's garden in Hyderabad. Every day before school, he watered the yellow sunflowers and red rose bushes. One sunny morning, he noticed a tiny green caterpillar munching on a leaf. A few days later, the caterpillar transformed into a gorgeous blue butterfly! Sami smiled and promised to plant more sweet flower seeds.
+            </div>
+
+            <div class="story-comprehension-box">
+              <h4>Comprehension Question:</h4>
+              <p id="story1Question">Where was the garden located?</p>
+              <div class="story-choices" id="story1Choices">
+                <button class="story-opt-btn" onclick="checkStoryAnswer(1, 'Hyderabad', true)">Hyderabad</button>
+                <button class="story-opt-btn" onclick="checkStoryAnswer(1, 'Karachi', false)">Karachi</button>
+                <button class="story-opt-btn" onclick="checkStoryAnswer(1, 'Larkana', false)">Larkana</button>
+              </div>
+              <div class="story-feedback" id="story1Feedback"></div>
+            </div>
+          </div>
+
+          <!-- Story 2: The Clever Parrot and the Mango Tree -->
+          <div class="story-card" id="story2Card">
+            <div class="story-card-top">
+              <span class="story-category">🦜 Animal Tale</span>
+              <button class="btn-read-aloud" onclick="readAloudStory('story2')">🔊 Read Aloud</button>
+            </div>
+            <div class="story-illustration">🦜 🥭 🌳</div>
+            <h3>The Clever Parrot and the Mango</h3>
+            <div class="story-text" id="story2Text">
+              High on a tall green mango tree lived Mithu, a cheerful green parrot with a bright red beak. The mangoes were ripe, sweet, and golden. One afternoon, a grumpy crow tried to chase Mithu away. Mithu spotted a shiny red balloon on the ground, popped it with his beak—BANG! The loud noise scared the crow away, and Mithu happily shared the sweet Sindhri mangoes with his friend Zara.
+            </div>
+
+            <div class="story-comprehension-box">
+              <h4>Comprehension Question:</h4>
+              <p id="story2Question">What kind of mangoes did Mithu eat?</p>
+              <div class="story-choices" id="story2Choices">
+                <button class="story-opt-btn" onclick="checkStoryAnswer(2, 'Sindhri Mangoes', true)">Sindhri Mangoes</button>
+                <button class="story-opt-btn" onclick="checkStoryAnswer(2, 'Sour Apples', false)">Sour Apples</button>
+                <button class="story-opt-btn" onclick="checkStoryAnswer(2, 'Bitter Melons', false)">Bitter Melons</button>
+              </div>
+              <div class="story-feedback" id="story2Feedback"></div>
+            </div>
+          </div>
+
+          <!-- Story 3: A Trip to Keenjhar Lake -->
+          <div class="story-card" id="story3Card">
+            <div class="story-card-top">
+              <span class="story-category">🌊 Adventure Story</span>
+              <button class="btn-read-aloud" onclick="readAloudStory('story3')">🔊 Read Aloud</button>
+            </div>
+            <div class="story-illustration">🚤 🌊 🦩</div>
+            <h3>A Trip to Keenjhar Lake</h3>
+            <div class="story-text" id="story3Text">
+              During the summer holidays, Ali and his family traveled to Keenjhar Lake in Thatta. The lake water was sparkling blue and calm. They saw graceful white herons and pink flamingos resting near the water banks. Ali took a thrilling motorboat ride wearing his orange safety life jacket. He learned that Keenjhar is one of Pakistan's largest freshwater lakes.
+            </div>
+
+            <div class="story-comprehension-box">
+              <h4>Comprehension Question:</h4>
+              <p id="story3Question">What safety gear did Ali wear on the boat?</p>
+              <div class="story-choices" id="story3Choices">
+                <button class="story-opt-btn" onclick="checkStoryAnswer(3, 'Life jacket', true)">Safety Life Jacket</button>
+                <button class="story-opt-btn" onclick="checkStoryAnswer(3, 'Sunglasses only', false)">Sunglasses only</button>
+                <button class="story-opt-btn" onclick="checkStoryAnswer(3, 'Raincoat', false)">Raincoat</button>
+              </div>
+              <div class="story-feedback" id="story3Feedback"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRADE 2 MEGA QUIZ (25 Questions with Scorecard & Confetti) -->
+    <section class="quiz-mega-section" id="grade2-quiz">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">🧩 Complete Assessment</div>
+          <h2 class="section-title">Grade 2 Mega Quiz Challenge 🏆</h2>
+          <p class="section-desc">25 exciting multiple-choice questions across English, Sindhi, Mathematics, Science, and General Knowledge!</p>
+        </div>
+
+        <div class="mega-quiz-container" id="megaQuizContainer">
+          <!-- Quiz Start / Screen -->
+          <div class="quiz-active-view" id="quizActiveView">
+            <div class="quiz-top-bar">
+              <div class="quiz-category-tag" id="quizSubjectTag">📖 English</div>
+              <div class="quiz-progress-info">
+                <span>Question <strong id="quizCurrentQNum">1</strong> of 25</span>
+              </div>
+              <div class="quiz-timer-pill">
+                <span>⏱️ Time: <strong id="quizTimerText">00:00</strong></span>
+              </div>
+            </div>
+
+            <div class="quiz-progress-bar-bg">
+              <div class="quiz-progress-bar-fill" id="quizProgressBarFill" style="width: 4%;"></div>
+            </div>
+
+            <div class="quiz-question-box">
+              <div class="quiz-q-emoji" id="quizQuestionEmoji">📚</div>
+              <h3 class="quiz-question-text" id="quizQuestionText">What is the plural of the word "Child"?</h3>
+            </div>
+
+            <div class="quiz-options-grid" id="quizOptionsContainer">
+              <!-- 4 Choice buttons injected by JS -->
+            </div>
+
+            <div class="quiz-instant-feedback" id="quizInstantFeedback"></div>
+
+            <div class="quiz-nav-actions">
+              <button class="btn-action-sm btn-prev" id="btnPrevQuiz" onclick="navigateQuiz(-1)" disabled>◀ Previous</button>
+              <button class="btn-action-sm btn-clear" onclick="resetQuizCurrentAnswer()">Clear Choice</button>
+              <button class="btn-action-sm btn-next" id="btnNextQuiz" onclick="navigateQuiz(1)">Next ▶</button>
+              <button class="btn-action-sm btn-submit-quiz" id="btnSubmitQuiz" onclick="submitMegaQuiz()" style="display:none;">🎉 Submit Quiz</button>
+            </div>
+          </div>
+
+          <!-- Quiz Results Screen (Hidden initially) -->
+          <div class="quiz-result-view" id="quizResultView" style="display:none;">
+            <div class="result-celebrate-header">
+              <span class="celebrate-badge-icon">🎉</span>
+              <h2>Amazing Work! 🌟</h2>
+              <p class="result-encourage-msg" id="resultEncourageMsg">"You did a great job answering questions across all Grade 2 subjects!"</p>
+            </div>
+
+            <div class="result-score-banner">
+              <div class="score-stat-circle">
+                <span class="score-big" id="resultScoreNum">23/25</span>
+                <span class="score-pct-label" id="resultPctNum">92%</span>
+              </div>
+              <div class="stars-awarded-box">
+                <h4>Stars Earned:</h4>
+                <div class="stars-row" id="resultStarsRow">⭐⭐⭐⭐⭐</div>
+                <span class="stars-caption" id="resultStarsCaption">+25 Gold Stars added to your vault!</span>
+              </div>
+            </div>
+
+            <!-- Subject Breakdown -->
+            <div class="result-breakdown-card">
+              <h4>Subject Performance Breakdown:</h4>
+              <div class="breakdown-grid">
+                <div class="breakdown-item">
+                  <div class="breakdown-labels">
+                    <span>📖 English</span>
+                    <strong id="bkScoreEng">5 / 5</strong>
+                  </div>
+                  <div class="bk-bar-bg"><div class="bk-bar-fill fill-english" id="bkBarEng" style="width: 100%;"></div></div>
+                </div>
+
+                <div class="breakdown-item">
+                  <div class="breakdown-labels">
+                    <span>🪶 Sindhi (سنڌي)</span>
+                    <strong id="bkScoreSindhi">4 / 5</strong>
+                  </div>
+                  <div class="bk-bar-bg"><div class="bk-bar-fill fill-sindhi" id="bkBarSindhi" style="width: 80%;"></div></div>
+                </div>
+
+                <div class="breakdown-item">
+                  <div class="breakdown-labels">
+                    <span>🔢 Mathematics</span>
+                    <strong id="bkScoreMath">5 / 5</strong>
+                  </div>
+                  <div class="bk-bar-bg"><div class="bk-bar-fill fill-math" id="bkBarMath" style="width: 100%;"></div></div>
+                </div>
+
+                <div class="breakdown-item">
+                  <div class="breakdown-labels">
+                    <span>🔬 General Science</span>
+                    <strong id="bkScoreSci">4 / 5</strong>
+                  </div>
+                  <div class="bk-bar-bg"><div class="bk-bar-fill fill-science" id="bkBarSci" style="width: 80%;"></div></div>
+                </div>
+
+                <div class="breakdown-item">
+                  <div class="breakdown-labels">
+                    <span>🌍 General Knowledge</span>
+                    <strong id="bkScoreGK">5 / 5</strong>
+                  </div>
+                  <div class="bk-bar-bg"><div class="bk-bar-fill fill-gk" id="bkBarGK" style="width: 100%;"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-actions-group">
+              <button class="btn-action-lg btn-retake" onclick="restartMegaQuiz()">🔄 Retake Quiz</button>
+              <a href="#parent-panel" class="btn-action-lg btn-view-report">👨‍👩‍👧 View Parent Report</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REWARD & BADGES SHOWCASE -->
+    <section class="rewards-section" id="rewards-vault">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">⭐ Rewards & Trophies</div>
+          <h2 class="section-title">Your Achievement Vault 🏅</h2>
+          <p class="section-desc">Collect shining badges as you complete activities, learn times tables, and take quizzes!</p>
+        </div>
+
+        <div class="badges-grid" id="badgesContainer">
+          <!-- Badge 1: First Quiz -->
+          <div class="badge-card" id="badge_first_quiz">
+            <div class="badge-icon-wrap unlocked">🏆</div>
+            <h4>First Quiz Champion</h4>
+            <p>Complete your first Grade 2 quiz challenge.</p>
+            <span class="badge-status-tag tag-unlocked">✓ Unlocked</span>
+          </div>
+
+          <!-- Badge 2: Math Star -->
+          <div class="badge-card" id="badge_math_star">
+            <div class="badge-icon-wrap unlocked">🔢</div>
+            <h4>Math Star</h4>
+            <p>Score 100% on Place Value or Times Tables.</p>
+            <span class="badge-status-tag tag-unlocked">✓ Unlocked</span>
+          </div>
+
+          <!-- Badge 3: Reading Star -->
+          <div class="badge-card" id="badge_reading_star">
+            <div class="badge-icon-wrap unlocked">📖</div>
+            <h4>Reading Star</h4>
+            <p>Read all 3 stories in the Reading Corner.</p>
+            <span class="badge-status-tag tag-unlocked">✓ Unlocked</span>
+          </div>
+
+          <!-- Badge 4: Sindhi Scholar -->
+          <div class="badge-card" id="badge_sindhi_scholar">
+            <div class="badge-icon-wrap">🪶</div>
+            <h4>Sindhi Scholar</h4>
+            <p>Master 10 Sindhi vocabulary words and missing letters.</p>
+            <span class="badge-status-tag tag-locked">🔒 In Progress</span>
+          </div>
+
+          <!-- Badge 5: Science Explorer -->
+          <div class="badge-card" id="badge_science_explorer">
+            <div class="badge-icon-wrap">🔬</div>
+            <h4>Science Explorer</h4>
+            <p>Complete Plant Anatomy and the Animal Kingdom labs.</p>
+            <span class="badge-status-tag tag-locked">🔒 In Progress</span>
+          </div>
+
+          <!-- Badge 6: Vocabulary Builder -->
+          <div class="badge-card" id="badge_vocab_builder">
+            <div class="badge-icon-wrap">🐝</div>
+            <h4>Spelling Champion</h4>
+            <p>Spell 5 words correctly in the English Spelling Bee.</p>
+            <span class="badge-status-tag tag-locked">🔒 In Progress</span>
+          </div>
+
+          <!-- Badge 7: 10 Activities Completed -->
+          <div class="badge-card" id="badge_10_activities">
+            <div class="badge-icon-wrap">🌟</div>
+            <h4>Activity Master</h4>
+            <p>Complete 10 interactive learning activities.</p>
+            <span class="badge-status-tag tag-locked">🔒 In Progress</span>
+          </div>
+
+          <!-- Badge 8: 5-Day Streak -->
+          <div class="badge-card" id="badge_5_streak">
+            <div class="badge-icon-wrap">🔥</div>
+            <h4>Streak Legend</h4>
+            <p>Maintain a 5-day continuous learning streak.</p>
+            <span class="badge-status-tag tag-locked">🔒 In Progress</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRADE 2 BOOKS & RESOURCES (Sindh Textbook Board Aligned) -->
+    <section class="books-section" id="books-resources">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">📚 Curriculum & Books</div>
+          <h2 class="section-title">Grade 2 Books & Legitimate Resources 📖</h2>
+          <p class="section-desc">Official curriculum outlines and legitimate online references aligned with the Sindh Textbook Board (STBB) Jamshoro primary syllabus.</p>
+        </div>
+
+        <div class="books-grid">
+          <!-- Book 1: English -->
+          <div class="book-card card-book-english">
+            <div class="book-cover-mock">
+              <span class="book-grade-tag">Class 2</span>
+              <div class="book-cover-art">📖 🅰️</div>
+              <h4 class="book-cover-title">Primary English Class 2</h4>
+              <span class="book-publisher">Sindh Textbook Board</span>
+            </div>
+            <div class="book-details">
+              <h3>Sindh Board Grade 2 English</h3>
+              <p>Phonics, sentence framing, rhymes, grammar (Nouns, Verbs, Adjectives), and basic reading comprehension.</p>
+              <div class="book-meta">
+                <span>📚 Subject: English</span>
+                <span>🏫 Grade: Class 2</span>
+              </div>
+              <a href="https://ebooks.stbb.edu.pk" target="_blank" rel="noopener noreferrer" class="btn-open-book">🔗 Open STBB Official Resource</a>
+            </div>
+          </div>
+
+          <!-- Book 2: Sindhi -->
+          <div class="book-card card-book-sindhi">
+            <div class="book-cover-mock">
+              <span class="book-grade-tag">ٻيو درجو</span>
+              <div class="book-cover-art">🪶 📜</div>
+              <h4 class="book-cover-title rtl-text">سنڌي درسي ڪتاب</h4>
+              <span class="book-publisher">سنڌ ٽيڪسٽ بڪ بورڊ</span>
+            </div>
+            <div class="book-details rtl-text">
+              <h3>سنڌي درسي ڪتاب ٻيو درجو (Sindhi Class 2)</h3>
+              <p>سنڌي اکر، سادا لفظ، تصويري لغت، اخلاقي نظم، ساديون ڪهاڻيون ۽ بنيادي گرامر.</p>
+              <div class="book-meta">
+                <span>📚 مضمون: سنڌي ٻولي</span>
+                <span>🏫 درجو: ٻيو</span>
+              </div>
+              <a href="https://ebooks.stbb.edu.pk" target="_blank" rel="noopener noreferrer" class="btn-open-book">🔗 سنڌ ٽيڪسٽ بڪ پورٽل ڏسو</a>
+            </div>
+          </div>
+
+          <!-- Book 3: Mathematics -->
+          <div class="book-card card-book-math">
+            <div class="book-cover-mock">
+              <span class="book-grade-tag">Class 2</span>
+              <div class="book-cover-art">🔢 📐</div>
+              <h4 class="book-cover-title">Primary Mathematics</h4>
+              <span class="book-publisher">Sindh Textbook Board</span>
+            </div>
+            <div class="book-details">
+              <h3>Sindh Board Grade 2 Mathematics</h3>
+              <p>Numbers up to 1000, 3-digit place values, addition and subtraction with regrouping, times tables 2-10, money, and shapes.</p>
+              <div class="book-meta">
+                <span>📚 Subject: Mathematics</span>
+                <span>🏫 Grade: Class 2</span>
+              </div>
+              <a href="https://ebooks.stbb.edu.pk" target="_blank" rel="noopener noreferrer" class="btn-open-book">🔗 Open STBB Official Resource</a>
+            </div>
+          </div>
+
+          <!-- Book 4: General Science -->
+          <div class="book-card card-book-science">
+            <div class="book-cover-mock">
+              <span class="book-grade-tag">Class 2</span>
+              <div class="book-cover-art">🔬 🌱</div>
+              <h4 class="book-cover-title">General Science</h4>
+              <span class="book-publisher">Sindh Textbook Board</span>
+            </div>
+            <div class="book-details">
+              <h3>Sindh Board Grade 2 General Science</h3>
+              <p>Living and non-living things, plant growth, animal world, human senses, weather patterns, and environment safety.</p>
+              <div class="book-meta">
+                <span>📚 Subject: Science</span>
+                <span>🏫 Grade: Class 2</span>
+              </div>
+              <a href="https://ebooks.stbb.edu.pk" target="_blank" rel="noopener noreferrer" class="btn-open-book">🔗 Open STBB Official Resource</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARENT PROGRESS PANEL (Monitoring & Analytics) -->
+    <section class="parent-panel-section" id="parent-panel">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">👨‍👩‍👧 Parent & Teacher View</div>
+          <h2 class="section-title">Parent's Progress Dashboard 📊</h2>
+          <p class="section-desc">Track your child's daily learning time, quiz scores, completed activities, and subject-wise growth in real-time.</p>
+        </div>
+
+        <div class="parent-dashboard-card">
+          <!-- Top Overview Metrics -->
+          <div class="parent-metrics-row">
+            <div class="parent-metric-box">
+              <span class="metric-icon">⭐</span>
+              <div class="metric-info">
+                <span class="metric-label">Total Stars Earned</span>
+                <strong class="metric-val" id="parentTotalStars">12</strong>
+              </div>
+            </div>
+
+            <div class="parent-metric-box">
+              <span class="metric-icon">🔥</span>
+              <div class="metric-info">
+                <span class="metric-label">Learning Streak</span>
+                <strong class="metric-val" id="parentStreak">1 Day</strong>
+              </div>
+            </div>
+
+            <div class="parent-metric-box">
+              <span class="metric-icon">🧩</span>
+              <div class="metric-info">
+                <span class="metric-label">Quiz Average</span>
+                <strong class="metric-val" id="parentQuizAvg">88%</strong>
+              </div>
+            </div>
+
+            <div class="parent-metric-box">
+              <span class="metric-icon">🏅</span>
+              <div class="metric-info">
+                <span class="metric-label">Badges Unlocked</span>
+                <strong class="metric-val" id="parentBadgesCount">3 / 8</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subject Breakdown Bars -->
+          <div class="parent-analytics-grid">
+            <div class="parent-progress-bars-col">
+              <h4>Subject Mastery Overview</h4>
+
+              <div class="parent-bar-item">
+                <div class="parent-bar-label">
+                  <span>📖 English Language</span>
+                  <strong id="parentEngPct">75%</strong>
+                </div>
+                <div class="p-bar-track"><div class="p-bar-fill fill-english" id="pBarEng" style="width: 75%;"></div></div>
+              </div>
+
+              <div class="parent-bar-item">
+                <div class="parent-bar-label">
+                  <span>🪶 Sindhi Language (سنڌي)</span>
+                  <strong id="parentSindhiPct">65%</strong>
+                </div>
+                <div class="p-bar-track"><div class="p-bar-fill fill-sindhi" id="pBarSindhi" style="width: 65%;"></div></div>
+              </div>
+
+              <div class="parent-bar-item">
+                <div class="parent-bar-label">
+                  <span>🔢 Mathematics</span>
+                  <strong id="parentMathPct">85%</strong>
+                </div>
+                <div class="p-bar-track"><div class="p-bar-fill fill-math" id="pBarMath" style="width: 85%;"></div></div>
+              </div>
+
+              <div class="parent-bar-item">
+                <div class="parent-bar-label">
+                  <span>🔬 General Science</span>
+                  <strong id="parentSciPct">70%</strong>
+                </div>
+                <div class="p-bar-track"><div class="p-bar-fill fill-science" id="pBarSci" style="width: 70%;"></div></div>
+              </div>
+
+              <div class="parent-bar-item">
+                <div class="parent-bar-label">
+                  <span>🌍 General Knowledge</span>
+                  <strong id="parentGKPct">80%</strong>
+                </div>
+                <div class="p-bar-track"><div class="p-bar-fill fill-gk" id="pBarGK" style="width: 80%;"></div></div>
+              </div>
+            </div>
+
+            <!-- Weekly Summary & Activity Log -->
+            <div class="parent-weekly-col">
+              <h4>Weekly Learning Summary 🗓️</h4>
+              <div class="weekly-stats-list">
+                <div class="weekly-stat-row">
+                  <span>Lessons & Labs Completed:</span>
+                  <strong id="parentWeeklyLessons">8 Lessons</strong>
+                </div>
+                <div class="weekly-stat-row">
+                  <span>Questions Attempted:</span>
+                  <strong id="parentWeeklyQuestions">35 Questions</strong>
+                </div>
+                <div class="weekly-stat-row">
+                  <span>Stories Read in Reading Corner:</span>
+                  <strong id="parentWeeklyStories">3 Stories</strong>
+                </div>
+                <div class="weekly-stat-row">
+                  <span>Last Active Session:</span>
+                  <strong id="parentLastActive">Today</strong>
+                </div>
+              </div>
+
+              <div class="parent-tip-box">
+                <span class="tip-icon">💡</span>
+                <p><strong>Parent Recommendation:</strong> Practice 4x and 5x Times Tables and the Sindhi Missing Letter activity for 10 minutes tonight!</p>
+              </div>
+
+              <div class="parent-control-actions">
+                <button class="btn-action-sm btn-print" onclick="window.print()">🖨️ Print Progress Report</button>
+                <button class="btn-action-sm btn-clear" onclick="resetChildProgress()">🔄 Reset Stats</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRADE 1 BRIDGE INFO MODAL / TOAST (Friendly info if user clicked Grade 1) -->
+    <div id="grade1Modal" class="custom-modal" style="display:none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Looking for Grade 1? 🎒</h3>
+          <button class="btn-modal-close" onclick="closeGrade1Modal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>You are currently enjoying the <strong>Grade 2 Digital Classroom</strong>!</p>
+          <p>Grade 2 introduces 3-digit numbers, times tables, visual fractions, complete sentence builders, and exciting reading comprehension.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-action-sm btn-check" onclick="closeGrade1Modal()">Continue Grade 2 Adventure! 🚀</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand-col">
+        <div class="brand-logo footer-logo">
+          <span class="brand-icon">🚀</span>
+          <span class="brand-name">STUDYMATE <span class="ai-badge">AI</span></span>
+        </div>
+        <p class="footer-desc">
+          Empowering young learners in Sindh with interactive, colorful, and engaging primary education aligned with the Sindh Textbook Board (STBB) curriculum.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Grade 2 Subjects</h4>
+        <ul>
+          <li><a href="#english-lab">📖 English Literacy</a></li>
+          <li><a href="#sindhi-lab">🪶 سنڌي ٻولي (Sindhi)</a></li>
+          <li><a href="#math-lab">🔢 Mathematics & Tables</a></li>
+          <li><a href="#science-lab">🔬 General Science</a></li>
+          <li><a href="#gk-lab">🌍 General Knowledge</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Quick Explore</h4>
+        <ul>
+          <li><a href="#daily-adventure">🚀 Today's Plan</a></li>
+          <li><a href="#games">🎮 Mini-Games Arcade</a></li>
+          <li><a href="#reading-corner">📚 Reading Corner</a></li>
+          <li><a href="#grade2-quiz">🧩 25-Question Quiz</a></li>
+          <li><a href="#parent-panel">👨‍👩‍👧 Parent's Report</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom-row">
+        <p>© 2026 EduNexa AI • Grade 2 Educational Classroom • Sindh Textbook Board Aligned</p>
+        <p class="footer-encouragement">Made with ❤️ for smart young learners!</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="grade2.js"></script>
+</body>
+</html>

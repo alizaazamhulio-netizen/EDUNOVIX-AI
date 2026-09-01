@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAST Mathematics — Topic 06: Permutations & Combinations</title>
+  <meta name="description" content="Complete FAST-NUCES and scholarship entry test preparation module for Permutations and Combinations. Master arrangements, selections, restrictions, and high-speed counting techniques.">
+  <link rel="stylesheet" href="Permutations-Combinations.css">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. PROFESSIONAL HEADER
+       ======================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      <div class="header-top-row">
+        <div class="badge-label">
+          <span>⚡</span> FAST MATHEMATICS • TOPIC 06 / 15
+        </div>
+        <a href="#" class="btn-back" id="btnBackFAST">
+          ← Back to FAST Mathematics
+        </a>
+      </div>
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="#">FAST Preparation</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="#">Mathematics</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current">Permutations & Combinations</span>
+      </nav>
+
+      <div class="header-content">
+        <div class="header-title-group">
+          <h1>Permutations & Combinations</h1>
+          <p class="header-subtitle">
+            Master counting, arrangements and selections with high-speed methods designed specifically for FAST-NUCES, university entrance, and competitive scholarship tests.
+          </p>
+        </div>
+
+        <div class="header-badges">
+          <span class="tag-badge priority">High Priority</span>
+          <span class="tag-badge focus">Problem Solving</span>
+          <span class="tag-badge entry">Entry-Test Focused</span>
+        </div>
+      </div>
+
+      <!-- Live Search Box -->
+      <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="chapterSearchInput" placeholder="Search formulas, shortcuts, examples, or questions..." autocomplete="off">
+        <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. CHAPTER DASHBOARD STRIP (Sticky Metrics)
+       ======================================================================== -->
+  <section class="dashboard-strip" aria-label="Chapter Dashboard">
+    <div class="dashboard-container">
+      <div class="metric-card">
+        <div class="metric-icon">📊</div>
+        <div class="metric-content">
+          <div class="metric-label">Chapter Progress</div>
+          <div class="metric-value" id="metricProgress">0%</div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">📖</div>
+        <div class="metric-content">
+          <div class="metric-label">Topics Completed</div>
+          <div class="metric-value" id="metricTopics">0 / 20</div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">✏️</div>
+        <div class="metric-content">
+          <div class="metric-label">Questions Attempted</div>
+          <div class="metric-value" id="metricAttempted">0</div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">🏆</div>
+        <div class="metric-content">
+          <div class="metric-label">Best Quiz Score</div>
+          <div class="metric-value" id="metricBestScore">0%</div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">🎯</div>
+        <div class="metric-content">
+          <div class="metric-label">Accuracy</div>
+          <div class="metric-value" id="metricAccuracy">0%</div>
+        </div>
+      </div>
+
+      <button type="button" class="btn-quick-revision-toggle" id="btnToggleQuickRevision">
+        <span>⚡</span> 5-Min Revision
+      </button>
+    </div>
+  </section>
+
+  <!-- Mobile Floating Menu Toggle -->
+  <button type="button" class="mobile-nav-toggle" id="mobileNavToggle">
+    <span>☰</span> Topics Menu
+  </button>
+
+  <!-- ========================================================================
+       3. MAIN CONTENT LAYOUT
+       ======================================================================== -->
+  <main class="main-wrapper">
+
+    <!-- Sticky Sidebar Navigation -->
+    <aside class="sidebar" id="mainSidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-title">Topic Outline</span>
+        <span class="badge-label" style="font-size:0.7rem; padding:0.2rem 0.5rem;">20 Sections</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li><a href="#topic-1" class="sidebar-link active" data-target="topic-1"><span class="nav-idx">01</span> Introduction to Counting <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-2" class="sidebar-link" data-target="topic-2"><span class="nav-idx">02</span> Counting Principle <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-3" class="sidebar-link" data-target="topic-3"><span class="nav-idx">03</span> Factorial Notation <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-4" class="sidebar-link" data-target="topic-4"><span class="nav-idx">04</span> Factorial Simplification <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-5" class="sidebar-link" data-target="topic-5"><span class="nav-idx">05</span> Permutation Concept <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-6" class="sidebar-link" data-target="topic-6"><span class="nav-idx">06</span> nPr Formula & Examples <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-7" class="sidebar-link" data-target="topic-7"><span class="nav-idx">07</span> Permutations with Repetition <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-8" class="sidebar-link" data-target="topic-8"><span class="nav-idx">08</span> Restrictions & Block Method <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-9" class="sidebar-link" data-target="topic-9"><span class="nav-idx">09</span> Circular Permutations <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-10" class="sidebar-link" data-target="topic-10"><span class="nav-idx">10</span> Combination Concept <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-11" class="sidebar-link" data-target="topic-11"><span class="nav-idx">11</span> nCr Formula & Techniques <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-12" class="sidebar-link" data-target="topic-12"><span class="nav-idx">12</span> nPr vs nCr Relation <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-13" class="sidebar-link" data-target="topic-13"><span class="nav-idx">13</span> Combination Properties <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-14" class="sidebar-link" data-target="topic-14"><span class="nav-idx">14</span> Group Selection & Restrictions <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-15" class="sidebar-link" data-target="topic-15"><span class="nav-idx">15</span> Repeated Objects (Words) <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-16" class="sidebar-link" data-target="topic-16"><span class="nav-idx">16</span> At Least / Complement Method <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-17" class="sidebar-link" data-target="topic-17"><span class="nav-idx">17</span> Real-World Problems <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-18" class="sidebar-link" data-target="topic-18"><span class="nav-idx">18</span> FAST Speed Shortcuts <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-19" class="sidebar-link" data-target="topic-19"><span class="nav-idx">19</span> 18 Common Mistakes <span class="nav-status-icon">✓</span></a></li>
+        <li><a href="#topic-20" class="sidebar-link" data-target="topic-20"><span class="nav-idx">20</span> Formula Sheet <span class="nav-status-icon">✓</span></a></li>
+
+        <li class="sidebar-section-divider">Testing & Interactive Tools</li>
+        <li><a href="#topic-practice" class="sidebar-link" data-target="topic-practice"><span class="nav-idx">★</span> 70 Practice MCQs</a></li>
+        <li><a href="#topic-challenge" class="sidebar-link" data-target="topic-challenge"><span class="nav-idx">⚡</span> Final Timed Challenge</a></li>
+      </ul>
+
+      <!-- Bookmarks Section -->
+      <div style="margin-top: 1.5rem; border-top: 2px solid var(--border-color); padding-top: 1rem;">
+        <span class="sidebar-title" style="font-size:0.8rem;">★ My Saved Bookmarks</span>
+        <div class="bookmarks-list" id="bookmarksContainer"></div>
+      </div>
+    </aside>
+
+    <!-- Main Content Stream -->
+    <div class="content-area">
+
+      <!-- ====================================================================
+           SECTION 1: INTRODUCTION TO COUNTING
+           ==================================================================== -->
+      <section class="section-block" id="topic-1">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 01 / 20</span>
+            <h2 class="section-heading">Introduction to Counting</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <h3 style="color:var(--navy-900); margin-bottom: 0.5rem;">What is Counting?</h3>
+          <p style="margin-bottom: 1rem;">
+            Counting is the branch of discrete mathematics (combinatorics) that allows us to determine the total number of possible outcomes, arrangements, or selections <strong>without listing every single possibility by hand</strong>. In high-stakes university entry tests like FAST-NUCES, NET, and scholarship exams, time is extremely limited: calculating possibilities directly using mathematical principles turns 10-minute brute-force questions into 15-second answers.
+          </p>
+
+          <div class="fast-tip-box">
+            <div class="fast-tip-header">💡 Why Permutations & Combinations Matter in FAST Entry Tests</div>
+            <div class="fast-tip-body">
+              FAST entrance exams test your speed in identifying whether a problem is a <em>selection</em> or an <em>arrangement</em>. Candidates who memorize formulas blindly waste critical minutes, while students who recognize structural constraints solve them instantly.
+            </div>
+          </div>
+
+          <h3 style="color:var(--navy-900); margin: 1.5rem 0 0.5rem;">A Real-Life Comparison</h3>
+          <p>
+            Consider 3 students: <strong>Ali, Bilal, and Dawood</strong>.
+          </p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
+            <li><strong>Choosing a 2-person project team:</strong> Choosing Ali & Bilal is the exact same team as choosing Bilal & Ali. The order does not produce a new team.</li>
+            <li><strong>Assigning 1st and 2nd rank in class:</strong> Ali coming 1st and Bilal coming 2nd is completely different from Bilal coming 1st and Ali coming 2nd. The order creates a distinct outcome.</li>
+          </ul>
+
+          <div class="hero-distinction-grid">
+            <div class="distinction-card permutation">
+              <div class="distinction-title">⭐ PERMUTATION</div>
+              <div class="rule-highlight">ORDER MATTERS</div>
+              <p style="font-size:0.95rem; color:#14532d;">
+                Used when the arrangement, sequence, or position creates a unique outcome. Examples include seatings, passwords, rankings, phone numbers, and distinct roles.
+              </p>
+            </div>
+
+            <div class="distinction-card combination">
+              <div class="distinction-title">⭐ COMBINATION</div>
+              <div class="rule-highlight">ORDER DOES NOT MATTER</div>
+              <p style="font-size:0.95rem; color:#1e3a8a;">
+                Used when we are simply selecting a collection, group, or subset. Examples include committees, poker hands, choosing pizza toppings, lottery numbers, and handshakes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 2: FUNDAMENTAL COUNTING PRINCIPLE
+           ==================================================================== -->
+      <section class="section-block" id="topic-2">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 02 / 20</span>
+            <h2 class="section-heading">Fundamental Counting Principle</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            Before learning complex permutation and combination formulas, you must master the fundamental building block of all counting: the <strong>Multiplication Rule</strong> and the <strong>Addition Rule</strong>.
+          </p>
+
+          <div class="formula-box">
+            <div class="formula-label">The Fundamental Principle of Multiplication</div>
+            <div class="formula-math">Total Ways = m × n × p × ...</div>
+            <div class="formula-explanation">
+              If an operation can be performed in <em>m</em> ways, and for each of these a second operation can be performed in <em>n</em> ways, then the two operations in sequence can be performed in <strong>m × n</strong> ways.
+            </div>
+          </div>
+
+          <h3 style="color:var(--navy-900); margin: 1.5rem 0 0.75rem;">8 Solved Fundamental Examples</h3>
+          <div class="examples-list">
+            <div class="example-card">
+              <div class="example-header">
+                <span class="example-badge">Example 2.1 • Clothing Outfits</span>
+              </div>
+              <div class="example-problem">A student has 4 distinct shirts, 3 pairs of trousers, and 2 pairs of shoes. How many complete outfits can they wear?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-label">Step 1:</span> Shirts choices = 4</div>
+                <div class="step-item"><span class="step-label">Step 2:</span> Trousers choices = 3</div>
+                <div class="step-item"><span class="step-label">Step 3:</span> Shoes choices = 2</div>
+                <div class="step-item"><span class="step-label">Calculation:</span> <span class="step-math">4 × 3 × 2 = 24</span></div>
+                <div class="step-item step-ans">Final Answer: 24 different outfits.</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header">
+                <span class="example-badge">Example 2.2 • Password Formation</span>
+              </div>
+              <div class="example-problem">A password is made of 1 uppercase letter followed by 3 numeric digits (0–9). If repetition of digits is allowed, how many passwords can be made?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-label">Letter slot:</span> 26 choices (A to Z)</div>
+                <div class="step-item"><span class="step-label">Digit slots:</span> 10 × 10 × 10 = 1,000 choices</div>
+                <div class="step-item"><span class="step-label">Calculation:</span> <span class="step-math">26 × 10 × 10 × 10 = 26,000</span></div>
+                <div class="step-item step-ans">Final Answer: 26,000 passwords.</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header">
+                <span class="example-badge">Example 2.3 • Travel Routes</span>
+              </div>
+              <div class="example-problem">There are 3 roads from City A to City B, and 4 roads from City B to City C. How many different round trips from A to C (via B) are possible if the return trip must use different roads?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-label">Going A → B → C:</span> 3 × 4 = 12 routes</div>
+                <div class="step-item"><span class="step-label">Returning C → B → A (different roads):</span> 3 remaining roads from C to B, 2 remaining from B to A = 3 × 2 = 6</div>
+                <div class="step-item"><span class="step-label">Calculation:</span> <span class="step-math">12 × 6 = 72</span></div>
+                <div class="step-item step-ans">Final Answer: 72 round trip routes.</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header">
+                <span class="example-badge">Example 2.4 • Food Menu Selection</span>
+              </div>
+              <div class="example-problem">A university cafeteria combo offers a choice of 1 burger from 4 options, 1 side from 3 options, and 1 drink from 5 options. How many distinct meals can be chosen?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">4 × 3 × 5 = 60</span></div>
+                <div class="step-item step-ans">Final Answer: 60 meal combinations.</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header">
+                <span class="example-badge">Example 2.5 • Digit Number Formation</span>
+              </div>
+              <div class="example-problem">How many 3-digit numbers can be formed using digits 1, 2, 3, 4, 5 without repeating any digit?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-label">Hundreds digit:</span> 5 choices (1, 2, 3, 4, 5)</div>
+                <div class="step-item"><span class="step-label">Tens digit:</span> 4 remaining choices</div>
+                <div class="step-item"><span class="step-label">Units digit:</span> 3 remaining choices</div>
+                <div class="step-item"><span class="step-math">5 × 4 × 3 = 60</span></div>
+                <div class="step-item step-ans">Final Answer: 60 three-digit numbers.</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header">
+                <span class="example-badge">Example 2.6 • Multiple Choice Test Outcomes</span>
+              </div>
+              <div class="example-problem">An entry test has 5 multiple-choice questions, each with 4 options. How many total ways can a student answer all 5 questions?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">4 × 4 × 4 × 4 × 4 = 4^5 = 1,024</span></div>
+                <div class="step-item step-ans">Final Answer: 1,024 answer keys.</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header">
+                <span class="example-badge">Example 2.7 • Binary String Code</span>
+              </div>
+              <div class="example-problem">How many 8-bit binary bytes (strings of 0s and 1s) can be formed?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">2^8 = 256</span></div>
+                <div class="step-item step-ans">Final Answer: 256 bytes.</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header">
+                <span class="example-badge">Example 2.8 • Seating Empty Slots</span>
+              </div>
+              <div class="example-problem">3 people enter an auditorium with 7 empty seats in a row. How many ways can they be seated?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-label">Person 1:</span> 7 seat choices</div>
+                <div class="step-item"><span class="step-label">Person 2:</span> 6 seat choices</div>
+                <div class="step-item"><span class="step-label">Person 3:</span> 5 seat choices</div>
+                <div class="step-item"><span class="step-math">7 × 6 × 5 = 210</span></div>
+                <div class="step-item step-ans">Final Answer: 210 seating arrangements.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 3: FACTORIAL
+           ==================================================================== -->
+      <section class="section-block" id="topic-3">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 03 / 20</span>
+            <h2 class="section-heading">Factorial Notation</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            For any non-negative integer <em>n</em>, the factorial of <em>n</em> (written as <strong>n!</strong>) is defined as the product of all positive integers less than or equal to <em>n</em>:
+          </p>
+
+          <div class="formula-box">
+            <div class="formula-label">Factorial Definition</div>
+            <div class="formula-math">n! = n × (n - 1) × (n - 2) × ... × 3 × 2 × 1</div>
+            <div class="formula-explanation">
+              Special Fundamental Identity: <strong>0! = 1</strong> (by definition of the empty product and to preserve algebraic consistency in formulas).
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>n</th>
+                  <th>Formula Expansion</th>
+                  <th>Value</th>
+                  <th>FAST Exam Note</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0!</strong></td>
+                  <td>Defined by algebraic convention</td>
+                  <td><strong>1</strong></td>
+                  <td>Frequently tested in trick questions!</td>
+                </tr>
+                <tr>
+                  <td><strong>1!</strong></td>
+                  <td>1</td>
+                  <td><strong>1</strong></td>
+                  <td>Base unit</td>
+                </tr>
+                <tr>
+                  <td><strong>2!</strong></td>
+                  <td>2 × 1</td>
+                  <td><strong>2</strong></td>
+                  <td>2! = 2</td>
+                </tr>
+                <tr>
+                  <td><strong>3!</strong></td>
+                  <td>3 × 2 × 1</td>
+                  <td><strong>6</strong></td>
+                  <td>Arranging 3 objects</td>
+                </tr>
+                <tr>
+                  <td><strong>4!</strong></td>
+                  <td>4 × 3 × 2 × 1</td>
+                  <td><strong>24</strong></td>
+                  <td>Arranging 4 objects</td>
+                </tr>
+                <tr>
+                  <td><strong>5!</strong></td>
+                  <td>5 × 24</td>
+                  <td><strong>120</strong></td>
+                  <td>Unit digit becomes 0 for all n ≥ 5</td>
+                </tr>
+                <tr>
+                  <td><strong>6!</strong></td>
+                  <td>6 × 120</td>
+                  <td><strong>720</strong></td>
+                  <td>Very common in word problems</td>
+                </tr>
+                <tr>
+                  <td><strong>7!</strong></td>
+                  <td>7 × 720</td>
+                  <td><strong>5,040</strong></td>
+                  <td>Memorize for instant speed</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Interactive Factorial Calculator -->
+          <div class="calc-card">
+            <div class="calc-title">🔢 Interactive Factorial Calculator</div>
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem;">
+              Enter any non-negative integer <em>n</em> to inspect the exact factorial value and step-by-step product breakdown.
+            </p>
+            <div class="calc-grid">
+              <div class="calc-field">
+                <label for="factInputN">Input n (e.g. 6):</label>
+                <input type="number" id="factInputN" class="calc-input" min="0" max="100" placeholder="6">
+              </div>
+              <div class="calc-btn-group">
+                <button type="button" class="btn-calc" id="btnCalcFact">Calculate n!</button>
+              </div>
+            </div>
+            <div class="calc-result-box" id="factResultBox">
+              <div class="text-muted">Enter a number above and click Calculate.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 4: FACTORIAL SIMPLIFICATION
+           ==================================================================== -->
+      <section class="section-block" id="topic-4">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 04 / 20</span>
+            <h2 class="section-heading">Factorial Simplification & Cancellation</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            In entry exams, calculating huge products like 10! or 12! directly is a disastrous time trap. Always rewrite the larger factorial in terms of the smaller factorial and cancel immediately.
+          </p>
+
+          <div class="fast-tip-box">
+            <div class="fast-tip-header">⚡ FAST Shortcut: The Factorial Peeling Trick</div>
+            <div class="fast-tip-body">
+              <strong>n! = n × (n - 1) × (n - 2)!</strong><br>
+              Whenever you see a fraction like <code>8! / 6!</code>, "peel" the top: <code>(8 × 7 × 6!) / 6! = 8 × 7 = 56</code>.
+            </div>
+          </div>
+
+          <h3 style="color:var(--navy-900); margin: 1.5rem 0 0.75rem;">12 Solved Simplification Examples</h3>
+          <div class="examples-list">
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.1</span></div>
+              <div class="example-problem">Simplify: 8! / 6!</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">(8 × 7 × 6!) / 6! = 8 × 7 = 56</span></div>
+                <div class="step-item step-ans">Answer: 56</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.2</span></div>
+              <div class="example-problem">Simplify: 10! / 8!</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">(10 × 9 × 8!) / 8! = 10 × 9 = 90</span></div>
+                <div class="step-item step-ans">Answer: 90</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.3</span></div>
+              <div class="example-problem">Simplify: 12! / 9!</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">12 × 11 × 10 = 1,320</span></div>
+                <div class="step-item step-ans">Answer: 1,320</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.4</span></div>
+              <div class="example-problem">Simplify: 7! / (5! × 2!)</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">(7 × 6 × 5!) / (5! × 2) = 42 / 2 = 21</span></div>
+                <div class="step-item step-ans">Answer: 21</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.5</span></div>
+              <div class="example-problem">Simplify: 9! / (6! × 3!)</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">(9 × 8 × 7) / 6 = (3 × 4 × 7) = 84</span></div>
+                <div class="step-item step-ans">Answer: 84</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.6</span></div>
+              <div class="example-problem">Simplify: (n + 1)! / (n - 1)!</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">[(n + 1) × n × (n - 1)!] / (n - 1)! = n(n + 1) = n^2 + n</span></div>
+                <div class="step-item step-ans">Answer: n^2 + n</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.7</span></div>
+              <div class="example-problem">Simplify: (n + 2)! / n!</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">(n + 2)(n + 1) = n^2 + 3n + 2</span></div>
+                <div class="step-item step-ans">Answer: n^2 + 3n + 2</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.8</span></div>
+              <div class="example-problem">Find n if (n + 1)! = 20 × (n - 1)!</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">(n + 1)n = 20 ⇒ 5 × 4 = 20 ⇒ n = 4</span></div>
+                <div class="step-item step-ans">Answer: n = 4</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.9</span></div>
+              <div class="example-problem">Simplify: (100! - 99!) / 98!</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">Factor out 99!: [99!(100 - 1)] / 98! = [99 × 98! × 99] / 98! = 99 × 99 = 9,801</span></div>
+                <div class="step-item step-ans">Answer: 9,801</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.10</span></div>
+              <div class="example-problem">Evaluate: 6! / (3! × 3!)</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">(6 × 5 × 4) / 6 = 20</span></div>
+                <div class="step-item step-ans">Answer: 20</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.11</span></div>
+              <div class="example-problem">Evaluate: 50! / 48!</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">50 × 49 = 2,450</span></div>
+                <div class="step-item step-ans">Answer: 2,450</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 4.12</span></div>
+              <div class="example-problem">Simplify: (n!) / (n - 2)! for n = 8</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">n(n - 1) = 8 × 7 = 56</span></div>
+                <div class="step-item step-ans">Answer: 56</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 5 & 6: PERMUTATIONS & nPr FORMULA
+           ==================================================================== -->
+      <section class="section-block" id="topic-5">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 05 & 06 / 20</span>
+            <h2 class="section-heading">Permutations & The nPr Formula</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <h3 style="color:var(--navy-900); margin-bottom:0.5rem;">⭐ PERMUTATION = ORDER MATTERS</h3>
+          <p>
+            A <strong>permutation</strong> is an ordered arrangement of a set of distinct objects. If we have 3 letters {A, B, C}, the possible 3-letter arrangements are:
+          </p>
+          <div style="background:var(--bg-card-alt); padding:0.75rem 1.25rem; border-radius:var(--radius-sm); font-family:var(--font-mono); font-weight:700; margin:0.75rem 0; color:var(--primary-800);">
+            ABC, ACB, BAC, BCA, CAB, CBA  (6 distinct arrangements = 3! = 6)
+          </div>
+          <p>
+            Notice that <strong>ABC and BAC are completely different</strong> because A is in the 1st position in the first case, while B is in the 1st position in the second.
+          </p>
+
+          <div class="formula-box" id="topic-6">
+            <div class="formula-label">The Permutation Formula</div>
+            <div class="formula-math">nPr = n! / (n - r)!</div>
+            <div class="formula-explanation">
+              Where:<br>
+              <strong>n</strong> = Total number of distinct objects available.<br>
+              <strong>r</strong> = Number of objects selected and arranged in specific order (0 ≤ r ≤ n).<br>
+              <strong>Shortcut:</strong> nPr is simply the product of <em>r</em> consecutive decreasing integers starting from <em>n</em>: <code>n × (n-1) × (n-2) × ... (r factors)</code>.
+            </div>
+          </div>
+
+          <!-- Interactive nPr Calculator -->
+          <div class="calc-card">
+            <div class="calc-title">📐 Interactive nPr Permutation Calculator</div>
+            <div class="calc-grid">
+              <div class="calc-field">
+                <label for="nprInputN">Total Objects (n):</label>
+                <input type="number" id="nprInputN" class="calc-input" min="0" max="60" placeholder="8">
+              </div>
+              <div class="calc-field">
+                <label for="nprInputR">Arranged Objects (r):</label>
+                <input type="number" id="nprInputR" class="calc-input" min="0" max="60" placeholder="3">
+              </div>
+              <div class="calc-btn-group">
+                <button type="button" class="btn-calc" id="btnCalcNPr">Calculate nPr</button>
+                <button type="button" class="btn-calc-reset" id="btnResetNPr">Reset</button>
+              </div>
+            </div>
+            <div class="calc-result-box" id="nprResultBox">
+              <div class="text-muted">Enter n and r above and click Calculate nPr.</div>
+            </div>
+          </div>
+
+          <h3 style="color:var(--navy-900); margin: 1.5rem 0 0.75rem;">15 Solved nPr Examples</h3>
+          <div class="examples-list">
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.1</span></div>
+              <div class="example-problem">Calculate 5P2</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">5! / (5-2)! = 5! / 3! = 5 × 4 = 20</span></div>
+                <div class="step-item step-ans">Answer: 20</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.2</span></div>
+              <div class="example-problem">Calculate 6P3</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">6 × 5 × 4 = 120</span></div>
+                <div class="step-item step-ans">Answer: 120</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.3</span></div>
+              <div class="example-problem">Calculate 8P2</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">8 × 7 = 56</span></div>
+                <div class="step-item step-ans">Answer: 56</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.4</span></div>
+              <div class="example-problem">Calculate 7P4</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">7 × 6 × 5 × 4 = 840</span></div>
+                <div class="step-item step-ans">Answer: 840</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.5</span></div>
+              <div class="example-problem">Evaluate 10P3</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">10 × 9 × 8 = 720</span></div>
+                <div class="step-item step-ans">Answer: 720</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.6</span></div>
+              <div class="example-problem">Find the value of nP0 for any n</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">nP0 = n! / (n - 0)! = n! / n! = 1</span></div>
+                <div class="step-item step-ans">Answer: 1</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.7</span></div>
+              <div class="example-problem">Find the value of nPn</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">nPn = n! / 0! = n! / 1 = n!</span></div>
+                <div class="step-item step-ans">Answer: n!</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.8</span></div>
+              <div class="example-problem">How many ways can 4 runners finish in 1st, 2nd, 3rd, and 4th place?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">4P4 = 4! = 24</span></div>
+                <div class="step-item step-ans">Answer: 24 ways</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.9</span></div>
+              <div class="example-problem">In a club of 15 members, how many ways can a President, Vice-President, and Treasurer be elected?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">15P3 = 15 × 14 × 13 = 2,730</span></div>
+                <div class="step-item step-ans">Answer: 2,730 ways</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.10</span></div>
+              <div class="example-problem">Find n if nP2 = 90</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">n(n - 1) = 90 ⇒ 10 × 9 = 90 ⇒ n = 10</span></div>
+                <div class="step-item step-ans">Answer: n = 10</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.11</span></div>
+              <div class="example-problem">Find r if 6Pr = 360</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">6 × 5 × 4 × 3 = 360 (4 terms) ⇒ r = 4</span></div>
+                <div class="step-item step-ans">Answer: r = 4</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.12</span></div>
+              <div class="example-problem">Evaluate 4P1 + 4P2 + 4P3 + 4P4</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">4 + 12 + 24 + 24 = 64</span></div>
+                <div class="step-item step-ans">Answer: 64</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.13</span></div>
+              <div class="example-problem">How many 4-letter words can be formed from the letters of 'FLOWER' without repetition?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">6P4 = 6 × 5 × 4 × 3 = 360</span></div>
+                <div class="step-item step-ans">Answer: 360 words</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.14</span></div>
+              <div class="example-problem">Find n if nP3 = 12 × nP1</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">n(n - 1)(n - 2) = 12n ⇒ (n - 1)(n - 2) = 12 ⇒ 4 × 3 = 12 ⇒ n = 5</span></div>
+                <div class="step-item step-ans">Answer: n = 5</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 6.15</span></div>
+              <div class="example-problem">How many ways can 5 distinct paintings be arranged in 3 display windows?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">5P3 = 5 × 4 × 3 = 60</span></div>
+                <div class="step-item step-ans">Answer: 60 ways</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 7: PERMUTATIONS WITH REPETITION
+           ==================================================================== -->
+      <section class="section-block" id="topic-7">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 07 / 20</span>
+            <h2 class="section-heading">Permutations With Repetition Allowed</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            When an object can be used more than once, each position has the full <em>n</em> choices available.
+          </p>
+
+          <div class="formula-box">
+            <div class="formula-label">Formula for Repetition Allowed</div>
+            <div class="formula-math">Total Permutations = n^r</div>
+            <div class="formula-explanation">
+              Where <em>n</em> is the number of available choices for each slot, and <em>r</em> is the number of slots to fill.
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>Scenario</th>
+                  <th>Repetition NOT Allowed (nPr)</th>
+                  <th>Repetition ALLOWED (n^r)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>3-digit code using 5 digits (1,2,3,4,5)</td>
+                  <td>5P3 = 5 × 4 × 3 = <strong>60</strong></td>
+                  <td>5^3 = 5 × 5 × 5 = <strong>125</strong></td>
+                </tr>
+                <tr>
+                  <td>4-letter password from 26 letters</td>
+                  <td>26P4 = <strong>358,800</strong></td>
+                  <td>26^4 = <strong>456,976</strong></td>
+                </tr>
+                <tr>
+                  <td>Assigning 3 prizes to 10 students</td>
+                  <td>10P3 = <strong>720</strong> (1 prize per student)</td>
+                  <td>10^3 = <strong>1,000</strong> (student can win multiple)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 8: ARRANGEMENTS WITH RESTRICTIONS
+           ==================================================================== -->
+      <section class="section-block" id="topic-8">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 08 / 20</span>
+            <h2 class="section-heading">Arrangements With Restrictions & The Block Method</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            Entry tests love restricted permutation questions. Master the two indispensable techniques:
+          </p>
+
+          <div class="fast-tip-box">
+            <div class="fast-tip-header">📦 The "Together" Rule: The Block Method (Tie Method)</div>
+            <div class="fast-tip-body">
+              When specific items must <strong>always be together</strong>:<br>
+              1. Tie the specified items into <strong>1 single compound block</strong>.<br>
+              2. Count total units = (Other items + 1 block) and arrange them in <strong>K!</strong> ways.<br>
+              3. Multiply by internal permutations of items inside the block: <strong>K! × (block items)!</strong>.
+            </div>
+          </div>
+
+          <div class="fast-tip-box" style="background:#f0fdf4; border-color:#86efac; border-left-color:#16a34a;">
+            <div class="fast-tip-header" style="color:#166534;">🚫 The "Never Together" Rule: Total Minus Together / Gap Method</div>
+            <div class="fast-tip-body" style="color:#14532d;">
+              When 2 items must <strong>never be together</strong>:<br>
+              <code>Never Together = Total Unrestricted Arrangements − Together Arrangements</code><br>
+              For 3 or more items, use the <strong>Gap Method</strong>: arrange the unrestricted items first to create gaps (_A_B_C_), then place the restricted items in those gaps.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 9: CIRCULAR PERMUTATIONS
+           ==================================================================== -->
+      <section class="section-block" id="topic-9">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 09 / 20</span>
+            <h2 class="section-heading">Circular Permutations</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            When objects are arranged in a circle, there is <strong>no fixed starting point</strong>. Rotating the entire circle does not create a new relative arrangement.
+          </p>
+
+          <div class="formula-box">
+            <div class="formula-label">Circular Arrangement Formulas</div>
+            <div class="formula-math">Standard Circle: (n - 1)!</div>
+            <div class="formula-math" style="font-size:1.3rem; margin-top:0.5rem;">Necklace / Key Ring (Flippable): (n - 1)! / 2</div>
+            <div class="formula-explanation">
+              We fix 1 person/object in place to serve as the reference origin. The remaining <em>(n - 1)</em> positions are arranged linearly in <strong>(n - 1)!</strong> ways. If the circle can be turned over (like a necklace or bracelet), clockwise and anticlockwise become identical, so we divide by 2.
+            </div>
+          </div>
+
+          <div class="example-card" style="margin-top:1.25rem;">
+            <div class="example-header"><span class="example-badge">Example 9.1 • Round Table</span></div>
+            <div class="example-problem">In how many ways can 6 diplomats be seated around a round negotiation table?</div>
+            <div class="solution-steps">
+              <div class="step-item"><span class="step-math">(6 - 1)! = 5! = 120</span></div>
+              <div class="step-item step-ans">Answer: 120 ways</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 10 & 11: COMBINATIONS & nCr FORMULA
+           ==================================================================== -->
+      <section class="section-block" id="topic-10">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 10 & 11 / 20</span>
+            <h2 class="section-heading">Combinations & The nCr Formula</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <h3 style="color:var(--navy-900); margin-bottom:0.5rem;">⭐ COMBINATION = ORDER DOES NOT MATTER</h3>
+          <p>
+            A <strong>combination</strong> is an unordered selection of objects. Choosing Ali and Bilal for a committee is identical to choosing Bilal and Ali:
+          </p>
+          <div style="background:var(--bg-card-alt); padding:0.75rem 1.25rem; border-radius:var(--radius-sm); font-family:var(--font-mono); font-weight:700; margin:0.75rem 0; color:var(--primary-800);">
+            {A, B} = {B, A}  (Only 1 combination, even though there are 2 permutations!)
+          </div>
+
+          <div class="formula-box" id="topic-11">
+            <div class="formula-label">The Combination Formula</div>
+            <div class="formula-math">nCr = n! / [r! × (n - r)!]</div>
+            <div class="formula-explanation">
+              Where:<br>
+              <strong>n</strong> = Total number of items.<br>
+              <strong>r</strong> = Number of items chosen.<br>
+              <strong>FAST Cancellation Rule:</strong> nCr = (Product of <em>r</em> decreasing terms from <em>n</em>) / r!.
+            </div>
+          </div>
+
+          <!-- Interactive nCr Calculator -->
+          <div class="calc-card">
+            <div class="calc-title">📐 Interactive nCr Combination Calculator</div>
+            <div class="calc-grid">
+              <div class="calc-field">
+                <label for="ncrInputN">Total Objects (n):</label>
+                <input type="number" id="ncrInputN" class="calc-input" min="0" max="60" placeholder="10">
+              </div>
+              <div class="calc-field">
+                <label for="ncrInputR">Chosen Objects (r):</label>
+                <input type="number" id="ncrInputR" class="calc-input" min="0" max="60" placeholder="3">
+              </div>
+              <div class="calc-btn-group">
+                <button type="button" class="btn-calc" id="btnCalcNCr">Calculate nCr</button>
+                <button type="button" class="btn-calc-reset" id="btnResetNCr">Reset</button>
+              </div>
+            </div>
+            <div class="calc-result-box" id="ncrResultBox">
+              <div class="text-muted">Enter n and r above and click Calculate nCr.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 12: RELATIONSHIP BETWEEN nPr AND nCr
+           ==================================================================== -->
+      <section class="section-block" id="topic-12">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 12 / 20</span>
+            <h2 class="section-heading">Relationship Between nPr and nCr</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <div class="formula-box">
+            <div class="formula-label">The Fundamental Link</div>
+            <div class="formula-math">nPr = nCr × r!</div>
+            <div class="formula-math" style="font-size:1.3rem; margin-top:0.4rem;">nCr = nPr / r!</div>
+            <div class="formula-explanation">
+              First select the <em>r</em> objects without order in <strong>nCr</strong> ways, then arrange those <em>r</em> objects in order in <strong>r!</strong> ways.
+            </div>
+          </div>
+
+          <div class="example-card">
+            <div class="example-header"><span class="example-badge">Example 12.1 • MCQ Speed</span></div>
+            <div class="example-problem">If nPr = 720 and nCr = 120, find r and n.</div>
+            <div class="solution-steps">
+              <div class="step-item"><span class="step-label">Step 1:</span> r! = nPr / nCr = 720 / 120 = 6</div>
+              <div class="step-item"><span class="step-label">Step 2:</span> Since 3! = 6, we have <strong>r = 3</strong>.</div>
+              <div class="step-item"><span class="step-label">Step 3:</span> nP3 = n(n-1)(n-2) = 720 ⇒ 10 × 9 × 8 = 720 ⇒ <strong>n = 10</strong>.</div>
+              <div class="step-item step-ans">Answer: n = 10, r = 3</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 13: COMBINATION PROPERTIES
+           ==================================================================== -->
+      <section class="section-block" id="topic-13">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 13 / 20</span>
+            <h2 class="section-heading">Important Combination Properties & Symmetry</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <div class="formula-sheet-grid">
+            <div class="formula-card-item">
+              <div class="formula-card-name">Symmetry Identity</div>
+              <div class="formula-card-latex">nCr = nC(n - r)</div>
+              <div class="formula-card-note">Example: 10C7 = 10C3 = 120 (Massive calculation saver!)</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Boundary Extremes</div>
+              <div class="formula-card-latex">nC0 = 1 and nCn = 1</div>
+              <div class="formula-card-note">Choosing 0 items or all items can only happen in 1 way.</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Single Selection</div>
+              <div class="formula-card-latex">nC1 = n</div>
+              <div class="formula-card-note">Example: 8C1 = 8</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Pascal's Identity</div>
+              <div class="formula-card-latex">nCr + nC(r - 1) = (n + 1)Cr</div>
+              <div class="formula-card-note">Example: 10C3 + 10C4 = 11C4</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Sum of Coefficients</div>
+              <div class="formula-card-latex">∑(r=0 to n) nCr = 2^n</div>
+              <div class="formula-card-note">Example: 5C0 + 5C1 + ... + 5C5 = 2^5 = 32</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 14: COMBINATIONS WITH RESTRICTIONS & GROUP SELECTION
+           ==================================================================== -->
+      <section class="section-block" id="topic-14">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 14 / 20</span>
+            <h2 class="section-heading">Combinations With Restrictions & Group Selections</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            When selecting committees from multiple distinct groups (e.g. boys and girls, doctors and engineers), use the <strong>Product Rule</strong> across groups:
+          </p>
+          <div class="formula-box">
+            <div class="formula-label">Multi-Group Selection Rule</div>
+            <div class="formula-math">Total = (Group 1 Selections) × (Group 2 Selections) × ...</div>
+          </div>
+
+          <div class="example-card">
+            <div class="example-header"><span class="example-badge">Example 14.1 • Committee Selection</span></div>
+            <div class="example-problem">From 7 men and 5 women, a committee of 3 men and 2 women is formed. How many such committees are possible?</div>
+            <div class="solution-steps">
+              <div class="step-item"><span class="step-label">Men:</span> 7C3 = (7 × 6 × 5) / 6 = 35</div>
+              <div class="step-item"><span class="step-label">Women:</span> 5C2 = (5 × 4) / 2 = 10</div>
+              <div class="step-item"><span class="step-label">Total:</span> <span class="step-math">35 × 10 = 350</span></div>
+              <div class="step-item step-ans">Answer: 350 committees</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 15: REPEATED OBJECTS (WORDS)
+           ==================================================================== -->
+      <section class="section-block" id="topic-15">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 15 / 20</span>
+            <h2 class="section-heading">Permutations of Repeated Objects (Word Problems)</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            When some items in the set are identical, swapping them does not produce a new arrangement. We must divide by the factorials of the repetitions:
+          </p>
+
+          <div class="formula-box">
+            <div class="formula-label">Repeated Objects Formula</div>
+            <div class="formula-math">Permutations = n! / (p! × q! × r! × ...)</div>
+            <div class="formula-explanation">
+              Where <em>n</em> is total objects, and <em>p, q, r...</em> are the counts of identical objects.
+            </div>
+          </div>
+
+          <div class="examples-list">
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 15.1 • MOM</span></div>
+              <div class="example-problem">How many distinct permutations of 'MOM'?</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">3! / 2! = 6 / 2 = 3</span></div>
+                <div class="step-item step-ans">Answer: 3 (MOM, MMO, OMM)</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 15.2 • LEVEL</span></div>
+              <div class="example-problem">How many distinct permutations of 'LEVEL'? (L=2, E=2, V=1)</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">5! / (2! × 2!) = 120 / 4 = 30</span></div>
+                <div class="step-item step-ans">Answer: 30 arrangements</div>
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Example 15.3 • PAKISTAN</span></div>
+              <div class="example-problem">How many permutations of 'PAKISTAN'? (Total=8, A=2)</div>
+              <div class="solution-steps">
+                <div class="step-item"><span class="step-math">8! / 2! = 40,320 / 2 = 20,160</span></div>
+                <div class="step-item step-ans">Answer: 20,160 arrangements</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 16: AT LEAST / COMPLEMENT METHOD
+           ==================================================================== -->
+      <section class="section-block" id="topic-16">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 16 / 20</span>
+            <h2 class="section-heading">At Least / At Most & The Complement Method</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <div class="fast-tip-box">
+            <div class="fast-tip-header">⚡ The Golden FAST Entry Rule: "At Least One" = Total − None</div>
+            <div class="fast-tip-body">
+              Whenever a question asks for <strong>"at least one"</strong>, calculating all positive cases (1, 2, 3, ...) takes 3 minutes. Calculating <strong>Total − (Zero Cases)</strong> takes 10 seconds!
+            </div>
+          </div>
+
+          <div class="example-card">
+            <div class="example-header"><span class="example-badge">Example 16.1 • Defective Bulbs</span></div>
+            <div class="example-problem">A box has 10 bulbs, of which 3 are defective. If 4 bulbs are selected, in how many ways can at least 1 defective bulb be chosen?</div>
+            <div class="solution-steps">
+              <div class="step-item"><span class="step-label">Total Selections:</span> 10C4 = 210</div>
+              <div class="step-item"><span class="step-label">Unwanted (0 defective, all 4 good from 7):</span> 7C4 = 35</div>
+              <div class="step-item"><span class="step-label">Calculation:</span> <span class="step-math">210 − 35 = 175</span></div>
+              <div class="step-item step-ans">Answer: 175 ways</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 17: REAL-WORLD PROBLEMS & THE DECISION TOOL
+           ==================================================================== -->
+      <section class="section-block" id="topic-17">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 17 / 20</span>
+            <h2 class="section-heading">Real-World Problems & Interactive Decision Tool</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <!-- The One Question Test -->
+          <div class="one-question-test-card">
+            <div class="one-question-heading">🔥 THE ONE QUESTION TEST</div>
+            <div class="one-question-prompt">
+              "Does changing the order of items create a different valid result?"
+            </div>
+            <div class="decision-branches">
+              <div class="branch-card">
+                <div class="branch-tag yes">YES → PERMUTATION (nPr)</div>
+                <p>Order matters. Rankings, seating in slots, PIN codes, positions, digit arrangements.</p>
+              </div>
+              <div class="branch-card">
+                <div class="branch-tag no">NO → COMBINATION (nCr)</div>
+                <p>Order does not matter. Committees, teams, card hands, handshakes, book selections.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Decision Tool -->
+          <div class="decision-tool-container">
+            <div class="calc-title">🤔 Interactive Decision Tool: Which Formula Should I Use?</div>
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem;">
+              Practice identifying whether real-world scenarios require Permutations or Combinations.
+            </p>
+            <div class="scenario-card">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+                <span class="badge-label" id="decisionScenarioCount">Scenario 1 of 8</span>
+              </div>
+              <div class="scenario-text" id="decisionScenarioText">
+                Loading scenario...
+              </div>
+              <div class="scenario-buttons">
+                <button type="button" class="btn-choice" id="btnChoosePerm">Permutation (nPr)</button>
+                <button type="button" class="btn-choice" id="btnChooseComb">Combination (nCr)</button>
+                <button type="button" class="btn-action-icon" id="btnNextScenario" style="margin-left:auto;">Next Scenario →</button>
+              </div>
+              <div class="decision-feedback" id="decisionFeedback"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 18: FAST SPEED SHORTCUTS
+           ==================================================================== -->
+      <section class="section-block" id="topic-18">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 18 / 20</span>
+            <h2 class="section-heading">10 FAST & Scholarship Speed Shortcuts</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <div class="examples-list">
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Shortcut 1</span></div>
+              <div class="example-problem">Always Ask: "Does Order Matter?"</div>
+              <div class="solution-steps">
+                Never start calculating before verifying whether order changes the result. If not, immediately write nCr.
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Shortcut 2</span></div>
+              <div class="example-problem">Cancel Factorials First (Peeling Trick)</div>
+              <div class="solution-steps">
+                Never expand 10! or 8!. Write <code>10! / 8! = 10 × 9 = 90</code> instantly.
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Shortcut 3</span></div>
+              <div class="example-problem">Use Symmetry: nCr = nC(n-r)</div>
+              <div class="solution-steps">
+                Calculate 100C98 as <code>100C2 = (100 × 99) / 2 = 4,950</code> in 5 seconds.
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Shortcut 4</span></div>
+              <div class="example-problem">Direct Slot Multiplication for Small Permutations</div>
+              <div class="solution-steps">
+                For 5 items in 3 seats, write <code>5 × 4 × 3 = 60</code> directly without writing factorials.
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Shortcut 5</span></div>
+              <div class="example-problem">The Complement Rule for "At Least" Questions</div>
+              <div class="solution-steps">
+                <code>At Least 1 = Total Combinations − Zero Combinations</code>.
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Shortcut 6</span></div>
+              <div class="example-problem">Fix the Restricted Positions First</div>
+              <div class="solution-steps">
+                If the 1st digit must be odd, fill that slot first (e.g. 3 choices), then fill remaining slots freely.
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Shortcut 7</span></div>
+              <div class="example-problem">Block Method for Items That Must Stay Together</div>
+              <div class="solution-steps">
+                Bundle items into 1 block, arrange units, then multiply by internal block arrangements: <code>Units! × (Block)!</code>.
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Shortcut 8</span></div>
+              <div class="example-problem">Handshake Formula: nC2 = n(n-1)/2</div>
+              <div class="solution-steps">
+                For 20 people shaking hands: <code>20 × 19 / 2 = 190</code>.
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Shortcut 9</span></div>
+              <div class="example-problem">Polygon Diagonals: n(n-3)/2</div>
+              <div class="solution-steps">
+                For an octagon (8 sides): <code>8 × 5 / 2 = 20</code> diagonals.
+              </div>
+            </div>
+
+            <div class="example-card">
+              <div class="example-header"><span class="example-badge">Shortcut 10</span></div>
+              <div class="example-problem">Circular Flippable: Divide by 2</div>
+              <div class="solution-steps">
+                Necklaces and key rings can be viewed from both sides: <code>(n-1)! / 2</code>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 19: COMMON MISTAKES
+           ==================================================================== -->
+      <section class="section-block" id="topic-19">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 19 / 20</span>
+            <h2 class="section-heading">18 Common Mistakes in Entry Tests</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p>
+            Avoid these 18 classical pitfalls that cost students easy marks in admission tests:
+          </p>
+
+          <div class="mistakes-grid">
+            <div class="mistake-card">
+              <div class="mistake-title">1. Confusing nPr and nCr</div>
+              <div class="mistake-row mistake-wrong">❌ Using nPr when choosing committee members.</div>
+              <div class="mistake-row mistake-correct">✅ Use nCr because committee roles are unordered.</div>
+              <div class="mistake-why">💡 Order only matters when positions (President, VP) are distinct.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">2. Forgetting 0! = 1</div>
+              <div class="mistake-row mistake-wrong">❌ Thinking 0! = 0.</div>
+              <div class="mistake-row mistake-correct">✅ 0! = 1 always.</div>
+              <div class="mistake-why">💡 By definition, the empty product has the multiplicative identity 1.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">3. Repeated Letters Overcounting</div>
+              <div class="mistake-row mistake-wrong">❌ Arranging 'LEVEL' as 5! = 120.</div>
+              <div class="mistake-row mistake-correct">✅ 5! / (2! × 2!) = 30.</div>
+              <div class="mistake-why">💡 Swapping identical L's or E's does not create a new word.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">4. Linear vs Circular Permutations</div>
+              <div class="mistake-row mistake-wrong">❌ Arranging 5 people in a circle as 5! = 120.</div>
+              <div class="mistake-row mistake-correct">✅ (5 - 1)! = 4! = 24.</div>
+              <div class="mistake-why">💡 In a circle without a reference anchor, all rotations are identical.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">5. Double Counting Internal Arrangements</div>
+              <div class="mistake-row mistake-wrong">❌ Arranging identical objects inside a tied block.</div>
+              <div class="mistake-row mistake-correct">✅ If the block contains identical items (SSS), internal ways = 1.</div>
+              <div class="mistake-why">💡 3! / 3! = 1.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">6. Leading Zero in Multi-Digit Numbers</div>
+              <div class="mistake-row mistake-wrong">❌ Allowing 0 in the first slot of a 4-digit number.</div>
+              <div class="mistake-row mistake-correct">✅ First slot has 9 choices (1–9). 0 can only go in slots 2–4.</div>
+              <div class="mistake-why">💡 A number starting with 0 (e.g. 0245) is a 3-digit number.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">7. Forgetting Necklaces / Keyrings Can Flip</div>
+              <div class="mistake-row mistake-wrong">❌ Using (n-1)! for beads on a necklace.</div>
+              <div class="mistake-row mistake-correct">✅ Use (n-1)! / 2.</div>
+              <div class="mistake-why">💡 A necklace can be turned over, making clockwise and anticlockwise identical.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">8. Misinterpreting "At Least One"</div>
+              <div class="mistake-row mistake-wrong">❌ Adding complicated overlapping cases.</div>
+              <div class="mistake-row mistake-correct">✅ Desired = Total − (Zero Cases).</div>
+              <div class="mistake-why">💡 Always take the complement for maximum speed.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">9. Misinterpreting "At Most"</div>
+              <div class="mistake-row mistake-wrong">❌ Only calculating the exact maximum number.</div>
+              <div class="mistake-row mistake-correct">✅ "At most 2" means: 0 OR 1 OR 2 cases added together.</div>
+              <div class="mistake-why">💡 "At most" is a ceiling, including zero.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">10. Dividing Unnamed Groups vs Named People</div>
+              <div class="mistake-row mistake-wrong">❌ Dividing 6 people into 3 teams of 2 as 6C2 × 4C2 × 2C2.</div>
+              <div class="mistake-row mistake-correct">✅ Divide by 3! because the 3 groups have no names.</div>
+              <div class="mistake-why">💡 Unnamed equal partitions require dividing by k!.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">11. Missing Internal Block Factorials</div>
+              <div class="mistake-row mistake-wrong">❌ Treating (Ali, Bilal) as 1 unit and forgetting 2!.</div>
+              <div class="mistake-row mistake-correct">✅ Multiply by 2! for Ali-Bilal vs Bilal-Ali.</div>
+              <div class="mistake-why">💡 Distinct persons can swap positions inside the block.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">12. Handshakes vs Ordered Matches</div>
+              <div class="mistake-row mistake-wrong">❌ Using nP2 for handshakes.</div>
+              <div class="mistake-row mistake-correct">✅ Use nC2 = n(n-1)/2.</div>
+              <div class="mistake-why">💡 A shakes B's hand is the same single handshake as B shaking A's hand.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">13. Incomplete Collinear Triangle Deduction</div>
+              <div class="mistake-row mistake-wrong">❌ Assuming all nC3 combinations form triangles.</div>
+              <div class="mistake-row mistake-correct">✅ Subtract kC3 for k points that lie on a single straight line.</div>
+              <div class="mistake-why">💡 Collinear points cannot form a valid triangle.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">14. Missing the 1 Single Line in Collinear Points</div>
+              <div class="mistake-row mistake-wrong">❌ Total lines = nC2 − kC2.</div>
+              <div class="mistake-row mistake-correct">✅ Total lines = nC2 − kC2 + 1.</div>
+              <div class="mistake-why">💡 The k collinear points still form 1 single straight line.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">15. Symmetry Sign Flip in nC(n-r)</div>
+              <div class="mistake-row mistake-wrong">❌ Writing 10C7 = 10C4.</div>
+              <div class="mistake-row mistake-correct">✅ 10C7 = 10C(10-7) = 10C3.</div>
+              <div class="mistake-why">💡 n - r = 10 - 7 = 3.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">16. Adding Instead of Multiplying Independent Tasks</div>
+              <div class="mistake-row mistake-wrong">❌ 4 shirts + 3 trousers = 7 outfits.</div>
+              <div class="mistake-row mistake-correct">✅ 4 × 3 = 12 outfits.</div>
+              <div class="mistake-why">💡 When tasks happen together in sequence, multiply!</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">17. Multiplying Instead of Adding Mutually Exclusive Cases</div>
+              <div class="mistake-row mistake-wrong">❌ Multiplying Case 1 × Case 2.</div>
+              <div class="mistake-row mistake-correct">✅ Add Case 1 + Case 2 when they cannot happen simultaneously.</div>
+              <div class="mistake-why">💡 The Addition Rule applies to mutually exclusive branches.</div>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-title">18. Forgetting to Subtract Perimeter in Diagonals</div>
+              <div class="mistake-row mistake-wrong">❌ Number of diagonals in n-gon = nC2.</div>
+              <div class="mistake-row mistake-correct">✅ Diagonals = nC2 − n = n(n-3)/2.</div>
+              <div class="mistake-why">💡 The n outer boundary edges are sides, not internal diagonals.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 20: FORMULA SHEET
+           ==================================================================== -->
+      <section class="section-block" id="topic-20">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Topic 20 / 20</span>
+            <h2 class="section-heading">Permutations & Combinations Formula Sheet</h2>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn-action-icon btn-bookmark">☆ Bookmark</button>
+            <button type="button" class="btn-action-icon btn-mark-complete">Mark as Completed</button>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <div class="formula-sheet-grid">
+            <div class="formula-card-item">
+              <div class="formula-card-name">Factorial</div>
+              <div class="formula-card-latex">n! = n(n-1)(n-2)...1</div>
+              <div class="formula-card-note">0! = 1, 1! = 1</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Permutation (Linear)</div>
+              <div class="formula-card-latex">nPr = n! / (n-r)!</div>
+              <div class="formula-card-note">Order Matters</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Combination</div>
+              <div class="formula-card-latex">nCr = n! / [r!(n-r)!]</div>
+              <div class="formula-card-note">Order Does Not Matter</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Fundamental Link</div>
+              <div class="formula-card-latex">nPr = nCr × r!</div>
+              <div class="formula-card-note">nCr = nPr / r!</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Circular Permutation</div>
+              <div class="formula-card-latex">(n - 1)!</div>
+              <div class="formula-card-note">Fixed reference removes rotations</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Necklace / Key Ring</div>
+              <div class="formula-card-latex">(n - 1)! / 2</div>
+              <div class="formula-card-note">Clockwise = Counter-clockwise</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Repeated Objects</div>
+              <div class="formula-card-latex">n! / (p! × q! × r!)</div>
+              <div class="formula-card-note">Words with duplicate letters</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+
+            <div class="formula-card-item">
+              <div class="formula-card-name">Polygon Diagonals</div>
+              <div class="formula-card-latex">n(n - 3) / 2</div>
+              <div class="formula-card-note">nC2 − n</div>
+              <button type="button" class="btn-copy-formula">Copy</button>
+            </div>
+          </div>
+
+          <div class="formula-sheet-actions">
+            <button type="button" class="btn-calc" id="btnPrintFormulaSheet" style="max-width:260px;">
+              🖨️ Print Formula Sheet
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           PRACTICE ZONE: 70 ORIGINAL MCQS
+           ==================================================================== -->
+      <section class="section-block" id="topic-practice">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Interactive Practice</span>
+            <h2 class="section-heading">Practice Zone (70 Original Entry Test MCQs)</h2>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <p style="margin-bottom:1rem;">
+            Test your mastery across 70 high-yield questions covering Foundation, Intermediate, and FAST / Scholarship difficulty. Click any option to receive instant verification and detailed mathematical solutions.
+          </p>
+
+          <div class="practice-filters">
+            <button type="button" class="btn-filter active" data-filter="all">All Questions (70)</button>
+            <button type="button" class="btn-filter" data-filter="easy">Foundation (20)</button>
+            <button type="button" class="btn-filter" data-filter="medium">Intermediate (30)</button>
+            <button type="button" class="btn-filter" data-filter="hard">FAST / Scholarship (20)</button>
+          </div>
+
+          <div class="mcq-container" id="practiceMcqContainer">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           FINAL TIMED TEST: 30 MCQS MASTERY CHALLENGE
+           ==================================================================== -->
+      <section class="section-block" id="topic-challenge">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-number">Real Exam Simulation</span>
+            <h2 class="section-heading">🧠 Permutations & Combinations Mastery Test</h2>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <!-- Quiz Intro View -->
+          <div id="quizIntroView" class="quiz-runner-container">
+            <h3 style="font-size:1.4rem; font-weight:800; color:var(--navy-900); margin-bottom:0.75rem;">FAST-NUCES Test Simulation Mode</h3>
+            <p style="margin-bottom:1.25rem; color:var(--text-main); line-height:1.6;">
+              Test your speed under authentic entry test conditions. You have <strong>25 minutes</strong> to answer <strong>30 questions</strong> (8 Easy, 12 Medium, 10 FAST / Scholarship Level).
+            </p>
+            <ul style="margin-left:1.5rem; margin-bottom:1.5rem; line-height:1.8; color:var(--text-main);">
+              <li>Real countdown timer with 5-minute visual warning.</li>
+              <li>Mark for review to revisit challenging questions.</li>
+              <li>Comprehensive diagnostic report identifying your exact weak concepts.</li>
+            </ul>
+            <button type="button" class="btn-calc" id="btnStartMasteryTest" style="max-width:280px; font-size:1.05rem;">
+              🚀 Start 25-Minute Test
+            </button>
+          </div>
+
+          <!-- Quiz Active View -->
+          <div id="quizActiveView" class="quiz-runner-container" style="display:none;">
+            <div class="quiz-header-bar">
+              <div>
+                <span class="badge-label" id="quizQuestionCategory">Counting</span>
+                <span style="font-weight:800; font-size:1.1rem; color:var(--navy-900); margin-left:0.5rem;" id="quizQuestionCounter">Question 1 of 30</span>
+              </div>
+              <div class="quiz-timer-box" id="quizTimerDisplay">25:00</div>
+            </div>
+
+            <div class="progress-bar-wrap" style="margin-bottom:1.5rem;">
+              <div class="progress-bar-fill" id="quizProgressFill" style="width: 3.33%;"></div>
+            </div>
+
+            <div class="quiz-grid-nav" id="quizGridNav"></div>
+
+            <div class="mcq-question" id="quizQuestionBody" style="font-size:1.2rem; margin:1.5rem 0;">
+              Loading test question...
+            </div>
+
+            <div class="mcq-options" id="quizOptionsContainer"></div>
+
+            <div class="quiz-controls">
+              <div>
+                <button type="button" class="btn-action-icon" id="btnQuizPrev">← Previous</button>
+                <button type="button" class="btn-action-icon" id="btnQuizNext">Next →</button>
+                <button type="button" class="btn-action-icon" id="btnQuizFlag" style="margin-left:0.5rem;">⚑ Mark for Review</button>
+              </div>
+              <button type="button" class="btn-calc" id="btnQuizSubmit" style="background:#dc2626; color:#ffffff;">
+                Submit Test
+              </button>
+            </div>
+          </div>
+
+          <!-- Quiz Analysis View -->
+          <div id="quizAnalysisView" class="analysis-container" style="display:none;">
+            <div class="analysis-score-hero">
+              <span class="badge-label" style="background:rgba(255,255,255,0.2); color:#ffffff;">Test Completed</span>
+              <div class="score-big" id="resScoreBig">0 / 30</div>
+              <div style="font-size:1.2rem; font-weight:700; color:#e2e8f0;">Mastery Score: <span id="resPercentage">0%</span></div>
+            </div>
+
+            <div class="analysis-metrics-grid">
+              <div class="analysis-metric-tile">
+                <div class="tile-val" style="color:#16a34a;" id="resCorrect">0</div>
+                <div class="tile-label">Correct</div>
+              </div>
+              <div class="analysis-metric-tile">
+                <div class="tile-val" style="color:#dc2626;" id="resIncorrect">0</div>
+                <div class="tile-label">Incorrect</div>
+              </div>
+              <div class="analysis-metric-tile">
+                <div class="tile-val" style="color:#f59e0b;" id="resUnattempted">0</div>
+                <div class="tile-label">Unattempted</div>
+              </div>
+              <div class="analysis-metric-tile">
+                <div class="tile-val" style="color:#2563eb;" id="resAccuracy">0%</div>
+                <div class="tile-label">Accuracy</div>
+              </div>
+              <div class="analysis-metric-tile">
+                <div class="tile-val" style="color:#7c3aed;" id="resTimeUsed">0m 0s</div>
+                <div class="tile-label">Time Used</div>
+              </div>
+            </div>
+
+            <div class="diagnosis-box">
+              <h4 style="font-size:1.1rem; font-weight:800; color:var(--navy-900); margin-bottom:0.75rem;">📊 Concept Mastery Breakdown</h4>
+              <div id="resDiagnosisList"></div>
+            </div>
+
+            <div class="fast-tip-box">
+              <div class="fast-tip-header">🎯 Personalized Next Step</div>
+              <div class="fast-tip-body" id="resRecommendations">
+                Great job completing the challenge!
+              </div>
+            </div>
+
+            <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+              <button type="button" class="btn-calc" id="btnQuizRestart">🔄 Retake Test</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       QUICK 5-MINUTE REVISION MODAL
+       ======================================================================== -->
+  <div class="modal-overlay" id="modalQuickRevision">
+    <div class="modal-content">
+      <button type="button" class="modal-close-btn" id="btnCloseRevision">✕</button>
+      <div class="badge-label" style="margin-bottom:0.5rem;">FAST High-Yield Cram Sheet</div>
+      <h3 style="font-size:1.6rem; font-weight:800; color:var(--navy-900);">⚡ 5-Minute Last-Minute Revision</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem;">
+        Everything you must review 15 minutes before walking into the examination hall.
+      </p>
+
+      <div class="revision-grid">
+        <div class="revision-card">
+          <h4>1. Golden Rule</h4>
+          <p>Order matters? → Permutation (nPr). Order does not matter? → Combination (nCr).</p>
+        </div>
+        <div class="revision-card">
+          <h4>2. Factorial Boundary</h4>
+          <p>0! = 1, 1! = 1, 5! = 120, 6! = 720, 7! = 5,040.</p>
+        </div>
+        <div class="revision-card">
+          <h4>3. Combination Symmetry</h4>
+          <p>nCr = nC(n-r). E.g. 100C98 = 100C2 = 4,950.</p>
+        </div>
+        <div class="revision-card">
+          <h4>4. Circular Permutation</h4>
+          <p>Table = (n-1)!. Necklace / Key Ring = (n-1)! / 2.</p>
+        </div>
+        <div class="revision-card">
+          <h4>5. Block Method</h4>
+          <p>Tie together items into 1 unit. Multiply: (Total Units)! × (Internal Items)!.</p>
+        </div>
+        <div class="revision-card">
+          <h4>6. Repeated Letters</h4>
+          <p>Total letters! divided by (each letter count!). E.g., BANANA = 6! / (3! × 2!) = 60.</p>
+        </div>
+        <div class="revision-card">
+          <h4>7. At Least One</h4>
+          <p>At Least One = Total Combinations − Zero Combinations.</p>
+        </div>
+        <div class="revision-card">
+          <h4>8. Handshakes</h4>
+          <p>nC2 = n(n-1) / 2.</p>
+        </div>
+        <div class="revision-card">
+          <h4>9. Diagonals</h4>
+          <p>n(n-3) / 2.</p>
+        </div>
+        <div class="revision-card">
+          <h4>10. Sum of Binomials</h4>
+          <p>nC0 + nC1 + ... + nCn = 2^n.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div>
+        <strong>FAST-NUCES + Scholarship Mathematics Preparation System</strong><br>
+        Topic 06 of 15 • Permutations & Combinations Module
+      </div>
+      <div>
+        Designed for University Entrance & Aptitude Exams • Learn → Solve → Master
+      </div>
+    </div>
+  </footer>
+
+  <script src="Permutations-Combinations.js"></script>
+</body>
+</html>

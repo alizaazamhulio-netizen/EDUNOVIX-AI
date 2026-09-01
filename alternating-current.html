@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alternating Current — MDCAT / ECAT Physics Lab</title>
+  <link rel="stylesheet" href="alternating-current.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="edunexa-theme.css">
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-strip">
+    <div class="lab-container progress-flex">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span style="font-weight: 700; color: var(--cyan-bright);">CHAPTER PROGRESS:</span>
+        <span id="progress-percent-text" style="font-family: var(--font-mono); font-weight: 800;">0%</span>
+      </div>
+      <div class="progress-bar-track">
+        <div id="chapter-progress-bar" class="progress-bar-fill"></div>
+      </div>
+      <div style="font-size: 0.6875rem; color: var(--text-dim);" id="progress-stats-summary">
+        0/15 Sections Explored
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="lab-header">
+    <div class="lab-container nav-wrapper">
+      <a href="#hero" class="brand-badge-group">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3-7 7-7 6 14 10 14 3-7 3-7"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-text-title">
+            AC ELECTRICITY LAB
+            <span class="brand-tag">MDCAT HIGH-YIELD</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Quick Nav Links -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#oscilloscope-lab" class="nav-link-btn">Waveform</a></li>
+          <li><a href="#rms-section" class="nav-link-btn">RMS</a></li>
+          <li><a href="#ac-vs-dc" class="nav-link-btn">AC vs DC</a></li>
+          <li><a href="#rlc-lab" class="nav-link-btn">RLC Circuit</a></li>
+          <li><a href="#resonance-lab" class="nav-link-btn">Resonance</a></li>
+          <li><a href="#generator-lab" class="nav-link-btn">Generator</a></li>
+          <li><a href="#transformer-lab" class="nav-link-btn">Transformer</a></li>
+          <li><a href="#flashcards-section" class="nav-link-btn">Flashcards</a></li>
+          <li><a href="#quiz-section" class="nav-link-btn">Quiz</a></li>
+          <li><a href="#calculators-section" class="nav-link-btn">Calculators</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <div class="search-container">
+          <svg class="search-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="global-search-input" class="search-input" placeholder="Search concepts, formulas..." autocomplete="off">
+          <div id="search-dropdown" class="search-results-dropdown"></div>
+        </div>
+
+        <button id="open-bookmarks-btn" class="btn btn-outline btn-sm" title="Saved Concepts">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+          <span>Saved</span>
+          <span id="saved-bookmarks-count" class="brand-tag" style="padding: 0.05rem 0.35rem; font-size: 0.625rem;">0</span>
+        </button>
+
+        <button id="complete-chapter-btn" class="btn btn-electric btn-sm">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Finish Chapter</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero-section">
+    <div class="lab-container hero-grid">
+      <div>
+        <div class="badge-row">
+          <span class="badge-pill badge-gold">⭐ MDCAT PHYSICS</span>
+          <span class="badge-pill badge-blue">HIGH-YIELD ENTRY TEST</span>
+          <span class="badge-pill badge-cyan">AC LAB SIMULATOR</span>
+        </div>
+        <h1 class="hero-title">ALTERNATING CURRENT</h1>
+        <p class="hero-subtitle">
+          Master AC waveforms, instantaneous & RMS values, phase behavior in R, L, C circuits, series resonance, AC generators, and power transformers with live interactive laboratory apparatus.
+        </p>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="#oscilloscope-lab" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Launch Oscilloscope
+          </a>
+          <a href="#resonance-lab" class="btn btn-electric">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m10 15 5-3-5-3v6Z"></path></svg>
+            Series Resonance Lab
+          </a>
+          <a href="#quiz-section" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            25+ MDCAT MCQs
+          </a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="hero-stat-card">
+            <div class="stat-val" id="hero-stat-f">50 Hz</div>
+            <div class="stat-lbl">Frequency (f)</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-val" id="hero-stat-t">20.0 ms</div>
+            <div class="stat-lbl">Time Period (T)</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-val" id="hero-stat-w">314 rad/s</div>
+            <div class="stat-lbl">Angular Freq (ω)</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-val" id="hero-stat-vrms">220 V</div>
+            <div class="stat-lbl">Effective RMS (V)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Real-Time Interactive Oscilloscope Display -->
+      <div>
+        <div class="oscilloscope-device">
+          <div class="scope-header-bar">
+            <div class="scope-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12s3-7 7-7 6 14 10 14 3-7 3-7"></path></svg>
+              TEK-PRO DIGITAL OSCILLOSCOPE CH-1 / CH-2
+            </div>
+            <div class="scope-indicators">
+              <span style="font-size: 0.625rem; color: #22c55e; font-weight: 700; font-family: var(--font-mono);">TRIGGERED</span>
+              <div class="scope-led"></div>
+            </div>
+          </div>
+
+          <div class="scope-screen-wrapper">
+            <canvas id="hero-scope-canvas" class="scope-canvas"></canvas>
+          </div>
+
+          <div class="scope-readout-grid">
+            <div class="scope-readout-item">
+              <div class="readout-label">v(t) instant</div>
+              <div class="readout-value" id="hero-scope-vt">+0.00 V</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">i(t) instant</div>
+              <div class="readout-value" style="color: #a855f7;" id="hero-scope-it">+0.00 A</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">V_peak (V₀)</div>
+              <div class="readout-value" id="hero-scope-vp">311.1 V</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">Phase Shift (ϕ)</div>
+              <div class="readout-value" id="hero-scope-phi">0.0°</div>
+            </div>
+          </div>
+
+          <!-- Quick interactive sliders for hero -->
+          <div style="margin-top: 0.875rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.6875rem; color: var(--text-dim); margin-bottom: 0.2rem;">
+                <span>FREQ (Hz)</span>
+                <span id="hero-f-disp" style="color: var(--cyan-bright); font-family: var(--font-mono);">50 Hz</span>
+              </div>
+              <input type="range" id="hero-f-slider" min="10" max="100" value="50" class="lab-slider">
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.6875rem; color: var(--text-dim); margin-bottom: 0.2rem;">
+                <span>PHASE (ϕ)</span>
+                <span id="hero-phi-disp" style="color: #a855f7; font-family: var(--font-mono);">0°</span>
+              </div>
+              <input type="range" id="hero-phi-slider" min="-90" max="90" value="0" step="15" class="lab-slider">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: WHAT IS AC & AC WAVEFORM SIMULATOR -->
+  <section id="oscilloscope-lab" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path></svg>
+          MODULE 01 • FUNDAMENTALS & WAVEFORMS
+        </div>
+        <h2 class="section-title">1. What is Alternating Current & Sinusoidal AC Voltage?</h2>
+        <p class="section-desc">
+          Alternating Current (AC) is an electric current whose magnitude and direction change periodically with time. In DC, charges flow in one unidirectional path; in AC, charges oscillate back and forth continuously.
+        </p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Controls & Explanations -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <h3 class="lab-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M7 12h10"></path></svg>
+              Waveform Controls & Equations
+            </h3>
+            <button class="concept-bookmark-btn" data-concept="ac-definition" title="Save Concept">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+            </button>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+            <div class="formula-chip">i = I₀ sin(ωt)</div>
+            <div class="formula-chip">V = V₀ sin(ωt)</div>
+            <div class="formula-chip">ω = 2πf = 2π/T</div>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="scope-amp-slider" class="control-label">Peak Voltage (V₀)</label>
+              <span id="scope-amp-val" class="control-value-badge">311 V</span>
+            </div>
+            <input type="range" id="scope-amp-slider" min="50" max="400" value="311" step="1" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="scope-freq-slider" class="control-label">Frequency (f)</label>
+              <span id="scope-freq-val" class="control-value-badge">50 Hz</span>
+            </div>
+            <input type="range" id="scope-freq-slider" min="10" max="120" value="50" step="1" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="scope-phase-slider" class="control-label">Phase Angle (ϕ)</label>
+              <span id="scope-phase-val" class="control-value-badge">0°</span>
+            </div>
+            <input type="range" id="scope-phase-slider" min="-180" max="180" value="0" step="15" class="lab-slider">
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+            <button id="scope-toggle-run" class="btn btn-primary btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+              <span>Pause / Play</span>
+            </button>
+            <button id="scope-reset-btn" class="btn btn-outline btn-sm">Reset</button>
+          </div>
+
+          <div class="yield-callout">
+            <div class="yield-callout-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div>
+              <div class="yield-callout-title">MDCAT Instantaneous Value Trap ⭐</div>
+              <div class="yield-callout-text">
+                At $t = T/4$ ($90^\circ$), $i = I_0 \sin(\pi/2) = +I_0$ (Peak).<br>
+                At $t = T/12$ ($30^\circ$), $i = I_0 \sin(30^\circ) = 0.5 I_0$ (Half of Peak value).<br>
+                At $t = T/8$ ($45^\circ$), $i = I_0 \sin(45^\circ) = \frac{I_0}{\sqrt{2}} = I_{rms}$!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Oscilloscope Screen Box -->
+        <div class="lab-card" style="background: var(--bg-panel-darker); border-color: var(--border-dark-panel);">
+          <div class="lab-card-header" style="border-bottom-color: rgba(255,255,255,0.1);">
+            <h3 class="lab-card-title" style="color: var(--cyan-bright);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 7-7 6 14 10 14 3-7 3-7"></path></svg>
+              Live Signal Trace Simulator
+            </h3>
+            <div style="display: flex; gap: 0.5rem;">
+              <span class="badge-tag" style="background: #082f49; color: var(--cyan-bright); border-color: #0284c7;">V(t) CH-1</span>
+              <span class="badge-tag" style="background: #3b0764; color: #d8b4fe; border-color: #7e22ce;">I(t) CH-2</span>
+            </div>
+          </div>
+
+          <div style="border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 0.5rem; overflow: hidden;">
+            <canvas id="main-sim-scope-canvas" style="display: block; width: 100%; height: 260px;"></canvas>
+          </div>
+
+          <div class="scope-readout-grid" style="margin-top: 1rem;">
+            <div class="scope-readout-item">
+              <div class="readout-label">Angular Freq (ω)</div>
+              <div class="readout-value" id="main-sim-w">314.16 rad/s</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">Time Period (T)</div>
+              <div class="readout-value" id="main-sim-t">20.00 ms</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">RMS Voltage (V_rms)</div>
+              <div class="readout-value" id="main-sim-vrms">220.0 V</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">Instantaneous v(t)</div>
+              <div class="readout-value" id="main-sim-vt">0.00 V</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: 1 COMPLETE AC CYCLE & WAVEFORM EXPLORER -->
+  <section id="waveform-explorer-section" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          MODULE 02 • SINE-WAVE GEOMETRY
+        </div>
+        <h2 class="section-title">2. One Complete AC Cycle & Interactive Waveform Timeline</h2>
+        <p class="section-desc">
+          A single complete cycle consists of one positive half-cycle and one negative half-cycle ($360^\circ$ or $2\pi\text{ rad}$). Drag or hover across the wave to inspect instantaneous angle, time fraction, and amplitude!
+        </p>
+      </div>
+
+      <div class="lab-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <div style="font-weight: 700; font-size: 0.9375rem; color: var(--primary-navy);">
+            Interactive Cycle Timeline (0° → 360°)
+          </div>
+          <div class="formula-chip" style="font-size: 0.8125rem;">
+            1 Full Cycle = 360° = 2π rad = Time T
+          </div>
+        </div>
+
+        <div style="border: 1px solid var(--border-light); border-radius: 0.75rem; background: #ffffff; padding: 1rem; position: relative;">
+          <canvas id="cycle-timeline-canvas" style="display: block; width: 100%; height: 220px; cursor: crosshair;"></canvas>
+          <div id="cycle-scrubber-tooltip" style="position: absolute; display: none; background: var(--navy-dark); color: #ffffff; padding: 0.35rem 0.65rem; border-radius: 0.375rem; font-size: 0.75rem; font-family: var(--font-mono); border: 1px solid var(--cyan-bright); pointer-events: none; transform: translate(-50%, -120%);">
+            Angle: 90° | i = +I₀
+          </div>
+        </div>
+
+        <!-- 5 Key Landmark Cards -->
+        <div class="grid-4col" style="grid-template-columns: repeat(5, 1fr); margin-top: 1.5rem;">
+          <div class="hero-stat-card" style="text-align: center;">
+            <div style="font-size: 0.75rem; font-weight: 800; color: var(--electric-blue);">0° (0 rad, t = 0)</div>
+            <div class="stat-val" style="font-size: 1.1rem;">i = 0</div>
+            <div class="stat-lbl">Zero Crossing (+)</div>
+          </div>
+          <div class="hero-stat-card" style="text-align: center; border-color: #38bdf8; background: #f0f9ff;">
+            <div style="font-size: 0.75rem; font-weight: 800; color: var(--electric-blue);">90° (π/2, t = T/4)</div>
+            <div class="stat-val" style="font-size: 1.1rem; color: #0369a1;">i = +I₀</div>
+            <div class="stat-lbl">Positive Maximum</div>
+          </div>
+          <div class="hero-stat-card" style="text-align: center;">
+            <div style="font-size: 0.75rem; font-weight: 800; color: var(--electric-blue);">180° (π, t = T/2)</div>
+            <div class="stat-val" style="font-size: 1.1rem;">i = 0</div>
+            <div class="stat-lbl">Zero Crossing (-)</div>
+          </div>
+          <div class="hero-stat-card" style="text-align: center; border-color: #f43f5e; background: #fff1f2;">
+            <div style="font-size: 0.75rem; font-weight: 800; color: #e11d48;">270° (3π/2, t = 3T/4)</div>
+            <div class="stat-val" style="font-size: 1.1rem; color: #be123c;">i = -I₀</div>
+            <div class="stat-lbl">Negative Maximum</div>
+          </div>
+          <div class="hero-stat-card" style="text-align: center;">
+            <div style="font-size: 0.75rem; font-weight: 800; color: var(--electric-blue);">360° (2π, t = T)</div>
+            <div class="stat-val" style="font-size: 1.1rem;">i = 0</div>
+            <div class="stat-lbl">Cycle Complete</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FREQUENCY & TIME PERIOD LAB -->
+  <section id="freq-time-lab" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          MODULE 03 • FREQUENCY & TIME PERIOD
+        </div>
+        <h2 class="section-title">3. Frequency (f), Time Period (T) & Angular Frequency (ω)</h2>
+        <p class="section-desc">
+          Frequency is the number of cycles per second (measured in Hertz, Hz). Time period is the duration of one complete cycle ($T = 1/f$). Adjust either parameter to observe synchronized bidirectional recalculations.
+        </p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <h3 class="lab-card-title">Bi-Directional Frequency & Period Controller</h3>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="freq-linked-slider" class="control-label">Frequency (f)</label>
+              <span id="freq-linked-disp" class="control-value-badge">50.0 Hz</span>
+            </div>
+            <input type="range" id="freq-linked-slider" min="1" max="200" value="50" step="1" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="period-linked-slider" class="control-label">Time Period (T)</label>
+              <span id="period-linked-disp" class="control-value-badge">0.0200 s (20.0 ms)</span>
+            </div>
+            <input type="range" id="period-linked-slider" min="5" max="1000" value="20" step="1" class="lab-slider">
+          </div>
+
+          <!-- Standard mains frequency presets -->
+          <div style="margin-top: 1.25rem;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase;">
+              MDCAT Standard Presets:
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn btn-outline btn-sm preset-freq-btn" data-freq="50">50 Hz (Pak/UK Mains, T = 20ms)</button>
+              <button class="btn btn-outline btn-sm preset-freq-btn" data-freq="60">60 Hz (US Mains, T = 16.6ms)</button>
+              <button class="btn btn-outline btn-sm preset-freq-btn" data-freq="100">100 Hz (T = 10ms)</button>
+              <button class="btn btn-outline btn-sm preset-freq-btn" data-freq="400">400 Hz (Aviation)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <h3 class="lab-card-title">Live Mathematical Derivations</h3>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="background: #f8fafc; padding: 0.875rem; border-radius: 0.5rem; border: 1px solid var(--border-light);">
+              <div style="font-size: 0.6875rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Time Period Formula</div>
+              <div class="mono" style="font-size: 1rem; font-weight: 800; color: var(--primary-navy);" id="math-t-step">
+                T = 1 / f = 1 / 50 Hz = 0.020 s (20 ms)
+              </div>
+            </div>
+            <div style="background: #f8fafc; padding: 0.875rem; border-radius: 0.5rem; border: 1px solid var(--border-light);">
+              <div style="font-size: 0.6875rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Angular Frequency Formula</div>
+              <div class="mono" style="font-size: 1rem; font-weight: 800; color: var(--electric-blue);" id="math-w-step">
+                ω = 2πf = 2 × 3.14159 × 50 = 314.16 rad/s
+              </div>
+            </div>
+            <div style="background: #f8fafc; padding: 0.875rem; border-radius: 0.5rem; border: 1px solid var(--border-light);">
+              <div style="font-size: 0.6875rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Zero-Crossings Per Second</div>
+              <div class="mono" style="font-size: 1rem; font-weight: 800; color: #059669;" id="math-crossings-step">
+                Current reverses direction 2f = 100 times/sec (50 positive & 50 negative peaks)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: RMS (ROOT MEAN SQUARE) VISUALIZER -->
+  <section id="rms-section" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          MODULE 04 • EFFECTIVE VALUE (RMS)
+        </div>
+        <h2 class="section-title">4. RMS (Root Mean Square) Value & Heating Effect ⭐⭐⭐</h2>
+        <p class="section-desc">
+          RMS value is the effective value of alternating current. It represents the value of steady DC current that would produce the same heating effect in a given resistor over the same time interval!
+        </p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- RMS Visual Graph -->
+        <div class="lab-card" style="background: var(--bg-panel-darker); border-color: var(--border-dark-panel);">
+          <div class="lab-card-header" style="border-bottom-color: rgba(255,255,255,0.1);">
+            <h3 class="lab-card-title" style="color: var(--cyan-bright);">
+              Peak vs RMS Level Comparison
+            </h3>
+            <div class="formula-chip" style="background: #0f172a; color: #38bdf8; border-color: #0284c7;">
+              I_rms = I₀ / √2 ≈ 0.707 I₀
+            </div>
+          </div>
+          <div style="border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 0.5rem; overflow: hidden;">
+            <canvas id="rms-graph-canvas" style="display: block; width: 100%; height: 230px;"></canvas>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem;">
+            <div class="scope-readout-item">
+              <div class="readout-label">Peak Voltage (V₀)</div>
+              <div class="readout-value" id="rms-card-vp">311.1 V</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">RMS Voltage (V_rms)</div>
+              <div class="readout-value" style="color: #22c55e;" id="rms-card-vrms">220.0 V</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Joule Heating Experiment Card -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <h3 class="lab-card-title">Equivalent DC Heating Experiment</h3>
+            <span class="badge-pill badge-gold">JOULE'S LAW</span>
+          </div>
+
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Since power dissipated is $P = i^2(t) R$, heat produced in AC depends on the mean of $i^2$. Because the average value of $\sin^2(\omega t)$ over one complete cycle is $\frac{1}{2}$, we get:
+          </p>
+
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 0.625rem; padding: 1rem; margin-bottom: 1rem;">
+            <div style="font-size: 0.875rem; font-weight: 800; color: #166534; margin-bottom: 0.25rem;">
+              P_avg = I²_rms × R = (I₀ / √2)² × R = ½ I₀² R
+            </div>
+            <div style="font-size: 0.8125rem; color: #15803d;">
+              Thus, a 220V AC source produces the exact same heat in an electric heater as a 220V steady DC battery!
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="rms-peak-input-slider" class="control-label">Adjust Peak Voltage V₀ (V)</label>
+              <span id="rms-input-disp" class="control-value-badge">311.1 V</span>
+            </div>
+            <input type="range" id="rms-peak-input-slider" min="10" max="500" value="311.1" step="0.5" class="lab-slider">
+          </div>
+
+          <div class="yield-callout" style="margin-top: 0.5rem;">
+            <div class="yield-callout-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div>
+              <div class="yield-callout-title">MDCAT High-Yield Meter Fact</div>
+              <div class="yield-callout-text">
+                Standard AC voltmeters and ammeters (moving-iron or hot-wire types) are calibrated to measure <strong>RMS values</strong>, not peak or average values!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: AC vs DC VISUALIZER (SIDE-BY-SIDE SIMULATION) -->
+  <section id="ac-vs-dc" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg>
+          MODULE 05 • COMPARISON
+        </div>
+        <h2 class="section-title">5. AC vs DC Direct Comparison Lab</h2>
+        <p class="section-desc">
+          Watch charge carriers (electrons) in action! In DC, electrons drift steadily in one direction. In AC, electrons oscillate back and forth in place without any net unidirectional migration.
+        </p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- DC Circuit Panel -->
+        <div class="lab-card" style="background: var(--bg-panel-darker); border-color: var(--border-dark-panel);">
+          <div class="lab-card-header" style="border-bottom-color: rgba(255,255,255,0.1);">
+            <h3 class="lab-card-title" style="color: #38bdf8;">
+              <span class="badge-pill badge-blue" style="font-size: 0.6875rem;">DIRECT CURRENT (DC)</span>
+            </h3>
+            <span style="font-size: 0.75rem; color: var(--text-dim); font-family: var(--font-mono);">f = 0 Hz | Constant Unidirectional</span>
+          </div>
+          <div style="border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 0.5rem; overflow: hidden;">
+            <canvas id="dc-anim-canvas" style="display: block; width: 100%; height: 180px;"></canvas>
+          </div>
+          <div style="margin-top: 1rem; font-size: 0.8125rem; color: var(--text-dim); line-height: 1.5;">
+            • Electrons drift steadily from negative terminal to positive terminal.<br>
+            • Voltage and current magnitude are constant over time.<br>
+            • Cannot be stepped up or down using ordinary transformers.
+          </div>
+        </div>
+
+        <!-- AC Circuit Panel -->
+        <div class="lab-card" style="background: var(--bg-panel-darker); border-color: var(--border-dark-panel);">
+          <div class="lab-card-header" style="border-bottom-color: rgba(255,255,255,0.1);">
+            <h3 class="lab-card-title" style="color: var(--cyan-bright);">
+              <span class="badge-pill badge-cyan" style="font-size: 0.6875rem;">ALTERNATING CURRENT (AC)</span>
+            </h3>
+            <span style="font-size: 0.75rem; color: var(--text-dim); font-family: var(--font-mono);">f = 50 Hz | Sinusoidal Reversing</span>
+          </div>
+          <div style="border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 0.5rem; overflow: hidden;">
+            <canvas id="ac-anim-canvas" style="display: block; width: 100%; height: 180px;"></canvas>
+          </div>
+          <div style="margin-top: 1rem; font-size: 0.8125rem; color: var(--text-dim); line-height: 1.5;">
+            • Electrons oscillate symmetrically about mean positions.<br>
+            • Voltage and current continuously vary between $+V_0$ and $-V_0$.<br>
+            • Easily stepped up or down for high-voltage, low-loss transmission.
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="lab-card" style="margin-top: 1.5rem; overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem; text-align: left;">
+          <thead>
+            <tr style="background: #f1f5f9; border-bottom: 2px solid var(--border-light);">
+              <th style="padding: 0.75rem 1rem; font-weight: 800; color: var(--primary-navy);">Feature</th>
+              <th style="padding: 0.75rem 1rem; font-weight: 800; color: var(--electric-blue);">Alternating Current (AC)</th>
+              <th style="padding: 0.75rem 1rem; font-weight: 800; color: #475569;">Direct Current (DC)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Direction</td>
+              <td style="padding: 0.75rem 1rem; color: var(--electric-blue);">Reverses direction periodically</td>
+              <td style="padding: 0.75rem 1rem;">Flows in one constant direction</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Magnitude</td>
+              <td style="padding: 0.75rem 1rem;">Continuously varies with time</td>
+              <td style="padding: 0.75rem 1rem;">Essentially constant</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Frequency (f)</td>
+              <td style="padding: 0.75rem 1rem;">Non-zero (50 Hz / 60 Hz)</td>
+              <td style="padding: 0.75rem 1rem;">Zero (0 Hz)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Transformer Action</td>
+              <td style="padding: 0.75rem 1rem; color: #059669; font-weight: 600;">Easily transformed via Mutual Induction</td>
+              <td style="padding: 0.75rem 1rem; color: #e11d48; font-weight: 600;">Cannot be stepped up/down with ordinary transformer</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Capacitor Opposition</td>
+              <td style="padding: 0.75rem 1rem;">Offers finite reactance $X_C = 1/(2\pi f C)$</td>
+              <td style="padding: 0.75rem 1rem;">Offers infinite resistance ($X_C \to \infty$, blocks DC)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: AC THROUGH RESISTOR, INDUCTOR & CAPACITOR + PHASE VISUALIZER -->
+  <section id="components-lab" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          MODULE 06 • PURE R, L, C CIRCUITS & PHASE
+        </div>
+        <h2 class="section-title">6. AC Through Resistor, Inductor & Capacitor</h2>
+        <p class="section-desc">
+          Compare how pure components alter current magnitude and phase angle. Switch between Resistor (in-phase), Inductor (current lags by 90°), and Capacitor (current leads by 90°)!
+        </p>
+      </div>
+
+      <!-- Component Selector Tabs -->
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+        <button id="tab-btn-resistor" class="btn btn-primary component-tab-btn active">
+          🧱 Pure Resistor (R)
+        </button>
+        <button id="tab-btn-inductor" class="btn btn-outline component-tab-btn">
+          🌀 Pure Inductor (L)
+        </button>
+        <button id="tab-btn-capacitor" class="btn btn-outline component-tab-btn">
+          🔋 Pure Capacitor (C)
+        </button>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Interactive Workbench Card -->
+        <div class="lab-card" id="component-details-card">
+          <div class="lab-card-header">
+            <h3 class="lab-card-title" id="component-card-title">Pure Resistor Circuit</h3>
+            <span id="component-memory-badge" class="badge-pill badge-gold">ϕ = 0° (IN PHASE)</span>
+          </div>
+
+          <div id="component-controls-container">
+            <!-- Dynamic Controls inserted by JS -->
+          </div>
+
+          <div id="component-stats-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.25rem;">
+            <!-- Dynamic stats inserted by JS -->
+          </div>
+
+          <div class="yield-callout" id="component-yield-box">
+            <div class="yield-callout-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div>
+              <div class="yield-callout-title" id="component-yield-title">Memory Trick</div>
+              <div class="yield-callout-text" id="component-yield-text">
+                In a pure resistor, current and voltage reach peaks and zero crossings simultaneously ($\phi = 0^\circ, \cos\phi = 1$).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phasor & Dual Sine Wave Canvas -->
+        <div class="lab-card" style="background: var(--bg-panel-darker); border-color: var(--border-dark-panel);">
+          <div class="lab-card-header" style="border-bottom-color: rgba(255,255,255,0.1);">
+            <h3 class="lab-card-title" style="color: var(--cyan-bright);">
+              Waveform & Rotating Phasor Diagram
+            </h3>
+            <div style="display: flex; gap: 0.35rem;">
+              <span class="badge-pill badge-cyan" style="font-size: 0.625rem;">V (Voltage)</span>
+              <span class="badge-pill" style="font-size: 0.625rem; background: #581c87; color: #e9d5ff;">I (Current)</span>
+            </div>
+          </div>
+          <div style="border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 0.5rem; overflow: hidden;">
+            <canvas id="component-phasor-canvas" style="display: block; width: 100%; height: 260px;"></canvas>
+          </div>
+          <div style="margin-top: 0.75rem; text-align: center; font-size: 0.75rem; color: var(--text-dim); font-family: var(--font-mono);" id="phasor-readout-text">
+            Phasor angle: 0.0° | V and I aligned
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: SERIES RLC CIRCUIT & IMPEDANCE LAB -->
+  <section id="rlc-lab" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          MODULE 07 • SERIES RLC & IMPEDANCE
+        </div>
+        <h2 class="section-title">7. Series RLC Circuit & Impedance (Z) Lab</h2>
+        <p class="section-desc">
+          When Resistance (R), Inductance (L), and Capacitance (C) are connected in series across an AC supply, the total opposition is called <strong>Impedance ($Z$)</strong>.
+        </p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- RLC Controls -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <h3 class="lab-card-title">RLC Parameters</h3>
+            <button class="concept-bookmark-btn" data-concept="rlc-impedance" title="Save Concept">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+            </button>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="rlc-r-slider" class="control-label">Resistance (R)</label>
+              <span id="rlc-r-val" class="control-value-badge">50.0 Ω</span>
+            </div>
+            <input type="range" id="rlc-r-slider" min="5" max="200" value="50" step="1" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="rlc-l-slider" class="control-label">Inductance (L)</label>
+              <span id="rlc-l-val" class="control-value-badge">0.20 H (200 mH)</span>
+            </div>
+            <input type="range" id="rlc-l-slider" min="0.01" max="1.0" value="0.20" step="0.01" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="rlc-c-slider" class="control-label">Capacitance (C)</label>
+              <span id="rlc-c-val" class="control-value-badge">50.0 µF</span>
+            </div>
+            <input type="range" id="rlc-c-slider" min="1" max="200" value="50" step="1" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="rlc-f-slider" class="control-label">Supply Frequency (f)</label>
+              <span id="rlc-f-val" class="control-value-badge">50.0 Hz</span>
+            </div>
+            <input type="range" id="rlc-f-slider" min="10" max="200" value="50" step="1" class="lab-slider">
+          </div>
+
+          <div class="formula-chip" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+            Z = √[ R² + (X_L - X_C)² ]
+          </div>
+        </div>
+
+        <!-- RLC Computed Results & Impedance Triangle -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <h3 class="lab-card-title">Circuit Impedance Triangle & Readouts</h3>
+            <span id="rlc-circuit-state-badge" class="badge-pill badge-blue">INDUCTIVE DOMINANT</span>
+          </div>
+
+          <div style="border: 1px solid var(--border-light); border-radius: 0.5rem; background: #ffffff; padding: 0.5rem; margin-bottom: 1rem;">
+            <canvas id="rlc-triangle-canvas" style="display: block; width: 100%; height: 160px;"></canvas>
+          </div>
+
+          <div class="grid-4col" style="grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+            <div class="hero-stat-card" style="padding: 0.5rem;">
+              <div class="stat-lbl">Inductive X_L</div>
+              <div class="stat-val" style="font-size: 1rem; color: #0284c7;" id="rlc-xl-out">62.8 Ω</div>
+            </div>
+            <div class="hero-stat-card" style="padding: 0.5rem;">
+              <div class="stat-lbl">Capacitive X_C</div>
+              <div class="stat-val" style="font-size: 1rem; color: #e11d48;" id="rlc-xc-out">63.7 Ω</div>
+            </div>
+            <div class="hero-stat-card" style="padding: 0.5rem; background: #f0fdf4; border-color: #86efac;">
+              <div class="stat-lbl">Total Impedance Z</div>
+              <div class="stat-val" style="font-size: 1rem; color: #166534;" id="rlc-z-out">50.0 Ω</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem;">
+            <div class="hero-stat-card" style="padding: 0.5rem;">
+              <div class="stat-lbl">Phase Angle (ϕ)</div>
+              <div class="stat-val" style="font-size: 1rem;" id="rlc-phi-out">-1.0°</div>
+            </div>
+            <div class="hero-stat-card" style="padding: 0.5rem;">
+              <div class="stat-lbl">Power Factor (cos ϕ)</div>
+              <div class="stat-val" style="font-size: 1rem; color: var(--electric-blue);" id="rlc-pf-out">0.999</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: SERIES RESONANCE LAB (MDCAT GOLD ⭐⭐⭐) -->
+  <section id="resonance-lab" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          MODULE 08 • SERIES RESONANCE ⭐⭐⭐
+        </div>
+        <h2 class="section-title">8. Series Electrical Resonance Simulator</h2>
+        <p class="section-desc">
+          Resonance occurs when $X_L = X_C$. At this unique resonant frequency ($f_0$), the net reactance cancels out to zero, impedance drops to its absolute minimum ($Z = R$), and current reaches its maximum peak!
+        </p>
+      </div>
+
+      <!-- Glowing resonance alert banner -->
+      <div id="resonance-found-alert" class="resonance-alert" style="margin-bottom: 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div style="width: 2.25rem; height: 2.25rem; border-radius: 50%; background: #ffffff; color: #047857; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 900;">
+            ★
+          </div>
+          <div>
+            <div style="font-weight: 800; font-size: 1.1rem; letter-spacing: 0.05em; text-transform: uppercase;">
+              RESONANCE FOUND! (X_L = X_C)
+            </div>
+            <div style="font-size: 0.8125rem; opacity: 0.9;">
+              Impedance is minimum ($Z = R = 50\,\Omega$), Current is maximum ($I_{max} = V/R$), Power Factor = 1.0, V and I are in phase!
+            </div>
+          </div>
+        </div>
+        <button id="resonance-auto-tune-btn" class="btn btn-outline btn-sm" style="background: #ffffff; color: #065f46; border: none; font-weight: 700;">
+          Lock Frequency
+        </button>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Resonance Frequency Sweeper -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <h3 class="lab-card-title">Frequency Sweep Knob</h3>
+            <span class="formula-chip" id="resonance-f0-badge">f₀ = 50.3 Hz</span>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="res-sweep-slider" class="control-label">Generator Frequency (Sweep to find Peak)</label>
+              <span id="res-sweep-disp" class="control-value-badge">50.0 Hz</span>
+            </div>
+            <input type="range" id="res-sweep-slider" min="10" max="150" value="50" step="0.2" class="lab-slider">
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem;">
+            <button id="res-snap-f0-btn" class="btn btn-cyan btn-sm" style="flex: 1;">
+              ⚡ Snap to Resonant f₀
+            </button>
+          </div>
+
+          <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 0.625rem; padding: 1rem;">
+            <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 0.5rem; text-transform: uppercase;">
+              MDCAT GOLD RESONANCE CONDITIONS:
+            </div>
+            <ul style="font-size: 0.8125rem; color: var(--text-muted); padding-left: 1.25rem; line-height: 1.6;">
+              <li><strong>Reactance Equality:</strong> $X_L = X_C \implies 2\pi f L = \frac{1}{2\pi f C}$</li>
+              <li><strong>Resonant Frequency:</strong> $f_0 = \frac{1}{2\pi\sqrt{LC}}$</li>
+              <li><strong>Impedance:</strong> $Z_{min} = R$ (purely resistive)</li>
+              <li><strong>Current:</strong> $I_{max} = \frac{V}{R}$ (maximum circuit current)</li>
+              <li><strong>Phase Angle:</strong> $\phi = 0^\circ \implies$ Power Factor $\cos\phi = 1$</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Resonance Response Curve Graph -->
+        <div class="lab-card" style="background: var(--bg-panel-darker); border-color: var(--border-dark-panel);">
+          <div class="lab-card-header" style="border-bottom-color: rgba(255,255,255,0.1);">
+            <h3 class="lab-card-title" style="color: var(--cyan-bright);">
+              Circuit Current vs Frequency Curve
+            </h3>
+            <span style="font-size: 0.6875rem; color: var(--text-dim); font-family: var(--font-mono);">I_rms vs f (Hz)</span>
+          </div>
+          <div style="border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 0.5rem; overflow: hidden;">
+            <canvas id="resonance-curve-canvas" style="display: block; width: 100%; height: 230px;"></canvas>
+          </div>
+          <div class="scope-readout-grid" style="margin-top: 0.75rem;">
+            <div class="scope-readout-item">
+              <div class="readout-label">Current I_rms</div>
+              <div class="readout-value" id="res-current-out">4.40 A</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">Impedance Z</div>
+              <div class="readout-value" id="res-z-out">50.0 Ω</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">X_L - X_C</div>
+              <div class="readout-value" id="res-xnet-out">0.0 Ω</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">Power Factor</div>
+              <div class="readout-value" style="color: #22c55e;" id="res-pf-out">1.000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: AC GENERATOR LAB & ROTATING ARMATURE -->
+  <section id="generator-lab" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+          MODULE 09 • ELECTROMAGNETIC INDUCTION
+        </div>
+        <h2 class="section-title">9. AC Generator (Alternator) Simulation ⚡</h2>
+        <p class="section-desc">
+          An AC Generator converts mechanical energy into electrical energy based on Faraday's law of electromagnetic induction. As the rectangular coil rotates in a uniform magnetic field, the changing magnetic flux induces a sinusoidal EMF!
+        </p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Rotating Armature Canvas Animation -->
+        <div class="lab-card" style="background: var(--bg-panel-darker); border-color: var(--border-dark-panel);">
+          <div class="lab-card-header" style="border-bottom-color: rgba(255,255,255,0.1);">
+            <h3 class="lab-card-title" style="color: var(--cyan-bright);">
+              Rotating Coil, Slip Rings & Magnetic Field
+            </h3>
+            <span class="badge-pill badge-cyan" style="font-size: 0.6875rem;">SYNCHRONIZED EMF</span>
+          </div>
+          <div style="border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 0.5rem; overflow: hidden;">
+            <canvas id="generator-anim-canvas" style="display: block; width: 100%; height: 260px;"></canvas>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-dim);">
+            <span>Coil Angle: <strong id="gen-angle-readout" style="color: var(--cyan-bright); font-family: var(--font-mono);">0°</strong></span>
+            <span>Flux Φ: <strong id="gen-flux-readout" style="color: #38bdf8; font-family: var(--font-mono);">BA cos θ (Max)</strong></span>
+            <span>Induced EMF: <strong id="gen-emf-readout" style="color: #22c55e; font-family: var(--font-mono);">0.0 V</strong></span>
+          </div>
+        </div>
+
+        <!-- Generator Controls & Principles -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <h3 class="lab-card-title">Generator Controls & Formula</h3>
+            <button class="concept-bookmark-btn" data-concept="ac-generator" title="Save Concept">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+            </button>
+          </div>
+
+          <div class="formula-chip" style="width: 100%; justify-content: center; margin-bottom: 1rem;">
+            E(t) = NABω sin(ωt) = E₀ sin(ωt)
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="gen-speed-slider" class="control-label">Armature Rotation Speed (RPM / Freq)</label>
+              <span id="gen-speed-val" class="control-value-badge">30 RPM</span>
+            </div>
+            <input type="range" id="gen-speed-slider" min="5" max="120" value="30" step="1" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="gen-turns-slider" class="control-label">Number of Turns (N)</label>
+              <span id="gen-turns-val" class="control-value-badge">200 turns</span>
+            </div>
+            <input type="range" id="gen-turns-slider" min="50" max="1000" value="200" step="50" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="gen-b-slider" class="control-label">Magnetic Field (B)</label>
+              <span id="gen-b-val" class="control-value-badge">0.50 T</span>
+            </div>
+            <input type="range" id="gen-b-slider" min="0.1" max="2.0" value="0.50" step="0.05" class="lab-slider">
+          </div>
+
+          <div class="yield-callout" style="margin-top: 1rem;">
+            <div class="yield-callout-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div>
+              <div class="yield-callout-title">MDCAT Armature Flux vs EMF Orientation ⭐</div>
+              <div class="yield-callout-text">
+                • When coil is <strong>perpendicular</strong> to magnetic field: Flux is MAXIMUM ($\Phi = BA$), but $\frac{d\Phi}{dt} = 0 \implies \text{EMF} = 0$.<br>
+                • When coil is <strong>parallel</strong> to magnetic field: Flux is ZERO ($\Phi = 0$), but flux changes fastest $\frac{d\Phi}{dt} = \text{max} \implies \text{EMF} = E_0$ (MAXIMUM)!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: TRANSFORMER LAB (STEP-UP & STEP-DOWN) -->
+  <section id="transformer-lab" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="16" height="20" x="4" y="2" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="18" x2="16" y2="18"></line></svg>
+          MODULE 10 • MUTUAL INDUCTION
+        </div>
+        <h2 class="section-title">10. Transformer Lab (Step-Up & Step-Down) ⭐⭐⭐</h2>
+        <p class="section-desc">
+          A transformer changes alternating voltage based on mutual electromagnetic induction between primary and secondary windings linked by a soft iron core.
+        </p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Transformer Diagram & Core Animation -->
+        <div class="lab-card" style="background: var(--bg-panel-darker); border-color: var(--border-dark-panel);">
+          <div class="lab-card-header" style="border-bottom-color: rgba(255,255,255,0.1);">
+            <h3 class="lab-card-title" style="color: var(--cyan-bright);">
+              Laminated Soft Iron Core & Magnetic Flux
+            </h3>
+            <span id="trans-type-badge" class="badge-pill badge-gold">STEP-UP TRANSFORMER</span>
+          </div>
+
+          <div style="border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 0.5rem; overflow: hidden;">
+            <canvas id="transformer-anim-canvas" style="display: block; width: 100%; height: 250px;"></canvas>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-top: 1rem;">
+            <div class="scope-readout-item">
+              <div class="readout-label">Primary V_p</div>
+              <div class="readout-value" id="trans-vp-disp">120 V</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">Turns Ratio N_s/N_p</div>
+              <div class="readout-value" style="color: #f59e0b;" id="trans-ratio-disp">2.00</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">Secondary V_s</div>
+              <div class="readout-value" style="color: #22c55e;" id="trans-vs-disp">240 V</div>
+            </div>
+            <div class="scope-readout-item">
+              <div class="readout-label">Power (Ideal)</div>
+              <div class="readout-value" style="color: #38bdf8;" id="trans-p-disp">1920 W</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transformer Controls -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <h3 class="lab-card-title">Winding & Voltage Controls</h3>
+            <button class="concept-bookmark-btn" data-concept="transformer-rules" title="Save Concept">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+            </button>
+          </div>
+
+          <div class="formula-chip" style="width: 100%; justify-content: center; margin-bottom: 1rem;">
+            V_s / V_p = N_s / N_p = I_p / I_s
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="trans-vp-slider" class="control-label">Primary Voltage (V_p)</label>
+              <span id="trans-vp-val" class="control-value-badge">120 V</span>
+            </div>
+            <input type="range" id="trans-vp-slider" min="10" max="400" value="120" step="5" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="trans-np-slider" class="control-label">Primary Turns (N_p)</label>
+              <span id="trans-np-val" class="control-value-badge">100 turns</span>
+            </div>
+            <input type="range" id="trans-np-slider" min="10" max="500" value="100" step="10" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="trans-ns-slider" class="control-label">Secondary Turns (N_s)</label>
+              <span id="trans-ns-val" class="control-value-badge">200 turns</span>
+            </div>
+            <input type="range" id="trans-ns-slider" min="10" max="500" value="200" step="10" class="lab-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="trans-rl-slider" class="control-label">Load Resistance (R_L)</label>
+              <span id="trans-rl-val" class="control-value-badge">30 Ω</span>
+            </div>
+            <input type="range" id="trans-rl-slider" min="5" max="200" value="30" step="5" class="lab-slider">
+          </div>
+
+          <div class="yield-callout" style="margin-top: 0.75rem;">
+            <div class="yield-callout-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div>
+              <div class="yield-callout-title">Why Ordinary Transformers Fail on Steady DC?</div>
+              <div class="yield-callout-text">
+                For mutual induction, changing magnetic flux is required ($\frac{d\Phi}{dt} \neq 0$). In steady DC, flux is constant $\implies \frac{d\Phi}{dt} = 0 \implies$ Secondary voltage is <strong>ZERO</strong>. Furthermore, the low DC resistance of primary coil will cause excessive current and burn out the winding!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 11: AC FORMULA WALL -->
+  <section id="formula-wall" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path></svg>
+          MODULE 11 • COMPLETE FORMULARY
+        </div>
+        <h2 class="section-title">11. High-Yield AC Formula Wall</h2>
+        <p class="section-desc">
+          Quick-revision master reference containing every essential Alternating Current equation, variable definitions, SI units, and MDCAT examination tips.
+        </p>
+      </div>
+
+      <div class="grid-3col" id="formula-wall-grid">
+        <!-- Populated dynamically by JS with 12+ formula cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 12: 30+ HIGH-YIELD MDCAT CONCEPT CARDS -->
+  <section id="high-yield-notes" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          MODULE 12 • HIGH-YIELD REVISION
+        </div>
+        <h2 class="section-title">12. 30+ High-Yield MDCAT Concept Cards</h2>
+        <p class="section-desc">
+          Concise, syllabus-aligned concepts tested frequently in entry exams. Click the bookmark icon on any card to save it to your personal revision drawer!
+        </p>
+      </div>
+
+      <div class="grid-3col" id="concept-cards-grid">
+        <!-- Populated dynamically by JS with 30+ cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 13: 25+ INTERACTIVE FLASHCARDS -->
+  <section id="flashcards-section" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M9 3v18"></path></svg>
+          MODULE 13 • ACTIVE RECALL
+        </div>
+        <h2 class="section-title">13. 25+ Interactive MDCAT Flashcards</h2>
+        <p class="section-desc">
+          Test your conceptual recall. Click on the card to flip between the Question and the Detailed High-Yield Answer. Track your mastery in real-time!
+        </p>
+      </div>
+
+      <div class="flashcards-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <div style="font-size: 0.875rem; font-weight: 700; color: var(--primary-navy);">
+            Card <span id="flashcard-current-idx">1</span> of <span id="flashcard-total-count">25</span>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button id="filter-all-cards" class="btn btn-outline btn-sm active">All (25)</button>
+            <button id="filter-mastered-cards" class="btn btn-outline btn-sm">Mastered (<span id="mastered-count">0</span>)</button>
+          </div>
+        </div>
+
+        <div class="flashcard-card-3d" id="flashcard-3d-box">
+          <div class="flashcard-inner" id="flashcard-inner-box">
+            <!-- Front of Card -->
+            <div class="flashcard-front">
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--electric-blue); text-transform: uppercase;">
+                MDCAT RECALL QUESTION
+              </div>
+              <div id="flashcard-question-text" style="font-size: 1.25rem; font-weight: 700; color: var(--primary-navy); max-width: 540px; margin: auto;">
+                Loading Question...
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">
+                🔄 Click anywhere on this card to Flip
+              </div>
+            </div>
+
+            <!-- Back of Card -->
+            <div class="flashcard-back">
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--cyan-bright); text-transform: uppercase;">
+                CONCEPTUAL ANSWER & MNEMONIC
+              </div>
+              <div id="flashcard-answer-text" style="font-size: 1.1rem; color: #ffffff; line-height: 1.6; max-width: 560px; margin: auto;">
+                Loading Answer...
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-dim);">
+                🔄 Click to Flip Back
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard-nav">
+          <button id="flashcard-prev-btn" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg>
+            Previous
+          </button>
+          <button id="flashcard-master-btn" class="btn btn-primary btn-sm">
+            ✓ Mark as Mastered
+          </button>
+          <button id="flashcard-next-btn" class="btn btn-outline">
+            Next
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 14: 25+ MDCAT PRACTICE MCQs -->
+  <section id="quiz-section" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          MODULE 14 • EXAM ASSESSMENT
+        </div>
+        <h2 class="section-title">14. 25+ Original MDCAT Practice MCQs</h2>
+        <p class="section-desc">
+          Test your readiness with 25 authentic, high-yield MDCAT-standard multiple choice questions. Instant feedback and detailed step-by-step rationales are provided for every single question!
+        </p>
+      </div>
+
+      <div class="quiz-wrapper">
+        <div class="quiz-card" id="quiz-active-card">
+          <div class="quiz-question-header">
+            <span style="font-size: 0.8125rem; font-weight: 800; color: var(--electric-blue);" id="quiz-counter-text">
+              QUESTION 1 OF 25
+            </span>
+            <span class="badge-pill badge-gold" id="quiz-category-tag">AC WAVEFORMS</span>
+          </div>
+
+          <div class="quiz-question-text" id="quiz-question-body">
+            Loading MDCAT Question...
+          </div>
+
+          <div class="quiz-options-list" id="quiz-options-container">
+            <!-- Options dynamically populated by JS -->
+          </div>
+
+          <div class="quiz-explanation-box" id="quiz-explanation">
+            <strong style="color: var(--primary-navy); display: block; margin-bottom: 0.25rem;">Conceptual Explanation:</strong>
+            <span id="quiz-explanation-text">...</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+            <div style="font-size: 0.875rem; font-weight: 700; color: var(--text-muted);">
+              Score: <span id="quiz-live-score" style="color: #059669;">0</span> / <span id="quiz-live-attempted">0</span>
+            </div>
+            <button id="quiz-next-btn" class="btn btn-primary" style="display: none;">
+              Next Question →
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Final Summary Box (hidden until completed) -->
+        <div id="quiz-result-card" class="lab-card" style="display: none; text-align: center; padding: 3rem 2rem;">
+          <div style="width: 4rem; height: 4rem; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.25rem;">
+            🏆
+          </div>
+          <h3 style="font-size: 1.75rem; font-weight: 900; color: var(--primary-navy); margin-bottom: 0.5rem;">
+            Quiz Completed!
+          </h3>
+          <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+            Here is your MDCAT Alternating Current performance summary:
+          </p>
+
+          <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="hero-stat-card" style="min-width: 120px;">
+              <div class="stat-val" id="final-correct-score" style="color: #059669;">22</div>
+              <div class="stat-lbl">Correct</div>
+            </div>
+            <div class="hero-stat-card" style="min-width: 120px;">
+              <div class="stat-val" id="final-wrong-score" style="color: #e11d48;">3</div>
+              <div class="stat-lbl">Wrong</div>
+            </div>
+            <div class="hero-stat-card" style="min-width: 120px;">
+              <div class="stat-val" id="final-percentage-score" style="color: var(--electric-blue);">88%</div>
+              <div class="stat-lbl">Accuracy</div>
+            </div>
+          </div>
+
+          <div id="final-performance-badge" style="display: inline-block; font-size: 1rem; font-weight: 800; padding: 0.5rem 1.25rem; border-radius: 9999px; background: #e0f2fe; color: #0369a1; margin-bottom: 2rem;">
+            MDCAT Topper Level! 🌟
+          </div>
+
+          <div>
+            <button id="quiz-retry-btn" class="btn btn-primary">
+              🔄 Retake Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 15: 7 MULTI-PARAMETER PHYSICS CALCULATORS -->
+  <section id="calculators-section" class="lab-section">
+    <div class="lab-container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"></rect><line x1="8" y1="12" x2="16" y2="12"></line><line x1="12" y1="8" x2="12" y2="16"></line></svg>
+          MODULE 15 • NUMERICAL TOOLKIT
+        </div>
+        <h2 class="section-title">15. Interactive AC Physics Calculators</h2>
+        <p class="section-desc">
+          Instant numerical solvers for MDCAT problems. Each calculator displays the formula, step-by-step substitution, calculated result, and correct SI unit!
+        </p>
+      </div>
+
+      <div class="grid-3col" id="calculators-grid">
+        <!-- 1. Time Period from Frequency -->
+        <div class="calculator-card">
+          <div>
+            <h4 style="font-weight: 700; font-size: 1rem; color: var(--primary-navy); margin-bottom: 0.25rem;">1. Time Period (T) from Frequency</h4>
+            <div style="font-size: 0.75rem; color: var(--electric-blue); font-family: var(--font-mono); margin-bottom: 0.75rem;">T = 1 / f</div>
+            <div class="calc-input-group">
+              <label class="calc-input-label">Frequency f (Hz)</label>
+              <input type="number" id="calc1-f" class="calc-input-field" value="50" min="0.1" step="0.1">
+            </div>
+          </div>
+          <div class="calc-result-box">
+            <div class="calc-step-text" id="calc1-sub">Substitution: T = 1 / 50</div>
+            <div class="calc-final-val" id="calc1-res">0.0200 s (20.0 ms)</div>
+          </div>
+        </div>
+
+        <!-- 2. Angular Frequency from Frequency -->
+        <div class="calculator-card">
+          <div>
+            <h4 style="font-weight: 700; font-size: 1rem; color: var(--primary-navy); margin-bottom: 0.25rem;">2. Angular Frequency (ω)</h4>
+            <div style="font-size: 0.75rem; color: var(--electric-blue); font-family: var(--font-mono); margin-bottom: 0.75rem;">ω = 2πf</div>
+            <div class="calc-input-group">
+              <label class="calc-input-label">Frequency f (Hz)</label>
+              <input type="number" id="calc2-f" class="calc-input-field" value="50" min="0.1" step="0.1">
+            </div>
+          </div>
+          <div class="calc-result-box">
+            <div class="calc-step-text" id="calc2-sub">Substitution: ω = 2 × π × 50</div>
+            <div class="calc-final-val" id="calc2-res">314.16 rad/s</div>
+          </div>
+        </div>
+
+        <!-- 3. RMS & Peak Converter -->
+        <div class="calculator-card">
+          <div>
+            <h4 style="font-weight: 700; font-size: 1rem; color: var(--primary-navy); margin-bottom: 0.25rem;">3. RMS & Peak Converter</h4>
+            <div style="font-size: 0.75rem; color: var(--electric-blue); font-family: var(--font-mono); margin-bottom: 0.75rem;">V_rms = V₀ / √2 = 0.707 V₀</div>
+            <div class="calc-input-group">
+              <label class="calc-input-label">Peak Voltage V₀ (V)</label>
+              <input type="number" id="calc3-v0" class="calc-input-field" value="311.1" min="0.1" step="0.1">
+            </div>
+          </div>
+          <div class="calc-result-box">
+            <div class="calc-step-text" id="calc3-sub">Substitution: 311.1 / 1.4142</div>
+            <div class="calc-final-val" id="calc3-res">220.00 V RMS</div>
+          </div>
+        </div>
+
+        <!-- 4. Inductive Reactance (XL) -->
+        <div class="calculator-card">
+          <div>
+            <h4 style="font-weight: 700; font-size: 1rem; color: var(--primary-navy); margin-bottom: 0.25rem;">4. Inductive Reactance (X_L)</h4>
+            <div style="font-size: 0.75rem; color: var(--electric-blue); font-family: var(--font-mono); margin-bottom: 0.75rem;">X_L = 2πfL</div>
+            <div class="calc-input-group">
+              <label class="calc-input-label">Frequency f (Hz)</label>
+              <input type="number" id="calc4-f" class="calc-input-field" value="50" min="0.1" step="1">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-input-label">Inductance L (Henry)</label>
+              <input type="number" id="calc4-l" class="calc-input-field" value="0.2" min="0.001" step="0.01">
+            </div>
+          </div>
+          <div class="calc-result-box">
+            <div class="calc-step-text" id="calc4-sub">X_L = 2 × π × 50 × 0.2</div>
+            <div class="calc-final-val" id="calc4-res">62.83 Ω</div>
+          </div>
+        </div>
+
+        <!-- 5. Capacitive Reactance (XC) -->
+        <div class="calculator-card">
+          <div>
+            <h4 style="font-weight: 700; font-size: 1rem; color: var(--primary-navy); margin-bottom: 0.25rem;">5. Capacitive Reactance (X_C)</h4>
+            <div style="font-size: 0.75rem; color: var(--electric-blue); font-family: var(--font-mono); margin-bottom: 0.75rem;">X_C = 1 / (2πfC)</div>
+            <div class="calc-input-group">
+              <label class="calc-input-label">Frequency f (Hz)</label>
+              <input type="number" id="calc5-f" class="calc-input-field" value="50" min="0.1" step="1">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-input-label">Capacitance C (µF)</label>
+              <input type="number" id="calc5-c" class="calc-input-field" value="50" min="0.1" step="1">
+            </div>
+          </div>
+          <div class="calc-result-box">
+            <div class="calc-step-text" id="calc5-sub">X_C = 1 / (2π × 50 × 50×10⁻⁶)</div>
+            <div class="calc-final-val" id="calc5-res">63.66 Ω</div>
+          </div>
+        </div>
+
+        <!-- 6. Resonant Frequency (f0) -->
+        <div class="calculator-card">
+          <div>
+            <h4 style="font-weight: 700; font-size: 1rem; color: var(--primary-navy); margin-bottom: 0.25rem;">6. Resonant Frequency (f₀)</h4>
+            <div style="font-size: 0.75rem; color: var(--electric-blue); font-family: var(--font-mono); margin-bottom: 0.75rem;">f₀ = 1 / (2π√(LC))</div>
+            <div class="calc-input-group">
+              <label class="calc-input-label">Inductance L (H)</label>
+              <input type="number" id="calc6-l" class="calc-input-field" value="0.2" min="0.001" step="0.01">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-input-label">Capacitance C (µF)</label>
+              <input type="number" id="calc6-c" class="calc-input-field" value="50" min="0.1" step="1">
+            </div>
+          </div>
+          <div class="calc-result-box">
+            <div class="calc-step-text" id="calc6-sub">f₀ = 1 / (2π√(0.2 × 50×10⁻⁶))</div>
+            <div class="calc-final-val" id="calc6-res">50.33 Hz</div>
+          </div>
+        </div>
+
+        <!-- 7. Transformer Output Voltage & Current -->
+        <div class="calculator-card" style="grid-column: span 1;">
+          <div>
+            <h4 style="font-weight: 700; font-size: 1rem; color: var(--primary-navy); margin-bottom: 0.25rem;">7. Transformer Turns Ratio & V_s</h4>
+            <div style="font-size: 0.75rem; color: var(--electric-blue); font-family: var(--font-mono); margin-bottom: 0.75rem;">V_s = V_p × (N_s / N_p)</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+              <div class="calc-input-group">
+                <label class="calc-input-label">V_p (V)</label>
+                <input type="number" id="calc7-vp" class="calc-input-field" value="220">
+              </div>
+              <div class="calc-input-group">
+                <label class="calc-input-label">N_p</label>
+                <input type="number" id="calc7-np" class="calc-input-field" value="100">
+              </div>
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-input-label">Secondary Turns N_s</label>
+              <input type="number" id="calc7-ns" class="calc-input-field" value="400">
+            </div>
+          </div>
+          <div class="calc-result-box">
+            <div class="calc-step-text" id="calc7-sub">V_s = 220 × (400 / 100) = 4× V_p</div>
+            <div class="calc-final-val" id="calc7-res">880.0 V (Step-Up)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAVED BOOKMARKS DRAWER -->
+  <div id="bookmarks-backdrop" class="drawer-backdrop"></div>
+  <aside id="bookmarks-drawer" class="bookmarks-drawer">
+    <div class="drawer-header">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+        <h3 style="font-size: 1.125rem; font-weight: 800; color: var(--primary-navy);">Saved Concepts</h3>
+      </div>
+      <button id="close-bookmarks-btn" class="btn btn-outline btn-sm btn-icon-only">✕</button>
+    </div>
+    <div class="drawer-body" id="bookmarks-list-container">
+      <!-- Bookmarks inserted by JS -->
+    </div>
+  </aside>
+
+  <!-- CHAPTER COMPLETION MODAL -->
+  <div id="completion-modal" style="position: fixed; inset: 0; background: rgba(12, 26, 48, 0.75); z-index: 1050; display: none; align-items: center; justify-content: center; padding: 1.5rem;">
+    <div class="lab-card" style="max-width: 520px; width: 100%; text-align: center; padding: 2.5rem 2rem; border-color: var(--cyan-bright); box-shadow: var(--shadow-xl), 0 0 40px rgba(6, 182, 212, 0.4);">
+      <div style="width: 4.5rem; height: 4.5rem; border-radius: 50%; background: linear-gradient(135deg, var(--cyan-bright), var(--electric-blue)); color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 2.25rem; margin: 0 auto 1.25rem; box-shadow: 0 0 20px var(--cyan-glow);">
+        🎓
+      </div>
+      <h2 style="font-size: 1.75rem; font-weight: 900; color: var(--primary-navy); margin-bottom: 0.5rem;">
+        Alternating Current Mastered!
+      </h2>
+      <p style="font-size: 0.9375rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        Congratulations! You have thoroughly completed all simulations, equations, high-yield concept cards, flashcards, and MDCAT practice problems for Alternating Current.
+      </p>
+
+      <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 0.75rem; padding: 1rem; margin-bottom: 1.5rem; text-align: left;">
+        <div style="font-size: 0.75rem; font-weight: 800; color: var(--electric-blue); margin-bottom: 0.5rem; text-transform: uppercase;">
+          Mastery Verification:
+        </div>
+        <div style="font-size: 0.8125rem; color: var(--text-main); display: flex; flex-direction: column; gap: 0.35rem;">
+          <div>✓ Sinusoidal Waveforms & Instantaneous Equations ($i = I_0\sin\omega t$)</div>
+          <div>✓ RMS Effective Values & Thermal Equivalence ($I_{rms} = I_0/\sqrt{2}$)</div>
+          <div>✓ Phase Relationships in R, L, and C Circuits (Current Lags in L, Leads in C)</div>
+          <div>✓ Series RLC Circuit Impedance ($Z = \sqrt{R^2 + (X_L-X_C)^2}$)</div>
+          <div>✓ Series Resonance Conditions ($X_L = X_C \implies f_0 = \frac{1}{2\pi\sqrt{LC}}$)</div>
+          <div>✓ AC Generator EMF ($E = NAB\omega\sin\omega t$) & Transformer Mutual Induction</div>
+        </div>
+      </div>
+
+      <button id="close-completion-modal-btn" class="btn btn-electric" style="width: 100%;">
+        Return to Lab Dashboard
+      </button>
+    </div>
+  </div>
+
+  <!-- Back To Top Button -->
+  <button id="back-to-top" class="back-to-top-btn" title="Back to Top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m18 15-6-6-6 6"></path></svg>
+  </button>
+
+  <!-- FOOTER -->
+  <footer class="lab-footer">
+    <div class="lab-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>AC ELECTRICITY LAB</h3>
+          <p style="font-size: 0.875rem; line-height: 1.6; max-width: 460px;">
+            Interactive, high-yield physics laboratory software designed for MDCAT, ECAT, and pre-medical/engineering entrance examinations.
+          </p>
+        </div>
+        <div class="footer-links-col">
+          <h4>Core Topics</h4>
+          <ul>
+            <li><a href="#oscilloscope-lab">AC Waveforms</a></li>
+            <li><a href="#rms-section">RMS Values</a></li>
+            <li><a href="#rlc-lab">Series RLC Circuits</a></li>
+            <li><a href="#resonance-lab">Electrical Resonance</a></li>
+            <li><a href="#generator-lab">AC Generator</a></li>
+            <li><a href="#transformer-lab">Transformers</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Practice & Tools</h4>
+          <ul>
+            <li><a href="#formula-wall">Formula Wall</a></li>
+            <li><a href="#high-yield-notes">30+ Concept Cards</a></li>
+            <li><a href="#flashcards-section">25+ Flashcards</a></li>
+            <li><a href="#quiz-section">25+ MDCAT MCQs</a></li>
+            <li><a href="#calculators-section">7 Calculators</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <div>© 2026 The AC Electricity Lab — MDCAT Physics Preparation</div>
+        <div style="color: var(--cyan-bright); font-family: var(--font-mono); font-size: 0.75rem;">
+          i = I₀ sin(ωt) • Z = √[R² + (X_L - X_C)²]
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="alternating-current.js"></script>
+</body>
+</html>
