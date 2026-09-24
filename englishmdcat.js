@@ -1,9 +1,8 @@
 /**
  * EduNexa AI — English MDCAT Portal Controller
  * Manages search, filters, progress state, 20-MCQ mock exam,
- * daily practice drills, revision accordions, and achievements.
+ * daily practice drills, revision accordions, day/night mode, and achievements.
  */
-
 const STUDYMATE = (() => {
   // ==========================================
   // 1. DATA REPOSITORY
@@ -444,13 +443,14 @@ const STUDYMATE = (() => {
   ];
 
   // ==========================================
-  // 2. INTERNAL STATE
+  // 2. INTERNAL STATE & STORAGE
   // ==========================================
   const STORAGE_KEYS = {
     COMPLETED_TOPICS: 'studymate_completed_topics',
     LAST_TOPIC: 'studymate_last_topic',
     QUIZ_STATS: 'studymate_quiz_stats',
-    DAILY_STREAK: 'studymate_daily_streak'
+    DAILY_STREAK: 'studymate_daily_streak',
+    THEME: 'studymate_theme'
   };
 
   let state = {
@@ -470,7 +470,6 @@ const STUDYMATE = (() => {
     },
     activeFilter: 'all',
     searchQuery: '',
-
     // Quiz Session State
     quiz: {
       active: false,
@@ -480,7 +479,6 @@ const STUDYMATE = (() => {
       timerInterval: null,
       startTime: null
     },
-
     // Daily Drill Session State
     daily: {
       currentIndex: 0,
@@ -560,33 +558,63 @@ const STUDYMATE = (() => {
   };
 
   // ==========================================
-  // 4. UI NOTIFICATIONS (TOASTS)
+  // 4. DAY / NIGHT THEME CONTROLLER
+  // ==========================================
+  const initTheme = () => {
+    const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
+    // Respect user's saved choice; otherwise default to clean light mode
+    const activeTheme = savedTheme || 'light';
+    applyTheme(activeTheme);
+
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        const isCurrentlyDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.body.classList.contains('dark-theme');
+        const nextTheme = isCurrentlyDark ? 'light' : 'dark';
+        applyTheme(nextTheme);
+        try {
+          localStorage.setItem(STORAGE_KEYS.THEME, nextTheme);
+        } catch (e) {
+          console.warn(e);
+        }
+        showToast(`Switched to ${nextTheme === 'dark' ? 'Night (Dark)' : 'Day (Light)'} Mode`, nextTheme === 'dark' ? '🌙' : '☀️');
+      });
+    }
+  };
+
+  const applyTheme = (theme) => {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.body.classList.add('dark-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.body.classList.remove('dark-theme');
+    }
+  };
+
+  // ==========================================
+  // 5. UI NOTIFICATIONS (TOASTS)
   // ==========================================
   const showToast = (message, icon = '✓') => {
     const container = document.getElementById('toast-container');
     if (!container) return;
-
     const toast = document.createElement('div');
-    toast.className = 'toast-item';
+    toast.className = 'toast';
     toast.innerHTML = `
-      <span class="toast-icon">${icon}</span>
+      <span style="font-size: 1.1rem; flex-shrink: 0;">${icon}</span>
       <span>${message}</span>
     `;
-
     container.appendChild(toast);
-
-    requestAnimationFrame(() => {
-      toast.classList.add('show');
-    });
-
     setTimeout(() => {
-      toast.classList.remove('show');
-      setTimeout(() => toast.remove(), 350);
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(10px)';
+      toast.style.transition = 'all 0.3s ease';
+      setTimeout(() => toast.remove(), 300);
     }, 3200);
   };
 
   // ==========================================
-  // 5. PROGRESS & DASHBOARD RENDERERS
+  // 6. PROGRESS & DASHBOARD RENDERERS
   // ==========================================
   const renderProgress = () => {
     const totalTopics = TOPICS_CONFIG.length;
@@ -601,8 +629,8 @@ const STUDYMATE = (() => {
     const heroMetricProgress = document.getElementById('hero-metric-progress');
 
     if (circleFill) {
-      // Circumference = 2 * PI * 34 ≈ 213.6 (or dasharray 226)
-      const offset = 226 - (226 * percentage) / 100;
+      // Circumference = 2 * PI * 38 ≈ 238.76
+      const offset = 238.76 - (238.76 * percentage) / 100;
       circleFill.style.strokeDashoffset = offset;
     }
     if (circleText) circleText.textContent = `${percentage}%`;
@@ -615,7 +643,7 @@ const STUDYMATE = (() => {
     if (featuredChip) {
       const isSynCompleted = state.completedTopics.includes('synonyms-antonyms.html');
       featuredChip.textContent = isSynCompleted ? 'Status: ✓ Completed' : 'Status: In Progress';
-      featuredChip.style.color = isSynCompleted ? '#34d399' : '#e2e8f0';
+      featuredChip.style.color = isSynCompleted ? '#10b981' : '';
     }
 
     // Dashboard Cards
@@ -641,7 +669,6 @@ const STUDYMATE = (() => {
     // Readiness formula: 50% topics coverage + 50% quiz best score
     const quizPct = (state.quizStats.bestScore / 20) * 100;
     const readinessScore = Math.round(percentage * 0.5 + quizPct * 0.5);
-
     if (statOverallReadiness) statOverallReadiness.textContent = `${readinessScore}%`;
     if (statReadinessLabel) {
       if (readinessScore >= 85) statReadinessLabel.textContent = 'Merit Qualifier Tier (A+)';
@@ -666,14 +693,20 @@ const STUDYMATE = (() => {
       }
 
       if (card) {
+        if (isComplete) {
+          card.classList.add('completed');
+        } else {
+          card.classList.remove('completed');
+        }
+
         const btn = card.querySelector('.btn-mark-complete');
         if (btn) {
           if (isComplete) {
-            btn.classList.add('is-completed');
+            btn.classList.add('completed');
             btn.innerHTML = '✓';
             btn.title = 'Completed (Click to unmark)';
           } else {
-            btn.classList.remove('is-completed');
+            btn.classList.remove('completed');
             btn.innerHTML = '✓';
             btn.title = 'Mark as Completed';
           }
@@ -686,7 +719,7 @@ const STUDYMATE = (() => {
   };
 
   // ==========================================
-  // 6. CONTINUE LEARNING BANNER
+  // 7. CONTINUE LEARNING BANNER
   // ==========================================
   const renderContinueLearning = () => {
     const titleEl = document.getElementById('continue-topic-title');
@@ -697,14 +730,16 @@ const STUDYMATE = (() => {
 
     if (state.lastTopic && state.lastTopic.title && state.lastTopic.file) {
       titleEl.textContent = `Continue: ${state.lastTopic.title}`;
-      descEl.textContent = `Resume where you left off in ${state.lastTopic.title}.`;
+      if (descEl) descEl.textContent = `Resume where you left off in ${state.lastTopic.title}.`;
       btnEl.href = state.lastTopic.file;
       btnEl.innerHTML = `<span>Continue Topic →</span>`;
     } else {
-      titleEl.textContent = 'Start learning from any topic above.';
-      descEl.textContent = 'Select a topic below to begin your MDCAT preparation.';
-      btnEl.href = 'active-passive-voice.html';
-      btnEl.innerHTML = `<span>Start Active & Passive Voice →</span>`;
+      // Find first uncompleted topic
+      const nextUncompleted = TOPICS_CONFIG.find(t => !state.completedTopics.includes(t.file)) || TOPICS_CONFIG[0];
+      titleEl.textContent = `Start: ${nextUncompleted.title}`;
+      if (descEl) descEl.textContent = 'Begin your systematic PMDC English preparation step by step.';
+      btnEl.href = nextUncompleted.file;
+      btnEl.innerHTML = `<span>Start ${nextUncompleted.title} →</span>`;
     }
   };
 
@@ -736,7 +771,7 @@ const STUDYMATE = (() => {
   };
 
   // ==========================================
-  // 7. SEARCH & FILTERING ENGINE
+  // 8. SEARCH & FILTERING ENGINE
   // ==========================================
   const filterTopics = () => {
     const query = state.searchQuery.trim().toLowerCase();
@@ -770,11 +805,7 @@ const STUDYMATE = (() => {
 
     const emptyState = document.getElementById('topics-empty-state');
     if (emptyState) {
-      if (visibleCount === 0) {
-        emptyState.classList.add('visible');
-      } else {
-        emptyState.classList.remove('visible');
-      }
+      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
     }
   };
 
@@ -784,8 +815,9 @@ const STUDYMATE = (() => {
 
     const searchInput = document.getElementById('topic-search-input');
     const clearBtn = document.getElementById('search-clear-btn');
+
     if (searchInput) searchInput.value = '';
-    if (clearBtn) clearBtn.classList.remove('visible');
+    if (clearBtn) clearBtn.classList.remove('active');
 
     document.querySelectorAll('.filter-pill').forEach(pill => {
       pill.classList.toggle('active', pill.getAttribute('data-filter') === 'all');
@@ -795,7 +827,7 @@ const STUDYMATE = (() => {
   };
 
   // ==========================================
-  // 8. REAL 20-MCQ QUIZ ENGINE
+  // 9. REAL 20-MCQ QUIZ ENGINE
   // ==========================================
   const startQuiz = () => {
     state.quiz.active = true;
@@ -804,9 +836,13 @@ const STUDYMATE = (() => {
     state.quiz.timerSeconds = 1200; // 20 minutes
     state.quiz.startTime = Date.now();
 
-    document.getElementById('quiz-start-view').style.display = 'none';
-    document.getElementById('quiz-results-view').style.display = 'none';
-    document.getElementById('quiz-active-view').style.display = 'block';
+    const startView = document.getElementById('quiz-start-view');
+    const resultsView = document.getElementById('quiz-results-view');
+    const activeView = document.getElementById('quiz-active-view');
+
+    if (startView) startView.style.display = 'none';
+    if (resultsView) resultsView.style.display = 'none';
+    if (activeView) activeView.style.display = 'block';
 
     renderQuizPalette();
     renderActiveQuestion();
@@ -815,7 +851,6 @@ const STUDYMATE = (() => {
 
   const startQuizTimer = () => {
     if (state.quiz.timerInterval) clearInterval(state.quiz.timerInterval);
-
     updateTimerDisplay();
 
     state.quiz.timerInterval = setInterval(() => {
@@ -842,9 +877,11 @@ const STUDYMATE = (() => {
 
     if (timerBox) {
       if (state.quiz.timerSeconds <= 120) {
-        timerBox.classList.add('timer-warning');
+        timerBox.style.color = '#ef4444';
+        timerBox.style.borderColor = '#ef4444';
       } else {
-        timerBox.classList.remove('timer-warning');
+        timerBox.style.color = '';
+        timerBox.style.borderColor = '';
       }
     }
   };
@@ -858,7 +895,7 @@ const STUDYMATE = (() => {
       const btn = document.createElement('button');
       btn.className = 'palette-btn';
       btn.textContent = idx + 1;
-      btn.title = `Jump to Question ${idx + 1}`;
+      btn.title = `Question ${idx + 1}`;
 
       if (idx === state.quiz.currentQuestionIndex) {
         btn.classList.add('current');
@@ -894,7 +931,6 @@ const STUDYMATE = (() => {
       const pct = ((qIndex + 1) / QUIZ_QUESTIONS.length) * 100;
       linearBar.style.width = `${pct}%`;
     }
-
     if (questionText) questionText.textContent = `${qIndex + 1}. ${qData.question}`;
 
     if (optionsContainer) {
@@ -902,30 +938,31 @@ const STUDYMATE = (() => {
       const letters = ['A', 'B', 'C', 'D'];
 
       qData.options.forEach((optText, optIdx) => {
-        const optItem = document.createElement('div');
-        optItem.className = 'option-item';
+        const optBtn = document.createElement('button');
+        optBtn.className = 'option-btn';
         if (state.quiz.userAnswers[qIndex] === optIdx) {
-          optItem.classList.add('selected');
+          optBtn.classList.add('selected');
         }
 
-        optItem.innerHTML = `
-          <div class="option-prefix">${letters[optIdx]}</div>
-          <div class="option-label">${optText}</div>
+        optBtn.innerHTML = `
+          <div class="opt-prefix">${letters[optIdx]}</div>
+          <div style="flex: 1;">${optText}</div>
         `;
 
-        optItem.addEventListener('click', () => {
+        optBtn.addEventListener('click', () => {
           state.quiz.userAnswers[qIndex] = optIdx;
           renderActiveQuestion();
           renderQuizPalette();
         });
 
-        optionsContainer.appendChild(optItem);
+        optionsContainer.appendChild(optBtn);
       });
     }
 
     // Previous / Next button states
     const prevBtn = document.getElementById('quiz-btn-prev');
     const nextBtn = document.getElementById('quiz-btn-next');
+
     if (prevBtn) prevBtn.disabled = qIndex === 0;
     if (nextBtn) {
       if (qIndex === QUIZ_QUESTIONS.length - 1) {
@@ -952,18 +989,18 @@ const STUDYMATE = (() => {
     }
   };
 
-  const submitQuiz = (userConfirmed = true) => {
-    if (userConfirmed) {
-      const unanswered = state.quiz.userAnswers.filter(a => a === null).length;
-      if (unanswered > 0) {
-        const proceed = confirm(`You have ${unanswered} unanswered question(s). Are you sure you want to submit?`);
-        if (!proceed) return;
+  const submitQuiz = (isManual = true) => {
+    if (isManual) {
+      const unansweredCount = state.quiz.userAnswers.filter(a => a === null).length;
+      if (unansweredCount > 0) {
+        const confirmSubmit = confirm(`You still have ${unansweredCount} unanswered questions. Are you sure you want to submit?`);
+        if (!confirmSubmit) return;
       }
     }
 
     if (state.quiz.timerInterval) clearInterval(state.quiz.timerInterval);
 
-    // Calculate score
+    // Score evaluation
     let correctCount = 0;
     QUIZ_QUESTIONS.forEach((q, idx) => {
       if (state.quiz.userAnswers[idx] === q.answer) {
@@ -971,26 +1008,27 @@ const STUDYMATE = (() => {
       }
     });
 
-    const totalQuestions = QUIZ_QUESTIONS.length;
-    const wrongCount = totalQuestions - correctCount;
-    const percentage = Math.round((correctCount / totalQuestions) * 100);
-    const timeSpentSecs = 1200 - state.quiz.timerSeconds;
-    const elapsedMins = Math.floor(timeSpentSecs / 60);
-    const elapsedSecs = timeSpentSecs % 60;
-    const formattedTime = `${elapsedMins}m ${elapsedSecs}s`;
+    const wrongCount = QUIZ_QUESTIONS.length - correctCount;
+    const percentage = Math.round((correctCount / QUIZ_QUESTIONS.length) * 100);
+    const elapsedSeconds = Math.max(0, 1200 - state.quiz.timerSeconds);
+    const elapsedMins = Math.floor(elapsedSeconds / 60);
+    const elapsedSecsRemaining = elapsedSeconds % 60;
+    const formattedTime = `${elapsedMins}m ${elapsedSecsRemaining}s`;
 
-    // Update global persistent quiz statistics
-    state.quizStats.attempts += 1;
+    // Update Persistent Stats
+    state.quizStats.attempts++;
+    state.quizStats.totalQuestions += QUIZ_QUESTIONS.length;
+    state.quizStats.totalCorrect += correctCount;
     if (correctCount > state.quizStats.bestScore) {
       state.quizStats.bestScore = correctCount;
     }
-    state.quizStats.totalQuestions += totalQuestions;
-    state.quizStats.totalCorrect += correctCount;
     saveQuizStats();
 
-    // Render results view
-    document.getElementById('quiz-active-view').style.display = 'none';
-    document.getElementById('quiz-results-view').style.display = 'block';
+    // Render Results View
+    const activeView = document.getElementById('quiz-active-view');
+    const resultsView = document.getElementById('quiz-results-view');
+    if (activeView) activeView.style.display = 'none';
+    if (resultsView) resultsView.style.display = 'block';
 
     const scoreNum = document.getElementById('results-score-num');
     const headline = document.getElementById('results-headline');
@@ -1015,7 +1053,7 @@ const STUDYMATE = (() => {
         evalMsg.textContent = 'Great preparation! Review your incorrect answers to lock down remaining marks.';
       } else if (percentage >= 50) {
         headline.textContent = '📚 Good Effort!';
-        evalMsg.textContent = 'Solid foundation. Revisit the grammar and vocabulary topic guides for higher accuracy.';
+        evalMsg.textContent = 'Solid foundation. Revisit grammar and vocabulary topic guides for higher accuracy.';
       } else {
         headline.textContent = '💡 Room for Growth!';
         evalMsg.textContent = 'Keep practicing! Review our Quick Revision notes and retry the test.';
@@ -1035,23 +1073,27 @@ const STUDYMATE = (() => {
         const correctChoiceText = `${letters[q.answer]}. ${q.options[q.answer]}`;
 
         const item = document.createElement('div');
-        item.className = 'quiz-review-item';
+        item.className = `review-item-card ${isCorrect ? 'is-correct' : 'is-wrong'}`;
         item.innerHTML = `
-          <div class="review-q-header">
-            <span style="font-size: 0.8rem; font-weight: 700; color: #a5b4fc;">Question ${idx + 1} • ${q.category}</span>
-            <span style="font-size: 0.78rem; font-weight: 800; color: ${isCorrect ? '#34d399' : '#f87171'};">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <span class="review-q-num">Question ${idx + 1} • ${q.category}</span>
+            <span style="font-size: 0.8rem; font-weight: 800; color: ${isCorrect ? '#10b981' : '#ef4444'};">
               ${isCorrect ? '✓ Correct (+1)' : '✗ Incorrect (0)'}
             </span>
           </div>
           <div class="review-q-text">${q.question}</div>
           <div class="review-answers-box">
-            <div class="review-your-ans ${isCorrect ? 'correct-choice' : ''}">
-              <b>Your Choice:</b> ${userChoiceText}
+            <div class="review-ans-row ${isCorrect ? 'review-user-correct' : 'review-user-wrong'}">
+              <strong>Your Choice:</strong> ${userChoiceText}
             </div>
-            ${!isCorrect ? `<div class="review-correct-ans"><b>Correct Answer:</b> ${correctChoiceText}</div>` : ''}
+            ${!isCorrect ? `
+              <div class="review-ans-row review-correct-reveal">
+                <strong>Correct Answer:</strong> ${correctChoiceText}
+              </div>
+            ` : ''}
           </div>
           <div class="review-explanation">
-            <b>Explanation:</b> ${q.explanation}
+            <strong>Explanation:</strong> ${q.explanation}
           </div>
         `;
         reviewList.appendChild(item);
@@ -1063,12 +1105,14 @@ const STUDYMATE = (() => {
   };
 
   const retryQuiz = () => {
-    document.getElementById('quiz-results-view').style.display = 'none';
-    document.getElementById('quiz-start-view').style.display = 'block';
+    const resultsView = document.getElementById('quiz-results-view');
+    const startView = document.getElementById('quiz-start-view');
+    if (resultsView) resultsView.style.display = 'none';
+    if (startView) startView.style.display = 'block';
   };
 
   // ==========================================
-  // 9. DAILY PRACTICE DRILL ENGINE
+  // 10. DAILY PRACTICE DRILL ENGINE
   // ==========================================
   const initDailyDrill = () => {
     state.daily.currentIndex = 0;
@@ -1082,7 +1126,6 @@ const STUDYMATE = (() => {
     if (!q) return;
 
     state.daily.answered = false;
-
     const tagEl = document.getElementById('daily-q-tag');
     const subTopicEl = document.getElementById('daily-sub-topic');
     const questionEl = document.getElementById('daily-question-content');
@@ -1136,19 +1179,16 @@ const STUDYMATE = (() => {
     optionBtns.forEach((btn, idx) => {
       btn.style.pointerEvents = 'none';
       if (idx === q.answer) {
-        btn.classList.add('correct-opt');
+        btn.classList.add('correct');
       } else if (idx === choiceIdx && !isCorrect) {
-        btn.classList.add('wrong-opt');
+        btn.classList.add('wrong');
       }
     });
 
     // Feedback box
     const feedbackBox = document.getElementById('daily-feedback');
     if (feedbackBox) {
-      feedbackBox.className = `daily-feedback-box visible ${isCorrect ? 'correct' : 'wrong'}`;
-      feedbackBox.style.background = isCorrect ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)';
-      feedbackBox.style.border = isCorrect ? '1px solid #10b981' : '1px solid #ef4444';
-      feedbackBox.style.color = isCorrect ? '#a7f3d0' : '#fca5a5';
+      feedbackBox.className = `daily-feedback-box ${isCorrect ? 'correct' : 'wrong'}`;
       feedbackBox.style.display = 'block';
       feedbackBox.innerHTML = `
         <strong>${isCorrect ? '✓ Correct Answer!' : '✗ Incorrect.'}</strong> ${q.explanation}
@@ -1200,7 +1240,7 @@ const STUDYMATE = (() => {
   };
 
   // ==========================================
-  // 10. ACCORDION CONTROLLER
+  // 11. ACCORDION CONTROLLER
   // ==========================================
   const toggleAccordion = (itemId) => {
     const item = document.getElementById(itemId);
@@ -1208,7 +1248,7 @@ const STUDYMATE = (() => {
 
     const isActive = item.classList.contains('active');
 
-    // Optionally close others
+    // Close other open items
     document.querySelectorAll('.accordion-item').forEach(el => {
       if (el !== item) el.classList.remove('active');
     });
@@ -1221,7 +1261,7 @@ const STUDYMATE = (() => {
   };
 
   // ==========================================
-  // 11. ACHIEVEMENTS SYSTEM
+  // 12. ACHIEVEMENTS SYSTEM
   // ==========================================
   const checkAchievements = () => {
     const completedCount = state.completedTopics.length;
@@ -1279,9 +1319,10 @@ const STUDYMATE = (() => {
   };
 
   // ==========================================
-  // 12. INITIALIZATION & EVENT LISTENERS
+  // 13. INITIALIZATION & EVENT LISTENERS
   // ==========================================
   const init = () => {
+    initTheme();
     loadState();
     renderProgress();
     updateDailyStatsDisplay();
@@ -1293,7 +1334,7 @@ const STUDYMATE = (() => {
     const closeBtn = document.getElementById('drawer-close-btn');
 
     const toggleDrawer = (open) => {
-      if (drawer) drawer.classList.toggle('open', open);
+      if (drawer) drawer.classList.toggle('active', open);
       if (overlay) overlay.classList.toggle('active', open);
       document.body.style.overflow = open ? 'hidden' : '';
     };
@@ -1302,20 +1343,8 @@ const STUDYMATE = (() => {
     if (closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false));
     if (overlay) overlay.addEventListener('click', () => toggleDrawer(false));
 
-    document.querySelectorAll('.mobile-nav-close').forEach(link => {
+    document.querySelectorAll('.mobile-nav-item').forEach(link => {
       link.addEventListener('click', () => toggleDrawer(false));
-    });
-
-    // Sticky Nav Shadow on scroll
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('main-nav');
-      if (nav) {
-        if (window.scrollY > 30) {
-          nav.classList.add('scrolled');
-        } else {
-          nav.classList.remove('scrolled');
-        }
-      }
     });
 
     // Search Input listeners
@@ -1327,7 +1356,7 @@ const STUDYMATE = (() => {
       searchInput.addEventListener('input', (e) => {
         state.searchQuery = e.target.value;
         if (clearBtn) {
-          clearBtn.classList.toggle('visible', state.searchQuery.length > 0);
+          clearBtn.classList.toggle('active', state.searchQuery.length > 0);
         }
         filterTopics();
       });
@@ -1337,7 +1366,7 @@ const STUDYMATE = (() => {
       clearBtn.addEventListener('click', () => {
         state.searchQuery = '';
         if (searchInput) searchInput.value = '';
-        clearBtn.classList.remove('visible');
+        clearBtn.classList.remove('active');
         filterTopics();
       });
     }
@@ -1363,15 +1392,6 @@ const STUDYMATE = (() => {
         filterTopics();
       });
     });
-
-    // Profile Widget Click
-    const profileWidget = document.getElementById('user-profile-widget');
-    if (profileWidget) {
-      profileWidget.addEventListener('click', () => {
-        const statsEl = document.getElementById('stats-section');
-        if (statsEl) statsEl.scrollIntoView({ behavior: 'smooth' });
-      });
-    }
   };
 
   // Public API
